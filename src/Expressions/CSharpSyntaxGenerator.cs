@@ -101,148 +101,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
         }
 
-        internal static SourceProgram Binary(
-            SourceProgram left,
+        internal static WorkflowExpressionFragment Binary(
+            WorkflowExpressionFragment left,
             string operatorToken,
-            SourceProgram right,
+            WorkflowExpressionFragment right,
             bool isChecked = false)
         {
-            var source = SourceProgram.Concat(
+            var source = WorkflowExpressionFragment.Concat(
                 left.Parenthesized(),
-                SourceProgram.Text(" " + operatorToken + " "),
+                WorkflowExpressionFragment.Text(" " + operatorToken + " "),
                 right.Parenthesized());
             return isChecked ? Checked(source) : source;
         }
 
-        internal static SourceProgram Unary(string operatorToken, SourceProgram operand) =>
-            SourceProgram.Concat(SourceProgram.Text(operatorToken), operand.Parenthesized());
+        internal static WorkflowExpressionFragment Unary(string operatorToken, WorkflowExpressionFragment operand) =>
+            WorkflowExpressionFragment.Concat(WorkflowExpressionFragment.Text(operatorToken), operand.Parenthesized());
 
-        internal static SourceProgram Cast(Type type, SourceProgram operand, bool isChecked = false)
+        internal static WorkflowExpressionFragment Cast(Type type, WorkflowExpressionFragment operand, bool isChecked = false)
         {
-            var source = SourceProgram.Concat(
-                SourceProgram.Text(TypeName(type)).Parenthesized(),
+            var source = WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text(TypeName(type)).Parenthesized(),
                 operand.Parenthesized());
             return isChecked ? Checked(source) : source;
         }
 
-        internal static SourceProgram Checked(SourceProgram expression) =>
-            SourceProgram.Concat(SourceProgram.Text("checked"), expression.Parenthesized());
+        internal static WorkflowExpressionFragment Checked(WorkflowExpressionFragment expression) =>
+            WorkflowExpressionFragment.Concat(WorkflowExpressionFragment.Text("checked"), expression.Parenthesized());
 
-        internal static SourceProgram Conditional(
-            SourceProgram test,
-            SourceProgram whenTrue,
-            SourceProgram whenFalse) =>
-            SourceProgram.Concat(
+        internal static WorkflowExpressionFragment Conditional(
+            WorkflowExpressionFragment test,
+            WorkflowExpressionFragment whenTrue,
+            WorkflowExpressionFragment whenFalse) =>
+            WorkflowExpressionFragment.Concat(
                 test.Parenthesized(),
-                SourceProgram.Text(" ? "),
+                WorkflowExpressionFragment.Text(" ? "),
                 whenTrue.Parenthesized(),
-                SourceProgram.Text(" : "),
+                WorkflowExpressionFragment.Text(" : "),
                 whenFalse.Parenthesized());
 
-        internal static SourceProgram MemberAccess(SourceProgram receiver, string memberName) =>
-            SourceProgram.Concat(
+        internal static WorkflowExpressionFragment MemberAccess(WorkflowExpressionFragment receiver, string memberName) =>
+            WorkflowExpressionFragment.Concat(
                 receiver.Parenthesized(),
-                SourceProgram.Text("." + Identifier(memberName)));
+                WorkflowExpressionFragment.Text("." + Identifier(memberName)));
 
-        internal static SourceProgram StaticMemberAccess(Type declaringType, string memberName) =>
-            SourceProgram.Text(TypeName(declaringType) + "." + Identifier(memberName));
+        internal static WorkflowExpressionFragment StaticMemberAccess(Type declaringType, string memberName) =>
+            WorkflowExpressionFragment.Text(TypeName(declaringType) + "." + Identifier(memberName));
 
-        internal static SourceProgram ElementAccess(
-            SourceProgram receiver,
-            IEnumerable<SourceProgram> arguments) =>
-            SourceProgram.Concat(
+        internal static WorkflowExpressionFragment ElementAccess(
+            WorkflowExpressionFragment receiver,
+            IEnumerable<WorkflowExpressionFragment> arguments) =>
+            WorkflowExpressionFragment.Concat(
                 receiver.Parenthesized(),
-                SourceProgram.CommaSeparated(arguments).Bracketed());
+                WorkflowExpressionFragment.CommaSeparated(arguments).Bracketed());
 
-        internal static SourceProgram Invocation(
-            SourceProgram target,
+        internal static WorkflowExpressionFragment Invocation(
+            WorkflowExpressionFragment target,
             IEnumerable<Type> genericArguments,
-            IEnumerable<SourceProgram> arguments)
+            IEnumerable<WorkflowExpressionFragment> arguments)
         {
             var types = genericArguments?.ToArray() ?? Array.Empty<Type>();
             var generic = types.Length == 0
                 ? string.Empty
                 : "<" + string.Join(", ", types.Select(TypeName)) + ">";
-            return SourceProgram.Concat(
+            return WorkflowExpressionFragment.Concat(
                 target,
-                SourceProgram.Text(generic),
-                SourceProgram.CommaSeparated(arguments).Parenthesized());
+                WorkflowExpressionFragment.Text(generic),
+                WorkflowExpressionFragment.CommaSeparated(arguments).Parenthesized());
         }
 
-        internal static SourceProgram ObjectCreation(
+        internal static WorkflowExpressionFragment ObjectCreation(
             Type type,
-            IEnumerable<SourceProgram> arguments) =>
-            SourceProgram.Concat(
-                SourceProgram.Text("new " + TypeName(type)),
-                SourceProgram.CommaSeparated(arguments).Parenthesized());
+            IEnumerable<WorkflowExpressionFragment> arguments) =>
+            WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text("new " + TypeName(type)),
+                WorkflowExpressionFragment.CommaSeparated(arguments).Parenthesized());
 
-        internal static SourceProgram ArrayCreation(
+        internal static WorkflowExpressionFragment ArrayCreation(
             Type arrayType,
-            IEnumerable<SourceProgram> elements) =>
-            SourceProgram.Concat(
-                SourceProgram.Text("new " + TypeName(arrayType) + " "),
-                SourceProgram.CommaSeparated(elements).Braced());
+            IEnumerable<WorkflowExpressionFragment> elements) =>
+            WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text("new " + TypeName(arrayType) + " "),
+                WorkflowExpressionFragment.CommaSeparated(elements).Braced());
 
-        internal static SourceProgram InferredArrayCreation(
-            IEnumerable<SourceProgram> elements) =>
-            SourceProgram.Concat(
-                SourceProgram.Text("new[] "),
-                SourceProgram.CommaSeparated(elements).Braced());
+        internal static WorkflowExpressionFragment InferredArrayCreation(
+            IEnumerable<WorkflowExpressionFragment> elements) =>
+            WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text("new[] "),
+                WorkflowExpressionFragment.CommaSeparated(elements).Braced());
 
-        internal static SourceProgram ArrayBoundsCreation(
+        internal static WorkflowExpressionFragment ArrayBoundsCreation(
             Type elementType,
-            IEnumerable<SourceProgram> bounds) =>
-            SourceProgram.Concat(
-                SourceProgram.Text("new " + TypeName(elementType)),
-                SourceProgram.CommaSeparated(bounds).Bracketed());
+            IEnumerable<WorkflowExpressionFragment> bounds) =>
+            WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text("new " + TypeName(elementType)),
+                WorkflowExpressionFragment.CommaSeparated(bounds).Bracketed());
 
-        internal static SourceProgram Initializer(
-            SourceProgram target,
-            IEnumerable<SourceProgram> entries) =>
-            SourceProgram.Concat(
+        internal static WorkflowExpressionFragment Initializer(
+            WorkflowExpressionFragment target,
+            IEnumerable<WorkflowExpressionFragment> entries) =>
+            WorkflowExpressionFragment.Concat(
                 target,
-                SourceProgram.Text(" "),
-                SourceProgram.CommaSeparated(entries).Braced());
+                WorkflowExpressionFragment.Text(" "),
+                WorkflowExpressionFragment.CommaSeparated(entries).Braced());
 
-        internal static SourceProgram Assignment(string memberName, SourceProgram value) =>
-            SourceProgram.Concat(
-                SourceProgram.Text(Identifier(memberName) + " = "),
+        internal static WorkflowExpressionFragment Assignment(string memberName, WorkflowExpressionFragment value) =>
+            WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text(Identifier(memberName) + " = "),
                 value);
 
-        internal static SourceProgram Lambda(
+        internal static WorkflowExpressionFragment Lambda(
             IEnumerable<(Type Type, string Name)> parameters,
-            SourceProgram body)
+            WorkflowExpressionFragment body)
         {
             var declarations = parameters.Select(
                 parameter => TypeName(parameter.Type) + " " + Identifier(parameter.Name));
-            return SourceProgram.Concat(
-                SourceProgram.Text(string.Join(", ", declarations)).Parenthesized(),
-                SourceProgram.Text(" => "),
+            return WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text(string.Join(", ", declarations)).Parenthesized(),
+                WorkflowExpressionFragment.Text(" => "),
                 body);
         }
 
-        internal static SourceProgram TypeTest(SourceProgram expression, Type type) =>
-            SourceProgram.Concat(
+        internal static WorkflowExpressionFragment TypeTest(WorkflowExpressionFragment expression, Type type) =>
+            WorkflowExpressionFragment.Concat(
                 expression.Parenthesized(),
-                SourceProgram.Text(" is " + TypeName(type)));
+                WorkflowExpressionFragment.Text(" is " + TypeName(type)));
 
-        internal static SourceProgram TypeAs(SourceProgram expression, Type type) =>
-            SourceProgram.Concat(
+        internal static WorkflowExpressionFragment TypeAs(WorkflowExpressionFragment expression, Type type) =>
+            WorkflowExpressionFragment.Concat(
                 expression.Parenthesized(),
-                SourceProgram.Text(" as " + TypeName(type)));
+                WorkflowExpressionFragment.Text(" as " + TypeName(type)));
 
-        internal static SourceProgram Default(Type type) =>
-            SourceProgram.Text("default(" + TypeName(type) + ")");
+        internal static WorkflowExpressionFragment Default(Type type) =>
+            WorkflowExpressionFragment.Text("default(" + TypeName(type) + ")");
 
-        internal static SourceProgram TypedNull(Type type) =>
-            SourceProgram.Text("((" + TypeName(type) + ")null)");
+        internal static WorkflowExpressionFragment TypedNull(Type type) =>
+            WorkflowExpressionFragment.Text("((" + TypeName(type) + ")null)");
 
-        internal static SourceProgram Literal(object value, Type declaredType)
+        internal static WorkflowExpressionFragment Literal(object value, Type declaredType)
         {
             if (value is Array or IDictionary or JToken)
                 throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
             if (value == null)
-                return Cast(declaredType, SourceProgram.Text("null"));
+                return Cast(declaredType, WorkflowExpressionFragment.Text("null"));
 
             if (Nullable.GetUnderlyingType(declaredType) is Type underlying)
                 return Cast(declaredType, Literal(value, underlying));
@@ -251,12 +251,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (runtimeType != declaredType && declaredType.IsAssignableFrom(runtimeType))
                 return Cast(declaredType, Literal(value, runtimeType));
 
-            if (value is string text) return SourceProgram.Text(JsonConvert.ToString(text));
-            if (value is bool flag) return SourceProgram.Text(flag ? "true" : "false");
+            if (value is string text) return WorkflowExpressionFragment.Text(JsonConvert.ToString(text));
+            if (value is bool flag) return WorkflowExpressionFragment.Text(flag ? "true" : "false");
             if (value is char character)
             {
                 var escaped = JsonConvert.ToString(character.ToString());
-                return SourceProgram.Text(
+                return WorkflowExpressionFragment.Text(
                     "'" + escaped.Substring(1, escaped.Length - 2).Replace("'", "\\'").Replace("\\\"", "\"") + "'");
             }
 
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             {
                 var name = Enum.GetName(value.GetType(), value);
                 if (name != null)
-                    return SourceProgram.Text(CSharpSyntaxGenerator.TypeName(value.GetType()) + "." + name);
+                    return WorkflowExpressionFragment.Text(CSharpSyntaxGenerator.TypeName(value.GetType()) + "." + name);
 
                 var enumUnderlyingType = Enum.GetUnderlyingType(value.GetType());
                 var enumValue = Convert.ChangeType(value, enumUnderlyingType, CultureInfo.InvariantCulture);
@@ -272,44 +272,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
 
             if (value is DateTime date)
-                return SourceProgram.Text(
+                return WorkflowExpressionFragment.Text(
                     $"new global::System.DateTime({date.Ticks}L, global::System.DateTimeKind.{date.Kind})");
             if (value is DateTimeOffset offset)
-                return SourceProgram.Text(
+                return WorkflowExpressionFragment.Text(
                     $"new global::System.DateTimeOffset({offset.Ticks}L, new global::System.TimeSpan({offset.Offset.Ticks}L))");
             if (value is TimeSpan span)
-                return SourceProgram.Text($"new global::System.TimeSpan({span.Ticks}L)");
+                return WorkflowExpressionFragment.Text($"new global::System.TimeSpan({span.Ticks}L)");
             if (value is Guid guid)
-                return SourceProgram.Text(
+                return WorkflowExpressionFragment.Text(
                     "new global::System.Guid(" + JsonConvert.ToString(guid.ToString("D")) + ")");
             if (value is Uri uri)
-                return SourceProgram.Text(
+                return WorkflowExpressionFragment.Text(
                     "new global::System.Uri(" + JsonConvert.ToString(uri.OriginalString) +
                     ", global::System.UriKind.RelativeOrAbsolute)");
             if (value is HttpMethod method)
-                return SourceProgram.Text(
+                return WorkflowExpressionFragment.Text(
                     "new global::System.Net.Http.HttpMethod(" + JsonConvert.ToString(method.Method) + ")");
 
             if (value is double number)
             {
-                if (double.IsNaN(number)) return SourceProgram.Text("double.NaN");
-                if (double.IsPositiveInfinity(number)) return SourceProgram.Text("double.PositiveInfinity");
-                if (double.IsNegativeInfinity(number)) return SourceProgram.Text("double.NegativeInfinity");
+                if (double.IsNaN(number)) return WorkflowExpressionFragment.Text("double.NaN");
+                if (double.IsPositiveInfinity(number)) return WorkflowExpressionFragment.Text("double.PositiveInfinity");
+                if (double.IsNegativeInfinity(number)) return WorkflowExpressionFragment.Text("double.NegativeInfinity");
                 if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0)
-                    return SourceProgram.Text("-0.0d");
+                    return WorkflowExpressionFragment.Text("-0.0d");
                 
-                return SourceProgram.Text(number.ToString("R", CultureInfo.InvariantCulture) + "d");
+                return WorkflowExpressionFragment.Text(number.ToString("R", CultureInfo.InvariantCulture) + "d");
             }
 
             if (value is float single)
             {
-                if (float.IsNaN(single)) return SourceProgram.Text("float.NaN");
-                if (float.IsPositiveInfinity(single)) return SourceProgram.Text("float.PositiveInfinity");
-                if (float.IsNegativeInfinity(single)) return SourceProgram.Text("float.NegativeInfinity");
+                if (float.IsNaN(single)) return WorkflowExpressionFragment.Text("float.NaN");
+                if (float.IsPositiveInfinity(single)) return WorkflowExpressionFragment.Text("float.PositiveInfinity");
+                if (float.IsNegativeInfinity(single)) return WorkflowExpressionFragment.Text("float.NegativeInfinity");
                 if (single == 0 && BitConverter.ToInt32(BitConverter.GetBytes(single), 0) < 0)
-                    return SourceProgram.Text("-0.0f");
+                    return WorkflowExpressionFragment.Text("-0.0f");
                 
-                return SourceProgram.Text(single.ToString("R", CultureInfo.InvariantCulture) + "f");
+                return WorkflowExpressionFragment.Text(single.ToString("R", CultureInfo.InvariantCulture) + "f");
             }
 
             if (value is decimal or long or ulong or uint or int or short or ushort or byte or sbyte)
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 var suffix = value is decimal ? "m" : value is long ? "L" :
                     value is ulong ? "UL" : value is uint ? "U" : "";
                 var source = Convert.ToString(value, CultureInfo.InvariantCulture) + suffix;
-                var literal = SourceProgram.Text(source);
+                var literal = WorkflowExpressionFragment.Text(source);
                 return value is byte or sbyte or short or ushort
                     ? Cast(value.GetType(), literal)
                     : literal;

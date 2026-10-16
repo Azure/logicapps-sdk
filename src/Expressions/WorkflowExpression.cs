@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Source representation of operation inputs lambda expressions. Holds literal values or source programs (source segments + bindings to workflow context).
+    /// Source representation of operation inputs lambda expressions. Holds literal values or C# source (source segments + bindings to workflow context).
     /// </summary>
     internal abstract class WorkflowExpression
     {
@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         internal static WorkflowExpression<T> Literal<T>(T value) =>
             new WorkflowExpression<T>(Serialize(value), null);
 
-        internal static WorkflowExpression<T> Create<T>(SourceProgram program) =>
-            new WorkflowExpression<T>(null, program ?? throw new ArgumentNullException(nameof(program)));
+        internal static WorkflowExpression<T> Create<T>(WorkflowExpressionFragment root) =>
+            new WorkflowExpression<T>(null, root ?? throw new ArgumentNullException(nameof(root)));
 
         internal static WorkflowExpression<T> Compile<T>(
             Expression<Func<T>> expression,
@@ -74,98 +74,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     internal sealed class WorkflowExpression<T> : WorkflowExpression
     {
         private readonly JToken literal;
-        private readonly SourceProgram program;
+        private readonly WorkflowExpressionFragment root;
 
-        internal WorkflowExpression(JToken literal, SourceProgram program)
+        internal WorkflowExpression(JToken literal, WorkflowExpressionFragment root)
         {
             this.literal = literal;
-            this.program = program;
+            this.root = root;
         }
 
         internal override JToken LiteralToken => this.literal?.DeepClone();
 
         internal override string Render()
         {
-            if (this.literal != null) throw new InvalidOperationException("A literal has no source program.");
-            return this.program.Render();
+            if (this.literal != null) throw new InvalidOperationException("A literal has no source expression.");
+            return this.root.Render();
         }
     }
 
     /// <summary>
     /// Immutable C# source segments interleaved with late-bound workflow references.
     /// </summary>
-    internal sealed class SourceProgram
+    internal sealed class WorkflowExpressionFragment
     {
         private readonly string[] segments;
         private readonly WorkflowExpressionBinding[] bindings;
 
-        private SourceProgram(string[] segments, WorkflowExpressionBinding[] bindings)
+        private WorkflowExpressionFragment(string[] segments, WorkflowExpressionBinding[] bindings)
         {
             if (segments == null || bindings == null || segments.Length != bindings.Length + 1 ||
                 segments.Any(segment => segment == null) || bindings.Any(binding => binding == null))
-                throw new ArgumentException("A source program needs one more non-null segment than bindings.");
+                throw new ArgumentException("A source expression needs one more non-null segment than bindings.");
 
             this.segments = segments;
             this.bindings = bindings;
         }
 
-        internal static SourceProgram Text(string text) =>
-            new SourceProgram(new[] { text ?? throw new ArgumentNullException(nameof(text)) }, Array.Empty<WorkflowExpressionBinding>());
+        internal static WorkflowExpressionFragment Text(string text) =>
+            new WorkflowExpressionFragment(new[] { text ?? throw new ArgumentNullException(nameof(text)) }, Array.Empty<WorkflowExpressionBinding>());
 
-        internal static SourceProgram Binding(WorkflowExpressionBinding binding) =>
-            new SourceProgram(
+        internal static WorkflowExpressionFragment Binding(WorkflowExpressionBinding binding) =>
+            new WorkflowExpressionFragment(
                 new[] { string.Empty, string.Empty },
                 new[] { binding ?? throw new ArgumentNullException(nameof(binding)) });
 
-        internal static SourceProgram Concat(params SourceProgram[] programs) =>
-            Concat((IEnumerable<SourceProgram>)programs);
+        internal static WorkflowExpressionFragment Concat(params WorkflowExpressionFragment[] fragments) =>
+            Concat((IEnumerable<WorkflowExpressionFragment>)fragments);
 
-        internal static SourceProgram Concat(IEnumerable<SourceProgram> programs)
+        internal static WorkflowExpressionFragment Concat(IEnumerable<WorkflowExpressionFragment> fragments)
         {
-            if (programs == null) throw new ArgumentNullException(nameof(programs));
+            if (fragments == null) throw new ArgumentNullException(nameof(fragments));
             var segments = new List<string> { string.Empty };
             var bindings = new List<WorkflowExpressionBinding>();
-            foreach (var program in programs)
+            foreach (var fragment in fragments)
             {
-                if (program == null) throw new ArgumentException("Source programs cannot contain null.", nameof(programs));
-                segments[segments.Count - 1] += program.segments[0];
-                for (var index = 0; index < program.bindings.Length; index++)
+                if (fragment == null) throw new ArgumentException("Source expressions cannot contain null.", nameof(fragments));
+                segments[segments.Count - 1] += fragment.segments[0];
+                for (var index = 0; index < fragment.bindings.Length; index++)
                 {
-                    bindings.Add(program.bindings[index]);
-                    segments.Add(program.segments[index + 1]);
+                    bindings.Add(fragment.bindings[index]);
+                    segments.Add(fragment.segments[index + 1]);
                 }
             }
 
-            return new SourceProgram(segments.ToArray(), bindings.ToArray());
+            return new WorkflowExpressionFragment(segments.ToArray(), bindings.ToArray());
         }
 
-        internal static SourceProgram Join(string separator, IEnumerable<SourceProgram> programs)
+        internal static WorkflowExpressionFragment Join(string separator, IEnumerable<WorkflowExpressionFragment> fragments)
         {
             if (separator == null) throw new ArgumentNullException(nameof(separator));
-            if (programs == null) throw new ArgumentNullException(nameof(programs));
-            var parts = new List<SourceProgram>();
-            foreach (var program in programs)
+            if (fragments == null) throw new ArgumentNullException(nameof(fragments));
+            var parts = new List<WorkflowExpressionFragment>();
+            foreach (var fragment in fragments)
             {
                 if (parts.Count != 0) parts.Add(Text(separator));
-                parts.Add(program);
+                parts.Add(fragment);
             }
 
             return Concat(parts);
         }
 
-        internal static SourceProgram CommaSeparated(IEnumerable<SourceProgram> programs) =>
-            Join(", ", programs);
+        internal static WorkflowExpressionFragment CommaSeparated(IEnumerable<WorkflowExpressionFragment> fragments) =>
+            Join(", ", fragments);
 
-        internal SourceProgram Wrapped(string prefix, string suffix) =>
+        internal WorkflowExpressionFragment Wrapped(string prefix, string suffix) =>
             Concat(Text(prefix), this, Text(suffix));
 
-        internal SourceProgram Parenthesized() =>
+        internal WorkflowExpressionFragment Parenthesized() =>
             this.Wrapped("(", ")");
 
-        internal SourceProgram Bracketed() =>
+        internal WorkflowExpressionFragment Bracketed() =>
             this.Wrapped("[", "]");
 
-        internal SourceProgram Braced() =>
+        internal WorkflowExpressionFragment Braced() =>
             this.Wrapped("{ ", " }");
 
         internal bool IsText(string text) =>
