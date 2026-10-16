@@ -68,12 +68,15 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         private readonly JToken literal;
         private readonly SourceProgram program;
+
         internal WorkflowExpression(JToken literal, SourceProgram program)
         {
             this.literal = literal;
             this.program = program;
         }
+
         internal override JToken LiteralToken => this.literal?.DeepClone();
+
         internal override string Render()
         {
             if (this.literal != null) throw new InvalidOperationException("A literal has no source program.");
@@ -176,23 +179,30 @@ namespace Microsoft.Azure.Workflows.Sdk
         private readonly IWorkflowOperation operation;
         private readonly string function;
         private readonly string argument;
+
         private WorkflowExpressionBinding(IWorkflowOperation operation, string function, string argument = null)
         {
             this.operation = operation;
             this.function = function;
             this.argument = argument;
         }
+
         internal static WorkflowExpressionBinding Output(IWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "outputs");
+        
         internal static WorkflowExpressionBinding Body(IWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "body");
+        
         internal static WorkflowExpressionBinding Trigger(IWorkflowTrigger trigger, bool body) =>
             new WorkflowExpressionBinding(trigger ?? throw new ArgumentNullException(nameof(trigger)), body ? "triggerBody" : "triggerOutputs");
+        
         internal static WorkflowExpressionBinding Variable(IVariableWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "variables");
+        
         internal static WorkflowExpressionBinding Item(JToken item) =>
             item is ForEachItemToken ? new WorkflowExpressionBinding(null, "item") :
                 throw new ArgumentException("Expected a workflow foreach item.", nameof(item));
+        
         internal static WorkflowExpressionBinding AgentParameter(object context, string name) =>
             context != null ? new WorkflowExpressionBinding(null, "agentparameters", name) :
                 throw new ArgumentNullException(nameof(context));

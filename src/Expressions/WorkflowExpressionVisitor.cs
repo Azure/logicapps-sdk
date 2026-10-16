@@ -160,6 +160,36 @@ namespace Microsoft.Azure.Workflows.Sdk
             return Keywords.Contains(name) ? "@" + name : name;
         }
 
+        private static string Operator(ExpressionType type)
+        {
+            switch (type)
+            {
+                case ExpressionType.Coalesce: return "??";
+                case ExpressionType.OrElse: return "||";
+                case ExpressionType.AndAlso: return "&&";
+                case ExpressionType.Or: return "|";
+                case ExpressionType.ExclusiveOr: return "^";
+                case ExpressionType.And: return "&";
+                case ExpressionType.Equal: return "==";
+                case ExpressionType.NotEqual: return "!=";
+                case ExpressionType.LessThan: return "<";
+                case ExpressionType.LessThanOrEqual: return "<=";
+                case ExpressionType.GreaterThan: return ">";
+                case ExpressionType.GreaterThanOrEqual: return ">=";
+                case ExpressionType.LeftShift: return "<<";
+                case ExpressionType.RightShift: return ">>";
+                case ExpressionType.Add:
+                case ExpressionType.AddChecked: return "+";
+                case ExpressionType.Subtract:
+                case ExpressionType.SubtractChecked: return "-";
+                case ExpressionType.Multiply:
+                case ExpressionType.MultiplyChecked: return "*";
+                case ExpressionType.Divide: return "/";
+                case ExpressionType.Modulo: return "%";
+                default: throw new NotSupportedException($"Unsupported C# binary operator: {type}");
+            }
+        }
+
         private static readonly HashSet<string> Keywords = new HashSet<string>(
             ("abstract as base bool break byte case catch char checked class const continue decimal default delegate " +
              "do double else enum event explicit extern false finally fixed float for foreach goto if implicit in int " +
@@ -220,602 +250,565 @@ namespace Microsoft.Azure.Workflows.Sdk
             };
         }
 
-        private SourceProgram Typed(Expression expression)
-            => this.Visit(expression);
-
-        public SourceProgram Visit(BinaryExpression expression) => this.Binary(expression);
-
-        public SourceProgram Visit(UnaryExpression expression) => this.Unary(expression);
-
-        public SourceProgram Visit(ConstantExpression expression) =>
-            this.Literal(expression.Value, expression.Type);
-
-        public SourceProgram Visit(ParameterExpression expression) =>
-            this.parameters.Contains(expression)
-                ? SourceProgram.Text(Identifier(expression.Name))
-                : throw Unsupported(expression);
-
-        public SourceProgram Visit(MethodCallExpression expression) => this.Call(expression);
-
-        public SourceProgram Visit(ConditionalExpression expression) =>
-            SourceProgram.Concat(
-                this.Typed(expression.Test).Parenthesized(),
-                SourceProgram.Text(" ? "),
-                this.Typed(expression.IfTrue).Parenthesized(),
-                SourceProgram.Text(" : "),
-                this.Typed(expression.IfFalse).Parenthesized());
-
-        public SourceProgram Visit(InvocationExpression expression) => throw Unsupported(expression);
-
-        public SourceProgram Visit(LambdaExpression expression)
+        public SourceProgram Visit(BinaryExpression binaryExpression)
         {
-            foreach (var parameter in expression.Parameters)
+            if (binaryExpression.NodeType == ExpressionType.ArrayIndex)
+                return SourceProgram.Concat(
+                    this.Visit(binaryExpression.Left).Parenthesized(),
+                    this.Visit(binaryExpression.Right).Bracketed());
+            if (binaryExpression.Conversion != null)
+                throw new NotSupportedException("Coalesce conversion lambdas are not supported.");
+
+            var op = Operator(binaryExpression.NodeType);
+            var left = this.Visit(binaryExpression.Left);
+            var right = this.Visit(binaryExpression.Right);
+            var source = SourceProgram.Concat(
+                left.Parenthesized(),
+                SourceProgram.Text(" " + op + " "),
+                right.Parenthesized());
+            if (binaryExpression.NodeType == ExpressionType.AddChecked || binaryExpression.NodeType == ExpressionType.SubtractChecked ||
+                binaryExpression.NodeType == ExpressionType.MultiplyChecked)
+                return SourceProgram.Concat(
+                    SourceProgram.Text("checked"),
+                    source.Parenthesized());
+            return source;
+        }
+
+        public SourceProgram Visit(UnaryExpression unaryExpression)
+        {
+            if (unaryExpression.NodeType == ExpressionType.Quote) return this.Visit(unaryExpression.Operand);
+            var operand = this.Visit(unaryExpression.Operand);
+            switch (unaryExpression.NodeType)
+            {
+                case ExpressionType.Convert:
+                case ExpressionType.ConvertChecked:
+                    var cast = SourceProgram.Concat(
+                        SourceProgram.Text(TypeName(unaryExpression.Type)).Parenthesized(),
+                        operand.Parenthesized());
+                    return unaryExpression.NodeType == ExpressionType.ConvertChecked
+                        ? SourceProgram.Concat(SourceProgram.Text("checked"), cast.Parenthesized())
+                        : cast;
+                case ExpressionType.Negate:
+                    return SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized());
+                case ExpressionType.NegateChecked:
+                    return SourceProgram.Concat(
+                        SourceProgram.Text("checked"),
+                        SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized()).Parenthesized());
+                case ExpressionType.UnaryPlus:
+                    return SourceProgram.Concat(SourceProgram.Text("+"), operand.Parenthesized());
+                case ExpressionType.Not:
+                    return SourceProgram.Concat(
+                        SourceProgram.Text(
+                            unaryExpression.Type == typeof(bool) || Nullable.GetUnderlyingType(unaryExpression.Type) == typeof(bool)
+                                ? "!"
+                                : "~"),
+                        operand.Parenthesized());
+                case ExpressionType.TypeAs:
+                    return SourceProgram.Concat(
+                        operand.Parenthesized(),
+                        SourceProgram.Text(" as " + TypeName(unaryExpression.Type)));
+                default: throw new NotSupportedException($"Unsupported C# unary operator: {unaryExpression.NodeType}");
+            }
+        }
+
+        public SourceProgram Visit(ConstantExpression constantExpression) =>
+            this.Literal(constantExpression.Value, constantExpression.Type);
+
+        public SourceProgram Visit(ParameterExpression parameterExpression) =>
+            this.parameters.Contains(parameterExpression)
+                ? SourceProgram.Text(Identifier(parameterExpression.Name))
+                : throw Unsupported(parameterExpression);
+
+        public SourceProgram Visit(MethodCallExpression methodCallExpression)
+        {
+            ValidateRuntimeType(methodCallExpression.Method.DeclaringType);
+            if (!methodCallExpression.Method.IsPublic)
+                throw new NotSupportedException($"Expression runtime member must be public: {methodCallExpression.Method}");
+
+            if (TryWriteWorkflowFunction(methodCallExpression, out var workflowFunction, out var returnsToken))
+                return returnsToken
+                    ? ReadWorkflowValue(workflowFunction, methodCallExpression.Type)
+                    : workflowFunction;
+
+            if (methodCallExpression.Method.DeclaringType == typeof(string) && methodCallExpression.Method.Name == "Format")
+                return this.Format(methodCallExpression);
+
+            if (methodCallExpression.Method.Name == "get_Item" && methodCallExpression.Object != null)
+            {
+                var indexed = this.Visit(methodCallExpression.Object);
+                return SourceProgram.Concat(
+                    indexed.Parenthesized(),
+                    SourceProgram.CommaSeparated(methodCallExpression.Arguments.Select(this.Visit)).Bracketed());
+            }
+
+            var extension = methodCallExpression.Method.IsDefined(typeof(ExtensionAttribute), false);
+            var targetExpression = extension ? methodCallExpression.Arguments[0] : methodCallExpression.Object;
+            var target = targetExpression == null
+                ? SourceProgram.Text(TypeName(methodCallExpression.Method.DeclaringType))
+                : this.Receiver(targetExpression).Parenthesized();
+
+            if (methodCallExpression.Method.GetParameters().Any(p => p.ParameterType.IsByRef))
+                throw new NotSupportedException($"Calls with ref/out arguments are not supported: {methodCallExpression.Method}");
+            var arguments = methodCallExpression.Arguments.Skip(extension ? 1 : 0).Select(this.Visit);
+            var inferGenerics = methodCallExpression.Method.IsGenericMethod && methodCallExpression.Method.DeclaringType == typeof(Enumerable) &&
+                methodCallExpression.Method.GetGenericMethodDefinition().GetGenericArguments().All(parameter =>
+                    methodCallExpression.Method.GetGenericMethodDefinition().GetParameters().Any(p => ContainsType(p.ParameterType, parameter)));
+            var generic = methodCallExpression.Method.IsGenericMethod && !inferGenerics ?
+                "<" + string.Join(", ", methodCallExpression.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
+            return SourceProgram.Concat(
+                target,
+                SourceProgram.Text("." + Identifier(methodCallExpression.Method.Name) + generic),
+                SourceProgram.CommaSeparated(arguments).Parenthesized());
+        }
+
+        public SourceProgram Visit(ConditionalExpression conditionalExpression) =>
+            SourceProgram.Concat(
+                this.Visit(conditionalExpression.Test).Parenthesized(),
+                SourceProgram.Text(" ? "),
+                this.Visit(conditionalExpression.IfTrue).Parenthesized(),
+                SourceProgram.Text(" : "),
+                this.Visit(conditionalExpression.IfFalse).Parenthesized());
+
+        public SourceProgram Visit(InvocationExpression invocationExpression) => throw Unsupported(invocationExpression);
+
+        public SourceProgram Visit(LambdaExpression lambdaExpression)
+        {
+            // NOTE(aeldridge): Lambda parameters must be available to the visitor at child nodes, so they are
+            // tracked in this.parameters and removed after visiting the body
+            foreach (var parameter in lambdaExpression.Parameters)
                 this.parameters.Add(parameter);
 
             try
             {
                 return SourceProgram.Concat(
                     SourceProgram.Text(
-                        string.Join(", ", expression.Parameters.Select(
+                        string.Join(", ", lambdaExpression.Parameters.Select(
                             parameter => TypeName(parameter.Type) + " " + Identifier(parameter.Name))))
                         .Parenthesized(),
                     SourceProgram.Text(" => "),
-                    this.Typed(expression.Body));
+                    this.Visit(lambdaExpression.Body));
             }
             finally
             {
-                foreach (var parameter in expression.Parameters)
+                foreach (var parameter in lambdaExpression.Parameters)
                     this.parameters.Remove(parameter);
             }
         }
 
-        public SourceProgram Visit(ListInitExpression expression) =>
+        public SourceProgram Visit(ListInitExpression listInitExpression) =>
             SourceProgram.Concat(
-                this.New(expression.NewExpression),
+                this.New(listInitExpression.NewExpression),
                 SourceProgram.Text(" "),
-                SourceProgram.CommaSeparated(expression.Initializers.Select(initializer =>
+                SourceProgram.CommaSeparated(listInitExpression.Initializers.Select(initializer =>
                     initializer.Arguments.Count == 1
-                        ? this.Typed(initializer.Arguments[0])
-                        : SourceProgram.CommaSeparated(initializer.Arguments.Select(this.Typed)).Braced()))
+                        ? this.Visit(initializer.Arguments[0])
+                        : SourceProgram.CommaSeparated(initializer.Arguments.Select(this.Visit)).Braced()))
                     .Braced());
 
-        public SourceProgram Visit(MemberExpression expression) => this.Member(expression);
-
-        public SourceProgram Visit(MemberInitExpression expression) =>
-            SourceProgram.Concat(
-                expression.NewExpression.Arguments.Count == 0
-                    ? SourceProgram.Text("new " + TypeName(expression.Type))
-                    : this.New(expression.NewExpression),
-                SourceProgram.Text(" "),
-                SourceProgram.CommaSeparated(expression.Bindings.Select(this.Binding)).Braced());
-
-        public SourceProgram Visit(NewExpression expression) => this.New(expression);
-
-        public SourceProgram Visit(NewArrayExpression expression)
+        public SourceProgram Visit(MemberExpression memberExpression)
         {
-            if (expression.NodeType == ExpressionType.NewArrayBounds)
+            if (memberExpression.Expression == null)
             {
-                return SourceProgram.Concat(
-                    SourceProgram.Text("new " + TypeName(expression.Type.GetElementType())),
-                    SourceProgram.CommaSeparated(expression.Expressions.Select(this.Typed)).Bracketed());
+                if (memberExpression.Member.DeclaringType == typeof(HttpMethod) && memberExpression.Member is PropertyInfo httpProperty)
+                    return this.Literal(httpProperty.GetValue(null), typeof(HttpMethod));
+                return SourceProgram.Text(TypeName(memberExpression.Member.DeclaringType) + "." + Identifier(memberExpression.Member.Name));
             }
 
-            var elements = expression.Expressions.Select(this.Typed).ToArray();
-            var inferred = elements.Any(element => !element.IsText("null")) &&
-                expression.Type.GetElementType() != typeof(object) &&
-                expression.Expressions.All(element => element.Type == expression.Type.GetElementType());
             return SourceProgram.Concat(
-                SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(expression.Type)) + " "),
+                this.Receiver(memberExpression.Expression).Parenthesized(),
+                SourceProgram.Text("." + Identifier(memberExpression.Member.Name)));
+        }
+
+        public SourceProgram Visit(MemberInitExpression memberInitExpression) =>
+            SourceProgram.Concat(
+                memberInitExpression.NewExpression.Arguments.Count == 0
+                    ? SourceProgram.Text("new " + TypeName(memberInitExpression.Type))
+                    : this.New(memberInitExpression.NewExpression),
+                SourceProgram.Text(" "),
+                SourceProgram.CommaSeparated(memberInitExpression.Bindings.Select(this.Binding)).Braced());
+        
+        private SourceProgram Binding(MemberBinding binding)
+        {
+            if (!(binding is MemberAssignment assignment))
+                throw new NotSupportedException($"Unsupported object initializer binding: {binding.BindingType}");
+            
+            return SourceProgram.Concat(
+                SourceProgram.Text(Identifier(binding.Member.Name) + " = "),
+                this.Visit(assignment.Expression));
+        }
+
+        public SourceProgram Visit(NewExpression newExpression) => this.New(newExpression);
+
+        public SourceProgram Visit(NewArrayExpression newArrayExpression)
+        {
+            if (newArrayExpression.NodeType == ExpressionType.NewArrayBounds)
+            {
+                return SourceProgram.Concat(
+                    SourceProgram.Text("new " + TypeName(newArrayExpression.Type.GetElementType())),
+                    SourceProgram.CommaSeparated(newArrayExpression.Expressions.Select(this.Visit)).Bracketed());
+            }
+
+            var elements = newArrayExpression.Expressions.Select(this.Visit).ToArray();
+            var inferred = elements.Any(element => !element.IsText("null")) &&
+                newArrayExpression.Type.GetElementType() != typeof(object) &&
+                newArrayExpression.Expressions.All(element => element.Type == newArrayExpression.Type.GetElementType());
+            
+            return SourceProgram.Concat(
+                SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(newArrayExpression.Type)) + " "),
                 SourceProgram.CommaSeparated(elements).Braced());
         }
 
-        public SourceProgram Visit(TypeBinaryExpression expression)
+        public SourceProgram Visit(TypeBinaryExpression typeBinaryExpression)
         {
-            if (expression.NodeType != ExpressionType.TypeIs)
-                throw Unsupported(expression);
+            if (typeBinaryExpression.NodeType != ExpressionType.TypeIs)
+                throw Unsupported(typeBinaryExpression);
 
             return SourceProgram.Concat(
-                this.Visit(expression.Expression).Parenthesized(),
-                SourceProgram.Text(" is " + TypeName(expression.TypeOperand)));
+                this.Visit(typeBinaryExpression.Expression).Parenthesized(),
+                SourceProgram.Text(" is " + TypeName(typeBinaryExpression.TypeOperand)));
         }
 
-        public SourceProgram Visit(DefaultExpression expression) =>
-            SourceProgram.Text("default(" + TypeName(expression.Type) + ")");
+        public SourceProgram Visit(DefaultExpression defaultExpression) =>
+            SourceProgram.Text("default(" + TypeName(defaultExpression.Type) + ")");
 
-        public SourceProgram Visit(IndexExpression expression) =>
+        public SourceProgram Visit(IndexExpression indexExpression) =>
             SourceProgram.Concat(
-                this.Visit(expression.Object).Parenthesized(),
-                SourceProgram.CommaSeparated(expression.Arguments.Select(this.Typed)).Bracketed());
+                this.Visit(indexExpression.Object).Parenthesized(),
+                SourceProgram.CommaSeparated(indexExpression.Arguments.Select(this.Visit)).Bracketed());
 
-        public SourceProgram Visit(BlockExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(DebugInfoExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(DynamicExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(GotoExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(LabelExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(RuntimeVariablesExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(SwitchExpression expression) => throw Unsupported(expression);
-        public SourceProgram Visit(TryExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(BlockExpression blockExpression) => throw Unsupported(blockExpression);
+        public SourceProgram Visit(DebugInfoExpression debugInfoExpression) => throw Unsupported(debugInfoExpression);
+        public SourceProgram Visit(DynamicExpression dynamicExpression) => throw Unsupported(dynamicExpression);
+        public SourceProgram Visit(GotoExpression gotoExpression) => throw Unsupported(gotoExpression);
+        public SourceProgram Visit(LabelExpression labelExpression) => throw Unsupported(labelExpression);
+        public SourceProgram Visit(RuntimeVariablesExpression runtimeVariablesExpression) => throw Unsupported(runtimeVariablesExpression);
+        public SourceProgram Visit(SwitchExpression switchExpression) => throw Unsupported(switchExpression);
+        public SourceProgram Visit(TryExpression tryExpression) => throw Unsupported(tryExpression);
 
         private static NotSupportedException Unsupported(Expression expression) =>
             new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
 
-            private SourceProgram Literal(object value, Type type)
+        private SourceProgram Literal(object value, Type type)
+        {
+            if (value is ForEachItemToken item)
+                return this.BindRaw(WorkflowExpressionBinding.Item(item));
+            if (value is Array or IDictionary or JToken)
+                throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
+            if (value == null) return Cast(type, SourceProgram.Text("null"));
+
+            if (Nullable.GetUnderlyingType(type) is Type underlying)
+                return Cast(type, this.Literal(value, underlying));
+
+            var runtimeType = value.GetType();
+            if (runtimeType != type && type.IsAssignableFrom(runtimeType))
+                return Cast(type, this.Literal(value, runtimeType));
+
+            if (value is string text) return SourceProgram.Text(Quote(text));
+            if (value is bool flag) return SourceProgram.Text(flag ? "true" : "false");
+            if (value is char character)
             {
-                if (value is ForEachItemToken item)
-                    return this.BindRaw(WorkflowExpressionBinding.Item(item));
-                if (value is Array or IDictionary or JToken)
-                    throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
-                if (value == null) return Cast(type, SourceProgram.Text("null"));
-
-                if (Nullable.GetUnderlyingType(type) is Type underlying)
-                    return Cast(type, this.Literal(value, underlying));
-
-                var runtimeType = value.GetType();
-                if (runtimeType != type && type.IsAssignableFrom(runtimeType))
-                    return Cast(type, this.Literal(value, runtimeType));
-
-                if (value is string text) return SourceProgram.Text(Quote(text));
-                if (value is bool flag) return SourceProgram.Text(flag ? "true" : "false");
-                if (value is char character)
-                {
-                    var escaped = Quote(character.ToString());
-                    return SourceProgram.Text(
-                        "'" + escaped.Substring(1, escaped.Length - 2).Replace("'", "\\'").Replace("\\\"", "\"") + "'");
-                }
-
-                if (value is Enum enumeration)
-                {
-                    var name = Enum.GetName(value.GetType(), value);
-                    if (name != null)
-                        return SourceProgram.Text(TypeName(value.GetType()) + "." + name);
-
-                    var enumUnderlyingType = Enum.GetUnderlyingType(value.GetType());
-                    var enumValue = System.Convert.ChangeType(value, enumUnderlyingType, CultureInfo.InvariantCulture);
-                    return Cast(value.GetType(), this.Literal(enumValue, enumUnderlyingType));
-                }
-
-                if (value is DateTime date)
-                {
-                    return SourceProgram.Text(
-                        $"new global::System.DateTime({date.Ticks}L, global::System.DateTimeKind.{date.Kind})");
-                }
-
-                if (value is DateTimeOffset offset)
-                    return SourceProgram.Text(
-                        $"new global::System.DateTimeOffset({offset.Ticks}L, new global::System.TimeSpan({offset.Offset.Ticks}L))");
-                if (value is TimeSpan span)
-                    return SourceProgram.Text($"new global::System.TimeSpan({span.Ticks}L)");
-                if (value is Guid guid)
-                    return SourceProgram.Text("new global::System.Guid(" + Quote(guid.ToString("D")) + ")");
-                if (value is Uri uri)
-                    return SourceProgram.Text(
-                        "new global::System.Uri(" + Quote(uri.OriginalString) + ", global::System.UriKind.RelativeOrAbsolute)");
-                if (value is HttpMethod method)
-                    return SourceProgram.Text(
-                        "new global::System.Net.Http.HttpMethod(" + Quote(method.Method) + ")");
-
-                if (value is double number)
-                {
-                    if (double.IsNaN(number)) return SourceProgram.Text("double.NaN");
-                    if (double.IsPositiveInfinity(number)) return SourceProgram.Text("double.PositiveInfinity");
-                    if (double.IsNegativeInfinity(number)) return SourceProgram.Text("double.NegativeInfinity");
-                    if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0) return SourceProgram.Text("-0.0d");
-                    return SourceProgram.Text(number.ToString("R", CultureInfo.InvariantCulture) + "d");
-                }
-
-                if (value is float single)
-                {
-                    if (float.IsNaN(single)) return SourceProgram.Text("float.NaN");
-                    if (float.IsPositiveInfinity(single)) return SourceProgram.Text("float.PositiveInfinity");
-                    if (float.IsNegativeInfinity(single)) return SourceProgram.Text("float.NegativeInfinity");
-                    if (single == 0 && BitConverter.ToInt32(BitConverter.GetBytes(single), 0) < 0)
-                        return SourceProgram.Text("-0.0f");
-                    return SourceProgram.Text(single.ToString("R", CultureInfo.InvariantCulture) + "f");
-                }
-
-                if (value is decimal || value is long || value is ulong || value is uint ||
-                    value is int || value is short || value is ushort || value is byte || value is sbyte)
-                {
-                    var suffix = value is decimal ? "m" : value is long ? "L" : value is ulong ? "UL" : value is uint ? "U" : "";
-                    var source = System.Convert.ToString(value, CultureInfo.InvariantCulture) + suffix;
-                    var literal = SourceProgram.Text(source);
-                    return value is byte or sbyte or short or ushort
-                        ? Cast(value.GetType(), literal)
-                        : literal;
-                }
-
-                throw new NotSupportedException($"Cannot serialize captured value of type {value.GetType()}. Construct the object inside the lambda instead.");
+                var escaped = Quote(character.ToString());
+                return SourceProgram.Text(
+                    "'" + escaped.Substring(1, escaped.Length - 2).Replace("'", "\\'").Replace("\\\"", "\"") + "'");
             }
 
-            private static SourceProgram Cast(Type type, SourceProgram value) =>
-                SourceProgram.Concat(
-                    SourceProgram.Text(TypeName(type)).Parenthesized(),
-                    value.Parenthesized());
-
-            private static SourceProgram ReadWorkflowValue(SourceProgram source, Type type)
+            if (value is Enum enumeration)
             {
-                if (typeof(JToken).IsAssignableFrom(type))
-                    return source;
+                var name = Enum.GetName(value.GetType(), value);
+                if (name != null)
+                    return SourceProgram.Text(TypeName(value.GetType()) + "." + name);
 
-                ValidateRuntimeType(type);
-                return SourceProgram.Concat(
-                    source.Parenthesized(),
-                    SourceProgram.Text(".ToObject<" + TypeName(type) + ">()"));
+                var enumUnderlyingType = Enum.GetUnderlyingType(value.GetType());
+                var enumValue = System.Convert.ChangeType(value, enumUnderlyingType, CultureInfo.InvariantCulture);
+                return Cast(value.GetType(), this.Literal(enumValue, enumUnderlyingType));
             }
 
-            private SourceProgram Member(MemberExpression member)
+            if (value is DateTime date)
             {
-                if (member.Expression == null)
-                {
-                    if (member.Member.DeclaringType == typeof(HttpMethod) && member.Member is PropertyInfo httpProperty)
-                        return this.Literal(httpProperty.GetValue(null), typeof(HttpMethod));
-                    return SourceProgram.Text(TypeName(member.Member.DeclaringType) + "." + Identifier(member.Member.Name));
-                }
-
-                return SourceProgram.Concat(
-                    this.Receiver(member.Expression).Parenthesized(),
-                    SourceProgram.Text("." + Identifier(member.Member.Name)));
+                return SourceProgram.Text(
+                    $"new global::System.DateTime({date.Ticks}L, global::System.DateTimeKind.{date.Kind})");
             }
 
-            private bool TryCustomWorkflowPath(Expression expression, out SourceProgram code)
+            if (value is DateTimeOffset offset)
+                return SourceProgram.Text(
+                    $"new global::System.DateTimeOffset({offset.Ticks}L, new global::System.TimeSpan({offset.Offset.Ticks}L))");
+            if (value is TimeSpan span)
+                return SourceProgram.Text($"new global::System.TimeSpan({span.Ticks}L)");
+            if (value is Guid guid)
+                return SourceProgram.Text("new global::System.Guid(" + Quote(guid.ToString("D")) + ")");
+            if (value is Uri uri)
+                return SourceProgram.Text(
+                    "new global::System.Uri(" + Quote(uri.OriginalString) + ", global::System.UriKind.RelativeOrAbsolute)");
+            if (value is HttpMethod method)
+                return SourceProgram.Text(
+                    "new global::System.Net.Http.HttpMethod(" + Quote(method.Method) + ")");
+
+            if (value is double number)
             {
-                code = null;
-                var properties = new List<PropertyInfo>();
-                if (!this.TryCollectCustomWorkflowPath(expression, properties, out var root) ||
-                    properties.Count == 0)
-                {
-                    return false;
-                }
-
-                code = root;
-                foreach (var property in properties)
-                {
-                    var jsonName = property.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? property.Name;
-                    code = SourceProgram.Concat(
-                        code.Parenthesized(),
-                        SourceProgram.Text(Quote(jsonName)).Bracketed());
-                }
-
-                code = ReadWorkflowValue(code, expression.Type);
-                return true;
+                if (double.IsNaN(number)) return SourceProgram.Text("double.NaN");
+                if (double.IsPositiveInfinity(number)) return SourceProgram.Text("double.PositiveInfinity");
+                if (double.IsNegativeInfinity(number)) return SourceProgram.Text("double.NegativeInfinity");
+                if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0) return SourceProgram.Text("-0.0d");
+                return SourceProgram.Text(number.ToString("R", CultureInfo.InvariantCulture) + "d");
             }
 
-            private bool TryCollectCustomWorkflowPath(
-                Expression expression,
-                List<PropertyInfo> properties,
-                out SourceProgram root)
+            if (value is float single)
             {
-                if (expression is MemberExpression workflowMember &&
-                    TryCreateWorkflowBinding(workflowMember, out var binding))
-                {
-                    root = this.BindRaw(binding);
-                    return true;
-                }
-
-                if (expression is MethodCallExpression call &&
-                    this.TryWriteWorkflowFunction(call, out root, out var returnsToken) &&
-                    returnsToken)
-                    return true;
-
-                if (expression is not MemberExpression member ||
-                    member.Member is not PropertyInfo property ||
-                    IsRuntimeTypeAvailable(property.DeclaringType) ||
-                    !IsStoredDtoProperty(property) ||
-                    !this.TryCollectCustomWorkflowPath(member.Expression, properties, out root))
-                {
-                    root = null;
-                    return false;
-                }
-
-                properties.Add(property);
-                return true;
+                if (float.IsNaN(single)) return SourceProgram.Text("float.NaN");
+                if (float.IsPositiveInfinity(single)) return SourceProgram.Text("float.PositiveInfinity");
+                if (float.IsNegativeInfinity(single)) return SourceProgram.Text("float.NegativeInfinity");
+                if (single == 0 && BitConverter.ToInt32(BitConverter.GetBytes(single), 0) < 0)
+                    return SourceProgram.Text("-0.0f");
+                return SourceProgram.Text(single.ToString("R", CultureInfo.InvariantCulture) + "f");
             }
 
-            private static bool IsStoredDtoProperty(PropertyInfo property) =>
-                property.GetMethod?.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) == true;
-
-            private bool TryWorkflowTokenSource(Expression expression, out SourceProgram code)
+            if (value is decimal || value is long || value is ulong || value is uint ||
+                value is int || value is short || value is ushort || value is byte || value is sbyte)
             {
-                if (expression is MemberExpression member && TryCreateWorkflowBinding(member, out var binding))
-                {
-                    code = this.BindRaw(binding);
-                    return true;
-                }
-
-                if (expression is MethodCallExpression call &&
-                    TryWriteWorkflowFunction(call, out code, out var returnsToken) &&
-                    returnsToken)
-                {
-                    return true;
-                }
-
-                code = null;
-                return false;
+                var suffix = value is decimal ? "m" : value is long ? "L" : value is ulong ? "UL" : value is uint ? "U" : "";
+                var source = System.Convert.ToString(value, CultureInfo.InvariantCulture) + suffix;
+                var literal = SourceProgram.Text(source);
+                return value is byte or sbyte or short or ushort
+                    ? Cast(value.GetType(), literal)
+                    : literal;
             }
 
-            private static bool TryCreateWorkflowBinding(
-                MemberExpression member,
-                out WorkflowExpressionBinding binding)
-            {
-                binding = null;
-                if (member.Expression != null && TryReadValue(member.Expression, out var instance) && instance != null)
-                {
-                    var type = instance.GetType();
-                    if (Implements(type, typeof(IOutputWorkflowTrigger<>)) && member.Member.Name == "TriggerOutput")
-                        binding = WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: false);
-                    else if (Implements(type, typeof(IBodyWorkflowTrigger<>)) && member.Member.Name == "TriggerBody")
-                        binding = WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: true);
-                    else if (Implements(type, typeof(IOutputWorkflowAction<>)) && member.Member.Name == "Output")
-                        binding = WorkflowExpressionBinding.Output((IWorkflowAction)instance);
-                    else if (Implements(type, typeof(IBodyWorkflowAction<>)) && member.Member.Name == "Body")
-                        binding = WorkflowExpressionBinding.Body((IWorkflowAction)instance);
-                    else if (instance is IVariableWorkflowAction variable && member.Member.Name == "Value")
-                        binding = WorkflowExpressionBinding.Variable(variable);
-                }
+            throw new NotSupportedException($"Cannot serialize captured value of type {value.GetType()}. Construct the object inside the lambda instead.");
+        }
 
-                if (binding != null)
-                    return true;
+        private static SourceProgram Cast(Type type, SourceProgram value) =>
+            SourceProgram.Concat(
+                SourceProgram.Text(TypeName(type)).Parenthesized(),
+                value.Parenthesized());
 
-                if (member.Expression is MemberExpression
-                    {
-                        Member.Name: "Parameters",
-                        Expression: not null,
-                    } parameters &&
-                    TryReadValue(parameters.Expression, out var context) &&
-                    context != null &&
-                    Implements(context.GetType(), typeof(IAgentToolContext<>)))
-                {
-                    var jsonName = member.Member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ??
-                        member.Member.Name;
-                    binding = WorkflowExpressionBinding.AgentParameter(context, jsonName);
-                    return true;
-                }
-
-                return false;
-            }
-
-            private SourceProgram Binary(BinaryExpression binary)
-            {
-                if (binary.NodeType == ExpressionType.ArrayIndex)
-                    return SourceProgram.Concat(
-                        this.Typed(binary.Left).Parenthesized(),
-                        this.Typed(binary.Right).Bracketed());
-                if (binary.Conversion != null)
-                    throw new NotSupportedException("Coalesce conversion lambdas are not supported.");
-
-                var op = Operator(binary.NodeType);
-                var left = this.Typed(binary.Left);
-                var right = this.Typed(binary.Right);
-                var source = SourceProgram.Concat(
-                    left.Parenthesized(),
-                    SourceProgram.Text(" " + op + " "),
-                    right.Parenthesized());
-                if (binary.NodeType == ExpressionType.AddChecked || binary.NodeType == ExpressionType.SubtractChecked ||
-                    binary.NodeType == ExpressionType.MultiplyChecked)
-                    return SourceProgram.Concat(
-                        SourceProgram.Text("checked"),
-                        source.Parenthesized());
+        private static SourceProgram ReadWorkflowValue(SourceProgram source, Type type)
+        {
+            if (typeof(JToken).IsAssignableFrom(type))
                 return source;
+
+            ValidateRuntimeType(type);
+            return SourceProgram.Concat(
+                source.Parenthesized(),
+                SourceProgram.Text(".ToObject<" + TypeName(type) + ">()"));
+        }
+
+        private bool TryCustomWorkflowPath(Expression expression, out SourceProgram code)
+        {
+            code = null;
+            var properties = new List<PropertyInfo>();
+            if (!this.TryCollectCustomWorkflowPath(expression, properties, out var root) ||
+                properties.Count == 0)
+            {
+                return false;
             }
 
-            private static string Operator(ExpressionType type)
+            code = root;
+            foreach (var property in properties)
             {
-                switch (type)
-                {
-                    case ExpressionType.Coalesce: return "??";
-                    case ExpressionType.OrElse: return "||";
-                    case ExpressionType.AndAlso: return "&&";
-                    case ExpressionType.Or: return "|";
-                    case ExpressionType.ExclusiveOr: return "^";
-                    case ExpressionType.And: return "&";
-                    case ExpressionType.Equal: return "==";
-                    case ExpressionType.NotEqual: return "!=";
-                    case ExpressionType.LessThan: return "<";
-                    case ExpressionType.LessThanOrEqual: return "<=";
-                    case ExpressionType.GreaterThan: return ">";
-                    case ExpressionType.GreaterThanOrEqual: return ">=";
-                    case ExpressionType.LeftShift: return "<<";
-                    case ExpressionType.RightShift: return ">>";
-                    case ExpressionType.Add:
-                    case ExpressionType.AddChecked: return "+";
-                    case ExpressionType.Subtract:
-                    case ExpressionType.SubtractChecked: return "-";
-                    case ExpressionType.Multiply:
-                    case ExpressionType.MultiplyChecked: return "*";
-                    case ExpressionType.Divide: return "/";
-                    case ExpressionType.Modulo: return "%";
-                    default: throw new NotSupportedException($"Unsupported C# binary operator: {type}");
-                }
-            }
-
-            private SourceProgram Unary(UnaryExpression unary)
-            {
-                if (unary.NodeType == ExpressionType.Quote) return this.Visit(unary.Operand);
-                var operand = this.Typed(unary.Operand);
-                switch (unary.NodeType)
-                {
-                    case ExpressionType.Convert:
-                    case ExpressionType.ConvertChecked:
-                        var cast = SourceProgram.Concat(
-                            SourceProgram.Text(TypeName(unary.Type)).Parenthesized(),
-                            operand.Parenthesized());
-                        return unary.NodeType == ExpressionType.ConvertChecked
-                            ? SourceProgram.Concat(SourceProgram.Text("checked"), cast.Parenthesized())
-                            : cast;
-                    case ExpressionType.Negate:
-                        return SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized());
-                    case ExpressionType.NegateChecked:
-                        return SourceProgram.Concat(
-                            SourceProgram.Text("checked"),
-                            SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized()).Parenthesized());
-                    case ExpressionType.UnaryPlus:
-                        return SourceProgram.Concat(SourceProgram.Text("+"), operand.Parenthesized());
-                    case ExpressionType.Not:
-                        return SourceProgram.Concat(
-                            SourceProgram.Text(
-                                unary.Type == typeof(bool) || Nullable.GetUnderlyingType(unary.Type) == typeof(bool)
-                                    ? "!"
-                                    : "~"),
-                            operand.Parenthesized());
-                    case ExpressionType.TypeAs:
-                        return SourceProgram.Concat(
-                            operand.Parenthesized(),
-                            SourceProgram.Text(" as " + TypeName(unary.Type)));
-                    default: throw new NotSupportedException($"Unsupported C# unary operator: {unary.NodeType}");
-                }
-            }
-
-            private SourceProgram Call(MethodCallExpression call)
-            {
-                ValidateRuntimeType(call.Method.DeclaringType);
-                if (!call.Method.IsPublic)
-                    throw new NotSupportedException($"Expression runtime member must be public: {call.Method}");
-
-                if (TryWriteWorkflowFunction(call, out var workflowFunction, out var returnsToken))
-                    return returnsToken
-                        ? ReadWorkflowValue(workflowFunction, call.Type)
-                        : workflowFunction;
-
-                if (call.Method.DeclaringType == typeof(string) && call.Method.Name == "Format")
-                    return this.Format(call);
-
-                if (call.Method.Name == "get_Item" && call.Object != null)
-                {
-                    var indexed = this.Typed(call.Object);
-                    return SourceProgram.Concat(
-                        indexed.Parenthesized(),
-                        SourceProgram.CommaSeparated(call.Arguments.Select(this.Typed)).Bracketed());
-                }
-
-                var extension = call.Method.IsDefined(typeof(ExtensionAttribute), false);
-                var targetExpression = extension ? call.Arguments[0] : call.Object;
-                var target = targetExpression == null
-                    ? SourceProgram.Text(TypeName(call.Method.DeclaringType))
-                    : this.Receiver(targetExpression).Parenthesized();
-
-                if (call.Method.GetParameters().Any(p => p.ParameterType.IsByRef))
-                    throw new NotSupportedException($"Calls with ref/out arguments are not supported: {call.Method}");
-                var arguments = call.Arguments.Skip(extension ? 1 : 0).Select(this.Typed);
-                var inferGenerics = call.Method.IsGenericMethod && call.Method.DeclaringType == typeof(Enumerable) &&
-                    call.Method.GetGenericMethodDefinition().GetGenericArguments().All(parameter =>
-                        call.Method.GetGenericMethodDefinition().GetParameters().Any(p => ContainsType(p.ParameterType, parameter)));
-                var generic = call.Method.IsGenericMethod && !inferGenerics ?
-                    "<" + string.Join(", ", call.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
-                return SourceProgram.Concat(
-                    target,
-                    SourceProgram.Text("." + Identifier(call.Method.Name) + generic),
-                    SourceProgram.CommaSeparated(arguments).Parenthesized());
-            }
-
-            private bool TryWriteWorkflowFunction(
-                MethodCallExpression call,
-                out SourceProgram code,
-                out bool returnsToken)
-            {
-                code = null;
-                returnsToken = false;
-                if (call.Method.DeclaringType != typeof(WorkflowFunctions))
-                    return false;
-                if (!WorkflowFunctionNames.TryGetValue(call.Method.Name, out var function))
-                    throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
-
+                var jsonName = property.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? property.Name;
                 code = SourceProgram.Concat(
-                    SourceProgram.Text(function),
-                    SourceProgram.CommaSeparated(call.Arguments.Select(this.Typed)).Parenthesized());
-                returnsToken = call.Method.ReturnType != typeof(string) &&
-                    call.Method.ReturnType != typeof(bool);
+                    code.Parenthesized(),
+                    SourceProgram.Text(Quote(jsonName)).Bracketed());
+            }
+
+            code = ReadWorkflowValue(code, expression.Type);
+            return true;
+        }
+
+        private bool TryCollectCustomWorkflowPath(
+            Expression expression,
+            List<PropertyInfo> properties,
+            out SourceProgram root)
+        {
+            if (expression is MemberExpression workflowMember &&
+                TryCreateWorkflowBinding(workflowMember, out var binding))
+            {
+                root = this.BindRaw(binding);
                 return true;
             }
 
-            private static bool ContainsType(Type type, Type parameter) =>
-                type == parameter || (type.HasElementType && ContainsType(type.GetElementType(), parameter)) ||
-                (type.IsGenericType && type.GetGenericArguments().Any(t => ContainsType(t, parameter)));
+            if (expression is MethodCallExpression call &&
+                this.TryWriteWorkflowFunction(call, out root, out var returnsToken) &&
+                returnsToken)
+                return true;
 
-            private SourceProgram Receiver(Expression expression)
+            if (expression is not MemberExpression member ||
+                member.Member is not PropertyInfo property ||
+                IsRuntimeTypeAvailable(property.DeclaringType) ||
+                !IsStoredDtoProperty(property) ||
+                !this.TryCollectCustomWorkflowPath(member.Expression, properties, out root))
             {
-                var code = this.Typed(expression);
-                return code.IsText("null")
-                    ? SourceProgram.Text("((" + TypeName(expression.Type) + ")null)")
-                    : code;
+                root = null;
+                return false;
             }
 
-            private SourceProgram Format(MethodCallExpression call)
-            {
-                var formatIndex = call.Arguments[0].Type == typeof(string) ? 0 : 1;
-                if (!(call.Arguments[formatIndex] is ConstantExpression constant) || !(constant.Value is string format))
-                    return this.PlainFormat(call);
-                var values = call.Arguments.Skip(formatIndex + 1).ToArray();
-                if (values.Length == 1 && values[0] is NewArrayExpression array) values = array.Expressions.ToArray();
-                values = values.Select(Unbox).ToArray();
-                var codes = values.Select(this.Visit).ToArray();
-                if (formatIndex != 0 || format.Contains("{{") || format.Contains("}}") ||
-                    Regex.Replace(format, @"\{\d+\}", "").IndexOfAny(new[] { '{', '}' }) >= 0)
-                    return this.PlainFormat(call);
-                if (format == "{0}" && codes.Length == 1)
-                {
-                    if (values[0] is NewExpression creation && !IsAnonymous(creation.Type) || values[0] is MemberInitExpression)
-                        return SourceProgram.Concat(
-                            SourceProgram.Text("JsonConvert.SerializeObject"),
-                            codes[0].Parenthesized());
-                    return codes[0];
-                }
+            properties.Add(property);
+            return true;
+        }
 
-                return this.PlainFormat(call);
+        private static bool IsStoredDtoProperty(PropertyInfo property) =>
+            property.GetMethod?.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) == true;
+
+        private bool TryWorkflowTokenSource(Expression expression, out SourceProgram code)
+        {
+            if (expression is MemberExpression member && TryCreateWorkflowBinding(member, out var binding))
+            {
+                code = this.BindRaw(binding);
+                return true;
             }
 
-            private static Expression Unbox(Expression expression) =>
-                expression is UnaryExpression unary && unary.NodeType == ExpressionType.Convert && unary.Type == typeof(object) ?
-                    unary.Operand : expression;
-
-            private SourceProgram PlainFormat(MethodCallExpression call)
+            if (expression is MethodCallExpression call &&
+                TryWriteWorkflowFunction(call, out code, out var returnsToken) &&
+                returnsToken)
             {
-                var arguments = call.Arguments.Select<Expression, SourceProgram>(argument =>
-                {
-                    if (argument is NewArrayExpression array && array.Type == typeof(object[]))
-                        return SourceProgram.Concat(
-                            SourceProgram.Text("new object[] "),
-                            SourceProgram.CommaSeparated(
-                                array.Expressions.Select(expression => this.Visit(Unbox(expression))))
-                                .Braced());
-                    return this.Visit(Unbox(argument));
-                });
-                return SourceProgram.Concat(
-                    SourceProgram.Text("string.Format"),
-                    SourceProgram.CommaSeparated(arguments).Parenthesized());
+                return true;
             }
 
-            private SourceProgram New(NewExpression creation)
+            code = null;
+            return false;
+        }
+
+        private static bool TryCreateWorkflowBinding(
+            MemberExpression member,
+            out WorkflowExpressionBinding binding)
+        {
+            binding = null;
+            if (member.Expression != null && TryReadValue(member.Expression, out var instance) && instance != null)
             {
-                if (IsAnonymous(creation.Type))
+                var type = instance.GetType();
+                if (Implements(type, typeof(IOutputWorkflowTrigger<>)) && member.Member.Name == "TriggerOutput")
+                    binding = WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: false);
+                else if (Implements(type, typeof(IBodyWorkflowTrigger<>)) && member.Member.Name == "TriggerBody")
+                    binding = WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: true);
+                else if (Implements(type, typeof(IOutputWorkflowAction<>)) && member.Member.Name == "Output")
+                    binding = WorkflowExpressionBinding.Output((IWorkflowAction)instance);
+                else if (Implements(type, typeof(IBodyWorkflowAction<>)) && member.Member.Name == "Body")
+                    binding = WorkflowExpressionBinding.Body((IWorkflowAction)instance);
+                else if (instance is IVariableWorkflowAction variable && member.Member.Name == "Value")
+                    binding = WorkflowExpressionBinding.Variable(variable);
+            }
+
+            if (binding != null)
+                return true;
+
+            if (member.Expression is MemberExpression
                 {
+                    Member.Name: "Parameters",
+                    Expression: not null,
+                } parameters &&
+                TryReadValue(parameters.Expression, out var context) &&
+                context != null &&
+                Implements(context.GetType(), typeof(IAgentToolContext<>)))
+            {
+                var jsonName = member.Member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ??
+                    member.Member.Name;
+                binding = WorkflowExpressionBinding.AgentParameter(context, jsonName);
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool TryWriteWorkflowFunction(
+            MethodCallExpression call,
+            out SourceProgram code,
+            out bool returnsToken)
+        {
+            code = null;
+            returnsToken = false;
+            if (call.Method.DeclaringType != typeof(WorkflowFunctions))
+                return false;
+            if (!WorkflowFunctionNames.TryGetValue(call.Method.Name, out var function))
+                throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
+
+            code = SourceProgram.Concat(
+                SourceProgram.Text(function),
+                SourceProgram.CommaSeparated(call.Arguments.Select(this.Visit)).Parenthesized());
+            returnsToken = call.Method.ReturnType != typeof(string) &&
+                call.Method.ReturnType != typeof(bool);
+            return true;
+        }
+
+        private static bool ContainsType(Type type, Type parameter) =>
+            type == parameter || (type.HasElementType && ContainsType(type.GetElementType(), parameter)) ||
+            (type.IsGenericType && type.GetGenericArguments().Any(t => ContainsType(t, parameter)));
+
+        private SourceProgram Receiver(Expression expression)
+        {
+            var code = this.Visit(expression);
+            return code.IsText("null")
+                ? SourceProgram.Text("((" + TypeName(expression.Type) + ")null)")
+                : code;
+        }
+
+        private SourceProgram Format(MethodCallExpression methodCallExpression)
+        {
+            var formatIndex = methodCallExpression.Arguments[0].Type == typeof(string) ? 0 : 1;
+            if (!(methodCallExpression.Arguments[formatIndex] is ConstantExpression constant) || !(constant.Value is string format))
+                return this.PlainFormat(methodCallExpression);
+            var values = methodCallExpression.Arguments.Skip(formatIndex + 1).ToArray();
+            if (values.Length == 1 && values[0] is NewArrayExpression array) values = array.Expressions.ToArray();
+            values = values.Select(Unbox).ToArray();
+            var codes = values.Select(this.Visit).ToArray();
+            if (formatIndex != 0 || format.Contains("{{") || format.Contains("}}") ||
+                Regex.Replace(format, @"\{\d+\}", "").IndexOfAny(new[] { '{', '}' }) >= 0)
+                return this.PlainFormat(methodCallExpression);
+            if (format == "{0}" && codes.Length == 1)
+            {
+                if (values[0] is NewExpression creation && !IsAnonymous(creation.Type) || values[0] is MemberInitExpression)
                     return SourceProgram.Concat(
-                        SourceProgram.Text("new "),
-                        SourceProgram.CommaSeparated(creation.Arguments.Select((argument, index) =>
-                            {
-                                var value = this.Typed(argument);
-                                return SourceProgram.Concat(
-                                    SourceProgram.Text(Identifier(creation.Members[index].Name) + " = "),
-                                    value.IsText("null")
-                                        ? SourceProgram.Concat(
-                                            SourceProgram.Text(TypeName(argument.Type)).Parenthesized(),
-                                            SourceProgram.Text("null"))
-                                        : value);
-                            }))
-                            .Braced());
-                }
-
-                return SourceProgram.Concat(
-                    SourceProgram.Text("new " + TypeName(creation.Type)),
-                    SourceProgram.CommaSeparated(creation.Arguments.Select(this.Typed)).Parenthesized());
+                        SourceProgram.Text("JsonConvert.SerializeObject"),
+                        codes[0].Parenthesized());
+                return codes[0];
             }
 
-            private SourceProgram Binding(MemberBinding binding)
+            return this.PlainFormat(methodCallExpression);
+        }
+
+        private static Expression Unbox(Expression expression) =>
+            expression is UnaryExpression unary && unary.NodeType == ExpressionType.Convert && unary.Type == typeof(object) ?
+                unary.Operand : expression;
+
+        private SourceProgram PlainFormat(MethodCallExpression methodCallExpression)
+        {
+            var arguments = methodCallExpression.Arguments.Select<Expression, SourceProgram>(argument =>
             {
-                if (!(binding is MemberAssignment assignment))
-                    throw new NotSupportedException($"Unsupported object initializer binding: {binding.BindingType}");
+                if (argument is NewArrayExpression array && array.Type == typeof(object[]))
+                    return SourceProgram.Concat(
+                        SourceProgram.Text("new object[] "),
+                        SourceProgram.CommaSeparated(
+                            array.Expressions.Select(expression => this.Visit(Unbox(expression))))
+                            .Braced());
+                return this.Visit(Unbox(argument));
+            });
+            return SourceProgram.Concat(
+                SourceProgram.Text("string.Format"),
+                SourceProgram.CommaSeparated(arguments).Parenthesized());
+        }
+
+        private SourceProgram New(NewExpression newExpression)
+        {
+            if (IsAnonymous(newExpression.Type))
+            {
                 return SourceProgram.Concat(
-                    SourceProgram.Text(Identifier(binding.Member.Name) + " = "),
-                    this.Typed(assignment.Expression));
+                    SourceProgram.Text("new "),
+                    SourceProgram.CommaSeparated(newExpression.Arguments.Select((argument, index) =>
+                        {
+                            var value = this.Visit(argument);
+                            return SourceProgram.Concat(
+                                SourceProgram.Text(Identifier(newExpression.Members[index].Name) + " = "),
+                                value.IsText("null")
+                                    ? SourceProgram.Concat(
+                                        SourceProgram.Text(TypeName(argument.Type)).Parenthesized(),
+                                        SourceProgram.Text("null"))
+                                    : value);
+                        }))
+                        .Braced());
+            }
+
+            return SourceProgram.Concat(
+                SourceProgram.Text("new " + TypeName(newExpression.Type)),
+                SourceProgram.CommaSeparated(newExpression.Arguments.Select(this.Visit)).Parenthesized());
         }
     }
 }
