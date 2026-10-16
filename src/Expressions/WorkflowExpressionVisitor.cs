@@ -190,7 +190,34 @@ namespace Microsoft.Azure.Workflows.Sdk
                 return this.Literal(value, expression.Type);
             }
 
-            return expression.Dispatch(this);
+            return expression switch
+            {
+                BinaryExpression node => this.Visit(node),
+                UnaryExpression node => this.Visit(node),
+                ConstantExpression node => this.Visit(node),
+                ParameterExpression node => this.Visit(node),
+                MethodCallExpression node => this.Visit(node),
+                ConditionalExpression node => this.Visit(node),
+                InvocationExpression node => this.Visit(node),
+                LambdaExpression node => this.Visit(node),
+                ListInitExpression node => this.Visit(node),
+                MemberExpression node => this.Visit(node),
+                MemberInitExpression node => this.Visit(node),
+                NewExpression node => this.Visit(node),
+                NewArrayExpression node => this.Visit(node),
+                TypeBinaryExpression node => this.Visit(node),
+                BlockExpression node => this.Visit(node),
+                DebugInfoExpression node => this.Visit(node),
+                DefaultExpression node => this.Visit(node),
+                DynamicExpression node => this.Visit(node),
+                GotoExpression node => this.Visit(node),
+                IndexExpression node => this.Visit(node),
+                LabelExpression node => this.Visit(node),
+                RuntimeVariablesExpression node => this.Visit(node),
+                SwitchExpression node => this.Visit(node),
+                TryExpression node => this.Visit(node),
+                _ => throw Unsupported(expression),
+            };
         }
 
         private SourceProgram Typed(Expression expression)
