@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq.Expressions;
-    using System.Text.RegularExpressions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -22,8 +21,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         internal static string Identifier(string name)
         {
-            if (string.IsNullOrEmpty(name) || !Regex.IsMatch(name, @"^[\p{L}_][\p{L}\p{Nd}_]*$"))
-                throw new NotSupportedException($"Cannot emit C# identifier '{name}'.");
+            if (string.IsNullOrEmpty(name))
+                throw new NotSupportedException("Cannot emit a C# identifier without a name.");
             
             return Keywords.Contains(name) ? "@" + name : name;
         }
@@ -31,6 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         internal static string TypeName(Type type)
         {
             WorkflowExpressionTypePolicy.Validate(type);
+            return TypeNameCore(type);
+        }
+
+        private static string TypeNameCore(Type type)
+        {
             if (type == typeof(string)) return "string";
             if (type == typeof(object)) return "object";
             if (type == typeof(bool)) return "bool";
@@ -47,9 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (type == typeof(uint)) return "uint";
             if (type == typeof(ulong)) return "ulong";
             if (type.IsArray)
-                return TypeName(type.GetElementType()) + "[" + new string(',', type.GetArrayRank() - 1) + "]";
+                return TypeNameCore(type.GetElementType()) + "[" + new string(',', type.GetArrayRank() - 1) + "]";
             if (Nullable.GetUnderlyingType(type) is Type underlying)
-                return TypeName(underlying) + "?";
+                return TypeNameCore(underlying) + "?";
             if (type.IsNested)
             {
                 var arguments = type.GetGenericArguments();
@@ -59,15 +63,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     declaring = declaring.MakeGenericType(arguments.Take(parentCount).ToArray());
                 var nestedName = Identifier(type.Name.Split('`')[0]);
                 var ownArguments = arguments.Skip(parentCount).ToArray();
-                return TypeName(declaring) + "." + nestedName +
-                    (ownArguments.Length == 0 ? "" : "<" + string.Join(", ", ownArguments.Select(TypeName)) + ">");
+                return TypeNameCore(declaring) + "." + nestedName +
+                    (ownArguments.Length == 0 ? "" : "<" + string.Join(", ", ownArguments.Select(TypeNameCore)) + ">");
             }
 
             var name = Identifier(type.Name.Split('`')[0]);
             var prefix = string.IsNullOrEmpty(type.Namespace) ? "" : "global::" + type.Namespace + ".";
             return prefix +
                 (type.IsGenericType
-                    ? name + "<" + string.Join(", ", type.GetGenericArguments().Select(TypeName)) + ">"
+                    ? name + "<" + string.Join(", ", type.GetGenericArguments().Select(TypeNameCore)) + ">"
                     : name);
         }
 
