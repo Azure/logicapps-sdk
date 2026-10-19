@@ -91,6 +91,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void NestedMemberAndCollectionInitializersRemainCSharp()
+        {
+            var member = WorkflowActions.BuiltIn.Compose(() => new AgentModelSettings
+            {
+                AgentChatCompletionSettings =
+                {
+                    MaxTokens = 1,
+                },
+            });
+            AssertReturnExpression(
+                """
+                new global::Microsoft.Azure.Workflows.Sdk.AgentModelSettings
+                {
+                    AgentChatCompletionSettings = { MaxTokens = (int?)1 }
+                }
+                """,
+                Input(member));
+
+            var collection = WorkflowActions.BuiltIn.Compose(() => new HttpRequestMessage
+            {
+                Headers =
+                {
+                    { "X-Test", "value" },
+                },
+            });
+            AssertReturnExpression(
+                """
+                new global::System.Net.Http.HttpRequestMessage
+                {
+                    Headers = { { "X-Test", "value" } }
+                }
+                """,
+                Input(collection));
+        }
+
+        [Fact]
         public void SdkDtoWorkflowRootsUseClrMemberAccess()
         {
             var message = WorkflowActions.BuiltIn.Compose<SendMessageInputMessageType>(

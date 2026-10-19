@@ -208,21 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         private WorkflowExpressionFragment Visit(ListInitExpression listInitExpression) =>
             CSharpSyntaxGenerator.Initializer(
                 this.Visit(listInitExpression.NewExpression),
-                listInitExpression.Initializers.Select(initializer =>
-                {
-                    if (!initializer.AddMethod.IsPublic || initializer.AddMethod.IsStatic)
-                        throw new NotSupportedException(
-                            $"Collection initializer method must be a public instance method: {initializer.AddMethod}");
-
-                    var parameters = initializer.AddMethod.GetParameters();
-                    var overloaded = initializer.AddMethod.DeclaringType.GetMethods()
-                        .Count(method => method.Name == initializer.AddMethod.Name) > 1;
-                    var arguments = initializer.Arguments.Select(
-                        (argument, index) => this.Argument(argument, parameters[index].ParameterType, overloaded));
-                    return initializer.Arguments.Count == 1
-                        ? arguments.Single()
-                        : WorkflowExpressionFragment.CommaSeparated(arguments).Braced();
-                }));
+                listInitExpression.Initializers.Select(this.ElementInitializer));
 
         private WorkflowExpressionFragment Visit(MemberExpression memberExpression)
         {
@@ -247,12 +233,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         
         private WorkflowExpressionFragment Binding(MemberBinding binding)
         {
-            if (!(binding is MemberAssignment assignment))
-                throw new NotSupportedException($"Unsupported object initializer binding: {binding.BindingType}");
-            
-            return CSharpSyntaxGenerator.Assignment(
-                binding.Member.Name,
-                this.Visit(assignment.Expression));
+            return binding switch
+            {
+                MemberAssignment assignment =>
+                    CSharpSyntaxGenerator.Assignment(
+                        assignment.Member.Name,
+                        this.Visit(assignment.Expression)),
+
+                MemberMemberBinding member =>
+                    CSharpSyntaxGenerator.MemberInitializer(
+                        member.Member.Name,
+                        member.Bindings.Select(this.Binding)),
+
+                MemberListBinding list =>
+                    CSharpSyntaxGenerator.MemberInitializer(
+                        list.Member.Name,
+                        list.Initializers.Select(this.ElementInitializer)),
+
+                _ => throw new NotSupportedException(
+                    $"Unsupported object initializer binding: {binding.BindingType}"),
+            };
+        }
+
+        private WorkflowExpressionFragment ElementInitializer(ElementInit initializer)
+        {
+            if (!initializer.AddMethod.IsPublic || initializer.AddMethod.IsStatic)
+            {
+                throw new NotSupportedException(
+                    $"Collection initializer method must be a public instance method: {initializer.AddMethod}");
+            }
+
+            var parameters = initializer.AddMethod.GetParameters();
+            var overloaded = initializer.AddMethod.DeclaringType.GetMethods()
+                .Count(method => method.Name == initializer.AddMethod.Name) > 1;
+            var arguments = initializer.Arguments.Select(
+                (argument, index) => this.Argument(argument, parameters[index].ParameterType, overloaded));
+            return initializer.Arguments.Count == 1
+                ? arguments.Single()
+                : WorkflowExpressionFragment.CommaSeparated(arguments).Braced();
         }
 
         private WorkflowExpressionFragment Visit(NewExpression newExpression)

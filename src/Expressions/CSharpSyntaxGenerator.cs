@@ -209,6 +209,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 WorkflowExpressionFragment.Text(Identifier(memberName) + " = "),
                 value);
 
+        internal static WorkflowExpressionFragment MemberInitializer(
+            string memberName,
+            IEnumerable<WorkflowExpressionFragment> entries) =>
+            WorkflowExpressionFragment.Concat(
+                WorkflowExpressionFragment.Text(Identifier(memberName) + " = "),
+                WorkflowExpressionFragment.CommaSeparated(entries).Braced());
+
         internal static WorkflowExpressionFragment Lambda(
             IEnumerable<(Type Type, string Name)> parameters,
             WorkflowExpressionFragment body)
