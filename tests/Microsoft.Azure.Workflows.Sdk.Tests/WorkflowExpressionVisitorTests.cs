@@ -189,6 +189,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void WorkflowContextFunctionsUseRuntimeMappings()
+        {
+            AssertReturnExpression(
+                """parameters("Parameter")""",
+                Input(WorkflowActions.BuiltIn.Compose<JToken>(
+                    () => WorkflowFunctions.Parameters("Parameter"))));
+            AssertReturnExpression(
+                "workflow()",
+                Input(WorkflowActions.BuiltIn.Compose<JToken>(
+                    () => WorkflowFunctions.Workflow())));
+            AssertReturnExpression(
+                """result("Scope")""",
+                Input(WorkflowActions.BuiltIn.Compose<JToken>(
+                    () => WorkflowFunctions.Result("Scope"))));
+            AssertReturnExpression(
+                """items("OuterLoop")""",
+                Input(WorkflowActions.BuiltIn.Compose<JToken>(
+                    () => WorkflowFunctions.Items("OuterLoop"))));
+            AssertReturnExpression(
+                """iterationIndexes("UntilLoop")""",
+                Input(WorkflowActions.BuiltIn.Compose<JToken>(
+                    () => WorkflowFunctions.IterationIndexes("UntilLoop"))));
+            AssertReturnExpression(
+                """parameters("Count").ToObject<int>() + 1""",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => WorkflowFunctions.Parameters("Count").ToObject<int>() + 1)));
+        }
+
+        [Fact]
         public void StringFormatAndSelectedOverloadsRemainExplicit()
         {
             var value = 1;

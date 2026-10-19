@@ -25,6 +25,21 @@ namespace Microsoft.Azure.Workflows.Sdk
         [WorkflowFunction("json")]
         public static JToken ToJson(string input) => throw Uncompiled();
 
+        [WorkflowFunction("parameters")]
+        public static JToken Parameters(string name) => throw Uncompiled();
+
+        [WorkflowFunction("workflow")]
+        public static JToken Workflow() => throw Uncompiled();
+
+        [WorkflowFunction("result")]
+        public static JToken Result(string scopeName) => throw Uncompiled();
+
+        [WorkflowFunction("items")]
+        public static JToken Items(string loopName) => throw Uncompiled();
+
+        [WorkflowFunction("iterationIndexes")]
+        public static JToken IterationIndexes(string loopName) => throw Uncompiled();
+
         [WorkflowFunction("actions")]
         public static JToken Actions(string actionName) => throw Uncompiled();
 
