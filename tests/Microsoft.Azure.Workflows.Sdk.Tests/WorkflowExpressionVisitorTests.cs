@@ -29,6 +29,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void LinqOverAnonymousTypesUsesImplicitLambdaParameters()
+        {
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => new[]
+                {
+                    new { Value = 1 },
+                    new { Value = 2 },
+                }
+                .Select(item => item.Value)
+                .Single());
+
+            var source = Input(action);
+            Assert.DoesNotContain("AnonymousType", source);
+            AssertReturnExpression(
+                """
+                global::System.Linq.Enumerable.Single<int>(
+                    global::System.Linq.Enumerable.Select(
+                        new[] { new { Value = 1 }, new { Value = 2 } },
+                        (item) => item.Value))
+                """,
+                source);
+        }
+
+        [Fact]
         public void ComposedExpressionsAreUniversallyParenthesized()
         {
             var source = WorkflowActions.BuiltIn.Compose<int>(() => 1).WithName("Source");

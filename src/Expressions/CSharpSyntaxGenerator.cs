@@ -221,8 +221,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             IEnumerable<(Type Type, string Name)> parameters,
             WorkflowExpressionFragment body)
         {
-            var declarations = parameters.Select(
-                parameter => TypeName(parameter.Type) + " " + Identifier(parameter.Name));
+            var parameterArray = parameters.ToArray();
+            var useImplicitParameters = parameterArray.Any(
+                parameter => WorkflowExpressionTypePolicy.ContainsAnonymous(parameter.Type));
+            var declarations = useImplicitParameters
+                ? parameterArray.Select(parameter => Identifier(parameter.Name))
+                : parameterArray.Select(
+                    parameter => TypeName(parameter.Type) + " " + Identifier(parameter.Name));
             return WorkflowExpressionFragment.Concat(
                 WorkflowExpressionFragment.Text(string.Join(", ", declarations)).Parenthesized(),
                 WorkflowExpressionFragment.Text(" => "),
