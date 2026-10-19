@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public void WorkflowFunctionsBecomeExistingHostCalls()
         {
             var action = WorkflowActions.BuiltIn.Compose(() =>
-                WorkflowFunctions.ToJson<SendMessageInputMessageType>("{\"messageId\":\"id\"}").MessageId);
+                WorkflowFunctions.ParseJson<SendMessageInputMessageType>("{\"messageId\":\"id\"}").MessageId);
 
             AssertReturnExpression(
                 """json("{\"messageId\":\"id\"}").ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>().MessageId""",
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 Input(action));
 
             var function = WorkflowActions.BuiltIn.Compose(
-                () => WorkflowFunctions.ToJson<Customer>(
+                () => WorkflowFunctions.ParseJson<Customer>(
                     "{\"address\":{\"city_name\":\"Seattle\"}}").Address.City);
             AssertReturnExpression(
                 """json("{\"address\":{\"city_name\":\"Seattle\"}}")["address"]["city_name"].ToObject<string>()""",

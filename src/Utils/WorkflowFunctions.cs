@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     public static class WorkflowFunctions
     {
         [WorkflowFunction("json")]
-        public static T ToJson<T>(string input) => throw Uncompiled();
+        public static T ParseJson<T>(string input) => throw Uncompiled();
 
         [WorkflowFunction("json")]
-        public static JToken ToJson(string input) => throw Uncompiled();
+        public static JToken ParseJson(string input) => throw Uncompiled();
 
         [WorkflowFunction("parameters")]
         public static JToken Parameters(string name) => throw Uncompiled();
