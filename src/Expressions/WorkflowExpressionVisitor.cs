@@ -87,6 +87,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             var operand = this.Visit(unaryExpression.Operand);
             switch (unaryExpression.NodeType)
             {
+                case ExpressionType.ArrayLength:
+                    return CSharpSyntaxGenerator.MemberAccess(operand, "Length");
                 case ExpressionType.Convert:
                 case ExpressionType.ConvertChecked:
                     return CSharpSyntaxGenerator.Cast(
