@@ -377,16 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             List<PropertyInfo> properties,
             out WorkflowExpressionFragment root)
         {
-            if (expression is MemberExpression workflowMember &&
-                TryCreateWorkflowBinding(workflowMember, out var binding))
-            {
-                root = WorkflowExpressionFragment.Binding(binding);
-                return true;
-            }
-
-            if (expression is MethodCallExpression call &&
-                this.TryResolveWorkflowFunction(call, out root, out var metadata) &&
-                metadata.ReturnsToken)
+            if (this.TryWorkflowTokenSource(expression, out root))
                 return true;
 
             if (expression is not MemberExpression member ||
@@ -411,6 +402,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (expression is MemberExpression member && TryCreateWorkflowBinding(member, out var binding))
             {
                 code = WorkflowExpressionFragment.Binding(binding);
+                return true;
+            }
+
+            if (expression is MethodCallExpression call &&
+                this.TryResolveWorkflowFunction(call, out code, out var metadata) &&
+                metadata.ReturnsToken)
+            {
                 return true;
             }
 
