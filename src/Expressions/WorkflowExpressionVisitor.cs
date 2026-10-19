@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ? WorkflowExpressionFragment.Text("new " + CSharpSyntaxGenerator.TypeName(memberInitExpression.Type))
                     : this.Visit(memberInitExpression.NewExpression),
                 memberInitExpression.Bindings.Select(this.Binding));
-        
+
         private WorkflowExpressionFragment Binding(MemberBinding binding)
         {
             return binding switch
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             var parameters = newExpression.Constructor?.GetParameters() ?? Array.Empty<ParameterInfo>();
             var overloaded = newExpression.Constructor != null &&
                 newExpression.Type.GetConstructors().Length > 1;
-            
+
             return CSharpSyntaxGenerator.ObjectCreation(
                 newExpression.Type,
                 newExpression.Arguments.Select(

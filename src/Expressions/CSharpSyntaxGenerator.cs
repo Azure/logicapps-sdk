@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         {
             if (string.IsNullOrEmpty(name))
                 throw new NotSupportedException("Cannot emit a C# identifier without a name.");
-            
+
             return Keywords.Contains(name) ? "@" + name : name;
         }
 
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 if (double.IsNegativeInfinity(number)) return WorkflowExpressionFragment.Text("double.NegativeInfinity");
                 if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0)
                     return WorkflowExpressionFragment.Text("-0.0d");
-                
+
                 return WorkflowExpressionFragment.Text(number.ToString("R", CultureInfo.InvariantCulture) + "d");
             }
 
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 if (float.IsNegativeInfinity(single)) return WorkflowExpressionFragment.Text("float.NegativeInfinity");
                 if (single == 0 && BitConverter.ToInt32(BitConverter.GetBytes(single), 0) < 0)
                     return WorkflowExpressionFragment.Text("-0.0f");
-                
+
                 return WorkflowExpressionFragment.Text(single.ToString("R", CultureInfo.InvariantCulture) + "f");
             }
 
