@@ -127,6 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
     internal sealed class WorkflowExpression<T> : WorkflowExpression
     {
+        private const string EncodeUriComponentFunction = "encodeURIComponent";
+        private const string Base64Function = "base64";
+
         private readonly JToken literal;
         private readonly WorkflowExpressionFragment root;
 
@@ -157,8 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (times < 0) throw new ArgumentOutOfRangeException(nameof(times));
             var fragment = this.ToFragment();
             for (var index = 0; index < times; index++)
-                fragment = CSharpSyntaxGenerator.Invocation("encodeURIComponent", new[] { fragment });
-
+                fragment = CSharpSyntaxGenerator.Invocation(
+                    EncodeUriComponentFunction,
+                    new[] { fragment });
             return WorkflowExpression.Create<string>(fragment);
         }
 
@@ -172,10 +176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 var text = this.literal.Type == JTokenType.String
                     ? this.literal.Value<string>()
                     : this.literal.ToString(Formatting.None);
-
                 return WorkflowExpression.Create<string>(
                     CSharpSyntaxGenerator.Invocation(
-                        "base64",
+                        Base64Function,
                         new[] { CSharpSyntaxGenerator.Literal(text, typeof(string)) }));
             }
 
@@ -186,8 +189,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                         nameof(Convert.ToBase64String)),
                     Array.Empty<Type>(),
                     new[] { this.root })
-                : CSharpSyntaxGenerator.Invocation("base64", new[] { this.root });
-
+                : CSharpSyntaxGenerator.Invocation(
+                    Base64Function,
+                    new[] { this.root });
             return WorkflowExpression.Create<string>(fragment);
         }
     }

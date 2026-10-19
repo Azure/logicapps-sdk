@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal string Name { get; }
         internal bool ReturnsToken { get; }
-        
+
         internal WorkflowFunctionAttribute(
             string name,
             bool returnsToken)
