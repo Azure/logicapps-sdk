@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             return new DeferredBodyAction<CardsSetNumberGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_code, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_number, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}/{1}", __workflow_code.WithUrlEncoding(1), __workflow_number.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsSetNumberGetResponse>(callPayload);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsMultiverseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/multiverse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsMultiverseGetResponse>(callPayload);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsMTGOGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/mtgo/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsMTGOGetResponse>(callPayload);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsArenaGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/arena/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsArenaGetResponse>(callPayload);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsTCGplayerGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/tcgplayer/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsTCGplayerGetResponse>(callPayload);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsCardmarketGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cardmarket/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/cardmarket/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsCardmarketGetResponse>(callPayload);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsScryfallGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsScryfallGetResponse>(callPayload);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             return new DeferredBodyAction<SetGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_code, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sets/{0}", __workflow_code.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SetGetResponse>(callPayload);
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SetsTCGplayerGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sets/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sets/tcgplayer/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SetsTCGplayerGetResponse>(callPayload);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RulingsMultiverseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/multiverse/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RulingsMultiverseGetResponse>(callPayload);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RulingsMTGOGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/mtgo/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RulingsMTGOGetResponse>(callPayload);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RulingsArenaGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/arena/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RulingsArenaGetResponse>(callPayload);

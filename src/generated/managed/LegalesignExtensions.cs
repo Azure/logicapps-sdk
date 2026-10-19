@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserDetailResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/{0}/", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserDetailResponse>(callPayload);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<MemberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/member/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/member/{0}/", __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemberResponse>(callPayload);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_attachId = WorkflowExpression.Compile(attachId, nameof(attachId), required: true);
             return new DeferredBodyAction<AttachmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/attachment/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/attachment/{0}/", __workflow_attachId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AttachmentResponse>(callPayload);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_attachId = WorkflowExpression.Compile(attachId, nameof(attachId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/attachment/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/attachment/{0}/", __workflow_attachId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<GetDocumentFieldsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/fields/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/fields/", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDocumentFieldsResponseItem[]>(callPayload);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/auditlog/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/auditlog/", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pdf/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pdf/{0}/", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/delete/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/delete/", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<DocumentResponseDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DocumentResponseDetail>(callPayload);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_email != null)
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<SignerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signer/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signer/{0}/", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SignerResponse>(callPayload);
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signer/{0}/send-reminder/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signer/{0}/send-reminder/", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signer/{0}/new-link/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signer/{0}/new-link/", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<GetSignerFieldsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signer/{0}/fields1/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signer/{0}/fields1/", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSignerFieldsResponseItem[]>(callPayload);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<GetSignerRejectionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signer/{0}/rejection/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signer/{0}/rejection/", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSignerRejectionResponse>(callPayload);
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_pdfId = WorkflowExpression.Compile(pdfId, nameof(pdfId), required: true);
             return new DeferredBodyAction<TemplatePdfResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templatepdf/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pdfId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templatepdf/{0}/", __workflow_pdfId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplatePdfResponse>(callPayload);
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             var __workflow_cssBodyBackgroundcolor = WorkflowExpression.Compile(cssBodyBackgroundcolor, nameof(cssBodyBackgroundcolor), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templatepdf/{0}/edit-link/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pdfId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templatepdf/{0}/edit-link/", __workflow_pdfId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_hideSenderFields != null)

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/power/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

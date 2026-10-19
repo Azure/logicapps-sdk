@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
             var __workflow_formName = WorkflowExpression.Compile(formName, nameof(formName), required: true);
             return new DeferredBodyAction<FormShow>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forms/{0}", __workflow_formName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FormShow>(callPayload);

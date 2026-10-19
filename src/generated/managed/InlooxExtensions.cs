@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Project/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<GetProjectByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Project/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetProjectByIdResponse>(callPayload);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_bodyvalueScore = WorkflowExpression.Compile(bodyvalueScore, nameof(bodyvalueScore), required: false);
             return new DeferredBodyAction<UpdateProjectResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Project/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}/AddMember", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Project/{0}/AddMember", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Task/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetTaskByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Task/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskByIdResponse>(callPayload);
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
             var __workflow_bodyworkAmount = WorkflowExpression.Compile(bodyworkAmount, nameof(bodyworkAmount), required: false);
             return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Task/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

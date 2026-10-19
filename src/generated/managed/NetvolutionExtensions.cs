@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdp/orders/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["since"] = ExpressionConverter.Convert(__workflow_since);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
             return new DeferredBodyAction<GetWishListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_since, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdp/wishlist/{0}", __workflow_since.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWishListResponse>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
             return new DeferredBodyTrigger<OnNewEventResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/cdp/events/{0}", __workflow_eventName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, recurrence: recurrence);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyTrigger<OnNewUserInSegmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/cdp/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, recurrence: recurrence);

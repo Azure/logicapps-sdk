@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
             var __workflow_bodydiagramOptionsstrokeWidth = WorkflowExpression.Compile(bodydiagramOptionsstrokeWidth, nameof(bodydiagramOptionsstrokeWidth), required: false);
             return new DeferredBodyAction<DiagramPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_library, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_output, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_library.WithUrlEncoding(1), __workflow_output.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

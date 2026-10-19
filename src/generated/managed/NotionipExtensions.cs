@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<RetrieveuserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<RetrieveablockResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-02-22");
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<DeleteablockResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_bodytoDocolor = WorkflowExpression.Compile(bodytoDocolor, nameof(bodytoDocolor), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<RetrieveBlockChildrenResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}/children", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["page_size"] = Convert.ToString(100);
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_bodychildren = WorkflowExpression.Compile(bodychildren, nameof(bodychildren), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}/children", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             return new DeferredBodyAction<DatabaseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}", __workflow_databaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             return new DeferredBodyAction<DatabaseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}/query", __workflow_databaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_propertyId = WorkflowExpression.Compile(propertyId, nameof(propertyId), required: true);
             return new DeferredBodyAction<RetrieveapagepropertyitemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}/properties/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_propertyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pages/{0}/properties/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_propertyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<RetrieveapageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pages/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");

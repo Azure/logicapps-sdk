@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TaskApiFeaturesCallsCallDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Call/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Call/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodycallDirection = WorkflowExpression.Compile(bodycallDirection, nameof(bodycallDirection), required: false);
             return new DeferredBodyAction<TaskApiFeaturesCallsCallDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Call/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Call/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TaskApiFeaturesEventsEventDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Event/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Event/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodyteamMembers = WorkflowExpression.Compile(bodyteamMembers, nameof(bodyteamMembers), required: false);
             return new DeferredBodyAction<TaskApiFeaturesEventsEventDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Event/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Event/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Note/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
@@ -1156,7 +1156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Note/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodycontactType = WorkflowExpression.Compile(bodycontactType, nameof(bodycontactType), required: false);
             return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/task/Note/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Note/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1443,7 +1443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TaskApiFeaturesTasksTaskDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Task/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
@@ -1456,7 +1456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Task/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -1488,7 +1488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodylastModifiedBy = WorkflowExpression.Compile(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             return new DeferredBodyAction<TaskApiFeaturesTasksTaskDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Task/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1965,7 +1965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SalesPipelineApiFeaturesLeadLeadDto>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Lead/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto>(callPayload);
@@ -1978,7 +1978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Lead/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2026,7 +2026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodylastModifiedBy = WorkflowExpression.Compile(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             return new DeferredBodyAction<SalesPipelineApiFeaturesLeadLeadDto>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Lead/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2520,7 +2520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Opportunity/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
@@ -2533,7 +2533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Opportunity/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2568,7 +2568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodylastModifiedBy = WorkflowExpression.Compile(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Opportunity/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2728,7 +2728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<IdentityApiBackOfficeUsersGetUserGetUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IdentityApiBackOfficeUsersGetUserGetUserResponse>(callPayload);
@@ -2741,7 +2741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<IdentityApiTeamsDtosGetTeamResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/teams/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/teams/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IdentityApiTeamsDtosGetTeamResponse>(callPayload);
@@ -2754,7 +2754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Account/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
@@ -2767,7 +2767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Account/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2818,7 +2818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodyassignedTeams = WorkflowExpression.Compile(bodyassignedTeams, nameof(bodyassignedTeams), required: false);
             return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Account/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Account/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3505,7 +3505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<CustomerApiFeaturesContactsContact>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Contact/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CustomerApiFeaturesContactsContact>(callPayload);
@@ -3518,7 +3518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Contact/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -3577,7 +3577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodyassignedTeams = WorkflowExpression.Compile(bodyassignedTeams, nameof(bodyassignedTeams), required: false);
             return new DeferredBodyAction<CustomerApiFeaturesContactsContactDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Contact/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

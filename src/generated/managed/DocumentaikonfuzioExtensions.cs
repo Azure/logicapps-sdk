@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
             var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/docs/{0}/", __workflow_doc.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
             var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/docs/{0}/", __workflow_doc.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
             var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/docs/{0}/", __workflow_doc.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

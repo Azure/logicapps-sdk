@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             var __workflow_otpID = WorkflowExpression.Compile(otpID, nameof(otpID), required: true);
             return new DeferredBodyAction<DeleteOTPResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}", __workflow_otpID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteOTPResponse>(callPayload);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             var __workflow_caller = WorkflowExpression.Compile(caller, nameof(caller), required: false);
             return new DeferredBodyAction<ResendOTPResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}", __workflow_otpID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["via"] = Convert.ToString("AUTO");
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             var __workflow_otpID = WorkflowExpression.Compile(otpID, nameof(otpID), required: true);
             return new DeferredBodyAction<StatusOTPResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}", __workflow_otpID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StatusOTPResponse>(callPayload);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             var __workflow_otpCode = WorkflowExpression.Compile(otpCode, nameof(otpCode), required: false);
             return new DeferredBodyAction<VerifyOTPResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}/check", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}/check", __workflow_otpID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_otpCode != null)

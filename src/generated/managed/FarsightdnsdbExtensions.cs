@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<RRSetResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rrset/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeFirstBefore != null)
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<RRSetResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rrtype, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rrset/{0}/{1}/{2}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1), __workflow_rrtype.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeFirstBefore != null)
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<RRSetResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rrtype, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_bailiwick, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rrset/{0}/{1}/{2}/{3}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1), __workflow_rrtype.WithUrlEncoding(1), __workflow_bailiwick.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeFirstBefore != null)
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<RDataResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rdata/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeFirstBefore != null)
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<RDataResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rrtype, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/rdata/{0}/{1}/{2}", __workflow_type.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1), __workflow_rrtype.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeFirstBefore != null)
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<FlexResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_method, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_method.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1), __workflow_value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeFirstBefore != null)

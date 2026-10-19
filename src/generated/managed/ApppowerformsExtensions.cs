@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/GetCardResponse/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/GetCardResponse/{0}/{1}", __workflow_instanceId.WithUrlEncoding(1), __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/GetFormAdaptiveCardJson/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/GetFormAdaptiveCardJson/{0}", __workflow_instanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyTrigger<TriggerGetCardResponseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/TriggerGetCardResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/TriggerGetCardResponse/{0}", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");

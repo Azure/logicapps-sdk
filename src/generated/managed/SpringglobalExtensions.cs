@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
             var __workflow_advancedInfo = WorkflowExpression.Compile(advancedInfo, nameof(advancedInfo), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_executionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/survey-service/execution/{0}", __workflow_executionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["advancedInfo"] = Convert.ToString(false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetUserByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identity-service/user/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserByIdResponse>(callPayload);

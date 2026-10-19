@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
             return new DeferredBodyAction<RetrieveSecretResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secret/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sECRETKEY, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secret/{0}", __workflow_sECRETKEY.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_passphrase != null)
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
             return new DeferredBodyAction<RetrieveMetadataResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/private/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mETADATAKEY, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}", __workflow_mETADATAKEY.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RetrieveMetadataResponse>(callPayload);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
             var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
             return new DeferredBodyAction<BurnASecretResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/private/{0}/burn", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mETADATAKEY, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}/burn", __workflow_mETADATAKEY.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BurnASecretResponse>(callPayload);

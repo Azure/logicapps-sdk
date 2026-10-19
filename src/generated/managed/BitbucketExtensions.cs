@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_bodyversionversion = WorkflowExpression.Compile(bodyversionversion, nameof(bodyversionversion), required: false);
             return new DeferredBodyAction<IssueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2.0/repositories/{0}/{1}/issues", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
             return new DeferredBodyAction<IssueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_issueId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2.0/repositories/{0}/{1}/issues/{2}", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1), __workflow_issueId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IssueResponse>(callPayload);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_pullrequestId = WorkflowExpression.Compile(pullrequestId, nameof(pullrequestId), required: true);
             return new DeferredBodyAction<ApprovePullRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pullrequestId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1), __workflow_pullrequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ApprovePullRequestResponse>(callPayload);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_pullrequestId = WorkflowExpression.Compile(pullrequestId, nameof(pullrequestId), required: true);
             return new DeferredBodyAction<DeclineOrMergePullRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pullrequestId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1), __workflow_pullrequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_pullrequestId = WorkflowExpression.Compile(pullrequestId, nameof(pullrequestId), required: true);
             return new DeferredBodyAction<DeclineOrMergePullRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pullrequestId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1), __workflow_pullrequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeclineOrMergePullRequestResponse>(callPayload);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2.0/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponse>(callPayload);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyTrigger<ListRepositoriesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/repository_created_trigger/2.0/repositories/{0}", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, recurrence: recurrence);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

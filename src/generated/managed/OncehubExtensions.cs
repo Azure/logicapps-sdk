@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetTimeSlotsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/time-slots", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/booking-calendars/{0}/time-slots", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTimeSlotsResponseItem[]>(callPayload);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
             var __workflow_bodylocationValue = WorkflowExpression.Compile(bodylocationValue, nameof(bodylocationValue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/schedule", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/booking-calendars/{0}/schedule", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

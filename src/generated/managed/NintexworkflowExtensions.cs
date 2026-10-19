@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
             var __workflow_bodystartData = WorkflowExpression.Compile(bodystartData, nameof(bodystartData), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflows/v1/designs/{0}/instances", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

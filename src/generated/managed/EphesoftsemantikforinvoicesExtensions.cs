@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             var __workflow_configurationId = WorkflowExpression.Compile(configurationId, nameof(configurationId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/settings/integrations/configurations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/settings/integrations/configurations/{0}", __workflow_configurationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
             return new DeferredBodyAction<UpdateDocumentUploadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/documents/uploads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uploadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/documents/uploads/{0}", __workflow_uploadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

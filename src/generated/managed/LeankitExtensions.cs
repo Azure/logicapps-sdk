@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<CardResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardResponse>(callPayload);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
             return new DeferredBodyAction<CardResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<CardResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardResponse>(callPayload);
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
             return new DeferredBodyAction<AddCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}/comment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}/comment", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

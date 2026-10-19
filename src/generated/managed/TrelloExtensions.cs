@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<Card[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/cards", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_actions != null)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<Card[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/simple/boards/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/simple/boards/{0}/cards", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Card[]>(callPayload);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<CardWithChecklists>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<BoardWithChecklists>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_actions != null)
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardenableCalendarPowerUp = WorkflowExpression.Compile(boardenableCalendarPowerUp, nameof(boardenableCalendarPowerUp), required: false);
             return new DeferredBodyAction<Board>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var board = new JObject();
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<List[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/lists", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/lists", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_cards != null)
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<List[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/simple/boards/{0}/lists", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/simple/boards/{0}/lists", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<List[]>(callPayload);
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<List>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_subscribed = WorkflowExpression.Compile(subscribed, nameof(subscribed), required: false);
             return new DeferredBodyAction<CreateListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             return new DeferredBodyAction<Member[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/members", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Member[]>(callPayload);
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<Member[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/members", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Member[]>(callPayload);
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<BoardLabel[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/labels", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(1000);
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<Team>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/organization", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/organization", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Team>(callPayload);
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<Member[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}/members", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<Comment[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}/actions", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_commentcommentText = WorkflowExpression.Compile(commentcommentText, nameof(commentcommentText), required: false);
             return new DeferredBodyAction<Comment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/actions/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}/actions/comments", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<Member[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/idMembers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}/idMembers", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<Board>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/closed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/closed", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Board>(callPayload);
@@ -979,7 +979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             var __workflow_updateCardsubscribedToCard = WorkflowExpression.Compile(updateCardsubscribedToCard, nameof(updateCardsubscribedToCard), required: false);
             return new DeferredBodyAction<Card>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cards/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);

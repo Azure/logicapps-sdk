@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fcn, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/query/{0}", __workflow_fcn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["async"] = Convert.ToString(false);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoke/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fcn, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoke/{0}", __workflow_fcn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["async"] = Convert.ToString(false);

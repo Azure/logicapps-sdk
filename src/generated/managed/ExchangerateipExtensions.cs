@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             var __workflow_basecurrency = WorkflowExpression.Compile(basecurrency, nameof(basecurrency), required: true);
             return new DeferredBodyAction<GetExchangeRatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/latest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_basecurrency, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/latest/{0}", __workflow_basecurrency.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetExchangeRatesResponse>(callPayload);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             var __workflow_targetCurrency = WorkflowExpression.Compile(targetCurrency, nameof(targetCurrency), required: true);
             return new DeferredBodyAction<GetExchangeRateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pair/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetCurrency, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pair/{0}/{1}", __workflow_baseCurrency.WithUrlEncoding(1), __workflow_targetCurrency.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<GetHistoricalRatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/history/{0}/{1}/{2}/{3}", __workflow_baseCurrency.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetHistoricalRatesResponse>(callPayload);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
             var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
             return new DeferredBodyAction<GetHistoricalConversionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_amount, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", __workflow_baseCurrency.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1), __workflow_amount.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetHistoricalConversionsResponse>(callPayload);

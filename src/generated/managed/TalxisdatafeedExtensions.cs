@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/logo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/Companies/{0}/{1}/logo", __workflow_jurisdictionCode.WithUrlEncoding(1), __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             return new DeferredBodyAction<DataFeedModelEntitiesCompanyCompanyDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/Companies/{0}/{1}", __workflow_jurisdictionCode.WithUrlEncoding(1), __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_language != null)
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<DataFeedModelEntitiesCompanyCompanyFinance>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/finance", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/Companies/{0}/{1}/finance", __workflow_jurisdictionCode.WithUrlEncoding(1), __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DataFeedModelEntitiesCompanyCompanyFinance>(callPayload);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             var __workflow_suffix = WorkflowExpression.Compile(suffix, nameof(suffix), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Salutations/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/Salutations/{0}/", __workflow_language.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surname"] = ExpressionConverter.Convert(__workflow_surname);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             return new DeferredBodyAction<DataFeedModelEntitiesHolidays[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryIsoCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", __workflow_countryIsoCode.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DataFeedModelEntitiesHolidays[]>(callPayload);

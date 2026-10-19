@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Si3270
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hidx/{0}/methods/{1}/call", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hidxName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_methodName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hidx/{0}/methods/{1}/call", __workflow_hidxName.WithUrlEncoding(1), __workflow_methodName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);

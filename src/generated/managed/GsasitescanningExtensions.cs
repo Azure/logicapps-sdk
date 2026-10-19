@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<WebsiteApiResultDto>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_url, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/websites/{0}", __workflow_url.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WebsiteApiResultDto>(callPayload);

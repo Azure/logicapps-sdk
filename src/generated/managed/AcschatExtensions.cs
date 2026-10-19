@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
             return new DeferredBodyAction<ListMessagesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_bodysenderDisplayName = WorkflowExpression.Compile(bodysenderDisplayName, nameof(bodysenderDisplayName), required: true);
             return new DeferredBodyAction<SendChatResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
             return new DeferredBodyAction<AddParticipantsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}/participants/:add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:add", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_bodycommunicationUseruserID = WorkflowExpression.Compile(bodycommunicationUseruserID, nameof(bodycommunicationUseruserID), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}/participants/:remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:remove", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
             return new DeferredBodyAction<ListParticipantsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}/participants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             return new DeferredBodyAction<GetThreadPropertiesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatThreadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");

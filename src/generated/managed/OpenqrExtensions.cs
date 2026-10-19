@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<FolderUpdatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/folders/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             var __workflow_qrCodeId = WorkflowExpression.Compile(qrCodeId, nameof(qrCodeId), required: true);
             return new DeferredBodyAction<QRGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_qrCodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qr-codes/{0}", __workflow_qrCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<QRGetResponse>(callPayload);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
             var __workflow_bodydataurl = WorkflowExpression.Compile(bodydataurl, nameof(bodydataurl), required: false);
             return new DeferredBodyAction<QRUpdatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_qrCodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qr-codes/{0}", __workflow_qrCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

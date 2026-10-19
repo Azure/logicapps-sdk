@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_adjusted = WorkflowExpression.Compile(adjusted, nameof(adjusted), required: false);
             return new DeferredBodyAction<GetDailyOpenCloseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/open-close/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stocksTicker, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/open-close/{0}/{1}", __workflow_stocksTicker.WithUrlEncoding(1), __workflow_date.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_adjusted != null)
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetTickerDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/reference/tickers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticker, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/reference/tickers/{0}", __workflow_ticker.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_date != null)
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_types = WorkflowExpression.Compile(types, nameof(types), required: false);
             return new DeferredBodyAction<GetTickerEventsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vX/reference/tickers/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vX/reference/tickers/{0}/events", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_types != null)

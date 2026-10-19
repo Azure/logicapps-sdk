@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["SkipDeleteIfFileNotFoundOnServer"] = Convert.ToString(false);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/content", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["inferContentType"] = Convert.ToString(true);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_newName = WorkflowExpression.Compile(newName, nameof(newName), required: true);
             return new DeferredBodyAction<BlobMetadataResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/rename", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/rename", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["newName"] = ExpressionConverter.Convert(__workflow_newName);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BlobMetadata[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/folders/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlobMetadata[]>(callPayload);

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
             var __workflow_bodyavatarURL = WorkflowExpression.Compile(bodyavatarURL, nameof(bodyavatarURL), required: false);
             return new DeferredBodyAction<Webhook>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookToken, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v9/webhooks/{0}/{1}", __workflow_webhookId.WithUrlEncoding(1), __workflow_webhookToken.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");

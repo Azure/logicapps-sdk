@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserGetResponse>(callPayload);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserDeleteResponse>(callPayload);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodygdprConsentStatus = WorkflowExpression.Compile(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             return new DeferredBodyAction<UserPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: false);
             return new DeferredBodyAction<UserEnrollResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/enroll", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/enroll", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodycourseId = WorkflowExpression.Compile(bodycourseId, nameof(bodycourseId), required: true);
             return new DeferredBodyAction<UserUnenrollResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/unenroll", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/unenroll", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             return new DeferredBodyAction<CourseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/courses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/courses/{0}", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CourseGetResponse>(callPayload);
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_funnelId = WorkflowExpression.Compile(funnelId, nameof(funnelId), required: true);
             return new DeferredBodyAction<FunnelEnrollmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/enrollments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_funnelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funnels/enrollments/{0}", __workflow_funnelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FunnelEnrollmentResponse>(callPayload);
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodygdprConsentStatus = WorkflowExpression.Compile(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             return new DeferredBodyAction<FunnelSubscribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_funnelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funnels/{0}/subscribe", __workflow_funnelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<FunnelUnsubscribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_funnelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funnels/{0}/unsubscribe", __workflow_funnelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             return new DeferredBodyAction<ClassRegisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-class/{0}/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_liveclassId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-class/{0}/register", __workflow_liveclassId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<ClassUnregisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-class/{0}/unregister", ExpressionConverter.ConvertWithUrlEncoding(__workflow_liveclassId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-class/{0}/unregister", __workflow_liveclassId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodyzipCode = WorkflowExpression.Compile(bodyzipCode, nameof(bodyzipCode), required: false);
             return new DeferredBodyAction<WebinarRegisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-webinar/{0}/register", __workflow_webinarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<WebinarUnregisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/unregister", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/live-webinar/{0}/unregister", __workflow_webinarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubdata
             var __workflow_filewithpath = WorkflowExpression.Compile(filewithpath, nameof(filewithpath), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_githubname, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reponame, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_filewithpath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_githubname.WithUrlEncoding(1), __workflow_reponame.WithUrlEncoding(1), __workflow_filewithpath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

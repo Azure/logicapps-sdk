@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<GetProjectResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}.json", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetProjectResponse>(callPayload);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyAction<ListTasksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasklists/{0}/tasks.json", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_bodytodoItemtags = WorkflowExpression.Compile(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
             return new DeferredBodyAction<UpsertTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasklists/{0}/tasks.json", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}.json", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskResponse>(callPayload);
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_bodytodoItemtags = WorkflowExpression.Compile(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
             return new DeferredBodyAction<UpsertTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}.json", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<DeleteTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}.json", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ListUsersResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/people.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/people.json", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListUsersResponse>(callPayload);
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
             return new DeferredBodyAction<GetUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_personId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}.json", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserResponse>(callPayload);

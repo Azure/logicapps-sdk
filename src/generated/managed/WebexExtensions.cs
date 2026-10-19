@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<GetMessageDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/messages/{0}", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMessageDetailsResponse>(callPayload);
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyAction<GetSpaceDetailResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/rooms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/rooms/{0}", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpaceDetailResponse>(callPayload);

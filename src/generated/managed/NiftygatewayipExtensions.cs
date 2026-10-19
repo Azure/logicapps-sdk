@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<NiftiesforUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/nifties/", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_contractAddress != null)
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: true);
             return new DeferredBodyAction<NiftiesforCreatorResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_creatorProfileName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/creators/{0}/collectors/", __workflow_creatorProfileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);

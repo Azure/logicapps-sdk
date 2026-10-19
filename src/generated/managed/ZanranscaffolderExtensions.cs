@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
             var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/{0}.xlsx", __workflow_docname.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
             var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/allxml/{0}", __workflow_docname.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
             var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/znr/{0}", __workflow_docname.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);

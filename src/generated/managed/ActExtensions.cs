@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
             var __workflow_contactid = WorkflowExpression.Compile(contactid, nameof(contactid), required: true);
             return new DeferredBodyAction<ActWebApiModelsContact>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Contacts/{0}", __workflow_contactid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ActWebApiModelsContact>(callPayload);

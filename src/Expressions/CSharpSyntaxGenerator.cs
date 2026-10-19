@@ -173,6 +173,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 WorkflowExpressionFragment.CommaSeparated(arguments).Parenthesized());
         }
 
+        internal static WorkflowExpressionFragment Invocation(
+            string functionName,
+            IEnumerable<WorkflowExpressionFragment> arguments) =>
+            Invocation(
+                WorkflowExpressionFragment.Text(Identifier(functionName)),
+                Array.Empty<Type>(),
+                arguments);
+
         internal static WorkflowExpressionFragment ObjectCreation(
             Type type,
             IEnumerable<WorkflowExpressionFragment> arguments) =>

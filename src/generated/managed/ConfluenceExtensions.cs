@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
             var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
             return new DeferredBodyAction<GetSpacesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", __workflow_cloudId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpacesResponse>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
             var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
             return new DeferredBodyAction<GetPagesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", __workflow_cloudId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPagesResponse>(callPayload);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             return new DeferredBodyAction<GetPagesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", __workflow_cloudId.WithUrlEncoding(1), __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPagesResponse>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<GetPagesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", __workflow_cloudId.WithUrlEncoding(1), __workflow_pageId.WithUrlEncoding(1), __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPagesResponse>(callPayload);

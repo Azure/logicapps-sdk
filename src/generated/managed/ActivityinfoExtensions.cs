@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/add", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/edit", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/edit", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/delete", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");

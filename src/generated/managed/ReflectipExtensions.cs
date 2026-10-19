@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             return new DeferredBodyAction<BooksGetResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/books", ExpressionConverter.ConvertWithUrlEncoding(__workflow_graphId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/books", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BooksGetResponseItem[]>(callPayload);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             return new DeferredBodyAction<LinksGetResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_graphId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/links", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<LinksGetResponseItem[]>(callPayload);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             var __workflow_bodyhighlights = WorkflowExpression.Compile(bodyhighlights, nameof(bodyhighlights), required: false);
             return new DeferredBodyAction<LinkPostResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_graphId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/links", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             var __workflow_bodylistName = WorkflowExpression.Compile(bodylistName, nameof(bodylistName), required: false);
             return new DeferredBodyAction<DailyNotePutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/daily-notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_graphId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/daily-notes", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
             var __workflow_bodypinned = WorkflowExpression.Compile(bodypinned, nameof(bodypinned), required: false);
             return new DeferredBodyAction<NotePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graphs/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_graphId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/notes", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

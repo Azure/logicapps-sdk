@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<TranslatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}.json", __workflow_language.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

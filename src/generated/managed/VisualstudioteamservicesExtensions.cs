@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Profile>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_apis/profile/profiles/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Profile>(callPayload);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: true);
             return new DeferredBodyAction<VstsListTeamSettingsIteration>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/iterations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/iterations", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_buildDetailsparameters = WorkflowExpression.Compile(buildDetailsparameters, nameof(buildDetailsparameters), required: false);
             return new DeferredBodyAction<BuildResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/build/builds", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListGitRepository>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/git/repositories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/git/repositories", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListReleaseDefinition>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/definitions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/definitions", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_releaseStartMetadatareleaseVariables = WorkflowExpression.Compile(releaseStartMetadatareleaseVariables, nameof(releaseStartMetadatareleaseVariables), required: false);
             return new DeferredBodyAction<Release>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/releases", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/releases", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DynamicWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_apis/wit/workitems/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_workItemdynamicFields = WorkflowExpression.Compile(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
             return new DeferredBodyAction<PatchWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_apis/wit/workitems/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_workItemType = WorkflowExpression.Compile(workItemType, nameof(workItemType), required: false);
             return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_apis/wit/workitems/{0}/children", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_workItemdynamicFields = WorkflowExpression.Compile(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
             return new DeferredBodyAction<PatchWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems/${1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/wit/workitems/${1}", __workflow_project.WithUrlEncoding(1), __workflow_type.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/queries", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/queriesInFolder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/queriesInFolder", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_workItemType = WorkflowExpression.Compile(workItemType, nameof(workItemType), required: false);
             return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/wit/workitems", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<Pipeline>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/{0}/_apis/pipelines", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_pipelineId = WorkflowExpression.Compile(pipelineId, nameof(pipelineId), required: true);
             return new DeferredBodyAction<Run>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/{0}/_apis/pipelines/{1}/runs", __workflow_project.WithUrlEncoding(1), __workflow_pipelineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_throwIfQueryChanged = WorkflowExpression.Compile(throwIfQueryChanged, nameof(throwIfQueryChanged), required: false);
             return new DeferredBodyAction<VstsListQueryResultWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queryId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}/queryResults/{1}", __workflow_project.WithUrlEncoding(1), __workflow_queryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_definitions = WorkflowExpression.Compile(definitions, nameof(definitions), required: false);
             return new DeferredBodyTrigger<VstsListBuildResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_refName = WorkflowExpression.Compile(refName, nameof(refName), required: false);
             return new DeferredBodyTrigger<VstsListGitPush>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_repository, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", __workflow_project.WithUrlEncoding(1), __workflow_repository.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_targetRefName = WorkflowExpression.Compile(targetRefName, nameof(targetRefName), required: false);
             return new DeferredBodyTrigger<VstsListGitPullRequest>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_repository, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", __workflow_project.WithUrlEncoding(1), __workflow_repository.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_targetRefName = WorkflowExpression.Compile(targetRefName, nameof(targetRefName), required: false);
             return new DeferredBodyTrigger<VstsListGitPullRequest>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_repository, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", __workflow_project.WithUrlEncoding(1), __workflow_repository.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);

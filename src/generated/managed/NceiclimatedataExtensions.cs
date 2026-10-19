@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DatasetGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datasets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/datasets/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DatasetGetResponse>(callPayload);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datacategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/datacategories/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CategoryGetResponse>(callPayload);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TypeGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datatypes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/datatypes/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TypeGetResponse>(callPayload);
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<LocationCategoryGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/locationcategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/locationcategories/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<LocationCategoryGetResponse>(callPayload);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<LocationGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/locations/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<LocationGetResponse>(callPayload);
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<StationGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/stations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cdo-web/api/v2/stations/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StationGetResponse>(callPayload);
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
             var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
             return new DeferredBodyAction<StationHistoricalGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/access/homr/services/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/access/homr/services/station/{0}", __workflow_stationid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["date"] = Convert.ToString("all");

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
             var __workflow_chartOnly = WorkflowExpression.Compile(chartOnly, nameof(chartOnly), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/report/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/report/{0}/export", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/report/{0}/share/email", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/report/{0}/share/email", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);

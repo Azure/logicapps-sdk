@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_decodeSubject = WorkflowExpression.Compile(decodeSubject, nameof(decodeSubject), required: false);
             return new DeferredBodyAction<InboxGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageGetResponse>(callPayload);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageDeleteResponse>(callPayload);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageAttachmentsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/attachments", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageAttachmentsGetResponse>(callPayload);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageLinksGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/links", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageLinksGetResponse>(callPayload);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_bodysecondsAgo = WorkflowExpression.Compile(bodysecondsAgo, nameof(bodysecondsAgo), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             return new DeferredBodyAction<DomainGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}", __workflow_domainId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DomainGetResponse>(callPayload);

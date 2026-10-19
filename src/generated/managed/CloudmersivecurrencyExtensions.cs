@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
             var __workflow_sourcePrice = WorkflowExpression.Compile(sourcePrice, nameof(sourcePrice), required: false);
             return new DeferredBodyAction<ConvertedCurrencyResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_destination, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", __workflow_source.WithUrlEncoding(1), __workflow_destination.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_sourcePrice);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             return new DeferredBodyAction<ExchangeRateResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_destination, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", __workflow_source.WithUrlEncoding(1), __workflow_destination.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExchangeRateResult>(callPayload);

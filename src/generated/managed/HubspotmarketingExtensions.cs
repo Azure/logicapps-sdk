@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing/v3/forms/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["archived"] = Convert.ToString(false);
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing/v3/forms/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_datadisplayOptionscssClass = WorkflowExpression.Compile(datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing/v3/forms/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var data = new JObject();
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_externalAccountId = WorkflowExpression.Compile(externalAccountId, nameof(externalAccountId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalEventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", __workflow_externalEventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(__workflow_externalAccountId);
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_externalAccountId = WorkflowExpression.Compile(externalAccountId, nameof(externalAccountId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalEventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", __workflow_externalEventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(__workflow_externalAccountId);
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_datacustomProperties = WorkflowExpression.Compile(datacustomProperties, nameof(datacustomProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalEventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", __workflow_externalEventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var data = new JObject();
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing-emails/v1/emails/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing-emails/v1/emails/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/marketing-emails/v1/emails/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/email/public/v1/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/email/public/v1/campaigns/{0}", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

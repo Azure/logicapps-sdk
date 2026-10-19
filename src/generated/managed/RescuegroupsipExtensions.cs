@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BreedIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/animals/breeds/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BreedIDResponse>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BreedSpeciesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_species, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/animals/breeds/search/{0}/", __workflow_species.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BreedSpeciesIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/species/{0}/breeds/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/animals/species/{0}/breeds/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<OrganizationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/orgs/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OrganizationIDResponse>(callPayload);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<AnimalStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/animals/search/{0}/", __workflow_status.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AnimalIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/animals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AnimalIDResponse>(callPayload);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<OrganizationAnimalResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/orgs/{0}/animals/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<OrganizationAnimalStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/search/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/orgs/{0}/animals/search/{1}/", __workflow_id.WithUrlEncoding(1), __workflow_status.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)

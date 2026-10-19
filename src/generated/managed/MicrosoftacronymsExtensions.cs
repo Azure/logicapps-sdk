@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             var __workflow_acronymsId = WorkflowExpression.Compile(acronymsId, nameof(acronymsId), required: true);
             return new DeferredBodyAction<AcronymGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/acronyms/{0}", __workflow_acronymsId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AcronymGetResponse>(callPayload);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             var __workflow_acronymsId = WorkflowExpression.Compile(acronymsId, nameof(acronymsId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/acronyms/{0}", __workflow_acronymsId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
             var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/acronyms/{0}", __workflow_acronymsId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

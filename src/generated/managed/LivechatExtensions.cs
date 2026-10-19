@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
             return new DeferredBodyAction<DeleteAgentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_login, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}", __workflow_login.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteAgentResponse>(callPayload);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var __workflow_bodysourcesourceURL = WorkflowExpression.Compile(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tickets/{0}/tags", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TicketResponse>(callPayload);

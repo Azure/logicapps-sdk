@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/SOAPOperation/{0}/{1}", __workflow_service.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RaaSOperation/{0}/{1}/{2}", __workflow_reportInstanceName.WithUrlEncoding(1), __workflow_accountName.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);

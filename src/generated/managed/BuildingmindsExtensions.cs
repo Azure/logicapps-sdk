@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Portfolio>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/portfolios/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/portfolios/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Portfolio>(callPayload);
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Site>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Site>(callPayload);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Building>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/buildings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/buildings/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Building>(callPayload);
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Floor>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/floors/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/floors/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Floor>(callPayload);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Roof>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/roofs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/roofs/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Roof>(callPayload);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Facade>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/facades/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/facades/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Facade>(callPayload);
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Outsidearea>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/outsideareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/outsideareas/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Outsidearea>(callPayload);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Subarea>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/subareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/subareas/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Subarea>(callPayload);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Land>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/lands/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/lands/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Land>(callPayload);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Space>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/spaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/spaces/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Space>(callPayload);
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/portfolios/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/portfolios/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/sites/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/sites/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/buildings/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/buildings/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/floors/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/floors/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/roofs/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/roofs/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/facades/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/facades/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/outsideareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/outsideareas/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/subareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/subareas/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/lands/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/lands/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ChildrenCheckType>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/spaces/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/spaces/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChildrenCheckType>(callPayload);
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<AssociatedSpacesTypeWithPagination>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/{0}/{1}/associated/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_associatedType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/{0}/{1}/associated/{2}", __workflow_spaceType.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1), __workflow_associatedType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_skip != null)
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
             var __workflow_spaceid = WorkflowExpression.Compile(spaceid, nameof(spaceid), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/{0}/notassociated/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_associatedType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/{0}/notassociated/{1}", __workflow_spaceType.WithUrlEncoding(1), __workflow_associatedType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_spaceid != null)

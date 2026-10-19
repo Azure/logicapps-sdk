@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
             var __workflow_jokeid = WorkflowExpression.Compile(jokeid, nameof(jokeid), required: true);
             return new DeferredBodyAction<FetchaDadJokeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jokeid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/j/{0}", __workflow_jokeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");

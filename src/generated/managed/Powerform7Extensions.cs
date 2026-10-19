@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);

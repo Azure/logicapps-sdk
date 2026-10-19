@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
             return new DeferredBodyAction<GetRelocationPackageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/package/{0}", __workflow_relocationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
             var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
             return new DeferredBodyAction<GetCounselorContactInformationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/relocation/counselor/{0}", __workflow_relocationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(__workflow_includePicture);

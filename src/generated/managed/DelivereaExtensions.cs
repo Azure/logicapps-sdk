@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/shipments/{0}/label", ExpressionConverter.ConvertWithUrlEncoding(__workflow_delivereaReference, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/shipments/{0}/label", __workflow_delivereaReference.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<CarriersInDistributionCenterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/distribution-centers/{0}/carriers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_distributionCenter, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/distribution-centers/{0}/carriers", __workflow_distributionCenter.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_delivereaReference, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/shipments/{0}", __workflow_delivereaReference.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = ExpressionConverter.Convert(__workflow_contentType);

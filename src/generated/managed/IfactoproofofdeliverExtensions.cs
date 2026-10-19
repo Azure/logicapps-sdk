@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             return new DeferredBodyAction<ListCompanyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/{0}/api/v2.0/companies", __workflow_bcenvironment.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListCompanyResponse>(callPayload);
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredBodyAction<GetCompanyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", __workflow_bcenvironment.WithUrlEncoding(1), __workflow_company.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCompanyResponse>(callPayload);

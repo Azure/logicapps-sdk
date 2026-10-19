@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
             return new DeferredBodyAction<PredictResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/luis/v2.0/apps/{0}/", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);

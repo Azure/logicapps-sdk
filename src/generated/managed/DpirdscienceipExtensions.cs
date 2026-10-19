@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetStationResponse>(callPayload);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationRainfallResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/rainfall/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/rainfall/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_summerStartDate != null)

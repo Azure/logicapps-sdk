@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredBodyAction<Package>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Package>(callPayload);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var __workflow_bodyopenapi = WorkflowExpression.Compile(bodyopenapi, nameof(bodyopenapi), required: false);
             return new DeferredBodyAction<Package>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredBodyAction<PackagesOpenapiResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/openapi", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/openapi", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_format != null)
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredBodyAction<AiPlugin>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/ai-plugin", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/ai-plugin", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AiPlugin>(callPayload);

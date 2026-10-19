@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
             return new DeferredBodyAction<CollectionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collection, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collection.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
             return new DeferredBodyAction<FormatResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<ItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/item/{0}/", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ItemResponse>(callPayload);

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
             var __workflow_bodypreviewOnly = WorkflowExpression.Compile(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
             return new DeferredBodyAction<ActionPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

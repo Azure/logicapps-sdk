@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             return new DeferredBodyAction<HightlightDetailGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<HightlightDetailGetResponse>(callPayload);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
             return new DeferredBodyAction<HighlightUpdatePatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<HighlightTagsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_pageSize != null)
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<HighlightTagsPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags/{1}", __workflow_highlightId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<HighlightTagsUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_highlightId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags/{1}", __workflow_highlightId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             return new DeferredBodyAction<BookGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/books/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BookGetResponse>(callPayload);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BookTagsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/books/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_pageSize != null)
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<BookTagsCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/books/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/books/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags/{1}", __workflow_bookId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<BookTagsUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/books/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags/{1}", __workflow_bookId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

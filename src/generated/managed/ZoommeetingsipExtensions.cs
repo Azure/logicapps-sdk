@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
             var __workflow_meetingid = WorkflowExpression.Compile(meetingid, nameof(meetingid), required: true);
             return new DeferredBodyAction<MeetingDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/meetings/{0}", __workflow_meetingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MeetingDetailsResponse>(callPayload);

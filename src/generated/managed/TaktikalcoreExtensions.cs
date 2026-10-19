@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var __workflow_flowKey = WorkflowExpression.Compile(flowKey, nameof(flowKey), required: false);
             return new DeferredBodyAction<SigningProcessActivityLogWrapper[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signing/activity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_processKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signing/activity/{0}", __workflow_processKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_user != null)
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var __workflow_bodyauthenticationContextType = WorkflowExpression.Compile(bodyauthenticationContextType, nameof(bodyauthenticationContextType), required: true);
             return new DeferredBodyAction<StartAuthResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signing/sequential/{0}/auth", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sequenceKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signing/sequential/{0}/auth", __workflow_sequenceKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var __workflow_userAgent = WorkflowExpression.Compile(userAgent, nameof(userAgent), required: false);
             return new DeferredBodyAction<SigningProcess>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signing/{0}/signee/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_processKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signing/{0}/signee/{1}", __workflow_processKey.WithUrlEncoding(1), __workflow_signeeKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_userAgent != null)
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
             var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<Signee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signing/{0}/signee/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_processKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signing/{0}/signee/{1}", __workflow_processKey.WithUrlEncoding(1), __workflow_signeeKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

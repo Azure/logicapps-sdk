@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/actions/send", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/actions/send", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_bodyupdateExisting = WorkflowExpression.Compile(bodyupdateExisting, nameof(bodyupdateExisting), required: false);
             return new DeferredBodyAction<GetAddMembersBatchResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_skipMergeValidation != null)
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<GetAllMembersResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["count"] = Convert.ToString(10);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_newMemberInListlocationlongitude = WorkflowExpression.Compile(newMemberInListlocationlongitude, nameof(newMemberInListlocationlongitude), required: false);
             return new DeferredBodyAction<MemberResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var newMemberInList = new JObject();
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_memberEmail = WorkflowExpression.Compile(memberEmail, nameof(memberEmail), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/replacemailwithhash/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["member_email"] = ExpressionConverter.Convert(__workflow_memberEmail);
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_updateMemberInListRequestlocationlongitude = WorkflowExpression.Compile(updateMemberInListRequestlocationlongitude, nameof(updateMemberInListRequestlocationlongitude), required: false);
             return new DeferredBodyAction<MemberResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/replacemailwithhash/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["member_email"] = ExpressionConverter.Convert(__workflow_memberEmail);
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyTrigger<GetMembersResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/lists/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<GetMembersResponseModel>(callPayload, recurrence: recurrence);

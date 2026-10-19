@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             return new DeferredBodyAction<TextTitleResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_title, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/json", __workflow_title.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TextTitleResponse>(callPayload);

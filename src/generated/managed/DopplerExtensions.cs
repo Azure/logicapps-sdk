@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: true);
             return new DeferredBodyAction<DopplerProjectRolesRetrieveResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/projects/roles/role/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_role, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/roles/role/{0}", __workflow_role.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DopplerProjectRolesRetrieveResponse>(callPayload);
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/projects/roles/role/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_role, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/roles/role/{0}", __workflow_role.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<DopplerProjectMembersRetrieveResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/project/members/member/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/project/members/member/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
             var __workflow_bodyenvironments = WorkflowExpression.Compile(bodyenvironments, nameof(bodyenvironments), required: false);
             return new DeferredBodyAction<DopplerProjectMembersUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/projects/project/members/member/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/project/members/member/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);

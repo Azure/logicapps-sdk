@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_session, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sessions/{0}", __workflow_session.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
             var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatefulMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_session, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sessions/{0}/message", __workflow_session.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");

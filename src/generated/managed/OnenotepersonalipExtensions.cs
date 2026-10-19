@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
             return new DeferredBodyAction<NotebookGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notebookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NotebookGetAResponse>(callPayload);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<SectionGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notebookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}/sections", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
             return new DeferredBodyAction<SectionPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notebookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}/sections", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<PageGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sectionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sections/{0}/pages", __workflow_sectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PagePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sectionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sections/{0}/pages", __workflow_sectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);

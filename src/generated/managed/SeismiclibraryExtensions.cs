@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["resolveNameCollision"] = Convert.ToString(false);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodycontentProperties = WorkflowExpression.Compile(bodycontentProperties, nameof(bodycontentProperties), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeResponse"] = Convert.ToString(true);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_redirect = WorkflowExpression.Compile(redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicCommonDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}/content", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(true);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}/content", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_redirect = WorkflowExpression.Compile(redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicCommonDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/versions/{2}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryVersionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}/versions/{2}/content", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1), __workflow_libraryVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(true);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}/copy", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyexternalConnectionId = WorkflowExpression.Compile(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/folders", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/folders/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(callPayload);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyexternalConnectionId = WorkflowExpression.Compile(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/folders/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/createPath", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/folders/createPath", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_folderPath != null)
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/folders/{1}/copy", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_includeProperties = WorkflowExpression.Compile(includeProperties, nameof(includeProperties), required: false);
             return new DeferredBodyAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/folders/{1}/items", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_offset != null)
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/copy", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementSimpleItemVersion[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/versions", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementSimpleItemVersion[]>(callPayload);
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_externalConnectionId = WorkflowExpression.Compile(externalConnectionId, nameof(externalConnectionId), required: false);
             return new DeferredBodyAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_externalId != null)
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/thumbnail", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/thumbnail", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<SeismicPagingLibraryInstructionsInstructionInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/instructions", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_offset != null)
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<SeismicLibraryInstructionsInstructionInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/instructions", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_instructionId = WorkflowExpression.Compile(instructionId, nameof(instructionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_instructionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/instructions/{2}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1), __workflow_instructionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/submit", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/recall", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/recall", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             return new DeferredBodyAction<SeismicLibraryPublishingPublishResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/publish", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/unpublish", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/unpublish", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodynextApprovernextApproverUserType = WorkflowExpression.Compile(bodynextApprovernextApproverUserType, nameof(bodynextApprovernextApproverUserType), required: false);
             return new DeferredBodyAction<SeismicLibraryWorkflowWorkflowResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}/steps/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_approvalWorkflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_stepId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvalWorkflows/{0}/steps/{1}", __workflow_approvalWorkflowId.WithUrlEncoding(1), __workflow_stepId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_approvalWorkflowId = WorkflowExpression.Compile(approvalWorkflowId, nameof(approvalWorkflowId), required: true);
             return new DeferredBodyAction<SeismicLibraryWorkflowWorkflowResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_approvalWorkflowId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvalWorkflows/{0}", __workflow_approvalWorkflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryWorkflowWorkflowResponse>(callPayload);
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodycontentProperties = WorkflowExpression.Compile(bodycontentProperties, nameof(bodycontentProperties), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/urls", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/urls/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(callPayload);
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyexternalConnectionId = WorkflowExpression.Compile(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/urls/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeResponse"] = Convert.ToString(true);
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
             var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/urls/{1}/copy", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

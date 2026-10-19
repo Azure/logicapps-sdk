@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             var __workflow_udpateId = WorkflowExpression.Compile(udpateId, nameof(udpateId), required: true);
             return new DeferredBodyAction<ShareUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/updates/{0}/share.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_udpateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1/updates/{0}/share.json", __workflow_udpateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListPendingUpdatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, recurrence: recurrence);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListSentUpdatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ListSentUpdatesResponse>(callPayload, recurrence: recurrence);

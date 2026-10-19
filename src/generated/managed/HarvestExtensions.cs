@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/daily/update/{0}", __workflow_dAYENTRYID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/daily/delete/{0}", __workflow_dAYENTRYID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_bodyuseruserId = WorkflowExpression.Compile(bodyuseruserId, nameof(bodyuseruserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/user_assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/user_assignments", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/show/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/daily/show/{0}", __workflow_dAYENTRYID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UpdateTimeEntryResponse>(callPayload);
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_uSERID = WorkflowExpression.Compile(uSERID, nameof(uSERID), required: true);
             return new DeferredBodyAction<GetUserByIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uSERID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}", __workflow_uSERID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserByIDResponse>(callPayload);

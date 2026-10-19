@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocVersionResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentVersionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLiveDocsLiveDocVersionResp>(callPayload);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             var __workflow_bodyadHocInputs = WorkflowExpression.Compile(bodyadHocInputs, nameof(bodyadHocInputs), required: false);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocGenSuccinctResultResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentVersionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             var __workflow_generatedLivedocId = WorkflowExpression.Compile(generatedLivedocId, nameof(generatedLivedocId), required: true);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocGenResultResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_generatedLivedocId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/generatedLivedocs/{0}", __workflow_generatedLivedocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLiveDocsLiveDocGenResultResp>(callPayload);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
             var __workflow_redirect = WorkflowExpression.Compile(redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicLiveDocsDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_outputId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", __workflow_generatedLivedocId.WithUrlEncoding(1), __workflow_outputId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(false);

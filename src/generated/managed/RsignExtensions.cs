@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<GetTemplateInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", __workflow_templateCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(__workflow_authToken);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<DownloadEnvelopeDocumentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", __workflow_envelopeCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(__workflow_authToken);

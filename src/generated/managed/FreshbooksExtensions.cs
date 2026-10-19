@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyAction<Expense[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
             return new DeferredBodyAction<Expense>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_expenseid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", __workflow_accountid.WithUrlEncoding(1), __workflow_expenseid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_expenseid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", __workflow_accountid.WithUrlEncoding(1), __workflow_expenseid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_bodyclientprovince = WorkflowExpression.Compile(bodyclientprovince, nameof(bodyclientprovince), required: false);
             return new DeferredBodyAction<Client>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounting/account/{0}/users/clients", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Invoice[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["include[]"] = Convert.ToString("client");
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Expense[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Payment[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/accounting/account/{0}/payments/payments", __workflow_accountid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["include[]"] = Convert.ToString("client");

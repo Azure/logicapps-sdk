@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             var __workflow_popreceipt = WorkflowExpression.Compile(popreceipt, nameof(popreceipt), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["popreceipt"] = ExpressionConverter.Convert(__workflow_popreceipt);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             var __workflow_visibilitytimeout = WorkflowExpression.Compile(visibilitytimeout, nameof(visibilitytimeout), required: false);
             return new DeferredBodyAction<Messages>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_numofmessages != null)
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             return new DeferredBodyAction<Queue[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/list", __workflow_storageAccountName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Queue[]>(callPayload);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_message);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             var __workflow_visibilitytimeout = WorkflowExpression.Compile(visibilitytimeout, nameof(visibilitytimeout), required: false);
             return new DeferredBodyTrigger<Messages>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_visibilitytimeout != null)
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["threshold"] = ExpressionConverter.Convert(__workflow_threshold);

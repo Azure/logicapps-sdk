@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_systemProperties = WorkflowExpression.Compile(systemProperties, nameof(systemProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages", __workflow_entityName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["systemProperties"] = Convert.ToString("None");
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 var messagepropCount = 0;
                 if (__workflow_messagecontent != null)
                 {
-                    message["ContentData"] = ExpressionConverter.ConvertOWithBase64(__workflow_messagecontent);
+                    message["ContentData"] = ExpressionConverter.ConvertO(__workflow_messagecontent.WithBase64Encoding());
                     messagepropCount++;
                 }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_systemProperties = WorkflowExpression.Compile(systemProperties, nameof(systemProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/batch", __workflow_entityName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["systemProperties"] = Convert.ToString("None");
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/complete", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/abandon", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/defer", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sequenceNumber"] = ExpressionConverter.Convert(__workflow_sequenceNumber);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/defer", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_deadLetterErrorDescription = WorkflowExpression.Compile(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/deadletter", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/renewlock", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/batch/peek", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/close", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/sessions/{1}/close", __workflow_queueName.WithUrlEncoding(2), __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/sessions/{1}/renewlock", __workflow_queueName.WithUrlEncoding(2), __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/complete", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/abandon", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/defer", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sequenceNumber"] = ExpressionConverter.Convert(__workflow_sequenceNumber);
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/defer", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_deadLetterErrorDescription = WorkflowExpression.Compile(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/deadletter", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/renewlock", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_subscriptionFilterType = WorkflowExpression.Compile(subscriptionFilterType, nameof(subscriptionFilterType), required: false);
             return new DeferredBodyAction<Subscription>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionFilterType"] = Convert.ToString("None");
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/batch/peek", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/close", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/close", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/renewlock", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/head", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/head/peek", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_queueType = WorkflowExpression.Compile(queueType, nameof(queueType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/batch/head", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/messages/batch/head/peek", __workflow_queueName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/head", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/head/peek", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_subscriptionType = WorkflowExpression.Compile(subscriptionType, nameof(subscriptionType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/batch/head", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/subscriptions/{1}/messages/batch/head/peek", __workflow_topicName.WithUrlEncoding(2), __workflow_subscriptionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);

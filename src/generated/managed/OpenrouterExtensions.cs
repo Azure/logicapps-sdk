@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredBodyAction<ListModelEndpointsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_author, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/models/{0}/{1}/endpoints", __workflow_author.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);

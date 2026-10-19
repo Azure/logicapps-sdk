@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/categories/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CategoryGetResponse>(callPayload);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryTagsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/categories/{0}/tags", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CategoryTagsGetResponse>(callPayload);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
             var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<CountryTagsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trending/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trending/{0}/tags", __workflow_countryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CountryTagsGetResponse>(callPayload);

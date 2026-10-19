@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
             var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: true);
             return new DeferredBodyAction<GetVoiceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_voice, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/voices/{0}", __workflow_voice.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetVoiceResponse>(callPayload);

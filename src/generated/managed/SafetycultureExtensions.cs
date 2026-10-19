@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             return new DeferredBodyAction<GetAuditByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
             return new DeferredBodyAction<GetAuditByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_exportProfile = WorkflowExpression.Compile(exportProfile, nameof(exportProfile), required: false);
             return new DeferredBodyAction<InitExportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/export", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
             return new DeferredBodyAction<ExportStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/exports/{1}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExportStatusResponse>(callPayload);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_filename, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/exports/{1}/{2}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1), __workflow_filename.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             return new DeferredBodyAction<GetAuditLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/web_report_link", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAuditLinkResponse>(callPayload);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/web_report_link", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<DeleteActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteActionResponse>(callPayload);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_updateActionBodyassignees = WorkflowExpression.Compile(updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
             return new DeferredBodyAction<Action>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var updateActionBody = new JObject();
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_mediaId = WorkflowExpression.Compile(mediaId, nameof(mediaId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_mediaId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/media/{1}", __workflow_auditId.WithUrlEncoding(1), __workflow_mediaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_formatpreferenceID = WorkflowExpression.Compile(formatpreferenceID, nameof(formatpreferenceID), required: false);
             return new DeferredBodyAction<InitInspectionExportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/report", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var format = new JObject();
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
             return new DeferredBodyAction<InspectionExportStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/report/{1}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InspectionExportStatusResponse>(callPayload);

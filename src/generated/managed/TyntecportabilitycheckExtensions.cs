@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
             var __workflow_phonenumber = WorkflowExpression.Compile(phonenumber, nameof(phonenumber), required: true);
             return new DeferredBodyAction<VerifyPhoneNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phonenumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/verification/v1/phone/{0}", __workflow_phonenumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);

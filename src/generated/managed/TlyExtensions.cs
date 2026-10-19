@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
             return new DeferredBodyAction<PixelGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pixelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/pixel/{0}", __workflow_pixelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PixelGetResponse>(callPayload);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pixelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/pixel/{0}", __workflow_pixelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_bodypixelType = WorkflowExpression.Compile(bodypixelType, nameof(bodypixelType), required: false);
             return new DeferredBodyAction<PixelPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pixelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/pixel/{0}", __workflow_pixelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<TagGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagGetResponse>(callPayload);
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
             return new DeferredBodyAction<TagPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

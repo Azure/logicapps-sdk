@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_requestBodyrequestId = WorkflowExpression.Compile(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendReplyMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentMessageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/messages/reply/{0}", __workflow_parentMessageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(__workflow_customerId);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_requestBodyattachmentUrl = WorkflowExpression.Compile(requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/whatsapp/templates/{0}/{1}", __workflow_customerId.WithUrlEncoding(1), __workflow_identityNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
             return new DeferredBodyAction<GetGroupContactResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groupcontact/{0}/{1}/{2}", __workflow_customer.WithUrlEncoding(1), __workflow_groupService.WithUrlEncoding(1), __workflow_phone.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_region != null)
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             return new DeferredBodyAction<bool>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groupcontact/{0}/{1}/{2}", __workflow_customer.WithUrlEncoding(1), __workflow_groupService.WithUrlEncoding(1), __workflow_phone.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<bool>(callPayload);
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_requestBodyphoneNumberRegions = WorkflowExpression.Compile(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groupcontact/{0}/{1}/{2}", __workflow_customer.WithUrlEncoding(1), __workflow_groupService.WithUrlEncoding(1), __workflow_phone.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
             return new DeferredBodyAction<bool>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groupcontact/{0}/{1}", __workflow_customer.WithUrlEncoding(1), __workflow_groupService.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<bool>(callPayload);
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_requestBodyphoneNumberRegions = WorkflowExpression.Compile(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groupcontact/{0}/{1}", __workflow_customer.WithUrlEncoding(1), __workflow_groupService.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
             return new DeferredBodyTrigger<NewMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/service/{0}/pipelines/actions", __workflow_service.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Customer"] = ExpressionConverter.Convert(__workflow_customer);

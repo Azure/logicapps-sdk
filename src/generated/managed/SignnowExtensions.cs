@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<CreateDocGroupEmbeddedInvitesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var invite = new JObject();
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
             return new DeferredBodyAction<GenerateDocGroupEmbeddedInviteLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inviteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", __workflow_id.WithUrlEncoding(1), __workflow_inviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var invite = new JObject();
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<CreateEmbeddedInvitesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var invite = new JObject();
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
             return new DeferredBodyAction<GenerateEmbeddedInviteLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldInviteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", __workflow_id.WithUrlEncoding(1), __workflow_fieldInviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var invite = new JObject();
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             return new DeferredBodyAction<DocumentGroupProperties>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template"] = ExpressionConverter.Convert(__workflow_template);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: false);
             return new DeferredBodyAction<CreateFromTemplateGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<UpdateGroupFieldValuesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/fields", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_group_id"] = ExpressionConverter.Convert(__workflow_templateGroupId);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<UpdateGroupSmartFieldValuesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/smartfields", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_group_id"] = ExpressionConverter.Convert(__workflow_templateGroupId);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<DocumentProperties>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template"] = ExpressionConverter.Convert(__workflow_template);
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<DeleteDocResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteDocResponse>(callPayload);
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
             return new DeferredBodyAction<CreateFromTemplateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<CreateSigningLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/link", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template"] = ExpressionConverter.Convert(__workflow_template);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite", __workflow_templateGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template"] = ExpressionConverter.Convert(__workflow_template);
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_bodyemailAllPartiesOnCompletion = WorkflowExpression.Compile(bodyemailAllPartiesOnCompletion, nameof(bodyemailAllPartiesOnCompletion), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-user-defined-schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-user-defined-schema", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-cancel", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/download", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mode"] = Convert.ToString("Collapsed");
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/smartfields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetInviteStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetInviteStatusResponse>(callPayload);
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetDocumentGroupInviteStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}/invite-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}/invite-status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDocumentGroupInviteStatusResponse>(callPayload);
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_replaceToadvancedParameters = WorkflowExpression.Compile(replaceToadvancedParameters, nameof(replaceToadvancedParameters), required: false);
             return new DeferredBodyAction<ReplaceRecipientsInDocumentInviteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/replace-recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/replace-recipients", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var replaceTo = new JObject();
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_replaceToinviteActionAttributes = WorkflowExpression.Compile(replaceToinviteActionAttributes, nameof(replaceToinviteActionAttributes), required: false);
             return new DeferredBodyAction<ReplaceRecipientsInDocumentGroupInviteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inviteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", __workflow_id.WithUrlEncoding(1), __workflow_inviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var replaceTo = new JObject();
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
             return new DeferredBodyAction<CreateEmbeddedInviteSettingsLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-sending", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-sending", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var inviteSettings = new JObject();
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
             return new DeferredBodyAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-sending", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-sending", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var inviteSettings = new JObject();
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<InviteToSignAllOptionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-all-options", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-all-options", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var invite = new JObject();
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<InviteToSignDocGroupAllOptionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite-all-options", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite-all-options", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var invite = new JObject();
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/document/{0}/fields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<UpdateFieldValuesV2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/document/{0}/fields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);

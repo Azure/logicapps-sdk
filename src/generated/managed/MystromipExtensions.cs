@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<ExecuteSceneResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sceneID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/scene/{0}", __workflow_sceneID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["authToken"] = ExpressionConverter.Convert(__workflow_authToken);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<GetWebhookResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/{0}", __workflow_deviceID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["authToken"] = ExpressionConverter.Convert(__workflow_authToken);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<DeleteWebhookResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/{0}", __workflow_deviceID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["authToken"] = ExpressionConverter.Convert(__workflow_authToken);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<CreateWebhookResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/{0}", __workflow_deviceID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["webhook"] = ExpressionConverter.Convert(__workflow_webhook);

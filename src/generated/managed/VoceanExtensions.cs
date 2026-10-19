@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
             return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities", __workflow_networkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["activityType"] = ExpressionConverter.Convert(__workflow_activityType);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<AddIdeaResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddIdeasResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", __workflow_networkId.WithUrlEncoding(1), __workflow_activityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

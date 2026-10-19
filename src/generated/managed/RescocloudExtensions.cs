@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
             return new DeferredBodyAction<OdataError>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}('{1}')", __workflow_entity.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_ifMatch != null)

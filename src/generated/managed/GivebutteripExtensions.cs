@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CampaignGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CampaignGetAResponse>(callPayload);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<CampaignPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             return new DeferredBodyAction<MemberGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/members", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemberGetResponse>(callPayload);
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<MemberGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/members/{1}", __workflow_campaignId.WithUrlEncoding(1), __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemberGetAResponse>(callPayload);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/members/{1}", __workflow_campaignId.WithUrlEncoding(1), __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             return new DeferredBodyAction<TeamGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/teams", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TeamGetResponse>(callPayload);
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             return new DeferredBodyAction<TeamGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/teams/{1}", __workflow_campaignId.WithUrlEncoding(1), __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TeamGetAResponse>(callPayload);
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ContactGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactGetAResponse>(callPayload);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_bodyfacebookUrl = WorkflowExpression.Compile(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
             return new DeferredBodyAction<ContactPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ContactRestoreResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}/restore", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactRestoreResponse>(callPayload);
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TicketGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tickets/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TicketGetAResponse>(callPayload);
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TransactionGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/transactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/transactions/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TransactionGetAResponse>(callPayload);
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PayoutGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/payouts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/payouts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PayoutGetAResponse>(callPayload);
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PlanGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/plans/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/plans/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PlanGetAResponse>(callPayload);
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<FundGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funds/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FundGetAResponse>(callPayload);
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: false);
             return new DeferredBodyAction<FundPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funds/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/funds/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

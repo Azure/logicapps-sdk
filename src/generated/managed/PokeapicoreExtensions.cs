@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetAbilityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/ability/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/ability/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAbilityResponse>(callPayload);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetCharacteristicsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/characteristic/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/characteristic/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCharacteristicsResponse>(callPayload);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetGenderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/gender/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/gender/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGenderResponse>(callPayload);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetGrowthRatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/growth-rate/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/growth-rate/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGrowthRatesResponse>(callPayload);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetPokemonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/pokemon/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/pokemon/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPokemonResponse>(callPayload);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetTypeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/type/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/type/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTypeResponse>(callPayload);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetEvolutionChainResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/evolution-chain/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/evolution-chain/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEvolutionChainResponse>(callPayload);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
             var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEvolutionTriggerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/evolution-trigger/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/evolution-trigger/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEvolutionTriggerResponse>(callPayload);

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/image", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             var __workflow_bodyimageURL = WorkflowExpression.Compile(bodyimageURL, nameof(bodyimageURL), required: true);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/url", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/image", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
             var __workflow_bodyimageURL = WorkflowExpression.Compile(bodyimageURL, nameof(bodyimageURL), required: true);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/url", __workflow_projectId.WithUrlEncoding(1), __workflow_publishedName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

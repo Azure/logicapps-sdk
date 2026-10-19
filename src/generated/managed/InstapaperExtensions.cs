@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<HighlighstResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1.1/bookmarks/{0}/highlights", __workflow_bookmarkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<HighlighstResponse>(callPayload);
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             return new DeferredBodyAction<HighlightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1.1/bookmarks/{0}/highlight", __workflow_bookmarkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyTrigger<HighlighstResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", __workflow_bookmarkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);

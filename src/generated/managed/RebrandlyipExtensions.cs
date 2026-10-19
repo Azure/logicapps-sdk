@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<GetLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_workspace != null)
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<DeleteLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_workspace != null)
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<UpdateLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_workspace != null)

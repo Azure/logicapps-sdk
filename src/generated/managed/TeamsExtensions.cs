@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_itemrequestResponse = WorkflowExpression.Compile(itemrequestResponse, nameof(itemrequestResponse), required: false);
             return new DeferredBodyAction<NewMeetingRespone>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/me/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/me/calendars/{0}/events", __workflow_calendarid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var item = new JObject();
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredBodyAction<GetChannelsForGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/groups/{0}/channels", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<CreateChannelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/groups/{0}/channels", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyAction<GetChannelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/channels/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetChannelResponse>(callPayload);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredBodyAction<GetAllChannelsForTeamResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/allChannels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/allChannels", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
             return new DeferredBodyAction<GetChatsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chatType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topic, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", __workflow_chatType.WithUrlEncoding(1), __workflow_topic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetChatsResponse>(callPayload);
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<GetTagsResponseSchema>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTagsResponseSchema>(callPayload);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_bodymembersIDs = WorkflowExpression.Compile(bodymembersIDs, nameof(bodymembersIDs), required: true);
             return new DeferredBodyAction<CreateTagResponseSchema>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_bodyuserSID = WorkflowExpression.Compile(bodyuserSID, nameof(bodyuserSID), required: true);
             return new DeferredBodyAction<AddMemberToTagResponseSchema>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}/members", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<GetTagMembersResponseSchema>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}/members", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTagMembersResponseSchema>(callPayload);
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_tagMemberId = WorkflowExpression.Compile(tagMemberId, nameof(tagMemberId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagMemberId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}/members/{2}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1), __workflow_tagMemberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flowbot/feednotification/poster/{0}/notificationType/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_notificationType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flowbot/feednotification/poster/{0}/notificationType/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_notificationType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<AtMentionTagResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AtMentionTagResponse>(callPayload);
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyAction<GetMessagesFromChannelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/channels/{1}/messages", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMessagesFromChannelResponse>(callPayload);
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/messages/{0}/messageType/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/messages/{0}/messageType/{1}", __workflow_messageId.WithUrlEncoding(1), __workflow_threadType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ListRepliesResponseSchema>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$top"] = Convert.ToString(20);
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ListMembersResponseSchema>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/listmembers/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/listmembers/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             return new DeferredBodyAction<GetTeamResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTeamResponse>(callPayload);
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<AtMentionUserV1>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AtMentionUserV1>(callPayload);
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_bodysetUserAsTeamOwner = WorkflowExpression.Compile(bodysetUserAsTeamOwner, nameof(bodysetUserAsTeamOwner), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/members", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostToConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/conversation/message/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/conversation/message/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostToConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostToConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_bodybodyupdateMessage = WorkflowExpression.Compile(bodybodyupdateMessage, nameof(bodybodyupdateMessage), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostToConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostToConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_poster, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -868,7 +868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyTrigger<OnNewChannelMessageResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$top"] = Convert.ToString(50);
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyTrigger<OnNewChannelMessageResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$top"] = Convert.ToString(50);
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/atmentiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/atmentiontrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/messagereactiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/messagereactiontrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["reactionKey"] = ExpressionConverter.Convert(__workflow_reactionKey);
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/keywordtrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/keywordtrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$search"] = ExpressionConverter.Convert(__workflow_search);
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/newmessagetrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/newmessagetrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pluralAPIName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", __workflow_aPIVersion.WithUrlEncoding(1), __workflow_tenantID.WithUrlEncoding(1), __workflow_environmentName.WithUrlEncoding(1), __workflow_aPIName.WithUrlEncoding(1), __workflow_aPIVersion2.WithUrlEncoding(1), __workflow_companyID.WithUrlEncoding(1), __workflow_pluralAPIName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)

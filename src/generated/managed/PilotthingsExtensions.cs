@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_paramJson = WorkflowExpression.Compile(paramJson, nameof(paramJson), required: false);
             return new DeferredBodyAction<AlertRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/alerts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_paramJson);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<MeasureRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/measures/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_orFilter = WorkflowExpression.Compile(orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/messages/things/{0}", __workflow_thingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_messageRothingtags = WorkflowExpression.Compile(messageRothingtags, nameof(messageRothingtags), required: false);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/messages/things/{0}", __workflow_thingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var messageRo = new JObject();
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/messages/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageRo>(callPayload);
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/{0}/previous", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/messages/{0}/previous", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageRo>(callPayload);
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SiteRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SiteRo>(callPayload);
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_siteRolongitude = WorkflowExpression.Compile(siteRolongitude, nameof(siteRolongitude), required: false);
             return new DeferredBodyAction<SiteRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var siteRo = new JObject();
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingTagRotag = WorkflowExpression.Compile(thingTagRotag, nameof(thingTagRotag), required: false);
             return new DeferredBodyAction<TagRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tags/thing/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tags/thing/{0}", __workflow_thingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingTagRo = new JObject();
@@ -1024,7 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TagRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tags/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRo>(callPayload);
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
@@ -1285,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_force = WorkflowExpression.Compile(force, nameof(force), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_force != null)
@@ -1424,7 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingRotags = WorkflowExpression.Compile(thingRotags, nameof(thingRotags), required: false);
             return new DeferredBodyAction<ThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingRo = new JObject();
@@ -2264,7 +2264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ModelRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/active_model", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/active_model", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelRo>(callPayload);
@@ -2277,7 +2277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PageCustomFieldRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageCustomFieldRo>(callPayload);
@@ -2296,7 +2296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_customFieldRovalue = WorkflowExpression.Compile(customFieldRovalue, nameof(customFieldRovalue), required: false);
             return new DeferredBodyAction<CustomFieldRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var customFieldRo = new JObject();
@@ -2358,7 +2358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_customFieldRovalue = WorkflowExpression.Compile(customFieldRovalue, nameof(customFieldRovalue), required: false);
             return new DeferredBodyAction<CustomFieldRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var customFieldRo = new JObject();
@@ -2415,7 +2415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields/{1}", __workflow_id.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2429,7 +2429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields/{1}/image", __workflow_id.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2444,7 +2444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields/{1}/image", __workflow_id.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2457,7 +2457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/image", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2470,7 +2470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<MeasureTinyRo[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_measurements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/last_measurements", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MeasureTinyRo[]>(callPayload);
@@ -2483,7 +2483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<MessageTinyRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/last_message", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageTinyRo>(callPayload);
@@ -2504,7 +2504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_orFilter = WorkflowExpression.Compile(orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMeasureRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/measures", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/measures", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
@@ -2541,7 +2541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_orFilter = WorkflowExpression.Compile(orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/messages", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -2568,7 +2568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/messages", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2657,7 +2657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_messageRothingtags = WorkflowExpression.Compile(messageRothingtags, nameof(messageRothingtags), required: false);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/messages", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var messageRo = new JObject();
@@ -3121,7 +3121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ModelRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/model", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/model", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelRo>(callPayload);
@@ -3134,7 +3134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PageOperationRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/operations", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageOperationRo>(callPayload);
@@ -3169,7 +3169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_placeholdersValuesvalueNode = WorkflowExpression.Compile(placeholdersValuesvalueNode, nameof(placeholdersValuesvalueNode), required: false);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/operations/{1}", __workflow_id.WithUrlEncoding(1), __workflow_operationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var placeholdersValues = new JObject();
@@ -3381,7 +3381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingRotags = WorkflowExpression.Compile(thingRotags, nameof(thingRotags), required: false);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/positions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/positions", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingRo = new JObject();
@@ -3801,7 +3801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ProductRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/product", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProductRo>(callPayload);
@@ -3814,7 +3814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/product", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
@@ -3878,7 +3878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_productthings = WorkflowExpression.Compile(productthings, nameof(productthings), required: false);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/product", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var product = new JObject();
@@ -4252,7 +4252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PageFlowRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/related_flows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/related_flows", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageFlowRo>(callPayload);
@@ -4265,7 +4265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PageThingTagRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/tags", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageThingTagRo>(callPayload);
@@ -4396,7 +4396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_orFilter = WorkflowExpression.Compile(orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageStatsMeasureRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stats/last/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stats/last/things/{0}", __workflow_thingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)

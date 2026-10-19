@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             return new DeferredBodyAction<TablesList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables", __workflow_type.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             return new DeferredBodyAction<FeedList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/feeds", __workflow_endpoint.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FeedList>(callPayload);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyAction<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items", __workflow_type.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ItemsList>(callPayload);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: true);
             return new DeferredBodyAction<FeedList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_feed, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/feeds/{1}/items", __workflow_endpoint.WithUrlEncoding(2), __workflow_feed.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FeedList>(callPayload);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_feed, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/{0}/feeds/{1}/newItem", __workflow_endpoint.WithUrlEncoding(2), __workflow_feed.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();

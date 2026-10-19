@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<Document>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Document>(callPayload);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             return new DeferredBodyAction<Observer>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/observers", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_observerId = WorkflowExpression.Compile(observerId, nameof(observerId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_observerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/observers/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_observerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<Signee[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/signees", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Signee[]>(callPayload);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_bodysignOrder = WorkflowExpression.Compile(bodysignOrder, nameof(bodysignOrder), required: false);
             return new DeferredBodyAction<Signee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/signees", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
             return new DeferredBodyAction<Signee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/signees/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_signeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Signee>(callPayload);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/signees/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_signeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_bodysignOrder = WorkflowExpression.Compile(bodysignOrder, nameof(bodysignOrder), required: false);
             return new DeferredBodyAction<Signee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/signees/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_signeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}/resend-invitation", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/signees/{1}/resend-invitation", __workflow_documentId.WithUrlEncoding(1), __workflow_signeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/start", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

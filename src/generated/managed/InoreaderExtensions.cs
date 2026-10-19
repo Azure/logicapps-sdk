@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
             return new DeferredBodyAction<StreamContentsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stream/contents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_streamId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stream/contents/{0}", __workflow_streamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_n != null)

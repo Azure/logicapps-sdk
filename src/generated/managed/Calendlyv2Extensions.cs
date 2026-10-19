@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: true);
             return new DeferredBodyAction<GetEventTypeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uuid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event_types/{0}", __workflow_uuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEventTypeResponse>(callPayload);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uuid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invitee_no_shows/{0}", __workflow_uuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);

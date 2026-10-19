@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<GovernmentRegion[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/GovernmentRegions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/FederalStates/{0}/GovernmentRegions", __workflow_federalStateKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<District[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/FederalStates/{0}/Districts", __workflow_federalStateKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<District[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/GovernmentRegions/{0}/Districts", __workflow_governmentRegionKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Municipality[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/FederalStates/{0}/Municipalities", __workflow_federalStateKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Municipality[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/GovernmentRegions/{0}/Municipalities", __workflow_governmentRegionKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Municipality[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/Districts/{0}/Municipalities", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalAssociation[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/FederalStates/{0}/MunicipalAssociations", __workflow_federalStateKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalAssociation[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/GovernmentRegions/{0}/MunicipalAssociations", __workflow_governmentRegionKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalAssociation[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/Districts/{0}/MunicipalAssociations", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/FederalStates/{0}/Localities", __workflow_federalStateKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/GovernmentRegions/{0}/Localities", __workflow_governmentRegionKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/de/Districts/{0}/Localities", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<DistrictCH[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cantonKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ch/Cantons/{0}/Districts", __workflow_cantonKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<CommuneCH[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Communes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cantonKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ch/Cantons/{0}/Communes", __workflow_cantonKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<CommuneCH[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Districts/{0}/Communes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ch/Districts/{0}/Communes", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityCH[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cantonKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ch/Cantons/{0}/Localities", __workflow_cantonKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityCH[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ch/Districts/{0}/Localities", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<DistrictAT[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalProvinceKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/at/FederalProvinces/{0}/Districts", __workflow_federalProvinceKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalityAT[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalProvinceKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/at/FederalProvinces/{0}/Municipalities", __workflow_federalProvinceKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalityAT[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/Districts/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/at/Districts/{0}/Municipalities", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityAT[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalProvinceKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/at/FederalProvinces/{0}/Localities", __workflow_federalProvinceKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityAT[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/at/Districts/{0}/Localities", __workflow_districtKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)

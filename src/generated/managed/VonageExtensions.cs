@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: false);
             return new DeferredBodyAction<VerifyRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/verify/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             return new DeferredBodyAction<VerifyCheckResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/verify/check/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             return new DeferredBodyAction<BasicNumberInsightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ni/basic/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api_key"] = ExpressionConverter.Convert(__workflow_apiKey);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             var __workflow_cnam = WorkflowExpression.Compile(cnam, nameof(cnam), required: false);
             return new DeferredBodyAction<StandardNumberInsightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ni/standard/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api_key"] = ExpressionConverter.Convert(__workflow_apiKey);

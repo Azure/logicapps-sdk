@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationDisruptionsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/disruptions/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/disruptions/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);

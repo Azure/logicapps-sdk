@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<LicenseAdvanced>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licenses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_license, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licenses/{0}", __workflow_license.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["accept"] = Convert.ToString("application/vnd.github+json");
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<CodeOfConduct>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codes_of_conduct/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_codeOfConduct, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codes_of_conduct/{0}", __workflow_codeOfConduct.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-GitHub-Api-Version"] = Convert.ToString("2022-11-28");

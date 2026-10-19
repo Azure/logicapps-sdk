@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             return new DeferredBodyAction<VideoStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VideoStatusResponse>(callPayload);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
             return new DeferredBodyAction<VideoPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);

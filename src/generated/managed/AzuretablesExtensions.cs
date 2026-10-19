@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<InsertEntityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTableResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables", __workflow_storageAccountName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1), __workflow_partitionKey.WithUrlEncoding(1), __workflow_rowKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetEntitiesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetEntityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1), __workflow_partitionKey.WithUrlEncoding(1), __workflow_rowKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTableResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTablesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables", __workflow_storageAccountName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1), __workflow_partitionKey.WithUrlEncoding(1), __workflow_rowKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1), __workflow_partitionKey.WithUrlEncoding(1), __workflow_rowKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsClientRequestId != null)
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1), __workflow_partitionKey.WithUrlEncoding(1), __workflow_rowKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
             var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_tableName.WithUrlEncoding(1), __workflow_partitionKey.WithUrlEncoding(1), __workflow_rowKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);

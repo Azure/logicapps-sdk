@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var __workflow_bodypermissionLevel = WorkflowExpression.Compile(bodypermissionLevel, nameof(bodypermissionLevel), required: false);
             return new DeferredBodyAction<CreateAFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/space/{0}/folder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/space/{0}/folder", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var __workflow_bodyfeaturesportfoliosportfolios = WorkflowExpression.Compile(bodyfeaturesportfoliosportfolios, nameof(bodyfeaturesportfoliosportfolios), required: false);
             return new DeferredBodyAction<CreateSpaceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/team/{0}/space", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/team/{0}/space", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<CreateAListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/folder/{0}/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/folder/{0}/list", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

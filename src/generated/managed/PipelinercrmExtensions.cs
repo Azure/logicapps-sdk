@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AccountsDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AccountsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<AccountsUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<AccountsCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<ContactsCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ContactsDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ContactsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<ContactsUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodyaccountRelations = WorkflowExpression.Compile(bodyaccountRelations, nameof(bodyaccountRelations), required: false);
             return new DeferredBodyAction<LeadsCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<LeadsDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<LeadsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
             return new DeferredBodyAction<LeadsUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodyopportunityRelations = WorkflowExpression.Compile(bodyopportunityRelations, nameof(bodyopportunityRelations), required: false);
             return new DeferredBodyAction<TasksCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TasksDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TasksGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<TasksUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycontactRelations = WorkflowExpression.Compile(bodycontactRelations, nameof(bodycontactRelations), required: false);
             return new DeferredBodyAction<OpportunitiesCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<OpportunitiesDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<OpportunitiesGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
             return new DeferredBodyAction<OpportunitiesUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);

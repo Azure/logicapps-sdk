@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/templates/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
             return new DeferredBodyAction<TemplatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/templates/{0}/run", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             return new DeferredBodyAction<KnowledgeGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             return new DeferredBodyAction<KnowledgeDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
             return new DeferredBodyAction<KnowledgePatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
             return new DeferredBodyAction<ToneGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tones/{0}", __workflow_toneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ToneGetResponse>(callPayload);
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredBodyAction<TonePatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tones/{0}", __workflow_toneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
             return new DeferredBodyAction<ToneDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tones/{0}", __workflow_toneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ToneDeleteResponse>(callPayload);

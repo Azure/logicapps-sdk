@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<CalendarEventList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_timeMin != null)
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_newEventisAllDay = WorkflowExpression.Compile(newEventisAllDay, nameof(newEventisAllDay), required: false);
             return new DeferredBodyAction<ResponseEvent>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var newEvent = new JObject();
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<ResponseEvent>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/calendars/{0}/events/{1}", __workflow_calendarId.WithUrlEncoding(1), __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEvent>(callPayload);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/calendars/{0}/events/{1}", __workflow_calendarId.WithUrlEncoding(1), __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_updatedEventisAllDay = WorkflowExpression.Compile(updatedEventisAllDay, nameof(updatedEventisAllDay), required: false);
             return new DeferredBodyAction<ResponseEvent>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/calendars/{0}/events/{1}", __workflow_calendarId.WithUrlEncoding(1), __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var updatedEvent = new JObject();
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_singleEvents = WorkflowExpression.Compile(singleEvents, nameof(singleEvents), required: false);
             return new DeferredBodyTrigger<CalendarEventChangedList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger4/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_singleEvents != null)
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/eventstarted/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/eventstarted/calendars/{0}/events", __workflow_calendarId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);

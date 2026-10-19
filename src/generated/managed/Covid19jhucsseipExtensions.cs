@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
             var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<GetCountryV2CountryCountryNameGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/country/{0}", __workflow_countryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(callPayload);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
             var __workflow_case = WorkflowExpression.Compile(@case, nameof(@case), required: true);
             return new DeferredBodyAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_case, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/timeseries/{0}", __workflow_case.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(callPayload);

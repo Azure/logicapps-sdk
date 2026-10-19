@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredBodyAction<ContainerGroupListResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", __workflow_subscriptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
             return new DeferredBodyAction<ContainerGroupListResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredBodyAction<ContainerGroup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_resourcezones = WorkflowExpression.Compile(resourcezones, nameof(resourcezones), required: false);
             return new DeferredBodyAction<ContainerGroup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredBodyAction<ContainerGroup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<UsageListResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_tail = WorkflowExpression.Compile(tail, nameof(tail), required: false);
             return new DeferredBodyAction<Logs>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1), __workflow_containerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerExecRequestterminalSizecols = WorkflowExpression.Compile(containerExecRequestterminalSizecols, nameof(containerExecRequestterminalSizecols), required: false);
             return new DeferredBodyAction<ContainerExecResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1), __workflow_containerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             return new DeferredBodyAction<ContainerAttachResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1), __workflow_containerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<CachedImagesListResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<CapabilitiesListResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_containerGroupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
             var __workflow_subnetName = WorkflowExpression.Compile(subnetName, nameof(subnetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualNetworkName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subnetName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_virtualNetworkName.WithUrlEncoding(1), __workflow_subnetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");

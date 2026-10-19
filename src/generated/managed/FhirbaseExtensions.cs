@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETAppointmentIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDResponse>(callPayload);
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
             return new DeferredBodyAction<DELETEAppointmentIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
             return new DeferredBodyAction<PUTAppointmentIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETAppointmentIDVERSIONResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Appointment/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDVERSIONResponse>(callPayload);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETAppointmentIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Appointment/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDHistoryResponse>(callPayload);
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETAppointmentResponseIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDResponse>(callPayload);
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
             return new DeferredBodyAction<DELETEAppointmentResponseIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
             return new DeferredBodyAction<PUTAppointmentResponseIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETAppointmentResponseIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDVersionResponse>(callPayload);
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETAppointmentResponseIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDHistoryResponse>(callPayload);
@@ -1041,7 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETDeviceIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDResponse>(callPayload);
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
             return new DeferredBodyAction<DELETEDeviceIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1146,7 +1146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
             return new DeferredBodyAction<PUTDeviceIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETDeviceIDVERSIONResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Device/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDVERSIONResponse>(callPayload);
@@ -1238,7 +1238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETDeviceIDHISTORYResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Device/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDHISTORYResponse>(callPayload);
@@ -1445,7 +1445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETEncounterIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDResponse>(callPayload);
@@ -1473,7 +1473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
             return new DeferredBodyAction<DELETEEncounterIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
             return new DeferredBodyAction<PUTEncounterIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1789,7 +1789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETEncounterIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Encounter/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDVersionResponse>(callPayload);
@@ -1802,7 +1802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETEncounterIDHISTORYResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Encounter/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDHISTORYResponse>(callPayload);
@@ -2009,7 +2009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETFlagIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDResponse>(callPayload);
@@ -2037,7 +2037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
             return new DeferredBodyAction<DELETEFlagIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2202,7 +2202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
             return new DeferredBodyAction<PUTFlagIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2353,7 +2353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETFlagIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Flag/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDVersionResponse>(callPayload);
@@ -2366,7 +2366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETFlagIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Flag/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDHistoryResponse>(callPayload);
@@ -2507,7 +2507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETLocationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDResponse>(callPayload);
@@ -2529,7 +2529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
             return new DeferredBodyAction<DELETELocationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2628,7 +2628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
             return new DeferredBodyAction<PUTLocationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2719,7 +2719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETLocationIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDVersionResponse>(callPayload);
@@ -2732,7 +2732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETLocationIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDHistoryResponse>(callPayload);
@@ -2850,7 +2850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETPatientIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Patient/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDResponse>(callPayload);
@@ -2872,7 +2872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             return new DeferredBodyAction<DELETEPatientIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Patient/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2955,7 +2955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             return new DeferredBodyAction<PUTPatientIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Patient/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3030,7 +3030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETPatientIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Patient/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDVersionResponse>(callPayload);
@@ -3043,7 +3043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETPatientIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Patient/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDHistoryResponse>(callPayload);
@@ -3190,7 +3190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETPersonIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Person/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDResponse>(callPayload);
@@ -3214,7 +3214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
             return new DeferredBodyAction<DELETEPersonIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Person/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3319,7 +3319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
             return new DeferredBodyAction<PUTPersonIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Person/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3414,7 +3414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETPersonIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Person/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDVersionResponse>(callPayload);
@@ -3427,7 +3427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETPersonIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Person/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDHistoryResponse>(callPayload);
@@ -3531,7 +3531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETPractitionerIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDResponse>(callPayload);
@@ -3554,7 +3554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
             return new DeferredBodyAction<DELETEPractitionerIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3652,7 +3652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
             return new DeferredBodyAction<PUTPractitionerIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3741,7 +3741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
             return new DeferredBodyAction<GETPractitionerIDVersionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_vid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDVersionResponse>(callPayload);
@@ -3754,7 +3754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETPractitionerIDHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDHistoryResponse>(callPayload);

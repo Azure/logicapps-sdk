@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<GetUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}.json", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserResponse>(callPayload);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
             var __workflow_organisation = WorkflowExpression.Compile(organisation, nameof(organisation), required: true);
             return new DeferredBodyAction<GetSpecificOrganisationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organisations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisation, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organisations/{0}.json", __workflow_organisation.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpecificOrganisationResponse>(callPayload);

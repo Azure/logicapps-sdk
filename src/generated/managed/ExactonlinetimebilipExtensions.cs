@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<DivisionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/hrm/Divisions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/hrm/Divisions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<EmploymentInternalRatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/EmploymentInternalRates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/EmploymentInternalRates", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourCostTypesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourCostTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourCostTypes", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryActivitiesByProjectResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryActivitiesByProject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourEntryActivitiesByProject", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentAccountsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourEntryRecentAccounts", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentAccountsByProjectResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccountsByProject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourEntryRecentAccountsByProject", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentHourTypesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourEntryRecentHourTypes", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentHourTypesByProjectResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypesByProject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourEntryRecentHourTypesByProject", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentProjectsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourEntryRecentProjects", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HoursByDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HoursByDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HoursByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursById", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HoursById", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourTypesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourTypes", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourTypesByDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourTypesByDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourTypesByProjectAndDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByProjectAndDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/HourTypesByProjectAndDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_projectRestrictionRebillingsprojectDescription = WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_projectRestrictionRebillingsprojectDescription = WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var projectRestrictionRebillings = new JObject();
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/ProjectRestrictionRebillings", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<RecentCostsByNumberOfWeeksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentCostsByNumberOfWeeks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/RecentCostsByNumberOfWeeks", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<RecentHoursResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHours", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/RecentHours", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<RecentHoursByNumberOfWeeksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHoursByNumberOfWeeks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/RecentHoursByNumberOfWeeks", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingAccountDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingAccountDetails", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingAccountDetailsByIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetailsByID", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingAccountDetailsByID", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingActivitiesAndExpensesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingActivitiesAndExpenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingActivitiesAndExpenses", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryAccountsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryAccounts", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryAccountsByDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryAccountsByProjectAndDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByProjectAndDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByProjectAndDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryProjectsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryProjects", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -908,7 +908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryProjectsByAccountAndDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByAccountAndDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByAccountAndDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryProjectsByDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByDate", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentAccountsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentAccounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentAccounts", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentActivitiesAndExpenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentActivitiesAndExpenses", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentHourCostTypesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentHourCostTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentHourCostTypes", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentProjectsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentProjects", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingItemDetails", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingItemDetailsByIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetailsByID", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingItemDetailsByID", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingProjectDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingProjectDetails", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1139,7 +1139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingProjectDetailsByIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetailsByID", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingProjectDetailsByID", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingRecentProjectsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingRecentProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/read/project/TimeAndBillingRecentProjects", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1190,7 +1190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeCorrections", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1223,7 +1223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_timeCorrectionsquantity = WorkflowExpression.Compile(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeCorrections", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_timeCorrectionsquantity = WorkflowExpression.Compile(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeCorrections", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var timeCorrections = new JObject();
@@ -1408,7 +1408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeCorrections", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -1493,7 +1493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_timeTransactionstype = WorkflowExpression.Compile(timeTransactionstype, nameof(timeTransactionstype), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
@@ -1817,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_timeTransactionstype = WorkflowExpression.Compile(timeTransactionstype, nameof(timeTransactionstype), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var timeTransactions = new JObject();
@@ -2096,7 +2096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/project/TimeTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
@@ -2114,7 +2114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ProjectTimeCostTransactionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sync/Project/TimeCostTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/sync/Project/TimeCostTransactions", __workflow_division.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)

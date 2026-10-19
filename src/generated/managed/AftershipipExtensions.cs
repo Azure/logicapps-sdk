@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<GetATrackingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<DeleteATrackingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_bodytrackingnote = WorkflowExpression.Compile(bodytrackingnote, nameof(bodytrackingnote), required: false);
             return new DeferredBodyAction<UpdateATrackingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<RetrackAnExpiredTrackingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/retrack", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}/retrack", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<MarkTrackingAsCompletedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/mark-as-completed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}/mark-as-completed", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<GetTrackingNotificationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<AddANotificationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}/{1}/add", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<RemoveANotificationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}/{1}/remove", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<GetLastCheckpointResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/last_checkpoint/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/last_checkpoint/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

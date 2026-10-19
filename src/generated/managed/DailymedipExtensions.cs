@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/history.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLHistoryResponse>(callPayload);
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLMediaResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/media.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLMediaResponse>(callPayload);
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLNDCResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/ndcs.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLNDCResponse>(callPayload);
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLPackagingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/packaging.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLPackagingResponse>(callPayload);

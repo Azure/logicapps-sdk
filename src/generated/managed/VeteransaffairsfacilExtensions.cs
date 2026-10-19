@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
             return new DeferredBodyAction<FacilityReadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/facilities/{0}", __workflow_facilityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FacilityReadResponse>(callPayload);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: false);
             return new DeferredBodyAction<DetailedServicesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/facilities/{0}/services", __workflow_facilityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_serviceIds != null)
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
             return new DeferredBodyAction<DetailedServiceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/facilities/{0}/services/{1}", __workflow_facilityId.WithUrlEncoding(1), __workflow_serviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DetailedServiceResponse>(callPayload);

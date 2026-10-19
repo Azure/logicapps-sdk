@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             return new DeferredBodyAction<GetLightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/light/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLightResponse>(callPayload);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_bodygradientpoints = WorkflowExpression.Compile(bodygradientpoints, nameof(bodygradientpoints), required: false);
             return new DeferredBodyAction<ExecuteLightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/light/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             return new DeferredBodyAction<GetDeviceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/device/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDeviceResponse>(callPayload);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_bodyidentifyaction = WorkflowExpression.Compile(bodyidentifyaction, nameof(bodyidentifyaction), required: false);
             return new DeferredBodyAction<ExecuteDeviceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/device/{0}", __workflow_deviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_sceneId = WorkflowExpression.Compile(sceneId, nameof(sceneId), required: true);
             return new DeferredBodyAction<GetSceneResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sceneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/scene/{0}", __workflow_sceneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSceneResponse>(callPayload);
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
             var __workflow_sceneId = WorkflowExpression.Compile(sceneId, nameof(sceneId), required: true);
             return new DeferredBodyAction<DeleteSceneResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sceneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/clip/v2/resource/scene/{0}", __workflow_sceneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteSceneResponse>(callPayload);

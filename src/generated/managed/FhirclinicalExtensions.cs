@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETAdverseEventIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodysuspectEntity = WorkflowExpression.Compile(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
             return new DeferredBodyAction<DELETEAdverseEventIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodysuspectEntity = WorkflowExpression.Compile(bodysuspectEntity, nameof(bodysuspectEntity), required: false);
             return new DeferredBodyAction<PUTAdverseEventIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AdverseEvent/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETAllergyIntoleranceIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyrecordedDate = WorkflowExpression.Compile(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
             return new DeferredBodyAction<DELETEAllergyIntoleranceIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -982,7 +982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyrecordedDate = WorkflowExpression.Compile(bodyrecordedDate, nameof(bodyrecordedDate), required: false);
             return new DeferredBodyAction<PUTAllergyIntoleranceIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/AllergyIntolerance/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETCarePlanIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -1353,7 +1353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyactivity = WorkflowExpression.Compile(bodyactivity, nameof(bodyactivity), required: false);
             return new DeferredBodyAction<DELETECarePlanIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1510,7 +1510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyactivity = WorkflowExpression.Compile(bodyactivity, nameof(bodyactivity), required: false);
             return new DeferredBodyAction<PUTCarePlanIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/CarePlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1826,7 +1826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETConditionIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Condition/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -1857,7 +1857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyonsetDateTime = WorkflowExpression.Compile(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
             return new DeferredBodyAction<DELETEConditionIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Condition/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2031,7 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyonsetDateTime = WorkflowExpression.Compile(bodyonsetDateTime, nameof(bodyonsetDateTime), required: false);
             return new DeferredBodyAction<PUTConditionIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Condition/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2355,7 +2355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETDiagnosticReportIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -2388,7 +2388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyconclusion = WorkflowExpression.Compile(bodyconclusion, nameof(bodyconclusion), required: false);
             return new DeferredBodyAction<DELETEDiagnosticReportIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2552,7 +2552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyconclusion = WorkflowExpression.Compile(bodyconclusion, nameof(bodyconclusion), required: false);
             return new DeferredBodyAction<PUTDiagnosticReportIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/DiagnosticReport/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2859,7 +2859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETMedicationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Medication/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -2889,7 +2889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodybatchexpirationDate = WorkflowExpression.Compile(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
             return new DeferredBodyAction<DELETEMedicationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Medication/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodybatchexpirationDate = WorkflowExpression.Compile(bodybatchexpirationDate, nameof(bodybatchexpirationDate), required: false);
             return new DeferredBodyAction<PUTMedicationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Medication/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3533,7 +3533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETMedicationRequestIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -3582,7 +3582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodysubstitutionreasoncoding = WorkflowExpression.Compile(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
             return new DeferredBodyAction<DELETEMedicationRequestIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3914,7 +3914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodysubstitutionreasoncoding = WorkflowExpression.Compile(bodysubstitutionreasoncoding, nameof(bodysubstitutionreasoncoding), required: false);
             return new DeferredBodyAction<PUTMedicationRequestIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/MedicationRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -4386,7 +4386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETMedicationStatementIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -4417,7 +4417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodydosage = WorkflowExpression.Compile(bodydosage, nameof(bodydosage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -4567,7 +4567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodydosage = WorkflowExpression.Compile(bodydosage, nameof(bodydosage), required: false);
             return new DeferredBodyAction<PUTMedicationStatementIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/MedicationStatement/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -4944,7 +4944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETObservationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Observation/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -4980,7 +4980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyreferenceRange = WorkflowExpression.Compile(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
             return new DeferredBodyAction<DELETEObservationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Observation/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -5181,7 +5181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodyreferenceRange = WorkflowExpression.Compile(bodyreferenceRange, nameof(bodyreferenceRange), required: false);
             return new DeferredBodyAction<PUTObservationIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Observation/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -5557,7 +5557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETProcedureIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -5592,7 +5592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<DELETEProcedureIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -5786,7 +5786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<PUTProcedureIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Procedure/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -6098,7 +6098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             return new DeferredBodyAction<GETRiskAssessmentIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Count != null)
@@ -6125,7 +6125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<DELETERiskAssessmentIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -6239,7 +6239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<PUTRiskAssessmentIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RiskAssessment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -6364,7 +6364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GETCareTeamIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/CareTeam/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CareTeam/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETCareTeamIDResponse>(callPayload);

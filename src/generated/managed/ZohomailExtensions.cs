@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
             return new DeferredBodyAction<SendMailResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/messages", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
             return new DeferredBodyAction<SaveDraftResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/draft", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/messages/draft", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<GetSenderDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSenderDetailsResponse>(callPayload);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: false);
             return new DeferredBodyAction<SearchMailResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/messages/search", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<GetAllFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllFolderResponse>(callPayload);
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<GetAllLabelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/labels", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllLabelResponse>(callPayload);
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<GetEmailContentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/content", __workflow_accountId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeBlockContent"] = Convert.ToString(true);
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<GetEmailAttachmentInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", __workflow_accountId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEmailAttachmentInfoResponse>(callPayload);
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", __workflow_accountId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

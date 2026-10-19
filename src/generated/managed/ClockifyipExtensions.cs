@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<GetClientsV1ResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/clients", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<GetTimeEntriesForUserV1ResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", __workflow_workspaceId.WithUrlEncoding(1), __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_start != null)

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
             var __workflow_datasetId = WorkflowExpression.Compile(datasetId, nameof(datasetId), required: true);
             return new DeferredBodyAction<GetDatasetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datasetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_datasetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDatasetResponse>(callPayload);

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             return new DeferredBodyAction<SchoolHolidaysPerSchoolYearResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_schoolyear, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", __workflow_schoolyear.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["output"] = Convert.ToString("json");

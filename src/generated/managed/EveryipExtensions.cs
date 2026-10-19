@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BrowseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/browse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cause, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/browse/{0}", __workflow_cause.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_take != null)
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
             var __workflow_cause = WorkflowExpression.Compile(cause, nameof(cause), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/search/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_term, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/search/{0}", __workflow_term.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_take != null)
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<DetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/nonprofit/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nonprofit/{0}", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DetailsResponse>(callPayload);

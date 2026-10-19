@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var __workflow_bodyinputDatarequestudfFields = WorkflowExpression.Compile(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
             return new DeferredBodyAction<CreateRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/requests", __workflow_serviceDeskInstance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var __workflow_bodyinputDatarequestudfFields = WorkflowExpression.Compile(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
             return new DeferredBodyAction<UpdateRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/requests/{1}", __workflow_serviceDeskInstance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var __workflow_bodyinputDatachangeudfFields = WorkflowExpression.Compile(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
             return new DeferredBodyAction<CreateChangeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/changes", __workflow_serviceDeskInstance.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
             var __workflow_bodyinputDatachangeudfFields = WorkflowExpression.Compile(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
             return new DeferredBodyAction<UpdateChangeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/{0}/api/v3/changes/{1}", __workflow_serviceDeskInstance.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

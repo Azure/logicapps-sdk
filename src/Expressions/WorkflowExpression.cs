@@ -15,13 +15,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     internal abstract class WorkflowExpression
     {
         internal abstract JToken LiteralToken { get; }
-        internal abstract string Render();
+
+        internal string Render() =>
+            this.ToFragment().Render();
+
+        private protected abstract WorkflowExpressionFragment ToFragment();
 
         internal static WorkflowExpression<T> Literal<T>(T value) =>
             new WorkflowExpression<T>(Serialize(value), null);
 
         internal static WorkflowExpression<T> Create<T>(WorkflowExpressionFragment root) =>
             new WorkflowExpression<T>(null, root ?? throw new ArgumentNullException(nameof(root)));
+
+        internal static WorkflowExpression<string> GeneratedPath(
+            string format,
+            params WorkflowExpression<string>[] arguments)
+        {
+            if (format == null) throw new ArgumentNullException(nameof(format));
+            if (arguments == null) throw new ArgumentNullException(nameof(arguments));
+
+            var pieces = new List<WorkflowExpressionFragment>();
+            var text = new StringBuilder();
+            for (var index = 0; index < format.Length; index++)
+            {
+                if (format[index] != '{')
+                {
+                    text.Append(format[index]);
+                    continue;
+                }
+
+                var end = format.IndexOf('}', index);
+                if (end < 0 ||
+                    !int.TryParse(format.Substring(index + 1, end - index - 1), out var position) ||
+                    position < 0 ||
+                    position >= arguments.Length)
+                {
+                    throw new FormatException("Invalid generated connector path.");
+                }
+
+                if (text.Length != 0)
+                {
+                    pieces.Add(CSharpSyntaxGenerator.Literal(text.ToString(), typeof(string)));
+                    text.Clear();
+                }
+
+                pieces.Add((arguments[position] ?? throw new ArgumentException(
+                    "Generated connector path arguments cannot contain null.",
+                    nameof(arguments))).ToFragment());
+                index = end;
+            }
+
+            if (text.Length != 0 || pieces.Count == 0)
+                pieces.Add(CSharpSyntaxGenerator.Literal(text.ToString(), typeof(string)));
+
+            var result = pieces[0];
+            for (var index = 1; index < pieces.Count; index++)
+                result = CSharpSyntaxGenerator.Binary(result, "+", pieces[index]);
+
+            return Create<string>(result);
+        }
 
         internal static WorkflowExpression<T> Compile<T>(
             Expression<Func<T>> expression,
@@ -61,10 +113,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (value is double number && (double.IsNaN(number) || double.IsInfinity(number)) ||
                 value is float single && (float.IsNaN(single) || float.IsInfinity(single)))
                 throw new NotSupportedException("Non-finite values cannot be workflow literals.");
+
             if (value is Uri uri) return new JValue(uri.OriginalString);
             if (value is HttpMethod method) return new JValue(method.Method);
             if (value is byte[] bytes)
                 return new JObject { ["$content-type"] = "application/octet-stream", ["$content"] = Convert.ToBase64String(bytes) };
+
             var serializer = new JsonSerializer { Culture = CultureInfo.InvariantCulture, TypeNameHandling = TypeNameHandling.None };
             serializer.Converters.Add(new StringEnumConverter());
             return JToken.FromObject(value, serializer);
@@ -78,16 +132,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         internal WorkflowExpression(JToken literal, WorkflowExpressionFragment root)
         {
+            if ((literal == null) == (root == null))
+                throw new ArgumentException("A workflow expression must contain either a literal or source.");
+
             this.literal = literal;
             this.root = root;
         }
 
         internal override JToken LiteralToken => this.literal?.DeepClone();
 
-        internal override string Render()
+        private protected override WorkflowExpressionFragment ToFragment()
         {
-            if (this.literal != null) throw new InvalidOperationException("A literal has no source expression.");
-            return this.root.Render();
+            if (this.root != null) return this.root;
+            var value = this.literal.Type == JTokenType.Null ? default(T) : this.literal.ToObject<T>();
+            return CSharpSyntaxGenerator.Literal(value, typeof(T));
+        }
+
+        internal WorkflowExpression<TResult> Cast<TResult>() =>
+            WorkflowExpression.Create<TResult>(
+                CSharpSyntaxGenerator.Cast(typeof(TResult), this.ToFragment()));
+
+        internal WorkflowExpression<string> WithUrlEncoding(int times)
+        {
+            if (times < 0) throw new ArgumentOutOfRangeException(nameof(times));
+            var fragment = this.ToFragment();
+            for (var index = 0; index < times; index++)
+                fragment = CSharpSyntaxGenerator.Invocation("encodeURIComponent", new[] { fragment });
+
+            return WorkflowExpression.Create<string>(fragment);
+        }
+
+        internal WorkflowExpression<string> WithBase64Encoding()
+        {
+            if (this.literal != null)
+            {
+                if (typeof(T) == typeof(byte[]))
+                    return WorkflowExpression.Literal(this.literal.Value<string>("$content"));
+
+                var text = this.literal.Type == JTokenType.String
+                    ? this.literal.Value<string>()
+                    : this.literal.ToString(Formatting.None);
+
+                return WorkflowExpression.Create<string>(
+                    CSharpSyntaxGenerator.Invocation(
+                        "base64",
+                        new[] { CSharpSyntaxGenerator.Literal(text, typeof(string)) }));
+            }
+
+            var fragment = typeof(T) == typeof(byte[])
+                ? CSharpSyntaxGenerator.Invocation(
+                    CSharpSyntaxGenerator.StaticMemberAccess(
+                        typeof(Convert),
+                        nameof(Convert.ToBase64String)),
+                    Array.Empty<Type>(),
+                    new[] { this.root })
+                : CSharpSyntaxGenerator.Invocation("base64", new[] { this.root });
+
+            return WorkflowExpression.Create<string>(fragment);
         }
     }
 

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AdvisorActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analytics/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/analytics/actions/{0}", __workflow_actionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analytics/advisorRecommendations/{0}/resources", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scenario, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/analytics/advisorRecommendations/{0}/resources", __workflow_scenario.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_lcid = WorkflowExpression.Compile(lcid, nameof(lcid), required: false);
             return new DeferredBodyAction<ApplicationPackageContinuationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/appmanagement/environments/{0}/applicationPackages", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_appInstallState != null)
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodypayloadValue = WorkflowExpression.Compile(bodypayloadValue, nameof(bodypayloadValue), required: false);
             return new DeferredBodyAction<InstancePackage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages/{1}/install", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_uniqueName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/appmanagement/environments/{0}/applicationPackages/{1}/install", __workflow_environmentId.WithUrlEncoding(1), __workflow_uniqueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<InstancePackageOperationPollingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/appmanagement/environments/{0}/operations/{1}", __workflow_environmentId.WithUrlEncoding(1), __workflow_operationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/authorization/roleAssignments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roleAssignmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/authorization/roleAssignments/{0}", __workflow_roleAssignmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ListConnectorsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/connectivity/environments/{0}/connectors", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<GetConnectorByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_connectorId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/connectivity/environments/{0}/connectors/{1}", __workflow_environmentId.WithUrlEncoding(1), __workflow_connectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BotQuarantineStatus>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine", __workflow_environmentId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BotQuarantineStatus>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsQuarantined", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsQuarantined", __workflow_environmentId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BotQuarantineStatus>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsUnquarantined", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsUnquarantined", __workflow_environmentId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/backups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_backupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/backups/{1}", __workflow_environmentId.WithUrlEncoding(1), __workflow_backupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Disable", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/Disable", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/disableDisasterRecovery", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disasterRecoveryDrill", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/disasterRecoveryDrill", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Enable", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/Enable", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/enableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/enableDisasterRecovery", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/forceFailover", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/forceFailover", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/recover", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/recover", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = WorkflowExpression.Compile(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations, nameof(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetEnvironmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/copy", __workflow_targetEnvironmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodyskipAuditData = WorkflowExpression.Compile(bodyskipAuditData, nameof(bodyskipAuditData), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetEnvironmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}/Restore", __workflow_targetEnvironmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroupOperations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environmentGroupOperations/{0}", __workflow_operationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environmentGroups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/addEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environmentGroups/{0}/addEnvironment/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/removeEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environmentGroups/{0}/removeEnvironment/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<EnvironmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environmentmanagement/environments/{0}", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_validateOnly != null)
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<Policy>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_policyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/governance/ruleBasedPolicies/{0}", __workflow_policyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodyruleSets = WorkflowExpression.Compile(bodyruleSets, nameof(bodyruleSets), required: false);
             return new DeferredBodyAction<RuleAssignment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_policyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/governance/ruleBasedPolicies/{0}", __workflow_policyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_policyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/governance/ruleBasedPolicies/{0}/assignments", __workflow_policyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environmentGroups/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/governance/ruleBasedPolicies/environmentGroups/{0}/assignments", __workflow_environmentGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environments/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/governance/ruleBasedPolicies/environments/{0}/assignments", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<CrossTenantConnectionReport>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/crossTenantConnectionReports/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/governance/crossTenantConnectionReports/{0}", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1116,7 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1150,7 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}/environments", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1181,7 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}/environments/{1}", __workflow_billingPolicyId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1197,7 +1197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodyenvironmentIds = WorkflowExpression.Compile(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}/environments/add", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodyenvironmentIds = WorkflowExpression.Compile(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}/environments/remove", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1254,7 +1254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/refreshProvisioningStatus", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}/refreshProvisioningStatus", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1269,7 +1269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AllocationsByEnvironmentResponseModelV1>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/environments/{0}/allocations", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1285,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodycurrencyAllocations = WorkflowExpression.Compile(bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
             return new DeferredBodyAction<AllocationsByEnvironmentResponseModelV1>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/environments/{0}/allocations", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1313,7 +1313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/billingPolicy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/environments/{0}/billingPolicy", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1482,7 +1482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<IsvContractResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_isvContractId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/isvContracts/{0}", __workflow_isvContractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
             return new DeferredBodyAction<IsvContractResponseModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_isvContractId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/isvContracts/{0}", __workflow_isvContractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1592,7 +1592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_isvContractId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/isvContracts/{0}", __workflow_isvContractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1645,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<ResourceArrayPowerApp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/powerapps/environments/{0}/apps", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$top"] = Convert.ToString(250);
@@ -1666,7 +1666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<PowerApp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_app, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/powerapps/environments/{0}/apps/{1}", __workflow_environmentId.WithUrlEncoding(1), __workflow_app.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -1681,7 +1681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/usermanagement/environments/{0}/user/applyAdminRole", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/usermanagement/environments/{0}/user/applyAdminRole", __workflow_environmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);

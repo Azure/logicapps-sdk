@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_bodydatacomment = WorkflowExpression.Compile(bodydatacomment, nameof(bodydatacomment), required: false);
             return new DeferredBodyAction<AddCommentResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/tasks/{0}/stories", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskResponseV2>(callPayload);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectResponseV2>(callPayload);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskResponseV2>(callPayload);
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponseV2>(callPayload);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             return new DeferredBodyAction<ListUsersResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workspaces/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workspaces/{0}/users", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListUsersResponseV2>(callPayload);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             return new DeferredBodyAction<ListTeamsResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspace, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/organizations/{0}/teams", __workflow_workspace.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
             var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
             return new DeferredBodyAction<Scan>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scanId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/scans/{0}", __workflow_scanId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Scan>(callPayload);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
             var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scanId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/scans/{0}/screenshot", __workflow_scanId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

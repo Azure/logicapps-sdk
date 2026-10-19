@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/messages", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sendToAll != null)
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/actions", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_actionType != null)
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_requestcomment = WorkflowExpression.Compile(requestcomment, nameof(requestcomment), required: false);
             return new DeferredBodyAction<PostReactionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/reaction", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_requestmessage = WorkflowExpression.Compile(requestmessage, nameof(requestmessage), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/messages", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_requestsubGroups = WorkflowExpression.Compile(requestsubGroups, nameof(requestsubGroups), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/subgroups", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_requestlongDescription = WorkflowExpression.Compile(requestlongDescription, nameof(requestlongDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/subgroups", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_subGroupId = WorkflowExpression.Compile(subGroupId, nameof(subGroupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/subgroups/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_subGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_requestmembers = WorkflowExpression.Compile(requestmembers, nameof(requestmembers), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/members", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/subscribers/add", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/members/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/webhook/{0}", __workflow_webhookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

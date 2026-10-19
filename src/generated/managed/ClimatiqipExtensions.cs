@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
             return new DeferredBodyAction<ComputeCPUResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/cpu", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/cpu", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
             return new DeferredBodyAction<ComputeStorageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/storage", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/storage", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
             return new DeferredBodyAction<ComputeMemoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/memory", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/memory", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

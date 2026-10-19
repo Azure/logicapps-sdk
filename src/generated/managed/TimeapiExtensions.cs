@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<DayOfTheWeekResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Conversion/DayOfTheWeek/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Conversion/DayOfTheWeek/{0}", __workflow_date.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DayOfTheWeekResult>(callPayload);

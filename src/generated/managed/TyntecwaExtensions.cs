@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             var __workflow_whatsAppBusinessNumber = WorkflowExpression.Compile(whatsAppBusinessNumber, nameof(whatsAppBusinessNumber), required: true);
             return new DeferredBodyAction<TestPhoneNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_whatsAppBusinessNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/channels/whatsapp/phone-numbers/{0}", __workflow_whatsAppBusinessNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TestPhoneNumberResponse>(callPayload);
@@ -1757,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<StatusCheckV3Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/messages/{0}/status", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
@@ -1772,7 +1772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
             var __workflow_wABA = WorkflowExpression.Compile(wABA, nameof(wABA), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_wABA, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", __workflow_wABA.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

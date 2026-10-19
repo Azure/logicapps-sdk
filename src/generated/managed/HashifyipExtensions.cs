@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
             return new DeferredBodyAction<SHA1GETResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_digestFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha1/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<M200>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_digestFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha1/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Hashify-Process"] = ExpressionConverter.Convert(__workflow_xHashifyProcess);
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var __workflow_digestFormat = WorkflowExpression.Compile(digestFormat, nameof(digestFormat), required: true);
             return new DeferredBodyAction<SHA256GETResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_digestFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha256/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SHA256BodyPOSTResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hash/sha256/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_digestFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hash/sha256/{0}", __workflow_digestFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             var __workflow_keyLength = WorkflowExpression.Compile(keyLength, nameof(keyLength), required: true);
             return new DeferredBodyAction<M200>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keygen/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyLength, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keygen/{0}", __workflow_keyLength.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<M200>(callPayload);

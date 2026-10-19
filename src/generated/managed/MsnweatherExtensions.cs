@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyAction<CurrentWeather>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/current/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/current/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyAction<WeatherForecast>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forecast/today/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forecast/today/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyAction<WeatherForecast>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forecast/tomorrow/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forecast/tomorrow/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyTrigger<CurrentWeather>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/current/weather/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/current/weather/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Measure"] = ExpressionConverter.Convert(__workflow_measure);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyTrigger<CurrentWeather>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/current/conditions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/current/conditions/{0}", __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);

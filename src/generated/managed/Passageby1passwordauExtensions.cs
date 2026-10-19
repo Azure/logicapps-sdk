@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Passageby1passwordau
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             return new DeferredBodyAction<OpenIdConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/apps/{0}/.well-known/openid-configuration", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/apps/{0}/.well-known/openid-configuration", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OpenIdConfiguration>(callPayload);

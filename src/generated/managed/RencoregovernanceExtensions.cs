@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
             var __workflow_checkId = WorkflowExpression.Compile(checkId, nameof(checkId), required: true);
             return new DeferredBodyAction<GetViolationsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_checkId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", __workflow_workspaceId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1), __workflow_checkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetViolationsResponse>(callPayload);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
             var __workflow_checkId = WorkflowExpression.Compile(checkId, nameof(checkId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_checkId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", __workflow_workspaceId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1), __workflow_checkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

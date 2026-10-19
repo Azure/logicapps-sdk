@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyendActiondescription = WorkflowExpression.Compile(bodyendActiondescription, nameof(bodyendActiondescription), required: false);
             return new DeferredBodyAction<FinishActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/actions/{1}", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewAssetsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyassets = WorkflowExpression.Compile(bodyassets, nameof(bodyassets), required: false);
             return new DeferredBodyAction<CreateAssetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<ViewAssetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAssetResponse>(callPayload);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodycommentAsset = WorkflowExpression.Compile(bodycommentAsset, nameof(bodycommentAsset), required: false);
             return new DeferredBodyAction<UpdateAssetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<ViewAssetLinksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/asset-links", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAssetLinksResponse>(callPayload);
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_parentAssetId = WorkflowExpression.Compile(parentAssetId, nameof(parentAssetId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1), __workflow_parentAssetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodymonthlyPayment = WorkflowExpression.Compile(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
             return new DeferredBodyAction<CreateAssetLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1), __workflow_parentAssetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodymonthlyPayment = WorkflowExpression.Compile(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
             return new DeferredBodyAction<UpdateAssetLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1), __workflow_parentAssetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_childAssetId = WorkflowExpression.Compile(childAssetId, nameof(childAssetId), required: true);
             return new DeferredBodyAction<ViewAssetLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childAssetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_parentAssetId.WithUrlEncoding(1), __workflow_childAssetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAssetLinkResponse>(callPayload);
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewCatalogAssetsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/catalog-assets", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             return new DeferredBodyAction<ViewCatalogAssetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_catalogId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/catalog-assets/{1}", __workflow_account.WithUrlEncoding(1), __workflow_catalogId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewCatalogAssetResponse>(callPayload);
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ViewCatalogRequestsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/catalog-requests", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewCatalogRequestsPathListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/catalog-requests-paths", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             return new DeferredBodyAction<ViewCatalogRequestPathResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_catalogId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/catalog-requests-paths/{1}", __workflow_account.WithUrlEncoding(1), __workflow_catalogId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewCatalogRequestPathResponse>(callPayload);
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             return new DeferredBodyAction<ViewCatalogRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_catalogId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/catalog-requests/{1}", __workflow_account.WithUrlEncoding(1), __workflow_catalogId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewCatalogRequestResponse>(callPayload);
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewConfigurationItemsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<ViewConfigurationItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}", __workflow_account.WithUrlEncoding(1), __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewConfigurationItemResponse>(callPayload);
@@ -1054,7 +1054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<ViewConfigurationItemLinksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links", __workflow_account.WithUrlEncoding(1), __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewConfigurationItemLinksResponse>(callPayload);
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
             return new DeferredBodyAction<ViewConfigurationItemLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_parentCiId.WithUrlEncoding(1), __workflow_childCiId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewConfigurationItemLinkResponse>(callPayload);
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_parentCiId.WithUrlEncoding(1), __workflow_childCiId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1101,7 +1101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyblocking = WorkflowExpression.Compile(bodyblocking, nameof(bodyblocking), required: false);
             return new DeferredBodyAction<CreateConfigurationItemLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_parentCiId.WithUrlEncoding(1), __workflow_childCiId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1133,7 +1133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyrelationTypeID = WorkflowExpression.Compile(bodyrelationTypeID, nameof(bodyrelationTypeID), required: false);
             return new DeferredBodyAction<UpdateConfigurationItemLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_parentCiId.WithUrlEncoding(1), __workflow_childCiId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1169,7 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewEntitiesListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/departments", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_departmentId = WorkflowExpression.Compile(departmentId, nameof(departmentId), required: true);
             return new DeferredBodyAction<ViewEntityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_departmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/departments/{1}", __workflow_account.WithUrlEncoding(1), __workflow_departmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewEntityResponse>(callPayload);
@@ -1236,7 +1236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodydEPARTMENTL6 = WorkflowExpression.Compile(bodydEPARTMENTL6, nameof(bodydEPARTMENTL6), required: false);
             return new DeferredBodyAction<UpdateDepartmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_departmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/departments/{1}", __workflow_account.WithUrlEncoding(1), __workflow_departmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1446,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewEmployeesListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/employees", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -1468,7 +1468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyemployees = WorkflowExpression.Compile(bodyemployees, nameof(bodyemployees), required: false);
             return new DeferredBodyAction<CreateEmployeeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/employees", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1495,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             return new DeferredBodyAction<ViewEmployeeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_employeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/employees/{1}", __workflow_account.WithUrlEncoding(1), __workflow_employeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewEmployeeResponse>(callPayload);
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodywAVEADDRESS = WorkflowExpression.Compile(bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
             return new DeferredBodyAction<UpdateEmployeeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_employeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/employees/{1}", __workflow_account.WithUrlEncoding(1), __workflow_employeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1841,7 +1841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewKnownErrorsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/knownerrors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/knownerrors", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -1863,7 +1863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_kpId = WorkflowExpression.Compile(kpId, nameof(kpId), required: true);
             return new DeferredBodyAction<ViewKnownErrorsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/knownerrors/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_kpId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/knownerrors/{1}", __workflow_account.WithUrlEncoding(1), __workflow_kpId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewKnownErrorsResponse>(callPayload);
@@ -1880,7 +1880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewLocationsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/locations", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -1902,7 +1902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
             return new DeferredBodyAction<ViewLocationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_locationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/locations/{1}", __workflow_account.WithUrlEncoding(1), __workflow_locationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewLocationResponse>(callPayload);
@@ -1962,7 +1962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyeWIFILOGIN = WorkflowExpression.Compile(bodyeWIFILOGIN, nameof(bodyeWIFILOGIN), required: false);
             return new DeferredBodyAction<UpdateLocationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_locationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/locations/{1}", __workflow_account.WithUrlEncoding(1), __workflow_locationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2261,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewManufacturerListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/manufacturers", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -2281,7 +2281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_manufacturerId = WorkflowExpression.Compile(manufacturerId, nameof(manufacturerId), required: true);
             return new DeferredBodyAction<ViewManufacturerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_manufacturerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/manufacturers/{1}", __workflow_account.WithUrlEncoding(1), __workflow_manufacturerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewManufacturerResponse>(callPayload);
@@ -2298,7 +2298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewRequestsIncidentsListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -2320,7 +2320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: false);
             return new DeferredBodyAction<CreateRequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2347,7 +2347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewRequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewRequestIncidentResponse>(callPayload);
@@ -2362,7 +2362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyclosed = WorkflowExpression.Compile(bodyclosed, nameof(bodyclosed), required: false);
             return new DeferredBodyAction<CloseRequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2455,7 +2455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<UpdateRequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2872,7 +2872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewRequestIncidentCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/comment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/comment", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewRequestIncidentCommentResponse>(callPayload);
@@ -2886,7 +2886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<GetRequestIncidentDocumentListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/documents", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRequestIncidentDocumentListResponse>(callPayload);
@@ -2901,7 +2901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
             return new DeferredBodyAction<UploadAndAttachADocumentToARequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/documents", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2926,7 +2926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodydoneById = WorkflowExpression.Compile(bodydoneById, nameof(bodydoneById), required: false);
             return new DeferredBodyAction<RestartRequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/restart", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2961,7 +2961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodydoneById = WorkflowExpression.Compile(bodydoneById, nameof(bodydoneById), required: false);
             return new DeferredBodyAction<SuspendRequestIncidentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/suspend", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/suspend", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3010,7 +3010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodytimeCost = WorkflowExpression.Compile(bodytimeCost, nameof(bodytimeCost), required: false);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/tasks", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3126,7 +3126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewSlasListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/slas", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_search != null)
@@ -3148,7 +3148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_slaId = WorkflowExpression.Compile(slaId, nameof(slaId), required: true);
             return new DeferredBodyAction<ViewSlaResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slaId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/slas/{1}", __workflow_account.WithUrlEncoding(1), __workflow_slaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewSlaResponse>(callPayload);
@@ -3161,7 +3161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewAllAtributesAssetsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/asset-characteristics", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/asset-characteristics", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAllAtributesAssetsResponse>(callPayload);
@@ -3176,7 +3176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_characteristicId = WorkflowExpression.Compile(characteristicId, nameof(characteristicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_characteristicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1), __workflow_characteristicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -3193,7 +3193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodydATA2 = WorkflowExpression.Compile(bodydATA2, nameof(bodydATA2), required: false);
             return new DeferredBodyAction<UpdateanAttributeofanAssetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_characteristicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1), __workflow_characteristicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3251,7 +3251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<CreateCIunavailabilityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/50006/configuration-items/{0}", __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CreateCIunavailabilityResponse>(callPayload);
@@ -3264,7 +3264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<EndCIunavailabilityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/50006/configuration-items/{0}", __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EndCIunavailabilityResponse>(callPayload);
@@ -3277,7 +3277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<ViewlinksimpactonCIResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacting", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacting", __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewlinksimpactonCIResponse>(callPayload);
@@ -3290,7 +3290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<ViewlinksimpactbyCIResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacted", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacted", __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewlinksimpactbyCIResponse>(callPayload);
@@ -3303,7 +3303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewTicketStatusListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/status", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewTicketStatusListResponse>(callPayload);
@@ -3316,7 +3316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListProblemsAttachedTicketsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problem-links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/problem-links", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListProblemsAttachedTicketsResponse>(callPayload);
@@ -3330,7 +3330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewListProblemsAttachedATicketsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/problems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/problems", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListProblemsAttachedATicketsResponse>(callPayload);
@@ -3344,7 +3344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewListTicketsAttachedtoaProblemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems/{1}/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/problems/{1}/requests", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListTicketsAttachedtoaProblemResponse>(callPayload);
@@ -3357,7 +3357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListQuestionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListQuestionsResponse>(callPayload);
@@ -3370,7 +3370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListQuestionsWithResponseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions-result", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListQuestionsWithResponseResponse>(callPayload);
@@ -3384,7 +3384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
             return new DeferredBodyAction<ViewaQuestionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions/{1}", __workflow_account.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewaQuestionResponse>(callPayload);
@@ -3398,7 +3398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<ViewAllResponsesListQuestionsofaTicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions-result/{1}", __workflow_account.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAllResponsesListQuestionsofaTicketResponse>(callPayload);
@@ -3413,7 +3413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
             return new DeferredBodyAction<ViewResponseQuestionTicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", __workflow_account.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewResponseQuestionTicketResponse>(callPayload);
@@ -3453,7 +3453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodylASTQUESTIONNAIRE = WorkflowExpression.Compile(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
             return new DeferredBodyAction<CreateResponseQuestionTicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", __workflow_account.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3650,7 +3650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodylASTQUESTIONNAIRE = WorkflowExpression.Compile(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
             return new DeferredBodyAction<UpdateResponseQuestionTicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", __workflow_account.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3820,7 +3820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListQuestionnairesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questionnaires", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questionnaires", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListQuestionnairesResponse>(callPayload);
@@ -3834,7 +3834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_questionnaireId = WorkflowExpression.Compile(questionnaireId, nameof(questionnaireId), required: true);
             return new DeferredBodyAction<ViewQuestionnaireResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questionnaires/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionnaireId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/questionnaires/{1}", __workflow_account.WithUrlEncoding(1), __workflow_questionnaireId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewQuestionnaireResponse>(callPayload);
@@ -3847,7 +3847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListProblemsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/problems", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListProblemsResponse>(callPayload);
@@ -3861,7 +3861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewProblemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/problems/{1}", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewProblemResponse>(callPayload);
@@ -3874,7 +3874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListNewsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/news", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListNewsResponse>(callPayload);
@@ -3887,7 +3887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<CreateNewsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/news", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CreateNewsResponse>(callPayload);
@@ -3901,7 +3901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<ViewNewsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/news/{1}", __workflow_account.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewNewsResponse>(callPayload);
@@ -3915,7 +3915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<UpdateNewsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/news/{1}", __workflow_account.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UpdateNewsResponse>(callPayload);
@@ -3928,7 +3928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<ViewListActionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/actions", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListActionsResponse>(callPayload);
@@ -4028,7 +4028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyiSBILLINGREVIEWED = WorkflowExpression.Compile(bodyiSBILLINGREVIEWED, nameof(bodyiSBILLINGREVIEWED), required: false);
             return new DeferredBodyAction<CreateActionTicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/actions", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -4565,7 +4565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<ViewAllAtributesofanAssetsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/asset-characteristics/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/asset-characteristics/{1}", __workflow_account.WithUrlEncoding(1), __workflow_assetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAllAtributesofanAssetsResponse>(callPayload);
@@ -4580,7 +4580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/requests/{1}/documents/{2}", __workflow_account.WithUrlEncoding(1), __workflow_rfcNumber.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -4601,7 +4601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodycommentAsset = WorkflowExpression.Compile(bodycommentAsset, nameof(bodycommentAsset), required: false);
             return new DeferredBodyAction<UpdateCIResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/assets/{1}/", __workflow_account.WithUrlEncoding(1), __workflow_ciId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

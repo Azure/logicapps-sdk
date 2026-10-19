@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
             var __workflow_reportDefinitionId = WorkflowExpression.Compile(reportDefinitionId, nameof(reportDefinitionId), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connector/powerautomate/triggers/{0}/reports", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportDefinitionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/connector/powerautomate/triggers/{0}/reports", __workflow_reportDefinitionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);

@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentAddressId = WorkflowExpression.Compile(constituentAddressId, nameof(constituentAddressId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/addresses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentAddressId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/addresses/{0}", __workflow_constituentAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/addresses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentAddressId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/addresses/{0}", __workflow_constituentAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_alternateLookupId = WorkflowExpression.Compile(alternateLookupId, nameof(alternateLookupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/alternatelookupids/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_alternateLookupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/alternatelookupids/{0}", __workflow_alternateLookupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyalternateLookupID = WorkflowExpression.Compile(bodyalternateLookupID, nameof(bodyalternateLookupID), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/alternatelookupids/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_alternateLookupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/alternatelookupids/{0}", __workflow_alternateLookupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentAppealId = WorkflowExpression.Compile(constituentAppealId, nameof(constituentAppealId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentappeals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentAppealId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentappeals/{0}", __workflow_constituentAppealId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentappeals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentAppealId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentappeals/{0}", __workflow_constituentAppealId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgConstituentAppealCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentappeals/{0}/appeals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentappeals/{0}/appeals", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentAppealCollection>(callPayload);
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentAttributeId = WorkflowExpression.Compile(constituentAttributeId, nameof(constituentAttributeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentattributes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentAttributeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentattributes/{0}", __workflow_constituentAttributeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentCorrespondenceId = WorkflowExpression.Compile(constituentCorrespondenceId, nameof(constituentCorrespondenceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentcorrespondencecodes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentCorrespondenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentcorrespondencecodes/{0}", __workflow_constituentCorrespondenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentcorrespondencecodes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentCorrespondenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentcorrespondencecodes/{0}", __workflow_constituentCorrespondenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentNoteId = WorkflowExpression.Compile(constituentNoteId, nameof(constituentNoteId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentnotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentNoteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentnotes/{0}", __workflow_constituentNoteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyhTML = WorkflowExpression.Compile(bodyhTML, nameof(bodyhTML), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituentnotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentNoteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituentnotes/{0}", __workflow_constituentNoteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1118,7 +1118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_includeFormer = WorkflowExpression.Compile(includeFormer, nameof(includeFormer), required: false);
             return new DeferredBodyAction<ConmgAddressCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/addresses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/addresses", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_includeFormer != null)
@@ -1147,7 +1147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgAlternateLookupIDCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/alternatelookupids", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/alternatelookupids", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgAlternateLookupIDCollection>(callPayload);
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgAttributeCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/constituentattributelist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/constituentattributelist", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgAttributeCollection>(callPayload);
@@ -1173,7 +1173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgConstituentPrimaryContactInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/contactview", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/contactview", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentPrimaryContactInfo>(callPayload);
@@ -1186,7 +1186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgEducationCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/educationalhistories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/educationalhistories", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgEducationCollection>(callPayload);
@@ -1199,7 +1199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgEmailAddressCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/emailaddresses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/emailaddresses", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgEmailAddressCollection>(callPayload);
@@ -1212,7 +1212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgPhoneCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/phones", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/phones", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgPhoneCollection>(callPayload);
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgConstituentProfilePicture>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/profilepicture", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/profilepicture", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentProfilePicture>(callPayload);
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_includeInactive = WorkflowExpression.Compile(includeInactive, nameof(includeInactive), required: false);
             return new DeferredBodyAction<ConmgEmploymentHistoryCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/relationshipjobsinfo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/relationshipjobsinfo", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_includeInactive != null)
@@ -1256,7 +1256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_dateRange = WorkflowExpression.Compile(dateRange, nameof(dateRange), required: false);
             return new DeferredBodyAction<ConmgSolicitCodeCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/solicitcodes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/solicitcodes", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_showExpired != null)
@@ -1273,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgTributeCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/tributes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/tributes", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgTributeCollection>(callPayload);
@@ -1286,7 +1286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgConstituentSummaryProfile>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/constituents/{0}/view", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/view", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentSummaryProfile>(callPayload);
@@ -1520,7 +1520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_educationalHistoryId = WorkflowExpression.Compile(educationalHistoryId, nameof(educationalHistoryId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/educationalhistories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_educationalHistoryId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/educationalhistories/{0}", __workflow_educationalHistoryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -1558,7 +1558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/educationalhistories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_educationalHistoryId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/educationalhistories/{0}", __workflow_educationalHistoryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1862,7 +1862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_emailAddressId = WorkflowExpression.Compile(emailAddressId, nameof(emailAddressId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/emailaddresses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailAddressId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/emailaddresses/{0}", __workflow_emailAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -1887,7 +1887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/emailaddresses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailAddressId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/emailaddresses/{0}", __workflow_emailAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2015,7 +2015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_fundraiserConstituencyId = WorkflowExpression.Compile(fundraiserConstituencyId, nameof(fundraiserConstituencyId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/fundraisers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fundraiserConstituencyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/fundraisers/{0}", __workflow_fundraiserConstituencyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2030,7 +2030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodydateTo = WorkflowExpression.Compile(bodydateTo, nameof(bodydateTo), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/fundraisers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fundraiserConstituencyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/fundraisers/{0}", __workflow_fundraiserConstituencyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2302,7 +2302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgIndividualConstituent>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/individuals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/individuals/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgIndividualConstituent>(callPayload);
@@ -2334,7 +2334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyprofileThumbnail = WorkflowExpression.Compile(bodyprofileThumbnail, nameof(bodyprofileThumbnail), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/individuals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/individuals/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2675,7 +2675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentInteractionId = WorkflowExpression.Compile(constituentInteractionId, nameof(constituentInteractionId), required: true);
             return new DeferredBodyAction<ConmgConstituentInteraction>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/interactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentInteractionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/interactions/{0}", __workflow_constituentInteractionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentInteraction>(callPayload);
@@ -2688,7 +2688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentInteractionId = WorkflowExpression.Compile(constituentInteractionId, nameof(constituentInteractionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/interactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentInteractionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/interactions/{0}", __workflow_constituentInteractionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2722,7 +2722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/interactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentInteractionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/interactions/{0}", __workflow_constituentInteractionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3152,7 +3152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgOrganizationConstituent>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/organizations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/organizations/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgOrganizationConstituent>(callPayload);
@@ -3174,7 +3174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyprofileThumbnail = WorkflowExpression.Compile(bodyprofileThumbnail, nameof(bodyprofileThumbnail), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/organizations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/organizations/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3452,7 +3452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentPhoneId = WorkflowExpression.Compile(constituentPhoneId, nameof(constituentPhoneId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/phones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentPhoneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/phones/{0}", __workflow_constituentPhoneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -3487,7 +3487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/phones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentPhoneId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/phones/{0}", __workflow_constituentPhoneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3773,7 +3773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_relationshipJobInfoId = WorkflowExpression.Compile(relationshipJobInfoId, nameof(relationshipJobInfoId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/relationshipjobsinfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipJobInfoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/relationshipjobsinfo/{0}", __workflow_relationshipJobInfoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -3797,7 +3797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/relationshipjobsinfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipJobInfoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/relationshipjobsinfo/{0}", __workflow_relationshipJobInfoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3929,7 +3929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_constituentSolicitCodeId = WorkflowExpression.Compile(constituentSolicitCodeId, nameof(constituentSolicitCodeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/solicitcodes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentSolicitCodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/solicitcodes/{0}", __workflow_constituentSolicitCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -3946,7 +3946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm-conmg/solicitcodes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentSolicitCodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/solicitcodes/{0}", __workflow_constituentSolicitCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

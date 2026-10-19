@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
             var __workflow_destinationMap = WorkflowExpression.Compile(destinationMap, nameof(destinationMap), required: false);
             return new DeferredBodyAction<UploadFileToPathResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pathToAFile, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storage/fs/{0}", __workflow_pathToAFile.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_destinationMap != null)
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
             var __workflow_pathToAFile = WorkflowExpression.Compile(pathToAFile, nameof(pathToAFile), required: true);
             return new DeferredBodyAction<Error>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pathToAFile, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storage/fs/{0}/{1}", __workflow_pathToAFile.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_aPIKey);

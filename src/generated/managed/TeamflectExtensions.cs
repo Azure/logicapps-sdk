@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_recognitionId = WorkflowExpression.Compile(recognitionId, nameof(recognitionId), required: true);
             return new DeferredBodyAction<RecognitionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recognition/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recognitionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/recognition/{0}", __workflow_recognitionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RecognitionResponse>(callPayload);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/task/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);

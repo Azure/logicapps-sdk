@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_variantId = WorkflowExpression.Compile(variantId, nameof(variantId), required: true);
             return new DeferredBodyAction<RelatedProductVariantDTO>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/RelatedProducts/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_variantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/RelatedProducts/{0}/{1}", __workflow_productId.WithUrlEncoding(1), __workflow_variantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_productVariantId = WorkflowExpression.Compile(productVariantId, nameof(productVariantId), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Cart/{0}/Items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_token, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_productVariantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Cart/{0}/Items/{1}", __workflow_token.WithUrlEncoding(1), __workflow_productVariantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<AssortmentValueDTO[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/assortment/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/assortment/{0}/values", __workflow_customerid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_status != null)
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_variantId = WorkflowExpression.Compile(variantId, nameof(variantId), required: true);
             return new DeferredBodyAction<InventoryLevelDTO[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/InventoryLevels/variant/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_variantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/InventoryLevels/variant/{0}", __workflow_variantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<IPEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ip, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/ip/{0}", __workflow_ip.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<DEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/domain/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/domain/{0}", __workflow_domain.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<UEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_url, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/url/{0}", __workflow_url.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<HEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/hash/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hash, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/hash/{0}", __workflow_hash.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<VulnEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/vulnerability/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/vulnerability/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AlertLookup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alert/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AlertLookup>(callPayload);
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PlaybookAlertLookup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/playbook-alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/playbook-alert/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PlaybookAlertLookup>(callPayload);
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<AlertSearchIdV2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/alerts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_fields != null)

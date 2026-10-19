@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<GetBoardResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}.json", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBoardResponse>(callPayload);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<GetTaskResponse[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks.json", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskResponse[]>(callPayload);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskassignedUserId = WorkflowExpression.Compile(taskassignedUserId, nameof(taskassignedUserId), required: false);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks.json", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var task = new JObject();
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetTaskResponse2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskResponse2>(callPayload);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<DeleteTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskassignedUserId = WorkflowExpression.Compile(taskassignedUserId, nameof(taskassignedUserId), required: false);
             return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var task = new JObject();
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskworkflowStageId = WorkflowExpression.Compile(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
             return new DeferredBodyAction<MoveTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var task = new JObject();
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<ArchiveTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ArchiveTaskResponse>(callPayload);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/changelog.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/changelog.json", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetCommentResponse[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCommentResponse[]>(callPayload);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_commentcontent = WorkflowExpression.Compile(commentcontent, nameof(commentcontent), required: true);
             return new DeferredBodyAction<GetCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var comment = new JObject();
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetSubtaskResponse[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSubtaskResponse[]>(callPayload);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_subtaskassignedUserId = WorkflowExpression.Compile(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
             return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subtask = new JObject();
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_subtaskId = WorkflowExpression.Compile(subtaskId, nameof(subtaskId), required: true);
             return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subtaskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1), __workflow_subtaskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
             var __workflow_subtaskassignedUserId = WorkflowExpression.Compile(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
             return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subtaskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1), __workflow_subtaskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subtask = new JObject();

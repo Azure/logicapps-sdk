@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
             var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/msflow/v2/forms/{0}/webhooks", __workflow_formID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(__workflow_workspaceID);

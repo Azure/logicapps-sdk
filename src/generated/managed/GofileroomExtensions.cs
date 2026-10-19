@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetGroupDocumentSecurityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", __workflow_groupName.WithUrlEncoding(1), __workflow_cabinetName.WithUrlEncoding(1), __workflow_drawerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUserDocumentSecurityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(__workflow_loginId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", __workflow_loginId.WithUrlEncoding(1), __workflow_cabinetName.WithUrlEncoding(1), __workflow_drawerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1085,7 +1085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUserPermissionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/permissions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_login, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/user/{0}/permissions", __workflow_login.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1119,7 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetLookupListResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/{0}/clients", __workflow_drawerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1366,7 +1366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<DocumentDeleteResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/delete", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/file", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDocumentHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/history", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1414,7 +1414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDocumentIndexesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/indexes", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1431,7 +1431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<PublishDocumentStatusResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/status", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDrawerIndexesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/drawers/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/drawers/{0}/indexes", __workflow_drawerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1769,7 +1769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDynamicRulesForIndexResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/dynamicrules", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/dynamicrules", __workflow_indexId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1789,7 +1789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodysearchType = WorkflowExpression.Compile(bodysearchType, nameof(bodysearchType), required: false);
             return new DeferredBodyAction<IndexLookupListFindResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/lookuplist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/lookuplist", __workflow_indexId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1836,7 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetListTypeIndexDataResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/values", __workflow_indexId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)
@@ -1853,7 +1853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetChildIndexesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", __workflow_indexId.WithUrlEncoding(1), __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xAuthorization != null)

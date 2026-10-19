@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             return new DeferredBodyAction<Result>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_token, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/result/{0}", __workflow_token.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Result>(callPayload);

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
             var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_triggerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/triggers/{0}/subscribe", __workflow_triggerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

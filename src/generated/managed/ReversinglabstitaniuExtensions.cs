@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["extended"] = Convert.ToString(true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_extended != null)
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/xref/v2/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["history"] = Convert.ToString(false);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/xref/v2/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_history != null)
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_analysisId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1), __workflow_analysisId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/download/v2/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/upload/{0}", __workflow_sha1Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}/meta", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/upload/{0}/meta", __workflow_sha1Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_subscribe != null)
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_deleteOn = WorkflowExpression.Compile(deleteOn, nameof(deleteOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/delete/sample/v1/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_deleteOn != null)
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/delete/sample/v1/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rescan/v1/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rescan/v1/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrloptionalParameters = WorkflowExpression.Compile(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrloptionalParameters = WorkflowExpression.Compile(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uriSha1, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/uri_index/v1/query/{0}", __workflow_uriSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uriSha1, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/uri_index/v1/query/{0}/{1}", __workflow_uriSha1.WithUrlEncoding(1), __workflow_nextPageSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -1041,7 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/report/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/report/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1212,7 +1212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", __workflow_page.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -1233,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startTime, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_startTime.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -1255,7 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startTime, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_startTime.WithUrlEncoding(1), __workflow_page.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -1275,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/analyze/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/analyze/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1335,7 +1335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/report/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1399,7 +1399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1485,7 +1485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/urls/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1559,7 +1559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1633,7 +1633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1705,7 +1705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/report/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1769,7 +1769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1855,7 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/urls/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1929,7 +1929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/reputation/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/reputation/v1/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2256,7 +2256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/user_override/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/user_override/v1/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2325,7 +2325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_specificReport, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", __workflow_sha1Value.WithUrlEncoding(1), __workflow_specificReport.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2347,7 +2347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_base64Value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_specificReport, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", __workflow_base64Value.WithUrlEncoding(1), __workflow_specificReport.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2367,7 +2367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", __workflow_sha1Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -2384,7 +2384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_base64Value, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", __workflow_base64Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -2400,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2413,7 +2413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2426,7 +2426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2441,7 +2441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/yara/v1/query/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2489,7 +2489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2504,7 +2504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2663,7 +2663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rha1Type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", __workflow_rha1Type.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1), __workflow_nextPageSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2691,7 +2691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/imphash_index/v1/query/{0}", __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2712,7 +2712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", __workflow_hashValue.WithUrlEncoding(1), __workflow_nextPageSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
@@ -2732,7 +2732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryremoveOverride = WorkflowExpression.Compile(bodyrlqueryremoveOverride, nameof(bodyrlqueryremoveOverride), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/user_override/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2782,7 +2782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", __workflow_hashType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_startHash != null)

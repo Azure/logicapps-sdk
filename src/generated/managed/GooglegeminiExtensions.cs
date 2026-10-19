@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             return new DeferredBodyAction<GenerateTextContentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:generateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             return new DeferredBodyAction<GenerateStreamContentResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:streamGenerateContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:streamGenerateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             return new DeferredBodyAction<GenerateMultiModalContentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}-vision:generateContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}-vision:generateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
             return new DeferredBodyAction<CountTokensResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:countTokens", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<GetAllModelsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models", __workflow_apiVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllModelsResponse>(callPayload);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
             return new DeferredBodyAction<GetModelDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetModelDetailsResponse>(callPayload);
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<GenerateEmbeddingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:embedContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: true);
             return new DeferredBodyAction<BatchEmbedContentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:batchEmbedContents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:batchEmbedContents", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<User>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<User>(callPayload);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_requestnote = WorkflowExpression.Compile(requestnote, nameof(requestnote), required: true);
             return new DeferredBodyAction<AddNoteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_requestacknowledgedBy = WorkflowExpression.Compile(requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action1/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action1/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_requestresolvedBy = WorkflowExpression.Compile(requestresolvedBy, nameof(requestresolvedBy), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action2/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action2/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_requesttoUser = WorkflowExpression.Compile(requesttoUser, nameof(requesttoUser), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action3/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_requestsnooze = WorkflowExpression.Compile(requestsnooze, nameof(requestsnooze), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action4/incidents/{0}/snooze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action4/incidents/{0}/snooze", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_requestescalationPolicy = WorkflowExpression.Compile(requestescalationPolicy, nameof(requestescalationPolicy), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action5/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action5/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             return new DeferredBodyTrigger<NotesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<NotesResponse>(callPayload, recurrence: recurrence);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyTrigger<IncidentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/incidents/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);

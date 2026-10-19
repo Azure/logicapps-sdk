@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredBodyAction<GetGraphUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGraphUserResponse>(callPayload);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredBodyAction<GetUserLicenseDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserLicenseDetailsResponse>(callPayload);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             return new DeferredBodyAction<GetsubscribedSkusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetsubscribedSkusResponse>(callPayload);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodyremoveLicenses = WorkflowExpression.Compile(bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
             return new DeferredBodyAction<PostUserLicenseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_userGroupId = WorkflowExpression.Compile(userGroupId, nameof(userGroupId), required: true);
             return new DeferredBodyAction<UserGroupMembersResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", __workflow_organizationId.WithUrlEncoding(1), __workflow_userGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             return new DeferredBodyAction<GetADSecurityGroupsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$select"] = Convert.ToString("createdDateTime,displayName,groupTypes,id,securityEnabled");
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodysecurityEnabled = WorkflowExpression.Compile(bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
             return new DeferredBodyAction<PostGraphGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             return new DeferredBodyAction<GetGraphDomainsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGraphDomainsResponse>(callPayload);
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_userGroupId = WorkflowExpression.Compile(userGroupId, nameof(userGroupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", __workflow_organizationId.WithUrlEncoding(1), __workflow_userGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", __workflow_organizationId.WithUrlEncoding(1), __workflow_userGroupId.WithUrlEncoding(1), __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", __workflow_organizationId.WithUrlEncoding(1), __workflow_userGroupId.WithUrlEncoding(1), __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_userMicrosoftObjectId = WorkflowExpression.Compile(userMicrosoftObjectId, nameof(userMicrosoftObjectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupMicrosoftObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userMicrosoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", __workflow_organizationId.WithUrlEncoding(1), __workflow_groupMicrosoftObjectId.WithUrlEncoding(1), __workflow_userMicrosoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             return new DeferredBodyAction<GetSubscriptionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", __workflow_partnerId.WithUrlEncoding(1), __workflow_customerId.WithUrlEncoding(1), __workflow_tenantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSubscriptionsResponse>(callPayload);
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", __workflow_partnerId.WithUrlEncoding(1), __workflow_customerId.WithUrlEncoding(1), __workflow_tenantId.WithUrlEncoding(1), __workflow_subscriptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredBodyAction<GetAssignManagerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/manager", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/manager", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAssignManagerResponse>(callPayload);
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/manager/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/manager/$ref", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

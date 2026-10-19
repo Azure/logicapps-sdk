@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", ExpressionConverter.ConvertWithUrlEncoding(__workflow_portalId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/knowledge/portalmgr/v3/internal/portals/{0}/search/kb", __workflow_portalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egain
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/core/aiservices/v3/internal/instantanswers/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_portalId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/core/aiservices/v3/internal/instantanswers/{0}/search", __workflow_portalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["languageCode"] = ExpressionConverter.Convert(__workflow_languageCode);

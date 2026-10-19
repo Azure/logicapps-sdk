@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
             var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
             return new DeferredBodyAction<ItemBatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/batch/{0}/metadata", __workflow_itemType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
             var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
             return new DeferredBodyAction<ItemBatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/batch/{0}/metadata", __workflow_itemType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

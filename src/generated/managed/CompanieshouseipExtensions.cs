@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<CompanyByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ListPscResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control-statements", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListPscResponse>(callPayload);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ListStatementsPscResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_pCSId = WorkflowExpression.Compile(pCSId, nameof(pCSId), required: true);
             return new DeferredBodyAction<IndividualPscResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pCSId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_pCSId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndividualPscResponse>(callPayload);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<UKEstablishmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/uk-establishments", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_officerId = WorkflowExpression.Compile(officerId, nameof(officerId), required: true);
             return new DeferredBodyAction<OfficerAppointmentByOfficerIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_officerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/officers/{0}/appointments", __workflow_officerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<FilingHistoryByNumberAndIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/filing-history/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ChargesByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/charges", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_chargeId = WorkflowExpression.Compile(chargeId, nameof(chargeId), required: true);
             return new DeferredBodyAction<ChargesByNumberAndChargeIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_chargeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/charges/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_chargeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<AddressByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/registered-office-address", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<CompanyOfficersByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/officers", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_appointmentId = WorkflowExpression.Compile(appointmentId, nameof(appointmentId), required: true);
             return new DeferredBodyAction<CompanyOfficersByNumberAndAppointmentIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appointmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/appointments/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_appointmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<FilingHistoryByCompNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/filing-history", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);

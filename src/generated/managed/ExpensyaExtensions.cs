@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_expenseId = WorkflowExpression.Compile(expenseId, nameof(expenseId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/expense/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_expenseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/expense/{0}/image", __workflow_expenseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_archiveExpenses = WorkflowExpression.Compile(archiveExpenses, nameof(archiveExpenses), required: false);
             return new DeferredBodyAction<BaseResultExportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/export/expenses/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/expenses/{0}/", __workflow_exportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reportId != null)
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             return new DeferredBodyAction<BaseResultExportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/export/report/{0}/pdf/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/report/{0}/pdf/", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultReportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/reports/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_validatorMail, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/{0}/reports/", __workflow_validatorMail.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reportName != null)
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_reportUpdateStatusInputaccountingPeriod = WorkflowExpression.Compile(reportUpdateStatusInputaccountingPeriod, nameof(reportUpdateStatusInputaccountingPeriod), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/report/{0}/updateStatus/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/report/{0}/updateStatus/", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var reportUpdateStatusInput = new JObject();
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_quickExpenseInputfileType = WorkflowExpression.Compile(quickExpenseInputfileType, nameof(quickExpenseInputfileType), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/quickexpense/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/quickexpense/{0}/", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var quickExpenseInput = new JObject();
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<BaseResultProjectResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/project/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/project/{0}/", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BaseResultProjectResponse>(callPayload);
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_userUpdateInputtagsToUnassign = WorkflowExpression.Compile(userUpdateInputtagsToUnassign, nameof(userUpdateInputtagsToUnassign), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/user/{0}/", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["shouldUpdateValidators"] = ExpressionConverter.Convert(__workflow_shouldUpdateValidators);

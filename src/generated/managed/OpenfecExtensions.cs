@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
             var __workflow_electionFull = WorkflowExpression.Compile(electionFull, nameof(electionFull), required: false);
             return new DeferredBodyAction<CommitteeCandidateHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/committee/{0}/candidates/history/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_committeeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/committee/{0}/candidates/history/", __workflow_committeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sort_hide_null"] = Convert.ToString("false");

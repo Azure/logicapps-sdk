@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
             var __workflow_payloadexpectedObjects = WorkflowExpression.Compile(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
             return new DeferredBodyAction<AgentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/agents/{0}/v1/inference", __workflow_agentName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var payload = new JObject();

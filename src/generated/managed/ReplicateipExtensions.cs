@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
             return new DeferredBodyAction<PredictionGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/predictions/{0}", __workflow_predictionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PredictionGetResponse>(callPayload);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
             return new DeferredBodyAction<PredictionCancelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictions/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/predictions/{0}/cancel", __workflow_predictionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PredictionCancelResponse>(callPayload);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
             return new DeferredBodyAction<ModelGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelOwner, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/{1}", __workflow_modelOwner.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelGetResponse>(callPayload);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             var __workflow_collectionSlug = WorkflowExpression.Compile(collectionSlug, nameof(collectionSlug), required: true);
             return new DeferredBodyAction<ModelListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionSlug, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collectionSlug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelListResponse>(callPayload);

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             return new DeferredBodyAction<GetImpactResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/impact", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/impact", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetImpactResponse>(callPayload);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             return new DeferredBodyAction<GetTreesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/trees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/trees", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTreesResponse>(callPayload);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             return new DeferredBodyAction<GetOffsetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/carbon-offset", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/carbon-offset", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOffsetResponse>(callPayload);

@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostAttributeResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/hosts/trackers/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostAttributeResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/domains/trackers/{0}", __workflow_domain.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostAttributeResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_address, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/addresses/trackers/{0}", __workflow_address.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostPairsResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/children/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/hosts/trackers/children/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostPairsResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/parents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/hosts/trackers/parents/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostComponentsResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/hosts/components/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostComponentsResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/domains/components/{0}", __workflow_domain.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostComponentsResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_address, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/addresses/components/{0}", __workflow_address.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostCookieResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/cookies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/hosts/cookies/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostCookieResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/cookies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_address, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/hostattributes/addresses/cookies/{0}", __workflow_address.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_certificates = WorkflowExpression.Compile(certificates, nameof(certificates), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/enrich/host/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/enrich/host/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["whois"] = Convert.ToString(true);
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
             var __workflow_certificates = WorkflowExpression.Compile(certificates, nameof(certificates), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/enrich/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ip, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v0/enrich/ip/{0}", __workflow_ip.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["whois"] = Convert.ToString(true);

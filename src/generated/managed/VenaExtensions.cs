@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_fileEncoding = WorkflowExpression.Compile(fileEncoding, nameof(fileEncoding), required: false);
             return new DeferredBodyAction<ETLJob>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/templates/{1}/upload", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/templates/{1}/upload", __workflow_modelIdPath.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fileName"] = ExpressionConverter.Convert(__workflow_fileName);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/attributes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/attributes", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var lidsBody = new JObject();
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_hierarchiesBodyexportMemberIDs = WorkflowExpression.Compile(hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/hierarchies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/hierarchies", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var hierarchiesBody = new JObject();
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_valuesBodynamedDimensions = WorkflowExpression.Compile(valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/intersections2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/intersections2", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var valuesBody = new JObject();
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
             var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/lids2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/etl/query/lids2", __workflow_modelIdPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var lidsBody = new JObject();

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             var __workflow_userLocale = WorkflowExpression.Compile(userLocale, nameof(userLocale), required: false);
             return new DeferredBodyAction<ListRecordsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filterByFormula != null)
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyAction<CreateaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
             return new DeferredBodyAction<RetrieveaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RetrieveaRecordResponse>(callPayload);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
             return new DeferredBodyAction<DeleteaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteaRecordResponse>(callPayload);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<UpdateaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_baseID.WithUrlEncoding(1), __workflow_table.WithUrlEncoding(1), __workflow_recordID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_contentType != null)

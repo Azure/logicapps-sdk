@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
             return new DeferredBodyAction<EmailSendResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/emails/operations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/emails/operations/{0}", __workflow_operationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");

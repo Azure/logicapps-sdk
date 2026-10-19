@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<Project>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_taskparameterstaskDuration = WorkflowExpression.Compile(taskparameterstaskDuration, nameof(taskparameterstaskDuration), required: false);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<TasksWrapper>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Tasks", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/ProjectSummaryTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/ProjectSummaryTask", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/checkOut", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/checkOut", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Publish(true)", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Publish(true)", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);

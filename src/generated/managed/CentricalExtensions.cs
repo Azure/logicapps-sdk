@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
             var __workflow_bodycontentCategory = WorkflowExpression.Compile(bodycontentCategory, nameof(bodycontentCategory), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_learningType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/push/lms_{0}", __workflow_learningType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
             var __workflow_bodyadditionalData = WorkflowExpression.Compile(bodyadditionalData, nameof(bodyadditionalData), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_performanceType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/push/kpi_{0}", __workflow_performanceType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

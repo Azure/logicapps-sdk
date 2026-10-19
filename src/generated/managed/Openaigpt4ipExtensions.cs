@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
             return new DeferredBodyAction<FineTuningGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/fine_tuning/jobs/{0}", __workflow_fineTuningJobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FineTuningGetResponse>(callPayload);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
             return new DeferredBodyAction<FineTuningCancelPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", __workflow_fineTuningJobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FineTuningCancelPostResponse>(callPayload);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<FineTuningEventsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/fine_tuning/jobs/{0}/events", __workflow_fineTuningJobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_after != null)

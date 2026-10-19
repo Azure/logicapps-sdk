@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<APIDistrict12>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/districts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APIDistrict12>(callPayload);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<APISchoolListRank2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_st, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/rankings/schools/{0}", __workflow_st.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_year != null)
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<APIDistrictListRank2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_st, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/rankings/districts/{0}", __workflow_st.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_year != null)
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<APISchool20Full>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/schools/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APISchool20Full>(callPayload);

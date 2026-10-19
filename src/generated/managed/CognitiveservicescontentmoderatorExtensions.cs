@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             var __workflow_callBackEndpoint = WorkflowExpression.Compile(callBackEndpoint, nameof(callBackEndpoint), required: false);
             return new DeferredBodyAction<CreateJobResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", __workflow_teamName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", __workflow_teamName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_subTeam != null)

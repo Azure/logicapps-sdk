@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var __workflow_mSCorrelationId = WorkflowExpression.Compile(mSCorrelationId, nameof(mSCorrelationId), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/referrals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var __workflow_mSCorrelationId = WorkflowExpression.Compile(mSCorrelationId, nameof(mSCorrelationId), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/referrals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["if-match"] = ExpressionConverter.Convert(__workflow_ifMatch);
@@ -1283,7 +1283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/referrals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/referrals/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -1323,7 +1323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}//", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/referrals/{0}//", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");

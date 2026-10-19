@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<AddItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/items", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/items/{1}", __workflow_listID.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DeleteItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/items/{1}", __workflow_listID.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<UpdateItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/items/{1}", __workflow_listID.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyAction<GetListFieldsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/fields", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_agentID = WorkflowExpression.Compile(agentID, nameof(agentID), required: true);
             return new DeferredBodyAction<GetAgentDefinitionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}", __workflow_agentID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RunAgentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/run", __workflow_agentID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
             return new DeferredBodyAction<QueryItemsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/items/query", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddItemFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/items/{1}/files", __workflow_listID.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/{0}/content", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddLibraryFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/library", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/library/{1}/content", __workflow_listID.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/1", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/2", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/3", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/3", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/4", __workflow_listID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);

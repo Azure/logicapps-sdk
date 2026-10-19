@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_modelid = WorkflowExpression.Compile(modelid, nameof(modelid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}", __workflow_modelid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_includeModelDefinition = WorkflowExpression.Compile(includeModelDefinition, nameof(includeModelDefinition), required: false);
             return new DeferredBodyAction<GetModelByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}", __workflow_modelid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_includeModelDefinition != null)
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}", __workflow_modelid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             return new DeferredBodyAction<TwinResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredBodyAction<TwinResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_componentPath = WorkflowExpression.Compile(componentPath, nameof(componentPath), required: true);
             return new DeferredBodyAction<GetComponentResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/components/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_componentPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/components/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_componentPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
             return new DeferredBodyAction<TwinRelationship>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredBodyAction<TwinRelationship>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships/{1}", __workflow_twinid.WithUrlEncoding(1), __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<ListIncomingRelationshipsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/incomingrelationships", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/incomingrelationships", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_continuationToken != null)
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/telemetry", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/telemetry", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}/telemetry", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentPath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/components/{1}/telemetry", __workflow_twinid.WithUrlEncoding(1), __workflow_componentPath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<ListRelationshipsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/digitaltwins/{0}/relationships", __workflow_twinid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_continuationToken != null)

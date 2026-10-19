@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
             var __workflow_dataflowIdForRefreshDataflow = WorkflowExpression.Compile(dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
             return new DeferredBodyAction<DataflowModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupIdForRefreshDataflow, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataflowIdForRefreshDataflow, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", __workflow_groupIdForRefreshDataflow.WithUrlEncoding(1), __workflow_dataflowIdForRefreshDataflow.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
             var __workflow_dataflowIdForOnRefreshComplete = WorkflowExpression.Compile(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
             return new DeferredBodyTrigger<RefreshModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataflowIdForOnRefreshComplete, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", __workflow_groupIdForOnRefreshComplete.WithUrlEncoding(1), __workflow_dataflowIdForOnRefreshComplete.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<NumberGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phoneNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/validate/{0}", __workflow_phoneNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_countryCode != null)

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
             var __workflow_dynamicSchema = WorkflowExpression.Compile(dynamicSchema, nameof(dynamicSchema), required: false);
             return new DeferredBodyAction<Error>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}/signature-requests", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<GetTreasurySecuritiesOperationsByStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_include, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", __workflow_operation.WithUrlEncoding(1), __workflow_status.WithUrlEncoding(1), __workflow_include.WithUrlEncoding(1), __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTreasurySecuritiesOperationsByStatusResponse>(callPayload);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<GetSecuritiesLendingOperationsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_include, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/seclending/{0}/results/{1}/latest.{2}", __workflow_operation.WithUrlEncoding(1), __workflow_include.WithUrlEncoding(1), __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSecuritiesLendingOperationsResponse>(callPayload);

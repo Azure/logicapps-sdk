@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<EnterpriseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enterprise/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enterprise/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EnterpriseGetResponse>(callPayload);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ProjectGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/project/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectGetAResponse>(callPayload);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var __workflow_uuidOfTreePlanted = WorkflowExpression.Compile(uuidOfTreePlanted, nameof(uuidOfTreePlanted), required: true);
             return new DeferredBodyAction<TreeDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tree/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uuidOfTreePlanted, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tree/{0}", __workflow_uuidOfTreePlanted.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TreeDetailsResponse>(callPayload);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var __workflow_yYYYMM = WorkflowExpression.Compile(yYYYMM, nameof(yYYYMM), required: true);
             return new DeferredBodyAction<TreeCountMonthResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enterprise/{0}/treeCount/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_yYYYMM, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enterprise/{0}/treeCount/{1}", __workflow_id.WithUrlEncoding(1), __workflow_yYYYMM.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TreeCountMonthResponse>(callPayload);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
             return new DeferredBodyAction<TreeCountDatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enterprise/{0}/treeCount", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enterprise/{0}/treeCount", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
             var __workflow_bodydetails = WorkflowExpression.Compile(bodydetails, nameof(bodydetails), required: false);
             return new DeferredBodyAction<RenewExpirationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/expirationitems/{0}/renew", ExpressionConverter.ConvertWithUrlEncoding(__workflow_expirationItemId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/expirationitems/{0}/renew", __workflow_expirationItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");

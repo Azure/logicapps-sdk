@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             return new DeferredBodyAction<KeyMetadataCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             return new DeferredBodyAction<KeyMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/metadata", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KeyMetadata>(callPayload);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
             return new DeferredBodyAction<KeyMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyVersion, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/metadata", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KeyMetadata>(callPayload);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
             return new DeferredBodyAction<KeyEncryptOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/encrypt", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var operationInput = new JObject();
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
             return new DeferredBodyAction<KeyEncryptOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyVersion, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/encrypt", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var operationInput = new JObject();
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
             return new DeferredBodyAction<KeyDecryptOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/decrypt", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var operationInput = new JObject();
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
             return new DeferredBodyAction<KeyDecryptOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyVersion, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/decrypt", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var operationInput = new JObject();
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<SecretMetadataCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/versions", __workflow_secretName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<SecretMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/metadata", __workflow_secretName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SecretMetadata>(callPayload);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_secretVersion = WorkflowExpression.Compile(secretVersion, nameof(secretVersion), required: true);
             return new DeferredBodyAction<SecretMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretVersion, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/versions/{1}/metadata", __workflow_secretName.WithUrlEncoding(1), __workflow_secretVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SecretMetadata>(callPayload);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<Secret>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/value", __workflow_secretName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Secret>(callPayload);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
             var __workflow_secretVersion = WorkflowExpression.Compile(secretVersion, nameof(secretVersion), required: true);
             return new DeferredBodyAction<Secret>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretVersion, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/versions/{1}/value", __workflow_secretName.WithUrlEncoding(1), __workflow_secretVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Secret>(callPayload);

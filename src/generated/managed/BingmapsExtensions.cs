@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             var __workflow_pushpinLabel = WorkflowExpression.Compile(pushpinLabel, nameof(pushpinLabel), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_imagerySet, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_zoomLevel, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", __workflow_imagerySet.WithUrlEncoding(1), __workflow_zoomLevel.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             var __workflow_timeType = WorkflowExpression.Compile(timeType, nameof(timeType), required: false);
             return new DeferredBodyAction<GetRouteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/V3/REST/V1/Routes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_travelMode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/V3/REST/V1/Routes/{0}", __workflow_travelMode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["wp.0"] = ExpressionConverter.Convert(__workflow_wp0);

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetWeatherStationAvailabilityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/availability", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/availability", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_startDate != null)
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationBulletinsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/bulletin", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/bulletin", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationLatestDataResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/latest", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationMinuteDataResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/data", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(__workflow_startDateTime);
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/15min", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/15min", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(__workflow_startDateTime);
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/30min", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/30min", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(__workflow_startDateTime);
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/hourly", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/hourly", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(__workflow_startDateTime);
@@ -962,7 +962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/daily", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/daily", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
@@ -991,7 +991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/monthly", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/monthly", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/yearly", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/summaries/yearly", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);

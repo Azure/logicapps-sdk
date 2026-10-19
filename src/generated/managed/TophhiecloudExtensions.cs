@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<TophhieCloudEntraIDIDConverterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entra/convertid/{0}", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TophhieCloudEntraIDIDConverterResponse>(callPayload);

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<PostDocumentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsMaxItemCount != null)
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<CreateStoredProcedureResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsVersion != null)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsDocumentdbRawPartitionkey != null)
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sprocId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_sprocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsVersion != null)
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sprocId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_sprocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsDocumentdbRawPartitionkey != null)
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<GetDocumentV2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_extractSensitivityLabel != null)
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
             return new DeferredBodyAction<GetDocumentsV3Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_extractSensitivityLabel != null)
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<GetStoredProceduresResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsVersion != null)
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
             return new DeferredBodyAction<QueryDocumentsV5Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_containerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_queryText != null)
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<PutDocumentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsDocumentdbRawPartitionkey != null)
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<CreateStoredProcedureResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sprocId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_sprocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_xMsVersion != null)

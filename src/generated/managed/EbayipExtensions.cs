@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<GetCategorySuggestionsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryTreeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", __workflow_categoryTreeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: true);
             return new DeferredBodyAction<GetItemAspectsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryTreeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", __workflow_categoryTreeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["category_id"] = ExpressionConverter.Convert(__workflow_categoryId);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_fulfillmentPolicyId = WorkflowExpression.Compile(fulfillmentPolicyId, nameof(fulfillmentPolicyId), required: true);
             return new DeferredBodyAction<GetFulfillmentPolicyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/account/v1/fulfillment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fulfillmentPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/account/v1/fulfillment_policy/{0}", __workflow_fulfillmentPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFulfillmentPolicyResponse>(callPayload);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_paymentPolicyId = WorkflowExpression.Compile(paymentPolicyId, nameof(paymentPolicyId), required: true);
             return new DeferredBodyAction<GetPaymentPolicyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/account/v1/payment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_paymentPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/account/v1/payment_policy/{0}", __workflow_paymentPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPaymentPolicyResponse>(callPayload);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_returnPolicyId = WorkflowExpression.Compile(returnPolicyId, nameof(returnPolicyId), required: true);
             return new DeferredBodyAction<GetReturnPolicyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/account/v1/return_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_returnPolicyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/account/v1/return_policy/{0}", __workflow_returnPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetReturnPolicyResponse>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_sku = WorkflowExpression.Compile(sku, nameof(sku), required: true);
             return new DeferredBodyAction<GetInventoryItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sku, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/inventory_item/{0}", __workflow_sku.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodyproductvideoIds = WorkflowExpression.Compile(bodyproductvideoIds, nameof(bodyproductvideoIds), required: false);
             return new DeferredBodyAction<CreateOrReplaceInventoryItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sku, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/inventory_item/{0}", __workflow_sku.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_merchantLocationKey = WorkflowExpression.Compile(merchantLocationKey, nameof(merchantLocationKey), required: true);
             return new DeferredBodyAction<GetInventoryLocationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_merchantLocationKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/location/{0}", __workflow_merchantLocationKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetInventoryLocationResponse>(callPayload);
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodyspecialHours = WorkflowExpression.Compile(bodyspecialHours, nameof(bodyspecialHours), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_merchantLocationKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/location/{0}", __workflow_merchantLocationKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_Filter = WorkflowExpression.Compile(Filter, nameof(Filter), required: false);
             return new DeferredBodyAction<GetItemConditionPoliciesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_marketplaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", __workflow_marketplaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_Filter != null)
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
             return new DeferredBodyAction<GetOfferResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_offerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -1148,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_offerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -1210,7 +1210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodytaxvatPercentage = WorkflowExpression.Compile(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
             return new DeferredBodyAction<UpdateOfferResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_offerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Language"] = Convert.ToString("en-US");
@@ -1625,7 +1625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
             return new DeferredBodyAction<WithdrawOfferResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/withdraw", ExpressionConverter.ConvertWithUrlEncoding(__workflow_offerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}/withdraw", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
@@ -1639,7 +1639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
             return new DeferredBodyAction<PublishOfferResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/publish/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_offerId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}/publish/", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");

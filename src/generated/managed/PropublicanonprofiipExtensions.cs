@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
             var __workflow_ein = WorkflowExpression.Compile(ein, nameof(ein), required: true);
             return new DeferredBodyAction<NonprofitGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ein, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}.json", __workflow_ein.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NonprofitGetResponse>(callPayload);

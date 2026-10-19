@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
             return new DeferredBodyAction<AddDocumentToPackageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/documents", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetSigningLocationsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/locations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/locations", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSigningLocationsResponse>(callPayload);
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PackageStatusInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PackageStatusInfo>(callPayload);
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<PackageStatusInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/skipsigners", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/skipsigners", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/download", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/download/{1}", __workflow_id.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/expirytimestamp", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/expirytimestamp", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/reminders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/reminders", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodystakeholders = WorkflowExpression.Compile(bodystakeholders, nameof(bodystakeholders), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/process", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/process", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/download", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/download/{1}", __workflow_packageId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_correlationId = WorkflowExpression.Compile(correlationId, nameof(correlationId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packagecorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_correlationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packagecorrelations/{0}/auditproof/download", __workflow_correlationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_correlationId = WorkflowExpression.Compile(correlationId, nameof(correlationId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentcorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_correlationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentcorrelations/{0}/auditproof/download", __workflow_correlationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/proofs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/proofs", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/configuration/{2}/mcp", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/configuration/{2}/mcp", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_configurationName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mcpSessionId != null)
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/procedures/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_procedure, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/procedures/{3}", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_procedure.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_targetapp = WorkflowExpression.Compile(targetapp, nameof(targetapp), required: true);
             return new DeferredBodyAction<GetAdaptiveCardV3Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/adaptivecard/forurl/{0}/forapp/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_targeturl, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetapp, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/adaptivecard/forurl/{0}/forapp/{1}", __workflow_targeturl.WithUrlEncoding(2), __workflow_targetapp.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAdaptiveCardV3Response>(callPayload);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_pathParameters = WorkflowExpression.Compile(pathParameters, nameof(pathParameters), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokeget", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_blobnavigationpath, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokeget", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_blobnavigationpath.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_pathParameters);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             return new DeferredBodyAction<CompanyList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies", __workflow_bcenvironment.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyList>(callPayload);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_readOnlyConnection = WorkflowExpression.Compile(readOnlyConnection, nameof(readOnlyConnection), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/first", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/first", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_readOnlyConnection != null)
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_readOnlyConnection = WorkflowExpression.Compile(readOnlyConnection, nameof(readOnlyConnection), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_readOnlyConnection != null)
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_readOnlyConnection = WorkflowExpression.Compile(readOnlyConnection, nameof(readOnlyConnection), required: false);
             return new DeferredBodyAction<ItemsListV3>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetUrlV3Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/pages/{2}/items/{3}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/pages/{2}/items/{3}/url", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_page.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUrlV3Response>(callPayload);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_pathParameters = WorkflowExpression.Compile(pathParameters, nameof(pathParameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokepatch", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_blobnavigationpath, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokepatch", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_blobnavigationpath.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_pathParameters);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
             return new DeferredBodyTrigger<ClientSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_businessevent, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_businessevent.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["company"] = Convert.ToString("");
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ClientSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2), __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionlineFourthConditionIs = WorkflowExpression.Compile(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionlineFourthConditionIs = WorkflowExpression.Compile(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
@@ -1066,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
             var __workflow_subscriptionfourthConditionIs = WorkflowExpression.Compile(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
             return new DeferredBodyTrigger<WebHookSubscriptionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", __workflow_bcenvironment.WithUrlEncoding(2), __workflow_company.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             return new DeferredBodyAction<Meeting>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Meeting>(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var __workflow_meetingmeetingType = WorkflowExpression.Compile(meetingmeetingType, nameof(meetingmeetingType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var meeting = new JObject();
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             return new DeferredBodyAction<Attendee[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}/attendees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}/attendees", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Attendee[]>(callPayload);

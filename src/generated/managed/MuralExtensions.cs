@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateNewStickyNoteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", ExpressionConverter.ConvertWithUrlEncoding(__workflow_muralId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", __workflow_muralId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);

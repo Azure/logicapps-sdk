@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
             var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: true);
             return new DeferredBodyAction<AccessTokenInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:issueAccessToken", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}/:issueAccessToken", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:revokeAccessTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}/:revokeAccessTokens", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");

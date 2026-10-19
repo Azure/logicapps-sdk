@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyAction<PinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/boards/{0}/pins", __workflow_board.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PinResponse>(callPayload);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             var __workflow_secondBoard = WorkflowExpression.Compile(secondBoard, nameof(secondBoard), required: false);
             return new DeferredBodyAction<PinResponseData>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pin, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pins/{0}/save", __workflow_pin.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/boards/{0}/pins", __workflow_board.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/boards/{0}/pins", __workflow_board.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);

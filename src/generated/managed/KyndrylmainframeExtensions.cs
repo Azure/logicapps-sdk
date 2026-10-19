@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA), required: false);
             return new DeferredBodyAction<PutCustomerdetailResponse200>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customernumber/Custdetailupd/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_num, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_firstname, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/customernumber/Custdetailupd/{0}/{1}", __workflow_num.WithUrlEncoding(1), __workflow_firstname.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
             var __workflow_num = WorkflowExpression.Compile(num, nameof(num), required: true);
             return new DeferredBodyAction<GetCustomerDetailResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customernumber/custnum/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_num, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/customernumber/custnum/{0}", __workflow_num.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCustomerDetailResponse>(callPayload);

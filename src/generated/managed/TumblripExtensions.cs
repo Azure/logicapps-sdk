@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             return new DeferredBodyAction<BlogGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/info", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlogGetResponse>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             return new DeferredBodyAction<BlocksGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlocksGetResponse>(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyanonymousOnly = WorkflowExpression.Compile(bodyanonymousOnly, nameof(bodyanonymousOnly), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodypostId = WorkflowExpression.Compile(bodypostId, nameof(bodypostId), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks/bulk", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
             return new DeferredBodyAction<BlogLikesGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/likes", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<BlogFollowingGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/following", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/following", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<BlogFollowersGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/followers", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<BlogFollowCheckGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followed_by", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/followed_by", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<PostsQueuedGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyinsertAfter = WorkflowExpression.Compile(bodyinsertAfter, nameof(bodyinsertAfter), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/reorder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue/reorder", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/shuffle", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue/shuffle", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<PostDraftsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/draft", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/draft", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_beforeId != null)
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<PostSubmissionGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/submission", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/submission", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_offset != null)
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_rollups = WorkflowExpression.Compile(rollups, nameof(rollups), required: false);
             return new DeferredBodyAction<ActivityFeedGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notifications", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/notifications", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_types != null)
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyhideTrail = WorkflowExpression.Compile(bodyhideTrail, nameof(bodyhideTrail), required: false);
             return new DeferredBodyAction<PostCreatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: false);
             return new DeferredBodyAction<PostRetrieveGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/{1}", __workflow_blogIdentifier.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["post_format"] = Convert.ToString("npf");
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyhideTrail = WorkflowExpression.Compile(bodyhideTrail, nameof(bodyhideTrail), required: false);
             return new DeferredBodyAction<PostEditPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/{1}", __workflow_blogIdentifier.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PostDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/post/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/post/delete", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             return new DeferredBodyAction<PostNotesGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/notes", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);

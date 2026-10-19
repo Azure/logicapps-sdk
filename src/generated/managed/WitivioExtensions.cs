@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/feedback", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodyinitialQuestion = WorkflowExpression.Compile(bodyinitialQuestion, nameof(bodyinitialQuestion), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/startescalation", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/startescalation", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodyadaptiveCardJson = WorkflowExpression.Compile(bodyadaptiveCardJson, nameof(bodyadaptiveCardJson), required: true);
             return new DeferredBodyAction<SendAdaptiveResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/adaptive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/adaptive", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodyfileWaiting = WorkflowExpression.Compile(bodyfileWaiting, nameof(bodyfileWaiting), required: true);
             return new DeferredBodyAction<SendMessageInputResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message/input", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodytenthChoice = WorkflowExpression.Compile(bodytenthChoice, nameof(bodytenthChoice), required: false);
             return new DeferredBodyAction<SendMessageInputListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message/input/list", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodyvalueToSelectInList = WorkflowExpression.Compile(bodyvalueToSelectInList, nameof(bodyvalueToSelectInList), required: true);
             return new DeferredBodyAction<SendMessageInputArrayResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/array", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message/input/array", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_escalationId = WorkflowExpression.Compile(escalationId, nameof(escalationId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_escalationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_escalationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);

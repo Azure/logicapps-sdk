@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
             var __workflow_businessId = WorkflowExpression.Compile(businessId, nameof(businessId), required: true);
             return new DeferredBodyAction<CompanyByBISCodeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_businessId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bis/v1/{0}", __workflow_businessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);

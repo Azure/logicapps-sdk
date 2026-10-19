@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<RetrievesCustomerUsingCustomeridResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ids, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entity/Default/17.200.001/Customer/{0}", __workflow_ids.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ids, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entity/Default/17.200.001/Customer/{0}", __workflow_ids.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<RetrievesOpportunityUsingOpportunityidResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ids, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", __workflow_ids.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ids, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", __workflow_ids.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<RetrievesCaseUsingCaseidResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ids, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entity/Default/17.200.001/Case/{0}", __workflow_ids.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ids, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entity/Default/17.200.001/Case/{0}", __workflow_ids.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

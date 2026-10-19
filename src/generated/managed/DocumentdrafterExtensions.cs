@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_copyFolders = WorkflowExpression.Compile(copyFolders, nameof(copyFolders), required: false);
             return new DeferredBodyAction<GetCreateWorkspaceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceNameRoute, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", __workflow_workspaceNameRoute.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
             return new DeferredBodyAction<GetCreateFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateGetCreateFolder/{0}", __workflow_folderName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: false);
             return new DeferredBodyAction<GetCreateGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateGroup/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupNamePath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateGetCreateGroup/{0}", __workflow_groupNamePath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<GetCreateAccessFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupNamePath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", __workflow_groupNamePath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_sendInvite = WorkflowExpression.Compile(sendInvite, nameof(sendInvite), required: true);
             return new DeferredBodyAction<GetCreateUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_email, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateGetCreateUser/{0}", __workflow_email.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_fileBase64 = WorkflowExpression.Compile(fileBase64, nameof(fileBase64), required: true);
             return new DeferredBodyAction<SaveStaticFileToFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<CreateQuestionnaireResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetTagsForDocument/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateGetTagsForDocument/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
             var __workflow_jsonData = WorkflowExpression.Compile(jsonData, nameof(jsonData), required: true);
             return new DeferredBodyAction<ProcessJsonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);

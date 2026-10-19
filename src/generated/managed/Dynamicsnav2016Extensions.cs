@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_salesorderservice, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/OData/Company('{1}')/{2}", __workflow_instancename.WithUrlEncoding(1), __workflow_company.WithUrlEncoding(1), __workflow_salesorderservice.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
             var __workflow_saleslineservice = WorkflowExpression.Compile(saleslineservice, nameof(saleslineservice), required: true);
             return new DeferredBodyAction<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_salesorderservice, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ordernumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_saleslineservice, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", __workflow_instancename.WithUrlEncoding(1), __workflow_company.WithUrlEncoding(1), __workflow_salesorderservice.WithUrlEncoding(1), __workflow_ordernumber.WithUrlEncoding(1), __workflow_saleslineservice.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");

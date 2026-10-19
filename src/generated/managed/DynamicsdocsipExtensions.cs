@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
             var __workflow_encryptType = WorkflowExpression.Compile(encryptType, nameof(encryptType), required: false);
             return new DeferredBodyAction<CompileTemplateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/compile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateToken, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}/compile", __workflow_templateToken.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["doc-delivery-type"] = Convert.ToString("url");

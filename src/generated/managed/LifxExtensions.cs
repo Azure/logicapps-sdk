@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/move", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/pulse", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scene, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/scenes/{0}/activate", __workflow_scene.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodyinfrared = WorkflowExpression.Compile(bodyinfrared, nameof(bodyinfrared), required: false);
             return new DeferredBodyAction<SetStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/state", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodypowerOff = WorkflowExpression.Compile(bodypowerOff, nameof(bodypowerOff), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/off", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/toggle", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodypeak = WorkflowExpression.Compile(bodypeak, nameof(bodypeak), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/breathe", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/morph", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

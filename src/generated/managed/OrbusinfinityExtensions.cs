@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsODataModelRelationshipLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Relationships({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsODataModelObjectLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(callPayload);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/Objects({0})", __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

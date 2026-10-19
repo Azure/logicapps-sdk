@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: false);
             return new DeferredBodyAction<UploadFormSubmissionAsNewFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/file/upload/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/file/{0}", __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<DeleteFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteFolderResponse>(callPayload);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: false);
             return new DeferredBodyAction<Folder>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_requestBodytitle = WorkflowExpression.Compile(requestBodytitle, nameof(requestBodytitle), required: false);
             return new DeferredBodyAction<UploadFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/folder/{0}/upload", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/task/{0}/markComplete", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_requestBodystatus = WorkflowExpression.Compile(requestBodystatus, nameof(requestBodystatus), required: false);
             return new DeferredBodyAction<CreateWorkspaceTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workspace/{0}/task", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<PollFolderForFileUploadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v2/poll/folder/{0}/upload", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             return new DeferredBodyTrigger<PollWorkspaceForNewApprovalResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, recurrence: recurrence);

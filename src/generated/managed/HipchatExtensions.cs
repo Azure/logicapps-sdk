@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyAction<UserList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/participant", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserList>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             var __workflow_userid = WorkflowExpression.Compile(userid, nameof(userid), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/{0}", __workflow_userid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponse>(callPayload);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<NewMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/message", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             var __workflow_memberid = WorkflowExpression.Compile(memberid, nameof(memberid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/member/{1}", __workflow_roomId.WithUrlEncoding(1), __workflow_memberid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/message_trigger/room/{0}/history", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/file_trigger/room/{0}/history", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
             var __workflow_currencyPair = WorkflowExpression.Compile(currencyPair, nameof(currencyPair), required: true);
             return new DeferredBodyAction<GetSpotPriceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(__workflow_currencyPair, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/prices/{0}/spot", __workflow_currencyPair.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpotPriceResponse>(callPayload);

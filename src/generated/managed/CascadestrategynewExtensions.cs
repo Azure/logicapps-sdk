@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
             var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
             return new DeferredBodyAction<UpdateMeasure2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_measureId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/measures/{0}", __workflow_measureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
             var __workflow_bodyhistoricalData = WorkflowExpression.Compile(bodyhistoricalData, nameof(bodyhistoricalData), required: false);
             return new DeferredBodyAction<UpdateMeasureHistoricalValue2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_measureId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/measures/historical/{0}", __workflow_measureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<UpdateAction2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
             var __workflow_operationName = WorkflowExpression.Compile(operationName, nameof(operationName), required: true);
             return new DeferredBodyTrigger<WebHookDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_item, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", __workflow_item.WithUrlEncoding(1), __workflow_operationName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

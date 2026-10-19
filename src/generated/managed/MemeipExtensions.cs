@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
             var __workflow_subreddit = WorkflowExpression.Compile(subreddit, nameof(subreddit), required: true);
             return new DeferredBodyAction<MemeSubredditResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subreddit, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gimme/{0}", __workflow_subreddit.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemeSubredditResponse>(callPayload);

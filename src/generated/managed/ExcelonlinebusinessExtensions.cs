@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_scriptParameters = WorkflowExpression.Compile(scriptParameters, nameof(scriptParameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/officescripting/api/unattended/run/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/officescripting/api/unattended/run/{0}/{1}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_tablecolumnsNames = WorkflowExpression.Compile(tablecolumnsNames, nameof(tablecolumnsNames), required: false);
             return new DeferredBodyAction<TableMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/files/{1}/tables", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_idColumn = WorkflowExpression.Compile(idColumn, nameof(idColumn), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/createIdColumn", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/files/{1}/tables/{2}/createIdColumn", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/files/{1}/tables/{2}/items", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<CommentsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/items/{1}/workbook/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/items/{1}/workbook/comments", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = Convert.ToString("me");
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<Comment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/items/{1}/workbook/comments/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/items/{1}/workbook/comments/{2}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_commentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = Convert.ToString("me");
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<GetItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_dateTimeFormat = WorkflowExpression.Compile(dateTimeFormat, nameof(dateTimeFormat), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/drives/{0}/files/{1}/tables/{2}/items/{3}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<GetAllWorksheetsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<WorksheetMetadata>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/worksheets", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<GetTablesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/drives/{0}/items/{1}/workbook/tables", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
             var __workflow_dateTimeFormat = WorkflowExpression.Compile(dateTimeFormat, nameof(dateTimeFormat), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/v1.2/drives/{0}/items/{1}/workbook/tables/{2}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drive, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_file, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.2/drives/{0}/items/{1}/workbook/tables/{2}/rows", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);

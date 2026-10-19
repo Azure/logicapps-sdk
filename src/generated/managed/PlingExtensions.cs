@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
             var __workflow_bodyaudienceUsers = WorkflowExpression.Compile(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/messages", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             return new DeferredBodyAction<GetTemplatesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/templates", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);

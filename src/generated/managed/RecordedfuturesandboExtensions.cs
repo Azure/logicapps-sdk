@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
             return new DeferredBodyAction<GetReportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/samples/{0}/overview.json", __workflow_sampleID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
             return new DeferredBodyAction<GetSummaryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/samples/{0}", __workflow_sampleID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);

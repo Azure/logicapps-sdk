@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
             var __workflow_commandreferenceId = WorkflowExpression.Compile(commandreferenceId, nameof(commandreferenceId), required: false);
             return new DeferredBodyAction<PDFDtoApiResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/pdfs", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var command = new JObject();

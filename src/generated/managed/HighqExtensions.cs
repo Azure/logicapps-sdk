@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_rootfolderid = WorkflowExpression.Compile(rootfolderid, nameof(rootfolderid), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/files/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/files/content", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["parentfolderid"] = ExpressionConverter.Convert(__workflow_parentfolderid);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_fileidcsvfileidCSV = WorkflowExpression.Compile(fileidcsvfileidCSV, nameof(fileidcsvfileidCSV), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/files/move", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/files/move", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["targetfolder"] = ExpressionConverter.Convert(__workflow_targetfolder);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyfilerelationshipsitepermissionlevel = WorkflowExpression.Compile(bodyfilerelationshipsitepermissionlevel, nameof(bodyfilerelationshipsitepermissionlevel), required: false);
             return new DeferredBodyAction<Site>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/sites", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1685,7 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyfilerelationshipsitepermissionlevel = WorkflowExpression.Compile(bodyfilerelationshipsitepermissionlevel, nameof(bodyfilerelationshipsitepermissionlevel), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sites/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/sites/{1}", __workflow_version.WithUrlEncoding(1), __workflow_siteid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
             var __workflow_dayRange = WorkflowExpression.Compile(dayRange, nameof(dayRange), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", __workflow_source.WithUrlEncoding(1), __workflow_areaCoord.WithUrlEncoding(1), __workflow_dayRange.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
             var __workflow_dayRange = WorkflowExpression.Compile(dayRange, nameof(dayRange), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", __workflow_source.WithUrlEncoding(1), __workflow_country.WithUrlEncoding(1), __workflow_dayRange.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredBodyAction<Attachment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/attachments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Attachment>(callPayload);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_audioId = WorkflowExpression.Compile(audioId, nameof(audioId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/audio/{0}.mp4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_audioId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/audio/{0}.mp4", __workflow_audioId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_photoId = WorkflowExpression.Compile(photoId, nameof(photoId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.jpg", ExpressionConverter.ConvertWithUrlEncoding(__workflow_photoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/photos/{0}.jpg", __workflow_photoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_photoId = WorkflowExpression.Compile(photoId, nameof(photoId), required: true);
             return new DeferredBodyAction<SinglePhotoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_photoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/photos/{0}.json", __workflow_photoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SinglePhotoResponse>(callPayload);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleRecordResponse>(callPayload);
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<RecordHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}/history.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}/history.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RecordHistoryResponse>(callPayload);
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/reports/{0}.pdf", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/reports/{0}.pdf", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_signatureId = WorkflowExpression.Compile(signatureId, nameof(signatureId), required: true);
             return new DeferredBodyAction<SingleSignatureResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signatureId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/signatures/{0}.json", __workflow_signatureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleSignatureResponse>(callPayload);
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_signatureId = WorkflowExpression.Compile(signatureId, nameof(signatureId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.png", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signatureId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/signatures/{0}.png", __workflow_signatureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_sketchId = WorkflowExpression.Compile(sketchId, nameof(sketchId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.jpg", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sketchId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/sketches/{0}.jpg", __workflow_sketchId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_sketchId = WorkflowExpression.Compile(sketchId, nameof(sketchId), required: true);
             return new DeferredBodyAction<SingleSketchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sketchId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/sketches/{0}.json", __workflow_sketchId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleSketchResponse>(callPayload);
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/videos/{0}.mp4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/videos/{0}.mp4", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

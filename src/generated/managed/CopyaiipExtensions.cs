@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<WorkflowsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["size"] = Convert.ToString(10);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             return new DeferredBodyAction<WorkflowPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
             var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<WorkflowGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run/{1}", __workflow_workflowId.WithUrlEncoding(1), __workflow_runId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WorkflowGetResponse>(callPayload);

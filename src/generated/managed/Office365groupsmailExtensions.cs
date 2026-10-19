@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredBodyAction<CreateConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/conversations", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
             return new DeferredBodyAction<Conversation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/conversations/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_conversationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Conversation>(callPayload);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
             return new DeferredBodyAction<ListConversationThreadsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", __workflow_groupId.WithUrlEncoding(1), __workflow_conversationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListConversationThreadsResponse>(callPayload);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredBodyAction<NewConversationThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", __workflow_groupId.WithUrlEncoding(1), __workflow_conversationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<ListGroupThreadsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListGroupThreadsResponse>(callPayload);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredBodyAction<NewConversationThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ConversationThread>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConversationThread>(callPayload);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ListThreadPostsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}/posts", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListThreadPostsResponse>(callPayload);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<Post>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$expand"] = Convert.ToString("attachments");
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<GetAttachmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAttachmentsResponse>(callPayload);
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}/reply", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", __workflow_groupId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", __workflow_groupMail.WithUrlEncoding(1), __workflow_conversationId.WithUrlEncoding(1), __workflow_threadId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Prefer"] = Convert.ToString("exchange.behavior=\"ForwardPostWithMessage\"");
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnNewEmailInGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/v1.0/groups/{0}/conversations", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$select"] = Convert.ToString("id,lastDeliveredDateTime");

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
             var __workflow_bodysubmittedDateTime = WorkflowExpression.Compile(bodysubmittedDateTime, nameof(bodysubmittedDateTime), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/reviews/product/{0}/user", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/reviews/product/{0}/user", __workflow_productId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tenantId"] = ExpressionConverter.Convert(__workflow_tenantId);

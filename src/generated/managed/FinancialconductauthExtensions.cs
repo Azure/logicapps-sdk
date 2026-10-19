@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_iRN = WorkflowExpression.Compile(iRN, nameof(iRN), required: true);
             return new DeferredBodyAction<IndividualsDetailsByIRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Individuals/{0}", __workflow_iRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndividualsDetailsByIRNResponse>(callPayload);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmDetailsByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmDetailsByFRNResponse>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_pRN = WorkflowExpression.Compile(pRN, nameof(pRN), required: true);
             return new DeferredBodyAction<ProductDetailsByPRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}", __workflow_pRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProductDetailsByPRNResponse>(callPayload);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_pRN = WorkflowExpression.Compile(pRN, nameof(pRN), required: true);
             return new DeferredBodyAction<SubfundDetailsByPRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Subfund", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}/Subfund", __workflow_pRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SubfundDetailsByPRNResponse>(callPayload);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_pRN = WorkflowExpression.Compile(pRN, nameof(pRN), required: true);
             return new DeferredBodyAction<ProductOtherNameDetailsByPRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}/Names", __workflow_pRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProductOtherNameDetailsByPRNResponse>(callPayload);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_iRN = WorkflowExpression.Compile(iRN, nameof(iRN), required: true);
             return new DeferredBodyAction<IndividualDisciplinaryHistoryByIRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", __workflow_iRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndividualDisciplinaryHistoryByIRNResponse>(callPayload);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmOtherNamesByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Names", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmOtherNamesByFRNResponse>(callPayload);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmAddressByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Address", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Address", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmAddressByFRNResponse>(callPayload);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmIndividualsByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Individuals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Individuals", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmIndividualsByFRNResponse>(callPayload);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmActivitiesAndPermissionsByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Permissions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Permissions", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmActivitiesAndPermissionsByFRNResponse>(callPayload);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_rEQREF = WorkflowExpression.Compile(rEQREF, nameof(rEQREF), required: true);
             return new DeferredBodyAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rEQREF, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", __workflow_fRN.WithUrlEncoding(1), __workflow_rEQREF.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(callPayload);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmRegulatorsByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Regulators/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Regulators/", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmRegulatorsByFRNResponse>(callPayload);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmPassportByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Passports/", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmPassportByFRNResponse>(callPayload);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmExclusionsByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Exclusions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Exclusions", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmExclusionsByFRNResponse>(callPayload);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmDisciplinaryHistoryByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmDisciplinaryHistoryByFRNResponse>(callPayload);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmRequirementsByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Requirements", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmRequirementsByFRNResponse>(callPayload);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
             return new DeferredBodyAction<FirmWaiverByFRNResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Waivers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Waivers", __workflow_fRN.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmWaiverByFRNResponse>(callPayload);
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             return new DeferredBodyAction<FirmPassportPermissionByFRNandCountryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", __workflow_fRN.WithUrlEncoding(1), __workflow_country.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmPassportPermissionByFRNandCountryResponse>(callPayload);

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             var __workflow_contextId = WorkflowExpression.Compile(contextId, nameof(contextId), required: true);
             return new DeferredBodyAction<SeismicPredictiveContentPredictiveContentResponse[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contextId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/predictiveContent/{0}/{1}", __workflow_predictiveContentId.WithUrlEncoding(1), __workflow_contextId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicPredictiveContentPredictiveContentResponse[]>(callPayload);

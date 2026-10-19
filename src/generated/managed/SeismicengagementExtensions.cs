@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var __workflow_deliveryOptionId = WorkflowExpression.Compile(deliveryOptionId, nameof(deliveryOptionId), required: true);
             return new DeferredBodyAction<SeismicDeliveryDeliveryFormInputs>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customDelivery/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deliveryOptionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/customDelivery/{0}", __workflow_deliveryOptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicDeliveryDeliveryFormInputs>(callPayload);

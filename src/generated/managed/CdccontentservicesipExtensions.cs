@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<MediaGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mediaId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/media/{0}", __workflow_mediaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_sort != null)
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
             return new DeferredBodyAction<TagGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tAGID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}", __workflow_tAGID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagGetResponse>(callPayload);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
             return new DeferredBodyAction<MediaTagResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tAGID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/media", __workflow_tAGID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MediaTagResponse>(callPayload);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
             return new DeferredBodyAction<TagRelatedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tAGID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/related", __workflow_tAGID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRelatedResponse>(callPayload);

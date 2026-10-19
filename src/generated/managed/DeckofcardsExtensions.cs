@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<CardGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/draw/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/draw/", __workflow_deckId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_count != null)
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var __workflow_remaining = WorkflowExpression.Compile(remaining, nameof(remaining), required: false);
             return new DeferredBodyAction<ReshuffleGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/shuffle/", __workflow_deckId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_remaining != null)
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: true);
             return new DeferredBodyAction<PileGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/add/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pileName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/pile/{1}/add/", __workflow_deckId.WithUrlEncoding(1), __workflow_pileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["cards"] = ExpressionConverter.Convert(__workflow_cards);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var __workflow_pileName = WorkflowExpression.Compile(pileName, nameof(pileName), required: true);
             return new DeferredBodyAction<ShufflePileGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pileName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/pile/{1}/shuffle/", __workflow_deckId.WithUrlEncoding(1), __workflow_pileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ShufflePileGetResponse>(callPayload);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<DrawPileGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/draw/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pileName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/pile/{1}/draw/", __workflow_deckId.WithUrlEncoding(1), __workflow_pileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_count != null)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: true);
             return new DeferredBodyAction<ReturnGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/return/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/return/", __workflow_deckId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["cards"] = ExpressionConverter.Convert(__workflow_cards);

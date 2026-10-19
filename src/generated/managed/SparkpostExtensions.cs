@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var __workflow_addUserToRecipientListRequestrecipientaddressname = WorkflowExpression.Compile(addUserToRecipientListRequestrecipientaddressname, nameof(addUserToRecipientListRequestrecipientaddressname), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/add-user/recipient-lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/add-user/recipient-lists/{0}", __workflow_recipientListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var addUserToRecipientListRequest = new JObject();
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
             var __workflow_deleteUserRequestemailAddress = WorkflowExpression.Compile(deleteUserRequestemailAddress, nameof(deleteUserRequestemailAddress), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/delete-user/recipient-lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/delete-user/recipient-lists/{0}", __workflow_recipientListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteUserRequest = new JObject();

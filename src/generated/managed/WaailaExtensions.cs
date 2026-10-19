@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
             var __workflow_wauth = WorkflowExpression.Compile(wauth, nameof(wauth), required: true);
             return new DeferredBodyAction<GetTestsuiteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_depot, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_testsuite, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/depot/{0}/testsuite/{1}", __workflow_depot.WithUrlEncoding(1), __workflow_testsuite.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Wauth"] = ExpressionConverter.Convert(__workflow_wauth);

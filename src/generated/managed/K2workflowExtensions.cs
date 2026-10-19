@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.K2workflow
             var __workflow_serialNumber = WorkflowExpression.Compile(serialNumber, nameof(serialNumber), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tasks/{0}/actions/release", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serialNumber, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tasks/{0}/actions/release", __workflow_serialNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);

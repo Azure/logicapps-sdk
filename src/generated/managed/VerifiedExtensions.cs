@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             return new DeferredBodyAction<Company>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/companies/{0}", __workflow_companyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Recipient[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/recipients", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodybank = WorkflowExpression.Compile(bodybank, nameof(bodybank), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/recipients", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Recipient>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/recipients/{1}", __workflow_envelopeId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodybank = WorkflowExpression.Compile(bodybank, nameof(bodybank), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/recipients/{1}", __workflow_envelopeId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_asObject = WorkflowExpression.Compile(asObject, nameof(asObject), required: false);
             return new DeferredBodyAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files/{2}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/files/{2}/url", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1), __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_asObject != null)
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<Setting>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}/users/{1}/settings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/companies/{0}/users/{1}/settings", __workflow_companyId.WithUrlEncoding(1), __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Envelope>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/publish-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/publish-status", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/templates/{2}/user-data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/templates/{2}/user-data", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/abort-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/abort-status", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<File[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/files", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
             return new DeferredBodyAction<File>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/files", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/status/aborted", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}/status/aborted", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/trash-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/trash-status", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flows/{0}/jobs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_flowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flows/{0}/jobs/{1}", __workflow_flowId.WithUrlEncoding(1), __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Document>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents/{1}", __workflow_envelopeId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelope-descriptors/{0}/envelopes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeDescriptorId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelope-descriptors/{0}/envelopes", __workflow_envelopeDescriptorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Document[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/documents", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodyredirectTo = WorkflowExpression.Compile(bodyredirectTo, nameof(bodyredirectTo), required: false);
             return new DeferredBodyAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/get.sign.link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/jobs/get.sign.link", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
             var __workflow_bodyrecipientid = WorkflowExpression.Compile(bodyrecipientid, nameof(bodyrecipientid), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/send.notification", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/envelopes/{0}/jobs/send.notification", __workflow_envelopeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);

@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<ContactGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactGetResponse>(callPayload);
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<ContactDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactDeleteResponse>(callPayload);
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var __workflow_bodytwitter = WorkflowExpression.Compile(bodytwitter, nameof(bodytwitter), required: false);
             return new DeferredBodyAction<ContactPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoice/v3/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1453,7 +1453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             return new DeferredBodyAction<InvoiceGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_invoiceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/invoices/{0}", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InvoiceGetResponse>(callPayload);
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             return new DeferredBodyAction<InvoiceDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_invoiceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/invoices/{0}", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InvoiceDeleteResponse>(callPayload);
@@ -1520,7 +1520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
             var __workflow_bodyavataxExemptNo = WorkflowExpression.Compile(bodyavataxExemptNo, nameof(bodyavataxExemptNo), required: false);
             return new DeferredBodyAction<InvoicePutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoice/v3/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_invoiceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoice/v3/invoices/{0}", __workflow_invoiceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

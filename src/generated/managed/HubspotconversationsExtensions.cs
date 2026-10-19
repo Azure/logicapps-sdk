@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetASingleThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
             return new DeferredBodyAction<UpdateAThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetTheOriginalContentOfASingleMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", __workflow_threadId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_property != null)
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetMessageHistoryForAThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}/messages", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_after != null)
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyAction<GetASingleChannelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channels/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/channels/{0}", __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetASingleChannelResponse>(callPayload);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetASingleMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}", __workflow_threadId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_property != null)
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetASingleActorResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/actors/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actorId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/actors/{0}", __workflow_actorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_property != null)
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_channelAccountId = WorkflowExpression.Compile(channelAccountId, nameof(channelAccountId), required: true);
             return new DeferredBodyAction<GetASingleChannelAccountResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channel-accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelAccountId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/channel-accounts/{0}", __workflow_channelAccountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetASingleChannelAccountResponse>(callPayload);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
             var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
             return new DeferredBodyAction<GetASingleConversationsInboxResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/inboxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inboxId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/inboxes/{0}", __workflow_inboxId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetASingleConversationsInboxResponse>(callPayload);

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<GetSessionsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/view/Sessions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iD, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Sessions", __workflow_iD.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSessionsResponseItem[]>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<GetSpeakersResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/view/Speakers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iD, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Speakers", __workflow_iD.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpeakersResponseItem[]>(callPayload);

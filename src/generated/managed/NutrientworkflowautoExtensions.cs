@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
             return new DeferredBodyAction<SubmitFormResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/instance/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_processGuid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_processTaskGuid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/instance/start/{0}/{1}", __workflow_processGuid.WithUrlEncoding(1), __workflow_processTaskGuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);

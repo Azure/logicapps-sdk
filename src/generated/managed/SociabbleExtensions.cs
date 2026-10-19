@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/badges/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/badges/", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodypoints = WorkflowExpression.Compile(bodypoints, nameof(bodypoints), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/customactions/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/customactions/", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_badgeId = WorkflowExpression.Compile(badgeId, nameof(badgeId), required: true);
             return new DeferredBodyAction<GetBadgeLevelsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/badges/{0}/levels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_badgeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/badges/{0}/levels", __workflow_badgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBadgeLevelsResponseItem[]>(callPayload);

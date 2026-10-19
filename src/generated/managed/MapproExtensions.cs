@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
             return new DeferredBodyAction<Place>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Place>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<Place>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
             return new DeferredBodyAction<Place[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places", __workflow_mapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Place[]>(callPayload);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<Place>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places", __workflow_mapId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

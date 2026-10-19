@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             var __workflow_continentName = WorkflowExpression.Compile(continentName, nameof(continentName), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/continent/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_continentName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/continent/{0}", __workflow_continentName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string[]>(callPayload);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/sch/country/{0}", __workflow_countryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(callPayload);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             return new DeferredBodyAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/countrycode/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/sch/countrycode/{0}", __workflow_countryCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(callPayload);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
             var __workflow_universityName = WorkflowExpression.Compile(universityName, nameof(universityName), required: true);
             return new DeferredBodyAction<GetAllUniversityDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/university/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_universityName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/sch/university/{0}", __workflow_universityName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllUniversityDetailsResponse>(callPayload);

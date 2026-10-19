@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Approve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Approve", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredBodyAction<EnrollUserToCourseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/Enroll", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Courses({0})/Enroll", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Reject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Reject", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<GetCourseInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Courses({0})", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$expand"] = Convert.ToString("DueDate,Publishing,CertificateExpiry,SharepointWeb($select=Url),Categories,Tags,CourseSessions,ProvisioningProgress,Trainers");
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Complete", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Retake", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Retake", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<GetCoursesFromCatalogResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/CourseCatalogs({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseCatalogId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/CourseCatalogs({0})", __workflow_courseCatalogId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$expand"] = Convert.ToString("Courses($expand=SharepointWeb)");
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_enrollmentId = WorkflowExpression.Compile(enrollmentId, nameof(enrollmentId), required: true);
             return new DeferredBodyAction<GetEnrollmentByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_enrollmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})", __workflow_enrollmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEnrollmentByIdResponse>(callPayload);
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_enrollmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Enrollments({0})/Cancel", __workflow_enrollmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/CourseSessions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v2/Courses({0})/CourseSessions", __workflow_courseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lMS365UserId != null)
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileUploadUrl, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_fileUploadUrl.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

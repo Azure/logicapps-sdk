@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_requestBodymaxCompletionTokens = WorkflowExpression.Compile(requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
             return new DeferredBodyAction<CreateRunResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/runs", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<GetRunResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/runs/{1}", __workflow_threadId.WithUrlEncoding(1), __workflow_runId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ListMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/messages", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/protocols/activityprotocol", __workflow_agentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_myApplication = WorkflowExpression.Compile(myApplication, nameof(myApplication), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(__workflow_myApplication, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/applications/{0}/protocols/activityprotocol", __workflow_myApplication.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");

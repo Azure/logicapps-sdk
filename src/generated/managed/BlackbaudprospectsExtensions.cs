@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConstituentApiProspectStatusRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/prospectstatus", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/{0}/prospectstatus", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConstituentApiProspectStatusRead>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_mostRecentOnly = WorkflowExpression.Compile(mostRecentOnly, nameof(mostRecentOnly), required: false);
             return new DeferredBodyAction<ConstituentApiApiCollectionOfRatingRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/ratings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/{0}/ratings", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_includeInactive != null)
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             return new DeferredBodyAction<OpportunityApiOpportunityRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunity/v1/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_opportunityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OpportunityApiOpportunityRead>(callPayload);
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunity/v1/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_opportunityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             return new DeferredBodyAction<OpportunityApiApiCollectionOfOpportunityAttachmentRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunity/v1/opportunities/{0}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_opportunityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/{0}/attachments", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OpportunityApiApiCollectionOfOpportunityAttachmentRead>(callPayload);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             return new DeferredBodyAction<OpportunityApiApiCollectionOfOpportunityCustomFieldRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunity/v1/opportunities/{0}/customfields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_opportunityId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/{0}/customfields", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OpportunityApiApiCollectionOfOpportunityCustomFieldRead>(callPayload);
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunity/v1/opportunities/attachments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunity/v1/opportunities/customfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customFieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

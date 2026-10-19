@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<Transaction>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/transaction/{0}", __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Transaction>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ErrorModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/transaction/{0}", __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/transaction/{0}/file/{1}/", __workflow_transactionId.WithUrlEncoding(1), __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/file/receipt/{0}", __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/transaction/{0}/file/{1}", __workflow_transactionId.WithUrlEncoding(1), __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<ErrorModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/transaction/{0}/start", __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ErrorModel>(callPayload);

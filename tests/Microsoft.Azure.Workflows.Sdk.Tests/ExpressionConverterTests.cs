@@ -1,6 +1,9 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Amazonredshift;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
     using Xunit;
@@ -67,6 +70,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var action = WorkflowActions.BuiltIn.Compose(() => value);
 
             Assert.Equal(expected, ((JToken)action.GetActionDefinition("flow").Inputs).Value<string>());
+        }
+
+        [Fact]
+        public void GeneratedPathsComposeFragmentsBeforeRendering()
+        {
+            var dataset = "#{dataset}";
+            var table = "@{table}";
+            var action = new AmazonredshiftActions("connection").GetItems(
+                () => dataset,
+                () => table);
+            var path = ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path;
+
+            AssertReturnExpression(
+                """"
+                "/datasets/" +
+                    encodeURIComponent(encodeURIComponent("#{dataset}")) +
+                    "/tables/" +
+                    encodeURIComponent(encodeURIComponent("@{table}")) +
+                    "/items"
+                """",
+                path);
+        }
+
+        [Fact]
+        public void GeneratedPathsResolveBindingsOnlyWhenConverted()
+        {
+            var previous = WorkflowActions.BuiltIn.Compose<string>(() => "value");
+            var action = new AbortionpolicyapiipActions("connection")
+                .GetGestationalLimitsbyStatebyZip(() => previous.Output);
+
+            previous.WithName("Renamed");
+
+            AssertReturnExpression(
+                """
+                "/v1/gestational_limits/zips/" +
+                    encodeURIComponent(outputs("Renamed").ToObject<string>())
+                """,
+                ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path);
+        }
+
+        [Fact]
+        public void Base64EncodingTransformsTheDescriptorBeforeConversion()
+        {
+            var action = new ServicebusActions("connection").SendMessage(
+                () => "queue",
+                () => WorkflowFunctions.ParseJson("""{"value":1}"""));
+            var inputs = (ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs;
+            var source = ((JObject)inputs.Body)["ContentData"].Value<string>();
+
+            AssertReturnExpression(
+                """base64(json("{\"value\":1}"))""",
+                source);
         }
     }
 }

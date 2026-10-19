@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
             return new DeferredBodyAction<GetParcelDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_x, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_y, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parcels/{0}/{1}", __workflow_x.WithUrlEncoding(1), __workflow_y.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetParcelDetailsResponse>(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             var __workflow_publication = WorkflowExpression.Compile(publication, nameof(publication), required: true);
             return new DeferredBodyAction<GetParcelMapResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", ExpressionConverter.ConvertWithUrlEncoding(__workflow_x, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_y, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parcels/{0}/{1}/map.png", __workflow_x.WithUrlEncoding(1), __workflow_y.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);

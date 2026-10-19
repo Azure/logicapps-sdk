@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
             var __workflow_requestBodyOfWebhooklabel = WorkflowExpression.Compile(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inboxId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/inboxes/{0}/dispatcher", __workflow_inboxId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();

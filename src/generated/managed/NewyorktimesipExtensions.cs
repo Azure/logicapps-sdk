@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
             var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: true);
             return new DeferredBodyAction<TopStoriesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_section, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/topstories/v2/{0}.json", __workflow_section.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TopStoriesResponse>(callPayload);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<MostViewedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/mostpopular/v2/viewed/{0}.json", __workflow_period.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MostViewedResponse>(callPayload);

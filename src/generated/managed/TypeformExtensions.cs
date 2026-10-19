@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
             var __workflow_bodyenabled = WorkflowExpression.Compile(bodyenabled, nameof(bodyenabled), required: false);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tag, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forms/{0}/webhooks/{1}", __workflow_formId.WithUrlEncoding(1), __workflow_tag.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

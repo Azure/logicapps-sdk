@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
             var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
             return new DeferredBodyAction<UploadDocumentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parserId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/upload/{0}", __workflow_parserId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_remoteId != null)
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
             var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
             return new DeferredBodyAction<FetchDocumentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parserId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/fetch/{0}", __workflow_parserId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
             var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
             return new DeferredBodyTrigger<WebhookCreateReponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parserId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/subscribe/{0}/flow", __workflow_parserId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var targetUrl = new JObject();

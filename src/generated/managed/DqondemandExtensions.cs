@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             return new DeferredBodyAction<VerifyAddressGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Verify/Address/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Verify/Address/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_line1 != null)
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
             return new DeferredBodyAction<SearchAddressFindResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Search/Address/Find/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Search/Address/Find/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
             return new DeferredBodyAction<SearchAddressRetrieveResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Search/Address/Retrieve/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Search/Address/Retrieve/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
             return new DeferredBodyAction<SuppressDeceasedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Deceased/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Address/Deceased/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_title != null)
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
             return new DeferredBodyAction<SuppressGoneAwayResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Address/GoneAway/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Address/GoneAway/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_title != null)
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
             return new DeferredBodyAction<SuppressRelocatedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Relocated/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Address/Relocated/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_title != null)
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
             return new DeferredBodyAction<SuppressPhonePersonalResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Personal/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Phone/Personal/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
             return new DeferredBodyAction<SuppressPhoneCorporateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Corporate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Phone/Corporate/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<AuthenticateEmailGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Authenticate/Email/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Authenticate/Email/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
             return new DeferredBodyAction<AuthenticatePhoneGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Authenticate/Phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Authenticate/Phone/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Phone"] = ExpressionConverter.Convert(__workflow_phone);

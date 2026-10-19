@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Booth>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_deletedFilter = WorkflowExpression.Compile(deletedFilter, nameof(deletedFilter), required: false);
             return new DeferredBodyAction<Booth[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Booth[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/available", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/all/available", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Booth[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/rented", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/all/rented", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/rent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/rent", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/unrent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/unrent", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/hold", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/hold", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/unhold", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/unhold", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/rentToHold", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/rentToHold", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_ratePlan = WorkflowExpression.Compile(ratePlan, nameof(ratePlan), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/holdToRent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/holdToRent", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/combine", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/combine", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/uncombine", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/uncombine", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/delete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/undelete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/undelete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/changenumber", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/changenumber", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["oldNumber"] = ExpressionConverter.Convert(__workflow_oldNumber);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/apply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/classes/apply", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/classes/remove", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/set", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/displayNameOverride/set", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/reset", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/displayNameOverride/reset", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/childExhibitor/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["childExhibitorId"] = ExpressionConverter.Convert(__workflow_childExhibitorId);
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/childExhibitor/remove", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["childExhibitorId"] = ExpressionConverter.Convert(__workflow_childExhibitorId);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<BoothClass>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<BoothClass[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
             return new DeferredBodyAction<BoothClass>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
             return new DeferredBodyAction<BoothClass>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/update", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/update", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/delete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             return new DeferredBodyAction<ExpocadEvent[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpocadEvent[]>(callPayload);
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<EventStats>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events/stats", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/stats", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<ExpoEventInformation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/info", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Exhibitor>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Exhibitor[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             return new DeferredBodyAction<Exhibitor>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             return new DeferredBodyAction<Exhibitor>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/update", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/update", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
@@ -1182,7 +1182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/delete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
@@ -1205,7 +1205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_reversedFilter = WorkflowExpression.Compile(reversedFilter, nameof(reversedFilter), required: false);
             return new DeferredBodyAction<Transaction[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/transactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/transactions", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<BoothFinancial>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/booths", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/booths", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
             return new DeferredBodyAction<Invoice>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/invoices", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Invoice[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/invoices/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_transactionCode = WorkflowExpression.Compile(transactionCode, nameof(transactionCode), required: false);
             return new DeferredBodyAction<MasterRequestItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitemlist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/requestitemlist", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1315,7 +1315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_transactionCode = WorkflowExpression.Compile(transactionCode, nameof(transactionCode), required: false);
             return new DeferredBodyAction<InvoiceRequestItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/requestitems", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1344,7 +1344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<PaymentTypeItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/paymenttypelist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/paymenttypelist", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1365,7 +1365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_paymentTypeCategory = WorkflowExpression.Compile(paymentTypeCategory, nameof(paymentTypeCategory), required: false);
             return new DeferredBodyAction<InvoicePayment[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/payments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/payments", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1392,7 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Pavilion[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/pavilions/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/pavilions/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1407,7 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<RatePlan>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/default", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1423,7 +1423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/default", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1439,7 +1439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<RatePlan[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_ratePlanisFixed = WorkflowExpression.Compile(ratePlanisFixed, nameof(ratePlanisFixed), required: true);
             return new DeferredBodyAction<RatePlan>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
@@ -1494,7 +1494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<ShowInShow[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/showinshows/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/showinshows/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);

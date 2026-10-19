@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<ImagesGetResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_onlyFinished != null)
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             return new DeferredBodyAction<ImagePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences/{1}", __workflow_modelId.WithUrlEncoding(1), __workflow_inferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ImageGetResponse>(callPayload);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences/{1}", __workflow_modelId.WithUrlEncoding(1), __workflow_inferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/images/models/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelGetResponse>(callPayload);
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/images/models/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelDeleteResponse>(callPayload);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<MusicGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/music/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/music/{0}", __workflow_inferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MusicGetResponse>(callPayload);

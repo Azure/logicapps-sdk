@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/content", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/tag/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_reTag = WorkflowExpression.Compile(reTag, nameof(reTag), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/tag/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_reTag != null)
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/field", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_method != null)
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/field", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/multidoc/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/multidoc/template/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<GetTagByTagIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/taxonomy/tags/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<GetFieldByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/fields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/taxonomy/fields/{0}", __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<GetTemplateFieldsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/taxonomy/templates/{0}/fields", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<GetTemplatebyidResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/taxonomy/templates/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetUserByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_externalSystemId = WorkflowExpression.Compile(externalSystemId, nameof(externalSystemId), required: true);
             return new DeferredBodyAction<GetExternalSystemByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/systems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalSystemId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/systems/{0}", __workflow_externalSystemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetDocumentMetadataResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_fileReferenceId = WorkflowExpression.Compile(fileReferenceId, nameof(fileReferenceId), required: true);
             return new DeferredBodyAction<GetDocumentMetadataByFileReferenceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/meta/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileReferenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/{0}/meta/document", __workflow_fileReferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -861,7 +861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetStorageProviderByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storageproviders/sharepoint/config/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_removeRaptorStorage = WorkflowExpression.Compile(removeRaptorStorage, nameof(removeRaptorStorage), required: false);
             return new DeferredBodyAction<SetPrimaryStorageProviderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Files/{0}/primarystorageprovider/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileReferenceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageProviderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Files/{0}/primarystorageprovider/{1}", __workflow_fileReferenceId.WithUrlEncoding(1), __workflow_storageProviderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_removeRaptorStorage != null)
@@ -916,7 +916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SetExternalSourceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/externalsource", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileReferenceId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/{0}/externalsource", __workflow_fileReferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -934,7 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageProviderId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", __workflow_storageProviderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/template/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meta/document/{0}/template/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/indexStatistics/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/indexStatistics/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
             var __workflow_integratedVectorSearchRequestskipSearches = WorkflowExpression.Compile(integratedVectorSearchRequestskipSearches, nameof(integratedVectorSearchRequestskipSearches), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integratedVectorSearch/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integratedVectorSearch/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var integratedVectorSearchRequest = new JObject();
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
             var __workflow_semanticHybridSearchRequestskipSearches = WorkflowExpression.Compile(semanticHybridSearchRequestskipSearches, nameof(semanticHybridSearchRequestskipSearches), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/semanticHybridSearch/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/semanticHybridSearch/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var semanticHybridSearchRequest = new JObject();

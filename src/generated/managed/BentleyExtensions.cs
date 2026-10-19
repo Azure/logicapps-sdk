@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
             var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
             return new DeferredBodyAction<BadRequestObjectResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", ExpressionConverter.ConvertWithUrlEncoding(__workflow_connectedProjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_federatedRepositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", __workflow_connectedProjectId.WithUrlEncoding(1), __workflow_federatedRepositoryId.WithUrlEncoding(1), __workflow_documentIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-bs-file-name"] = ExpressionConverter.Convert(__workflow_xBsFileName);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
             var __workflow_attributeSynchronizationModeldirection = WorkflowExpression.Compile(attributeSynchronizationModeldirection, nameof(attributeSynchronizationModeldirection), required: true);
             return new DeferredBodyAction<BadRequestObjectResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", ExpressionConverter.ConvertWithUrlEncoding(__workflow_connection, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentIdentifier, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", __workflow_connection.WithUrlEncoding(1), __workflow_documentIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var attributeSynchronizationModel = new JObject();

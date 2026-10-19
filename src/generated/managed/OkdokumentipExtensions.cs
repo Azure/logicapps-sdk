@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
             var __workflow_signatureRequestId = WorkflowExpression.Compile(signatureRequestId, nameof(signatureRequestId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signatureRequestId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signatureRequest/{0}", __workflow_signatureRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

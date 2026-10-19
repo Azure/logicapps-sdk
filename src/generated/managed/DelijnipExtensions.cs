@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
             var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
             return new DeferredBodyAction<HaltesHits>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_searchTerm, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/zoek/haltes/{0}", __workflow_searchTerm.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_huidigePositie != null)
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
             var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
             return new DeferredBodyAction<LijnRichtingHits>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_searchTerm, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/zoek/lijnrichtingen/{0}", __workflow_searchTerm.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_huidigePositie != null)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
             var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
             return new DeferredBodyAction<LocatiesHits>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_searchTerm, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/zoek/locaties/{0}", __workflow_searchTerm.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_huidigePositie != null)

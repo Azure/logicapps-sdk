@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             var __workflow_requesttextBody = WorkflowExpression.Compile(requesttextBody, nameof(requesttextBody), required: false);
             return new DeferredBodyAction<SendSecureMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/Email", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/Email", __workflow_v.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
             return new DeferredBodyAction<TrackMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Track", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/{1}/Track", __workflow_v.WithUrlEncoding(1), __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
             var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Retract", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/{1}/Retract", __workflow_v.WithUrlEncoding(1), __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);

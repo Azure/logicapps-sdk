@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             return new DeferredBodyAction<UserDeleteByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
             return new DeferredBodyAction<PositionDeleteByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_positionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/positions/{0}", __workflow_positionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<PositionUpdateByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_positionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/positions/{0}", __workflow_positionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<GroupDeleteByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);

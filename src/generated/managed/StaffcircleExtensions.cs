@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodyisIncrement = WorkflowExpression.Compile(bodyisIncrement, nameof(bodyisIncrement), required: false);
             return new DeferredBodyAction<UpdateObjectiveScoreResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/Performance/v1/Objectives/{0}/progress", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectiveId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/Performance/v1/Objectives/{0}/progress", __workflow_objectiveId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

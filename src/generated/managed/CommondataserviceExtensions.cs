@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_partitionId = WorkflowExpression.Compile(partitionId, nameof(partitionId), required: false);
             return new DeferredBodyAction<EntityItemList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}", __workflow_entityName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}", __workflow_entityName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["prefer"] = Convert.ToString("return=representation,odata.include-annotations=*");
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_partitionId = WorkflowExpression.Compile(partitionId, nameof(partitionId), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_partitionId = WorkflowExpression.Compile(partitionId, nameof(partitionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_partitionId != null)
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["prefer"] = Convert.ToString("return=representation,odata.include-annotations=*");
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileImageFieldName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})/{2}", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2), __workflow_fileImageFieldName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-file-name"] = ExpressionConverter.Convert(__workflow_xMsFileName);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileImageFieldName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})/{2}/$value", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2), __workflow_fileImageFieldName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_size != null)
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.2/{0}", __workflow_actionName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["organization"] = ExpressionConverter.Convert(__workflow_organization);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.2/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.2/{0}({1})/{2}", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2), __workflow_actionName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["organization"] = ExpressionConverter.Convert(__workflow_organization);
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_itemrelateWith = WorkflowExpression.Compile(itemrelateWith, nameof(itemrelateWith), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_associationEntityRelationship, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2), __workflow_associationEntityRelationship.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["organization"] = ExpressionConverter.Convert(__workflow_organization);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_associationEntityRelationship, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", __workflow_entityName.WithUrlEncoding(2), __workflow_recordId.WithUrlEncoding(2), __workflow_associationEntityRelationship.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$id"] = ExpressionConverter.Convert(__workflow_id);

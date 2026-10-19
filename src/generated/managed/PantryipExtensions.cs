@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
             return new DeferredBodyAction<GetDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pantry/{0}", __workflow_pantryID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDetailsResponse>(callPayload);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<GetContentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pantry/{0}/basket/{1}", __workflow_pantryID.WithUrlEncoding(1), __workflow_basketName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetContentsResponse>(callPayload);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pantry/{0}/basket/{1}", __workflow_pantryID.WithUrlEncoding(1), __workflow_basketName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pantry/{0}/basket/{1}", __workflow_pantryID.WithUrlEncoding(1), __workflow_basketName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
             var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<UpdateContentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pantry/{0}/basket/{1}", __workflow_pantryID.WithUrlEncoding(1), __workflow_basketName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UpdateContentsResponse>(callPayload);

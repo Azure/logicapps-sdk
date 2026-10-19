@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_bodyaddress1County = WorkflowExpression.Compile(bodyaddress1County, nameof(bodyaddress1County), required: false);
             return new DeferredBodyAction<UpsertContactResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactGUID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts({0})", __workflow_contactGUID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(__workflow_oDataMaxVersion);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_bodyaddress1County = WorkflowExpression.Compile(bodyaddress1County, nameof(bodyaddress1County), required: false);
             return new DeferredBodyAction<UpsertAccountResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounts({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountGUID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts({0})", __workflow_accountGUID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(__workflow_oDataMaxVersion);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_bodytelephone1 = WorkflowExpression.Compile(bodytelephone1, nameof(bodytelephone1), required: false);
             return new DeferredBodyAction<UpsertLeadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/leads({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_leadGUID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leads({0})", __workflow_leadGUID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(__workflow_oDataMaxVersion);

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<SimpleUser>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SimpleUser>(callPayload);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             var __workflow_bodyshared = WorkflowExpression.Compile(bodyshared, nameof(bodyshared), required: true);
             return new DeferredBodyAction<WorkflowRunResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowRunId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow-runs/{0}", __workflow_workflowRunId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             var __workflow_bodyformFields = WorkflowExpression.Compile(bodyformFields, nameof(bodyformFields), required: false);
             return new DeferredBodyAction<FindWorkflowRunsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflows/{0}/workflow-runs/search", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowRunId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow-runs/{0}/form-fields", __workflow_workflowRunId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workflowId"] = ExpressionConverter.Convert(__workflow_workflowId);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateMultipleFormFieldValuesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowRunId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", __workflow_workflowId.WithUrlEncoding(1), __workflow_workflowRunId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             return new DeferredBodyAction<SiteStatsModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/stats", __workflow_siteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("stats");
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<PostModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/posts/{1}", __workflow_siteId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostModel>(callPayload);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
             var __workflow_posttags = WorkflowExpression.Compile(posttags, nameof(posttags), required: false);
             return new DeferredBodyAction<PostModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/posts/new", __workflow_siteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var post = new JObject();

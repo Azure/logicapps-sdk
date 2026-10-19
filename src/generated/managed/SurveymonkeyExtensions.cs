@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyAction<Survey>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/surveys/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/surveys/{0}", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Survey>(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
             return new DeferredBodyAction<SurveyMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectorId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collectors/{0}/messages/{1}/send", __workflow_collectorId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
             return new DeferredBodyAction<GetResponseDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_responseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions1/surveys/{0}/responses/{1}/details", __workflow_surveyId.WithUrlEncoding(1), __workflow_responseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["simple"] = Convert.ToString(true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
             return new DeferredBodyAction<GetResponseDetailsNoPagesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_responseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions2/surveys/{0}/responses/{1}/details", __workflow_surveyId.WithUrlEncoding(1), __workflow_responseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["simple"] = Convert.ToString(true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<NewCollectorsItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/surveys/{0}/collectors", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, recurrence: recurrence);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectorId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/collectors/{0}/responses/bulk", __workflow_collectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger4/surveys/{0}/responses/bulk", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
             var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger5/surveys/{0}/responses/bulk", __workflow_surveyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_pageIds != null)

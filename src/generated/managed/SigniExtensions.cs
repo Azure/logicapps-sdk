@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var __workflow_contractId = WorkflowExpression.Compile(contractId, nameof(contractId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/registerwebhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contractId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/registerwebhook/{0}", __workflow_contractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var __workflow_contractId = WorkflowExpression.Compile(contractId, nameof(contractId), required: true);
             return new DeferredBodyAction<GetContractDetailV2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/contract/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contractId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/contract/{0}", __workflow_contractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var __workflow_contractId = WorkflowExpression.Compile(contractId, nameof(contractId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/contract/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contractId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/contract/{0}/download", __workflow_contractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);

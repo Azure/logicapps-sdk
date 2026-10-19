@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<CandidateSearchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/search.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/search.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_query != null)
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CandidateGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateGetResponse>(callPayload);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             return new DeferredBodyAction<CandidateTopFinancialResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/leaders/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_category, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/leaders/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_category.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateTopFinancialResponse>(callPayload);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<CandidateStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/races/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/races/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateStateResponse>(callPayload);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CandidateRecentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/new.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/new.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateRecentResponse>(callPayload);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<ContributionLateRecentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contributions/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contributions/48hour.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateRecentResponse>(callPayload);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ContributionLateCandidateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/{1}/48hour.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateCandidateResponse>(callPayload);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ContributionLateCommitteeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/48hour.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateCommitteeResponse>(callPayload);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<ContributionLateDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contributions/48hour/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contributions/48hour/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateDateResponse>(callPayload);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<CommitteeSearchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/search.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/search.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_query != null)
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CommitteeGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeGetResponse>(callPayload);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommitteeRecentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/new.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/new.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeRecentResponse>(callPayload);
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommitteeRecentPACsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/superpacs.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/superpacs.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeRecentPACsResponse>(callPayload);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CommitteeFilingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/filings.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/filings.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeFilingResponse>(callPayload);
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommitteeLeadershipResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/leadership.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/leadership.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeLeadershipResponse>(callPayload);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<FilingSearchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/search.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/search.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingSearchResponse>(callPayload);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<FilingDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingDateResponse>(callPayload);
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<FilingFormTypeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/types.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/types.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingFormTypeResponse>(callPayload);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_formTypeId = WorkflowExpression.Compile(formTypeId, nameof(formTypeId), required: true);
             return new DeferredBodyAction<FilingTypeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/types/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_formTypeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/types/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_formTypeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingTypeResponse>(callPayload);
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_filingId = WorkflowExpression.Compile(filingId, nameof(filingId), required: true);
             return new DeferredBodyAction<FilingSummaryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_filingId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_filingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingSummaryResponse>(callPayload);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<ExpenditureRecentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureRecentResponse>(callPayload);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<ExpenditureDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/independent_expenditures/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureDateResponse>(callPayload);
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ExpenditureCommitteeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureCommitteeResponse>(callPayload);
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ExpenditureCandidateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/{1}/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureCandidateResponse>(callPayload);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<ExpenditurePresResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/president/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/president/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditurePresResponse>(callPayload);
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_office = WorkflowExpression.Compile(office, nameof(office), required: true);
             return new DeferredBodyAction<ExpenditureOfficeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures/race_totals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_office, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/independent_expenditures/race_totals/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_office.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureOfficeResponse>(callPayload);
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ExpenditureRaceCommitteeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/independent_expenditures/races.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/independent_expenditures/races.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureRaceCommitteeResponse>(callPayload);
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommunicationRecentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/electioneering_communications.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommunicationRecentResponse>(callPayload);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CommunicationCommitteeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/electioneering_communications.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommunicationCommitteeResponse>(callPayload);
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<CommunicationDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electioneering_communications/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/electioneering_communications/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommunicationDateResponse>(callPayload);
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<BundlerCommitteeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/lobbyist_bundlers.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/lobbyist_bundlers.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BundlerCommitteeResponse>(callPayload);

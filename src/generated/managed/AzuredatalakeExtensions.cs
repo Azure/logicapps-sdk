@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfsext/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfsext/{0}", __workflow_filepath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfs/v1/{0}", __workflow_filepath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfs/v1/{0}", __workflow_filepath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfs/v1/{0}", __workflow_filepath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
             var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
             return new DeferredBodyAction<OperationPerformed>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfs/v1/{0}", __workflow_filepath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);

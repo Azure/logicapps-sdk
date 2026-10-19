@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveFlightUsingGETResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flights/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flights/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: true);
             return new DeferredBodyAction<RetrieveAirlineUsingGETResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/airlines/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_airline, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airlines/{0}", __workflow_airline.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_iata = WorkflowExpression.Compile(iata, nameof(iata), required: true);
             return new DeferredBodyAction<RetrieveDestinationUsingGETResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/destinations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iata, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/destinations/{0}", __workflow_iata.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             return new DeferredBodyAction<Training>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Training>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             return new DeferredBodyAction<Registrant[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant[]>(callPayload);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
             return new DeferredBodyAction<AddRegistrantResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
             var __workflow_registrantKey = WorkflowExpression.Compile(registrantKey, nameof(registrantKey), required: true);
             return new DeferredBodyAction<Registrant>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_registrantKey, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", __workflow_trainingid.WithUrlEncoding(1), __workflow_registrantKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant>(callPayload);

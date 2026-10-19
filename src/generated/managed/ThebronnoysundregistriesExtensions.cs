@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
             return new DeferredBodyAction<GetByOrganizationNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orgnr, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/enheter/{0}", __workflow_orgnr.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetByOrganizationNumberResponse>(callPayload);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
             return new DeferredBodyAction<GetEntityRolesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orgnr, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", __workflow_orgnr.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
             var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
             return new DeferredBodyAction<GetSubByOrganizationNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/underenheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orgnr, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/underenheter/{0}", __workflow_orgnr.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSubByOrganizationNumberResponse>(callPayload);

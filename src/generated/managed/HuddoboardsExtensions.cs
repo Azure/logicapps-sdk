@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<Board>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/board/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Board>(callPayload);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<NodeSummary[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/board/{0}/cards", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_type != null)
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<Member[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/board/{0}/members", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_expand != null)
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredBodyAction<Node>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Node>(callPayload);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/assign", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/assign", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredBodyAction<Node[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/children", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Node[]>(callPayload);
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredBodyAction<Node[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/comments", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Node[]>(callPayload);
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/comments", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/complete", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/complete", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/dates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/node/{0}/dates", __workflow_nodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<NodeSummary>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/board-task-completed/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/board-task-completed/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<NodeSummary>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/created-node/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/created-node/{0}", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

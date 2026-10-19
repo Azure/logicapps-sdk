@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var __workflow_obdbId = WorkflowExpression.Compile(obdbId, nameof(obdbId), required: true);
             return new DeferredBodyAction<RefBrewery>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/breweries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_obdbId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/breweries/{0}", __workflow_obdbId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RefBrewery>(callPayload);

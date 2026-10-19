@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             var __workflow_bodyrespondentphoneNumber = WorkflowExpression.Compile(bodyrespondentphoneNumber, nameof(bodyrespondentphoneNumber), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaign, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/respondent", __workflow_campaign.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

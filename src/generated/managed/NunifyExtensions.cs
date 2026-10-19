@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             var __workflow_bodyticketTypeId = WorkflowExpression.Compile(bodyticketTypeId, nameof(bodyticketTypeId), required: false);
             return new DeferredBodyAction<ADDREGISTRANTResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["map_by_labels"] = Convert.ToString(true);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

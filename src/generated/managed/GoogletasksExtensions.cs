@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyAction<TaskList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskList>(callPayload);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var __workflow_taskdue = WorkflowExpression.Compile(taskdue, nameof(taskdue), required: false);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var task = new JObject();
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks/{1}", __workflow_taskListId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger4/lists/{0}/tasks", __workflow_taskListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);

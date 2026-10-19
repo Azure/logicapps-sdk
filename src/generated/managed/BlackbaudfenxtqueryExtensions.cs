@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var __workflow_contentDisposition = WorkflowExpression.Compile(contentDisposition, nameof(contentDisposition), required: false);
             return new DeferredBodyAction<QueryApiQueryExecutionJob>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/query/jobs/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("FE");

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             var __workflow_eventShowRemaining = WorkflowExpression.Compile(eventShowRemaining, nameof(eventShowRemaining), required: false);
             return new DeferredBodyAction<CreateEventResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/organizations/{0}/events/", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(__workflow_eventNameHtml);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             var __workflow_eventShowRemaining = WorkflowExpression.Compile(eventShowRemaining, nameof(eventShowRemaining), required: false);
             return new DeferredBodyAction<CreateEventResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v3/events/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v3/events/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             var __workflow_organizerFilter = WorkflowExpression.Compile(organizerFilter, nameof(organizerFilter), required: true);
             return new DeferredBodyTrigger<GetEventsForOrganizationResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/v3/organizations/{0}/events/", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(__workflow_organizerFilter);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyTrigger<GetOrdersResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/events/{0}/orders/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/v3/events/{0}/orders/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);

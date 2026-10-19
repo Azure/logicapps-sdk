@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
             return new DeferredBodyAction<ListBaseline>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baselineId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", __workflow_baselineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);

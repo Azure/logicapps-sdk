@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<AnalyzeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_language != null)
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DescribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_maxCandidates != null)
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DescribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_maxCandidates != null)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_imageURLimageURL = WorkflowExpression.Compile(imageURLimageURL, nameof(imageURLimageURL), required: false);
             return new DeferredBodyAction<DescribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_maxCandidates != null)
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<OCRJsonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["language"] = Convert.ToString("unk");
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<OCRTextResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["language"] = Convert.ToString("unk");
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DomainModelResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", __workflow_subdomainName.WithUrlEncoding(2), __workflow_model.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<TagResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", __workflow_subdomainName.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);

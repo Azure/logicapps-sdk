@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
             var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/direct_upload/{0}/{1}", __workflow_sessionId.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileContent);

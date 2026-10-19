@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<IChart[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/charts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/charts", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IChart[]>(callPayload);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyicon = WorkflowExpression.Compile(bodyicon, nameof(bodyicon), required: true);
             return new DeferredBodyAction<ITopic>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<ITopic>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic>(callPayload);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<ITopic>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic>(callPayload);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<ITopic>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyicon = WorkflowExpression.Compile(bodyicon, nameof(bodyicon), required: true);
             return new DeferredBodyAction<ITopic>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/children", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<ITopic[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/children", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic[]>(callPayload);
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<IField[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IField[]>(callPayload);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IField>(callPayload);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/bool/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/bool/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/text/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/text/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multitext/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multitext/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/number/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/number/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multinumber/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multinumber/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/decimal/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/decimal/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidecimal/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidecimal/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/date/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/date/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1607,7 +1607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidate/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidate/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/list/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/list/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1948,7 +1948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydataicon = WorkflowExpression.Compile(bodydataicon, nameof(bodydataicon), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationship/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationship/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2013,7 +2013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multirelationship/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multirelationship/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2057,7 +2057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyfieldsetId = WorkflowExpression.Compile(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationshiplist/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationshiplist/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2114,7 +2114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodymultiHyperlinkFields = WorkflowExpression.Compile(bodymultiHyperlinkFields, nameof(bodymultiHyperlinkFields), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fields", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2229,7 +2229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/hyperlink/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/hyperlink/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2260,7 +2260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<IField>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multihyperlink/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multihyperlink/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2288,7 +2288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movetotop", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movetotop", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2303,7 +2303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movetobottom", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movetobottom", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2318,7 +2318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/moveup", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/moveup", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2333,7 +2333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movedown", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movedown", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2348,7 +2348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movelevelup", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movelevelup", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2363,7 +2363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/moveleveldown", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/moveleveldown", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2378,7 +2378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<IRelationship[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/relations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/relations", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IRelationship[]>(callPayload);
@@ -2395,7 +2395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyrelationshipType = WorkflowExpression.Compile(bodyrelationshipType, nameof(bodyrelationshipType), required: false);
             return new DeferredBodyAction<IRelationship>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/relation", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/relation", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2436,7 +2436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_relationId = WorkflowExpression.Compile(relationId, nameof(relationId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/relation/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/relation/{3}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_relationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2450,7 +2450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             return new DeferredBodyAction<ITopic>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/root", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/root", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic>(callPayload);
@@ -2465,7 +2465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<ITopicPath>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/path/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/path/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopicPath>(callPayload);
@@ -2480,7 +2480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<ITopic[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/siblings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/siblings", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic[]>(callPayload);
@@ -2494,7 +2494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             return new DeferredBodyAction<ITopic[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/categories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/categories", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic[]>(callPayload);
@@ -2509,7 +2509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/types", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/types", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -2524,7 +2524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_topicType = WorkflowExpression.Compile(topicType, nameof(topicType), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/types/{2}/icons", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicType, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/types/{2}/icons", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);

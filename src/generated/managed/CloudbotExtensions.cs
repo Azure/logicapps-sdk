@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             var __workflow_fileContents = WorkflowExpression.Compile(fileContents, nameof(fileContents), required: false);
             return new DeferredBodyAction<UploadFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/services/files/temp", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/services/files/temp", __workflow_publicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             var __workflow_ref = WorkflowExpression.Compile(@ref, nameof(@ref), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/services/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ref, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/services/files/{1}", __workflow_publicId.WithUrlEncoding(1), __workflow_ref.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             var __workflow_bodyaPIParameters = WorkflowExpression.Compile(bodyaPIParameters, nameof(bodyaPIParameters), required: false);
             return new DeferredBodyAction<ExecuteBotResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/jobs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/bots/{1}/jobs", __workflow_publicId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             return new DeferredBodyTrigger<BotDoneResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/bots/{1}/subscriptions", __workflow_publicId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);

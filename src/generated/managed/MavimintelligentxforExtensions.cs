@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: false);
             return new DeferredBodyAction<AuditLog[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", __workflow_repositoryId.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["logId"] = Convert.ToString(0);

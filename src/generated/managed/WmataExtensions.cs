@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
             var __workflow_stationCodes = WorkflowExpression.Compile(stationCodes, nameof(stationCodes), required: true);
             return new DeferredBodyAction<GetNextTrainsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCodes, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", __workflow_stationCodes.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);

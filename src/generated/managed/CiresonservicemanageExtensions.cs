@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_workItemId = WorkflowExpression.Compile(workItemId, nameof(workItemId), required: true);
             return new DeferredBodyAction<WorkItemGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workItemId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/WorkItems/{0}", __workflow_workItemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WorkItemGetResponse>(callPayload);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DeleteWorkItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/WorkItems/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteWorkItemResponse>(callPayload);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/Incident/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/ServiceRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/ChangeRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/Problem/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/CloudConnector/ReleaseRecord/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var __workflow_bodyactionType = WorkflowExpression.Compile(bodyactionType, nameof(bodyactionType), required: false);
             return new DeferredBodyAction<WorkItemActionLogResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/cloudconnector/workItems/{0}/ActionLogComment", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

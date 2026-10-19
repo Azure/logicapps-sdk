@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIdDynamic, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/newfromtemplate/{0}", __workflow_templateIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var __workflow_dynamicTemplateSchema = WorkflowExpression.Compile(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIDDynamic, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updatepartiesfields/{0}", __workflow_templateIDDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTemplateSchema);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var __workflow_dynamicTemplateMetaSchema = WorkflowExpression.Compile(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIDDynamic, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updatepartiesproperties/{0}", __workflow_templateIDDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTemplateMetaSchema);
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIdDynamic, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/signedfromtemplate/create/{0}", __workflow_templateIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

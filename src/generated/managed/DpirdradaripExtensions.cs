@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetRadarResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_radarCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/radars/{0}", __workflow_radarCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");

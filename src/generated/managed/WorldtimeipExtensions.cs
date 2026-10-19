@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
             var __workflow_ipv4 = WorkflowExpression.Compile(ipv4, nameof(ipv4), required: true);
             return new DeferredBodyAction<DateTimeJsonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ipv4, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ip/{0}", __workflow_ipv4.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
             var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/timezone/{0}", __workflow_area.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string[]>(callPayload);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<DateTimeJsonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/timezone/{0}/{1}", __workflow_area.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             return new DeferredBodyAction<DateTimeJsonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/timezone/{0}/{1}/{2}", __workflow_area.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1), __workflow_region.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             var __workflow_stationId = WorkflowExpression.Compile(stationId, nameof(stationId), required: true);
             return new DeferredBodyAction<ProblemDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/tafs", __workflow_stationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProblemDetail>(callPayload);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             var __workflow_time = WorkflowExpression.Compile(time, nameof(time), required: true);
             return new DeferredBodyAction<ProblemDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_time, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/tafs/{1}/{2}", __workflow_stationId.WithUrlEncoding(1), __workflow_date.WithUrlEncoding(1), __workflow_time.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProblemDetail>(callPayload);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             var __workflow_resolution = WorkflowExpression.Compile(resolution, nameof(resolution), required: false);
             return new DeferredBodyAction<ProblemDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radar/queues/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/radar/queues/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             var __workflow_interval = WorkflowExpression.Compile(interval, nameof(interval), required: false);
             return new DeferredBodyAction<ProblemDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radar/profilers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/radar/profilers/{0}", __workflow_stationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_time != null)

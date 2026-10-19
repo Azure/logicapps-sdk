@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<EventApiEvent>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiEvent>(callPayload);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<EventApiEventAttachmentCollection>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/attachments", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiEventAttachmentCollection>(callPayload);
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<EventApiCreatedEventAttachment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/attachments", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/attachments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/attachments/{1}", __workflow_eventId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<EventApiApiCollectionOfEventFee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventfees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventfees", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiApiCollectionOfEventFee>(callPayload);
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodycontributionAmount = WorkflowExpression.Compile(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
             return new DeferredBodyAction<EventApiCreatedEventFee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventfees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventfees", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<EventApiApiCollectionOfEventParticipantOption>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventparticipantoptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventparticipantoptions", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiApiCollectionOfEventParticipantOption>(callPayload);
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodylistOptions = WorkflowExpression.Compile(bodylistOptions, nameof(bodylistOptions), required: false);
             return new DeferredBodyAction<EventApiCreatedEventParticipantOption>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/eventparticipantoptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventparticipantoptions", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_lastModified = WorkflowExpression.Compile(lastModified, nameof(lastModified), required: false);
             return new DeferredBodyAction<EventApiApiCollectionOfParticipantListEntry>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/participants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/participants", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_rsvpStatus != null)
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodysummaryNote = WorkflowExpression.Compile(bodysummaryNote, nameof(bodysummaryNote), required: false);
             return new DeferredBodyAction<EventApiCreatedParticipant>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/events/{0}/participants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/participants", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participantoptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_optionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participantoptions/{0}", __workflow_optionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
             return new DeferredBodyAction<EventApiParticipant>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiParticipant>(callPayload);
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodysummaryNote = WorkflowExpression.Compile(bodysummaryNote, nameof(bodysummaryNote), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<EventApiApiCollectionOfParticipantDonation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/donations", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(500);
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodygiftID = WorkflowExpression.Compile(bodygiftID, nameof(bodygiftID), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantDonation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/donations", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<EventApiApiCollectionOfParticipantFeePayment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/feepayments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/feepayments", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(500);
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodyappliedAmount = WorkflowExpression.Compile(bodyappliedAmount, nameof(bodyappliedAmount), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantFeePayment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/feepayments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/feepayments", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<EventApiApiCollectionOfParticipantFee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/fees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/fees", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(500);
@@ -989,7 +989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodydateyear = WorkflowExpression.Compile(bodydateyear, nameof(bodydateyear), required: false);
             return new DeferredBodyAction<EventApiCreatedParticipantFee>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/fees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/fees", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
             return new DeferredBodyAction<EventApiApiCollectionOfParticipantOption>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/participantoptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/participantoptions", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiApiCollectionOfParticipantOption>(callPayload);
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodyoptionValue = WorkflowExpression.Compile(bodyoptionValue, nameof(bodyoptionValue), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantOption>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event/v1/participants/{0}/participantoptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_participantId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/participantoptions", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

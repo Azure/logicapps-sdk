@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var __workflow_easyshipShipmentId = WorkflowExpression.Compile(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
             return new DeferredBodyAction<DeleteAShipmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/shipment/v1/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_easyshipShipmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/shipment/v1/shipments/{0}", __workflow_easyshipShipmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteAShipmentResponse>(callPayload);
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var __workflow_bodydestinationEmailAddress = WorkflowExpression.Compile(bodydestinationEmailAddress, nameof(bodydestinationEmailAddress), required: false);
             return new DeferredBodyAction<UpdateAShipmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/shipment/v1/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_easyshipShipmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/shipment/v1/shipments/{0}", __workflow_easyshipShipmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var __workflow_packingSlip = WorkflowExpression.Compile(packingSlip, nameof(packingSlip), required: false);
             return new DeferredBodyAction<GetAShipmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_easyshipShipmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/shipments/{0}", __workflow_easyshipShipmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_format != null)
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
             var __workflow_courierId = WorkflowExpression.Compile(courierId, nameof(courierId), required: true);
             return new DeferredBodyAction<GetAvailablePickupSlotsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pickup/v1/pickup_slots/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courierId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pickup/v1/pickup_slots/{0}", __workflow_courierId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAvailablePickupSlotsResponse>(callPayload);

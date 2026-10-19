@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
             return new DeferredBodyAction<GetMediaAssetManifestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/asset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nasaId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/asset/{0}", __workflow_nasaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMediaAssetManifestResponse>(callPayload);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
             return new DeferredBodyAction<GetMediaAssetMetadataLocationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/metadata/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nasaId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/metadata/{0}", __workflow_nasaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMediaAssetMetadataLocationResponse>(callPayload);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
             return new DeferredBodyAction<GetVideoAssetCaptionsLocationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/captions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nasaId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/captions/{0}", __workflow_nasaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetVideoAssetCaptionsLocationResponse>(callPayload);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetMediaAlbumContentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/album/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_albumName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/album/{0}", __workflow_albumName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_page != null)

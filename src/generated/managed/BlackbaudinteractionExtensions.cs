@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<ConstituentApiActionRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConstituentApiActionRead>(callPayload);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_bodyfundraiserS = WorkflowExpression.Compile(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<ConstituentApiApiCollectionOfActionAttachmentRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/{0}/attachments", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConstituentApiApiCollectionOfActionAttachmentRead>(callPayload);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<ConstituentApiApiCollectionOfActionCustomFieldRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}/customfields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/{0}/customfields", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConstituentApiApiCollectionOfActionCustomFieldRead>(callPayload);
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/attachments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/customfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customFieldId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConstituentApiApiCollectionOfActionRead>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_constituentId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/{0}/actions", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConstituentApiApiCollectionOfActionRead>(callPayload);

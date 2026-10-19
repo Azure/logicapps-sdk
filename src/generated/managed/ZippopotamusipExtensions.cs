@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: true);
             return new DeferredBodyAction<GetDetailsByPostalCodeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postalCode, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_country.WithUrlEncoding(1), __workflow_postalCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(callPayload);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: true);
             return new DeferredBodyAction<GetDetailsByStateCityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_city, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_country.WithUrlEncoding(1), __workflow_state.WithUrlEncoding(1), __workflow_city.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDetailsByStateCityResponse>(callPayload);

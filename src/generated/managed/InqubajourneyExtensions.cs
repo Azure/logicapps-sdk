@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
             var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
             return new DeferredBodyAction<AcquireAccessTokenResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/connect/token", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/connect/token", __workflow_tenantName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
             var __workflow_bodytop = WorkflowExpression.Compile(bodytop, nameof(bodytop), required: false);
             return new DeferredBodyAction<GenerateAnswerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/knowledgebases/{0}/generateAnswer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeBaseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/knowledgebases/{0}/generateAnswer", __workflow_knowledgeBaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["ServiceHost"] = ExpressionConverter.Convert(__workflow_serviceHost);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
             var __workflow_knowledgeBaseId = WorkflowExpression.Compile(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
             return new DeferredBodyAction<DownloadKnowledgeBaseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/qnamaker/v4.0/knowledgebases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeBaseId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qnamaker/v4.0/knowledgebases/{0}", __workflow_knowledgeBaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DownloadKnowledgeBaseResponse>(callPayload);

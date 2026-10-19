@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
             var __workflow_bodyturnoverReason = WorkflowExpression.Compile(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
             return new DeferredBodyAction<SingleJob>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/job-end/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

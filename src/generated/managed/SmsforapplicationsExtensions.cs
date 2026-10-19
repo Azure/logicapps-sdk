@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<JobReport>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/jobs/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JobReport>(callPayload);

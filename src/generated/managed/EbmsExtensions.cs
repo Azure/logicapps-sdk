@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
             var __workflow_bodyeXTERNALID = WorkflowExpression.Compile(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/INVENTRY(ID='{0}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/INVENTRY(ID='{0}')", __workflow_productId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

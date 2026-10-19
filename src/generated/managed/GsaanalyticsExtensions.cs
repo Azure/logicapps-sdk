@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<Reports[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/reports/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/reports/{0}/data", __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<Reports[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agencies/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agencyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agencies/{0}/reports/{1}/data", __workflow_agencyName.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<Reports[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domain/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domain/{0}/reports/{1}/data", __workflow_domain.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)

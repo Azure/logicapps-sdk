@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
             var __workflow_skinColor = WorkflowExpression.Compile(skinColor, nameof(skinColor), required: false);
             return new DeferredBodyAction<AvatarGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_styleName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileFormat, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_version.WithUrlEncoding(1), __workflow_styleName.WithUrlEncoding(1), __workflow_fileFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_seed != null)

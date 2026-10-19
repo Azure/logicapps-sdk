@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/schema", __workflow_mailboxID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             var __workflow_tableID = WorkflowExpression.Compile(tableID, nameof(tableID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/table/{0}/schema", __workflow_tableID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/flow_webhook/document.processed", __workflow_mailboxID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parser/{0}/flow_webhook/document.template_needed", __workflow_mailboxID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             var __workflow_tableID = WorkflowExpression.Compile(tableID, nameof(tableID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableID, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/table/{0}/flow_webhook/table.processed", __workflow_tableID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

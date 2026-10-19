@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
             var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
             return new DeferredBodyAction<AllCategoryResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/all/category_{0}", __workflow_categoryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AllCategoryResponseItem[]>(callPayload);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             return new DeferredBodyAction<AllGroupResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/all/group_{0}", __workflow_groupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AllGroupResponseItem[]>(callPayload);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
             var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
             return new DeferredBodyAction<RandomCategoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/random/category_{0}", __workflow_categoryName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RandomCategoryResponse>(callPayload);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             return new DeferredBodyAction<RandomGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/random/group_{0}", __workflow_groupName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RandomGroupResponse>(callPayload);

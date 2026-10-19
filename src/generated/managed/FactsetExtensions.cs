@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/book-builder-api/v1/download-api-book/{0}", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);

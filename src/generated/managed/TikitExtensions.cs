@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<ServiceDeskCoreModelsTicket>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ticket/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ticket/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_select != null)
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_bodycommentisPublic = WorkflowExpression.Compile(bodycommentisPublic, nameof(bodycommentisPublic), required: false);
             return new DeferredBodyAction<AddCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ticket({0})/AddComment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ticket({0})/AddComment", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetFileAttachedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ticket/{0}/FileAttachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ticket/{0}/FileAttachments", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFileAttachedResponse>(callPayload);
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_assignee = WorkflowExpression.Compile(assignee, nameof(assignee), required: false);
             return new DeferredBodyAction<GetTasksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetTasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Ticket({0})/GetTasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lifecycle != null)
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_taskName = WorkflowExpression.Compile(taskName, nameof(taskName), required: false);
             return new DeferredBodyAction<GetPowerAutomateTasksResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetPowerAutomateTasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Ticket({0})/GetPowerAutomateTasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lifecycle != null)
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_bodyassignee = WorkflowExpression.Compile(bodyassignee, nameof(bodyassignee), required: false);
             return new DeferredBodyAction<ServiceDeskCoreModelsTicketTask>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/AddTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Ticket({0})/AddTask", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_bodyassignee = WorkflowExpression.Compile(bodyassignee, nameof(bodyassignee), required: false);
             return new DeferredBodyAction<ServiceDeskCoreModelsTicketTask>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/TicketTask({0})/UpdateTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/TicketTask({0})/UpdateTask", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_bodystatusId = WorkflowExpression.Compile(bodystatusId, nameof(bodystatusId), required: false);
             return new DeferredBodyAction<ServiceDeskCoreModelsPowerAutomateTask>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/TicketTask({0})/UpdatePowerAutomateTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/TicketTask({0})/UpdatePowerAutomateTask", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_additionalDetails = WorkflowExpression.Compile(additionalDetails, nameof(additionalDetails), required: false);
             return new DeferredBodyAction<GetApprovalsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetApprovals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Ticket({0})/GetApprovals", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lifecycle != null)
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var __workflow_bodyapprovers = WorkflowExpression.Compile(bodyapprovers, nameof(bodyapprovers), required: false);
             return new DeferredBodyAction<ServiceDeskCoreModelsApprovals>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Approvals({0})/UpdateApproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Approvals({0})/UpdateApproval", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
