@@ -130,10 +130,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (!methodCallExpression.Method.IsPublic)
                 throw new NotSupportedException($"Expression runtime member must be public: {methodCallExpression.Method}");
 
-            if (TryWriteWorkflowFunction(methodCallExpression, out var workflowFunction, out var returnsToken))
-                return returnsToken
-                    ? ReadWorkflowValue(workflowFunction, methodCallExpression.Type)
-                    : workflowFunction;
+            if (this.TryResolveWorkflowFunctionTyped(methodCallExpression, out var workflowFunction))
+                return workflowFunction;
 
             if (methodCallExpression.Method.Name == "get_Item" && methodCallExpression.Object != null)
             {
@@ -387,8 +385,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
 
             if (expression is MethodCallExpression call &&
-                this.TryWriteWorkflowFunction(call, out root, out var returnsToken) &&
-                returnsToken)
+                this.TryResolveWorkflowFunction(call, out root, out var metadata) &&
+                metadata.ReturnsToken)
                 return true;
 
             if (expression is not MemberExpression member ||
@@ -413,13 +411,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (expression is MemberExpression member && TryCreateWorkflowBinding(member, out var binding))
             {
                 code = WorkflowExpressionFragment.Binding(binding);
-                return true;
-            }
-
-            if (expression is MethodCallExpression call &&
-                TryWriteWorkflowFunction(call, out code, out var returnsToken) &&
-                returnsToken)
-            {
                 return true;
             }
 
@@ -468,16 +459,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return false;
         }
 
-        private bool TryWriteWorkflowFunction(
+        private bool TryResolveWorkflowFunction(
             MethodCallExpression call,
             out WorkflowExpressionFragment code,
-            out bool returnsToken)
+            out WorkflowFunctionAttribute metadata)
         {
             code = null;
-            returnsToken = false;
+            metadata = null;
             if (call.Method.DeclaringType != typeof(WorkflowFunctions))
                 return false;
-            var metadata = call.Method.GetCustomAttribute<WorkflowFunctionAttribute>() ??
+            metadata = call.Method.GetCustomAttribute<WorkflowFunctionAttribute>() ??
                 (call.Method.IsGenericMethod
                     ? call.Method.GetGenericMethodDefinition().GetCustomAttribute<WorkflowFunctionAttribute>()
                     : null) ??
@@ -488,8 +479,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 WorkflowExpressionFragment.Text(metadata.Name),
                 Array.Empty<Type>(),
                 call.Arguments.Select(this.Visit));
-            returnsToken = call.Method.ReturnType != typeof(string) &&
-                call.Method.ReturnType != typeof(bool);
+            return true;
+        }
+
+        private bool TryResolveWorkflowFunctionTyped(
+            MethodCallExpression call,
+            out WorkflowExpressionFragment code)
+        {
+            if (!this.TryResolveWorkflowFunction(call, out code, out var metadata))
+                return false;
+
+            if (metadata.ReturnsToken)
+                code = ReadWorkflowValue(code, call.Type);
+
             return true;
         }
 

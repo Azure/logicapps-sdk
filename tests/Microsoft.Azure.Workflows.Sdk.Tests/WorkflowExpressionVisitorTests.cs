@@ -186,6 +186,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             AssertReturnExpression(
                 """json("{\"messageId\":\"id\"}").ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>().MessageId""",
                 Input(action));
+            AssertReturnExpression(
+                """json("\"value\"").ToObject<string>()""",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => WorkflowFunctions.ParseJson<string>("\"value\""))));
+            AssertReturnExpression(
+                """json("true").ToObject<bool>()""",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => WorkflowFunctions.ParseJson<bool>("true"))));
+            AssertReturnExpression(
+                """json("{}")""",
+                Input(WorkflowActions.BuiltIn.Compose<JToken>(
+                    () => WorkflowFunctions.ParseJson("{}"))));
+            AssertReturnExpression(
+                "listCallbackUrl()",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => WorkflowFunctions.ListCallbackUrl())));
         }
 
         [Fact]
@@ -261,6 +277,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             Assert.Throws<NotSupportedException>(
                 () => WorkflowActions.BuiltIn.Compose<Customer>(() => customer.Output));
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose(
+                    () => WorkflowFunctions.ParseJson<Customer>("{}")));
         }
 
         [Fact]
