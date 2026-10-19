@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     /// <summary>
     /// Reconstructs supported LINQ expression-tree nodes as late-bound C# source expressions.
     /// </summary>
-    internal sealed class WorkflowExpressionVisitor : IExpressionVisitor<WorkflowExpressionFragment>
+    internal sealed class WorkflowExpressionVisitor
     {
         private static bool Implements(Type type, Type definition) =>
             (type.IsGenericType && type.GetGenericTypeDefinition() == definition) ||
@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 ParameterExpression node => this.Visit(node),
                 MethodCallExpression node => this.Visit(node),
                 ConditionalExpression node => this.Visit(node),
-                InvocationExpression node => this.Visit(node),
                 LambdaExpression node => this.Visit(node),
                 ListInitExpression node => this.Visit(node),
                 MemberExpression node => this.Visit(node),
@@ -57,21 +56,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 NewExpression node => this.Visit(node),
                 NewArrayExpression node => this.Visit(node),
                 TypeBinaryExpression node => this.Visit(node),
-                BlockExpression node => this.Visit(node),
-                DebugInfoExpression node => this.Visit(node),
                 DefaultExpression node => this.Visit(node),
-                DynamicExpression node => this.Visit(node),
-                GotoExpression node => this.Visit(node),
                 IndexExpression node => this.Visit(node),
-                LabelExpression node => this.Visit(node),
-                RuntimeVariablesExpression node => this.Visit(node),
-                SwitchExpression node => this.Visit(node),
-                TryExpression node => this.Visit(node),
                 _ => throw Unsupported(expression),
             };
         }
 
-        public WorkflowExpressionFragment Visit(BinaryExpression binaryExpression)
+        private WorkflowExpressionFragment Visit(BinaryExpression binaryExpression)
         {
             if (binaryExpression.NodeType == ExpressionType.ArrayIndex)
                 return CSharpSyntaxGenerator.ElementAccess(
@@ -90,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     ExpressionType.MultiplyChecked);
         }
 
-        public WorkflowExpressionFragment Visit(UnaryExpression unaryExpression)
+        private WorkflowExpressionFragment Visit(UnaryExpression unaryExpression)
         {
             if (unaryExpression.NodeType == ExpressionType.Quote) return this.Visit(unaryExpression.Operand);
             var operand = this.Visit(unaryExpression.Operand);
@@ -121,15 +112,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
         }
 
-        public WorkflowExpressionFragment Visit(ConstantExpression constantExpression) =>
+        private WorkflowExpressionFragment Visit(ConstantExpression constantExpression) =>
             CSharpSyntaxGenerator.Literal(constantExpression.Value, constantExpression.Type);
 
-        public WorkflowExpressionFragment Visit(ParameterExpression parameterExpression) =>
+        private WorkflowExpressionFragment Visit(ParameterExpression parameterExpression) =>
             this.parameters.Contains(parameterExpression)
                 ? WorkflowExpressionFragment.Text(CSharpSyntaxGenerator.Identifier(parameterExpression.Name))
                 : throw Unsupported(parameterExpression);
 
-        public WorkflowExpressionFragment Visit(MethodCallExpression methodCallExpression)
+        private WorkflowExpressionFragment Visit(MethodCallExpression methodCallExpression)
         {
             WorkflowExpressionTypePolicy.Validate(methodCallExpression.Method.DeclaringType);
             if (!methodCallExpression.Method.IsPublic)
@@ -186,15 +177,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return canRender ? arguments : Array.Empty<Type>();
         }
 
-        public WorkflowExpressionFragment Visit(ConditionalExpression conditionalExpression) =>
+        private WorkflowExpressionFragment Visit(ConditionalExpression conditionalExpression) =>
             CSharpSyntaxGenerator.Conditional(
                 this.Visit(conditionalExpression.Test),
                 this.Visit(conditionalExpression.IfTrue),
                 this.Visit(conditionalExpression.IfFalse));
 
-        public WorkflowExpressionFragment Visit(InvocationExpression invocationExpression) => throw Unsupported(invocationExpression);
-
-        public WorkflowExpressionFragment Visit(LambdaExpression lambdaExpression)
+        private WorkflowExpressionFragment Visit(LambdaExpression lambdaExpression)
         {
             // NOTE(aeldridge): Lambda parameters must be available to the visitor at child nodes, so they are
             // tracked in this.parameters and removed after visiting the body
@@ -214,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
         }
 
-        public WorkflowExpressionFragment Visit(ListInitExpression listInitExpression) =>
+        private WorkflowExpressionFragment Visit(ListInitExpression listInitExpression) =>
             CSharpSyntaxGenerator.Initializer(
                 this.Visit(listInitExpression.NewExpression),
                 listInitExpression.Initializers.Select(initializer =>
@@ -233,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                         : WorkflowExpressionFragment.CommaSeparated(arguments).Braced();
                 }));
 
-        public WorkflowExpressionFragment Visit(MemberExpression memberExpression)
+        private WorkflowExpressionFragment Visit(MemberExpression memberExpression)
         {
             if (memberExpression.Expression == null)
             {
@@ -247,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 memberExpression.Member.Name);
         }
 
-        public WorkflowExpressionFragment Visit(MemberInitExpression memberInitExpression) =>
+        private WorkflowExpressionFragment Visit(MemberInitExpression memberInitExpression) =>
             CSharpSyntaxGenerator.Initializer(
                 memberInitExpression.NewExpression.Arguments.Count == 0
                     ? WorkflowExpressionFragment.Text("new " + CSharpSyntaxGenerator.TypeName(memberInitExpression.Type))
@@ -264,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 this.Visit(assignment.Expression));
         }
 
-        public WorkflowExpressionFragment Visit(NewExpression newExpression)
+        private WorkflowExpressionFragment Visit(NewExpression newExpression)
         {
             if (WorkflowExpressionTypePolicy.IsAnonymous(newExpression.Type))
             {
@@ -291,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     (argument, index) => this.Argument(argument, parameters[index].ParameterType, overloaded)));
         }
 
-        public WorkflowExpressionFragment Visit(NewArrayExpression newArrayExpression)
+        private WorkflowExpressionFragment Visit(NewArrayExpression newArrayExpression)
         {
             if (newArrayExpression.NodeType == ExpressionType.NewArrayBounds)
             {
@@ -307,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 : CSharpSyntaxGenerator.ArrayCreation(newArrayExpression.Type, elements);
         }
 
-        public WorkflowExpressionFragment Visit(TypeBinaryExpression typeBinaryExpression)
+        private WorkflowExpressionFragment Visit(TypeBinaryExpression typeBinaryExpression)
         {
             if (typeBinaryExpression.NodeType != ExpressionType.TypeIs)
                 throw Unsupported(typeBinaryExpression);
@@ -317,22 +306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 typeBinaryExpression.TypeOperand);
         }
 
-        public WorkflowExpressionFragment Visit(DefaultExpression defaultExpression) =>
+        private WorkflowExpressionFragment Visit(DefaultExpression defaultExpression) =>
             CSharpSyntaxGenerator.Default(defaultExpression.Type);
 
-        public WorkflowExpressionFragment Visit(IndexExpression indexExpression) =>
+        private WorkflowExpressionFragment Visit(IndexExpression indexExpression) =>
             CSharpSyntaxGenerator.ElementAccess(
                 this.Visit(indexExpression.Object),
                 indexExpression.Arguments.Select(this.Visit));
-
-        public WorkflowExpressionFragment Visit(BlockExpression blockExpression) => throw Unsupported(blockExpression);
-        public WorkflowExpressionFragment Visit(DebugInfoExpression debugInfoExpression) => throw Unsupported(debugInfoExpression);
-        public WorkflowExpressionFragment Visit(DynamicExpression dynamicExpression) => throw Unsupported(dynamicExpression);
-        public WorkflowExpressionFragment Visit(GotoExpression gotoExpression) => throw Unsupported(gotoExpression);
-        public WorkflowExpressionFragment Visit(LabelExpression labelExpression) => throw Unsupported(labelExpression);
-        public WorkflowExpressionFragment Visit(RuntimeVariablesExpression runtimeVariablesExpression) => throw Unsupported(runtimeVariablesExpression);
-        public WorkflowExpressionFragment Visit(SwitchExpression switchExpression) => throw Unsupported(switchExpression);
-        public WorkflowExpressionFragment Visit(TryExpression tryExpression) => throw Unsupported(tryExpression);
 
         private static NotSupportedException Unsupported(Expression expression) =>
             new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
