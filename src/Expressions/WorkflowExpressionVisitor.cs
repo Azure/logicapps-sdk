@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         internal WorkflowExpressionFragment Visit(Expression expression)
         {
+            WorkflowExpressionTypePolicy.ValidateSynchronous(expression.Type);
+
             if (this.TryCustomWorkflowPath(expression, out var customPath))
             {
                 return customPath;

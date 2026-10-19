@@ -25,12 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         internal static void Validate(Type type)
         {
+            ValidateSynchronous(type);
+
             if (!IsRuntimeAvailable(type))
             {
                 throw new NotSupportedException(
                     $"Runtime type '{type}' is unavailable. Use framework/SDK types or move custom code into a CustomCode action.");
             }
+        }
 
+        internal static void ValidateSynchronous(Type type)
+        {
             if (IsTaskLike(type))
             {
                 throw new NotSupportedException(
@@ -39,12 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
             if (type.IsArray)
             {
-                Validate(type.GetElementType());
+                ValidateSynchronous(type.GetElementType());
             }
             else if (type.IsGenericType)
             {
                 foreach (var argument in type.GetGenericArguments())
-                    Validate(argument);
+                    ValidateSynchronous(argument);
             }
         }
 

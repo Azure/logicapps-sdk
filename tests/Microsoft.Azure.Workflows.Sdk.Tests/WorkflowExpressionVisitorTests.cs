@@ -232,6 +232,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Throws<NotSupportedException>(() => WorkflowActions.BuiltIn.Compose(assignment));
             Assert.Throws<NotSupportedException>(
                 () => WorkflowActions.BuiltIn.Compose(() => Task.FromResult(1)));
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose(
+                    () => new HttpClient().GetStringAsync("https://example.com").Result));
         }
 
         private sealed class Customer
