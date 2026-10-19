@@ -172,22 +172,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         internal static WorkflowExpressionFragment ObjectCreation(
             Type type,
             IEnumerable<WorkflowExpressionFragment> arguments) =>
-            WorkflowExpressionFragment.Concat(
+            Invocation(
                 WorkflowExpressionFragment.Text("new " + TypeName(type)),
-                WorkflowExpressionFragment.CommaSeparated(arguments).Parenthesized());
+                Array.Empty<Type>(),
+                arguments);
 
         internal static WorkflowExpressionFragment ArrayCreation(
             Type arrayType,
             IEnumerable<WorkflowExpressionFragment> elements) =>
-            WorkflowExpressionFragment.Concat(
-                WorkflowExpressionFragment.Text("new " + TypeName(arrayType) + " "),
-                WorkflowExpressionFragment.CommaSeparated(elements).Braced());
+            Initializer(
+                WorkflowExpressionFragment.Text("new " + TypeName(arrayType)),
+                elements);
 
         internal static WorkflowExpressionFragment InferredArrayCreation(
             IEnumerable<WorkflowExpressionFragment> elements) =>
-            WorkflowExpressionFragment.Concat(
-                WorkflowExpressionFragment.Text("new[] "),
-                WorkflowExpressionFragment.CommaSeparated(elements).Braced());
+            Initializer(
+                WorkflowExpressionFragment.Text("new[]"),
+                elements);
 
         internal static WorkflowExpressionFragment ArrayBoundsCreation(
             Type elementType,
@@ -212,8 +213,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         internal static WorkflowExpressionFragment MemberInitializer(
             string memberName,
             IEnumerable<WorkflowExpressionFragment> entries) =>
-            WorkflowExpressionFragment.Concat(
-                WorkflowExpressionFragment.Text(Identifier(memberName) + " = "),
+            Assignment(
+                memberName,
                 WorkflowExpressionFragment.CommaSeparated(entries).Braced());
 
         internal static WorkflowExpressionFragment Lambda(
@@ -229,20 +230,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         }
 
         internal static WorkflowExpressionFragment TypeTest(WorkflowExpressionFragment expression, Type type) =>
-            WorkflowExpressionFragment.Concat(
-                expression.Parenthesized(),
-                WorkflowExpressionFragment.Text(" is " + TypeName(type)));
+            TypeOperation(expression, "is", type);
 
         internal static WorkflowExpressionFragment TypeAs(WorkflowExpressionFragment expression, Type type) =>
+            TypeOperation(expression, "as", type);
+
+        private static WorkflowExpressionFragment TypeOperation(
+            WorkflowExpressionFragment expression,
+            string operatorToken,
+            Type type) =>
             WorkflowExpressionFragment.Concat(
                 expression.Parenthesized(),
-                WorkflowExpressionFragment.Text(" as " + TypeName(type)));
+                WorkflowExpressionFragment.Text(" " + operatorToken + " " + TypeName(type)));
 
         internal static WorkflowExpressionFragment Default(Type type) =>
             WorkflowExpressionFragment.Text("default(" + TypeName(type) + ")");
 
         internal static WorkflowExpressionFragment TypedNull(Type type) =>
-            WorkflowExpressionFragment.Text("((" + TypeName(type) + ")null)");
+            Cast(type, WorkflowExpressionFragment.Text("null"));
 
         internal static WorkflowExpressionFragment Literal(object value, Type declaredType)
         {
@@ -279,23 +284,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
 
             if (value is DateTime date)
-                return WorkflowExpressionFragment.Text(
-                    $"new global::System.DateTime({date.Ticks}L, global::System.DateTimeKind.{date.Kind})");
+                return ObjectCreation(
+                    typeof(DateTime),
+                    new[]
+                    {
+                        Literal(date.Ticks, typeof(long)),
+                        Literal(date.Kind, typeof(DateTimeKind)),
+                    });
             if (value is DateTimeOffset offset)
-                return WorkflowExpressionFragment.Text(
-                    $"new global::System.DateTimeOffset({offset.Ticks}L, new global::System.TimeSpan({offset.Offset.Ticks}L))");
+                return ObjectCreation(
+                    typeof(DateTimeOffset),
+                    new[]
+                    {
+                        Literal(offset.Ticks, typeof(long)),
+                        ObjectCreation(
+                            typeof(TimeSpan),
+                            new[] { Literal(offset.Offset.Ticks, typeof(long)) }),
+                    });
             if (value is TimeSpan span)
-                return WorkflowExpressionFragment.Text($"new global::System.TimeSpan({span.Ticks}L)");
+                return ObjectCreation(
+                    typeof(TimeSpan),
+                    new[] { Literal(span.Ticks, typeof(long)) });
             if (value is Guid guid)
-                return WorkflowExpressionFragment.Text(
-                    "new global::System.Guid(" + JsonConvert.ToString(guid.ToString("D")) + ")");
+                return ObjectCreation(
+                    typeof(Guid),
+                    new[] { Literal(guid.ToString("D"), typeof(string)) });
             if (value is Uri uri)
-                return WorkflowExpressionFragment.Text(
-                    "new global::System.Uri(" + JsonConvert.ToString(uri.OriginalString) +
-                    ", global::System.UriKind.RelativeOrAbsolute)");
+                return ObjectCreation(
+                    typeof(Uri),
+                    new[]
+                    {
+                        Literal(uri.OriginalString, typeof(string)),
+                        Literal(UriKind.RelativeOrAbsolute, typeof(UriKind)),
+                    });
             if (value is HttpMethod method)
-                return WorkflowExpressionFragment.Text(
-                    "new global::System.Net.Http.HttpMethod(" + JsonConvert.ToString(method.Method) + ")");
+                return ObjectCreation(
+                    typeof(HttpMethod),
+                    new[] { Literal(method.Method, typeof(string)) });
 
             if (value is double number)
             {
