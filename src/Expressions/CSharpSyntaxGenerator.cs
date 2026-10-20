@@ -118,6 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return isChecked ? Checked(source) : source;
         }
 
+        internal static WorkflowExpressionFragment StringConcatenation(
+            IEnumerable<WorkflowExpressionFragment> fragments) =>
+            WorkflowExpressionFragment.Join(" + ", fragments);
+
         internal static WorkflowExpressionFragment Unary(string operatorToken, WorkflowExpressionFragment operand) =>
             WorkflowExpressionFragment.Concat(WorkflowExpressionFragment.Text(operatorToken), operand.Parenthesized());
 

@@ -61,18 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
                 pieces.Add((arguments[position] ?? throw new ArgumentException(
                     "Generated connector path arguments cannot contain null.",
-                    nameof(arguments))).ToFragment());
+                    nameof(arguments))).ToFragment().Parenthesized());
                 index = end;
             }
 
             if (text.Length != 0 || pieces.Count == 0)
                 pieces.Add(CSharpSyntaxGenerator.Literal(text.ToString(), typeof(string)));
 
-            var result = pieces[0];
-            for (var index = 1; index < pieces.Count; index++)
-                result = CSharpSyntaxGenerator.Binary(result, "+", pieces[index]);
-
-            return Create<string>(result);
+            return Create<string>(
+                CSharpSyntaxGenerator.StringConcatenation(pieces));
         }
 
         internal static WorkflowExpression<T> Compile<T>(

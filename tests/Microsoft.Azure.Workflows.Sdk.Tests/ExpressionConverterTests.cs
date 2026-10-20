@@ -3,6 +3,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Amazonredshift;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
@@ -107,6 +108,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 "/v1/gestational_limits/zips/" +
                     encodeURIComponent(outputs("Renamed").ToObject<string>())
                 """,
+                ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path);
+        }
+
+        [Fact]
+        public void GeneratedPathsUseCanonicalFlatConcatenation()
+        {
+            var action = new MsnweatherActions("connection").CurrentWeather(
+                () => "98058",
+                () => unitsInput.Imperial);
+
+            Assert.Equal(
+                """#{"/current/" + (encodeURIComponent("98058"))}""",
                 ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path);
         }
 
