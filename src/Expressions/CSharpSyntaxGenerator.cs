@@ -148,6 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 receiver.Parenthesized(),
                 WorkflowExpressionFragment.Text("." + Identifier(memberName)));
 
+        internal static WorkflowExpressionFragment ConditionalMemberAccess(
+            WorkflowExpressionFragment receiver,
+            string memberName) =>
+            WorkflowExpressionFragment.Concat(
+                receiver.Parenthesized(),
+                WorkflowExpressionFragment.Text("?." + Identifier(memberName)));
+
         internal static WorkflowExpressionFragment StaticMemberAccess(Type declaringType, string memberName) =>
             WorkflowExpressionFragment.Text(TypeName(declaringType) + "." + Identifier(memberName));
 

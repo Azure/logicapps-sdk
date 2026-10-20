@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var nested = WorkflowActions.BuiltIn.Compose(
                 () => context.Parameters.Details.Value.ToUpperInvariant());
             AssertReturnExpression(
-                """agentparameters("Details")["Value"].ToObject<string>().ToUpperInvariant()""",
+                """(agentparameters("Details")["Value"]?.ToObject<string>() ?? default(string)).ToUpperInvariant()""",
                 Input(nested));
 
             Assert.Throws<NotSupportedException>(

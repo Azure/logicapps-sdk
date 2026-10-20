@@ -265,14 +265,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var action = WorkflowActions.BuiltIn.Compose(() => customer.Output.Address.City);
 
             AssertReturnExpression(
-                """outputs("Customer")["address"]["city_name"].ToObject<string>()""",
+                """outputs("Customer")["address"]["city_name"]?.ToObject<string>() ?? default(string)""",
                 Input(action));
 
             var function = WorkflowActions.BuiltIn.Compose(
                 () => WorkflowFunctions.ParseJson<Customer>(
                     "{\"address\":{\"city_name\":\"Seattle\"}}").Address.City);
             AssertReturnExpression(
-                """json("{\"address\":{\"city_name\":\"Seattle\"}}")["address"]["city_name"].ToObject<string>()""",
+                """json("{\"address\":{\"city_name\":\"Seattle\"}}")["address"]["city_name"]?.ToObject<string>() ?? default(string)""",
                 Input(function));
 
             Assert.Throws<NotSupportedException>(

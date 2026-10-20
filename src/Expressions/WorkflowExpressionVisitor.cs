@@ -337,16 +337,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         private static NotSupportedException Unsupported(Expression expression) =>
             new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
 
-        private static WorkflowExpressionFragment ReadWorkflowValue(WorkflowExpressionFragment source, Type type)
+        private static WorkflowExpressionFragment ReadWorkflowValue(
+            WorkflowExpressionFragment source,
+            Type type,
+            bool defaultWhenMissing = false)
         {
             if (typeof(JToken).IsAssignableFrom(type))
                 return source;
 
             WorkflowExpressionTypePolicy.Validate(type);
-            return CSharpSyntaxGenerator.Invocation(
-                CSharpSyntaxGenerator.MemberAccess(source, "ToObject"),
+            var member = defaultWhenMissing
+                ? CSharpSyntaxGenerator.ConditionalMemberAccess(source, "ToObject")
+                : CSharpSyntaxGenerator.MemberAccess(source, "ToObject");
+
+            var converted = CSharpSyntaxGenerator.Invocation(
+                member,
                 new[] { type },
                 Array.Empty<WorkflowExpressionFragment>());
+
+            return defaultWhenMissing
+                ? CSharpSyntaxGenerator.Binary(
+                    converted,
+                    "??",
+                    CSharpSyntaxGenerator.Default(type))
+                : converted;
         }
 
         private bool TryCustomWorkflowPath(Expression expression, out WorkflowExpressionFragment code)
@@ -368,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                     new[] { CSharpSyntaxGenerator.Literal(jsonName, typeof(string)) });
             }
 
-            code = ReadWorkflowValue(code, expression.Type);
+            code = ReadWorkflowValue(code, expression.Type, defaultWhenMissing: true);
             return true;
         }
 
