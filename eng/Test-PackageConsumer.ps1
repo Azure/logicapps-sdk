@@ -20,6 +20,9 @@ $packagePath = Join-Path $PackageDirectory "Microsoft.Azure.Workflows.Sdk.$Versi
 if (-not (Test-Path -LiteralPath $packagePath)) {
     throw "The SDK package '$packagePath' does not exist."
 }
+if (-not ('System.IO.Compression.ZipFile' -as [type])) {
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+}
 $removedEntries = @(
     'buildTransitive/Microsoft.Azure.Workflows.Sdk.targets',
     'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.dll',
