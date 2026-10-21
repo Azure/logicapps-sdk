@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                 }
 
                 return new ApiConnectionAction<QueueMessageMetadata>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["messageReceiptHandle"] = ExpressionConverter.Convert(__workflow_messageReceiptHandle);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                 if (__workflow_messageAttributeNames != null)
                     callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(__workflow_messageAttributeNames);
                 return new ApiConnectionTrigger<QueueMessage>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                 if (__workflow_messageAttributeNames != null)
                     callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(__workflow_messageAttributeNames);
                 return new ApiConnectionTrigger<QueueMessage[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

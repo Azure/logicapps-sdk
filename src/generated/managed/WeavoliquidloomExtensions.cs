@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                     callPayload.Queries["LiquidTemplate"] = ExpressionConverter.Convert(__workflow_liquidTemplate);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_excelFile);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                     callPayload.Queries["LiquidTemplate"] = ExpressionConverter.Convert(__workflow_liquidTemplate);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_excelFile);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                     callPayload.Queries["LiquidTemplate"] = ExpressionConverter.Convert(__workflow_liquidTemplate);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_excelFile);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

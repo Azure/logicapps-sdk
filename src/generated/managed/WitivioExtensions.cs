@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction<SendAdaptiveResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction<SendMessageInputResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction<SendMessageInputListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionAction<SendMessageInputArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, FlowRecurrence recurrence = null)
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

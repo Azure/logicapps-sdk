@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
                 }
 
                 return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
                 if (__workflow_model != null)
                     callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
                 return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<EmissionEstimateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmissionEstimateBulkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<TravelFlightResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<FreightFlightResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ComputeCPUResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ComputeStorageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ComputeMemoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ClassificationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<CustomResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomBatchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_resultsPerPage != null)
                     callPayload.Queries["results_per_page"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 return new ApiConnectionAction<FactorsSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<SourcesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<YearsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<RegionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<CategoriesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<SectorsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<LifeCycleActivitiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<UnitTypesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

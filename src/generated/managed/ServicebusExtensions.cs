@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                     callPayload.Queries["systemProperties"] = ExpressionConverter.Convert(__workflow_systemProperties);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_messages);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_deadLetterErrorDescription != null)
                     callPayload.Queries["deadLetterErrorDescription"] = ExpressionConverter.Convert(__workflow_deadLetterErrorDescription);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_deadLetterErrorDescription != null)
                     callPayload.Queries["deadLetterErrorDescription"] = ExpressionConverter.Convert(__workflow_deadLetterErrorDescription);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                     callPayload.Queries["subscriptionFilterType"] = ExpressionConverter.Convert(__workflow_subscriptionFilterType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscriptionFilter);
                 return new ApiConnectionAction<Subscription>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, FlowRecurrence recurrence = null)
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, FlowRecurrence recurrence = null)
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, FlowRecurrence recurrence = null)
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

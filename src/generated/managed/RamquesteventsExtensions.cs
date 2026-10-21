@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, FlowRecurrence recurrence = null)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

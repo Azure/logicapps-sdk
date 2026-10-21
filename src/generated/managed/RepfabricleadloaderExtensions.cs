@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricleadloader
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

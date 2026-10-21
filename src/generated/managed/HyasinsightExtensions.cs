@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<DeviceGeoItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<SinkholeItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<PassivednsItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<DynamicdnsItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<PassivehashItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<Sslcertificate>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<WhoisItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<C2attributionItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<SampleInformation>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<SampleItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
                 callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
                 return new ApiConnectionAction<OsIndicatorsItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
                 }
 
                 return new ApiConnectionAction<WhoisCurrent>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

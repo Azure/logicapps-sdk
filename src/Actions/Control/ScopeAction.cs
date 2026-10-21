@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="actionsRoot">The root node of the nested action graph.</param>
         internal ScopeAction(IWorkflowAction actionsRoot)
-            : base(WorkflowActionSettingsProfiles.Tracked)
+            : base(WorkflowActionSettingProfiles.Tracked)
         {
             this.actionsRoot = actionsRoot ?? throw new ArgumentNullException(nameof(actionsRoot));
         }

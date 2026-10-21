@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
                 callPayload.Headers["Process"] = ExpressionConverter.Convert(__workflow_process);
                 callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(__workflow_partnerId);
                 return new ApiConnectionAction<PartnerLinqGetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
                 }
 
                 return new ApiConnectionAction<PartnerLinqPostResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

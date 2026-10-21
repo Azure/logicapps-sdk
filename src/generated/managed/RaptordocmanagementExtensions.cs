@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Queries["secret"] = ExpressionConverter.Convert(__workflow_secret);
                 callPayload.Queries["externalUserName"] = ExpressionConverter.Convert(__workflow_externalUserName);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                     callPayload.Queries["reTag"] = ExpressionConverter.Convert(__workflow_reTag);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<QueryDocumentsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTagByTagIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTagByCodeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<GetMultipleTagsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<QueryTagsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<CreateFieldResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetFieldByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetFieldByCodeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTemplateFieldsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTemplatebyidResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTemplatebycodeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetUserByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<QueryUsersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetExternalSystemByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<ResolveContextResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<AdvancedSearchQueryDocumentsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<InsertExternalFileResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetDocumentMetadataResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetDocumentMetadataByFileReferenceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetStorageProviderByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                     callPayload.Queries["removeRaptorStorage"] = ExpressionConverter.Convert(__workflow_removeRaptorStorage);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<SetPrimaryStorageProviderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetExternalSourceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction<QueryTemplatesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 callPayload.Queries["driveItemId"] = ExpressionConverter.Convert(__workflow_driveItemId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<FindDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -1074,7 +1074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -1118,7 +1118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

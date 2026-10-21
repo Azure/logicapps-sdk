@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_source != null)
                     callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<WeatherPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_source != null)
                     callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<BioPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_datum != null)
                     callPayload.Queries["datum"] = ExpressionConverter.Convert(__workflow_datum);
                 return new ApiConnectionAction<TimeExtremesPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_datum != null)
                     callPayload.Queries["datum"] = ExpressionConverter.Convert(__workflow_datum);
                 return new ApiConnectionAction<TimeSealLevelPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["box"] = ExpressionConverter.Convert(__workflow_box);
                 return new ApiConnectionAction<GetTideStationsAreaResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_start != null)
                     callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 return new ApiConnectionAction<AstronomyPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_source != null)
                     callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<SolarPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<ElevationPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

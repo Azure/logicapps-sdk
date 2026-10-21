@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<SendActionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<SendActionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<PostReactionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<CreateGroupResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

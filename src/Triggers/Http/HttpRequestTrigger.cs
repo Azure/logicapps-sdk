@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             HttpMethod method = null,
             JToken requestBodyJsonSchema = null,
             string relativePath = null)
-            : base(WorkflowTriggerSettingsProfiles.Request)
+            : base(WorkflowTriggerSettingProfiles.Request)
         {
             this.Name = "when_an_HTTP_request_is_received";
 

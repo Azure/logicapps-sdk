@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_bitRate != null)
                     callPayload.Headers["bitRate"] = ExpressionConverter.Convert(__workflow_bitRate);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_bitRate != null)
                     callPayload.Headers["bitRate"] = ExpressionConverter.Convert(__workflow_bitRate);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_bitRate != null)
                     callPayload.Headers["bitRate"] = ExpressionConverter.Convert(__workflow_bitRate);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_sampleRate != null)
                     callPayload.Headers["sampleRate"] = ExpressionConverter.Convert(__workflow_sampleRate);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_fileUrl != null)
                     callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(__workflow_fileUrl);
                 return new ApiConnectionAction<MediaInformation>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_quality != null)
                     callPayload.Headers["quality"] = ExpressionConverter.Convert(__workflow_quality);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_quality != null)
                     callPayload.Headers["quality"] = ExpressionConverter.Convert(__workflow_quality);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_quality != null)
                     callPayload.Headers["quality"] = ExpressionConverter.Convert(__workflow_quality);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_timeSpan != null)
                     callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(__workflow_timeSpan);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_extension != null)
                     callPayload.Headers["extension"] = ExpressionConverter.Convert(__workflow_extension);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_extension != null)
                     callPayload.Headers["extension"] = ExpressionConverter.Convert(__workflow_extension);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_timeSpan != null)
                     callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(__workflow_timeSpan);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_timeSpan != null)
                     callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(__workflow_timeSpan);
                 return new ApiConnectionAction<SplitVideoResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_framesPerSecond != null)
                     callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(__workflow_framesPerSecond);
                 return new ApiConnectionAction<StillFramesResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
                 if (__workflow_framesPerSecond != null)
                     callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(__workflow_framesPerSecond);
                 return new ApiConnectionAction<NsfwResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

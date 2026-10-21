@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
                 if (__workflow_country != null)
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<ReachResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

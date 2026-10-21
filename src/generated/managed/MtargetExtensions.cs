@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
                 if (__workflow_remoteid != null)
                     callPayload.Queries["remoteid"] = ExpressionConverter.Convert(__workflow_remoteid);
                 return new ApiConnectionAction<SendSmsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

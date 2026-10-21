@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
                 if (__workflow_accept != null)
                     callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction<ListTimeSeriesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
                 }
 
                 return new ApiConnectionAction<FilterTimeSeriesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
                 }
 
                 return new ApiConnectionAction<SearchTimeSeriesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

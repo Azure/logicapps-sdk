@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
                 if (__workflow_short != null)
                     callPayload.Queries["short"] = ExpressionConverter.Convert(__workflow_short);
                 return new ApiConnectionAction<URLGetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

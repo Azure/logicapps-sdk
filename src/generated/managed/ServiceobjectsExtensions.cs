@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_outputLanguage != null)
                     callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(__workflow_outputLanguage);
                 return new ApiConnectionAction<AVIGetAddressInfoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_extras != null)
                     callPayload.Queries["Extras"] = ExpressionConverter.Convert(__workflow_extras);
                 return new ApiConnectionAction<AGIPlaceSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_searchType != null)
                     callPayload.Queries["SearchType"] = ExpressionConverter.Convert(__workflow_searchType);
                 return new ApiConnectionAction<AGIReverseSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_country != null)
                     callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<PE2IGetInternationalExchangeInfoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_testType != null)
                     callPayload.Queries["TestType"] = ExpressionConverter.Convert(__workflow_testType);
                 return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_postalCode != null)
                     callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
                 return new ApiConnectionAction<AV3GetBestMatchesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_iPAddress != null)
                     callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
                 return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

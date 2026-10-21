@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_lMS365UserId != null)
                     callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction<EnrollUserToCourseResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetCourseCategoriesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction<CreateCourseCategoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction<CreateCourseResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_expand != null)
                     callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<GetCourseInfoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_lMS365UserId != null)
                     callPayload.Headers["LMS365-User-Id"] = ExpressionConverter.Convert(__workflow_lMS365UserId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetCourseTagsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction<CreateCourseTagResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetCourseProvisioningStatusResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_expand != null)
                     callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<GetCoursesFromCatalogResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEnrollmentByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetUsersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

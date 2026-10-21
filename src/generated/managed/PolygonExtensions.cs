@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_adjusted != null)
                     callPayload.Queries["adjusted"] = ExpressionConverter.Convert(__workflow_adjusted);
                 return new ApiConnectionAction<GetDailyOpenCloseResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetTickersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_date != null)
                     callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetTickerDetailsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_types != null)
                     callPayload.Queries["types"] = ExpressionConverter.Convert(__workflow_types);
                 return new ApiConnectionAction<GetTickerEventsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetStockSplitsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_dividendType != null)
                     callPayload.Queries["dividend_type"] = ExpressionConverter.Convert(__workflow_dividendType);
                 return new ApiConnectionAction<GetStockDividendsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetStockFinancialDetailsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<GetExchangesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

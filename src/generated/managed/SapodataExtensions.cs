@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                 if (__workflow_inlinecount != null)
                     callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(__workflow_inlinecount);
                 return new ApiConnectionAction<Output>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                     callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(__workflow_inlinecount);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                     callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                     callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                 }
 
                 return new ApiConnectionAction<AdHocRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                 }
 
                 return new ApiConnectionAction<AdHocBulkRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                     callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

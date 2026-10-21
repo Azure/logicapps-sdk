@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAGE100CreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAGE100CreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<CommercientCPQCreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<CommercientCPQCreateNewProductResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<CommercientCPQCreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -1179,7 +1179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<QuickBookCreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<QuickBookCreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -1861,7 +1861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAGE50UKCreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -2188,7 +2188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAGE50UKCreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -2529,7 +2529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAGE50USCreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -2744,7 +2744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAGE50USCreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -3050,7 +3050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAPB1CreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -3118,7 +3118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SAPB1CreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -3977,7 +3977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SYSPROCreateNewCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
@@ -4815,7 +4815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                 }
 
                 return new ApiConnectionAction<SYSPROCreateNewSalesOrderResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

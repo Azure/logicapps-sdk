@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
                 if (__workflow_before != null)
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<Reports[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
                 if (__workflow_before != null)
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<Reports[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
                 if (__workflow_before != null)
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<Reports[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

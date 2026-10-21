@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal ApiConnectionTrigger(
             ApiConnectionNotificationActionInput input,
             string triggerName = null)
-            : base(WorkflowTriggerSettingsProfiles.ManagedConnector)
+            : base(WorkflowTriggerSettingProfiles.ManagedConnector)
         {
             this._type = FlowTemplateOperationType.ApiConnectionNotification;
             this._inputs = input;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             string triggerName = null,
             FlowRecurrence recurrence = null,
             bool enableSplitOn = false)
-            : base(WorkflowTriggerSettingsProfiles.ManagedConnector)
+            : base(WorkflowTriggerSettingProfiles.ManagedConnector)
         {
             this._type = FlowTemplateOperationType.ApiConnection;
             this.Name = triggerName ?? "ApiConnectionTrigger";

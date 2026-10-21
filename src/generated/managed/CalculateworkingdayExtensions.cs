@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<CombinedResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                 callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<BasicNextWorkingDayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                 callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(__workflow_xWorkingDays);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<NextWorkingDayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                 callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<DateDifferenceCalculatorResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                 callPayload.Queries["working_days"] = ExpressionConverter.Convert(__workflow_workingDays);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<FirstAndLastWorkingDayOfMonthResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                 callPayload.Queries["working_days"] = ExpressionConverter.Convert(__workflow_workingDays);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<IsTodayAWorkingDayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
                 callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(__workflow_xWorkingDays);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<DateInXWorkingDaysResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]

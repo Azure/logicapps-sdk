@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetCFNCUSDOCResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetCfnsupdocResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetChequeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetContactResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetCustomerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetDraftEntryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetExpenseResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetExpensesDocResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetItedocResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetItemResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetProjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetPurdocResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetSaldocResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetServiceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetSOEMAILResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetMeetingResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetSOTASKResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<GetSupplierResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1442,7 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1604,7 +1604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1876,7 +1876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1974,7 +1974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2066,7 +2066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2166,7 +2166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2278,7 +2278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2384,7 +2384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2518,7 +2518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2669,7 +2669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2781,7 +2781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -2920,7 +2920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -3079,7 +3079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -3238,7 +3238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -3386,7 +3386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionAction<SetData200response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -3430,7 +3430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WebhookOnDelete(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
@@ -3471,7 +3471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WebhookOnInsert(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
@@ -3512,7 +3512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WebhookOnUpdate(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
@@ -3553,7 +3553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

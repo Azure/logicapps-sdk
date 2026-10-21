@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETAppointmentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTAppointmentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEAppointmentIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTAppointmentIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDVERSIONResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETAppointmentHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETAppointmentResponseResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTAppointmentResponseResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEAppointmentResponseIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTAppointmentResponseIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETDeviceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTDeviceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEDeviceIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1215,7 +1215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTDeviceIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1229,7 +1229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDVERSIONResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDHISTORYResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETEncounterResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1436,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTEncounterResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1449,7 +1449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1614,7 +1614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEEncounterIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTEncounterIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1793,7 +1793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1806,7 +1806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDHISTORYResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1836,7 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETFlagResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2000,7 +2000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTFLAGResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2013,7 +2013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2178,7 +2178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEFlagIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2343,7 +2343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTFlagIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2357,7 +2357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2370,7 +2370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2400,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2498,7 +2498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2511,7 +2511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2610,7 +2610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETELocationIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2709,7 +2709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTLocationIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2723,7 +2723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2736,7 +2736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2766,7 +2766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETPatientResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2841,7 +2841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTPatientResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2854,7 +2854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2937,7 +2937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEPatientIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3020,7 +3020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTPatientIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3034,7 +3034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3077,7 +3077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETPersonResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3181,7 +3181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTPersonResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3194,7 +3194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3299,7 +3299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEPersonIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3404,7 +3404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTPersonIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3418,7 +3418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3431,7 +3431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3461,7 +3461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETPractitionerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3522,7 +3522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTPractitionerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3535,7 +3535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3633,7 +3633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEPractitionerIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3731,7 +3731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTPractitionerIDResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3745,7 +3745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3758,7 +3758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]

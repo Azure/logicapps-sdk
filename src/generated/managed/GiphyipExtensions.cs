@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
                 if (__workflow_lang != null)
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<GetGIFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="callback">The callback delegate.</param>
         internal CSharpScriptCode(Delegate callback)
-            : base(WorkflowActionSettingsProfiles.RetrySecureTracked)
+            : base(WorkflowActionSettingProfiles.RetrySecureTracked)
         {
             this.callback = callback;
             this.MethodName = callback.Method.Name;

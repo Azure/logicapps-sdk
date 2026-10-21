@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_properties != null)
                     callPayload.Queries["properties[]"] = ExpressionConverter.Convert(__workflow_properties);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -2456,7 +2456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -2469,7 +2469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -2482,7 +2482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -3623,7 +3623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -3649,7 +3649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -3942,7 +3942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -3962,7 +3962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -3975,7 +3975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4269,7 +4269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4292,7 +4292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4451,7 +4451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4464,7 +4464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4604,7 +4604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4628,7 +4628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4697,7 +4697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4722,7 +4722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4735,7 +4735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4808,7 +4808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -4834,7 +4834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -5064,7 +5064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -5087,7 +5087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 if (__workflow_idProperty != null)
                     callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -5100,7 +5100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
@@ -5334,7 +5334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
                 if (__workflow_oDataQuery != null)
                     callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<SingleEntity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
                 if (__workflow_oDataQuery != null)
                     callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<SingleEntity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
                 if (__workflow_oDataQuery != null)
                     callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<ListEntity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
                 if (__workflow_oDataQuery != null)
                     callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<ListEntity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

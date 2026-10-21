@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetArrayEmbeddingsOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSingleEmbeddingOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetChatCompletionsOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetCompletionOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
                 if (__workflow_countryCode != null)
                     callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
                 }
 
                 return new ApiConnectionAction<SendSecureMessageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
                 callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
                 callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(__workflow_xAPISecret);
                 return new ApiConnectionAction<TrackMessageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
                 callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
                 callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(__workflow_xAPISecret);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

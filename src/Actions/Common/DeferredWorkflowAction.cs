@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         internal DeferredWorkflowAction(
             Func<IWorkflowAction> factory,
-            WorkflowActionSettingProfile settingsProfile = WorkflowActionSettingProfile.None)
+            WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(settingsProfile)
         {
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal DeferredBodyAction(
             Func<IWorkflowAction> factory,
-            WorkflowActionSettingProfile settingsProfile = WorkflowActionSettingProfile.None)
+            WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(factory, settingsProfile) { }
 
         public T Body => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal DeferredOutputAction(
             Func<IWorkflowAction> factory,
-            WorkflowActionSettingProfile settingsProfile = WorkflowActionSettingProfile.None)
+            WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(factory, settingsProfile) { }
 
         public T Output => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal DeferredVariableAction(
             string name,
             Func<IWorkflowAction> factory,
-            WorkflowActionSettingProfile settingsProfile = WorkflowActionSettingProfile.None)
+            WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(factory, settingsProfile) => this.VariableName = name;
         public string VariableName { get; }
         public JToken Value => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");

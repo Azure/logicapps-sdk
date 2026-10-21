@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ValidateSingleResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ValidateDisposableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ValidateFreeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

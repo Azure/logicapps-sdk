@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
                 if (__workflow_language != null)
                     callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<ListHolidaysResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]

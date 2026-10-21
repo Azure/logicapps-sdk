@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateGroupResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetGroupDocSecurityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<ModifyGroupResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetGroupPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetGroupPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetGroupDocumentSecurityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetGroupsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateUsersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DeleteUserResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetUserDocSecurityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetLicensesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<ModifyUserResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -934,7 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetPasswordPolicyResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1027,7 +1027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetUserPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetListOfReportsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1057,7 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUploadLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1075,7 +1075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUserDocumentSecurityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1091,7 +1091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUserPermissionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetLookupListResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1161,7 +1161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1197,7 +1197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CopyDocumentResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1214,7 +1214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetDocumentStatusResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1267,7 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DocumentReindexResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1339,7 +1339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DocumentSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1356,7 +1356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaxsortDocumentResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1372,7 +1372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<DocumentDeleteResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1388,7 +1388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDocumentHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1420,7 +1420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDocumentIndexesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1446,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<PublishDocumentStatusResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1461,7 +1461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDrawersResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1477,7 +1477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDrawerIndexesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1723,7 +1723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<GetFirmFlowDeliverableReportResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1759,7 +1759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<ValidateIndexesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1775,7 +1775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDynamicRulesForIndexResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1826,7 +1826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<IndexLookupListFindResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetListTypeIndexDataResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1859,7 +1859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetChildIndexesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1884,7 +1884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<LoginResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1899,7 +1899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<LogoutResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -1914,7 +1914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<bool>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2174,7 +2174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateWorkflowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2217,7 +2217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DeleteMasterDeliverableResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2246,7 +2246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DeleteWorkflowsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2338,7 +2338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<EditMasterDeliverableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2569,7 +2569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<EditWorkflowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2619,7 +2619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<GetMasterDeliverableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2858,7 +2858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<TrackingReportByWorkflowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<AddMasterDeliverableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -3042,7 +3042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -3295,7 +3295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<TrackingReportByDeliverableV2Response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

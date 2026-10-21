@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendRabbitMQMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateQueueOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName)
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
     }
 

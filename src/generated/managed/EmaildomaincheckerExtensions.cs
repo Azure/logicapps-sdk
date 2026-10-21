@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
                 callPayload.Queries["endpoint"] = ExpressionConverter.Convert(__workflow_endpoint);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<CheckDomainResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

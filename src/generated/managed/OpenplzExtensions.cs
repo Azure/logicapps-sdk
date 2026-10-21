@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<GovernmentRegion[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<District[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<District[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Municipality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Municipality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Municipality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<MunicipalAssociation[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<MunicipalAssociation[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<MunicipalAssociation[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Locality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Locality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Locality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Locality[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Street[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<Street[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityLI[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<StreetLI[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<StreetLI[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<DistrictCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<CommuneCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<CommuneCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<StreetCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<StreetCH[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<DistrictAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<MunicipalityAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<MunicipalityAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<LocalityAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<StreetAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<StreetAT[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 

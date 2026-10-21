@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<PutMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetMessagesOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListQueuesOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveQueueMessagesOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<int> SpecifiedNumberOfMessagesAvailable(Expression<Func<object>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<int>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
     }
 

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfile.RetryPolicy | WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettingProfile.RetryPolicy | WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfile.RetryPolicy | WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
+            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
         }
     }
 

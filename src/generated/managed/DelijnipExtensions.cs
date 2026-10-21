@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
                 if (__workflow_maxAantalHits != null)
                     callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(__workflow_maxAantalHits);
                 return new ApiConnectionAction<HaltesHits>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
                 if (__workflow_maxAantalHits != null)
                     callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(__workflow_maxAantalHits);
                 return new ApiConnectionAction<LijnRichtingHits>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
                 if (__workflow_maxAantalHits != null)
                     callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(__workflow_maxAantalHits);
                 return new ApiConnectionAction<LocatiesHits>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

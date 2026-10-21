@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
                 if (__workflow_teamName != null)
                     callPayload.Queries["team_name"] = ExpressionConverter.Convert(__workflow_teamName);
                 return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

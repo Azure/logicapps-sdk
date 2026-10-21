@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 callPayload.Queries["scenarioId"] = ExpressionConverter.Convert(__workflow_scenarioId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
                 return new ApiConnectionAction<GetProcedureListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 if (__workflow_mode != null)
                     callPayload.Queries["mode"] = ExpressionConverter.Convert(__workflow_mode);
                 return new ApiConnectionAction<GetProjectListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 if (__workflow_versionId != null)
                     callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<GetUserResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
                 callPayload.Queries["login"] = ExpressionConverter.Convert(__workflow_login);
                 callPayload.Queries["password"] = ExpressionConverter.Convert(__workflow_password);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

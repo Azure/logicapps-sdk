@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usgsearthquakehazaip
                 if (__workflow_orderby != null)
                     callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 return new ApiConnectionAction<GetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

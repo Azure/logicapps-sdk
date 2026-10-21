@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 if (__workflow_unixtimestamp != null)
                     callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(__workflow_unixtimestamp);
                 return new ApiConnectionAction<Unix2UTCDateTimeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 }
 
                 return new ApiConnectionAction<Unix2DateTimeTimezoneResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 if (__workflow_datetime != null)
                     callPayload.Queries["datetime"] = ExpressionConverter.Convert(__workflow_datetime);
                 return new ApiConnectionAction<DateTime2UnixTimestampResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

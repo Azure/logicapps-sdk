@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GenerateFileContentsOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ParseFileContentsOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 

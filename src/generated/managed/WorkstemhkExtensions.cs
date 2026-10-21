@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3SysEnterpriseUserResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["employeeId"] = ExpressionConverter.Convert(__workflow_employeeId);
                 return new ApiConnectionAction<ResultListV3PayrollFixedResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3AttAddressResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3AttAddressResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_bizLabelIds != null)
                     callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(__workflow_bizLabelIds);
                 return new ApiConnectionAction<ResultIPageV3PayrollNonFixedResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workLocationId"] = ExpressionConverter.Convert(__workflow_workLocationId);
                 return new ApiConnectionAction<ResultV3AttRuleResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_labelFilter != null)
                     callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(__workflow_labelFilter);
                 return new ApiConnectionAction<ResultIPageV3ExternalPayrollResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3DepartmentResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3PayrollPlanResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3PayrollPlanDetailResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultListV3PayrollPlanDetailResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_q != null)
                     callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<ResultIPageV3PayrollRegResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1079,7 +1079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3PayrollRegResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3PositionResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1136,7 +1136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1169,7 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_statusFilter != null)
                     callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(__workflow_statusFilter);
                 return new ApiConnectionAction<ResultIPageV3PayrollItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1197,7 +1197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3PayrollItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1533,7 +1533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3AddEmployeeResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1567,7 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1675,7 +1675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1721,7 +1721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3CalAttendanceResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1751,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3BizReimbursementTypeResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1772,7 +1772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3ExternalPayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1815,7 +1815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1836,7 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3CostCenterResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1850,7 +1850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3ExternalPayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -1893,7 +1893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2000,7 +2000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2014,7 +2014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2155,7 +2155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2169,7 +2169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2219,7 +2219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2240,7 +2240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3LabelResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2261,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3WorkPatternSummaryResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2282,7 +2282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3DeviceResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2296,7 +2296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3WorkPatternResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2337,7 +2337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3BizReimbursementInsertResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2431,7 +2431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2445,7 +2445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2459,7 +2459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2519,7 +2519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_shiftTypeFilter != null)
                     callPayload.Queries["shiftTypeFilter"] = ExpressionConverter.Convert(__workflow_shiftTypeFilter);
                 return new ApiConnectionAction<ResultIPageV3AttendanceListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2542,7 +2542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2556,7 +2556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2570,7 +2570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2591,7 +2591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_attendStatusFilter != null)
                     callPayload.Queries["attendStatusFilter"] = ExpressionConverter.Convert(__workflow_attendStatusFilter);
                 return new ApiConnectionAction<ResultListV3AttendanceDetailListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2613,7 +2613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3LeaveHolidayBalanceResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -2949,7 +2949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3033,7 +3033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3AddMobileCardResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3087,7 +3087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3105,7 +3105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3BizEmployeeCustomizationResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3156,7 +3156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_regularType != null)
                     callPayload.Queries["regularType"] = ExpressionConverter.Convert(__workflow_regularType);
                 return new ApiConnectionAction<ResultIPageV3EmployeeListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3213,7 +3213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3318,7 +3318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3332,7 +3332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3346,7 +3346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3BizEmployeeCustomizationResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3360,7 +3360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3EmployeeInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3396,7 +3396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3BizReimbursementResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3446,7 +3446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_bizLabelIds != null)
                     callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(__workflow_bizLabelIds);
                 return new ApiConnectionAction<ResultIPageV3LeaveBalanceResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3479,7 +3479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_dateType != null)
                     callPayload.Queries["dateType"] = ExpressionConverter.Convert(__workflow_dateType);
                 return new ApiConnectionAction<ResultIPageV3RosterListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3500,7 +3500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3514,7 +3514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3BizReimbursementDetailResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3530,7 +3530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 callPayload.Queries["employeeId"] = ExpressionConverter.Convert(__workflow_employeeId);
                 callPayload.Queries["holidayType"] = ExpressionConverter.Convert(__workflow_holidayType);
                 return new ApiConnectionAction<ResultV3LeaveBalanceDetailResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3544,7 +3544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3RosterInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3579,7 +3579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3671,7 +3671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3793,7 +3793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3AddEmployeeHistoryResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3881,7 +3881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3LeaveHolidayInsertResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3930,7 +3930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3978,7 +3978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<ResultIPageV3MobileCardListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -3992,7 +3992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4006,7 +4006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4020,7 +4020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4034,7 +4034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3MobileCardInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4055,7 +4055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3AttendanceItemListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4174,7 +4174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4266,7 +4266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4325,7 +4325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4401,7 +4401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3AddTimesheetResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4421,7 +4421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3EmployeeHistoryListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4469,7 +4469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_startDateFilter != null)
                     callPayload.Queries["startDateFilter"] = ExpressionConverter.Convert(__workflow_startDateFilter);
                 return new ApiConnectionAction<ResultIPageV3LeaveHolidayResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4499,7 +4499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV3ShiftTemplateListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4578,7 +4578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4592,7 +4592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4606,7 +4606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3LeaveHolidayDetailResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4620,7 +4620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4634,7 +4634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["recordId"] = ExpressionConverter.Convert(__workflow_recordId);
                 return new ApiConnectionAction<ResultListV3LeaveProcessResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4710,7 +4710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4737,7 +4737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_shortName != null)
                     callPayload.Queries["shortName"] = ExpressionConverter.Convert(__workflow_shortName);
                 return new ApiConnectionAction<ResultIPageV3LeaveTypeResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4788,7 +4788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_typeFilter != null)
                     callPayload.Queries["typeFilter"] = ExpressionConverter.Convert(__workflow_typeFilter);
                 return new ApiConnectionAction<ResultIPageV3TimesheetListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4867,7 +4867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4891,7 +4891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_name != null)
                     callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<ResultIPageV3LeavePolicyResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4924,7 +4924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_date != null)
                     callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<ResultIPageV3OpenShiftListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -4938,7 +4938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3TimesheetInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5014,7 +5014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultV3AddCalendarRemarkInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5028,7 +5028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3LeavePolicyDetailResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5042,7 +5042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3OpenShiftInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5078,7 +5078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5092,7 +5092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5124,7 +5124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_generationFrequency != null)
                     callPayload.Queries["generationFrequency"] = ExpressionConverter.Convert(__workflow_generationFrequency);
                 return new ApiConnectionAction<ResultIPageV3LeavePolicyTypeResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5138,7 +5138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5217,7 +5217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5244,7 +5244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<ResultIPageV3StatusFlagListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5283,7 +5283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5304,7 +5304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3ScheduleProjectCategoryListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5353,7 +5353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5367,7 +5367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5419,7 +5419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5440,7 +5440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3ProjectListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5454,7 +5454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultV3ProjectInfoResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5506,7 +5506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5542,7 +5542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5581,7 +5581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_projectId != null)
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<ResultIPageV3ProjectCertificateListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5612,7 +5612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5626,7 +5626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5646,7 +5646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ResultIPageV3ProjectCertificateHoursListResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5679,7 +5679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<ResultIPageV2AttendanceResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5706,7 +5706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_costCenterCode != null)
                     callPayload.Queries["costCenterCode"] = ExpressionConverter.Convert(__workflow_costCenterCode);
                 return new ApiConnectionAction<ResultIPageV2CostCenterResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5739,7 +5739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV2DepartmentResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5805,7 +5805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_workDate != null)
                     callPayload.Queries["workDate"] = ExpressionConverter.Convert(__workflow_workDate);
                 return new ApiConnectionAction<ResultIPageV2EmployeeResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5838,7 +5838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_departmentFilter != null)
                     callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(__workflow_departmentFilter);
                 return new ApiConnectionAction<ResultIPageV2ExpenseResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5874,7 +5874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_businessSalaryItemFilter != null)
                     callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(__workflow_businessSalaryItemFilter);
                 return new ApiConnectionAction<ResultIPageV2ExternalPayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5901,7 +5901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV2ExtPayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5928,7 +5928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_payrollItemId != null)
                     callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(__workflow_payrollItemId);
                 return new ApiConnectionAction<ResultIPageV2FixedPayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5958,7 +5958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_labelStatus != null)
                     callPayload.Queries["labelStatus"] = ExpressionConverter.Convert(__workflow_labelStatus);
                 return new ApiConnectionAction<ResultIPageV2LabelResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -5991,7 +5991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_holidayDate != null)
                     callPayload.Queries["holidayDate"] = ExpressionConverter.Convert(__workflow_holidayDate);
                 return new ApiConnectionAction<ResultIPageV2LeaveApplicationResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6018,7 +6018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV2PayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6038,7 +6038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV2PayrollPlanResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6065,7 +6065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_positionCode != null)
                     callPayload.Queries["positionCode"] = ExpressionConverter.Convert(__workflow_positionCode);
                 return new ApiConnectionAction<ResultIPageV2PositionResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6114,7 +6114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_personalNameEnglish != null)
                     callPayload.Queries["personalNameEnglish"] = ExpressionConverter.Convert(__workflow_personalNameEnglish);
                 return new ApiConnectionAction<ResultListV2RosterResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6156,7 +6156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV2TimesheetResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6192,7 +6192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_payrollPlanId != null)
                     callPayload.Queries["payrollPlanId"] = ExpressionConverter.Convert(__workflow_payrollPlanId);
                 return new ApiConnectionAction<ResultIPageV2VarPayItemResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6222,7 +6222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ResultIPageV2WorkLocationResp>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6258,7 +6258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6301,7 +6301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6351,7 +6351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6828,7 +6828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6875,7 +6875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6936,7 +6936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -6986,7 +6986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7029,7 +7029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7121,7 +7121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7164,7 +7164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7242,7 +7242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7278,7 +7278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7356,7 +7356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7417,7 +7417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7474,7 +7474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7510,7 +7510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemhk")]
@@ -7567,7 +7567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
                 }
 
                 return new ApiConnectionAction<ResultBoolean>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

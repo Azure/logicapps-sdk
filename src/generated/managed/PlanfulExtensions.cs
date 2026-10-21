@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
                     callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(__workflow_dataLoadRuleName);
                 callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(__workflow_columnDelimiter);
                 return new ApiConnectionAction<FileLoadResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

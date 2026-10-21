@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_webapitoken != null)
                     callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_partialMode != null)
                     callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_partialMode != null)
                     callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_partialMode != null)
                     callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_typeid != null)
                     callPayload.Queries["typeid"] = ExpressionConverter.Convert(__workflow_typeid);
                 return new ApiConnectionAction<EntersoftWebApiModelsES00BlobInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_partialMode != null)
                     callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_partialMode != null)
                     callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<string[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiControllersESViberResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["RequestID"] = ExpressionConverter.Convert(__workflow_requestID);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1136,7 +1136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1214,7 +1214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1256,7 +1256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1288,7 +1288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
                 callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1365,7 +1365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1442,7 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1465,7 +1465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1492,7 +1492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1517,7 +1517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1530,7 +1530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1556,7 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICreditorObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1569,7 +1569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1595,7 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISupplierObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1621,7 +1621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1634,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1647,7 +1647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1660,7 +1660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1673,7 +1673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1686,7 +1686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFINoteObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1712,7 +1712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICustomerObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1738,7 +1738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1751,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1764,7 +1764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1790,7 +1790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1803,7 +1803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1816,7 +1816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1829,7 +1829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOPersonObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsES00DeviceObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1855,7 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1868,7 +1868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOUserObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1881,7 +1881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1894,7 +1894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1907,7 +1907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1920,7 +1920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1933,7 +1933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1946,7 +1946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMLModelObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1959,7 +1959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1972,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1985,7 +1985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2011,7 +2011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2024,7 +2024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2037,7 +2037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMLotObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2050,7 +2050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2063,7 +2063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2076,7 +2076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsESPropertySet>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2089,7 +2089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsESScale>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2102,7 +2102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQLayout>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2124,7 +2124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_pqOptionsWithCount != null)
                     callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(__workflow_pqOptionsWithCount);
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2138,7 +2138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_inputXMLAsString);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2167,7 +2167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2187,7 +2187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 if (__workflow_severity != null)
                     callPayload.Queries["Severity"] = ExpressionConverter.Convert(__workflow_severity);
                 return new ApiConnectionAction<bool>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2200,7 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2213,7 +2213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2226,7 +2226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2325,7 +2325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2366,7 +2366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2530,7 +2530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionAction<EntersoftWebApiModelsESFormCommandOut>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2543,7 +2543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2556,7 +2556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2569,7 +2569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2582,7 +2582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2595,7 +2595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2608,7 +2608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2621,7 +2621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2634,7 +2634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2647,7 +2647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMTaskObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2660,7 +2660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMResourceObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2673,7 +2673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2686,7 +2686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2699,7 +2699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2712,7 +2712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2725,7 +2725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMActionObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2738,7 +2738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2751,7 +2751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2764,7 +2764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMRequestObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2777,7 +2777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMContainerObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2790,7 +2790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2803,7 +2803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
@@ -2816,7 +2816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -2897,7 +2897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
@@ -3010,7 +3010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
@@ -3106,7 +3106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
@@ -3163,7 +3163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
@@ -3224,7 +3224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

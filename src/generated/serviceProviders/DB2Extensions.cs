@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<DeleteRowOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<ExecuteNonQueryOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<InsertRowOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<UpdateRowOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
                 callPayload.Queries["output"] = Convert.ToString("json");
                 callPayload.Queries["method"] = Convert.ToString("listCreate");
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
                 if (__workflow_notes != null)
                     callPayload.Queries["Notes"] = ExpressionConverter.Convert(__workflow_notes);
                 return new ApiConnectionAction<int>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

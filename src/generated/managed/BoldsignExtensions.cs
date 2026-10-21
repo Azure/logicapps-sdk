@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                     callPayload.Queries["enableAutoReminder"] = ExpressionConverter.Convert(__workflow_enableAutoReminder);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_signers);
                 return new ApiConnectionAction<SendDocumentFromTemplateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                 if (__workflow_onBehalfOf != null)
                     callPayload.Queries["onBehalfOf"] = ExpressionConverter.Convert(__workflow_onBehalfOf);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                 if (__workflow_onBehalfOf != null)
                     callPayload.Queries["onBehalfOf"] = ExpressionConverter.Convert(__workflow_onBehalfOf);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["documentId"] = ExpressionConverter.Convert(__workflow_documentId);
                 return new ApiConnectionAction<DocumentPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                 }
 
                 return new ApiConnectionTrigger<AddWebHooksResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

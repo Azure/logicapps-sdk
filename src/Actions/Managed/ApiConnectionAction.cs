@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="apiConnectionActionInput">The API connection action input.</param>
         internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
-            : base(WorkflowActionSettingsProfiles.RetrySecureTracked)
+            : base(WorkflowActionSettingProfiles.RetrySecureTracked)
         {
             this.apiConnectionActionInput = apiConnectionActionInput;
         }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<UserGetAllResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<UserDeleteByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<PositionGetAllResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PositionCreateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<PositionDeleteByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 }
 
                 return new ApiConnectionAction<PositionUpdateByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<GroupGetAllResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GroupCreateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<GroupDeleteByIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Queries["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<TokenGetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
                 return new ApiConnectionAction<MeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

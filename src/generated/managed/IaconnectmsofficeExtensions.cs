@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordCreateInstanceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordAttachToExistingInstanceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordCreateDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordOpenDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordSaveAsDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -781,7 +781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetDocumentBodyTextResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetNumberOfTablesInDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1006,7 +1006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetTableBoundsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetTableCellTextValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetTableCellTextValueTrimmedResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1282,7 +1282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1331,7 +1331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1449,7 +1449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1498,7 +1498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetHighlightedTextResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1603,7 +1603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordExecuteCommandBarObjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1676,7 +1676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordSetDocumentSensitivityLabelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1722,7 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSWordGetDocumentSensitivityLabelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1778,7 +1778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelCreateInstanceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1817,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1897,7 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelAttachToExistingInstanceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1936,7 +1936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -1975,7 +1975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2113,7 +2113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelOpenWorkbookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2176,7 +2176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelPutWorkbookInEditModeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2215,7 +2215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelCreateWorkbookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2278,7 +2278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2317,7 +2317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2373,7 +2373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2429,7 +2429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetCellValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2485,7 +2485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetCellValue2Response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2541,7 +2541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetCellTextResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2621,7 +2621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2728,7 +2728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelFindNextCellWithValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2801,7 +2801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelFindNextEmptyCellResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2854,7 +2854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGotoNextEmptyCellLeftResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2907,7 +2907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGotoNextEmptyCellRightResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -2960,7 +2960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGotoNextEmptyCellUpResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3013,7 +3013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGotoNextEmptyCellDownResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3059,7 +3059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveWorkbookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3142,7 +3142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveWorkbookAsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3208,7 +3208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveWorkbookAsCSVResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3294,7 +3294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveWorkbookAsWithPasswordResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3333,7 +3333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveCurrentWorkbookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3413,7 +3413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveCurrentWorkbookAsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3472,7 +3472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSaveCurrentWorkbookAsCSVResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3518,7 +3518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetWorksheetNamesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3571,7 +3571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetWorksheetNameResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3641,7 +3641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3694,7 +3694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3747,7 +3747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -3967,7 +3967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetWorksheetAsCollectionEnhancedResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4020,7 +4020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetNumberOfRowsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4062,7 +4062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelEvaluateExpressionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4115,7 +4115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetWorksheetUsedRangeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4154,7 +4154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetCountrySettingResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4230,7 +4230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4330,7 +4330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4369,7 +4369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetActiveCellResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4428,7 +4428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4470,7 +4470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4560,7 +4560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4654,7 +4654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4748,7 +4748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4876,7 +4876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -4977,7 +4977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5078,7 +5078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5117,7 +5117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5253,7 +5253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelRunMacroResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5302,7 +5302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5348,7 +5348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5390,7 +5390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5449,7 +5449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5641,7 +5641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelCopyBetweenCellsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5816,7 +5816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelCutBetweenCellsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5855,7 +5855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelMinimiseWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5894,7 +5894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelMaximiseWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -5933,7 +5933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelNormaliseWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6023,7 +6023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetAndSetCellValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6113,7 +6113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetAndSetCellValue2Response>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6203,7 +6203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetAndSetCellTextResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6293,7 +6293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelCheckOLEObjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6373,7 +6373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelInputTextIntoOLEObjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6432,7 +6432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSetCellBackgroundColourResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6488,7 +6488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetCellBackgroundColourResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6544,7 +6544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetOLEObjectValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6600,7 +6600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelDoesOLEObjectExistResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6673,7 +6673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelPressOLEObjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6746,7 +6746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelSetWorksheetSensitivityLabelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6792,7 +6792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelGetWorksheetSensitivityLabelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6854,7 +6854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSExcelWriteArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6900,7 +6900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookCreateInstanceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -6939,7 +6939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7012,7 +7012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7085,7 +7085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookAttachToExistingInstanceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7107,7 +7107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookIsConnectedResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7129,7 +7129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7151,7 +7151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetNameSpaceInformationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7197,7 +7197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetMailFoldersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7239,7 +7239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7281,7 +7281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetEmailBodyResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7323,7 +7323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetEmailAttachmentFilenamesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7413,7 +7413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookSaveEmailAttachmentsAsFileResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7438,7 +7438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7470,7 +7470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7620,7 +7620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7656,7 +7656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -7798,7 +7798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8019,7 +8019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8041,7 +8041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetMAPIProfilesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8063,7 +8063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetOutlookProcessIdResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8153,7 +8153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8226,7 +8226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8268,7 +8268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookExecuteCommandBarObjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8424,7 +8424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetEmailsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8563,7 +8563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetFirstEmailResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
@@ -8685,7 +8685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 }
 
                 return new ApiConnectionAction<MSOutlookGetNumberOfEmailsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

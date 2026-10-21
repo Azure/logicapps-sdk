@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
                 if (__workflow_country != null)
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<ListStatesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
                 if (__workflow_country != null)
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<ListCitiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
                 if (__workflow_lon != null)
                     callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
                 return new ApiConnectionAction<CityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
                 if (__workflow_country != null)
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<CityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

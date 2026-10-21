@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<IsPowerShellAutomationInstalledResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<IsPowerShellModuleInstalledResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RunPowerShellAutomationScriptResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetPowerShellVersionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexMatchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexMatchesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexSplitResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexGroupMatchesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<CreateJSONFromInputVariablesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -908,7 +908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetJSONTableFromStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1005,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<FilterJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1102,7 +1102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<FilterTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1178,7 +1178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<SortTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<SortJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1310,7 +1310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetTableFromStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1373,7 +1373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetTableFromJSONResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1429,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<SortStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<FilterStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1489,7 +1489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1521,7 +1521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1581,7 +1581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInJSONTableFromInputVariablesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1609,7 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteItemsInStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1637,7 +1637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteRowsInTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1665,7 +1665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteRowsInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RenameColumnInTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1721,7 +1721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RenameColumnInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1760,7 +1760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteColumnsInTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1799,7 +1799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteColumnsInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1835,7 +1835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringArrayFromTableColumnResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1871,7 +1871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringArrayFromJSONTableColumnResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -1938,7 +1938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringFromJSONTableCellResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2063,7 +2063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringBetweenResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2091,7 +2091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LoadIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2113,7 +2113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetIAConnectLookupTableSummaryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2138,7 +2138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RemoveIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2160,7 +2160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RemoveAllIAConnectLookupTablesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2229,7 +2229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LookupValueFromIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2315,7 +2315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LookupColumnsFromIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2433,7 +2433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RemoveCharactersFromStringResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2537,7 +2537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetColumnFromIAConnectListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2576,7 +2576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetIAConnectListContentsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2656,7 +2656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LookupDataCellsFromIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2695,7 +2695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetIAConnectLookupTableContentsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2737,7 +2737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<UploadCSVToIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2779,7 +2779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<UploadCSVToIAConnectListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
@@ -2801,7 +2801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<ConvertArrayToJSONResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_returnCount != null)
                     callPayload.Queries["returnCount"] = ExpressionConverter.Convert(__workflow_returnCount);
                 return new ApiConnectionAction<APIAutocompleteSchoolResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_includeUnrankedDistrictsInRankSort != null)
                     callPayload.Queries["includeUnrankedDistrictsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedDistrictsInRankSort);
                 return new ApiConnectionAction<APIDistrictList2>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APIDistrict12>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<APISchoolListRank2>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<APIDistrictListRank2>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_includeUnrankedSchoolsInRankSort != null)
                     callPayload.Queries["includeUnrankedSchoolsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedSchoolsInRankSort);
                 return new ApiConnectionAction<APISchoolList2>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APISchool20Full>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
