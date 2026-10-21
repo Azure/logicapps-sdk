@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
                 callPayload.Queries["sort"] = Convert.ToString("added");
                 callPayload.Queries["per_page"] = Convert.ToString(50);
                 return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

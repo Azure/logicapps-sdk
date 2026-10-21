@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     [Flags]
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum WorkflowActionSettingProfile
+    internal enum WorkflowActionSettings
     {
         None = 0,
         RetryPolicy = 1 << 0,
@@ -21,37 +21,37 @@ namespace Microsoft.Azure.Workflows.Sdk
         SecureOutputsLinkedToInputs = 1 << 5,
     }
 
-    internal static class WorkflowActionSettingsProfiles
+    internal static class WorkflowActionSettingProfiles
     {
-        internal const WorkflowActionSettingProfile None =
-            WorkflowActionSettingProfile.None;
+        internal const WorkflowActionSettings None =
+            WorkflowActionSettings.None;
 
-        internal const WorkflowActionSettingProfile Tracked =
-            WorkflowActionSettingProfile.TrackedProperties;
+        internal const WorkflowActionSettings Tracked =
+            WorkflowActionSettings.TrackedProperties;
 
-        internal const WorkflowActionSettingProfile SecureTracked =
-            WorkflowActionSettingProfile.SecureInputs |
-            WorkflowActionSettingProfile.SecureOutputs |
-            WorkflowActionSettingProfile.TrackedProperties;
+        internal const WorkflowActionSettings SecureTracked =
+            WorkflowActionSettings.SecureInputs |
+            WorkflowActionSettings.SecureOutputs |
+            WorkflowActionSettings.TrackedProperties;
 
-        internal const WorkflowActionSettingProfile SecureTrackedLinked =
-            WorkflowActionSettingProfile.SecureInputs |
-            WorkflowActionSettingProfile.TrackedProperties |
-            WorkflowActionSettingProfile.SecureOutputsLinkedToInputs;
+        internal const WorkflowActionSettings SecureTrackedLinked =
+            WorkflowActionSettings.SecureInputs |
+            WorkflowActionSettings.TrackedProperties |
+            WorkflowActionSettings.SecureOutputsLinkedToInputs;
 
-        internal const WorkflowActionSettingProfile RetrySecureTracked =
-            WorkflowActionSettingProfile.RetryPolicy |
-            WorkflowActionSettingProfile.SecureInputs |
-            WorkflowActionSettingProfile.SecureOutputs |
-            WorkflowActionSettingProfile.TrackedProperties;
+        internal const WorkflowActionSettings RetrySecureTracked =
+            WorkflowActionSettings.RetryPolicy |
+            WorkflowActionSettings.SecureInputs |
+            WorkflowActionSettings.SecureOutputs |
+            WorkflowActionSettings.TrackedProperties;
 
-        internal const WorkflowActionSettingProfile RetryTracked =
-            WorkflowActionSettingProfile.RetryPolicy |
-            WorkflowActionSettingProfile.TrackedProperties;
+        internal const WorkflowActionSettings RetryTracked =
+            WorkflowActionSettings.RetryPolicy |
+            WorkflowActionSettings.TrackedProperties;
 
-        internal const WorkflowActionSettingProfile ForEach =
-            WorkflowActionSettingProfile.TrackedProperties |
-            WorkflowActionSettingProfile.IterationConcurrency;
+        internal const WorkflowActionSettings ForEach =
+            WorkflowActionSettings.TrackedProperties |
+            WorkflowActionSettings.IterationConcurrency;
     }
 
     /// <summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     public sealed class WorkflowActionConfiguration
     {
-        private readonly WorkflowActionSettingProfile profile;
+        private readonly WorkflowActionSettings profile;
 
-        internal WorkflowActionConfiguration(WorkflowActionSettingProfile profile)
+        internal WorkflowActionConfiguration(WorkflowActionSettings profile)
         {
             this.profile = profile;
         }
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal Dictionary<string, JToken> MutableTrackedProperties => this.trackedProperties;
 
         internal bool SecureOutputsLinkedToInputs =>
-            (this.profile & WorkflowActionSettingProfile.SecureOutputsLinkedToInputs) != 0;
+            (this.profile & WorkflowActionSettings.SecureOutputsLinkedToInputs) != 0;
 
         private readonly Dictionary<string, JToken> trackedProperties = new Dictionary<string, JToken>(StringComparer.Ordinal);
 
-        internal void Require(WorkflowActionSettingProfile setting, string operationName)
+        internal void Require(WorkflowActionSettings setting, string operationName)
         {
             var unsupported = setting & ~this.profile;
-            if (unsupported != WorkflowActionSettingProfile.None)
+            if (unsupported != WorkflowActionSettings.None)
             {
                 throw new NotSupportedException($"Action '{operationName}' does not support setting(s) '{unsupported}'.");
             }

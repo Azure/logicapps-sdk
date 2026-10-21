@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
                 if (__workflow_formatted != null)
                     callPayload.Queries["formatted"] = ExpressionConverter.Convert(__workflow_formatted);
                 return new ApiConnectionAction<GetDataResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

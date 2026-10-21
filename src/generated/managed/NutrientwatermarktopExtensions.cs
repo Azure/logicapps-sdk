@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -990,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -1189,7 +1189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -1411,7 +1411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -1628,7 +1628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -1848,7 +1848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
@@ -2083,7 +2083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

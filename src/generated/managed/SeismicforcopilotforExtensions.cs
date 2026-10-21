@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_crmOrgUrl != null)
                     callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
                 return new ApiConnectionAction<ExternalRelatedRecordListResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_crmOrgUrl != null)
                     callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
                 return new ApiConnectionAction<ActivityListResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_skip != null)
                     callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionAction<SalesHighlightListResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_skip != null)
                     callPayload.Queries["Skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionAction<EmailSummeryResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 }
 
                 return new ApiConnectionAction<EmailDraftResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

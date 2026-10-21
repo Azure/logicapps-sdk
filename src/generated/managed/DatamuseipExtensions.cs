@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datamuseip
                 if (__workflow_md != null)
                     callPayload.Queries["md"] = ExpressionConverter.Convert(__workflow_md);
                 return new ApiConnectionAction<WordsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

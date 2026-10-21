@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
                 if (__workflow_isIrs != null)
                     callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
                 if (__workflow_isIrs != null)
                     callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
                 return new ApiConnectionAction<LookupResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

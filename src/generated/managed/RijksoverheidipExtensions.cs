@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
                 if (__workflow_output != null)
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
                 if (__workflow_output != null)
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

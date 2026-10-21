@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a workflow action without optional settings.
         /// </summary>
         protected WorkflowActionBase()
-            : this(WorkflowActionSettingProfile.None)
+            : this(WorkflowActionSettings.None)
         {
         }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="settingsProfile">The settings supported by the action.</param>
         internal WorkflowActionBase(
-            WorkflowActionSettingProfile settingsProfile = WorkflowActionSettingProfile.None)
+            WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
         {
             this.Configuration = new WorkflowActionConfiguration(settingsProfile);
         }

@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
                 if (__workflow_customGoogle != null)
                     callPayload.Queries["custom_google"] = ExpressionConverter.Convert(__workflow_customGoogle);
                 return new ApiConnectionAction<HTMLResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
                 if (__workflow_extraParams != null)
                     callPayload.Queries["extra_params"] = ExpressionConverter.Convert(__workflow_extraParams);
                 return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

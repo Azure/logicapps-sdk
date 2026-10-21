@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
                 callPayload.Queries["typeofcode"] = ExpressionConverter.Convert(__workflow_typeofcode);
                 callPayload.Queries["texttoencode"] = ExpressionConverter.Convert(__workflow_texttoencode);
                 return new ApiConnectionAction<GenerateBarCodeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

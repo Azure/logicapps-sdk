@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a workflow trigger without optional settings.
         /// </summary>
         protected WorkflowTriggerBase()
-            : this(WorkflowTriggerSettingProfile.None)
+            : this(WorkflowTriggerSettings.None)
         {
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="settingsProfile">The settings supported by the trigger.</param>
         internal WorkflowTriggerBase(
-            WorkflowTriggerSettingProfile settingsProfile = WorkflowTriggerSettingProfile.None)
+            WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
         {
             this.Configuration = new WorkflowTriggerConfiguration(settingsProfile);
         }

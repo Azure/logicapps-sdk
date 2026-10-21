@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     [Flags]
     [JsonConverter(typeof(StringEnumConverter))]
-    internal enum WorkflowTriggerSettingProfile
+    internal enum WorkflowTriggerSettings
     {
         None = 0,
         RetryPolicy = 1 << 0,
@@ -20,28 +20,28 @@ namespace Microsoft.Azure.Workflows.Sdk
         SchemaValidation = 1 << 5,
     }
 
-    internal static class WorkflowTriggerSettingsProfiles
+    internal static class WorkflowTriggerSettingProfiles
     {
-        internal const WorkflowTriggerSettingProfile None =
-            WorkflowTriggerSettingProfile.None;
+        internal const WorkflowTriggerSettings None =
+            WorkflowTriggerSettings.None;
 
-        internal const WorkflowTriggerSettingProfile Request =
-            WorkflowTriggerSettingProfile.SecureInputs |
-            WorkflowTriggerSettingProfile.SecureOutputs |
-            WorkflowTriggerSettingProfile.Concurrency |
-            WorkflowTriggerSettingProfile.Correlation |
-            WorkflowTriggerSettingProfile.SchemaValidation;
+        internal const WorkflowTriggerSettings Request =
+            WorkflowTriggerSettings.SecureInputs |
+            WorkflowTriggerSettings.SecureOutputs |
+            WorkflowTriggerSettings.Concurrency |
+            WorkflowTriggerSettings.Correlation |
+            WorkflowTriggerSettings.SchemaValidation;
 
-        internal const WorkflowTriggerSettingProfile Scheduled =
-            WorkflowTriggerSettingProfile.Concurrency |
-            WorkflowTriggerSettingProfile.Correlation;
+        internal const WorkflowTriggerSettings Scheduled =
+            WorkflowTriggerSettings.Concurrency |
+            WorkflowTriggerSettings.Correlation;
 
-        internal const WorkflowTriggerSettingProfile ManagedConnector =
-            WorkflowTriggerSettingProfile.RetryPolicy |
-            WorkflowTriggerSettingProfile.SecureInputs |
-            WorkflowTriggerSettingProfile.SecureOutputs |
-            WorkflowTriggerSettingProfile.Concurrency |
-            WorkflowTriggerSettingProfile.Correlation;
+        internal const WorkflowTriggerSettings ManagedConnector =
+            WorkflowTriggerSettings.RetryPolicy |
+            WorkflowTriggerSettings.SecureInputs |
+            WorkflowTriggerSettings.SecureOutputs |
+            WorkflowTriggerSettings.Concurrency |
+            WorkflowTriggerSettings.Correlation;
     }
 
     /// <summary>
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     public sealed class WorkflowTriggerConfiguration
     {
-        private readonly WorkflowTriggerSettingProfile profile;
+        private readonly WorkflowTriggerSettings profile;
 
-        internal WorkflowTriggerConfiguration(WorkflowTriggerSettingProfile profile)
+        internal WorkflowTriggerConfiguration(WorkflowTriggerSettings profile)
         {
             this.profile = profile;
         }
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public bool SchemaValidationEnabled { get; internal set; }
 
-        internal void Require(WorkflowTriggerSettingProfile setting, string operationName)
+        internal void Require(WorkflowTriggerSettings setting, string operationName)
         {
             var unsupported = setting & ~this.profile;
-            if (unsupported != WorkflowTriggerSettingProfile.None)
+            if (unsupported != WorkflowTriggerSettings.None)
             {
                 throw new NotSupportedException($"Trigger '{operationName}' does not support setting(s) '{unsupported}'.");
             }

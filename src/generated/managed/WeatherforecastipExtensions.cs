@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
                 if (__workflow_appid != null)
                     callPayload.Queries["appid"] = ExpressionConverter.Convert(__workflow_appid);
                 return new ApiConnectionAction<CityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

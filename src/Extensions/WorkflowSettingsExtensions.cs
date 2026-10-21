@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (action == null) throw new ArgumentNullException(nameof(action));
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("A tracked property name is required.", nameof(name));
             var descriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
-            action.Configuration.Require(WorkflowActionSettingProfile.TrackedProperties, action.Name);
+            action.Configuration.Require(WorkflowActionSettings.TrackedProperties, action.Name);
 
             if (action.Configuration.MutableTrackedProperties.ContainsKey(name))
             {
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             switch (operation)
             {
                 case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettingProfile.RetryPolicy, action.Name);
+                    action.Configuration.Require(WorkflowActionSettings.RetryPolicy, action.Name);
                     action.Configuration.RetryPolicy = retryPolicy;
                     break;
                 case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettingProfile.RetryPolicy, trigger.Name);
+                    trigger.Configuration.Require(WorkflowTriggerSettings.RetryPolicy, trigger.Name);
                     trigger.Configuration.RetryPolicy = retryPolicy;
                     break;
                 default:
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             switch (operation)
             {
                 case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettingProfile.SecureInputs, action.Name);
+                    action.Configuration.Require(WorkflowActionSettings.SecureInputs, action.Name);
                     action.Configuration.SecureInputs = true;
                     if (action.Configuration.SecureOutputsLinkedToInputs)
                     {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     }
                     break;
                 case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettingProfile.SecureInputs, trigger.Name);
+                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureInputs, trigger.Name);
                     trigger.Configuration.SecureInputs = true;
                     break;
                 default:
@@ -101,11 +101,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             switch (operation)
             {
                 case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettingProfile.SecureOutputs, action.Name);
+                    action.Configuration.Require(WorkflowActionSettings.SecureOutputs, action.Name);
                     action.Configuration.SecureOutputs = true;
                     break;
                 case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettingProfile.SecureOutputs, trigger.Name);
+                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureOutputs, trigger.Name);
                     trigger.Configuration.SecureOutputs = true;
                     break;
                 default:
@@ -124,17 +124,17 @@ namespace Microsoft.Azure.Workflows.Sdk
             switch (operation)
             {
                 case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettingProfile.SecureInputs, action.Name);
+                    action.Configuration.Require(WorkflowActionSettings.SecureInputs, action.Name);
                     if (!action.Configuration.SecureOutputsLinkedToInputs)
                     {
-                        action.Configuration.Require(WorkflowActionSettingProfile.SecureOutputs, action.Name);
+                        action.Configuration.Require(WorkflowActionSettings.SecureOutputs, action.Name);
                     }
                     action.Configuration.SecureInputs = true;
                     action.Configuration.SecureOutputs = true;
                     break;
                 case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettingProfile.SecureInputs, trigger.Name);
-                    trigger.Configuration.Require(WorkflowTriggerSettingProfile.SecureOutputs, trigger.Name);
+                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureInputs, trigger.Name);
+                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureOutputs, trigger.Name);
                     trigger.Configuration.SecureInputs = true;
                     trigger.Configuration.SecureOutputs = true;
                     break;
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             where TAction : IWorkflowAction
         {
             if (action == null) throw new ArgumentNullException(nameof(action));
-            action.Configuration.Require(WorkflowActionSettingProfile.IterationConcurrency, action.Name);
+            action.Configuration.Require(WorkflowActionSettings.IterationConcurrency, action.Name);
             if (repetitions < 1 || repetitions > 50)
             {
                 throw new ArgumentOutOfRangeException(nameof(repetitions), "Iteration concurrency must be between 1 and 50.");
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             where TTrigger : IWorkflowTrigger
         {
             if (trigger == null) throw new ArgumentNullException(nameof(trigger));
-            trigger.Configuration.Require(WorkflowTriggerSettingProfile.Concurrency, trigger.Name);
+            trigger.Configuration.Require(WorkflowTriggerSettings.Concurrency, trigger.Name);
             if (runs < 1 || runs > 100)
             {
                 throw new ArgumentOutOfRangeException(nameof(runs), "Trigger concurrency must be between 1 and 100.");
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 clientTrackingId,
                 nameof(clientTrackingId),
                 required: true);
-            trigger.Configuration.Require(WorkflowTriggerSettingProfile.Correlation, trigger.Name);
+            trigger.Configuration.Require(WorkflowTriggerSettings.Correlation, trigger.Name);
             trigger.Configuration.ClientTrackingId = ExpressionConverter.Convert(descriptor);
             return trigger;
         }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             where TTrigger : IWorkflowTrigger
         {
             if (trigger == null) throw new ArgumentNullException(nameof(trigger));
-            trigger.Configuration.Require(WorkflowTriggerSettingProfile.SchemaValidation, trigger.Name);
+            trigger.Configuration.Require(WorkflowTriggerSettings.SchemaValidation, trigger.Name);
             trigger.Configuration.SchemaValidationEnabled = true;
             return trigger;
         }

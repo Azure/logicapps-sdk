@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
                 if (__workflow_greyscale != null)
                     callPayload.Queries["greyscale"] = ExpressionConverter.Convert(__workflow_greyscale);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

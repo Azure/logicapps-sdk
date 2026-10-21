@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_include != null)
                     callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<GetLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_countryRegion != null)
                     callPayload.Queries["countryRegion"] = ExpressionConverter.Convert(__workflow_countryRegion);
                 return new ApiConnectionAction<GetLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_pushpinLabel != null)
                     callPayload.Queries["pushpinLabel"] = ExpressionConverter.Convert(__workflow_pushpinLabel);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_timeType != null)
                     callPayload.Queries["timeType"] = ExpressionConverter.Convert(__workflow_timeType);
                 return new ApiConnectionAction<GetRouteResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

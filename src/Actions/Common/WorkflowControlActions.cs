@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             return new DeferredWorkflowAction(
                 () => new ConditionAction(ExpressionConverter.ConvertCondition(descriptor), resolvedTrueBranch?.GetRootOperation() as IWorkflowAction, resolvedFalseBranch?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingsProfiles.Tracked);
+                WorkflowActionSettingProfiles.Tracked);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var resolvedActions = actions.Invoke(currentItemPlaceholder);
             return new DeferredWorkflowAction(
                 () => new ForEachAction(ExpressionConverter.ConvertO(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingsProfiles.ForEach);
+                WorkflowActionSettingProfiles.ForEach);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var resolvedActions = actions.Invoke();
             return new DeferredWorkflowAction(
                 () => new UntilAction(ExpressionConverter.ConvertCondition(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingsProfiles.Tracked);
+                WorkflowActionSettingProfiles.Tracked);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var resolvedDefaultCase = defaultCase?.Invoke();
             return new DeferredWorkflowAction(
                 () => new SwitchAction(ExpressionConverter.ConvertO(descriptor), resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingsProfiles.Tracked);
+                WorkflowActionSettingProfiles.Tracked);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             return new DeferredWorkflowAction(
                 () => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)),
-                WorkflowActionSettingsProfiles.Tracked);
+                WorkflowActionSettingProfiles.Tracked);
         }
     }
 }

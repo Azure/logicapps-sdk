@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<GetTrusteesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<UpdateDefaultSecurityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<UpdatePermissionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<GetPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<UpdatePermissionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<WorkspaceProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<WorkspaceProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 if (__workflow_subclassRequired != null)
                     callPayload.Queries["subclass_required"] = ExpressionConverter.Convert(__workflow_subclassRequired);
                 return new ApiConnectionAction<GetClassesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 if (__workflow_query != null)
                     callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<GetSubclassesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 if (__workflow_custom30 != null)
                     callPayload.Queries["custom30"] = ExpressionConverter.Convert(__workflow_custom30);
                 return new ApiConnectionAction<WorkspaceTemplatesResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1000,7 +1000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1064,7 +1064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<SearchFoldersResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1122,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ShortDocumentProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1180,7 +1180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ShortDocumentProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1219,7 +1219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<GetUserDetailsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1266,7 +1266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<WorkspaceProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<FullDocumentProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<ShortDocumentProfileResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1661,7 +1661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 if (__workflow_location != null)
                     callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
                 return new ApiConnectionAction<GetGroupMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1956,7 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<SearchWorkspacesResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1981,7 +1981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<AddDocumentReferenceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -1997,7 +1997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 callPayload.Queries["documentId"] = ExpressionConverter.Convert(__workflow_documentId);
                 callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2066,7 +2066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<MoveDocumentResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2091,7 +2091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<CopyDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2130,7 +2130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2169,7 +2169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<CoreEMPropertiesResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2492,7 +2492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<PromoteDocumentVersionResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2514,7 +2514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<GetDocumentVersionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2539,7 +2539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<CoreEMPropertiesResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2636,7 +2636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<SearchCoreEMTaxonomyNodeValuesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2675,7 +2675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<AddDocumentHistoryEntryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2690,7 +2690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 if (__workflow_email != null)
                     callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<SearchUsersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2706,7 +2706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 callPayload.Queries["documentId"] = ExpressionConverter.Convert(__workflow_documentId);
                 callPayload.Queries["deleteAllVersions"] = ExpressionConverter.Convert(__workflow_deleteAllVersions);
                 return new ApiConnectionAction<DeleteDocumentResponseBody>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2731,7 +2731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2747,7 +2747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 callPayload.Queries["primaryDocumentId"] = ExpressionConverter.Convert(__workflow_primaryDocumentId);
                 callPayload.Queries["relatedDocumentId"] = ExpressionConverter.Convert(__workflow_relatedDocumentId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -2830,7 +2830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionTrigger<SingleSelectedDocumentResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodyshowFormPerObject = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
@@ -2913,7 +2913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionTrigger<MultipleSelectedDocumentsResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
@@ -2976,7 +2976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionTrigger<SingleSelectedWorkspaceResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
@@ -3039,7 +3039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionTrigger<MultipleSelectedWorkspacesResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

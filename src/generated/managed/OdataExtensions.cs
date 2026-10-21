@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 if (__workflow_expand != null)
                     callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 if (__workflow_option != null)
                     callPayload.Queries["option"] = ExpressionConverter.Convert(__workflow_option);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

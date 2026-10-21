@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             new Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>>();
 
         internal DeferredAgentAction(Func<IWorkflowAction> factory)
-            : base(factory, WorkflowActionSettingsProfiles.RetryTracked)
+            : base(factory, WorkflowActionSettingProfiles.RetryTracked)
         {
         }
 

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             AgentModelSettings agentModelSettings,
             string connectionName,
             object messages)
-            : base(WorkflowActionSettingsProfiles.RetryTracked)
+            : base(WorkflowActionSettingProfiles.RetryTracked)
         {
             this.AgentModelType = agentModelType;
             this.DeploymentId = deploymentId;

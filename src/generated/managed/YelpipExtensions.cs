@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_openNow != null)
                     callPayload.Queries["open_now"] = ExpressionConverter.Convert(__workflow_openNow);
                 return new ApiConnectionAction<BusinessSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<PhoneSearchResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<BusinessDetailsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_matchThreshold != null)
                     callPayload.Queries["match_threshold"] = ExpressionConverter.Convert(__workflow_matchThreshold);
                 return new ApiConnectionAction<BusinessMatchResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<ReviewsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<AutocompleteResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

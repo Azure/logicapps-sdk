@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<CreateAndInviteMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<CreateArtifactResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<CreateMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<CreatePanelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<CreateSurveyResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<CreateWebHookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteArtifactResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteDistributorResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteInterviewResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeletePanelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteSamplingProjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteSurveyResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DeleteWebHookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<DownloadAnswersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ExecuteSendMailResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ExecuteWorkflowTransitionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<InviteMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1080,7 +1080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadArtifactListRequest>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1158,7 +1158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadBounceListResponseV3>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadDistributorListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1296,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadIncentiveListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1350,7 +1350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadIncentiveTransactionListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1385,7 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadInterviewDataResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadInterviewListCompactResponseV3>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1549,7 +1549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadInterviewListResponseV3>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1623,7 +1623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadMemberListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1687,7 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadMessageTemplateListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1755,7 +1755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadOptOutListResponseV3>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1784,7 +1784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadPanelDefinitionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1810,7 +1810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadSamplingProjectResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1836,7 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadSurveyLinksResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1893,7 +1893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadSurveyListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1922,7 +1922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadSurveyResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1955,7 +1955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadWebHookListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -1984,7 +1984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadWorkflowTransitionsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2038,7 +2038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ReadWorkspaceListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2060,7 +2060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<RedeemIncentiveCodeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2141,7 +2141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<RemindMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2174,7 +2174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<ResetInterviewResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2206,7 +2206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<UpdateMembersResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2256,7 +2256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<WritePanelResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2471,7 +2471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<UpdateSurveyResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2525,7 +2525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<UpdateWebHookResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
@@ -2579,7 +2579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 }
 
                 return new ApiConnectionAction<WriteOptOutListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

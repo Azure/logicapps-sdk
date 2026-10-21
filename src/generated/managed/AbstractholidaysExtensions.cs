@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
                 if (__workflow_day != null)
                     callPayload.Queries["day"] = ExpressionConverter.Convert(__workflow_day);
                 return new ApiConnectionAction<ListHolidaysResponseItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIADoesTopLevelWindowExistResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetHandleForTopLevelWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForTopLevelWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIADoesProcessHaveWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetHandleForProcessMainWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForProcessMainWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetHandleForProcessIdMainWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForProcessIdMainWindowResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetHandleForFocussedElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetHandleForMainWindowOfFocussedElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetHandleForDesktopResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIADoesElementExistResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIADoesDesktopElementExistResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -1537,7 +1537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForDesktopElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -1757,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForElementToNotExistResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -1974,7 +1974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForDesktopElementToNotExistResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -2218,7 +2218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -2469,7 +2469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -2720,7 +2720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -2971,7 +2971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -3239,7 +3239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -3415,7 +3415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -3645,7 +3645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -3913,7 +3913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -3938,7 +3938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -4189,7 +4189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -4365,7 +4365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -4541,7 +4541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -4734,7 +4734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -4759,7 +4759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -4935,7 +4935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAIsElementCheckedResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -5111,7 +5111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -5287,7 +5287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementTextValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -5463,7 +5463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -5639,7 +5639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementLabelValueResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -5866,7 +5866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -5983,7 +5983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetMultipleElementPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -6097,7 +6097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetDesktopElementsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -6273,7 +6273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -6449,7 +6449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -6649,7 +6649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIATakeScreenShotOfElementLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -6859,7 +6859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -6884,7 +6884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetParentElementHandleResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -7330,7 +7330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetDataGridElementContentsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -7513,7 +7513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetDataGridElementPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -7757,7 +7757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetListElementItemsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -7981,7 +7981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -8215,7 +8215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -8445,7 +8445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -8641,7 +8641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -8663,7 +8663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -8995,7 +8995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -9314,7 +9314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -9339,7 +9339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementPropertiesAsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -9364,7 +9364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -9437,7 +9437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementAtCoordinatesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -9479,7 +9479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetMultipleParentElementPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -9552,7 +9552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIASearchForFirstParentElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -10056,7 +10056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetMultipleElementsAsTableResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -10317,7 +10317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIASetElementScrollPercentageResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -10561,7 +10561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementSearchColourRegionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -10873,7 +10873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGlobalMouseClickElementSearchColourRegionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -11083,7 +11083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetWin32WindowsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -11108,7 +11108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<SetUIAElementSearchModeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -11130,7 +11130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<GetUIAElementSearchModeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -11306,7 +11306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAGetElementPatternsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -11522,7 +11522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAMoveElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -11738,7 +11738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAResizeElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -12150,7 +12150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIALocateVisibleSearchImageWithinElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -12641,7 +12641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForVisibleSearchImageWithinElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
@@ -13115,7 +13115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                 }
 
                 return new ApiConnectionAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

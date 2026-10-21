@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1495,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1559,7 +1559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1685,7 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1903,7 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -1976,7 +1976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponseCommon>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -2193,7 +2193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -2250,7 +2250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -2319,7 +2319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -2539,7 +2539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -2669,7 +2669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -2932,7 +2932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -3134,7 +3134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -3418,7 +3418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -3565,7 +3565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -3701,7 +3701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -3873,7 +3873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OcrOperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -4072,7 +4072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -4294,7 +4294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -4511,7 +4511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -4627,7 +4627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -4759,7 +4759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -4979,7 +4979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -5056,7 +5056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -5121,7 +5121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<SplitOperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbi")]
@@ -5356,7 +5356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<AirQualityGeoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_countryCode != null)
                     callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<AirQualityPostalResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_city != null)
                     callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
                 return new ApiConnectionAction<AirQualityCityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_countryCode != null)
                     callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<AirQualityCountryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<AirQualityGeoHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<AirQualityPostalHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<WeatherCurrentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<WeatherHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<WeatherForecastResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<PollenLatestGeoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_place != null)
                     callPayload.Queries["place"] = ExpressionConverter.Convert(__workflow_place);
                 return new ApiConnectionAction<PollenLatestPlaceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<PollenHistoryGeoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<PollenHistoryPlaceResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<PollForecastGeoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<FireCurrentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<SoilCurrentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<SoilHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_lng != null)
                     callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<WaterVaporCurrentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<WaterVaporGeoResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

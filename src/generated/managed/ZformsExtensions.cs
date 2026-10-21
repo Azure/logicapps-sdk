@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
                 callPayload.Headers["zf_version"] = Convert.ToString(2);
                 callPayload.Headers["webhooks_url"] = Convert.ToString("#{listCallbackUrl()}");
                 return new ApiConnectionTrigger<FormSubmittedResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

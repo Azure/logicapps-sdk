@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(__workflow_campaignId);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<AgentCampaignAccessResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 }
 
                 return new ApiConnectionAction<CreateAgentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 }
 
                 return new ApiConnectionAction<CreateCallbackResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 if (__workflow_assignToAgent != null)
                     callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(__workflow_assignToAgent);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 callPayload.Queries["cmd"] = Convert.ToString("find");
                 callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
                 return new ApiConnectionAction<FindAgentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 if (__workflow_contactListId != null)
                     callPayload.Queries["contact_list_id"] = ExpressionConverter.Convert(__workflow_contactListId);
                 return new ApiConnectionAction<FindContactResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -1119,7 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 }
 
                 return new ApiConnectionAction<ModifyAgentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
@@ -1301,7 +1301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 if (__workflow_assignToAgent != null)
                     callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(__workflow_assignToAgent);
                 return new ApiConnectionAction<ModifyContactResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

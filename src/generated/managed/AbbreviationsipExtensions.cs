@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
                     callPayload.Queries["searchtype"] = ExpressionConverter.Convert(__workflow_searchtype);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<AbbrGetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

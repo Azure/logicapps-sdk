@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 }
 
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 }
 
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 }
 
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 }
 
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 }
 
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(__workflow_systemIDType);
                 callPayload.Queries["SystemID"] = ExpressionConverter.Convert(__workflow_systemID);
                 return new ApiConnectionAction<EmployeePersonalInfoInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(__workflow_systemIDType);
                 callPayload.Queries["SystemID"] = ExpressionConverter.Convert(__workflow_systemID);
                 return new ApiConnectionAction<EmployeeIdentityInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(__workflow_systemIDType);
                 callPayload.Queries["SystemID"] = ExpressionConverter.Convert(__workflow_systemID);
                 return new ApiConnectionAction<EmployeeQualificationInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["SystemIDType"] = ExpressionConverter.Convert(__workflow_systemIDType);
                 callPayload.Queries["SystemID"] = ExpressionConverter.Convert(__workflow_systemID);
                 return new ApiConnectionAction<EmployeeEmploymentInfoInfo>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 if (__workflow_businessProcessType != null)
                     callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(__workflow_businessProcessType);
                 return new ApiConnectionTrigger<EmployeeInfo>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

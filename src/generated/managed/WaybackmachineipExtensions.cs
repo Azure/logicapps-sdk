@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
                 if (__workflow_timestamp != null)
                     callPayload.Queries["timestamp"] = ExpressionConverter.Convert(__workflow_timestamp);
                 return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

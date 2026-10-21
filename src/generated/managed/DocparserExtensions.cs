@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
                 if (__workflow_remoteId != null)
                     callPayload.Queries["remote_id"] = ExpressionConverter.Convert(__workflow_remoteId);
                 return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
                 if (__workflow_remoteId != null)
                     callPayload.Queries["remote_id"] = ExpressionConverter.Convert(__workflow_remoteId);
                 return new ApiConnectionAction<FetchDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
                 }
 
                 return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

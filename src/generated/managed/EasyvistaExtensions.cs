@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<FinishActionResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewAssetsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<CreateAssetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAssetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<UpdateAssetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAssetLinksResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<CreateAssetLinkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<UpdateAssetLinkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewAssetLinkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewCatalogAssetsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewCatalogAssetResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<ViewCatalogRequestsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -984,7 +984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewCatalogRequestsPathListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewCatalogRequestPathResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewCatalogRequestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewConfigurationItemsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewConfigurationItemResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewConfigurationItemLinksResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1080,7 +1080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1095,7 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewConfigurationItemLinkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1127,7 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<CreateConfigurationItemLinkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<UpdateConfigurationItemLinkResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewEntitiesListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1202,7 +1202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewEntityResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewEmployeesListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1254,7 +1254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<CreateEmployeeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewEmployeeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1597,7 +1597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<UpdateEmployeeResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1622,7 +1622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewKnownErrorsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewKnownErrorsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1661,7 +1661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewLocationsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1675,7 +1675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewLocationResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1697,7 +1697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewManufacturerListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1711,7 +1711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewManufacturerResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1736,7 +1736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewRequestsIncidentsListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1763,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<CreateRequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewRequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -1805,7 +1805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<CloseRequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2288,7 +2288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<UpdateRequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2302,7 +2302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewRequestIncidentCommentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2316,7 +2316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRequestIncidentDocumentListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2340,7 +2340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<UploadAndAttachADocumentToARequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2375,7 +2375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<RestartRequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2410,7 +2410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction<SuspendRequestIncidentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2539,7 +2539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2564,7 +2564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 if (__workflow_maxRows != null)
                     callPayload.Queries["max_rows"] = ExpressionConverter.Convert(__workflow_maxRows);
                 return new ApiConnectionAction<ViewSlasListResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
@@ -2578,7 +2578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewSlaResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
                 if (__workflow_userEmail != null)
                     callPayload.Queries["userEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
                 return new ApiConnectionAction<ExportContactFromEnlyftResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

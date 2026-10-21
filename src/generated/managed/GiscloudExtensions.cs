@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
                     callPayload.Queries["destination_map"] = ExpressionConverter.Convert(__workflow_destinationMap);
                 callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_aPIKey);
                 return new ApiConnectionAction<UploadFileToPathResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_aPIKey);
                 return new ApiConnectionAction<Error>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

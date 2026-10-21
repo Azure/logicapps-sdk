@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         internal DeferredWorkflowTrigger(
             Func<IWorkflowTrigger> factory,
-            WorkflowTriggerSettingProfile settingsProfile = WorkflowTriggerSettingProfile.None)
+            WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
             : base(settingsProfile) =>
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
 
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal DeferredBodyTrigger(
             Func<IWorkflowTrigger> factory,
-            WorkflowTriggerSettingProfile settingsProfile = WorkflowTriggerSettingProfile.None)
+            WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
             : base(factory, settingsProfile) { }
 
         public T TriggerBody => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal DeferredOutputTrigger(
             Func<IWorkflowTrigger> factory,
-            WorkflowTriggerSettingProfile settingsProfile = WorkflowTriggerSettingProfile.None)
+            WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
             : base(factory, settingsProfile) { }
 
         public T TriggerOutput => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetFileContentOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<UploadFileContentOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<DeleteFileOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateFolderOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<RenameFileOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
+            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
         }
     }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfile.RetryPolicy | WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs | WorkflowTriggerSettingProfile.Concurrency);
+            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs | WorkflowTriggerSettings.Concurrency);
         }
 
         public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> WhenFileIsAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfile.RetryPolicy | WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs | WorkflowTriggerSettingProfile.Concurrency);
+            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs | WorkflowTriggerSettings.Concurrency);
         }
     }
 

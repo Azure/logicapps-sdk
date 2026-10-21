@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ESealResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CreatePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseExportedImages>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<CompressPDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<LinearizePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 }
 
                 return new ApiConnectionAction<CombinePDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<OCRPDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<UnProtectPDFResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseSplitDocument>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseExtractImages>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseExtractTables>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseExtractJSONFile>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseExtractJsonObject>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseExtractDocument>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponsePDFProperties>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DocGenResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
                 if (__workflow_xRegionValue != null)
                     callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
                 return new ApiConnectionAction<DtoResponseAutotagPDF>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

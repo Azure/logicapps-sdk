@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_lat != null)
                     callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 return new ApiConnectionAction<CarbonForecastResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_disableEstimations != null)
                     callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(__workflow_disableEstimations);
                 return new ApiConnectionAction<CarbonHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_disableEstimations != null)
                     callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(__workflow_disableEstimations);
                 return new ApiConnectionAction<CarbonLatestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_disableEstimations != null)
                     callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(__workflow_disableEstimations);
                 return new ApiConnectionAction<BreakdownHistoryResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_disableEstimations != null)
                     callPayload.Queries["disableEstimations"] = ExpressionConverter.Convert(__workflow_disableEstimations);
                 return new ApiConnectionAction<BreakdownLatestResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_lat != null)
                     callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 return new ApiConnectionAction<ConsumptionForecastResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
                 if (__workflow_lat != null)
                     callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 return new ApiConnectionAction<BreakdownForecastResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]

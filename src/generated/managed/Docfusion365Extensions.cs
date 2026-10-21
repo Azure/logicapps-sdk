@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["listName"] = ExpressionConverter.Convert(__workflow_listName);
                 return new ApiConnectionAction<GetLinkedListTemplatesResponse[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
                 callPayload.Queries["listItemId"] = ExpressionConverter.Convert(__workflow_listItemId);
                 callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(__workflow_skipPostProcess);
                 return new ApiConnectionAction<ComposeLinkedTemplateResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
                 callPayload.Queries["listItemId"] = ExpressionConverter.Convert(__workflow_listItemId);
                 callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(__workflow_skipPostProcess);
                 return new ApiConnectionAction<ComposeLinkedTemplateResponse[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

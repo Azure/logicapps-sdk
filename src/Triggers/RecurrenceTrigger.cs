@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             int interval,
             DateTime? startTime,
             TimeZoneInfo timeZone)
-            : base(WorkflowTriggerSettingsProfiles.Scheduled)
+            : base(WorkflowTriggerSettingProfiles.Scheduled)
         {
             this.Name = "recurrence";
             this.Frequency = frequency;

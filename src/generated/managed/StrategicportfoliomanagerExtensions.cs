@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 return new ApiConnectionAction<Item[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityTypeUid"] = ExpressionConverter.Convert(__workflow_entityTypeUid);
                 callPayload.Queries["entityName"] = ExpressionConverter.Convert(__workflow_entityName);
                 return new ApiConnectionAction<CallResultWithData>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_selectColumns != null)
                     callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(__workflow_selectColumns);
                 return new ApiConnectionAction<Entity[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_selectColumns != null)
                     callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(__workflow_selectColumns);
                 return new ApiConnectionAction<CallResultWithData>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_selectColumns != null)
                     callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(__workflow_selectColumns);
                 return new ApiConnectionAction<Entity>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_selectColumns != null)
                     callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(__workflow_selectColumns);
                 return new ApiConnectionAction<CallResultWithData>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 return new ApiConnectionAction<Item[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<CallResultWithData>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 return new ApiConnectionAction<FieldValue[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(__workflow_fieldIdentifier);
                 return new ApiConnectionAction<FieldValue>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
                 return new ApiConnectionAction<bool>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(__workflow_fieldIdentifier);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<CallResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fieldValues);
                 return new ApiConnectionAction<CallResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["centerId"] = ExpressionConverter.Convert(__workflow_centerId);
                 callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(__workflow_fieldIdentifier);
                 return new ApiConnectionAction<CustomFieldValueCreationInformation>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(__workflow_fieldIdentifier);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["centerId"] = ExpressionConverter.Convert(__workflow_centerId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fieldValues);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["entityUid"] = ExpressionConverter.Convert(__workflow_entityUid);
                 return new ApiConnectionAction<Resource[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityUid"] = ExpressionConverter.Convert(__workflow_entityUid);
                 callPayload.Queries["resourceUid"] = ExpressionConverter.Convert(__workflow_resourceUid);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 if (__workflow_stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["entityId"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["relatedEntityId"] = ExpressionConverter.Convert(__workflow_relatedEntityId);
                 return new ApiConnectionAction<CallResult>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(__workflow_activityDetails);
                 callPayload.Queries["initiator"] = ExpressionConverter.Convert(__workflow_initiator);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 return new ApiConnectionAction<Item[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["optionSetUid"] = ExpressionConverter.Convert(__workflow_optionSetUid);
                 return new ApiConnectionAction<Item[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 }
 
                 return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
+            }, WorkflowTriggerSettingProfiles.ManagedConnector);
         }
     }
 

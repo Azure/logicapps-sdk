@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_arrIata != null)
                     callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(__workflow_arrIata);
                 return new ApiConnectionAction<ListFlightsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_flightIcao != null)
                     callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(__workflow_flightIcao);
                 return new ApiConnectionAction<GetFlightResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_Fields != null)
                     callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
                 return new ApiConnectionAction<ListAirlinesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_Fields != null)
                     callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
                 return new ApiConnectionAction<ListRoutesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_Fields != null)
                     callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
                 return new ApiConnectionAction<ListSchedulesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_Fields != null)
                     callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
                 return new ApiConnectionAction<ListAirportsResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
                 if (__workflow_Fields != null)
                     callPayload.Queries["_fields"] = ExpressionConverter.Convert(__workflow_Fields);
                 return new ApiConnectionAction<ListCountriesResponse>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 

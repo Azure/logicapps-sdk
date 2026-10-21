@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Booth>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_deletedFilter != null)
                     callPayload.Queries["deletedFilter"] = ExpressionConverter.Convert(__workflow_deletedFilter);
                 return new ApiConnectionAction<Booth[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Booth[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Booth[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_comment != null)
                     callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_comment != null)
                     callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_ratePlan != null)
                     callPayload.Queries["ratePlan"] = ExpressionConverter.Convert(__workflow_ratePlan);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boundary"] = ExpressionConverter.Convert(__workflow_boundary);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothNumbers);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothNumbers);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothNumbers);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["newNumber"] = ExpressionConverter.Convert(__workflow_newNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<BoothClass>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<BoothClass[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<BoothClass>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<BoothClass>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpocadEvent[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<EventStats>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<ExpoEventInformation>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Exhibitor>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Exhibitor[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<Exhibitor>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1171,7 +1171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<Exhibitor>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1224,7 +1224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_reversedFilter != null)
                     callPayload.Queries["reversedFilter"] = ExpressionConverter.Convert(__workflow_reversedFilter);
                 return new ApiConnectionAction<Transaction[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1241,7 +1241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<BoothFinancial>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1262,7 +1262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_exhibitorId != null)
                     callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(__workflow_exhibitorId);
                 return new ApiConnectionAction<Invoice>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1277,7 +1277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Invoice[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1298,7 +1298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_transactionCode != null)
                     callPayload.Queries["transactionCode"] = ExpressionConverter.Convert(__workflow_transactionCode);
                 return new ApiConnectionAction<MasterRequestItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1334,7 +1334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_transactionCode != null)
                     callPayload.Queries["transactionCode"] = ExpressionConverter.Convert(__workflow_transactionCode);
                 return new ApiConnectionAction<InvoiceRequestItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1349,7 +1349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<PaymentTypeItem[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_paymentTypeCategory != null)
                     callPayload.Queries["PaymentTypeCategory"] = ExpressionConverter.Convert(__workflow_paymentTypeCategory);
                 return new ApiConnectionAction<InvoicePayment[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1397,7 +1397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Pavilion[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1412,7 +1412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<RatePlan>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1429,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1444,7 +1444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<RatePlan[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1484,7 +1484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<RatePlan>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
@@ -1499,7 +1499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<ShowInShow[]>(callPayload);
-            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
+            }, WorkflowActionSettingProfiles.RetrySecureTracked);
         }
     }
 
