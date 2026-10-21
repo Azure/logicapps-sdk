@@ -3,22 +3,22 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     internal class DeferredWorkflowTrigger : WorkflowTriggerBase
     {
-        private readonly Func<IWorkflowTrigger> factory;
+        private readonly Func<WorkflowTriggerBase> factory;
 
         internal DeferredWorkflowTrigger(
-            Func<IWorkflowTrigger> factory,
+            Func<WorkflowTriggerBase> factory,
             WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
             : base(settingsProfile) =>
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
 
-        protected override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null) =>
-            this.factory().GetTriggerDefinition(flowKind);
+        protected internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null) =>
+            this.factory().BuildTriggerDefinition(flowKind);
     }
 
     internal sealed class DeferredBodyTrigger<T> : DeferredWorkflowTrigger, IBodyWorkflowTrigger<T>
     {
         internal DeferredBodyTrigger(
-            Func<IWorkflowTrigger> factory,
+            Func<WorkflowTriggerBase> factory,
             WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
             : base(factory, settingsProfile) { }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     internal sealed class DeferredOutputTrigger<T> : DeferredWorkflowTrigger, IOutputWorkflowTrigger<T>
     {
         internal DeferredOutputTrigger(
-            Func<IWorkflowTrigger> factory,
+            Func<WorkflowTriggerBase> factory,
             WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
             : base(factory, settingsProfile) { }
 

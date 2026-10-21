@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the trigger definition as a flow template trigger.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> containing the trigger configuration.</returns>
-        protected override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
+        protected internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {

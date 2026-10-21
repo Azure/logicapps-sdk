@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the trigger definition for the recurrence trigger.
         /// </summary>
-        protected override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
+        protected internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         private readonly Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>> tools =
             new Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>>();
 
-        internal DeferredAgentAction(Func<IWorkflowAction> factory)
+        internal DeferredAgentAction(Func<WorkflowActionBase> factory)
             : base(factory, WorkflowActionSettingProfiles.RetryTracked)
         {
         }
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         /// <inheritdoc />
-        protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
+        protected internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var definition = base.BuildActionDefinition(flowName, flowKind);
             definition.Tools = this.tools.ToDictionary(pair => pair.Key, pair => pair.Value(flowName, flowKind));

@@ -5,23 +5,26 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     internal class DeferredWorkflowAction : WorkflowActionBase
     {
-        private readonly Func<IWorkflowAction> factory;
+        private readonly Func<WorkflowActionBase> factory;
 
         internal DeferredWorkflowAction(
-            Func<IWorkflowAction> factory,
+            Func<WorkflowActionBase> factory,
             WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(settingsProfile)
         {
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
-        protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null) => this.factory().GetActionDefinition(flowName, flowKind);
+        protected internal override FlowTemplateAction BuildActionDefinition(
+            string flowName,
+            FlowKind? flowKind = null) =>
+            this.factory().BuildActionDefinition(flowName, flowKind);
     }
 
     internal sealed class DeferredBodyAction<T> : DeferredWorkflowAction, IBodyWorkflowAction<T>
     {
         internal DeferredBodyAction(
-            Func<IWorkflowAction> factory,
+            Func<WorkflowActionBase> factory,
             WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(factory, settingsProfile) { }
 
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     internal sealed class DeferredOutputAction<T> : DeferredWorkflowAction, IOutputWorkflowAction<T>
     {
         internal DeferredOutputAction(
-            Func<IWorkflowAction> factory,
+            Func<WorkflowActionBase> factory,
             WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(factory, settingsProfile) { }
 
@@ -41,9 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal DeferredVariableAction(
             string name,
-            Func<IWorkflowAction> factory,
+            Func<WorkflowActionBase> factory,
             WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
             : base(factory, settingsProfile) => this.VariableName = name;
+
         public string VariableName { get; }
         public JToken Value => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
     }

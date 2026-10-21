@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        protected abstract FlowTemplateAction BuildActionDefinition(
+        protected internal abstract FlowTemplateAction BuildActionDefinition(
             string flowName,
             FlowKind? flowKind = null);
 
