@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>
         /// A <see cref="FlowTemplateTrigger"/> configured for HTTP request operations.
         /// </returns>
-        protected override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
+        protected internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             // Implementation for getting the trigger definition
             return new FlowTemplateTrigger

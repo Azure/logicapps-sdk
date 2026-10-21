@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Builds the operation-specific trigger definition.
         /// </summary>
         /// <param name="flowKind">The kind of workflow containing the trigger.</param>
-        protected abstract FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null);
+        protected internal abstract FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null);
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)
