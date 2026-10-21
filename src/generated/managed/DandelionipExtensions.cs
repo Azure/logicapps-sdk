@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
                 if (__workflow_epsilon != null)
                     callPayload.Queries["epsilon"] = ExpressionConverter.Convert(__workflow_epsilon);
                 return new ApiConnectionAction<EntityGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
                 if (__workflow_bow != null)
                     callPayload.Queries["bow"] = ExpressionConverter.Convert(__workflow_bow);
                 return new ApiConnectionAction<SimilarityGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
                 if (__workflow_clean != null)
                     callPayload.Queries["clean"] = ExpressionConverter.Convert(__workflow_clean);
                 return new ApiConnectionAction<LanguageGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
                 if (__workflow_lang != null)
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<SentimentGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
                 if (__workflow_include != null)
                     callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<WikipediaGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

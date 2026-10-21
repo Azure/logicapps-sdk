@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<BookListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<BookGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<BookGetChaptersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<MovieListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<MovieGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<MovieGetQuoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<CharacterListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<CharacterGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<CharacterGetQuoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<QuoteListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<QuoteGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<ChapterListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thelordoftheringsip")]
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thelordoftheringsip
                 if (__workflow_sorting != null)
                     callPayload.Queries["sorting"] = ExpressionConverter.Convert(__workflow_sorting);
                 return new ApiConnectionAction<ChapterGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<GetQuestionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]

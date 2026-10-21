@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooablockchain
                     callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

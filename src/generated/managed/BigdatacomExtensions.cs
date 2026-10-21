@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bigdatacom
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

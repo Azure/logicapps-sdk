@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             var typeStr = InferVariableType(typeof(T));
-            return new DeferredVariableAction(nameStr, () => new InitializeVariableAction(nameStr, typeStr, ExpressionConverter.ConvertO(valueDescriptor)));
+            return new DeferredVariableAction(nameStr, () => new InitializeVariableAction(nameStr, typeStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new SetVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
+            return new DeferredVariableAction(nameStr, () => new SetVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new IncrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
+            return new DeferredVariableAction(nameStr, () => new IncrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new DecrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
+            return new DeferredVariableAction(nameStr, () => new DecrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new AppendToStringVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
+            return new DeferredVariableAction(nameStr, () => new AppendToStringVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new AppendToArrayVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
+            return new DeferredVariableAction(nameStr, () => new AppendToArrayVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>

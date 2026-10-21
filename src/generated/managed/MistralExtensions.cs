@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                 }
 
                 return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                 }
 
                 return new ApiConnectionAction<EmbeddingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]

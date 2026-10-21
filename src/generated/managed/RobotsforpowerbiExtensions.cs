@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
                 }
 
                 return new ApiConnectionAction<PlaylistEnableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
                 }
 
                 return new ApiConnectionAction<PlaylistDisableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
                 }
 
                 return new ApiConnectionAction<PlaylistExecuteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

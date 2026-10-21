@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
                 if (__workflow_accessToken != null)
                     callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
                 callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
                 callPayload.Queries["ValidationOperationUri"] = ExpressionConverter.Convert(__workflow_validationOperationUri);
                 callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

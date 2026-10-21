@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagName != null)
                     callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction<QueryTagsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagName != null)
                     callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagValueType != null)
                     callPayload.Queries["tagValueType"] = ExpressionConverter.Convert(__workflow_tagValueType);
                 return new ApiConnectionAction<QueryTagResponseItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_externalRecordID != null)
                     callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_externalRecordID != null)
                     callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_createdBy != null)
                     callPayload.Queries["createdBy"] = ExpressionConverter.Convert(__workflow_createdBy);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_externalRecordID != null)
                     callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction<DownloadUrlMessage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagName != null)
                     callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagValue != null)
                     callPayload.Queries["tagValue"] = ExpressionConverter.Convert(__workflow_tagValue);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagValue != null)
                     callPayload.Queries["tagValue"] = ExpressionConverter.Convert(__workflow_tagValue);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

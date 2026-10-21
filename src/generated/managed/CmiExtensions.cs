@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
                 }
 
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

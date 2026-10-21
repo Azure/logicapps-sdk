@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

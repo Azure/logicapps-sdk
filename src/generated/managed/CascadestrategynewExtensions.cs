@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
                 }
 
                 return new ApiConnectionAction<UpdateMeasure2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
                 }
 
                 return new ApiConnectionAction<UpdateMeasureHistoricalValue2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
                 }
 
                 return new ApiConnectionAction<UpdateAction2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

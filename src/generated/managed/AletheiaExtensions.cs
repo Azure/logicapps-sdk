@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_before != null)
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filingurl"] = ExpressionConverter.Convert(__workflow_filingurl);
                 return new ApiConnectionAction<OpenForm4Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filingurl"] = ExpressionConverter.Convert(__workflow_filingurl);
                 return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_top != null)
                     callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<GetEntityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_url != null)
                     callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<GetFilingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_cascade != null)
                     callPayload.Queries["cascade"] = ExpressionConverter.Convert(__workflow_cascade);
                 return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_before != null)
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_before != null)
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_top != null)
                     callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<EarningsCallResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_top != null)
                     callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
                 return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 callPayload.Headers["Accept-Version"] = Convert.ToString(2);
                 return new ApiConnectionAction<StockDataV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

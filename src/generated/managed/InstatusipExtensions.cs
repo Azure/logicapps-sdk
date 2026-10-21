@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<PagesGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<PagePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<PagePutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<ComponentsGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<ComponentPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ComponentGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ComponentDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<ComponentPutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<IncidentsGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentPutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentTemplatePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -944,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentUpdateGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentUpdateDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentUpdatePutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1086,7 +1086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentUpdatePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1101,7 +1101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentUpdateTemplatePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1120,7 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<MaintenancesGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1245,7 +1245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenancePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1259,7 +1259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1273,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1350,7 +1350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenancePutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1365,7 +1365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceUpdateGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1380,7 +1380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceUpdateDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1451,7 +1451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenanceUpdatePutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1521,7 +1521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenanceUpdatePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1540,7 +1540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<PageTemplatesGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1609,7 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<TemplatePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1623,7 +1623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1637,7 +1637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1700,7 +1700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<TemplatePutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1719,7 +1719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<TeammatesGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1746,7 +1746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1760,7 +1760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<SubscribersGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1820,7 +1820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<SubscriberPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
@@ -1834,7 +1834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

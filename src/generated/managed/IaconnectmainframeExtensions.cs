@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIGetConnectStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIGetCursorPosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIReadScreenAtCursorPosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIQuerySessionStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIReadScreenRowsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIIsKeyboardUnlockedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIWaitForKeyboardUnlockedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIWaitForSystemReadyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPISearchForStringResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPIWaitForStringResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 return new ApiConnectionAction<HLLAPICopyOperatorInformationAreaResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

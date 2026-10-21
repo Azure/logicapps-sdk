@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
                 callPayload.Queries["flows"] = ExpressionConverter.Convert(__workflow_flows);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_question);
                 return new ApiConnectionAction<FlowCreatedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

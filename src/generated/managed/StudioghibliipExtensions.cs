@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Films[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Films[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<People[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<People[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Locations[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Locations[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Species[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Species[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Vehicles[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Vehicles[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

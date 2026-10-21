@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
                 callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);
                 return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

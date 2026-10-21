@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProceduresList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<ItemsList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

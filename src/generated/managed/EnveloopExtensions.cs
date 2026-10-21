@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
                 }
 
                 return new ApiConnectionAction<MessagePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

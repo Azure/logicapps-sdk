@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 }
 
                 return new ApiConnectionAction<Client>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["clientName"] = ExpressionConverter.Convert(__workflow_clientName);
                 return new ApiConnectionAction<Client[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 }
 
                 return new ApiConnectionAction<Project>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectName"] = ExpressionConverter.Convert(__workflow_projectName);
                 return new ApiConnectionAction<Project>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 }
 
                 return new ApiConnectionAction<ProjectTask>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 callPayload.Queries["projectTaskName"] = ExpressionConverter.Convert(__workflow_projectTaskName);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<ProjectTask>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 }
 
                 return new ApiConnectionAction<Tag>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction<Tag>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 }
 
                 return new ApiConnectionAction<TimeLog>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
                 callPayload.Queries["dateFrom"] = ExpressionConverter.Convert(__workflow_dateFrom);
                 callPayload.Queries["dateTo"] = ExpressionConverter.Convert(__workflow_dateTo);
                 return new ApiConnectionAction<ActivityReportResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5101AddHtmlToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5031AddImageToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5042AddImageWithinTableToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5052AddTableToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5061AddTextToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2081CombineCsvs>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2091CombineJsonArrays>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3041CompressImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4080CompressPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2071ConvertColor>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1033ConvertCsvToExcel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseHtml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1022ConvertCsvToJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1100ConvertExcelToJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -908,7 +908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4013ConvertFileToPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV7070ConvertHtmlTableToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV7080ConvertHtmlTableToExcel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV7012ConvertHtmlTableToJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV7031ConvertHtmlToImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1126,7 +1126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV7022ConvertHtmlToPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1148,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1187,7 +1187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1216,7 +1216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1013ConvertJsonToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1296,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1063ConvertJsonToExcel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseHtml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1340,7 +1340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1090ConvertJsonToTextTable>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1042ConvertJsonToXml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1384,7 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1081ConvertJsonToYaml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4070ConvertPdfToPdfA>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1435,7 +1435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV6011ConvertSharePointSearchResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1478,7 +1478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5160ConvertWordToHtml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1500,7 +1500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1052ConvertXmlToJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV8010ConvertXRechnungToPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV1071ConvertYamlToJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1601,7 +1601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3091CreateChartImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1672,7 +1672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3062CreateCode>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1722,7 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3111CreateGraphImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1796,7 +1796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3101CreateTableImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1849,7 +1849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3081CreateWatermarkImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1878,7 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5011CreateWordFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1928,7 +1928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4090ExtractImagesFromPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1967,7 +1967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2100ExtractJsonObjectProperties>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1992,7 +1992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4060ExtractPdfPages>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2031,7 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2140ExtractTextAccordingToPattern>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2095,7 +2095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4100ExtractTextFromPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2148,7 +2148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5021ExtractWordBookmarks>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2184,7 +2184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5120ExtractWordContentControls>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2206,7 +2206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2021IbanData>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2228,7 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3071ImageMetaData>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2288,7 +2288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2348,7 +2348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2387,7 +2387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5110InsertMultipleTextSectionsToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2471,7 +2471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5091InsertTableToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2517,7 +2517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2563,7 +2563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5071InsertTextToWord>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2588,7 +2588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4021MergePdfs>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2613,7 +2613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2120MatchPatternCheck>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2635,7 +2635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4031PdfMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2671,7 +2671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4041ProtectPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2693,7 +2693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3051ReadCode>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2729,7 +2729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2011RegularExpression>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2775,7 +2775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4110RemovePagesFromPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2807,7 +2807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2110ReplaceTextWithPattern>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2850,7 +2850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3022ResizeImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2886,7 +2886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV3031RotateImage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2929,7 +2929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2151RunCode>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2972,7 +2972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2130SmartTextSplit>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3121,7 +3121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2061SortCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3174,7 +3174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2051SortJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3206,7 +3206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2041Translate>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3242,7 +3242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV4051UnProtectPdf>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3267,7 +3267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3299,7 +3299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3321,7 +3321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV5130UpdateWordTableOfContents>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3343,7 +3343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 }
 
                 return new ApiConnectionAction<DtoResponseV2031UrlToFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

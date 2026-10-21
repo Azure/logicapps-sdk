@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction<BuildCustomMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction<BuildTextMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction<BuildCardMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction<BuildQuickrepliesMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction<BuildMediaMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessPDFFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessImageFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_transactionType != null)
                     callPayload.Queries["transaction_type"] = ExpressionConverter.Convert(__workflow_transactionType);
                 return new ApiConnectionAction<ResponseSuccessListObjects>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["transaction_ref"] = ExpressionConverter.Convert(__workflow_transactionRef);
                 return new ApiConnectionAction<ResponseSuccessDeleteObject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_withLayerInfo != null)
                     callPayload.Queries["with_layer_info"] = ExpressionConverter.Convert(__workflow_withLayerInfo);
                 return new ApiConnectionAction<ResponseSuccessListTemplates>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_templateId != null)
                     callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
                 return new ApiConnectionAction<ResponseSuccessTemplate>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccess>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

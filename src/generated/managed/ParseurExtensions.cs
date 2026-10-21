@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, FlowRecurrence recurrence = null)
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

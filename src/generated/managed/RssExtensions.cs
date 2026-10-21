@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
                 if (__workflow_sinceProperty != null)
                     callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(__workflow_sinceProperty);
                 return new ApiConnectionAction<FeedItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
                 if (__workflow_sinceProperty != null)
                     callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(__workflow_sinceProperty);
                 return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

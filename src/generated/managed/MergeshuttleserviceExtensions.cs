@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

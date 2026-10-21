@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
 {
     using System;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BulkCreateOrUpdateDocumentOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateOrUpdateDocumentOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<DeleteDocumentOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<QueryDocumentsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
@@ -193,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReadDocumentOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
@@ -224,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<PatchItemOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -271,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
     }
 
@@ -434,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public string Value { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PatchItemInputPatchOperationsTypeItemTypeType
     {
         Add,

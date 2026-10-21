@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnavision")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnavision
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

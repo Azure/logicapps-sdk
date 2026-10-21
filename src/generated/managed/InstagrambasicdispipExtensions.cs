@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetMyMediaResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetMyDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetMediaDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
                 callPayload.Queries["grant_type"] = ExpressionConverter.Convert(__workflow_grantType);
                 callPayload.Queries["access_token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction<RefreshTokenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

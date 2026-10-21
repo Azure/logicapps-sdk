@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
 {
     using System;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 

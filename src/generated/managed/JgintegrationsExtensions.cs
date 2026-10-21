@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 }
 
                 return new ApiConnectionAction<HASHHMACResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 }
 
                 return new ApiConnectionAction<PREGREPLACEResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 }
 
                 return new ApiConnectionAction<MANUALResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 }
 
                 return new ApiConnectionAction<FILESTRINGResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

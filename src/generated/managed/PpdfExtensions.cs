@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ppdf")]
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<ItemsList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
                 }
 
                 return new ApiConnectionAction<ItemBatchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
                 }
 
                 return new ApiConnectionAction<ItemBatchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 }
 
                 return new ApiConnectionAction<UploadFormSubmissionAsNewFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 }
 
                 return new ApiConnectionAction<Folder>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 }
 
                 return new ApiConnectionAction<UploadFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 }
 
                 return new ApiConnectionAction<CreateWorkspaceTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, FlowRecurrence recurrence = null)
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

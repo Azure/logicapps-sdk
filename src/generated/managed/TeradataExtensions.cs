@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teradata
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<ItemsList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teradata")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teradata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teradata")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teradata
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teradata")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teradata
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teradata")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teradata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

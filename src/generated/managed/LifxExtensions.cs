@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction<SetStateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

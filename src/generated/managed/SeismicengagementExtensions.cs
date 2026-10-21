@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 if (__workflow_enabled != null)
                     callPayload.Queries["Enabled"] = ExpressionConverter.Convert(__workflow_enabled);
                 return new ApiConnectionAction<SeismicDeliveryDeliveryOption[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicDeliveryDeliveryFormInputs>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 }
 
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 }
 
                 return new ApiConnectionAction<SeismicLiveSendLiveSendLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]

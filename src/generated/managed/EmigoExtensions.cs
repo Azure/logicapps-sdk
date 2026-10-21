@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FeedList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ItemsList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FeedList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 if (__workflow_select != null)
                     callPayload.Queries["Select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetProductList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 if (__workflow_select != null)
                     callPayload.Queries["Select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetProduct>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 if (__workflow_select != null)
                     callPayload.Queries["Select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetOperationalUnitList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 if (__workflow_select != null)
                     callPayload.Queries["Select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetOperationalUnit>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                 }
 
                 return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

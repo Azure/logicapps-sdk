@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentException("Condition action requires at least one non-null branch.");
             }
 
-            return new DeferredWorkflowAction(() => new ConditionAction(ExpressionConverter.ConvertCondition(descriptor), resolvedTrueBranch?.GetRootOperation() as IWorkflowAction, resolvedFalseBranch?.GetRootOperation() as IWorkflowAction));
+            return new DeferredWorkflowAction(
+                () => new ConditionAction(ExpressionConverter.ConvertCondition(descriptor), resolvedTrueBranch?.GetRootOperation() as IWorkflowAction, resolvedFalseBranch?.GetRootOperation() as IWorkflowAction),
+                WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -65,7 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             var currentItemPlaceholder = new ForEachItemToken();
             var resolvedActions = actions.Invoke(currentItemPlaceholder);
-            return new DeferredWorkflowAction(() => new ForEachAction(ExpressionConverter.ConvertO(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction));
+            return new DeferredWorkflowAction(
+                () => new ForEachAction(ExpressionConverter.ConvertO(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction),
+                WorkflowActionSettingsProfiles.ForEach);
         }
 
         /// <summary>
@@ -83,7 +87,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var resolvedActions = actions.Invoke();
-            return new DeferredWorkflowAction(() => new UntilAction(ExpressionConverter.ConvertCondition(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction));
+            return new DeferredWorkflowAction(
+                () => new UntilAction(ExpressionConverter.ConvertCondition(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction),
+                WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -103,7 +109,9 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             var resolvedCasesDict = cases.Invoke();
             var resolvedDefaultCase = defaultCase?.Invoke();
-            return new DeferredWorkflowAction(() => new SwitchAction(ExpressionConverter.ConvertO(descriptor), resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction));
+            return new DeferredWorkflowAction(
+                () => new SwitchAction(ExpressionConverter.ConvertO(descriptor), resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction),
+                WorkflowActionSettingsProfiles.Tracked);
         }
 
         /// <summary>
@@ -116,7 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             var statusDescriptor = WorkflowExpression.Compile(status, nameof(status), required: true);
             var messageDescriptor = WorkflowExpression.Compile(message, nameof(message), required: false);
 
-            return new DeferredWorkflowAction(() => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)));
+            return new DeferredWorkflowAction(
+                () => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)),
+                WorkflowActionSettingsProfiles.Tracked);
         }
     }
 }

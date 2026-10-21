@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["chatId"] = ExpressionConverter.Convert(__workflow_chatId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

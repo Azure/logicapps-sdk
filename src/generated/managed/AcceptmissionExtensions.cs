@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostcategoriesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetcategoriesIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PutcategoriesIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchcategoriesIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostdepartmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetdepartmentsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PutdepartmentsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchdepartmentsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostfunnelLanesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetfunnelLanesIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PutfunnelLanesIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchfunnelLanesIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetfunnelsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchfunnelsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1112,7 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetideasIdeaIdTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostideasIdeaIdTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1759,7 +1759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1800,7 +1800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1863,7 +1863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1876,7 +1876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetmissionsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -1889,7 +1889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2295,7 +2295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PutmissionsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2336,7 +2336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchmissionsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2399,7 +2399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostprojectsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2412,7 +2412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetprojectsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2425,7 +2425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2817,7 +2817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PutprojectsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2851,7 +2851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchprojectsIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2864,7 +2864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetprojectsProjectIdTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2898,7 +2898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostprojectsProjectIdTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2913,7 +2913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 if (__workflow_syncId != null)
                     callPayload.Queries["sync_id"] = ExpressionConverter.Convert(__workflow_syncId);
                 return new ApiConnectionAction<GetTaskBySyncIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2946,7 +2946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PosttasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2959,7 +2959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GettasksIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -2972,7 +2972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3013,7 +3013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PatchtasksIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3035,7 +3035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3105,7 +3105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PostusersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3127,7 +3127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetusersIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3140,7 +3140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
@@ -3510,7 +3510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 }
 
                 return new ApiConnectionAction<PutusersIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

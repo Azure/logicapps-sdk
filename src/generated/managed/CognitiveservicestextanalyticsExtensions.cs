@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                 }
 
                 return new ApiConnectionAction<EntityLinkingResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                 }
 
                 return new ApiConnectionAction<EntitiesResultV3>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                 }
 
                 return new ApiConnectionAction<KeyPhraseResultV3>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                 }
 
                 return new ApiConnectionAction<LanguageResultV3>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                 }
 
                 return new ApiConnectionAction<SentimentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

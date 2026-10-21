@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
                 if (__workflow_paginateBy != null)
                     callPayload.Queries["paginate_by"] = ExpressionConverter.Convert(__workflow_paginateBy);
                 return new ApiConnectionAction<SearchResultsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
                 if (__workflow_lastModifiedOnOrBefore != null)
                     callPayload.Queries["last_modified_on_or_before"] = ExpressionConverter.Convert(__workflow_lastModifiedOnOrBefore);
                 return new ApiConnectionAction<HierarchyCountResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
                 if (__workflow_appendix != null)
                     callPayload.Queries["appendix"] = ExpressionConverter.Convert(__workflow_appendix);
                 return new ApiConnectionAction<object>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

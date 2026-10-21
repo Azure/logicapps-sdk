@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                 }
 
                 return new ApiConnectionAction<AssignFormResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

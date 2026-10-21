@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABConnectToJavaAccessBridgeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetConnectionStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABIsJavaWindowResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetWindowsAccessBridgeInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetUIAElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetJABElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -976,7 +976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -1196,7 +1196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABDoesElementExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -1436,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABWaitForElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -1676,7 +1676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABWaitForElementToNotExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -1807,7 +1807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetDesktopElementsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -1949,7 +1949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABDoesDesktopElementExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2111,7 +2111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABWaitForDesktopElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2273,7 +2273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABWaitForDesktopElementToNotExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2295,7 +2295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2340,7 +2340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetChildJABElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2457,7 +2457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetAllChildJABElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2499,7 +2499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetParentJABElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -2777,7 +2777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -3000,7 +3000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -3295,7 +3295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -3556,7 +3556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -3817,7 +3817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -4095,7 +4095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -4315,7 +4315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetActionsForElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -4535,7 +4535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -4758,7 +4758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -5019,7 +5019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -5239,7 +5239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetElementTextValueResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -5459,7 +5459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetElementValueResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -5720,7 +5720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -5957,7 +5957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetElementPropertiesAsListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -6316,7 +6316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -6679,7 +6679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -7001,7 +7001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetSelectionElementItemsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -7275,7 +7275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -7668,7 +7668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -7939,7 +7939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -8162,7 +8162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetSelectionStateByIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -8402,7 +8402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetSelectionStateByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -8758,7 +8758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetTablePropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9137,7 +9137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetTableCellPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9466,7 +9466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetTableContentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9811,7 +9811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABIsTableCellVisibleOnscreenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9839,7 +9839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABIsJABHandleSameObjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9915,7 +9915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9946,7 +9946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABCreateHandleForJABElementAtScreenCoordinateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -9994,7 +9994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetTableCellAtScreenCoordinateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -10053,7 +10053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetMultipleParentJABElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -10476,7 +10476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -10747,7 +10747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetRoleCSVFromElementSearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
@@ -10932,7 +10932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 }
 
                 return new ApiConnectionAction<JABGetRoleCSVFromElementHandleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
                 if (__workflow_subject != null)
                     callPayload.Queries["subject"] = ExpressionConverter.Convert(__workflow_subject);
                 return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

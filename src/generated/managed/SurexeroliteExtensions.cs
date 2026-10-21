@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetInvoicesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 }
 
                 return new ApiConnectionAction<PostInvoiceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
                 return new ApiConnectionAction<GetContactsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 }
 
                 return new ApiConnectionAction<PostContactsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

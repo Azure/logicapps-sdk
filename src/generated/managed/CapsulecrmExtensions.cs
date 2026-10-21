@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreateOpportunityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOpportunityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<UpdateOpportunityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreatePersonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<UpdatePersonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreateOrganisationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<UpdateOrganisationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPartyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -1182,7 +1182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CompleteTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

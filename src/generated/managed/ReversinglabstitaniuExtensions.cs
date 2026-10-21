@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_deleteOn != null)
                     callPayload.Queries["delete_on"] = ExpressionConverter.Convert(__workflow_deleteOn);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_events != null)
                     callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -934,7 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -954,7 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_classification != null)
                     callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -975,7 +975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_classification != null)
                     callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1030,7 +1030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1080,7 +1080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1182,7 +1182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1221,7 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1324,7 +1324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1384,7 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1472,7 +1472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1546,7 +1546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1620,7 +1620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1694,7 +1694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1754,7 +1754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1916,7 +1916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -1990,7 +1990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2015,7 +2015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2040,7 +2040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2065,7 +2065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2090,7 +2090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_to != null)
                     callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2106,7 +2106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2122,7 +2122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2138,7 +2138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2154,7 +2154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2170,7 +2170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2226,7 +2226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2245,7 +2245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_nextNetworkLocation != null)
                     callPayload.Queries["next_network_location"] = ExpressionConverter.Convert(__workflow_nextNetworkLocation);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2313,7 +2313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2335,7 +2335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2357,7 +2357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2374,7 +2374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2391,7 +2391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2404,7 +2404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2417,7 +2417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2430,7 +2430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2448,7 +2448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2480,7 +2480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2493,7 +2493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2511,7 +2511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2537,7 +2537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2563,7 +2563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2647,7 +2647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2680,7 +2680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2700,7 +2700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2721,7 +2721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2771,7 +2771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
@@ -2791,7 +2791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 if (__workflow_format != null)
                     callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

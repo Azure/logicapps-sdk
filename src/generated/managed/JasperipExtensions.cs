@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<CommandPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<TemplatePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<KnowledgesGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<KnowledgePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<KnowledgePatchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<TonePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ToneGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<TonePatchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ToneDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

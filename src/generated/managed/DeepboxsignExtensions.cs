@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Document>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Document>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 }
 
                 return new ApiConnectionAction<Observer>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Signee[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 }
 
                 return new ApiConnectionAction<Signee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Signee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 }
 
                 return new ApiConnectionAction<Signee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

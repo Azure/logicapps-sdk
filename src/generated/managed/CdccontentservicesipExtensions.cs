@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<MediaSearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<MediaGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MediaTagResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRelatedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]

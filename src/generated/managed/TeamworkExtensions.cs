@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 }
 
                 return new ApiConnectionAction<CreateProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<ListTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 }
 
                 return new ApiConnectionAction<UpsertTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 }
 
                 return new ApiConnectionAction<UpsertTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListUsersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 }
 
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

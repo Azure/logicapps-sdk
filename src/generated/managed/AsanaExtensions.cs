@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 }
 
                 return new ApiConnectionAction<AddCommentResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 }
 
                 return new ApiConnectionAction<ProjectResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 }
 
                 return new ApiConnectionAction<TaskResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListUsersResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

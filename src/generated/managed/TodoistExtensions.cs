@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction<TaskV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction<LabelV4>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction<ProjectV4>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<TaskV2[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction<ProjectV4>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

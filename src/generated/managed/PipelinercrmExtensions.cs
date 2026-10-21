@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<AccountsDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<AccountsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<AccountsUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<AccountsCreateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<ContactsCreateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<ContactsDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<ContactsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<ContactsUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<LeadsCreateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<LeadsDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<LeadsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<LeadsUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<TasksCreateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<TasksDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<TasksGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<TasksUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<OpportunitiesCreateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<OpportunitiesDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<OpportunitiesGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<OpportunitiesUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

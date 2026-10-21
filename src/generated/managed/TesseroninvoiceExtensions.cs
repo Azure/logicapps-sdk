@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                 }
 
                 return new ApiConnectionAction<GetServiceAssignmentsDispatcherResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                 }
 
                 return new ApiConnectionAction<CreateActivityRecordingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                 }
 
                 return new ApiConnectionAction<CreateInvoicePositionNoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

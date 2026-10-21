@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 }
 
                 return new ApiConnectionAction<MobileB2BResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
                 return new ApiConnectionAction<FetchWalletBalanceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 }
 
                 return new ApiConnectionAction<WalletTransferResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<FetchWalletTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 }
 
                 return new ApiConnectionAction<TopUpStashResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 if (__workflow_providerChannel != null)
                     callPayload.Queries["providerChannel"] = ExpressionConverter.Convert(__workflow_providerChannel);
                 return new ApiConnectionAction<FetchProductTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 }
 
                 return new ApiConnectionAction<MobileCheckoutResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 }
 
                 return new ApiConnectionAction<MobileB2CResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

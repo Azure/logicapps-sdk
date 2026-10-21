@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
                 return new ApiConnectionAction<Expense[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 }
 
                 return new ApiConnectionAction<Expense>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 }
 
                 return new ApiConnectionAction<Client>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 callPayload.Queries["include[]"] = Convert.ToString("client");
                 callPayload.Queries["per_page"] = Convert.ToString(100);
                 return new ApiConnectionTrigger<Invoice[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
                 return new ApiConnectionTrigger<Expense[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 callPayload.Queries["include[]"] = Convert.ToString("client");
                 callPayload.Queries["per_page"] = Convert.ToString(100);
                 return new ApiConnectionTrigger<Payment[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

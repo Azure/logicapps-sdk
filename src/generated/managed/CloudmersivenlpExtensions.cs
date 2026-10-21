@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<ProfanityAnalysisResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<SubjectivityAnalysisResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<ExtractEntitiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<LanguageDetectionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<LanguageTranslationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<LanguageTranslationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<LanguageTranslationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<LanguageTranslationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<ParseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<PosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<PosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<PosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<PosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<PosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<PosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<RephraseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<SentenceSegmentationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<GetWordsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<CheckWordResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
                 }
 
                 return new ApiConnectionAction<CheckSentenceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

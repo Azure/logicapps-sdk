@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(false);
                 return new ApiConnectionAction<V2CommonModelsDownloadLocationResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2PredictiveContentModelsPredictiveContentResponse[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LibraryContentManagementModelsItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2UsersUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

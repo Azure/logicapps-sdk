@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<CreateSmartLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
                 return new ApiConnectionAction<StartFlowResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                 }
 
                 return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

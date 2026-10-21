@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mediaItemIds"] = ExpressionConverter.Convert(__workflow_mediaItemIds);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]

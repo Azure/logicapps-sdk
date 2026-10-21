@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<RunPluginForFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<RunPluginTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractDataFromInvoiceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractDataPurchaseOrdersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractDataBillofLadingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractDataCVResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<DetectDocumentTypeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractDataBusinessCardsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractQRCodeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractBarcodeFromFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<DetectResponseColdEmailResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
                 }
 
                 return new ApiConnectionAction<ExtractDataHAROResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

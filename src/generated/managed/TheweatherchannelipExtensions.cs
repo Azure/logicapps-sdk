@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
                 callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction<SuccessSchema>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(__workflow_acceptHeader);
                 return new ApiConnectionAction<SuccessSchema>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
                 callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction<SuccessSchema>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

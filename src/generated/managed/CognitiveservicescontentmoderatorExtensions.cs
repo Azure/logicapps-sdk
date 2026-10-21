@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<EvaluateImageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 }
 
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<OCRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_textContent);
                 return new ApiConnectionAction<ScreenTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<FindFacesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_textContent);
                 return new ApiConnectionAction<DetectLanguageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<MatchImageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                     callPayload.Queries["subTeam"] = ExpressionConverter.Convert(__workflow_subTeam);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

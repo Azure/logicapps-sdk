@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365adminmcp
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

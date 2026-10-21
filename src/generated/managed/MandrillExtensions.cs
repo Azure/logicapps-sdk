@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
                 }
 
                 return new ApiConnectionAction<ListScheduledInfo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
                 }
 
                 return new ApiConnectionAction<SendMessageResponse[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

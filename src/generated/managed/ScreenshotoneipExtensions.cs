@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
                 if (__workflow_errorOnSelectorNotFound != null)
                     callPayload.Queries["error_on_selector_not_found"] = ExpressionConverter.Convert(__workflow_errorOnSelectorNotFound);
                 return new ApiConnectionAction<TakeGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
                 if (__workflow_errorOnSelectorNotFound != null)
                     callPayload.Queries["error_on_selector_not_found"] = ExpressionConverter.Convert(__workflow_errorOnSelectorNotFound);
                 return new ApiConnectionAction<TakeAnimatedGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]

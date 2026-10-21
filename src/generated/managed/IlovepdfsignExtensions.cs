@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
                 }
 
                 return new ApiConnectionAction<SignResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

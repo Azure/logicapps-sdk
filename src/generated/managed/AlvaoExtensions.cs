@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
                     callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
                 callPayload.Queries["$expand"] = Convert.ToString("properties");
                 return new ApiConnectionAction<AMObjectsExpandedApiResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
                 if (__workflow_orderBy != null)
                     callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<CommonUsersApiResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
                 }
 
                 return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<RetrieveuserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                     callPayload.Queries["page_size"] = ExpressionConverter.Convert(__workflow_pageSize);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<ListOfAllUsersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-02-22");
                 return new ApiConnectionAction<RetrieveablockResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<DeleteablockResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                     callPayload.Queries["page_size"] = ExpressionConverter.Convert(__workflow_pageSize);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<RetrieveBlockChildrenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<DatabaseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 }
 
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<DatabaseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<RetrieveapagepropertyitemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<RetrieveapageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 }
 
                 return new ApiConnectionAction<CreateaPageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 callPayload.Queries["block_id"] = ExpressionConverter.Convert(__workflow_blockId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<CommentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 }
 
                 return new ApiConnectionAction<CommentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

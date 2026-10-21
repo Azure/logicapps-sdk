@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsUsableNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsCallableTPSResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsCallableCTPSResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsValidBankAccountResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsValidEmailResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsValidTelephoneResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<CleanAddressResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<GetFullAddressResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsDeceasedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<SearchPredictiveAddressResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<DrilldownPredictiveAddressResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<RetrievePredictiveAddressResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<CleanseEmailResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 return new ApiConnectionAction<IsValidPhoneResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

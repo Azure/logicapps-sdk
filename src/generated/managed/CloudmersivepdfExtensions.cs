@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPdfAnnotationsResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["annotationIndex"] = ExpressionConverter.Convert(__workflow_annotationIndex);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["password"] = ExpressionConverter.Convert(__workflow_password);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 if (__workflow_encryptionKeyLength != null)
                     callPayload.Headers["encryptionKeyLength"] = ExpressionConverter.Convert(__workflow_encryptionKeyLength);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 if (__workflow_allowDegradedPrinting != null)
                     callPayload.Headers["allowDegradedPrinting"] = ExpressionConverter.Convert(__workflow_allowDegradedPrinting);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PdfFormFields>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PdfMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 callPayload.Headers["pageStart"] = ExpressionConverter.Convert(__workflow_pageStart);
                 callPayload.Headers["pageEnd"] = ExpressionConverter.Convert(__workflow_pageEnd);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PdfTextByPageResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 callPayload.Headers["pageEndSource"] = ExpressionConverter.Convert(__workflow_pageEndSource);
                 callPayload.Headers["pageInsertBeforeDesitnation"] = ExpressionConverter.Convert(__workflow_pageInsertBeforeDesitnation);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["rotationAngle"] = ExpressionConverter.Convert(__workflow_rotationAngle);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 callPayload.Headers["pageStart"] = ExpressionConverter.Convert(__workflow_pageStart);
                 callPayload.Headers["pageEnd"] = ExpressionConverter.Convert(__workflow_pageEnd);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
                 if (__workflow_fontTransparency != null)
                     callPayload.Headers["fontTransparency"] = ExpressionConverter.Convert(__workflow_fontTransparency);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

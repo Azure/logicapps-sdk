@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<DetectCourierResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<CreateTrackingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetATrackingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<DeleteATrackingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<UpdateATrackingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrackAnExpiredTrackingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<MarkTrackingAsCompletedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetTrackingNotificationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<AddANotificationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<RemoveANotificationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetLastCheckpointResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

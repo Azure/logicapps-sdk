@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 if (__workflow_xTimeZone != null)
                     callPayload.Headers["X-TimeZone"] = ExpressionConverter.Convert(__workflow_xTimeZone);
                 return new ApiConnectionAction<GetOrganizationsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionAction<InitParametersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionAction<InitResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ThenObsUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ThenFormCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ThenFormUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ThenDocumentCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

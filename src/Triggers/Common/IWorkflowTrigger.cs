@@ -35,11 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IWorkflowTrigger : IWorkflowOperation
     {
         /// <summary>
+        /// Gets the settings configured for this trigger.
+        /// </summary>
+        WorkflowTriggerConfiguration Configuration { get; }
+
+        /// <summary>
         /// Generates the <see cref="FlowTemplateTrigger"/> definition for this trigger, which is
         /// serialized into the workflow's JSON definition.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> representing the trigger's type, inputs, and configuration.</returns>
-        FlowTemplateTrigger GetTriggerDefinition();
+        FlowTemplateTrigger GetTriggerDefinition(FlowKind? flowKind = null);
     }
 
     /// <summary>

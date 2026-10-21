@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<GetEGVsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

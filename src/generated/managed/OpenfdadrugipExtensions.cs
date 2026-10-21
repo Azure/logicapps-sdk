@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugAdverseEventResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugLabelingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugNDCResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugEnforcementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugsFDAResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

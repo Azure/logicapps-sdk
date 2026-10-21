@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFaceListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction<DetectResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPersonGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction<VerifyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPersonFaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 }
 
                 return new ApiConnectionAction<CreatePersonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPersonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

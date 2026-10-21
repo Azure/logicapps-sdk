@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="actionsRoot">The root node of the nested action graph.</param>
         internal ScopeAction(IWorkflowAction actionsRoot)
+            : base(WorkflowActionSettingsProfiles.Tracked)
         {
             this.actionsRoot = actionsRoot ?? throw new ArgumentNullException(nameof(actionsRoot));
         }
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName, flowKind);
 

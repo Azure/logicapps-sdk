@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 }
 
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 }
 
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]

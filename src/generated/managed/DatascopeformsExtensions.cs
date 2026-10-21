@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 }

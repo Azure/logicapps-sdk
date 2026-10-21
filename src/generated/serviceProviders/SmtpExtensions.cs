@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
 {
     using System;
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 

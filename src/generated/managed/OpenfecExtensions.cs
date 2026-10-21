@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
                 if (__workflow_electionFull != null)
                     callPayload.Queries["election_full"] = ExpressionConverter.Convert(__workflow_electionFull);
                 return new ApiConnectionAction<CommitteeCandidateHistoryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
                 callPayload.Queries["max_transaction_data_complete_date"] = ExpressionConverter.Convert(__workflow_maxTransactionDataCompleteDate);
                 callPayload.Queries["beginning_image_number"] = ExpressionConverter.Convert(__workflow_beginningImageNumber);
                 return new ApiConnectionAction<OperationsLogResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

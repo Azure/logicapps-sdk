@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<NewsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<NewsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]

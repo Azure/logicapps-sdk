@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertools
                 }
 
                 return new ApiConnectionAction<QueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

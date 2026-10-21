@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
                     callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
                     callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

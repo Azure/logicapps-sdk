@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionAction<CreateDocumentUploadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionAction<UpdateDocumentUploadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionAction<UploadCreatedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

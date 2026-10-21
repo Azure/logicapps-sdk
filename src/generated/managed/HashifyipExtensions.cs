@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<MD4GETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MD4POSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<MD4POSTFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<MD5GETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MD5POSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<MD5POSTFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(__workflow_xHashifyKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Highway256POSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(__workflow_xHashifyKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Highway256RandomPOSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(__workflow_xHashifyKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Highway64RandomPOSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Queries["key"] = ExpressionConverter.Convert(__workflow_key);
                 return new ApiConnectionAction<Highway128GETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(__workflow_xHashifyKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Highway128RandomPOSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Queries["key"] = ExpressionConverter.Convert(__workflow_key);
                 return new ApiConnectionAction<Highway128RandomGETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Queries["key"] = ExpressionConverter.Convert(__workflow_key);
                 return new ApiConnectionAction<Highway64RandomGETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Headers["X-Hashify-Key"] = ExpressionConverter.Convert(__workflow_xHashifyKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Highway64POSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Queries["key"] = ExpressionConverter.Convert(__workflow_key);
                 return new ApiConnectionAction<Highway256RandomGETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<SHA1GETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Hashify-Process"] = ExpressionConverter.Convert(__workflow_xHashifyProcess);
                 return new ApiConnectionAction<M200>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 return new ApiConnectionAction<SHA256GETResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SHA256BodyPOSTResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<M200>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 {
     using System;
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetRowsV2Output>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
@@ -174,17 +175,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<GetTablesOutputItem[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getTables", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getTables", connectionName: connectionId)
+                };
+                return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
@@ -217,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExecuteStoredProcedureOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties);
         }
     }
 
@@ -236,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsDeleted(Expression<Func<string>> tableName)
@@ -252,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsInserted(Expression<Func<string>> tableName)
@@ -268,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<JToken[]> WhenARowIsModified(Expression<Func<string>> tableName)
@@ -284,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
     }
 

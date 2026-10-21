@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 }
 
                 return new ApiConnectionAction<SMS[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 }
 
                 return new ApiConnectionAction<SMS>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
                 return new ApiConnectionAction<SearchContactResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 }
 
                 return new ApiConnectionAction<AddContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 }
 
                 return new ApiConnectionAction<UpdateContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
                 return new ApiConnectionAction<GetContactByExternalReferenceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

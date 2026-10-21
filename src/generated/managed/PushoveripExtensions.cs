@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 }
 
                 return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]

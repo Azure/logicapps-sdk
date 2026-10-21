@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
                 callPayload.Headers["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
                 callPayload.Headers["client_secret"] = ExpressionConverter.Convert(__workflow_clientSecret);
                 return new ApiConnectionAction<GetNotamResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

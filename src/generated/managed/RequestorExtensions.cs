@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

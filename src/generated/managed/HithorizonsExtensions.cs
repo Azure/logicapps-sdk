@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["HitHorizonsId"] = ExpressionConverter.Convert(__workflow_hitHorizonsId);
                 return new ApiConnectionAction<CompanyDetailResultApiResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
                 if (__workflow_maxResults != null)
                     callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
                 if (__workflow_maxResults != null)
                     callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

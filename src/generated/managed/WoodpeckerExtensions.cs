@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<ProspectsGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 if (__workflow_campaignsId != null)
                     callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(__workflow_campaignsId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 }
 
                 return new ApiConnectionAction<ProspectsPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 }
 
                 return new ApiConnectionAction<ProspectsCampaignPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 if (__workflow_id != null)
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<CampaignsGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

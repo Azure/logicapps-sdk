@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
                 if (__workflow_mailTemplate != null)
                     callPayload.Queries["MailTemplate"] = ExpressionConverter.Convert(__workflow_mailTemplate);
                 return new ApiConnectionAction<ValuesDocumentMergeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

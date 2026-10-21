@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 if (__workflow_redirectionCode != null)
                     callPayload.Queries["redirectionCode"] = ExpressionConverter.Convert(__workflow_redirectionCode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
                 callPayload.Queries["licenseKey"] = ExpressionConverter.Convert(__workflow_licenseKey);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 if (__workflow_generatedBy != null)
                     callPayload.Queries["generatedBy"] = ExpressionConverter.Convert(__workflow_generatedBy);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 if (__workflow_redirectionCode != null)
                     callPayload.Queries["redirectionCode"] = ExpressionConverter.Convert(__workflow_redirectionCode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

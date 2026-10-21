@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 return new ApiConnectionAction<ListedScorecards>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<CreatedScorecard>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["$expand"] = Convert.ToString("aggregations");
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 return new ApiConnectionAction<FetchedGoals>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<CreateGoalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Queries["$expand"] = Convert.ToString("aggregations");
                 return new ApiConnectionAction<FetchedGoal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<QueryExecutionResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_payload);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_note);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Queries["$expand"] = Convert.ToString("notes");
                 return new ApiConnectionAction<GetGoalCheckinsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Queries["$expand"] = Convert.ToString("notes");
                 return new ApiConnectionAction<GetGoalCheckinResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

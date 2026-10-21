@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                 }
 
                 return new ApiConnectionAction<CloseCaseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

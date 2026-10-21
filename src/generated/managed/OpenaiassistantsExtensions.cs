@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<AssistantsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<AssistantPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<AssistantGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<AssistantDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<FilesGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<FilePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<FileGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<FileDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<ThreadPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<ThreadGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<ThreadModifyPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<MessagesGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<MessagePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<MessageModifyPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<MessageFileGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<MessageFilesGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<RunsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<RunPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<RunGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<RunModifyPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<RunToolOutputsPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<RunCancelPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 }
 
                 return new ApiConnectionAction<ThreadRunPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<RunStepGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
                     callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 callPayload.Headers["OpenAI-Beta"] = ExpressionConverter.Convert(__workflow_openAIBeta);
                 return new ApiConnectionAction<RunStepsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 }
 
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
                 return new ApiConnectionAction<JobStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 }
 
                 return new ApiConnectionAction<UploadSecuritiesListDefaultResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Job name"] = ExpressionConverter.Convert(__workflow_jobName);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
                 }
 
                 return new ApiConnectionAction<RetrieveBulkResultsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

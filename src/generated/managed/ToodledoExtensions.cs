@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
                 if (__workflow_comp != null)
                     callPayload.Queries["comp"] = ExpressionConverter.Convert(__workflow_comp);
                 return new ApiConnectionAction<TaskObject[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
                 }
 
                 return new ApiConnectionAction<TaskObject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<TaskObject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
                 }
 
                 return new ApiConnectionAction<TaskObject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]

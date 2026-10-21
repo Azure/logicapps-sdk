@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction<DistributionCentersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction<CarriersInDistributionCenterResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
                 callPayload.Headers["Content-type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RRSetResults[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RRSetResults[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RRSetResults[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RDataResults[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RDataResults[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<FlexResults[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]

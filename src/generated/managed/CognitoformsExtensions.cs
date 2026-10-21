@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 }

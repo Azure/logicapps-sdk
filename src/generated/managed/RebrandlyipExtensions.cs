@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 if (__workflow_workspace != null)
                     callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionAction<ListLinksResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 }
 
                 return new ApiConnectionAction<CreateLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<ListWorkspacesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 if (__workflow_workspace != null)
                     callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionAction<GetLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 if (__workflow_workspace != null)
                     callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionAction<DeleteLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 }
 
                 return new ApiConnectionAction<UpdateLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

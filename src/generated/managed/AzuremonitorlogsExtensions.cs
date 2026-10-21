@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
                 callPayload.Queries["timerange"] = ExpressionConverter.Convert(__workflow_timerange);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<Table>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
                 callPayload.Queries["visType"] = ExpressionConverter.Convert(__workflow_visType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<VisualizeResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

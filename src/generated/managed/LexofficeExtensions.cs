@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ResponseArticlesGet>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseArticlesPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveAnArticleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseArticlesIdGet>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ResponseContactsGet>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseContactsIdPut>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseCreditNotesPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveCreditNoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RenderCreditNoteDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseDeliveryNotesPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RenderDeliveryNoteDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveDeliveryNoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveDownPaymentInvoiceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseDunningsPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveDunningResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RenderDunningDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<EventSubscriptionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseFilesPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 if (__workflow_accept != null)
                     callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction<object>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseInvoicesPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveInvoiceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RenderInvoiceDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseOrderConfirmationsPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveOrderConfirmationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RenderOrderConfirmationDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrievePaymentInformationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseQuotationsPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveQuotationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RenderQuotationDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ResponseRecurringTemplatesGet>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveRecurringTemplateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ResponseVoucherlistGet>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseVouchersPost>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveVoucherResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -1127,7 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionAction<ResponseVouchersIdPut>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -1141,7 +1141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1169,7 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                 }
 
                 return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

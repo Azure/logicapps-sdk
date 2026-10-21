@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
                 callPayload.Queries["Product"] = ExpressionConverter.Convert(__workflow_product);
                 callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(__workflow_productUserId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
                 callPayload.Queries["Product"] = ExpressionConverter.Convert(__workflow_product);
                 callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(__workflow_productUserId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

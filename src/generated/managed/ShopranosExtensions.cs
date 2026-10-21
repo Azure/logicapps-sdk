@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<AttributeSetDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<AttributeDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<BrandDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<CategoryDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<IcoTagDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<StockAvailabilityDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<UnitDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<AssortmentValueDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<CustomerDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<OrderDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ProductUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ProductDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CategoryCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CategoryUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CategoryDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger BrandCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger BrandUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger BrandDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger UnitCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger UnitUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger UnitDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttributeCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttributeUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttributeDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttributeSetCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttributeSetUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger AttributeSetDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CheckoutCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CheckoutCompletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CustomerCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1016,7 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CustomerUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1039,7 +1039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CustomerDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger OrderCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1085,7 +1085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger OrderUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1108,7 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger OrderDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger InventoryLevelCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger InventoryLevelUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger InventoryLevelDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger PaymentInitiatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1223,7 +1223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger PaymentCompletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -1246,7 +1246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

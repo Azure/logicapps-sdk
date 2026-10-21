@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             AgentModelSettings agentModelSettings,
             string connectionName,
             object messages)
+            : base(WorkflowActionSettingsProfiles.RetryTracked)
         {
             this.AgentModelType = agentModelType;
             this.DeploymentId = deploymentId;
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

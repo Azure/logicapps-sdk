@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_internetMessageId != null)
                     callPayload.Queries["internetMessageId"] = ExpressionConverter.Convert(__workflow_internetMessageId);
                 return new ApiConnectionAction<ClientReceiveMessage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionAction<ClientReceiveMessageStringEnums>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction<SubscriptionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction<SubscriptionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionAction<EntityListResponseContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction<ContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1216,7 +1216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction<ContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1291,7 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1330,7 +1330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionAction<CalendarEventListClientReceive>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1458,7 +1458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1585,7 +1585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1640,7 +1640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_top != null)
                     callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<BatchResponseClientReceiveMessage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1673,7 +1673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_search != null)
                     callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 return new ApiConnectionAction<EntityListResponseCalendarEventClientReceiveStringEnums>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1749,7 +1749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -1829,7 +1829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1885,7 +1885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionTrigger<CalendarEventListWithActionType>(input);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
@@ -1906,7 +1906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
@@ -1927,7 +1927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
@@ -2005,7 +2005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
@@ -2083,7 +2083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
@@ -2159,7 +2159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 }
 
                 return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, FlowRecurrence recurrence = null)
@@ -2176,7 +2176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 if (__workflow_lookAheadTimeInMinutes != null)
                     callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(__workflow_lookAheadTimeInMinutes);
                 return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

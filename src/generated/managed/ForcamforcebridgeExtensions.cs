@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcamforcebridge
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TicketClassList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

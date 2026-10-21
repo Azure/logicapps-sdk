@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 }
 
                 return new ApiConnectionAction<BookmarksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 }
 
                 return new ApiConnectionAction<BookmarksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 if (__workflow_readFilter != null)
                     callPayload.Queries["readFilter"] = ExpressionConverter.Convert(__workflow_readFilter);
                 return new ApiConnectionAction<BookmarksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<HighlighstResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
                 return new ApiConnectionAction<HighlightResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
                 return new ApiConnectionAction<FolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<int[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkArchived(FlowRecurrence recurrence = null)
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId, FlowRecurrence recurrence = null)
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<HighlighstResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

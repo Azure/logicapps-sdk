@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             HttpMethod method = null,
             JToken requestBodyJsonSchema = null,
             string relativePath = null)
+            : base(WorkflowTriggerSettingsProfiles.Request)
         {
             this.Name = "when_an_HTTP_request_is_received";
 
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>
         /// A <see cref="FlowTemplateTrigger"/> configured for HTTP request operations.
         /// </returns>
-        public override FlowTemplateTrigger GetTriggerDefinition()
+        protected override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             // Implementation for getting the trigger definition
             return new FlowTemplateTrigger

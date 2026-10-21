@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ResponseListTemplate>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessCreateNewTemplate>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseUpdateTemplate>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
                 return new ApiConnectionAction<ResponseSuccessDeleteTemplate>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessCreateNewEditorSession>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ResponseListTransactions>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

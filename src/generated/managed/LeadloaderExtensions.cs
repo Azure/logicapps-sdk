@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadloader
                 }
 
                 return new ApiConnectionAction<UploadLeadsV3Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

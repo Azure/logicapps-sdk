@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMachineResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLocationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLocationAreaResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRegionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEncounterResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEncounterConditionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEncounterConditionValueResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBerryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

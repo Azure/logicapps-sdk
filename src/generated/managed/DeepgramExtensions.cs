@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 }
 
                 return new ApiConnectionAction<TranscribePostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 }
 
                 return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<RequestsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RequestGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 if (__workflow_smartFormat != null)
                     callPayload.Queries["smart_format"] = ExpressionConverter.Convert(__workflow_smartFormat);
                 return new ApiConnectionAction<UsageGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<FieldsGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

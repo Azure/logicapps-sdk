@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<BreedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BreedIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<BreedSpeciesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<BreedSpeciesIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<OrganizationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OrganizationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<AnimalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<AnimalStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AnimalIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<OrganizationAnimalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<OrganizationAnimalStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_includeManagedSecrets != null)
                     callPayload.Queries["Include Managed Secrets"] = ExpressionConverter.Convert(__workflow_includeManagedSecrets);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerSecretsUpdateSecretResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 callPayload.Queries["config"] = ExpressionConverter.Convert(__workflow_config);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<DopplerSecretsRetrieveSecretResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 callPayload.Queries["config"] = ExpressionConverter.Convert(__workflow_config);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<DopplerConfigListConfigResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigCreateConfigResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_config != null)
                     callPayload.Queries["config"] = ExpressionConverter.Convert(__workflow_config);
                 return new ApiConnectionAction<DopplerConfigRetrieveConfigResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigUpdateConfigNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigCloneConfigResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigLockConfigResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigUnlockConfigResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<DopplerProjectsListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectsCreateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<DopplerProjectsRetrieveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectsUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DopplerProjectRolesRetrieveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<DopplerProjectMembersListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectMembersAddResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<DopplerProjectMembersRetrieveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectMembersUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

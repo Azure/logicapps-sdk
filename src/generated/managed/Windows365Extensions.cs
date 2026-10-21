@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<ListCloudPCsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetACloudPCObjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 }
 
                 return new ApiConnectionAction<CreateAProvisioningPolicyV1Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 if (__workflow_expand != null)
                     callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<GetAProvisioningPolicyV1Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 if (__workflow_expand != null)
                     callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<GetProvisioningPoliciesV1Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

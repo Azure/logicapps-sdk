@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
                 }
 
                 return new ApiConnectionAction<UpdateRegistrationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

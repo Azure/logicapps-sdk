@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                     callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 return new ApiConnectionAction<ImageExtractTextV1Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                     callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

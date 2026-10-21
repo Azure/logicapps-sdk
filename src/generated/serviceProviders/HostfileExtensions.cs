@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
 {
     using System;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GenerateFileContentsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ParseFileContentsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 

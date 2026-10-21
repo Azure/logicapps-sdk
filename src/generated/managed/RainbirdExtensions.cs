@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
                 return new ApiConnectionAction<StartResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
                 return new ApiConnectionAction<EvidenceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intelixiocanalysismc
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

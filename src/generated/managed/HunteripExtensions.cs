@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
                 if (__workflow_department != null)
                     callPayload.Queries["department"] = ExpressionConverter.Convert(__workflow_department);
                 return new ApiConnectionAction<DomainResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
                 if (__workflow_maxDuration != null)
                     callPayload.Queries["max_duration"] = ExpressionConverter.Convert(__workflow_maxDuration);
                 return new ApiConnectionAction<EmailResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
                 if (__workflow_maxDuration != null)
                     callPayload.Queries["max_duration"] = ExpressionConverter.Convert(__workflow_maxDuration);
                 return new ApiConnectionAction<AuthorResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<EmailVerifyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<EmailCountResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

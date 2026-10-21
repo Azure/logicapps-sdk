@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 callPayload.Headers["x-origin"] = ExpressionConverter.Convert(__workflow_xOrigin);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

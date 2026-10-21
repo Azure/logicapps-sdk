@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                     callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(__workflow_cabGuid);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewVersionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 if (__workflow_base64 != null)
                     callPayload.Queries["base64"] = ExpressionConverter.Convert(__workflow_base64);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                     callPayload.Queries["permanent"] = ExpressionConverter.Convert(__workflow_permanent);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CreateFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                     callPayload.Queries["deleteContents"] = ExpressionConverter.Convert(__workflow_deleteContents);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                     callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(__workflow_cabGuid);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetCurrentUserInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CreateSecuredLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CreateWorkspaceParentChildResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CreateWorkspaceSingleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 }
 
                 return new ApiConnectionAction<CreateChildEntryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<DeleteChildEntryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 }
 
                 return new ApiConnectionAction<CreateEntryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<DeleteLookupEntryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<SearchLookupEntriesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetRepositoryUsersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<string[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction<CreateRepositoryGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1010,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction<CreateCollabSpaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1070,7 +1070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetCabinetDefaultAccessResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1092,7 +1092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1107,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetCabinetGroupsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction<CreateCabinetExternalGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1148,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetGroupInformationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1208,7 +1208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetGroupMembershipResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

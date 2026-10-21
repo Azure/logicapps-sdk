@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Library>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Solution>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Solution>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Document>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DocumentType>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<DocumentType[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Library>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<DocumentType>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Library>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DataType[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<PropertyValue[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_propertyValueArray);
                 return new ApiConnectionAction<PropertyValue[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DocumentProperty[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

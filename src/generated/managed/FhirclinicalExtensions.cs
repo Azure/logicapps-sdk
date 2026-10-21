@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETAdverseEventResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTAdverseEventResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETAdverseEventIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEAdverseEventIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTAdverseEventIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETAllergyIntoleranceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTAllergyIntoleranceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETAllergyIntoleranceIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEAllergyIntoleranceIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1111,7 +1111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTAllergyIntoleranceIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETCarePlanResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1310,7 +1310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTCarePlanResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1329,7 +1329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETCarePlanIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1486,7 +1486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETECarePlanIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1643,7 +1643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTCarePlanIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1664,7 +1664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETConditionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1815,7 +1815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTConditionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -1834,7 +1834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETConditionIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2008,7 +2008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEConditionIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2182,7 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTConditionIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2203,7 +2203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETDiagnosticReportResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2344,7 +2344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTDiagnosticReportResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2363,7 +2363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETDiagnosticReportIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2527,7 +2527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEDiagnosticReportIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2691,7 +2691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTDiagnosticReportIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2712,7 +2712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETMedicationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2848,7 +2848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTMedicationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -2867,7 +2867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETMedicationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -3026,7 +3026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEMedicationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -3170,7 +3170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTMedicationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -3191,7 +3191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETMedicationRequestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -3522,7 +3522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTMedicationRequestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -3541,7 +3541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETMedicationRequestIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -3873,7 +3873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEMedicationRequestIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4205,7 +4205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTMedicationRequestIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4226,7 +4226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETMedicationStatementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4375,7 +4375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTMedicationStatementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4394,7 +4394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETMedicationStatementIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4544,7 +4544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4694,7 +4694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTMedicationStatementIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4718,7 +4718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_encounter != null)
                     callPayload.Queries["encounter"] = ExpressionConverter.Convert(__workflow_encounter);
                 return new ApiConnectionAction<GETObservationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4933,7 +4933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTObservationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -4952,7 +4952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETObservationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5153,7 +5153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEObservationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5354,7 +5354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTObservationIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5375,7 +5375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETProcedureResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5546,7 +5546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTProcedureResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5565,7 +5565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETProcedureIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5759,7 +5759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETEProcedureIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5953,7 +5953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTProcedureIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -5974,7 +5974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETRiskAssessmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -6087,7 +6087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<POSTRiskAssessmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -6106,7 +6106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETRiskAssessmentIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -6220,7 +6220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<DELETERiskAssessmentIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -6334,7 +6334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 }
 
                 return new ApiConnectionAction<PUTRiskAssessmentIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -6355,7 +6355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETCareTeamResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
@@ -6368,7 +6368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETCareTeamIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["NO2"] = ExpressionConverter.Convert(__workflow_nO2);
                 callPayload.Queries["PM"] = ExpressionConverter.Convert(__workflow_pM);
                 return new ApiConnectionAction<AirQualityHealthIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["weight"] = ExpressionConverter.Convert(__workflow_weight);
                 callPayload.Queries["unit"] = ExpressionConverter.Convert(__workflow_unit);
                 return new ApiConnectionAction<TreeEquivalentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["consumption"] = ExpressionConverter.Convert(__workflow_consumption);
                 callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
                 return new ApiConnectionAction<TraditionalHydroToCarbonFootprintResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["energy"] = ExpressionConverter.Convert(__workflow_energy);
                 callPayload.Queries["consumption"] = ExpressionConverter.Convert(__workflow_consumption);
                 return new ApiConnectionAction<CleanHydroToCarbonFootprintResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Queries["litres"] = ExpressionConverter.Convert(__workflow_litres);
                 return new ApiConnectionAction<FuelToCO2eResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 callPayload.Queries["vehicle"] = ExpressionConverter.Convert(__workflow_vehicle);
                 return new ApiConnectionAction<CarbonFootprintFromCarTravelResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<CarbonFootprintFromFlightResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 return new ApiConnectionAction<CarbonFootprintFromMotorBikeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<CarbonFootprintFromPublicTransitResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

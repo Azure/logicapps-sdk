@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<InstitutionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<LocationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<HistoryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<FinancialsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<SummaryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<FailuresResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<SodResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<DemographicsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

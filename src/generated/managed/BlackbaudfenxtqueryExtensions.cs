@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 if (__workflow_contentDisposition != null)
                     callPayload.Queries["content_disposition"] = ExpressionConverter.Convert(__workflow_contentDisposition);
                 return new ApiConnectionAction<QueryApiQueryExecutionJob>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<QueryApiQuerySummaryCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 }
 
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 }
 
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 }
 
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

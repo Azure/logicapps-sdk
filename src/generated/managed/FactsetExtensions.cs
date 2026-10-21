@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
                 if (__workflow_categories != null)
                     callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
                 return new ApiConnectionAction<GetHeadlinesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
                 if (__workflow_categories != null)
                     callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
                 return new ApiConnectionAction<GetDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
                 if (__workflow_categories != null)
                     callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
                 return new ApiConnectionAction<GetAdaptiveCardResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
                 }
 
                 return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
                 }
 
                 return new ApiConnectionAction<CreateBookFromTemplateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
                 if (__workflow_province != null)
                     callPayload.Queries["province"] = ExpressionConverter.Convert(__workflow_province);
                 return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

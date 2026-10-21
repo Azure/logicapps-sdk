@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicPredictiveContentPredictiveContentResponse[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
                 if (__workflow_contextType != null)
                     callPayload.Queries["contextType"] = ExpressionConverter.Convert(__workflow_contextType);
                 return new ApiConnectionAction<SeismicPredictiveContentEmbeddedAppTab[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
                 }
 
                 return new ApiConnectionAction<SeismicSearchSearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
                 callPayload.Headers["role-id"] = ExpressionConverter.Convert(__workflow_roleId);
                 callPayload.Headers["role-secret"] = ExpressionConverter.Convert(__workflow_roleSecret);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

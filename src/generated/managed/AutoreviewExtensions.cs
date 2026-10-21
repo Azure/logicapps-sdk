@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction<POSTJsonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction<POSTDiagramResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["CUSTOMERNUMBER"] = ExpressionConverter.Convert(__workflow_cUSTOMERNUMBER);
                 return new ApiConnectionAction<GetPolicyResponse200>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
                 }
 
                 return new ApiConnectionAction<PostCustomerdetailsupdResponse200>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
                 }
 
                 return new ApiConnectionAction<PutCustomerdetailResponse200>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCustomerDetailResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPLaunchSAPGUIResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPAttachToSAPGUIResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPGUIStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPSessionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPAttachToSessionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetAttachedSessionPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPWaitForAttachedSessionNotBusyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPWaitForElementIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPWaitForWindowResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetElementTextValueResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1092,7 +1092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1137,7 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1179,7 +1179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1221,7 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1347,7 +1347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1440,7 +1440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1591,7 +1591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1742,7 +1742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -1893,7 +1893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2061,7 +2061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2297,7 +2297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2529,7 +2529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2557,7 +2557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2585,7 +2585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2610,7 +2610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetListSelectionElementItemsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2693,7 +2693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetAllChildSAPElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2773,7 +2773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2798,7 +2798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPElementParentIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2840,7 +2840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetElementPropertiesAsListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2868,7 +2868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPElementAtScreenCoordinateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2938,7 +2938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPOpenConnectionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -2963,7 +2963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPTablePropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3039,7 +3039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3098,7 +3098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3198,7 +3198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3274,7 +3274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3333,7 +3333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3406,7 +3406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3557,7 +3557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetTableVisibleTextContentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3616,7 +3616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3675,7 +3675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3724,7 +3724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetTreeNodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -3852,7 +3852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4014,7 +4014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4111,7 +4111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4136,7 +4136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4164,7 +4164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4292,7 +4292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4426,7 +4426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetTreeTextContentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4516,7 +4516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4661,7 +4661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4806,7 +4806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4968,7 +4968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -4993,7 +4993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetTreeColumnHeadersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5121,7 +5121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetTreeItemPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5146,7 +5146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetShellToolbarElementsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5236,7 +5236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5326,7 +5326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5416,7 +5416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5441,7 +5441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPGridViewPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5517,7 +5517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPGridViewCellContentsAtIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5593,7 +5593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5703,7 +5703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -5905,7 +5905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6107,7 +6107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6326,7 +6326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6351,7 +6351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetSAPGridViewColumnHeadersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6427,7 +6427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6503,7 +6503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6579,7 +6579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6672,7 +6672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6755,7 +6755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPModifySAPGridViewCellAtIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6783,7 +6783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6856,7 +6856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6884,7 +6884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPSetSAPGridViewFirstVisibleRowResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6929,7 +6929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -6957,7 +6957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7030,7 +7030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7106,7 +7106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7230,7 +7230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7255,7 +7255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7280,7 +7280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7353,7 +7353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPSetSAPGridViewFirstVisibleColumnResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7429,7 +7429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7611,7 +7611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction<SAPGetGridViewTextContentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7642,7 +7642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7673,7 +7673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7704,7 +7704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
@@ -7732,7 +7732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

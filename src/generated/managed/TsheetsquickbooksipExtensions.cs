@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
                 if (__workflow_active != null)
                     callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
                 return new ApiConnectionAction<GetJobcodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
                 if (__workflow_byJobcodeAssignment != null)
                     callPayload.Queries["by_jobcode_assignment"] = ExpressionConverter.Convert(__workflow_byJobcodeAssignment);
                 return new ApiConnectionAction<GetProjectsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetUsersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetTimesheetsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetNotificationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

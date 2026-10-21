@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

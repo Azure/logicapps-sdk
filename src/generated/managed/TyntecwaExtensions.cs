@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TestPhoneNumberResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppLocationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppQuickReplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppProductListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppProductResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -787,7 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendsWhatsAppImageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppVideoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -995,7 +995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppAudioResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppStickerResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1204,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateLocationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateImageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1570,7 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateVideoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateDynamicButtonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1748,7 +1748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionAction<SendWhatsAppTemplateQuickReplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
@@ -1761,7 +1761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1785,7 +1785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
                 callPayload.Queries["version"] = Convert.ToString("2");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<Table>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
                 callPayload.Queries["chartType"] = ExpressionConverter.Convert(__workflow_chartType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<VisualizeResults>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

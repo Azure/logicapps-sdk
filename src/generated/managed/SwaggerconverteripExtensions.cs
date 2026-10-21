@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
                 callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 {
     using System;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetArrayEmbeddingsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSingleEmbeddingOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetChatCompletionsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -217,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetCompletionOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
@@ -276,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -359,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public string User { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetChatCompletionsInputMessagesTypeItemRoleType
     {
         User,
@@ -413,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public string User { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetMultipleChatCompletionsInputMessagesTypeItemRoleType
     {
         User,

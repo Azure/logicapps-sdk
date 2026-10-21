@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
                     callPayload.Queries["pageId"] = ExpressionConverter.Convert(__workflow_pageId);
                 callPayload.Headers["clientId"] = ExpressionConverter.Convert(__workflow_clientId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
                 callPayload.Headers["clientId"] = ExpressionConverter.Convert(__workflow_clientId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

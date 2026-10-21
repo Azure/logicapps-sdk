@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_dateEnd != null)
                     callPayload.Queries["dateEnd"] = ExpressionConverter.Convert(__workflow_dateEnd);
                 return new ApiConnectionAction<PageAlertRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_paramJson);
                 return new ApiConnectionAction<AlertRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<CountRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<MeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<MessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageSiteRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<SiteRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SiteRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<SiteRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageThingTagRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<TagRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1015,7 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<TagRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1028,7 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<PageSingleThingRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1078,7 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<SingleThingRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_thingIds);
                 return new ApiConnectionAction<SingleThingRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1275,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -1291,7 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_force != null)
                     callPayload.Queries["force"] = ExpressionConverter.Convert(__workflow_force);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2255,7 +2255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<ThingRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2268,7 +2268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2281,7 +2281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageCustomFieldRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2343,7 +2343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<CustomFieldRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2405,7 +2405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<CustomFieldRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2419,7 +2419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2433,7 +2433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2448,7 +2448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2461,7 +2461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2474,7 +2474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MeasureTinyRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2487,7 +2487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageTinyRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2525,7 +2525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2559,7 +2559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -2572,7 +2572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3112,7 +3112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<MessageRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3125,7 +3125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3138,7 +3138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageOperationRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3306,7 +3306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3792,7 +3792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3805,7 +3805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProductRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -3818,7 +3818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4243,7 +4243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4256,7 +4256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageFlowRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4269,7 +4269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageThingTagRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4308,7 +4308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4347,7 +4347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsCountRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4380,7 +4380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4414,7 +4414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_orFilter != null)
                     callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4453,7 +4453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4496,7 +4496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsGraphRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4535,7 +4535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4576,7 +4576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsCountRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
@@ -4619,7 +4619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsGraphRo[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

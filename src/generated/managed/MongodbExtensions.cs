@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<FindDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<DeleteDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<InsertMultipleDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<FindMultipleDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<UpdateMultipleDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<DeleteManyDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 }
 
                 return new ApiConnectionAction<RunAggregationPipelineResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

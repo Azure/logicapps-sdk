@@ -35,5 +35,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public object Inputs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the runtime configuration.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public FlowTemplateOperationRuntimeConfiguration RuntimeConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets comma-separated operation options.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public OperationOptions? OperationOptions { get; set; }
     }
 }

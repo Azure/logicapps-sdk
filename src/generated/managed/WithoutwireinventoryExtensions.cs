@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetWorkOrdersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateWorkOrderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteOrderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderCompleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetInventoryResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryRequestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryAdjustmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteInboundRequestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInboundRequestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetInboundRequestResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InboundCompleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLocationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReceiptCompleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetSalesOrdersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateSalesOrderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetBarcodeInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<SingleScanInventoryLookupResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetTransferOrdersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateTransferOrderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetPurchaseOrderResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePurchaseOrderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetManufacturingOrderResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateManufacturingOrderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetInventoryAggregateResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<FillMaskPostResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<SummarizationPostResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<AnswerPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<double[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<TextClassificationPostResponseItemItem[][]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<TextGenerationPostResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<TokenClassificationPostResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<TranslationPostResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<ZeroShotPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 }
 
                 return new ApiConnectionAction<ConversationalPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

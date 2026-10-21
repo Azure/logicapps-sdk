@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
                 if (__workflow_continuationToken != null)
                     callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(__workflow_continuationToken);
                 return new ApiConnectionAction<S3ObjectCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
                 if (__workflow_bucketRegion != null)
                     callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(__workflow_bucketRegion);
                 return new ApiConnectionAction<S3ObjectDeepMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
                 if (__workflow_bucketRegion != null)
                     callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(__workflow_bucketRegion);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
                 if (__workflow_bucketRegion != null)
                     callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(__workflow_bucketRegion);
                 return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

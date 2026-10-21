@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             int interval,
             DateTime? startTime,
             TimeZoneInfo timeZone)
+            : base(WorkflowTriggerSettingsProfiles.Scheduled)
         {
             this.Name = "recurrence";
             this.Frequency = frequency;
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the trigger definition for the recurrence trigger.
         /// </summary>
-        public override FlowTemplateTrigger GetTriggerDefinition()
+        protected override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {

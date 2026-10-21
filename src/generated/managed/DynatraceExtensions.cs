@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                     callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetProblemsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetProblemByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetProblemCommentByProblemIdAndCommentIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 if (__workflow_from != null)
                     callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<GetEventsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 if (__workflow_from != null)
                     callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEntityByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 if (__workflow_from != null)
                     callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<GetSecurityProblemsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetSecurityProblemsByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

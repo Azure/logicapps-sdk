@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
 {
     using System;
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateTableOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListTablesOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -172,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -199,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetEntityOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
@@ -240,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<QueryEntitiesOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -265,14 +266,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public string TableName { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum UpsertEntityInputUpdateModeType
     {
         Merge,
         Replace
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum UpdateEntityInputUpdateModeType
     {
         Merge,

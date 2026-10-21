@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<AlertResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<CreateProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
                 callPayload.Queries["ContactEmail"] = ExpressionConverter.Convert(__workflow_contactEmail);
                 return new ApiConnectionAction<GetContactFolderDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 callPayload.Queries["MatchBy"] = ExpressionConverter.Convert(__workflow_matchBy);
                 callPayload.Queries["MatchValue"] = ExpressionConverter.Convert(__workflow_matchValue);
                 return new ApiConnectionAction<GetCompanyDetailExternalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
                 callPayload.Queries["ResourceAppID"] = ExpressionConverter.Convert(__workflow_resourceAppID);
                 return new ApiConnectionAction<GetTaskByResourceExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -982,7 +982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<CreateTaskCommentExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<UpdateProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_source != null)
                     callPayload.Queries["Source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<GetTaskExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_source != null)
                     callPayload.Queries["Source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<GetProjectExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1147,7 +1147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
                 callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
                 return new ApiConnectionAction<GetProjectTemplatesExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1166,7 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_roleType != null)
                     callPayload.Queries["RoleType"] = ExpressionConverter.Convert(__workflow_roleType);
                 return new ApiConnectionAction<GetProjectRolesExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1235,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 }
 
                 return new ApiConnectionAction<CreateProjectFromTemplateExtResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
                 callPayload.Queries["TaskID"] = ExpressionConverter.Convert(__workflow_taskID);
                 return new ApiConnectionAction<DeletetaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1281,7 +1281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(__workflow_creatorEmail);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
                 return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null, FlowRecurrence recurrence = null)
@@ -1320,7 +1320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (__workflow_newSectoinName != null)
                     callPayload.Queries["NewSectoinName"] = ExpressionConverter.Convert(__workflow_newSectoinName);
                 return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, FlowRecurrence recurrence = null)
@@ -1335,7 +1335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
                 return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null, FlowRecurrence recurrence = null)
@@ -1353,7 +1353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     callPayload.Queries["UpdateFilter"] = ExpressionConverter.Convert(__workflow_updateFilter);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
                 return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, FlowRecurrence recurrence = null)
@@ -1380,7 +1380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(__workflow_creatorEmail);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
                 return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

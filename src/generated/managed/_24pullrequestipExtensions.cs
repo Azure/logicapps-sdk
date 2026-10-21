@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpecificOrganisationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

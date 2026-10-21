@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Survey>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 }
 
                 return new ApiConnectionAction<SurveyMessageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 if (__workflow_questionIds != null)
                     callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
                 return new ApiConnectionAction<GetResponseDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 if (__workflow_questionIds != null)
                     callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
                 return new ApiConnectionAction<GetResponseDetailsNoPagesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, FlowRecurrence recurrence = null)
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, FlowRecurrence recurrence = null)
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
                 if (__workflow_questionIds != null)
                     callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

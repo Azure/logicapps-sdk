@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<GetStationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetStationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<GetNearbyWeatherStationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 if (__workflow_select != null)
                     callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetStationRainfallResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 if (__workflow_evaporation != null)
                     callPayload.Queries["evaporation"] = ExpressionConverter.Convert(__workflow_evaporation);
                 return new ApiConnectionAction<GetPotentialYieldResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 if (__workflow_faoBreakOfSeason3Days5June != null)
                     callPayload.Queries["faoBreakOfSeason3Days5June"] = ExpressionConverter.Convert(__workflow_faoBreakOfSeason3Days5June);
                 return new ApiConnectionAction<GetSoilWaterResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
                 if (__workflow_select != null)
                     callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetYellowSpotResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

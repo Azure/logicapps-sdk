@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="callback">The callback delegate.</param>
         internal CSharpScriptCode(Delegate callback)
+            : base(WorkflowActionSettingsProfiles.RetrySecureTracked)
         {
             this.callback = callback;
             this.MethodName = callback.Method.Name;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             ScriptExecutor.SaveCustomCodeMethodInfo(
                 workflowName: flowName,

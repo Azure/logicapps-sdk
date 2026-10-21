@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 return new ApiConnectionAction<ListBaseline[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 return new ApiConnectionAction<ListBaseline>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
                 }
 
                 return new ApiConnectionAction<AssetSearchResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 return new ApiConnectionAction<UserDataResponseDoc>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

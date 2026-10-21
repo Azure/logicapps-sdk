@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["withoutIpLock"] = ExpressionConverter.Convert(__workflow_withoutIpLock);
                 return new ApiConnectionAction<PostAuthenticateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<Company>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Recipient[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Recipient>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<Setting>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Envelope>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<File[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction<File>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<UserInfo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Descriptor[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Document>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Document[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -978,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -1074,7 +1074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 if (__workflow_xNamespace != null)
                     callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(__workflow_xNamespace);
                 return new ApiConnectionAction<Descriptor>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

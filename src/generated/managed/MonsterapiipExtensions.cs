@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<TextImageAddPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<TextImageStatusPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<ImageImageAddPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<ImageImageStatusPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<ImageEditPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<ImageEditStatusPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<AudioPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 }
 
                 return new ApiConnectionAction<AudioStatusPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

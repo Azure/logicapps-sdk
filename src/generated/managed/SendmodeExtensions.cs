@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 }
 
                 return new ApiConnectionAction<SendSMSResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 }
 
                 return new ApiConnectionAction<OptoutCustomerResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 }
 
                 return new ApiConnectionAction<ImportCustomerResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction<CheckCreditsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

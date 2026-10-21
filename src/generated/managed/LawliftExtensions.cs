@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
                 }
 
                 return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
                 }
 
                 return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

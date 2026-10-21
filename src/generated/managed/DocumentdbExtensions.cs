@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<PostDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetDocumentV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetDocumentsV3Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetStoredProceduresResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_purviewAccountName != null)
                     callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
                 return new ApiConnectionAction<QueryDocumentsV5Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<PutDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

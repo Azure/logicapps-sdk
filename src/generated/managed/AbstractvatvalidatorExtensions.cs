@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["vat_number"] = ExpressionConverter.Convert(__workflow_vatNumber);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
                 if (__workflow_vatCategory != null)
                     callPayload.Queries["vat_category"] = ExpressionConverter.Convert(__workflow_vatCategory);
                 return new ApiConnectionAction<CalculateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<ListCategoriesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

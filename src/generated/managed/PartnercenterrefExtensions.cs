@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 return new ApiConnectionAction<GetAllReferralsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 }
 
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 }
 
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_referral);
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
@@ -1312,7 +1312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_referral);
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
@@ -1332,7 +1332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_referral);
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
                 if (__workflow_transactionReferenceNumber != null)
                     callPayload.Queries["TransactionReferenceNumber"] = ExpressionConverter.Convert(__workflow_transactionReferenceNumber);
                 return new ApiConnectionAction<SendSimpleSMSResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]

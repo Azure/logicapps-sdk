@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction<CreateInstantPackageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 if (__workflow_createdAfterDate != null)
                     callPayload.Queries["createdAfterDate"] = ExpressionConverter.Convert(__workflow_createdAfterDate);
                 return new ApiConnectionAction<PackageListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction<CreatePackageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction<AddDocumentToPackageResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSigningLocationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PackageStatusInfo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction<PackageStatusInfo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Content>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

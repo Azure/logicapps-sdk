@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 if (__workflow_lastModified != null)
                     callPayload.Queries["last_modified"] = ExpressionConverter.Convert(__workflow_lastModified);
                 return new ApiConnectionAction<EventApiApiCollectionOfEventListEntry>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedEvent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiEvent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiEventAttachmentCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedEventAttachment>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiApiCollectionOfEventFee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedEventFee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiApiCollectionOfEventParticipantOption>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedEventParticipantOption>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 if (__workflow_lastModified != null)
                     callPayload.Queries["last_modified"] = ExpressionConverter.Convert(__workflow_lastModified);
                 return new ApiConnectionAction<EventApiApiCollectionOfParticipantListEntry>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedParticipant>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiParticipant>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<EventApiApiCollectionOfParticipantDonation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedParticipantDonation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<EventApiApiCollectionOfParticipantFeePayment>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedParticipantFeePayment>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -972,7 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<EventApiApiCollectionOfParticipantFee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedParticipantFee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventApiApiCollectionOfParticipantOption>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
@@ -1078,7 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 }
 
                 return new ApiConnectionAction<EventApiCreatedParticipantOption>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

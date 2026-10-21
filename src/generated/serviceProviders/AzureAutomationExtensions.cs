@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
 {
     using System;
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateJobOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetJobStatusOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<string>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
                 if (__workflow_startIndex != null)
                     callPayload.Queries["startIndex"] = ExpressionConverter.Convert(__workflow_startIndex);
                 return new ApiConnectionAction<GetCVECollectionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
                 if (__workflow_startIndex != null)
                     callPayload.Queries["startIndex"] = ExpressionConverter.Convert(__workflow_startIndex);
                 return new ApiConnectionAction<GetCPECollectionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

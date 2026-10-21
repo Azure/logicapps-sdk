@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
                 }
 
                 return new ApiConnectionAction<SendSMSSuccessResponseBody>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
                 }
 
                 return new ApiConnectionAction<VoiceCallSuccessResponseBody>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
                 }
 
                 return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

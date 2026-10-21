@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<SearchPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<ExtractPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<CrawlPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<MapPostResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
