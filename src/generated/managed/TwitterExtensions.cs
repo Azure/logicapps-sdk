@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<TweetModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<TweetModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_sinceId != null)
                     callPayload.Queries["sinceId"] = ExpressionConverter.Convert(__workflow_sinceId);
                 return new ApiConnectionAction<TweetModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
                 return new ApiConnectionAction<UserDetailsModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                     callPayload.Queries["tweetText"] = ExpressionConverter.Convert(__workflow_tweetText);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TweetResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 if (__workflow_trimUser != null)
                     callPayload.Queries["trimUser"] = ExpressionConverter.Convert(__workflow_trimUser);
                 return new ApiConnectionAction<TweetResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
                 return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

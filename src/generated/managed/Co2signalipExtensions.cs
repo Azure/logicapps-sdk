@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<GetLatestbyCodeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
                 if (__workflow_lat != null)
                     callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 return new ApiConnectionAction<GetLatestbyLatLonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
                 if (__workflow_remedyOption != null)
                     callPayload.Queries["RemedyOption"] = ExpressionConverter.Convert(__workflow_remedyOption);
                 return new ApiConnectionAction<RecallGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

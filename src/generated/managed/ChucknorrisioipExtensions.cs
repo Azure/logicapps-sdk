@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
                 if (__workflow_category != null)
                     callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

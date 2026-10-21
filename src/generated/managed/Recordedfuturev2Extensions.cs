@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_htmlresponse != null)
                     callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<IPEResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_htmlresponse != null)
                     callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<DEResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_htmlresponse != null)
                     callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<UEResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_htmlresponse != null)
                     callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<HEResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_htmlresponse != null)
                     callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<VulnEResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<AlertRulesSearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_from != null)
                     callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<AlertSearch>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AlertLookup>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<PlaybookAlertSearchItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PlaybookAlertLookup>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<DetectionRuleSearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<RListDResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<SoarBulkLookupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<ThreatMapActorsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<ThreatMapMalwareResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<STIXIndicatorsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 }
 
                 return new ApiConnectionAction<STIXMalwareIndicatorsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<AlertSearchV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<AlertSearchIdV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

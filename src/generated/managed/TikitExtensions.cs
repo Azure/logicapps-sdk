@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
                 return new ApiConnectionAction<ServiceDeskCoreModelsTicketItems>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
                 return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<AddCommentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFileAttachedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Queries["Assignee"] = ExpressionConverter.Convert(__workflow_assignee);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
                 return new ApiConnectionAction<GetTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Queries["TaskName"] = ExpressionConverter.Convert(__workflow_taskName);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
                 return new ApiConnectionAction<GetPowerAutomateTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<ServiceDeskCoreModelsTicketTask>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<ServiceDeskCoreModelsTicketTask>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<ServiceDeskCoreModelsPowerAutomateTask>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Queries["AdditionalDetails"] = ExpressionConverter.Convert(__workflow_additionalDetails);
                 callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
                 return new ApiConnectionAction<GetApprovalsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionAction<ServiceDeskCoreModelsApprovals>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, FlowRecurrence recurrence = null)
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook(Expression<Func<string>> bodywebHookcommenter = null, Expression<Func<string>> bodywebHookcommentStringContain = null, Expression<Func<bodywebHookisPublicCommentInput>> bodywebHookisPublicComment = null, FlowRecurrence recurrence = null)
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<string>> bodywebHooklifecyclePowerAutomateName = null, FlowRecurrence recurrence = null)
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionTrigger<ServiceDeskCoreModelsTicketTask>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, FlowRecurrence recurrence = null)
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<int>> bodywebHooklifecycleTransitionId = null, FlowRecurrence recurrence = null)
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                 }
 
                 return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
                 return new ApiConnectionAction<CurrentWeather>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
                 return new ApiConnectionAction<WeatherForecast>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
                 return new ApiConnectionAction<WeatherForecast>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 callPayload.Queries["Target"] = ExpressionConverter.Convert(__workflow_target);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
                 return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, FlowRecurrence recurrence = null)
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
                 return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

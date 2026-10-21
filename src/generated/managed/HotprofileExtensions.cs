@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_directNote != null)
                     callPayload.Queries["direct_note"] = ExpressionConverter.Convert(__workflow_directNote);
                 return new ApiConnectionAction<ActionCreateBusinessCardResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_searchLongitude != null)
                     callPayload.Queries["search[longitude]"] = ExpressionConverter.Convert(__workflow_searchLongitude);
                 return new ApiConnectionAction<ActionGetBusinessCardsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_directNote != null)
                     callPayload.Queries["direct_note"] = ExpressionConverter.Convert(__workflow_directNote);
                 return new ApiConnectionAction<ActionUpdateBusinessCardResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_prefSub != null)
                     callPayload.Queries["pref_sub"] = ExpressionConverter.Convert(__workflow_prefSub);
                 return new ApiConnectionAction<ActionCreateClientResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_searchToDatetimeUpdatedOn != null)
                     callPayload.Queries["search[to_datetime_updated_on]"] = ExpressionConverter.Convert(__workflow_searchToDatetimeUpdatedOn);
                 return new ApiConnectionAction<ActionGetClientsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_prefSub != null)
                     callPayload.Queries["pref_sub"] = ExpressionConverter.Convert(__workflow_prefSub);
                 return new ApiConnectionAction<ActionUpdateClientResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_ownerUserId != null)
                     callPayload.Queries["owner_user_id"] = ExpressionConverter.Convert(__workflow_ownerUserId);
                 return new ApiConnectionAction<ActionCreateLeadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_searchMultiple != null)
                     callPayload.Queries["search[multiple]"] = ExpressionConverter.Convert(__workflow_searchMultiple);
                 return new ApiConnectionAction<ActionGetLeadsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hotprofile")]
@@ -1024,7 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hotprofile
                 if (__workflow_ownerUserId != null)
                     callPayload.Queries["owner_user_id"] = ExpressionConverter.Convert(__workflow_ownerUserId);
                 return new ApiConnectionAction<ActionUpdateLeadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

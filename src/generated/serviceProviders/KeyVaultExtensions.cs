@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
 {
     using System;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSecretOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -46,17 +47,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSecretVersionOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListSecretMetadataOutputItem[]> ListSecretMetadata()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<ListSecretMetadataOutputItem[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<ListSecretMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
+                };
+                return new ServiceProviderAction<ListSecretMetadataOutputItem[]>(serviceProviderInput);
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -73,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSecretMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -92,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSecretVersionMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -109,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListSecretVersionMetadataOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -126,17 +130,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetKeyMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListKeyMetadataOutputItem[]> ListKeyMetadata()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<ListKeyMetadataOutputItem[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<ListKeyMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
+                };
+                return new ServiceProviderAction<ListKeyMetadataOutputItem[]>(serviceProviderInput);
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -155,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetKeyVersionMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -172,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListKeyVersionMetadataOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -193,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<DecryptDataWithKeyOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -216,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<DecryptDataWithKeyVersionOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -237,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<EncryptDataWithKeyOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
@@ -260,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<EncryptDataWithKeyVersionOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -546,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string RawData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DecryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -563,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string RawData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DecryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -580,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string EncryptedData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum EncryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -597,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string EncryptedData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum EncryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]

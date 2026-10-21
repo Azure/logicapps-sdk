@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 if (__workflow_course != null)
                     callPayload.Queries["course"] = ExpressionConverter.Convert(__workflow_course);
                 return new ApiConnectionAction<Course[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 }
 
                 return new ApiConnectionAction<bool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 if (__workflow_identifier != null)
                     callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 if (__workflow_identifier != null)
                     callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 if (__workflow_studentId != null)
                     callPayload.Queries["studentId"] = ExpressionConverter.Convert(__workflow_studentId);
                 return new ApiConnectionAction<Student>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]

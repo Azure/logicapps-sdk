@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_firstSeenBefore != null)
                     callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(__workflow_firstSeenBefore);
                 return new ApiConnectionAction<RRSets>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_firstSeenBefore != null)
                     callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(__workflow_firstSeenBefore);
                 return new ApiConnectionAction<RRSets>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                     callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(__workflow_firstSeenBefore);
                 callPayload.Queries["hex"] = ExpressionConverter.Convert(__workflow_hex);
                 return new ApiConnectionAction<RRSets>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_firstSeenBefore != null)
                     callPayload.Queries["firstSeenBefore"] = ExpressionConverter.Convert(__workflow_firstSeenBefore);
                 return new ApiConnectionAction<RRSets>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["host"] = ExpressionConverter.Convert(__workflow_host);
                 return new ApiConnectionAction<SslCertWithHostPage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["serial"] = ExpressionConverter.Convert(__workflow_serial);
                 return new ApiConnectionAction<SslCertPage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sha1"] = ExpressionConverter.Convert(__workflow_sha1);
                 return new ApiConnectionAction<SslCert>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["certSha1"] = ExpressionConverter.Convert(__workflow_certSha1);
                 return new ApiConnectionAction<SslCertHostPage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<SslCertPage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_maxResults != null)
                     callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<WhoisResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostAttributeResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostAttributeResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostAttributeResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostPairsResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostPairsResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostComponentsResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostComponentsResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostComponentsResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostCookieResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_exact != null)
                     callPayload.Queries["exact"] = ExpressionConverter.Convert(__workflow_exact);
                 return new ApiConnectionAction<HostCookieResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_certificates != null)
                     callPayload.Queries["certificates"] = ExpressionConverter.Convert(__workflow_certificates);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_certificates != null)
                     callPayload.Queries["certificates"] = ExpressionConverter.Convert(__workflow_certificates);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

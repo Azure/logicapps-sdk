@@ -2,6 +2,8 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
+using Newtonsoft.Json.Linq;
+
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
@@ -18,14 +20,33 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// on the first action directly after a trigger.
     /// </para>
     /// <para>
-    /// Subclasses must implement <see cref="GetTriggerDefinition"/> to produce the
+    /// Subclasses must implement <see cref="BuildTriggerDefinition"/> to produce the
     /// <see cref="FlowTemplateTrigger"/> that represents this trigger in the serialized workflow definition.
+    /// The public <see cref="GetTriggerDefinition"/> method then applies common trigger configuration.
     /// </para>
     /// </remarks>
     /// <seealso cref="IWorkflowTrigger"/>
     /// <seealso cref="WorkflowActionBase"/>
     public abstract class WorkflowTriggerBase : IWorkflowTrigger
     {
+        /// <summary>
+        /// Initializes a workflow trigger without optional settings.
+        /// </summary>
+        protected WorkflowTriggerBase()
+            : this(WorkflowTriggerSettingProfile.None)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new workflow trigger.
+        /// </summary>
+        /// <param name="settingsProfile">The settings supported by the trigger.</param>
+        internal WorkflowTriggerBase(
+            WorkflowTriggerSettingProfile settingsProfile = WorkflowTriggerSettingProfile.None)
+        {
+            this.Configuration = new WorkflowTriggerConfiguration(settingsProfile);
+        }
+
         /// <summary>
         /// Gets or sets the name of the trigger.
         /// </summary>
@@ -36,10 +57,75 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
+        /// <inheritdoc/>
+        public WorkflowTriggerConfiguration Configuration { get; }
+
         /// <summary>
         /// Gets the trigger definition for the workflow.
         /// </summary>
-        public abstract FlowTemplateTrigger GetTriggerDefinition();
+        /// <param name="flowKind">The kind of workflow containing the trigger.</param>
+        public FlowTemplateTrigger GetTriggerDefinition(FlowKind? flowKind = null)
+        {
+            var definition = this.BuildTriggerDefinition(flowKind)
+                ?? throw new InvalidOperationException($"Trigger '{this.Name}' returned a null definition.");
+
+            if (this.Configuration.RetryPolicy != null)
+            {
+                WorkflowOperationConfiguration.ValidateRetryPolicy(this.Configuration.RetryPolicy, flowKind);
+                WorkflowOperationConfiguration.AddRetryPolicy(definition, this.Configuration.RetryPolicy);
+            }
+
+            var secureProperties = WorkflowOperationConfiguration.SecureProperties(this.Configuration.SecureInputs, this.Configuration.SecureOutputs);
+            if (secureProperties.Length > 0 || this.Configuration.ConcurrentRuns.HasValue)
+            {
+                definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
+            }
+
+            if (secureProperties.Length > 0)
+            {
+                definition.RuntimeConfiguration.SecureData =
+                    new FlowSecureDataConfiguration { Properties = secureProperties };
+            }
+
+            if (this.Configuration.ConcurrentRuns.HasValue)
+            {
+                if (flowKind == FlowKind.Stateless)
+                {
+                    throw new InvalidOperationException("Trigger concurrency control is not supported for stateless workflows.");
+                }
+                definition.RuntimeConfiguration.Concurrency = new FlowConcurrencyConfiguration
+                {
+                    Runs = this.Configuration.ConcurrentRuns,
+                    MaximumWaitingRuns = this.Configuration.MaximumWaitingRuns,
+                };
+            }
+
+            if (this.Configuration.ClientTrackingId != null)
+            {
+                definition.Correlation =
+                    new FlowTemplateCorrelation { ClientTrackingId = this.Configuration.ClientTrackingId };
+            }
+
+            if (this.Configuration.SchemaValidationEnabled)
+            {
+                var inputs = WorkflowOperationConfiguration.ToObject(definition.Inputs);
+                if (inputs["schema"] == null || inputs["schema"].Type == JTokenType.Null)
+                {
+                    throw new InvalidOperationException("Schema validation requires a request body JSON schema.");
+                }
+                definition.OperationOptions =
+                    (definition.OperationOptions ?? OperationOptions.None) |
+                    OperationOptions.EnableSchemaValidation;
+            }
+
+            return definition;
+        }
+
+        /// <summary>
+        /// Builds the operation-specific trigger definition.
+        /// </summary>
+        /// <param name="flowKind">The kind of workflow containing the trigger.</param>
+        protected abstract FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null);
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)

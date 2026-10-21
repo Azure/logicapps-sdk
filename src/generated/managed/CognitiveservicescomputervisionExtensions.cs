@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<DetectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<DescribeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                     callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<DescribeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 }
 
                 return new ApiConnectionAction<DescribeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<OCRJsonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<OCRTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<DomainModelResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<TagResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

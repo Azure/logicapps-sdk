@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetParcelDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
                 callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 callPayload.Queries["publication"] = ExpressionConverter.Convert(__workflow_publication);
                 return new ApiConnectionAction<GetParcelMapResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
                 callPayload.Queries["y2"] = ExpressionConverter.Convert(__workflow_y2);
                 callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<GetTilesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

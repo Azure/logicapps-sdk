@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
                 if (__workflow_stats != null)
                     callPayload.Queries["stats"] = ExpressionConverter.Convert(__workflow_stats);
                 return new ApiConnectionAction<GetCompaniesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<GetCompanyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

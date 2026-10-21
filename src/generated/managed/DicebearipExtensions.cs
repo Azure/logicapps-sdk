@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
                 if (__workflow_skinColor != null)
                     callPayload.Queries["skinColor"] = ExpressionConverter.Convert(__workflow_skinColor);
                 return new ApiConnectionAction<AvatarGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

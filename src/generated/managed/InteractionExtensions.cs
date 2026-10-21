@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<ReadListByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<ReadListByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<ReadAdditionalFieldDefinitionsAndValuesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<AddOrUpdateAdditionalFieldValuesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<ReadContactByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<ListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<AddContactsToListsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<RemoveContactsfromListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -781,7 +781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<UpdatePersonContactResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<CreateActivityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<SearchContactsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
@@ -954,7 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
                 }
 
                 return new ApiConnectionAction<UpdateActivityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

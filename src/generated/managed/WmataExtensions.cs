@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
                 return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_radius != null)
                     callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
                 return new ApiConnectionAction<GetBusPositionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_date != null)
                     callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_date != null)
                     callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_date != null)
                     callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_radius != null)
                     callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
                 return new ApiConnectionAction<GetBusStopsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_stationCode != null)
                     callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetStationParkingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(__workflow_fromStationCode);
                 callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(__workflow_toStationCode);
                 return new ApiConnectionAction<GetPathBetweenStationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_lineCode != null)
                     callPayload.Queries["LineCode"] = ExpressionConverter.Convert(__workflow_lineCode);
                 return new ApiConnectionAction<GetJsonStationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_radius != null)
                     callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
                 return new ApiConnectionAction<GetStationEntrancesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetStationInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetStationTimesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(__workflow_fromStationCode);
                 callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(__workflow_toStationCode);
                 return new ApiConnectionAction<GetStationToStationInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_route != null)
                     callPayload.Queries["Route"] = ExpressionConverter.Convert(__workflow_route);
                 return new ApiConnectionAction<GetBusIncidentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 if (__workflow_stationCode != null)
                     callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetElevatorIncidentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]

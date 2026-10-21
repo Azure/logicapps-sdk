@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_key"] = ExpressionConverter.Convert(__workflow_formKey);
                 return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_key"] = ExpressionConverter.Convert(__workflow_formKey);
                 return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["form_key"] = ExpressionConverter.Convert(__workflow_formKey);
                 return new ApiConnectionTrigger<NewFileResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

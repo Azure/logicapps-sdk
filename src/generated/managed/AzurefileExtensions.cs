@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["SkipDeleteIfFileNotFoundOnServer"] = Convert.ToString(false);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 if (__workflow_inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                     callPayload.Queries["overwrite"] = ExpressionConverter.Convert(__workflow_overwrite);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
                 callPayload.Queries["nextPageMarker"] = Convert.ToString("");
                 callPayload.Queries["useFlatListing"] = Convert.ToString(false);
                 return new ApiConnectionAction<BlobMetadataPage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

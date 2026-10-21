@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_category != null)
                     callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
                 if (__workflow_seed != null)
                     callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

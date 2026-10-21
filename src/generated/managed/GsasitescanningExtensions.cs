@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
                 if (__workflow_dapDetectedFinalUrl != null)
                     callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(__workflow_dapDetectedFinalUrl);
                 return new ApiConnectionAction<AnalysisDto>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<PaginatedWebsiteResponseDto>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WebsiteApiResultDto>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

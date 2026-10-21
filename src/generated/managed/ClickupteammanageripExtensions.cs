@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
                 }
 
                 return new ApiConnectionAction<CreateAFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
                 }
 
                 return new ApiConnectionAction<CreateSpaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
                 }
 
                 return new ApiConnectionAction<CreateAListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

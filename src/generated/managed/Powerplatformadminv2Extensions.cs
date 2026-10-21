@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<AdvisorActionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<AdvisorRecommendationIEnumerableResponseWithContinuation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<TenantApplicationPackageContinuationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["lcid"] = ExpressionConverter.Convert(__workflow_lcid);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ApplicationPackageContinuationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<InstancePackage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<InstancePackageOperationPollingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<RoleAssignmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<RoleAssignmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<RoleDefinitionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ListConnectorsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<GetConnectorByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BotQuarantineStatus>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(__workflow_validateProperties);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(__workflow_validateProperties);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(__workflow_validateProperties);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<OperationExecutionResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(__workflow_validateProperties);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ProblemDetails>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<EnvironmentList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<EnvironmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["ValidateProperties"] = ExpressionConverter.Convert(__workflow_validateProperties);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ValidationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<Policy>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ListPolicyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<Policy>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<RuleAssignment>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -916,7 +916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 callPayload.Queries["includeRuleSetCounts"] = ExpressionConverter.Convert(__workflow_includeRuleSetCounts);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<RuleAssignmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<CrossTenantConnectionReportsResponseWithOdataContinuation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<CrossTenantConnectionReport>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<ResourceQueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BillingPolicyResponseModelResponseWithOdataContinuation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1089,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1104,7 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1155,7 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1170,7 +1170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1186,7 +1186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1215,7 +1215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1259,7 +1259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1274,7 +1274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<AllocationsByEnvironmentResponseModelV1>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<AllocationsByEnvironmentResponseModelV1>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<BillingPolicyResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1335,7 +1335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<IsvContractResponseModelResponseWithOdataContinuation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1472,7 +1472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1487,7 +1487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<IsvContractResponseModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1597,7 +1597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1611,7 +1611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<TenantCapacityDetailsModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1633,7 +1633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["includeConsumptions"] = ExpressionConverter.Convert(__workflow_includeConsumptions);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<CurrencyReportV2[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1655,7 +1655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(__workflow_skiptoken);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ResourceArrayPowerApp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1671,7 +1671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<PowerApp>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1686,7 +1686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1753,7 +1753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 }
 
                 return new ApiConnectionAction<MCPQueryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

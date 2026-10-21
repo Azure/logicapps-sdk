@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -1050,7 +1050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -1176,7 +1176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
@@ -1394,7 +1394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

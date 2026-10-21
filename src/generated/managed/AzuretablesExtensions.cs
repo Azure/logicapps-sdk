@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 }
 
                 return new ApiConnectionAction<InsertEntityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_tableName);
                 return new ApiConnectionAction<GetTableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 if (__workflow_ifMatch != null)
                     callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
                 return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
                 return new ApiConnectionAction<GetEntityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
                 return new ApiConnectionAction<GetTableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 if (__workflow_xMsClientRequestId != null)
                     callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(__workflow_xMsClientRequestId);
                 return new ApiConnectionAction<GetTablesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

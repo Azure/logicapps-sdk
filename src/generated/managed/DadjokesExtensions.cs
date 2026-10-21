@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Headers["X-RapidAPI-Host"] = Convert.ToString("dad-jokes-by-api-ninjas.p.rapidapi.com");
                 return new ApiConnectionAction<JokeGetResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

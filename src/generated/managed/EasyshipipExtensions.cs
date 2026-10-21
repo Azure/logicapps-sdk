@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 }
 
                 return new ApiConnectionAction<GetRatesTaxesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 if (__workflow_warehouseState != null)
                     callPayload.Queries["warehouse_state"] = ExpressionConverter.Convert(__workflow_warehouseState);
                 return new ApiConnectionAction<ListAllShipmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 }
 
                 return new ApiConnectionAction<CreateAShipmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 }
 
                 return new ApiConnectionAction<BuyAShipmentLabelResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteAShipmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 }
 
                 return new ApiConnectionAction<UpdateAShipmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 if (__workflow_packingSlip != null)
                     callPayload.Queries["packing_slip"] = ExpressionConverter.Convert(__workflow_packingSlip);
                 return new ApiConnectionAction<GetAShipmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 }
 
                 return new ApiConnectionAction<UpdateWarehouseStateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAvailablePickupSlotsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -1116,7 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 }
 
                 return new ApiConnectionAction<RequestAPickupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -1139,7 +1139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<GetCheckpointsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
@@ -1162,7 +1162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<GetStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]

@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<CreateEnvelopeOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Envelope>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["captureKey"] = ExpressionConverter.Convert(__workflow_captureKey);
                 return new ApiConnectionAction<Capture>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StartEnvelopeOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<AddDocumentOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<AddDocumentOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<AddDocumentOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<AddRecipientSignerOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Recipient>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -944,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -1002,7 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionAction<CreateCeremonyCustomOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -1015,7 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Envelope>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
@@ -1028,7 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Deliverable>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1085,7 +1085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1112,7 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1139,7 +1139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1166,7 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1247,7 +1247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1274,7 +1274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1301,7 +1301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1328,7 +1328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1409,7 +1409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
@@ -1436,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 }
 
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

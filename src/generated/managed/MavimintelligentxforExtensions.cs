@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
                 if (__workflow_dataLanguage != null)
                     callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(__workflow_dataLanguage);
                 return new ApiConnectionAction<AuditLog[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<FeedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<FeedTodayResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<NeoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NeoIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<SentryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SentryIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]

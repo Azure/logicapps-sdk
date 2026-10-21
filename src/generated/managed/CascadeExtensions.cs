@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetAllGoalsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<CreateGoalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetSingleGoalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<DeleteGoalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<UpdateGoalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetAllRisksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<CreateRiskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetSingleRiskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<DeleteRiskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<UpdateRiskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetAllTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetSingleTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetAllUpdatesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<GetSingleUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Instance"] = ExpressionConverter.Convert(__workflow_instance);
                 return new ApiConnectionAction<DeleteUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
                 }
 
                 return new ApiConnectionAction<UpdateUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

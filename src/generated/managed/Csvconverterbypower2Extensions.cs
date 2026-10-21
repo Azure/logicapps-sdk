@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A000AV01CV01ConvertAllFormats>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A001AV01CV01ConvertCsvToJson>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A007AV01CV01ConvertCsvToXml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -1043,7 +1043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

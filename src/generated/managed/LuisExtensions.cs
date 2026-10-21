@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
                     callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
                 callPayload.Queries["verbose"] = Convert.ToString(true);
                 return new ApiConnectionAction<PredictResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
                     callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_luisPredictionObject);
                 return new ApiConnectionAction<GetTopScoringMatchingEntityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

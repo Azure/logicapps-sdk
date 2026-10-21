@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WorkItemGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionAction<WorkItemActionLogResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionTrigger<WebhookSettings>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, FlowRecurrence recurrence = null)
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                 }
 
                 return new ApiConnectionTrigger<WebhookSettings>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

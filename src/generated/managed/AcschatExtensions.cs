@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                     callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(__workflow_maxPageSize);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction<ListMessagesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 }
 
                 return new ApiConnectionAction<SendChatResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 }
 
                 return new ApiConnectionAction<AddParticipantsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                     callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(__workflow_maxPageSize);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction<ListChatThreadsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 }
 
                 return new ApiConnectionAction<CreateChatResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                     callPayload.Queries["maxPageSize"] = ExpressionConverter.Convert(__workflow_maxPageSize);
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction<ListParticipantsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction<GetThreadPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 callPayload.Queries["api-version"] = Convert.ToString("2021-09-07");
                 callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

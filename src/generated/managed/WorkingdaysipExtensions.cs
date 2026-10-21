@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWorkingDaysResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetInfoDayResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<ListNonWorkingDaysResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWorkingHoursResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddPublicHolidaysResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWeekendDaysResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                 callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddressToConfigurationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]

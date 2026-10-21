@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<BotConversationStartResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<BotGroupConversationStartResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 callPayload.Headers["selectedCard"] = ExpressionConverter.Convert(__workflow_selectedCard);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -1150,7 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<WebHook>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -1181,7 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<ResponseSaveBotMemory>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<ResponseDeleteBotMemory>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
@@ -1234,7 +1234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionAction<MemoryItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1314,7 +1314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooklUISIntentVector = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, FlowRecurrence recurrence = null)
@@ -1387,7 +1387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

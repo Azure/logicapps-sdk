@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
                 if (__workflow_products != null)
                     callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
                 return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
                 if (__workflow_products != null)
                     callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
                 return new ApiConnectionTrigger<Rating[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

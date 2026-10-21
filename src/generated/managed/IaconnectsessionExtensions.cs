@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetMachineNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetMachineDomainResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetRemoteSessionClientHostnameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<ExpandEnvironmentVariableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<KillProcessResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<KillProcessIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetProcessCountByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetAgentProcessCountResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<KillAllOtherAgentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetProcessByPIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetProcessesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RunProcessResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RunPowerShellProcessResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetScreenResolutionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetDefaultPrinterResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetListOfPrintersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1059,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetMouseMultiplierResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1137,7 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1181,7 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1234,7 +1234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1331,7 +1331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1359,7 +1359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1384,7 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1415,7 +1415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1437,7 +1437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1459,7 +1459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1509,7 +1509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1534,7 +1534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1565,7 +1565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1604,7 +1604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1649,7 +1649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1748,7 +1748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1847,7 +1847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -1946,7 +1946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2045,7 +2045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2070,7 +2070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2098,7 +2098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2120,7 +2120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetCursorPosResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2159,7 +2159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<CalibrateMouseEventResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetMouseMoveMethodResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2206,7 +2206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2269,7 +2269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2345,7 +2345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2421,7 +2421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2497,7 +2497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2573,7 +2573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2595,7 +2595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2624,7 +2624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2646,7 +2646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetClipboardDataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2795,7 +2795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TakeScreenshotResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2817,7 +2817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetEnvironmentInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2839,7 +2839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<IsScreenReaderEnabledResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2878,7 +2878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2903,7 +2903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetParentProcessIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2928,7 +2928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetProcessIdCommandLineResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -2950,7 +2950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetLastInputInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3064,7 +3064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<KeepSessionAliveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3086,7 +3086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<StopKeepSessionAliveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3128,7 +3128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<CopyFileToClipboardResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3150,7 +3150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetRemoteSessionInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3315,7 +3315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GeneratePasswordResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3344,7 +3344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetStoredPasswordResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3373,7 +3373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<ExpandPasswordStringResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3401,7 +3401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<StorePasswordInAgentMemoryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3447,7 +3447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DeletePasswordInAgentMemoryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3512,7 +3512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<CredentialWriteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3571,7 +3571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<CredentialReadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3599,7 +3599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<CredentialDeleteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3882,7 +3882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GenerateRDPFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3924,7 +3924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<LaunchRemoteDesktopSessionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -3969,7 +3969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<IsTCPPortRespondingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4034,7 +4034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<UnlockSessionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4090,7 +4090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<LockSessionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4112,7 +4112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<IsSessionLockedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4155,7 +4155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetGenericCredentialFromOrchestratorResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4257,7 +4257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DrawRectangleOnScreenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4296,7 +4296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4358,7 +4358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetPixelColourAtCoordinateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4395,7 +4395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<ConvertRectangleCoordinatesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4717,7 +4717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<SendMessageToWebAPIResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4846,7 +4846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksAddNewTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -4982,7 +4982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksAddNewDeferralResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5059,7 +5059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksDeferExistingTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5119,7 +5119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksDeferExistingTaskOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5158,7 +5158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksDeleteTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5197,7 +5197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksDeleteTaskOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5336,7 +5336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksGetAllTasksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5375,7 +5375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksGetTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5473,7 +5473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksGetNextTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5577,7 +5577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksChangeTaskStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5626,7 +5626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksAddNoteResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5710,7 +5710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksAssignTaskResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5739,7 +5739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksSetOutputDataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5831,7 +5831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksAddNewTaskOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5930,7 +5930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksAddNewDeferralOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5952,7 +5952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<TasksGetTaskOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5977,7 +5977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -5999,7 +5999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetRemoteLoggingLevelResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6053,7 +6053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6095,7 +6095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<SetLicenseStringResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6117,7 +6117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetLicenseStateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6156,7 +6156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6181,7 +6181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6209,7 +6209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6265,7 +6265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6321,7 +6321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6360,7 +6360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6399,7 +6399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6441,7 +6441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6490,7 +6490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6614,7 +6614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RunAlternativeIAConnectSentFromDirectorResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6636,7 +6636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetIAConnectAgentInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6774,7 +6774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetIAConnectAgentLogResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6796,7 +6796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -6818,7 +6818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetAllCommandStatsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7017,7 +7017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<EnableNextHopResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7039,7 +7039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7095,7 +7095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetNextHopStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7277,7 +7277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<WaitForNextHopSessionToConnectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7503,7 +7503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7525,7 +7525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7547,7 +7547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7580,7 +7580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RaiseExceptionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7623,7 +7623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<UpdateOrchestratorFlowStatsResultResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7645,7 +7645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetLastFailedActionFromOrchestratorFlowStatsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7699,7 +7699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetOrchestratorFlowStatsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7739,7 +7739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetOrchestratorWorkerAvailabilityStatsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7788,7 +7788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetOrchestratorWorkerFlowUsageHeatmapResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7835,7 +7835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetOrchestratorLoginHistoryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7860,7 +7860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7892,7 +7892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RunCommandResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7914,7 +7914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetLocalLoggingLevelResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7936,7 +7936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetRemoteClientTypeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7958,7 +7958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetIAConnectDirectorInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -7980,7 +7980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetAvailableIAConnectSessionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8022,7 +8022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8061,7 +8061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<AttachToTier1IAConnectSessionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8155,7 +8155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<AttachToIAConnectSessionByIndexResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8242,7 +8242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<AttachToMostRecentIAConnectSessionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8264,7 +8264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetDirectorUpTimeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8289,7 +8289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DoesIAConnectSessionExistByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8355,7 +8355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<WaitForIAConnectSessionToCloseByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8397,7 +8397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<KillIAConnectSessionByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8623,7 +8623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<SetAgentGlobalCoordinateConfigurationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8645,7 +8645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetAgentGlobalCoordinateConfigurationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8704,7 +8704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetAgentThreadStatusResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8817,7 +8817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<WaitForAgentThreadToCompleteSuccessfullyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8846,7 +8846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetAgentThreadsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8871,7 +8871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<KillAgentThreadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8934,7 +8934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DeleteAgentThreadResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -8987,7 +8987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<AllocateWorkerFromOrchestratorResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9047,7 +9047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<SetOrchestratorWorkerMaintenanceModeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9169,7 +9169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<CreateOrchestratorOneTimeSecretResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9205,7 +9205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetListOfOrchestratorWorkersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9238,7 +9238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetOrchestratorWorkerResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9281,7 +9281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<FileExistsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9306,7 +9306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DirectoryExistsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9331,7 +9331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9373,7 +9373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9432,7 +9432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9460,7 +9460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9488,7 +9488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9530,7 +9530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9555,7 +9555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFileSizeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9628,7 +9628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9653,7 +9653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<ReadAllTextFromFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9681,7 +9681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFilesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9706,7 +9706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFoldersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9738,7 +9738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DeleteFilesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9763,7 +9763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetDiskFreeSpaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9785,7 +9785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetListOfDrivesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9810,7 +9810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DirectoryIsAccessibleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9903,7 +9903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetCSVTextAsCollectionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9959,7 +9959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<WriteCollectionToCSVFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -9987,7 +9987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10015,7 +10015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10114,7 +10114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10162,7 +10162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10204,7 +10204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10229,7 +10229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10254,7 +10254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFolderSecurityPermissionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10279,7 +10279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFileSecurityPermissionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10307,7 +10307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RemoveIdentityFromFolderSecurityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10335,7 +10335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<RemoveIdentityFromFileSecurityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10380,7 +10380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10491,7 +10491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10710,7 +10710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<DownloadHTTPFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10773,7 +10773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<UnZIPFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10849,7 +10849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -10949,7 +10949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<AddFolderToZIPResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -11008,7 +11008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 }
 
                 return new ApiConnectionAction<GetFileContentsAsBase64Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_controlNumberContents);
                 return new ApiConnectionAction<UpdateControlNumberResult[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                     callPayload.Queries["suspendInterchangeOnError"] = ExpressionConverter.Convert(__workflow_suspendInterchangeOnError);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                     callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdiAgreementProperties>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                     callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                     callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                 }
 
                 return new ApiConnectionAction<EdifactBatchEncodeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                 }
 
                 return new ApiConnectionAction<EdifactBatchEncodeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                     callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                     callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                 if (__workflow_startSyncTime != null)
                     callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
                 return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

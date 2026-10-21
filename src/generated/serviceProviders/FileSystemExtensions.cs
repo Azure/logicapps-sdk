@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
 {
     using System;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -160,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -177,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -219,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -238,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
@@ -273,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -304,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
@@ -332,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
     }
 
@@ -462,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public bool IsFolder { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteType
     {
         Fail,

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
 {
     using System;
@@ -16,11 +17,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         public IBodyWorkflowAction<string[]> GetTables()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<string[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<string[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
+                };
+                return new ServiceProviderAction<string[]>(serviceProviderInput);
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
@@ -43,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
@@ -60,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 

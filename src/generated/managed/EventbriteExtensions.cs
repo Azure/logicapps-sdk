@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 if (__workflow_eventShowRemaining != null)
                     callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(__workflow_eventShowRemaining);
                 return new ApiConnectionAction<CreateEventResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 if (__workflow_eventShowRemaining != null)
                     callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(__workflow_eventShowRemaining);
                 return new ApiConnectionAction<CreateEventResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(__workflow_organizerFilter);
                 callPayload.Queries["order_by"] = Convert.ToString("created_desc");
                 return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);
                 return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

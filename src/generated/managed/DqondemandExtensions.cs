@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["StartDate"] = ExpressionConverter.Convert(__workflow_startDate);
                 callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<GetUsage>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["CaseType"] = ExpressionConverter.Convert(__workflow_caseType);
                 callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_language != null)
                     callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<ClassifyGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input2"] = ExpressionConverter.Convert(__workflow_input2);
                 callPayload.Queries["ComparisonAlgorithm"] = ExpressionConverter.Convert(__workflow_comparisonAlgorithm);
                 return new ApiConnectionAction<DQGlobalFloat>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);
                 callPayload.Queries["LastName"] = ExpressionConverter.Convert(__workflow_lastName);
                 return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["ActionType"] = ExpressionConverter.Convert(__workflow_actionType);
                 return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);
                 callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DeriveGenderGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DeriveCityGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DerivePostCodeGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DeriveEmailGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_defaultToCountry != null)
                     callPayload.Queries["DefaultToCountry"] = ExpressionConverter.Convert(__workflow_defaultToCountry);
                 return new ApiConnectionAction<DeriveISOGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["URLPrefix"] = ExpressionConverter.Convert(__workflow_uRLPrefix);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_language != null)
                     callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<ParsePhoneGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ParseEmailGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ParseURLGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<ScoringResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_language != null)
                     callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["DateTimeFormat"] = ExpressionConverter.Convert(__workflow_dateTimeFormat);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ValidatePlusEmailGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ValidatePlusURLGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 callPayload.Queries["Geocode"] = ExpressionConverter.Convert(__workflow_geocode);
                 return new ApiConnectionAction<VerifyAddressGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SearchAddressFindResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SearchAddressRetrieveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Postcode"] = ExpressionConverter.Convert(__workflow_postcode);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SuppressDeceasedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Postcode"] = ExpressionConverter.Convert(__workflow_postcode);
                 callPayload.Queries["ISO2"] = ExpressionConverter.Convert(__workflow_iSO2);
                 return new ApiConnectionAction<SuppressGoneAwayResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Postcode"] = ExpressionConverter.Convert(__workflow_postcode);
                 callPayload.Queries["ISO2"] = ExpressionConverter.Convert(__workflow_iSO2);
                 return new ApiConnectionAction<SuppressRelocatedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SuppressPhonePersonalResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SuppressPhoneCorporateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<AuthenticateEmailGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Phone"] = ExpressionConverter.Convert(__workflow_phone);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<AuthenticatePhoneGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["ValToRemove"] = ExpressionConverter.Convert(__workflow_valToRemove);
                 callPayload.Queries["LeaveOneAtStart"] = ExpressionConverter.Convert(__workflow_leaveOneAtStart);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1008,7 +1008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["characterType"] = ExpressionConverter.Convert(__workflow_characterType);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["RepeatingValue"] = ExpressionConverter.Convert(__workflow_repeatingValue);
                 callPayload.Queries["Replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(__workflow_stringToReplace);
                 callPayload.Queries["replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1076,7 +1076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(__workflow_stringToReplace);
                 callPayload.Queries["replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1104,7 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1118,7 +1118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1146,7 +1146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_maximumRepeat != null)
                     callPayload.Queries["maximumRepeat"] = ExpressionConverter.Convert(__workflow_maximumRepeat);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1211,7 +1211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["MaximumRepeat"] = ExpressionConverter.Convert(__workflow_maximumRepeat);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1243,7 +1243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 callPayload.Queries["charactersToRetain"] = ExpressionConverter.Convert(__workflow_charactersToRetain);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["extractLength"] = ExpressionConverter.Convert(__workflow_extractLength);
                 callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(__workflow_extractFrom);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1279,7 +1279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["extractLength"] = ExpressionConverter.Convert(__workflow_extractLength);
                 callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(__workflow_extractFrom);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkfor"] = ExpressionConverter.Convert(__workflow_checkfor);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1325,7 +1325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkfor"] = ExpressionConverter.Convert(__workflow_checkfor);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1341,7 +1341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkFor"] = ExpressionConverter.Convert(__workflow_checkFor);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1357,7 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkFor"] = ExpressionConverter.Convert(__workflow_checkFor);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1373,7 +1373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkFor"] = ExpressionConverter.Convert(__workflow_checkFor);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1389,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1405,7 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                 callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
                 callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
                 return new ApiConnectionAction<RestroomsByDateResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                 callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                     callPayload.Queries["unisex"] = ExpressionConverter.Convert(__workflow_unisex);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<RestroomsSearchResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                 if (__workflow_unisex != null)
                     callPayload.Queries["unisex"] = ExpressionConverter.Convert(__workflow_unisex);
                 return new ApiConnectionAction<RestroomsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

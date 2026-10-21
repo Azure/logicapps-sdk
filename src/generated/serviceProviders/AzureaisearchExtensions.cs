@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
 {
     using System;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -151,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -170,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
@@ -210,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<KnowledgeAgentRetrievalOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -223,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         public double[] Vector { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum VectorSearchInputSearchModeType
     {
         Any,
@@ -261,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         public string Content { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType
     {
         User,

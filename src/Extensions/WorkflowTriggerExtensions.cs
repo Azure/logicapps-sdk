@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Actions = actions,
                     Triggers = new Dictionary<string, FlowTemplateTrigger>
                     {
-                        { trigger.Name, trigger.GetTriggerDefinition() }
+                        { trigger.Name, trigger.GetTriggerDefinition(flowKind) }
                     },
                     Schema = "https://schema.management.azure.com/schemas/2016-06-01/workflowdefinition.json#",
                 },

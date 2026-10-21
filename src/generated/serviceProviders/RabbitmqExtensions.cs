@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 {
     using System;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendRabbitMQMessageOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateQueueOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
 
         public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName)
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
     }
 
@@ -190,14 +191,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public int ConsumerCount { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CreateQueueInputExchangeTypeType
     {
         Direct,
         Topic
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CompleteMessageInputAcknowledgementType
     {
         Complete,

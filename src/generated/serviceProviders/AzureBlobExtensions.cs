@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 {
     using System;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BlobExistsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReadBlobOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReadBlobFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<UploadBlobOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<UploadBlobFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListBlobsOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -223,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListBlobsFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -246,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListBlobDirectoriesOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -267,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListContainersOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -322,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobSASUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -375,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobSASUriFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -394,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -411,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobMetadataFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -428,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetContainerMetadataOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -457,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CopyBlobOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -482,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CopyBlobFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -499,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetAccessPoliciesOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -520,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -539,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -568,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveFromBlobPathOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -593,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveFromUriOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
@@ -628,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveFromContentOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -647,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenABlobIsAddedOrModifiedOutput>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
     }
 
@@ -855,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string ETag { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum UploadBlobInputOverrideIfExistsType
     {
         [EnumMember(Value = "true")]
@@ -900,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string ETag { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum UploadBlobFromUriInputOverrideIfExistsType
     {
         [EnumMember(Value = "true")]
@@ -1026,7 +1027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public JToken BlobUri { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetBlobSASUriInputPermissionsType
     {
         Read,
@@ -1044,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         ReadWriteListDelete
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetBlobSASUriInputSharedAccessProtocolType
     {
         Https,
@@ -1057,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public JToken BlobUri { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetBlobSASUriFromUriInputPermissionsType
     {
         Read,
@@ -1075,7 +1076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         ReadWriteListDelete
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetBlobSASUriFromUriInputSharedAccessProtocolType
     {
         Https,
@@ -1226,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string PolicyStartsOn { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum SetBlobTierInputBlobAccessTierType
     {
         Hot,
@@ -1234,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         Archive
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum SetBlobTierFromUriInputBlobAccessTierType
     {
         Hot,
@@ -1269,7 +1270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType
     {
         Fail,
@@ -1304,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType
     {
         Fail,
@@ -1339,7 +1340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType
     {
         Fail,

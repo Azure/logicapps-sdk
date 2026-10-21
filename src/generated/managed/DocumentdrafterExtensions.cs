@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 if (__workflow_copyFolders != null)
                     callPayload.Queries["CopyFolders"] = ExpressionConverter.Convert(__workflow_copyFolders);
                 return new ApiConnectionAction<GetCreateWorkspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(__workflow_createIfNotFound);
                 callPayload.Queries["ParentId"] = ExpressionConverter.Convert(__workflow_parentId);
                 return new ApiConnectionAction<GetCreateFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 if (__workflow_role != null)
                     callPayload.Queries["Role"] = ExpressionConverter.Convert(__workflow_role);
                 return new ApiConnectionAction<GetCreateGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(__workflow_createIfNotFound);
                 callPayload.Queries["FolderId"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionAction<GetCreateAccessFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["GroupName"] = ExpressionConverter.Convert(__workflow_groupName);
                 callPayload.Queries["sendInvite"] = ExpressionConverter.Convert(__workflow_sendInvite);
                 return new ApiConnectionAction<GetCreateUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 return new ApiConnectionAction<SaveStaticFileToFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["ExpireDays"] = ExpressionConverter.Convert(__workflow_expireDays);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(__workflow_workSpace);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<CreateQuestionnaireResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(__workflow_documentId);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 if (__workflow_selectedQuestions != null)
                     callPayload.Queries["SelectedQuestions"] = ExpressionConverter.Convert(__workflow_selectedQuestions);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["State"] = ExpressionConverter.Convert(__workflow_state);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(__workflow_workSpace);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                     callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(__workflow_documentId);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<GetTagsForQuestionnaireResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(__workflow_workSpace);
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 return new ApiConnectionAction<ProcessJsonResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(__workflow_flowKey);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(__workflow_createUser);
                 callPayload.Queries["OutputFormat"] = ExpressionConverter.Convert(__workflow_outputFormat);
                 return new ApiConnectionAction<GetDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 callPayload.Queries["Scope"] = ExpressionConverter.Convert(__workflow_scope);
                 return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(__workflow_flowKey);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
                 return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

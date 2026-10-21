@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopio
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListStacksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

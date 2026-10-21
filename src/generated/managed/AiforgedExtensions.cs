@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsUserViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<object>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<object>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(__workflow_includeChildren);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["includeverification"] = ExpressionConverter.Convert(__workflow_includeverification);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["includeverification"] = ExpressionConverter.Convert(__workflow_includeverification);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["paramid"] = ExpressionConverter.Convert(__workflow_paramid);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["verificationId"] = ExpressionConverter.Convert(__workflow_verificationId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocParamSummary[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["docid"] = ExpressionConverter.Convert(__workflow_docid);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentExtraction[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsProjectViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(__workflow_includeChildren);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["projectName"] = ExpressionConverter.Convert(__workflow_projectName);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["enginefilter"] = ExpressionConverter.Convert(__workflow_enginefilter);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDataTypeViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsEnumDataViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["verificationId"] = ExpressionConverter.Convert(__workflow_verificationId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["parameterId"] = ExpressionConverter.Convert(__workflow_parameterId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["pdId"] = ExpressionConverter.Convert(__workflow_pdId);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["inline"] = ExpressionConverter.Convert(__workflow_inline);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<object>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(__workflow_latestOnly);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(__workflow_latestOnly);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<object>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["imagesCount"] = ExpressionConverter.Convert(__workflow_imagesCount);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["docGuid"] = ExpressionConverter.Convert(__workflow_docGuid);
                 callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
                 return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

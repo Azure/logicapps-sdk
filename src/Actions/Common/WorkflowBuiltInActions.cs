@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     ExpressionConverter.Convert(workflowReferenceNameDescriptor),
                     requestBodyDescriptor != null ? ExpressionConverter.ConvertO(requestBodyDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new DeferredOutputAction<JToken>(() =>
             {
                 return new ComposeAction<JToken>(ExpressionConverter.Convert(descriptor));
-            });
+            }, WorkflowActionSettingsProfiles.SecureTrackedLinked);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 var jt = ExpressionConverter.ConvertO<T>(descriptor);
                 return new ComposeAction<T>(jt);
-            });
+            }, WorkflowActionSettingsProfiles.SecureTrackedLinked);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     requestBodyDescriptor != null ? ExpressionConverter.ConvertO(requestBodyDescriptor) : null,
                     queriesDescriptor != null ? ExpressionConverter.ConvertO(queriesDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     responseBodyDescriptor != null ? ExpressionConverter.ConvertO(responseBodyDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null,
                     schemaDescriptor != null ? ExpressionConverter.ConvertO(schemaDescriptor) : null);
-            });
+            }, WorkflowActionSettingsProfiles.SecureTrackedLinked);
         }
 
         public IAgentWorkflowAction Agent(AgentModelType agentModelType, string deploymentId, AgentModelSettings agentModelSettings, string connectionName, Expression<Func<AgentPromptMessage[]>> messages)

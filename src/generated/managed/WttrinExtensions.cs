@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
                 if (__workflow_lang != null)
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

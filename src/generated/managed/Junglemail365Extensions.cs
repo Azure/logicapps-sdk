@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(__workflow_requestJobId);
                 callPayload.Queries["request.emailType"] = ExpressionConverter.Convert(__workflow_requestEmailType);
                 return new ApiConnectionAction<JsEmailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 }
 
                 return new ApiConnectionAction<JsCreateJobResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(__workflow_requestJobId);
                 return new ApiConnectionAction<JsJob>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 if (__workflow_requestLimit != null)
                     callPayload.Queries["request.limit"] = ExpressionConverter.Convert(__workflow_requestLimit);
                 return new ApiConnectionAction<JsJobsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(__workflow_requestJobId);
                 return new ApiConnectionAction<JsJobReport>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(__workflow_requestJobId);
                 callPayload.Queries["request.dataType"] = ExpressionConverter.Convert(__workflow_requestDataType);
                 return new ApiConnectionAction<JsTrackerLogResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 if (__workflow_requestJobId != null)
                     callPayload.Queries["request.jobId"] = ExpressionConverter.Convert(__workflow_requestJobId);
                 return new ApiConnectionAction<JsUnsubscribesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 }
 
                 return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 }
 
                 return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                 }
 
                 return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

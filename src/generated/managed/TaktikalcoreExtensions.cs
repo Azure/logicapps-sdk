@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 if (__workflow_flowKey != null)
                     callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(__workflow_flowKey);
                 return new ApiConnectionAction<SigningProcessActivityLogWrapper[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 if (__workflow_flowKey != null)
                     callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(__workflow_flowKey);
                 return new ApiConnectionAction<SigningProcessActivityLogWrapper[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 if (__workflow_flowKey != null)
                     callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(__workflow_flowKey);
                 return new ApiConnectionAction<SigningProcessActivityLogWrapper[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<SealingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 if (__workflow_user != null)
                     callPayload.Queries["User"] = ExpressionConverter.Convert(__workflow_user);
                 return new ApiConnectionAction<SigningProcess>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<SigningProcess>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 callPayload.Queries["SequenceKey"] = ExpressionConverter.Convert(__workflow_sequenceKey);
                 callPayload.Queries["User"] = ExpressionConverter.Convert(__workflow_user);
                 return new ApiConnectionAction<SequentialSigning>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<SequentialSigning>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<StartAuthResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<PollCustomer>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<StartAuthResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 if (__workflow_userAgent != null)
                     callPayload.Queries["UserAgent"] = ExpressionConverter.Convert(__workflow_userAgent);
                 return new ApiConnectionAction<SigningProcess>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taktikalcore")]
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
                 }
 
                 return new ApiConnectionAction<Signee>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

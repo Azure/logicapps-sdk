@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
                 if (__workflow_orderby != null)
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

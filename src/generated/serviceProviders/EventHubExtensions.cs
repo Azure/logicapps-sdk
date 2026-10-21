@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 {
     using System;
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs | WorkflowTriggerSettingProfile.Concurrency);
         }
 
         public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs | WorkflowTriggerSettingProfile.Concurrency);
         }
     }
 

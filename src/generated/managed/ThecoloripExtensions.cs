@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
                     callPayload.Queries["cmyk"] = ExpressionConverter.Convert(__workflow_cmyk);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ColorGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
                 if (__workflow_count != null)
                     callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<SchemeGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -2,6 +2,8 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
+using Newtonsoft.Json.Linq;
+
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
@@ -16,14 +18,33 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// and its <see cref="IWorkflowAction.RunAfterConfig"/> is updated to reference this action.
     /// </para>
     /// <para>
-    /// Subclasses must implement <see cref="GetActionDefinition"/> to produce the
+    /// Subclasses must implement <see cref="BuildActionDefinition"/> to produce the
     /// <see cref="FlowTemplateAction"/> that represents this action in the serialized workflow definition.
+    /// The public <see cref="GetActionDefinition"/> method then applies common action configuration.
     /// </para>
     /// </remarks>
     /// <seealso cref="IWorkflowAction"/>
     /// <seealso cref="WorkflowTriggerBase"/>
     public abstract class WorkflowActionBase : IWorkflowAction
     {
+        /// <summary>
+        /// Initializes a workflow action without optional settings.
+        /// </summary>
+        protected WorkflowActionBase()
+            : this(WorkflowActionSettingProfile.None)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new workflow action.
+        /// </summary>
+        /// <param name="settingsProfile">The settings supported by the action.</param>
+        internal WorkflowActionBase(
+            WorkflowActionSettingProfile settingsProfile = WorkflowActionSettingProfile.None)
+        {
+            this.Configuration = new WorkflowActionConfiguration(settingsProfile);
+        }
+
         /// <summary>
         /// Gets or sets the name of the action.
         /// </summary>
@@ -34,12 +55,65 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
+        /// <inheritdoc/>
+        public WorkflowActionConfiguration Configuration { get; }
+
         /// <summary>
         /// Gets the action definition as a FlowTemplateAction.
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public abstract FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null);
+        public FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        {
+            var definition = this.BuildActionDefinition(flowName, flowKind)
+                ?? throw new InvalidOperationException($"Action '{this.Name}' returned a null definition.");
+
+            if (this.Configuration.RetryPolicy != null)
+            {
+                WorkflowOperationConfiguration.ValidateRetryPolicy(this.Configuration.RetryPolicy, flowKind);
+                WorkflowOperationConfiguration.AddRetryPolicy(definition, this.Configuration.RetryPolicy);
+            }
+
+            if (this.Configuration.MutableTrackedProperties.Count > 0)
+            {
+                definition.TrackedProperties = new JObject(
+                    this.Configuration.MutableTrackedProperties.Select(
+                        pair => new JProperty(pair.Key, pair.Value?.DeepClone())));
+            }
+
+            var secureProperties = WorkflowOperationConfiguration.SecureProperties(this.Configuration.SecureInputs, this.Configuration.SecureOutputs);
+            if (secureProperties.Length > 0 || this.Configuration.MaximumParallelIterations.HasValue)
+            {
+                definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
+            }
+
+            if (secureProperties.Length > 0)
+            {
+                definition.RuntimeConfiguration.SecureData =
+                    new FlowSecureDataConfiguration { Properties = secureProperties };
+            }
+
+            if (this.Configuration.MaximumParallelIterations.HasValue)
+            {
+                if (flowKind == FlowKind.Stateless)
+                {
+                    throw new InvalidOperationException("For Each concurrency control is not supported for stateless workflows.");
+                }
+                definition.RuntimeConfiguration.Concurrency =
+                    new FlowConcurrencyConfiguration { Repetitions = this.Configuration.MaximumParallelIterations };
+            }
+
+            return definition;
+        }
+
+        /// <summary>
+        /// Builds the operation-specific action definition.
+        /// </summary>
+        /// <param name="flowName">The flow name.</param>
+        /// <param name="flowKind">The flow kind.</param>
+        protected abstract FlowTemplateAction BuildActionDefinition(
+            string flowName,
+            FlowKind? flowKind = null);
 
         /// <summary>
         /// Gets the run-after configuration mapping parent action names to required statuses.

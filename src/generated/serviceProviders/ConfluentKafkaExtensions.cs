@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 {
     using System;
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput);
-            });
+            }, WorkflowTriggerSettingProfile.SecureInputs | WorkflowTriggerSettingProfile.SecureOutputs);
         }
     }
 
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         public string HeaderValue { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ReceiveMessageInputAuthenticationModeType
     {
         Plain,
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         ScramSha512
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ReceiveMessageInputProtocolType
     {
         Ssl,

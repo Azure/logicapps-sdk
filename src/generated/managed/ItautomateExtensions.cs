@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itautomate
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_commandInput);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

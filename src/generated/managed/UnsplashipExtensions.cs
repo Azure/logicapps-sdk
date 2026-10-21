@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 if (__workflow_h != null)
                     callPayload.Queries["h"] = ExpressionConverter.Convert(__workflow_h);
                 return new ApiConnectionAction<Users>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 if (__workflow_orderBy != null)
                     callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<Photos[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 if (__workflow_orderBy != null)
                     callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<Photos[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<Collections[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 if (__workflow_orderBy != null)
                     callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<Photos[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<Photos[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Photo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
                 if (__workflow_contentFilter != null)
                     callPayload.Queries["content_filter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 return new ApiConnectionAction<Photo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

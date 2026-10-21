@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
                 if (__workflow_target != null)
                     callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
                 return new ApiConnectionAction<LiveRatesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
                 if (__workflow_baseAmount != null)
                     callPayload.Queries["base_amount"] = ExpressionConverter.Convert(__workflow_baseAmount);
                 return new ApiConnectionAction<ConvertResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

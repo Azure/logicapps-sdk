@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="apiConnectionActionInput">The API connection action input.</param>
         internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+            : base(WorkflowActionSettingsProfiles.RetrySecureTracked)
         {
             this.apiConnectionActionInput = apiConnectionActionInput;
         }
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

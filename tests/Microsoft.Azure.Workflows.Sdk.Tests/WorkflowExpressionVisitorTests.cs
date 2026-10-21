@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             public T Output => default;
 
-            public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null) =>
+            protected override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null) =>
                 throw new NotSupportedException();
         }
     }

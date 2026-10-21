@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Profile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 callPayload.Queries["team"] = ExpressionConverter.Convert(__workflow_team);
                 return new ApiConnectionAction<VstsListTeamSettingsIteration>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 }
 
                 return new ApiConnectionAction<BuildResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<VstsListGitRepository>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<VstsListProject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<VstsListReleaseDefinition>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 }
 
                 return new ApiConnectionAction<Release>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 callPayload.Queries["typeName"] = ExpressionConverter.Convert(__workflow_typeName);
                 return new ApiConnectionAction<DynamicWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 }
 
                 return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_workItemType != null)
                     callPayload.Queries["workItemType"] = ExpressionConverter.Convert(__workflow_workItemType);
                 return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 }
 
                 return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_workItemType != null)
                     callPayload.Queries["workItemType"] = ExpressionConverter.Convert(__workflow_workItemType);
                 return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<Pipeline>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<Run>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_throwIfQueryChanged != null)
                     callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(__workflow_throwIfQueryChanged);
                 return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_definitions != null)
                     callPayload.Queries["definitions"] = ExpressionConverter.Convert(__workflow_definitions);
                 return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null, FlowRecurrence recurrence = null)
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_refName != null)
                     callPayload.Queries["refName"] = ExpressionConverter.Convert(__workflow_refName);
                 return new ApiConnectionTrigger<VstsListGitPush>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, FlowRecurrence recurrence = null)
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_targetRefName != null)
                     callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(__workflow_targetRefName);
                 return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, FlowRecurrence recurrence = null)
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_targetRefName != null)
                     callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(__workflow_targetRefName);
                 return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> author = null, FlowRecurrence recurrence = null)
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_author != null)
                     callPayload.Queries["author"] = ExpressionConverter.Convert(__workflow_author);
                 return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
                 return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
                 return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
                 return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 if (__workflow_wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(__workflow_wiqlSystemCreatedBy);
                 return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

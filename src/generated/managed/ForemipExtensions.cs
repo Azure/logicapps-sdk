@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
                 if (__workflow_collectionId != null)
                     callPayload.Queries["collection_id"] = ExpressionConverter.Convert(__workflow_collectionId);
                 return new ApiConnectionAction<Articles200Item[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<User>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

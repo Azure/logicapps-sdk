@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedUnplannedContactReport>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedProspectOpportunity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<PrsmgProspectOpportunitySearchResultCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PrsmgProspectOpportunity>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 if (__workflow_status != null)
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<PrsmgPlanOpportunityCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedMajorGivingPlan>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PrsmgMajorGivingPlan>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<PrsmgProspectSearchResultCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 if (__workflow_includeInactivePlans != null)
                     callPayload.Queries["include_inactive_plans"] = ExpressionConverter.Convert(__workflow_includeInactivePlans);
                 return new ApiConnectionAction<PrsmgProspectPlanCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PrsmgProspectSummary>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedProspectConstituency>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1034,7 +1034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedMajorGivingPlanStep>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1248,7 +1248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1315,7 +1315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedStewardshipPlan>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1328,7 +1328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1566,7 +1566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction<PrsmgCreatedStewardshipPlanStep>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1579,7 +1579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
@@ -1813,7 +1813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

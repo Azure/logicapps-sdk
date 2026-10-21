@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesResponseBase>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesResponseBase>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesResponseBase>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesResponseBase>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesResponseBase>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesResponseBase>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesSaveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesSaveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -1463,7 +1463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesSaveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -1812,7 +1812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesSaveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -2315,7 +2315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesSaveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -2372,7 +2372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesBooleanResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -2679,7 +2679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesSaveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -3232,7 +3232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -3792,7 +3792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -4121,7 +4121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -4541,7 +4541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -5115,7 +5115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -5486,7 +5486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
@@ -5540,7 +5540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 }
 
                 return new ApiConnectionAction<EWayWcfServiceResponsesDataResponse1SystemGuid>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

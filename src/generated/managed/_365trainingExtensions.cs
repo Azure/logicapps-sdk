@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<MyCoursesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<CourseDetail>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(__workflow_ideaID);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_id != null)
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<InstructorDetail>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
 {
     using System;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            });
+            }, WorkflowActionSettingProfile.RetryPolicy | WorkflowActionSettingProfile.TrackedProperties | WorkflowActionSettingProfile.SecureInputs | WorkflowActionSettingProfile.SecureOutputs);
         }
     }
 }

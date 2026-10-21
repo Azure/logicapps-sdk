@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
                 if (__workflow_lang != null)
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<SearchGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
                 if (__workflow_lon != null)
                     callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
                 return new ApiConnectionAction<PIPGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

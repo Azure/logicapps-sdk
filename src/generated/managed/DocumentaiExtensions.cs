@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 }
 
                 return new ApiConnectionAction<DocumentPolicyResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 }
 
                 return new ApiConnectionAction<DocumentQuestionAnswersResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractFieldsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 }
 
                 return new ApiConnectionAction<ExtractFieldsAdvancedResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractTablesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractBarcodesAiResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_preprocessing != null)
                     callPayload.Headers["preprocessing"] = ExpressionConverter.Convert(__workflow_preprocessing);
                 return new ApiConnectionAction<ExtractFieldsAndTablesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<DocumentClassificationResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 }
 
                 return new ApiConnectionAction<DocumentAdvancedClassificationResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<SummarizeDocumentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 }
 
                 return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_recognitionMode != null)
                     callPayload.Headers["recognitionMode"] = ExpressionConverter.Convert(__workflow_recognitionMode);
                 return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
                 if (__workflow_asyncJobID != null)
                     callPayload.Queries["AsyncJobID"] = ExpressionConverter.Convert(__workflow_asyncJobID);
                 return new ApiConnectionAction<ExtractDocumentJobStatusResult>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
                 return new ApiConnectionAction<TeamResponseV2[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Queries["itemsPerPage"] = ExpressionConverter.Convert(__workflow_itemsPerPage);
                 callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
                 return new ApiConnectionAction<RouteDefinitionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, FlowRecurrence recurrence = null)
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant, FlowRecurrence recurrence = null)
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, FlowRecurrence recurrence = null)
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, FlowRecurrence recurrence = null)
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, FlowRecurrence recurrence = null)
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

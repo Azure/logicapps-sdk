@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
                 callPayload.Headers["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 callPayload.Headers["long"] = ExpressionConverter.Convert(__workflow_long);
                 return new ApiConnectionAction<ReverseGeocodingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["placename"] = ExpressionConverter.Convert(__workflow_placename);
                 return new ApiConnectionAction<ForwardGeocodingResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

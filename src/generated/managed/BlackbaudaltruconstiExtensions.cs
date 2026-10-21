@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAddress>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAlternateLookupID>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAppealResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAppeal>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentAppealCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentNote>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<ConmgConstituentSearchResultCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_includeFormer != null)
                     callPayload.Queries["include_former"] = ExpressionConverter.Convert(__workflow_includeFormer);
                 return new ApiConnectionAction<ConmgAddressCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgAlternateLookupIDCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1075,7 +1075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgAttributeCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentPrimaryContactInfo>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1101,7 +1101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgEducationCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgEmailAddressCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1127,7 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgPhoneCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentProfilePicture>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1156,7 +1156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_includeInactive != null)
                     callPayload.Queries["include_inactive"] = ExpressionConverter.Convert(__workflow_includeInactive);
                 return new ApiConnectionAction<ConmgEmploymentHistoryCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_dateRange != null)
                     callPayload.Queries["date_range"] = ExpressionConverter.Convert(__workflow_dateRange);
                 return new ApiConnectionAction<ConmgSolicitCodeCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgTributeCollection>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentSummaryProfile>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1422,7 +1422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentEducation>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1435,7 +1435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1662,7 +1662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1750,7 +1750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentEmailAddress>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1763,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1853,7 +1853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1889,7 +1889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedFundraiserConstituency>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1902,7 +1902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -1936,7 +1936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2176,7 +2176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedIndividualConstituent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2337,7 +2337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2350,7 +2350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgIndividualConstituent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2535,7 +2535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentInteraction>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2548,7 +2548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2747,7 +2747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2760,7 +2760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentInteraction>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -2808,7 +2808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgMergedConstituent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3012,7 +3012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedOrganizationConstituent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3095,7 +3095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3108,7 +3108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgOrganizationConstituent>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3312,7 +3312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentPhone>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3325,7 +3325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3531,7 +3531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3626,7 +3626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentEmploymentHistory>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3639,7 +3639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3729,7 +3729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3775,7 +3775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentSolicitCode>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3788,7 +3788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
@@ -3836,7 +3836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
                 if (__workflow_expirationDate != null)
                     callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
                 return new ApiConnectionAction<InvestigateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["joiningSiteId"] = ExpressionConverter.Convert(__workflow_joiningSiteId);
                 return new ApiConnectionAction<ApproveHubSiteJoinResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_approvalCorrelationId != null)
                     callPayload.Queries["approvalCorrelationId"] = ExpressionConverter.Convert(__workflow_approvalCorrelationId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<SharingLinkPermission>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["overwrite"] = ExpressionConverter.Convert(__workflow_overwrite);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_approvalCorrelationId != null)
                     callPayload.Queries["approvalCorrelationId"] = ExpressionConverter.Convert(__workflow_approvalCorrelationId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_approvalCorrelationId != null)
                     callPayload.Queries["approvalCorrelationId"] = ExpressionConverter.Convert(__workflow_approvalCorrelationId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<SPListExpandedUser>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<ItemsList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<ItemsList>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["approvalType"] = ExpressionConverter.Convert(__workflow_approvalType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_approvalSchema);
                 return new ApiConnectionAction<ApprovalData>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<Item>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 }
 
                 return new ApiConnectionAction<Item>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_entityTag != null)
                     callPayload.Queries["entityTag"] = ExpressionConverter.Convert(__workflow_entityTag);
                 return new ApiConnectionAction<SetApprovalStatusOutput>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -996,7 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPListItemAttachment[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1015,7 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["displayName"] = ExpressionConverter.Convert(__workflow_displayName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SPListItemAttachment>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1031,7 +1031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Table[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1112,7 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["overwrite"] = ExpressionConverter.Convert(__workflow_overwrite);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -1156,7 +1156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, FlowRecurrence recurrence = null)
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_folderPath != null)
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<DeletedItemList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<DeletedItemList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
@@ -1204,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
@@ -1274,7 +1274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<string> OnNewFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
@@ -1313,7 +1313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(__workflow_inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

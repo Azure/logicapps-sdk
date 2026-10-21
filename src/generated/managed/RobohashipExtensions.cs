@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
                 if (__workflow_gravatar != null)
                     callPayload.Queries["gravatar"] = ExpressionConverter.Convert(__workflow_gravatar);
                 return new ApiConnectionAction<ImageGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

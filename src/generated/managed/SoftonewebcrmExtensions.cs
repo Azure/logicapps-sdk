@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1024,7 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1147,7 +1147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1236,7 +1236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1296,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1447,7 +1447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1613,7 +1613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1679,7 +1679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1956,7 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1969,7 +1969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -1982,7 +1982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2267,7 +2267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<SalesPipelineApiFeaturesLeadLeadDto>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2345,7 +2345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2511,7 +2511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2524,7 +2524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2537,7 +2537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2719,7 +2719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2732,7 +2732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IdentityApiBackOfficeUsersGetUserGetUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2745,7 +2745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IdentityApiTeamsDtosGetTeamResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2758,7 +2758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -2771,7 +2771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3073,7 +3073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3136,7 +3136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3496,7 +3496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3509,7 +3509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CustomerApiFeaturesContactsContact>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3522,7 +3522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3888,7 +3888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -3948,7 +3948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
@@ -4348,7 +4348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -4374,7 +4374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger OpportunityUpdated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4397,7 +4397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger OpportunityDeleted(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4420,7 +4420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger OpportunityCreated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4443,7 +4443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger LeadUpdated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4466,7 +4466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger LeadDeleted(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4489,7 +4489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger LeadCreated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4512,7 +4512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger TaskUpdated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4535,7 +4535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger TaskDeleted(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4558,7 +4558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger TaskCreated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4581,7 +4581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger EventUpdated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4604,7 +4604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger EventDeleted(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4627,7 +4627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger EventCreated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4650,7 +4650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CallDeleted(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4673,7 +4673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger CallUpdated(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
@@ -4696,7 +4696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

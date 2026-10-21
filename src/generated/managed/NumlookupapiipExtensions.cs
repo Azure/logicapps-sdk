@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
                 if (__workflow_countryCode != null)
                     callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<NumberGetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]

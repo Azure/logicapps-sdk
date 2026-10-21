@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
                 if (__workflow_maxJourneys != null)
                     callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
                 return new ApiConnectionAction<GetArrivalsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
                 if (__workflow_maxJourneys != null)
                     callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
                 return new ApiConnectionAction<GetDeparturesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]

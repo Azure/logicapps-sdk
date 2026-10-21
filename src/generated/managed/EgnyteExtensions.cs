@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CreateGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<GroupInfoByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ListGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<UserInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<UserListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<UpdateUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CreateFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeleteFileByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeleteFolderByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeleteFolderByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeleteFileByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CopyFileByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CopyFolderByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<FullGroupUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<PartialGroupUpdateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CopyFileByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CopyFolderByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<MoveFileByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<MoveFolderByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<MoveFileByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<MoveFolderByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ShareFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ShareFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -861,7 +861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<FileInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -955,7 +955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ModifyFolderOptionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -977,7 +977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<FileInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<LockFileByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1046,7 +1046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1068,7 +1068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<LockFileByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1137,7 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1155,7 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 callPayload.Queries["Path"] = ExpressionConverter.Convert(__workflow_path);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1190,7 +1190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1221,7 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1302,7 +1302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<NamespaceItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<UpdateNamespaceKeysResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1384,7 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<NamespaceItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<MarkFolderAsProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1590,7 +1590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CreateProjectFromTemplateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1612,7 +1612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ProjectItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1738,7 +1738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1760,7 +1760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ProjectItem>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1799,7 +1799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CleanupProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1855,7 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1887,7 +1887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1912,7 +1912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1937,7 +1937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1977,7 +1977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2002,7 +2002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<GetEffectivePermissionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2054,7 +2054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2076,7 +2076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<GetFolderPermissionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2101,7 +2101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeepLinksByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2123,7 +2123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeepLinksByPathResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2198,7 +2198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ListLinksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2220,7 +2220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<ShowLinkDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2339,7 +2339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<CreateLinkResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2361,7 +2361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2426,7 +2426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<AIQuestionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2467,7 +2467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<AISummaryResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2547,7 +2547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<AICopilotResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2691,7 +2691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<SearchV2Response>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 
@@ -2716,7 +2716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FileUnlocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2738,7 +2738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FileUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2760,7 +2760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FileCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2782,7 +2782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ShareLinkCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2804,7 +2804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger ShareLinkDeleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2826,7 +2826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FileOrFolderPermissionChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2848,7 +2848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FileOrFolderMetadataChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2870,7 +2870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FolderProjectAdded(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2892,7 +2892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FolderProjectUnmarked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2914,7 +2914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger FolderProjectUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2936,7 +2936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WorkflowCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2958,7 +2958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WorkflowCompleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -2980,7 +2980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3002,7 +3002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3024,7 +3024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IWorkflowTrigger GroupCreated(FlowRecurrence recurrence = null)
@@ -3088,7 +3088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3101,7 +3101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3114,7 +3114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3127,7 +3127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3140,7 +3140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3153,7 +3153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3166,7 +3166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3179,7 +3179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3192,7 +3192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
 
         public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -3205,7 +3205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
-            });
+            }, WorkflowTriggerSettingsProfiles.ManagedConnector);
         }
     }
 

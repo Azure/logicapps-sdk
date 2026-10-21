@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                 if (__workflow_rootfolderid != null)
                     callPayload.Queries["rootfolderid"] = ExpressionConverter.Convert(__workflow_rootfolderid);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
@@ -1489,7 +1489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                 }
 
                 return new ApiConnectionAction<Site>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
@@ -2908,7 +2908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

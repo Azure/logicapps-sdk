@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<DivisionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<EmploymentInternalRatesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<HourCostTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<HourEntryActivitiesByProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<HourEntryRecentAccountsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<HourEntryRecentAccountsByProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<HourEntryRecentHourTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<HourEntryRecentHourTypesByProjectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<HourEntryRecentProjectsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["checkDate"] = ExpressionConverter.Convert(__workflow_checkDate);
                 return new ApiConnectionAction<HoursByDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["entryId"] = ExpressionConverter.Convert(__workflow_entryId);
                 return new ApiConnectionAction<HoursByIdResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<HourTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["checkDate"] = ExpressionConverter.Convert(__workflow_checkDate);
                 return new ApiConnectionAction<HourTypesByDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<HourTypesByProjectAndDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 }
 
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 }
 
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
                 return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["numberOfWeeks"] = ExpressionConverter.Convert(__workflow_numberOfWeeks);
                 return new ApiConnectionAction<RecentCostsByNumberOfWeeksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<RecentHoursResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["numberOfWeeks"] = ExpressionConverter.Convert(__workflow_numberOfWeeks);
                 return new ApiConnectionAction<RecentHoursByNumberOfWeeksResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingAccountDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["accountId"] = ExpressionConverter.Convert(__workflow_accountId);
                 return new ApiConnectionAction<TimeAndBillingAccountDetailsByIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingActivitiesAndExpensesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingEntryAccountsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["checkDate"] = ExpressionConverter.Convert(__workflow_checkDate);
                 return new ApiConnectionAction<TimeAndBillingEntryAccountsByDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<TimeAndBillingEntryAccountsByProjectAndDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingEntryProjectsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["accountId"] = ExpressionConverter.Convert(__workflow_accountId);
                 return new ApiConnectionAction<TimeAndBillingEntryProjectsByAccountAndDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["checkDate"] = ExpressionConverter.Convert(__workflow_checkDate);
                 return new ApiConnectionAction<TimeAndBillingEntryProjectsByDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingEntryRecentAccountsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingEntryRecentHourCostTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingEntryRecentProjectsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingItemDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["itemId"] = ExpressionConverter.Convert(__workflow_itemId);
                 return new ApiConnectionAction<TimeAndBillingItemDetailsByIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingProjectDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<TimeAndBillingProjectDetailsByIDResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeAndBillingRecentProjectsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1202,7 +1202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1301,7 +1301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 }
 
                 return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 }
 
                 return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
                 return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1438,7 +1438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1763,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 }
 
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -2086,7 +2086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 }
 
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -2101,7 +2101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
                 return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -2126,7 +2126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ProjectTimeCostTransactionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -2150,7 +2150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<MeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

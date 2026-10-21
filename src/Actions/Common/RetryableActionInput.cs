@@ -9,7 +9,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The retry-able action input.
     /// </summary>
-    /// <remarks>This was for swagger-based actions in Classic Designer. This is now obsolete and replaced with manifest-based actions. Retry-able input is not supported by New Designer.</remarks>
+    /// <remarks>
+    /// This input shape is retained for workflow-definition compatibility. Configure retries through
+    /// <see cref="WorkflowSettingsExtensions.WithRetryPolicy{TOperation}(TOperation, RetryPolicy)"/>.
+    /// </remarks>
     public class RetryableActionInput
     {
         /// <summary>

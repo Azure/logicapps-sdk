@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
                 if (__workflow_country != null)
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<GetNewReleasesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

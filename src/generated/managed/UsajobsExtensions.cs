@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_resultsPerPage != null)
                     callPayload.Queries["ResultsPerPage"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 return new ApiConnectionAction<SearchJobsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAcademicHonorsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAcademicLevelsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListActionCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAgencySubelementsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAnnouncementClosingTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListApplicantSuppliersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListApplicationStatusesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCountriesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCountrySubdivisionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCyberWorkGroupingsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCyberWorkRolesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDegreeTypeCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDisabilitiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDocumentationsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDocumentFormatsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListEthnicitiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListFederalEmploymentStatusesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListGeolocCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListGsaGeolocCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListHiringPathsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListKeyStandardRequirementsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLanguageCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLanguageProficienciesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLocationExpansionsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListMilitaryStatusCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListMissionCriticalCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListOccupationalSeriesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPayPlansResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionOfferingTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionOpeningStatusesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionScheduleTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPostalCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRaceCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRefereeTypeCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRemunerationRateIntervalCodesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRequiredStandardDocumentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListSecurityClearancesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListServiceTypesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListSpecialHiringsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListTravelPercentagesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListWhoMayApplyResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetChromeBrowserVersionFromFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetChromeDriverFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserDownloadSuitableChromeDriverFromInternetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserIsSuitableChromeDriverAvailableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserOpenChromeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetChromiumEdgeDriverFolderResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetChromiumEdgeBrowserVersionFromFileResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserDownloadSuitableChromiumEdgeDriverFromInternetResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserIsSuitableChromiumEdgeDriverAvailableResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserOpenChromiumEdgeResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1153,7 +1153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1357,7 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserNavigateToURLResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1661,7 +1661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserDoesElementExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -1896,7 +1896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserCreateHandleToElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -2131,7 +2131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserCreateHandleToParentElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -2400,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -2832,7 +2832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetMultipleElementPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -3101,7 +3101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetElementParentPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -3550,7 +3550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetElementChildrenPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -3826,7 +3826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserInputTextIntoElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -3851,7 +3851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -4089,7 +4089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -4324,7 +4324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -4559,7 +4559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -4811,7 +4811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -4836,7 +4836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -5071,7 +5071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetSelectionPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -5337,7 +5337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -5603,7 +5603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -5838,7 +5838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -6109,7 +6109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetTableContentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -6344,7 +6344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -6369,7 +6369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserExecuteJavaScriptResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -6604,7 +6604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetElementBoundingRectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -6873,7 +6873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -6909,7 +6909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetBrowserParentWindowDetailsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -7144,7 +7144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetElementScreenBoundingRectResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -7379,7 +7379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -7614,7 +7614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -7866,7 +7866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -8118,7 +8118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -8353,7 +8353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -8591,7 +8591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserExecuteJavaScriptOnElementResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -8857,7 +8857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9123,7 +9123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9169,7 +9169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserOpenNewTabResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9191,7 +9191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetTabsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9227,7 +9227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9249,7 +9249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9274,7 +9274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9296,7 +9296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetPageTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9531,7 +9531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9553,7 +9553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetCurrentFrameWindowPixelCoordinateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9575,7 +9575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9597,7 +9597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9619,7 +9619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -9854,7 +9854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserClearElementTextResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10089,7 +10089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10361,7 +10361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10596,7 +10596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10618,7 +10618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10654,7 +10654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10690,7 +10690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -10925,7 +10925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -11207,7 +11207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserWaitForElementToExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -11479,7 +11479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserWaitForElementToNotExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -11552,7 +11552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetWebElementAtScreenCoordinatesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -11625,7 +11625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetWebElementAtBrowserDocumentWindowCoordinatesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -11769,7 +11769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<BrowserGetWebElementPropertiesAsListResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectwebbrowser")]
@@ -11791,7 +11791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectwebbrowser
                 }
 
                 return new ApiConnectionAction<IsBrowserInstanceOpenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

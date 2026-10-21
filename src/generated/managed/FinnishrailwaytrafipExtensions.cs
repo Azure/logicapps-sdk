@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
                 if (__workflow_departureDate != null)
                     callPayload.Queries["departure_date"] = ExpressionConverter.Convert(__workflow_departureDate);
                 return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
                 if (__workflow_departingTrains != null)
                     callPayload.Queries["departing_trains"] = ExpressionConverter.Convert(__workflow_departingTrains);
                 return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

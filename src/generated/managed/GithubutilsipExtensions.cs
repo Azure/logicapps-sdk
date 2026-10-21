@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<string>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<License[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<LicenseAdvanced>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<CodeOfConduct[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<CodeOfConduct>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

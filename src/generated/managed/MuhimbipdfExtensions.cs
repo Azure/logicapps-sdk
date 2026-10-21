@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1495,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1559,7 +1559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1685,7 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1903,7 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -1976,7 +1976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponseCommon>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -2193,7 +2193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -2250,7 +2250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -2319,7 +2319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -2539,7 +2539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -2669,7 +2669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -2932,7 +2932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -3134,7 +3134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -3418,7 +3418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -3565,7 +3565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -3701,7 +3701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -3873,7 +3873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OcrOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -4072,7 +4072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -4294,7 +4294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -4511,7 +4511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -4731,7 +4731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -4808,7 +4808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -4873,7 +4873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<SplitOperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
@@ -5108,7 +5108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunActiveDirectoryPowerShellAutomationScriptResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseActiveDirectoryPowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsActiveDirectoryPowerShellRunspaceOpenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADUserByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetOUFromUserDNResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetDomainFQDNFromDNResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADGroupByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADGroupMemberByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1052,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADUserGroupMembershipResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1108,7 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1367,7 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryModifyADUserPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1402,7 +1402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryMoveADUserToOUByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryClearADUserAccountExpirationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryDirSyncResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1587,7 +1587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADUserByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1724,7 +1724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryResetADUserPasswordByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1759,7 +1759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1791,7 +1791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryDisableADUserByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1823,7 +1823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryEnableADUserByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1886,7 +1886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1921,7 +1921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryCloneADUserGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -1959,7 +1959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryCloneADUserPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2039,7 +2039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2140,7 +2140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2172,7 +2172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryCheckOUExistsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2218,7 +2218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2312,7 +2312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2344,7 +2344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryUnlockADAccountByIdentityResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2390,7 +2390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADServerResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2443,7 +2443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetDomainInfoResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2547,7 +2547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2579,7 +2579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryDoesADGroupExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2645,7 +2645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2750,7 +2750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddOUResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2816,7 +2816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveOUResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2857,7 +2857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -2906,7 +2906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADGroupMembersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3037,7 +3037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenExchangePowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3093,7 +3093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsExchangePowerShellRunspaceOpenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3310,7 +3310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunExchangePowerShellAutomationScriptResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3332,7 +3332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseExchangePowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3416,7 +3416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3483,7 +3483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDoesMailboxExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3511,7 +3511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeAddDistributionGroupMemberResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3556,7 +3556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeRemoveDistributionGroupMemberResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3633,7 +3633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetDistributionGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3658,7 +3658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetDistributionGroupMembersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3683,7 +3683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetMailboxDistributionGroupMembershipResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3842,7 +3842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeNewDistributionGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3901,7 +3901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeRemoveDistributionGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3949,7 +3949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeAddMailboxPermissionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -3980,7 +3980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeRemoveMailboxPermissionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4005,7 +4005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDisableMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4030,7 +4030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDisableRemoteMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4104,7 +4104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeEnableMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4181,7 +4181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeEnableRemoteMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4258,7 +4258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetRemoteMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4318,7 +4318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDoesRemoteMailboxExistResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4484,7 +4484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeNewMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4650,7 +4650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeNewRemoteMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4675,7 +4675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetADServerToViewEntireForestResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4847,7 +4847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4924,7 +4924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxEmailAddressesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -4949,7 +4949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetMailboxEmailAddressesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5026,7 +5026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetRemoteMailboxEmailAddressesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5051,7 +5051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetRemoteMailboxEmailAddressesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5331,7 +5331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeResetMailboxAttributesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5611,7 +5611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeResetRemoteMailboxAttributesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5783,7 +5783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetRemoteMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5811,7 +5811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5853,7 +5853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeAddADPermissionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5912,7 +5912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxAutoReplyConfigurationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -5934,7 +5934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsAzureADv2PowerShellModuleInstalledResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6003,7 +6003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenAzureADv2PowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6051,7 +6051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6090,7 +6090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsAzureADv2PowerShellRunspaceOpenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6307,7 +6307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunAzureADv2PowerShellAutomationScriptResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6329,7 +6329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseAzureADv2PowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6413,7 +6413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUsersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6651,7 +6651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AddAzureADUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6693,7 +6693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveAzureADUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6772,7 +6772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2ResetAzureADUserPasswordResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6804,7 +6804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserGroupMembershipResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6832,7 +6832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2IsUserInAzureADUserGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6877,7 +6877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AddUserToGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -6922,7 +6922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7012,7 +7012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AddADUserToMultipleADGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7102,7 +7102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7168,7 +7168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromAllGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7207,7 +7207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADLicenseSKUsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7284,7 +7284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2SetAzureADUserLicenseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7309,7 +7309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserLicensesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7337,7 +7337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserLicenseServicePlansResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7362,7 +7362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveAllAzureADUserLicenseResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7534,7 +7534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2SetAzureADUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7882,7 +7882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2ResetAzureADUserPropertiesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7914,7 +7914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2SetAzureADUserManagerResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -7963,7 +7963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2NewSecurityGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8005,7 +8005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveSecurityGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8078,7 +8078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2NewMicrosoft365GroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8162,7 +8162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8187,7 +8187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2EnableUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8229,7 +8229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2DisableUserResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8291,7 +8291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AssignUserToRoleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8408,7 +8408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AssignUserToMultipleRolesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8508,7 +8508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromMultipleRolesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8536,7 +8536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2IsUserInRoleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8595,7 +8595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserRoleAssignmentsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8640,7 +8640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromRoleResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8699,7 +8699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromAllRolesResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8738,7 +8738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADGroupMembersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8831,7 +8831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenO365PowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8927,7 +8927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenO365PowerShellRunspaceWithCertificateResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -8983,7 +8983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsO365PowerShellRunspaceOpenResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9207,7 +9207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunO365PowerShellAutomationScriptResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9229,7 +9229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseO365PowerShellRunspaceResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9313,7 +9313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetO365MailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9361,7 +9361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365AddMailboxPermissionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9392,7 +9392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveMailboxPermissionResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9437,7 +9437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365AddDistributionGroupMemberResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9514,7 +9514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetO365DistributionGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9646,7 +9646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365NewO365DistributionGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9705,7 +9705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveDistributionGroupResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9793,7 +9793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365SetO365MailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9831,7 +9831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365WaitForO365MailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9890,7 +9890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365SetO365MailboxAutoReplyConfigurationResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9952,7 +9952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveDistributionGroupMemberResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -9984,7 +9984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetMailboxDistributionGroupMembershipResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10016,7 +10016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetDistributionGroupMembersResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10144,7 +10144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveMailboxFromAllDistributionGroupsResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10286,7 +10286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365NewMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10377,7 +10377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365NewSharedMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10443,7 +10443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365EnableArchiveMailboxResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10468,7 +10468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365DoesMailboxHaveAnArchiveResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10686,7 +10686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<JMLGetNextAvailableAccountNameResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
@@ -10732,7 +10732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<JMLConnectToJMLEnvironmentResponse>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

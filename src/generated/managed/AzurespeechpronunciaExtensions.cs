@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
                     callPayload.Headers["ScenarioId"] = ExpressionConverter.Convert(__workflow_scenarioId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_audioContent);
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

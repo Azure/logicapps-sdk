@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetEmployeeResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 }
 
                 return new ApiConnectionAction(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetDepartmentResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetLocationResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetPositionResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetDivisionResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetEmploymentStatusResponseItem[]>(callPayload);
-            });
+            }, WorkflowActionSettingsProfiles.RetrySecureTracked);
         }
     }
 

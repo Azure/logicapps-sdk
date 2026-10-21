@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IWorkflowAction : IWorkflowOperation
     {
         /// <summary>
+        /// Gets the settings configured for this action.
+        /// </summary>
+        WorkflowActionConfiguration Configuration { get; }
+
+        /// <summary>
         /// Generates the <see cref="FlowTemplateAction"/> definition for this action, which is
         /// serialized into the workflow's JSON definition.
         /// </summary>
