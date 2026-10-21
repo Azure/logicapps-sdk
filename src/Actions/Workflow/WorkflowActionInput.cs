@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The flow action input.
     /// </summary>
-    internal class WorkflowActionInput : RetryableActionInput
+    internal class WorkflowActionInput
     {
         /// <summary>
         /// Gets or sets the workflow host.

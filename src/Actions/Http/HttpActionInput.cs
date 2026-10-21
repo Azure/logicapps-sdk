@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The http action input.
     /// </summary>
-    public class HttpActionInput : RetryableActionInput
+    public class HttpActionInput
     {
         /// <summary>
         /// Gets or sets the Uri for the request.
