@@ -6,6 +6,16 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    public sealed class RecurrenceTriggerConfiguration :
+        IWorkflowOperationConfiguration,
+        ITriggerConcurrencyConfigurationHolder,
+        IClientTrackingIdConfigurationHolder
+    {
+        public int? ConcurrentRuns { get; set; }
+        public int? MaximumWaitingRuns { get; set; }
+        public string ClientTrackingId { get; set; }
+    }
+
     /// <summary>
     /// Represents a workflow recurrence trigger.
     /// Encapsulates recurrence configuration such as frequency, interval, count, start time, and time zone.

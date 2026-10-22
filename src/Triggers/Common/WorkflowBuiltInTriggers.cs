@@ -70,38 +70,4 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
     }
 
-    #region Trigger Configurations
-
-    public sealed class HttpRequestTriggerConfiguration :
-        IWorkflowOperationConfiguration,
-        ISecureInputsConfigurationHolder,
-        ISecureOutputsConfigurationHolder,
-        ITriggerConcurrencyConfigurationHolder,
-        IClientTrackingIdConfigurationHolder,
-        IRequestSchemaValidationConfigurationHolder
-    {
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
-        public int? ConcurrentRuns { get; set; }
-        public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
-        public bool SchemaValidationEnabled { get; set; }
-    }
-
-    public sealed class RecurrenceTriggerConfiguration :
-        IWorkflowOperationConfiguration,
-        ITriggerConcurrencyConfigurationHolder,
-        IClientTrackingIdConfigurationHolder
-    {
-        public int? ConcurrentRuns { get; set; }
-        public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
-    }
-
-    public sealed class ConversationalFlowTriggerConfiguration :
-        IWorkflowOperationConfiguration
-    {
-    }
-
-    #endregion
 }

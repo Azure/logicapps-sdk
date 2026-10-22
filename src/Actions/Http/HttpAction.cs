@@ -4,6 +4,23 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class HttpActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
     /// <summary>
     /// The HTTP action to send HTTP requests to external services.
     /// </summary>

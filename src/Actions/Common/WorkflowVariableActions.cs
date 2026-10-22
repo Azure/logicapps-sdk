@@ -120,15 +120,4 @@ namespace Microsoft.Azure.Workflows.Sdk
             return "Object";
         }
     }
-
-    #region Action Configurations
-
-    public sealed class VariableActionConfiguration :
-        IWorkflowOperationConfiguration,
-        ITrackedPropertiesConfigurationHolder
-    {
-        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
-    }
-
-    #endregion
 }

@@ -4,6 +4,11 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    public sealed class ConversationalFlowTriggerConfiguration :
+        IWorkflowOperationConfiguration
+    {
+    }
+
     /// <summary>
     /// Represents a conversational flow trigger for agent-based workflows.
     /// </summary>

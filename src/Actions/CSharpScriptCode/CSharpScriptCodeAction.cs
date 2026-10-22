@@ -4,6 +4,23 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class CustomCodeActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>

@@ -5,7 +5,17 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
+
+    public sealed class ForEachActionConfiguration :
+        IWorkflowOperationConfiguration,
+        ITrackedPropertiesConfigurationHolder,
+        IIterationConcurrencyConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public int? MaximumParallelIterations { get; set; }
+    }
 
     /// <summary>
     /// The ForEach action iterates over a collection and executes actions for each item.
