@@ -4,18 +4,133 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json.Linq;
 
     internal static class WorkflowOperationConfiguration
     {
-        public static void AddRetryPolicy(FlowTemplateOperation definition, RetryPolicy retryPolicy)
+        internal static void ApplyActionConfiguration(
+            IWorkflowOperationConfiguration configuration,
+            FlowTemplateAction definition,
+            FlowKind? flowKind)
+        {
+            if (configuration is IRetryPolicyConfigurationHolder retry &&
+                retry.RetryPolicy != null)
+            {
+                ValidateRetryPolicy(retry.RetryPolicy, flowKind);
+                AddRetryPolicy(definition, retry.RetryPolicy);
+            }
+
+            if (configuration is ITrackedPropertiesConfigurationHolder tracked &&
+                tracked.TrackedProperties.Count > 0)
+            {
+                definition.TrackedProperties = new JObject(
+                    tracked.TrackedProperties.Select(
+                        pair => new JProperty(pair.Key, pair.Value?.DeepClone())));
+            }
+
+            var secureInputs = configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
+            var secureOutputs =
+                configuration is ISecureInputsAndOutputsConfigurationHolder
+                    ? secureInputs
+                    : configuration is ISecureOutputsConfigurationHolder outputs &&
+                        outputs.SecureOutputs;
+
+            var secureProperties = SecureProperties(secureInputs, secureOutputs);
+            var concurrency = configuration as IIterationConcurrencyConfigurationHolder;
+            if (secureProperties.Length > 0 || concurrency?.MaximumParallelIterations.HasValue == true)
+            {
+                definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
+            }
+
+            if (secureProperties.Length > 0)
+            {
+                definition.RuntimeConfiguration.SecureData =
+                    new FlowSecureDataConfiguration { Properties = secureProperties };
+            }
+
+            if (concurrency?.MaximumParallelIterations.HasValue == true)
+            {
+                if (flowKind == FlowKind.Stateless)
+                {
+                    throw new InvalidOperationException("For Each concurrency control is not supported for stateless workflows.");
+                }
+                definition.RuntimeConfiguration.Concurrency =
+                    new FlowConcurrencyConfiguration { Repetitions = concurrency.MaximumParallelIterations };
+            }
+        }
+
+        internal static void ApplyTriggerConfiguration(
+            IWorkflowOperationConfiguration configuration,
+            FlowTemplateTrigger definition,
+            FlowKind? flowKind)
+        {
+            if (configuration is IRetryPolicyConfigurationHolder retry &&
+                retry.RetryPolicy != null)
+            {
+                ValidateRetryPolicy(retry.RetryPolicy, flowKind);
+                AddRetryPolicy(definition, retry.RetryPolicy);
+            }
+
+            var secureInputs = configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
+            var secureOutputs = configuration is ISecureOutputsConfigurationHolder outputs && outputs.SecureOutputs;
+            var secureProperties = SecureProperties(secureInputs, secureOutputs);
+            var concurrency = configuration as ITriggerConcurrencyConfigurationHolder;
+            if (secureProperties.Length > 0 || concurrency?.ConcurrentRuns.HasValue == true)
+            {
+                definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
+            }
+
+            if (secureProperties.Length > 0)
+            {
+                definition.RuntimeConfiguration.SecureData =
+                    new FlowSecureDataConfiguration { Properties = secureProperties };
+            }
+
+            if (concurrency?.ConcurrentRuns.HasValue == true)
+            {
+                if (flowKind == FlowKind.Stateless)
+                {
+                    throw new InvalidOperationException("Trigger concurrency control is not supported for stateless workflows.");
+                }
+                definition.RuntimeConfiguration.Concurrency = new FlowConcurrencyConfiguration
+                {
+                    Runs = concurrency.ConcurrentRuns,
+                    MaximumWaitingRuns = concurrency.MaximumWaitingRuns,
+                };
+            }
+
+            if (configuration is IClientTrackingIdConfigurationHolder correlation &&
+                correlation.ClientTrackingId != null)
+            {
+                definition.Correlation =
+                    new FlowTemplateCorrelation { ClientTrackingId = correlation.ClientTrackingId };
+            }
+
+            if (configuration is IRequestSchemaValidationConfigurationHolder schemaValidation &&
+                schemaValidation.SchemaValidationEnabled)
+            {
+                var inputObject = ToObject(definition.Inputs);
+                if (inputObject["schema"] == null || inputObject["schema"].Type == JTokenType.Null)
+                {
+                    throw new InvalidOperationException("Schema validation requires a request body JSON schema.");
+                }
+                definition.OperationOptions =
+                    (definition.OperationOptions ?? OperationOptions.None) |
+                    OperationOptions.EnableSchemaValidation;
+            }
+        }
+
+        private static void AddRetryPolicy(FlowTemplateOperation definition, RetryPolicy retryPolicy)
         {
             var inputs = ToObject(definition.Inputs);
             inputs["retryPolicy"] = retryPolicy.ToJToken();
             definition.Inputs = inputs;
         }
 
-        public static JObject ToObject(object inputs)
+        private static JObject ToObject(object inputs)
         {
             if (inputs is JObject jObject)
             {
@@ -31,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 ?? throw new InvalidOperationException("The operation inputs must be a JSON object to configure this setting.");
         }
 
-        public static string[] SecureProperties(bool secureInputs, bool secureOutputs)
+        private static string[] SecureProperties(bool secureInputs, bool secureOutputs)
         {
             var properties = new List<string>(2);
             if (secureInputs) properties.Add("inputs");
@@ -39,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return properties.ToArray();
         }
 
-        public static void ValidateRetryPolicy(RetryPolicy retryPolicy, FlowKind? flowKind)
+        private static void ValidateRetryPolicy(RetryPolicy retryPolicy, FlowKind? flowKind)
         {
             if (retryPolicy.Type == null || retryPolicy.Type == RetryType.NotSpecified)
             {

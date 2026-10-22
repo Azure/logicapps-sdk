@@ -2,8 +2,6 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
-using Newtonsoft.Json.Linq;
-
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
@@ -56,60 +54,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             var definition = this.BuildTriggerDefinition(flowKind)
                 ?? throw new InvalidOperationException($"Trigger '{this.Name}' returned a null definition.");
 
-            if (this.Configuration is IRetryPolicyConfigurationHolder retry &&
-                retry.RetryPolicy != null)
-            {
-                WorkflowOperationConfiguration.ValidateRetryPolicy(retry.RetryPolicy, flowKind);
-                WorkflowOperationConfiguration.AddRetryPolicy(definition, retry.RetryPolicy);
-            }
-
-            var secureInputs = this.Configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
-            var secureOutputs = this.Configuration is ISecureOutputsConfigurationHolder outputs && outputs.SecureOutputs;
-            var secureProperties = WorkflowOperationConfiguration.SecureProperties(secureInputs, secureOutputs);
-            var concurrency = this.Configuration as ITriggerConcurrencyConfigurationHolder;
-            if (secureProperties.Length > 0 || concurrency?.ConcurrentRuns.HasValue == true)
-            {
-                definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
-            }
-
-            if (secureProperties.Length > 0)
-            {
-                definition.RuntimeConfiguration.SecureData =
-                    new FlowSecureDataConfiguration { Properties = secureProperties };
-            }
-
-            if (concurrency?.ConcurrentRuns.HasValue == true)
-            {
-                if (flowKind == FlowKind.Stateless)
-                {
-                    throw new InvalidOperationException("Trigger concurrency control is not supported for stateless workflows.");
-                }
-                definition.RuntimeConfiguration.Concurrency = new FlowConcurrencyConfiguration
-                {
-                    Runs = concurrency.ConcurrentRuns,
-                    MaximumWaitingRuns = concurrency.MaximumWaitingRuns,
-                };
-            }
-
-            if (this.Configuration is IClientTrackingIdConfigurationHolder correlation &&
-                correlation.ClientTrackingId != null)
-            {
-                definition.Correlation =
-                    new FlowTemplateCorrelation { ClientTrackingId = correlation.ClientTrackingId };
-            }
-
-            if (this.Configuration is IRequestSchemaValidationConfigurationHolder schemaValidation &&
-                schemaValidation.SchemaValidationEnabled)
-            {
-                var inputObject = WorkflowOperationConfiguration.ToObject(definition.Inputs);
-                if (inputObject["schema"] == null || inputObject["schema"].Type == JTokenType.Null)
-                {
-                    throw new InvalidOperationException("Schema validation requires a request body JSON schema.");
-                }
-                definition.OperationOptions =
-                    (definition.OperationOptions ?? OperationOptions.None) |
-                    OperationOptions.EnableSchemaValidation;
-            }
+            WorkflowOperationConfiguration.ApplyTriggerConfiguration(
+                this.Configuration,
+                definition,
+                flowKind);
 
             return definition;
         }

@@ -2,8 +2,6 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
-using Newtonsoft.Json.Linq;
-
 namespace Microsoft.Azure.Workflows.Sdk
 {
     /// <summary>
@@ -60,50 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             var definition = this.BuildActionDefinition(flowName, flowKind)
                 ?? throw new InvalidOperationException($"Action '{this.Name}' returned a null definition.");
 
-            if (this.Configuration is IRetryPolicyConfigurationHolder retry &&
-                retry.RetryPolicy != null)
-            {
-                WorkflowOperationConfiguration.ValidateRetryPolicy(retry.RetryPolicy, flowKind);
-                WorkflowOperationConfiguration.AddRetryPolicy(definition, retry.RetryPolicy);
-            }
-
-            if (this.Configuration is ITrackedPropertiesConfigurationHolder tracked &&
-                tracked.TrackedProperties.Count > 0)
-            {
-                definition.TrackedProperties = new JObject(
-                    tracked.TrackedProperties.Select(
-                        pair => new JProperty(pair.Key, pair.Value?.DeepClone())));
-            }
-
-            var secureInputs = this.Configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
-            var secureOutputs =
-                this.Configuration is ISecureInputsAndOutputsConfigurationHolder
-                    ? secureInputs
-                    : this.Configuration is ISecureOutputsConfigurationHolder outputs &&
-                        outputs.SecureOutputs;
-
-            var secureProperties = WorkflowOperationConfiguration.SecureProperties(secureInputs, secureOutputs);
-            var concurrency = this.Configuration as IIterationConcurrencyConfigurationHolder;
-            if (secureProperties.Length > 0 || concurrency?.MaximumParallelIterations.HasValue == true)
-            {
-                definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
-            }
-
-            if (secureProperties.Length > 0)
-            {
-                definition.RuntimeConfiguration.SecureData =
-                    new FlowSecureDataConfiguration { Properties = secureProperties };
-            }
-
-            if (concurrency?.MaximumParallelIterations.HasValue == true)
-            {
-                if (flowKind == FlowKind.Stateless)
-                {
-                    throw new InvalidOperationException("For Each concurrency control is not supported for stateless workflows.");
-                }
-                definition.RuntimeConfiguration.Concurrency =
-                    new FlowConcurrencyConfiguration { Repetitions = concurrency.MaximumParallelIterations };
-            }
+            WorkflowOperationConfiguration.ApplyActionConfiguration(
+                this.Configuration,
+                definition,
+                flowKind);
 
             return definition;
         }
