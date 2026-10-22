@@ -12,17 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
     public class OpenelevationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openelevation")]
-        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> locations)
+        public IBodyWorkflowAction<LookupResponse, ApiConnectionActionConfiguration> Lookup(Expression<Func<string>> locations)
         {
             var __workflow_locations = WorkflowExpression.Compile(locations, nameof(locations), required: true);
-            return new DeferredBodyAction<LookupResponse>(() =>
+            return new DeferredBodyAction<LookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/lookup";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["locations"] = ExpressionConverter.Convert(__workflow_locations);
                 return new ApiConnectionAction<LookupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

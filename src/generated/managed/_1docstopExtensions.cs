@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
     public class _1docstopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PalibrariesAdd(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesAdd(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_libraryname = WorkflowExpression.Compile(libraryname, nameof(libraryname), required: false);
             var __workflow_librarydescription = WorkflowExpression.Compile(librarydescription, nameof(librarydescription), required: false);
             var __workflow_libraryocr = WorkflowExpression.Compile(libraryocr, nameof(libraryocr), required: false);
-            return new DeferredBodyAction<Library>(() =>
+            return new DeferredBodyAction<Library, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/palibraries/add";
                 var apiCallHttpMethod = "post";
@@ -111,15 +111,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Library>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution> PasolutionsGet(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsGet(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
         {
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
-            return new DeferredBodyAction<Solution>(() =>
+            return new DeferredBodyAction<Solution, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pasolutions/get";
                 var apiCallHttpMethod = "get";
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution[]> PasolutionsList(Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<Solution[], ApiConnectionActionConfiguration> PasolutionsList(Expression<Func<int>> solutionid = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
-            return new DeferredBodyAction<Solution[]>(() =>
+            return new DeferredBodyAction<Solution[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pasolutions/list";
                 var apiCallHttpMethod = "get";
@@ -143,15 +143,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution[]> PasolutionsDepartmentList(Expression<Func<string>> departmentkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<Solution[], ApiConnectionActionConfiguration> PasolutionsDepartmentList(Expression<Func<string>> departmentkey, Expression<Func<int>> solutionid = null)
         {
             var __workflow_departmentkey = WorkflowExpression.Compile(departmentkey, nameof(departmentkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
-            return new DeferredBodyAction<Solution[]>(() =>
+            return new DeferredBodyAction<Solution[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pasolutions/department/list";
                 var apiCallHttpMethod = "get";
@@ -160,11 +160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution> PasolutionsAdd(Expression<Func<int>> solutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
+        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsAdd(Expression<Func<int>> solutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionsolutionId = WorkflowExpression.Compile(solutionsolutionId, nameof(solutionsolutionId), required: false);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_solutiondepartmentcustomername = WorkflowExpression.Compile(solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
             var __workflow_solutiondepartmentname = WorkflowExpression.Compile(solutiondepartmentname, nameof(solutiondepartmentname), required: false);
             var __workflow_solutionname = WorkflowExpression.Compile(solutionname, nameof(solutionname), required: false);
-            return new DeferredBodyAction<Solution>(() =>
+            return new DeferredBodyAction<Solution, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pasolutions/add";
                 var apiCallHttpMethod = "post";
@@ -210,11 +210,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Solution>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution> PasolutionsUpdate(Expression<Func<int>> solutionid = null, Expression<Func<int>> functionsolutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
+        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsUpdate(Expression<Func<int>> solutionid = null, Expression<Func<int>> functionsolutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_functionsolutionid = WorkflowExpression.Compile(functionsolutionid, nameof(functionsolutionid), required: false);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_solutiondepartmentcustomername = WorkflowExpression.Compile(solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
             var __workflow_solutiondepartmentname = WorkflowExpression.Compile(solutiondepartmentname, nameof(solutiondepartmentname), required: false);
             var __workflow_solutionname = WorkflowExpression.Compile(solutionname, nameof(solutionname), required: false);
-            return new DeferredBodyAction<Solution>(() =>
+            return new DeferredBodyAction<Solution, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pasolutions/update";
                 var apiCallHttpMethod = "put";
@@ -263,11 +263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Solution>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Document> PadocumentsAdd(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<string>> documentdocumentKey = null, Expression<Func<string>> documentname = null, Expression<Func<int>> documentfileSizeBytes = null, Expression<Func<int>> documentstatus = null, Expression<Func<PropertyValue[]>> documentpropertyValues = null, Expression<Func<string>> documenturl = null)
+        public IBodyWorkflowAction<Document, ApiConnectionActionConfiguration> PadocumentsAdd(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<string>> documentdocumentKey = null, Expression<Func<string>> documentname = null, Expression<Func<int>> documentfileSizeBytes = null, Expression<Func<int>> documentstatus = null, Expression<Func<PropertyValue[]>> documentpropertyValues = null, Expression<Func<string>> documenturl = null)
         {
             var __workflow_libraryid = WorkflowExpression.Compile(libraryid, nameof(libraryid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_documentstatus = WorkflowExpression.Compile(documentstatus, nameof(documentstatus), required: false);
             var __workflow_documentpropertyValues = WorkflowExpression.Compile(documentpropertyValues, nameof(documentpropertyValues), required: false);
             var __workflow_documenturl = WorkflowExpression.Compile(documenturl, nameof(documenturl), required: false);
-            return new DeferredBodyAction<Document>(() =>
+            return new DeferredBodyAction<Document, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocuments/add";
                 var apiCallHttpMethod = "post";
@@ -332,16 +332,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Document>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType> PadocumenttypesGet(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<DocumentType, ApiConnectionActionConfiguration> PadocumenttypesGet(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<DocumentType>(() =>
+            return new DeferredBodyAction<DocumentType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/get";
                 var apiCallHttpMethod = "get";
@@ -352,15 +352,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DocumentType>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType[]> PadocumenttypesList(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<DocumentType[], ApiConnectionActionConfiguration> PadocumenttypesList(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
         {
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
-            return new DeferredBodyAction<DocumentType[]>(() =>
+            return new DeferredBodyAction<DocumentType[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/list";
                 var apiCallHttpMethod = "get";
@@ -369,11 +369,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<DocumentType[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PadocumenttypesAdd(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PadocumenttypesAdd(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
         {
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_libraryname = WorkflowExpression.Compile(libraryname, nameof(libraryname), required: false);
             var __workflow_librarydescription = WorkflowExpression.Compile(librarydescription, nameof(librarydescription), required: false);
             var __workflow_libraryocr = WorkflowExpression.Compile(libraryocr, nameof(libraryocr), required: false);
-            return new DeferredBodyAction<Library>(() =>
+            return new DeferredBodyAction<Library, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/add";
                 var apiCallHttpMethod = "post";
@@ -471,11 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Library>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType> PadocumenttypesUpdate(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> documentTypedocumentTypeId = null, Expression<Func<string>> documentTypename = null, Expression<Func<string>> documentTypedescription = null)
+        public IBodyWorkflowAction<DocumentType, ApiConnectionActionConfiguration> PadocumenttypesUpdate(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> documentTypedocumentTypeId = null, Expression<Func<string>> documentTypename = null, Expression<Func<string>> documentTypedescription = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_documentTypedocumentTypeId = WorkflowExpression.Compile(documentTypedocumentTypeId, nameof(documentTypedocumentTypeId), required: false);
             var __workflow_documentTypename = WorkflowExpression.Compile(documentTypename, nameof(documentTypename), required: false);
             var __workflow_documentTypedescription = WorkflowExpression.Compile(documentTypedescription, nameof(documentTypedescription), required: false);
-            return new DeferredBodyAction<DocumentType>(() =>
+            return new DeferredBodyAction<DocumentType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/update";
                 var apiCallHttpMethod = "put";
@@ -519,16 +519,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<DocumentType>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PalibrariesGet(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesGet(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_libraryid = WorkflowExpression.Compile(libraryid, nameof(libraryid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<Library>(() =>
+            return new DeferredBodyAction<Library, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/palibraries/get";
                 var apiCallHttpMethod = "get";
@@ -539,15 +539,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library[]> PalibrariesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<Library[], ApiConnectionActionConfiguration> PalibrariesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<Library[]>(() =>
+            return new DeferredBodyAction<Library[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/palibraries/list";
                 var apiCallHttpMethod = "get";
@@ -557,16 +557,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library[]> PalibrariesDocumenttypeList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<Library[], ApiConnectionActionConfiguration> PalibrariesDocumenttypeList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<Library[]>(() =>
+            return new DeferredBodyAction<Library[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/palibraries/documenttype/list";
                 var apiCallHttpMethod = "get";
@@ -577,11 +577,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PalibrariesUpdate(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesUpdate(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
         {
             var __workflow_libraryid = WorkflowExpression.Compile(libraryid, nameof(libraryid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
             var __workflow_libraryname = WorkflowExpression.Compile(libraryname, nameof(libraryname), required: false);
             var __workflow_librarydescription = WorkflowExpression.Compile(librarydescription, nameof(librarydescription), required: false);
             var __workflow_libraryocr = WorkflowExpression.Compile(libraryocr, nameof(libraryocr), required: false);
-            return new DeferredBodyAction<Library>(() =>
+            return new DeferredBodyAction<Library, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/palibraries/update";
                 var apiCallHttpMethod = "put";
@@ -682,15 +682,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 }
 
                 return new ApiConnectionAction<Library>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DataType[]> PadatatypesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<DataType[], ApiConnectionActionConfiguration> PadatatypesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<DataType[]>(() =>
+            return new DeferredBodyAction<DataType[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padatatypes/list";
                 var apiCallHttpMethod = "get";
@@ -700,16 +700,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DataType[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<string> PadocumentsLoadfile(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PadocumentsLoadfile(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documentkey = WorkflowExpression.Compile(documentkey, nameof(documentkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocuments/loadfile";
                 var apiCallHttpMethod = "get";
@@ -720,16 +720,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesGet(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<PropertyValue[], ApiConnectionActionConfiguration> PapropertyvaluesGet(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documentkey = WorkflowExpression.Compile(documentkey, nameof(documentkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<PropertyValue[]>(() =>
+            return new DeferredBodyAction<PropertyValue[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/papropertyvalues/get";
                 var apiCallHttpMethod = "get";
@@ -740,17 +740,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<PropertyValue[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesUpdate(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PropertyValue[]>> propertyValueArray = null)
+        public IBodyWorkflowAction<PropertyValue[], ApiConnectionActionConfiguration> PapropertyvaluesUpdate(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PropertyValue[]>> propertyValueArray = null)
         {
             var __workflow_documentkey = WorkflowExpression.Compile(documentkey, nameof(documentkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
             var __workflow_propertyValueArray = WorkflowExpression.Compile(propertyValueArray, nameof(propertyValueArray), required: false);
-            return new DeferredBodyAction<PropertyValue[]>(() =>
+            return new DeferredBodyAction<PropertyValue[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/papropertyvalues/update";
                 var apiCallHttpMethod = "put";
@@ -762,16 +762,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_propertyValueArray);
                 return new ApiConnectionAction<PropertyValue[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentProperty[]> PadocumentpropertiesList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<DocumentProperty[], ApiConnectionActionConfiguration> PadocumentpropertiesList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<DocumentProperty[]>(() =>
+            return new DeferredBodyAction<DocumentProperty[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumentproperties-list";
                 var apiCallHttpMethod = "get";
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DocumentProperty[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

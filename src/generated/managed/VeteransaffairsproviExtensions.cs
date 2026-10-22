@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
     public class VeteransaffairsproviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<LocationBundle> GetLocation(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<LocationBundle, ApiConnectionActionConfiguration> GetLocation(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
             var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            return new DeferredBodyAction<LocationBundle>(() =>
+            return new DeferredBodyAction<LocationBundle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Location";
                 var apiCallHttpMethod = "get";
@@ -50,24 +50,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
                 if (__workflow_Count != null)
                     callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
                 return new ApiConnectionAction<LocationBundle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Location> GetLocationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Location, ApiConnectionActionConfiguration> GetLocationById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Location>(() =>
+            return new DeferredBodyAction<Location, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Location>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<OrganizationBundle> ListOrganizations(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<OrganizationBundle, ApiConnectionActionConfiguration> ListOrganizations(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
             var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            return new DeferredBodyAction<OrganizationBundle>(() =>
+            return new DeferredBodyAction<OrganizationBundle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Organization";
                 var apiCallHttpMethod = "get";
@@ -105,24 +105,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
                 if (__workflow_Count != null)
                     callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
                 return new ApiConnectionAction<OrganizationBundle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Organization> GetOrganizationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Organization, ApiConnectionActionConfiguration> GetOrganizationById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Organization>(() =>
+            return new DeferredBodyAction<Organization, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Organization/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Organization>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerBundle> ListPractitioners(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> family = null, Expression<Func<string>> given = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<PractitionerBundle, ApiConnectionActionConfiguration> ListPractitioners(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> family = null, Expression<Func<string>> given = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
             var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            return new DeferredBodyAction<PractitionerBundle>(() =>
+            return new DeferredBodyAction<PractitionerBundle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Practitioner";
                 var apiCallHttpMethod = "get";
@@ -154,24 +154,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
                 if (__workflow_Count != null)
                     callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
                 return new ApiConnectionAction<PractitionerBundle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Practitioner> GetPractitionerById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Practitioner, ApiConnectionActionConfiguration> GetPractitionerById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Practitioner>(() =>
+            return new DeferredBodyAction<Practitioner, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Practitioner>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles(Expression<Func<string>> Id = null, Expression<Func<string>> practitionerIdentifier = null, Expression<Func<string>> practitionerName = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<PractitionerRoleBundle, ApiConnectionActionConfiguration> ListPractitionerRoles(Expression<Func<string>> Id = null, Expression<Func<string>> practitionerIdentifier = null, Expression<Func<string>> practitionerName = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
             var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
             var __workflow_practitionerIdentifier = WorkflowExpression.Compile(practitionerIdentifier, nameof(practitionerIdentifier), required: false);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
             var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            return new DeferredBodyAction<PractitionerRoleBundle>(() =>
+            return new DeferredBodyAction<PractitionerRoleBundle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PractitionerRole";
                 var apiCallHttpMethod = "get";
@@ -197,20 +197,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
                 if (__workflow_Count != null)
                     callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
                 return new ApiConnectionAction<PractitionerRoleBundle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PractitionerRole, ApiConnectionActionConfiguration> GetPractitionerRoleById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PractitionerRole>(() =>
+            return new DeferredBodyAction<PractitionerRole, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/PractitionerRole/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PractitionerRole>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,24 +12,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
     public class EphesoftsemantikforinvoicesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<string> DeleteSemantikWebhook(Expression<Func<string>> configurationId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteSemantikWebhook(Expression<Func<string>> configurationId)
         {
             var __workflow_configurationId = WorkflowExpression.Compile(configurationId, nameof(configurationId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/settings/integrations/configurations/{0}", __workflow_configurationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<CreateDocumentUploadResponse> CreateDocumentUpload(Expression<Func<string>> bodyfileName, Expression<Func<bodytypeInput>> bodytype)
+        public IBodyWorkflowAction<CreateDocumentUploadResponse, ApiConnectionActionConfiguration> CreateDocumentUpload(Expression<Func<string>> bodyfileName, Expression<Func<bodytypeInput>> bodytype)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            return new DeferredBodyAction<CreateDocumentUploadResponse>(() =>
+            return new DeferredBodyAction<CreateDocumentUploadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/documents/uploads";
                 var apiCallHttpMethod = "post";
@@ -46,15 +46,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionAction<CreateDocumentUploadResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<UpdateDocumentUploadResponse> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<bodystatusInput>> bodystatus)
+        public IBodyWorkflowAction<UpdateDocumentUploadResponse, ApiConnectionActionConfiguration> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<bodystatusInput>> bodystatus)
         {
             var __workflow_uploadId = WorkflowExpression.Compile(uploadId, nameof(uploadId), required: true);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
-            return new DeferredBodyAction<UpdateDocumentUploadResponse>(() =>
+            return new DeferredBodyAction<UpdateDocumentUploadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/documents/uploads/{0}", __workflow_uploadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionAction<UpdateDocumentUploadResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<UploadCreatedResponse> CreateVendorUpload(Expression<Func<string>> bodyfileName)
+        public IBodyWorkflowAction<UploadCreatedResponse, ApiConnectionActionConfiguration> CreateVendorUpload(Expression<Func<string>> bodyfileName)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            return new DeferredBodyAction<UploadCreatedResponse>(() =>
+            return new DeferredBodyAction<UploadCreatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/vendors/uploads";
                 var apiCallHttpMethod = "post";
@@ -91,16 +91,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionAction<UploadCreatedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class EphesoftsemantikforinvoicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted(Expression<Func<string>> bodyintegrationName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration> TrigSemantikInvoiceCompleted(Expression<Func<string>> bodyintegrationName, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyintegrationName = WorkflowExpression.Compile(bodyintegrationName, nameof(bodyintegrationName), required: true);
-            return new DeferredBodyTrigger<UploadCreatedResponse>(() =>
+            return new DeferredBodyTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/settings/integrations/configurations";
                 var apiCallHttpMethod = "post";
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                 }
 
                 return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

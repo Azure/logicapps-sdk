@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     public class FluxxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<object> DownloadDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/model_document_download/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<JToken> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
         {
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/custom_action/{0}", __workflow_endpoint.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -38,33 +38,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<object>> content, Expression<Func<string>> dataOwnerModelModelType, Expression<Func<int>> dataOwnerModelId, Expression<Func<string>> dataContentType, Expression<Func<int>> dataCreatedById)
+        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<object>> content, Expression<Func<string>> dataOwnerModelModelType, Expression<Func<int>> dataOwnerModelId, Expression<Func<string>> dataContentType, Expression<Func<int>> dataCreatedById)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             var __workflow_dataOwnerModelModelType = WorkflowExpression.Compile(dataOwnerModelModelType, nameof(dataOwnerModelModelType), required: true);
             var __workflow_dataOwnerModelId = WorkflowExpression.Compile(dataOwnerModelId, nameof(dataOwnerModelId), required: true);
             var __workflow_dataContentType = WorkflowExpression.Compile(dataContentType, nameof(dataContentType), required: true);
             var __workflow_dataCreatedById = WorkflowExpression.Compile(dataCreatedById, nameof(dataCreatedById), required: true);
-            return new DeferredBodyAction<UploadDocumentResponse>(() =>
+            return new DeferredBodyAction<UploadDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rest/v2/model_document";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["cols"] = Convert.ToString("[\"document_file_name\",\"document_content_type\",\"doc_label\"]");
                 return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<ModelResponse>(() =>
+            return new DeferredBodyAction<ModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}", __workflow_typeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -85,17 +85,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 }
 
                 return new ApiConnectionAction<ModelResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             var __workflow_currentPage = WorkflowExpression.Compile(currentPage, nameof(currentPage), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<ModelArrayResponse>(() =>
+            return new DeferredBodyAction<ModelArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}", __workflow_typeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -122,17 +122,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 }
 
                 return new ApiConnectionAction<ModelArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             var __workflow_currentPage = WorkflowExpression.Compile(currentPage, nameof(currentPage), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<ModelArrayResponse>(() =>
+            return new DeferredBodyAction<ModelArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}", __workflow_typeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -159,15 +159,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 }
 
                 return new ApiConnectionAction<ModelArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> FindRecord(Expression<Func<string>> typeId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> FindRecord(Expression<Func<string>> typeId, Expression<Func<string>> id)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ModelResponse>(() =>
+            return new DeferredBodyAction<ModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}/{1}", __workflow_typeId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -175,16 +175,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 callPayload.Queries["all_core"] = Convert.ToString(1);
                 callPayload.Queries["all_dynamic"] = Convert.ToString(1);
                 return new ApiConnectionAction<ModelResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<ModelResponse>(() =>
+            return new DeferredBodyAction<ModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}/{1}", __workflow_typeId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 }
 
                 return new ApiConnectionAction<ModelResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

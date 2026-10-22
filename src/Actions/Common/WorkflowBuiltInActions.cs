@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "workflowReferenceName">The reference name of the workflow to call.</param>
         /// <param name = "requestBody">The request body to send to the workflow (optional).</param>
         /// <param name = "headers">The request headers to include in the workflow call (optional).</param>
-        public IBodyWorkflowAction<JToken> NestedWorkflow(Expression<Func<string>> workflowReferenceName, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> headers = null)
+        public IBodyWorkflowAction<JToken, NestedWorkflowActionConfiguration> NestedWorkflow(Expression<Func<string>> workflowReferenceName, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> headers = null)
         {
             var workflowReferenceNameDescriptor = WorkflowExpression.Compile(
                 workflowReferenceName, nameof(workflowReferenceName), required: true);
@@ -51,26 +51,26 @@ namespace Microsoft.Azure.Workflows.Sdk
                 requestBody, nameof(requestBody), required: false);
             var headersDescriptor = WorkflowExpression.Compile(
                 headers, nameof(headers), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, NestedWorkflowActionConfiguration>(() =>
             {
                 return new NestedWorkflowAction<JToken>(
                     ExpressionConverter.Convert(workflowReferenceNameDescriptor),
                     requestBodyDescriptor != null ? ExpressionConverter.ConvertO(requestBodyDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         /// <summary>
         /// Creates a compose action that combines inputs into a single output.
         /// </summary>
         /// <param name = "inputs">The inputs to compose.</param>
-        public IOutputWorkflowAction<JToken> Compose(Expression<Func<string>> inputs)
+        public IOutputWorkflowAction<JToken, ComposeActionConfiguration> Compose(Expression<Func<string>> inputs)
         {
             var descriptor = WorkflowExpression.Compile(inputs, nameof(inputs), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredOutputAction<JToken, ComposeActionConfiguration>(() =>
             {
                 return new ComposeAction<JToken>(ExpressionConverter.Convert(descriptor));
-            }, WorkflowActionSettingProfiles.SecureTrackedLinked);
+            });
         }
 
         /// <summary>
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name = "input">The input to compose.</param>
         /// <typeparam name = "T">The type of the composed output.</typeparam>
-        public IOutputWorkflowAction<T> Compose<T>(Expression<Func<T>> input)
+        public IOutputWorkflowAction<T, ComposeActionConfiguration> Compose<T>(Expression<Func<T>> input)
         {
             var descriptor = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredOutputAction<T>(() =>
+            return new DeferredOutputAction<T, ComposeActionConfiguration>(() =>
             {
                 var jt = ExpressionConverter.ConvertO<T>(descriptor);
                 return new ComposeAction<T>(jt);
-            }, WorkflowActionSettingProfiles.SecureTrackedLinked);
+            });
         }
 
         /// <summary>
@@ -93,12 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name = "callback">The delegate callback with signature Func<WorkflowContext , Task<T>>.</param>
         /// <typeparam name = "T">The return type of the callback.</typeparam>
-        public IBodyWorkflowAction<T> CustomCode<T>(Func<WorkflowContext, Task<T>> callback)
+        public IBodyWorkflowAction<T, CustomCodeActionConfiguration> CustomCode<T>(Func<WorkflowContext, Task<T>> callback)
         {
             if (callback == null)
                 throw new ArgumentNullException(nameof(callback));
             var methodName = callback.Method.Name;
-            return new CSharpScriptCode<T>(callback);
+            return new DeferredBodyAction<T, CustomCodeActionConfiguration>(
+                () => new CSharpScriptCode<T>(callback));
         }
 
         /// <summary>
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "requestBody">An expression for the request body (optional).</param>
         /// <param name = "queries">An expression for the query parameters (optional).</param>
         /// <param name = "headers">An expression for the request headers (optional).</param>
-        public IBodyWorkflowAction<JToken> HttpAction(Expression<Func<Uri>> uri, Expression<Func<HttpMethod>> method, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> queries = null, Expression<Func<Dictionary<string, string>>> headers = null)
+        public IBodyWorkflowAction<JToken, HttpActionConfiguration> HttpAction(Expression<Func<Uri>> uri, Expression<Func<HttpMethod>> method, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> queries = null, Expression<Func<Dictionary<string, string>>> headers = null)
         {
             var uriDescriptor = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var methodDescriptor = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 requestBody, nameof(requestBody), required: false);
             var queriesDescriptor = WorkflowExpression.Compile(queries, nameof(queries), required: false);
             var headersDescriptor = WorkflowExpression.Compile(headers, nameof(headers), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, HttpActionConfiguration>(() =>
             {
                 return new HttpAction<JToken>(
                     ExpressionConverter.Convert(uriDescriptor),
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     requestBodyDescriptor != null ? ExpressionConverter.ConvertO(requestBodyDescriptor) : null,
                     queriesDescriptor != null ? ExpressionConverter.ConvertO(queriesDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         /// <summary>
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "responseBody">An expression for the response body (optional).</param>
         /// <param name = "headers">An expression for the response headers (optional).</param>
         /// <param name = "schema">An expression for the response schema (optional).</param>
-        public IBodyWorkflowAction<JToken> Response(Expression<Func<HttpStatusCode>> statusCode = null, Expression<Func<object>> responseBody = null, Expression<Func<Dictionary<string, string>>> headers = null, Expression<Func<JToken>> schema = null)
+        public IBodyWorkflowAction<JToken, ResponseActionConfiguration> Response(Expression<Func<HttpStatusCode>> statusCode = null, Expression<Func<object>> responseBody = null, Expression<Func<Dictionary<string, string>>> headers = null, Expression<Func<JToken>> schema = null)
         {
             var statusCodeDescriptor = WorkflowExpression.Compile(
                 statusCode, nameof(statusCode), required: false);
@@ -143,20 +144,20 @@ namespace Microsoft.Azure.Workflows.Sdk
                 responseBody, nameof(responseBody), required: false);
             var headersDescriptor = WorkflowExpression.Compile(headers, nameof(headers), required: false);
             var schemaDescriptor = WorkflowExpression.Compile(schema, nameof(schema), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ResponseActionConfiguration>(() =>
             {
                 return new ResponseAction<JToken>(
                     ExpressionConverter.ConvertStatusCode(statusCodeDescriptor),
                     responseBodyDescriptor != null ? ExpressionConverter.ConvertO(responseBodyDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null,
                     schemaDescriptor != null ? ExpressionConverter.ConvertO(schemaDescriptor) : null);
-            }, WorkflowActionSettingProfiles.SecureTrackedLinked);
+            });
         }
 
-        public IAgentWorkflowAction Agent(AgentModelType agentModelType, string deploymentId, AgentModelSettings agentModelSettings, string connectionName, Expression<Func<AgentPromptMessage[]>> messages)
+        public IAgentWorkflowAction<AgentActionConfiguration> Agent(AgentModelType agentModelType, string deploymentId, AgentModelSettings agentModelSettings, string connectionName, Expression<Func<AgentPromptMessage[]>> messages)
         {
             var messagesDescriptor = WorkflowExpression.Compile(messages, nameof(messages), required: true);
-            return new DeferredAgentAction(() =>
+            return new DeferredAgentAction<AgentActionConfiguration>(() =>
                 new AgentAction(
                     agentModelType,
                     deploymentId,
@@ -165,4 +166,74 @@ namespace Microsoft.Azure.Workflows.Sdk
                     ExpressionConverter.ConvertO(messagesDescriptor)));
         }
     }
+
+    #region Action Configurations
+
+    public sealed class HttpActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class NestedWorkflowActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CustomCodeActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ComposeActionConfiguration :
+        IWorkflowOperationConfiguration,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsAndOutputsConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+    }
+
+    public sealed class ResponseActionConfiguration :
+        IWorkflowOperationConfiguration,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsAndOutputsConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+    }
+
+    public sealed class AgentActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    #endregion
 }

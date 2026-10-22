@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -30,19 +30,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a workflow action without optional settings.
         /// </summary>
-        protected WorkflowActionBase()
-            : this(WorkflowActionSettings.None)
+        internal WorkflowActionBase()
+            : this(new EmptyWorkflowOperationConfiguration())
         {
         }
 
         /// <summary>
         /// Initializes a new workflow action.
         /// </summary>
-        /// <param name="settingsProfile">The settings supported by the action.</param>
-        internal WorkflowActionBase(
-            WorkflowActionSettings settingsProfile = WorkflowActionSettings.None)
+        /// <param name="configuration">The action configuration.</param>
+        internal WorkflowActionBase(IWorkflowOperationConfiguration configuration)
         {
-            this.Configuration = new WorkflowActionConfiguration(settingsProfile);
+            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         /// <summary>
@@ -55,8 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
-        /// <inheritdoc/>
-        public WorkflowActionConfiguration Configuration { get; }
+        /// <summary>
+        /// Gets the run-after configuration mapping parent action names to required statuses.
+        /// </summary>
+        public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
+
+        private IWorkflowOperationConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the action definition as a FlowTemplateAction.
@@ -68,21 +71,31 @@ namespace Microsoft.Azure.Workflows.Sdk
             var definition = this.BuildActionDefinition(flowName, flowKind)
                 ?? throw new InvalidOperationException($"Action '{this.Name}' returned a null definition.");
 
-            if (this.Configuration.RetryPolicy != null)
+            if (this.Configuration is IRetryPolicyConfigurationHolder retry &&
+                retry.RetryPolicy != null)
             {
-                WorkflowOperationConfiguration.ValidateRetryPolicy(this.Configuration.RetryPolicy, flowKind);
-                WorkflowOperationConfiguration.AddRetryPolicy(definition, this.Configuration.RetryPolicy);
+                WorkflowOperationConfiguration.ValidateRetryPolicy(retry.RetryPolicy, flowKind);
+                WorkflowOperationConfiguration.AddRetryPolicy(definition, retry.RetryPolicy);
             }
 
-            if (this.Configuration.MutableTrackedProperties.Count > 0)
+            if (this.Configuration is ITrackedPropertiesConfigurationHolder tracked &&
+                tracked.TrackedProperties.Count > 0)
             {
                 definition.TrackedProperties = new JObject(
-                    this.Configuration.MutableTrackedProperties.Select(
+                    tracked.TrackedProperties.Select(
                         pair => new JProperty(pair.Key, pair.Value?.DeepClone())));
             }
 
-            var secureProperties = WorkflowOperationConfiguration.SecureProperties(this.Configuration.SecureInputs, this.Configuration.SecureOutputs);
-            if (secureProperties.Length > 0 || this.Configuration.MaximumParallelIterations.HasValue)
+            var secureInputs = this.Configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
+            var secureOutputs =
+                this.Configuration is ISecureInputsAndOutputsConfigurationHolder
+                    ? secureInputs
+                    : this.Configuration is ISecureOutputsConfigurationHolder outputs &&
+                        outputs.SecureOutputs;
+
+            var secureProperties = WorkflowOperationConfiguration.SecureProperties(secureInputs, secureOutputs);
+            var concurrency = this.Configuration as IIterationConcurrencyConfigurationHolder;
+            if (secureProperties.Length > 0 || concurrency?.MaximumParallelIterations.HasValue == true)
             {
                 definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
             }
@@ -93,14 +106,14 @@ namespace Microsoft.Azure.Workflows.Sdk
                     new FlowSecureDataConfiguration { Properties = secureProperties };
             }
 
-            if (this.Configuration.MaximumParallelIterations.HasValue)
+            if (concurrency?.MaximumParallelIterations.HasValue == true)
             {
                 if (flowKind == FlowKind.Stateless)
                 {
                     throw new InvalidOperationException("For Each concurrency control is not supported for stateless workflows.");
                 }
                 definition.RuntimeConfiguration.Concurrency =
-                    new FlowConcurrencyConfiguration { Repetitions = this.Configuration.MaximumParallelIterations };
+                    new FlowConcurrencyConfiguration { Repetitions = concurrency.MaximumParallelIterations };
             }
 
             return definition;
@@ -111,14 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        protected internal abstract FlowTemplateAction BuildActionDefinition(
+        internal abstract FlowTemplateAction BuildActionDefinition(
             string flowName,
             FlowKind? flowKind = null);
-
-        /// <summary>
-        /// Gets the run-after configuration mapping parent action names to required statuses.
-        /// </summary>
-        public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)

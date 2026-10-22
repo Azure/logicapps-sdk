@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
     public class ChucknorrisioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
+        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse, ApiConnectionActionConfiguration> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
-            return new DeferredBodyAction<GetRandomChuckNorrisFactResponse>(() =>
+            return new DeferredBodyAction<GetRandomChuckNorrisFactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/random";
                 var apiCallHttpMethod = "get";
@@ -23,21 +23,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
                 if (__workflow_category != null)
                     callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse, ApiConnectionActionConfiguration> SearchChuckNorrisFacts(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SearchChuckNorrisFactsResponse>(() =>
+            return new DeferredBodyAction<SearchChuckNorrisFactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

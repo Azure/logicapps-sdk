@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
     public class ScryfallipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsSearchGetResponse> CardsSearchGet(Expression<Func<string>> q, Expression<Func<uniqueInput>> unique = null, Expression<Func<orderInput>> order = null, Expression<Func<dirInput>> dir = null, Expression<Func<bool>> includeExtras = null, Expression<Func<bool>> includeMultilingual = null, Expression<Func<bool>> includeVariations = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<CardsSearchGetResponse, ApiConnectionActionConfiguration> CardsSearchGet(Expression<Func<string>> q, Expression<Func<uniqueInput>> unique = null, Expression<Func<orderInput>> order = null, Expression<Func<dirInput>> dir = null, Expression<Func<bool>> includeExtras = null, Expression<Func<bool>> includeMultilingual = null, Expression<Func<bool>> includeVariations = null, Expression<Func<int>> page = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_unique = WorkflowExpression.Compile(unique, nameof(unique), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
             var __workflow_includeMultilingual = WorkflowExpression.Compile(includeMultilingual, nameof(includeMultilingual), required: false);
             var __workflow_includeVariations = WorkflowExpression.Compile(includeVariations, nameof(includeVariations), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<CardsSearchGetResponse>(() =>
+            return new DeferredBodyAction<CardsSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/search";
                 var apiCallHttpMethod = "get";
@@ -49,17 +49,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<CardsSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsNamedGetResponse> CardsNamedGet(Expression<Func<string>> exact = null, Expression<Func<string>> fuzzy = null, Expression<Func<string>> set = null, Expression<Func<versionInput>> version = null)
+        public IBodyWorkflowAction<CardsNamedGetResponse, ApiConnectionActionConfiguration> CardsNamedGet(Expression<Func<string>> exact = null, Expression<Func<string>> fuzzy = null, Expression<Func<string>> set = null, Expression<Func<versionInput>> version = null)
         {
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             var __workflow_fuzzy = WorkflowExpression.Compile(fuzzy, nameof(fuzzy), required: false);
             var __workflow_set = WorkflowExpression.Compile(set, nameof(set), required: false);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
-            return new DeferredBodyAction<CardsNamedGetResponse>(() =>
+            return new DeferredBodyAction<CardsNamedGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/named";
                 var apiCallHttpMethod = "get";
@@ -74,15 +74,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
                 if (__workflow_version != null)
                     callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
                 return new ApiConnectionAction<CardsNamedGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsAutocompleteGetResponse> CardsAutocompleteGet(Expression<Func<string>> q, Expression<Func<bool>> includeExtras = null)
+        public IBodyWorkflowAction<CardsAutocompleteGetResponse, ApiConnectionActionConfiguration> CardsAutocompleteGet(Expression<Func<string>> q, Expression<Func<bool>> includeExtras = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_includeExtras = WorkflowExpression.Compile(includeExtras, nameof(includeExtras), required: false);
-            return new DeferredBodyAction<CardsAutocompleteGetResponse>(() =>
+            return new DeferredBodyAction<CardsAutocompleteGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/autocomplete";
                 var apiCallHttpMethod = "get";
@@ -91,14 +91,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
                 if (__workflow_includeExtras != null)
                     callPayload.Queries["include_extras"] = ExpressionConverter.Convert(__workflow_includeExtras);
                 return new ApiConnectionAction<CardsAutocompleteGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
+        public IBodyWorkflowAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
         {
             var __workflow_bodyidentifiers = WorkflowExpression.Compile(bodyidentifiers, nameof(bodyidentifiers), required: false);
-            return new DeferredBodyAction<CardsCollectionPostResponse>(() =>
+            return new DeferredBodyAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/collection";
                 var apiCallHttpMethod = "post";
@@ -117,103 +117,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
                 }
 
                 return new ApiConnectionAction<CardsCollectionPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsSetNumberGetResponse> CardsSetNumberGet(Expression<Func<string>> code, Expression<Func<string>> number)
+        public IBodyWorkflowAction<CardsSetNumberGetResponse, ApiConnectionActionConfiguration> CardsSetNumberGet(Expression<Func<string>> code, Expression<Func<string>> number)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
-            return new DeferredBodyAction<CardsSetNumberGetResponse>(() =>
+            return new DeferredBodyAction<CardsSetNumberGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}/{1}", __workflow_code.WithUrlEncoding(1), __workflow_number.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsSetNumberGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsMultiverseGetResponse> CardsMultiverseGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsMultiverseGetResponse, ApiConnectionActionConfiguration> CardsMultiverseGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsMultiverseGetResponse>(() =>
+            return new DeferredBodyAction<CardsMultiverseGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/multiverse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsMultiverseGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsMTGOGetResponse> CardsMTGOGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsMTGOGetResponse, ApiConnectionActionConfiguration> CardsMTGOGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsMTGOGetResponse>(() =>
+            return new DeferredBodyAction<CardsMTGOGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/mtgo/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsMTGOGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsArenaGetResponse> CardsArenaGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsArenaGetResponse, ApiConnectionActionConfiguration> CardsArenaGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsArenaGetResponse>(() =>
+            return new DeferredBodyAction<CardsArenaGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/arena/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsArenaGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsTCGplayerGetResponse> CardsTCGplayerGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsTCGplayerGetResponse, ApiConnectionActionConfiguration> CardsTCGplayerGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsTCGplayerGetResponse>(() =>
+            return new DeferredBodyAction<CardsTCGplayerGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/tcgplayer/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsTCGplayerGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCardmarketGetResponse> CardsCardmarketGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsCardmarketGetResponse, ApiConnectionActionConfiguration> CardsCardmarketGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsCardmarketGetResponse>(() =>
+            return new DeferredBodyAction<CardsCardmarketGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/cardmarket/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsCardmarketGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsScryfallGetResponse> CardsScryfallGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsScryfallGetResponse, ApiConnectionActionConfiguration> CardsScryfallGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsScryfallGetResponse>(() =>
+            return new DeferredBodyAction<CardsScryfallGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CardsScryfallGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<SetsGetResponse> SetsGet()
+        public IBodyWorkflowAction<SetsGetResponse, ApiConnectionActionConfiguration> SetsGet()
         {
             var apiCallPath = "/sets";
             var apiCallHttpMethod = "get";
@@ -222,72 +222,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<SetGetResponse> SetGet(Expression<Func<string>> code)
+        public IBodyWorkflowAction<SetGetResponse, ApiConnectionActionConfiguration> SetGet(Expression<Func<string>> code)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
-            return new DeferredBodyAction<SetGetResponse>(() =>
+            return new DeferredBodyAction<SetGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sets/{0}", __workflow_code.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SetGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<SetsTCGplayerGetResponse> SetsTCGplayerGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<SetsTCGplayerGetResponse, ApiConnectionActionConfiguration> SetsTCGplayerGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<SetsTCGplayerGetResponse>(() =>
+            return new DeferredBodyAction<SetsTCGplayerGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sets/tcgplayer/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SetsTCGplayerGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsMultiverseGetResponse> RulingsMultiverseGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RulingsMultiverseGetResponse, ApiConnectionActionConfiguration> RulingsMultiverseGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<RulingsMultiverseGetResponse>(() =>
+            return new DeferredBodyAction<RulingsMultiverseGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/multiverse/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RulingsMultiverseGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsMTGOGetResponse> RulingsMTGOGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RulingsMTGOGetResponse, ApiConnectionActionConfiguration> RulingsMTGOGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<RulingsMTGOGetResponse>(() =>
+            return new DeferredBodyAction<RulingsMTGOGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/mtgo/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RulingsMTGOGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsArenaGetResponse> RulingsArenaGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RulingsArenaGetResponse, ApiConnectionActionConfiguration> RulingsArenaGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<RulingsArenaGetResponse>(() =>
+            return new DeferredBodyAction<RulingsArenaGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/arena/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RulingsArenaGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<SymbolsGetResponse> SymbolsGet()
+        public IBodyWorkflowAction<SymbolsGetResponse, ApiConnectionActionConfiguration> SymbolsGet()
         {
             var apiCallPath = "/symbology";
             var apiCallHttpMethod = "get";
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogNamesGetResponse> CatalogNamesGet()
+        public IBodyWorkflowAction<CatalogNamesGetResponse, ApiConnectionActionConfiguration> CatalogNamesGet()
         {
             var apiCallPath = "/catalog/card-names";
             var apiCallHttpMethod = "get";
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogArtistsGetResponse> CatalogArtistsGet()
+        public IBodyWorkflowAction<CatalogArtistsGetResponse, ApiConnectionActionConfiguration> CatalogArtistsGet()
         {
             var apiCallPath = "/catalog/artist-names";
             var apiCallHttpMethod = "get";
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogWordsGetResponse> CatalogWordsGet()
+        public IBodyWorkflowAction<CatalogWordsGetResponse, ApiConnectionActionConfiguration> CatalogWordsGet()
         {
             var apiCallPath = "/catalog/word-bank";
             var apiCallHttpMethod = "get";
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogCreaturesGetResponse> CatalogCreaturesGet()
+        public IBodyWorkflowAction<CatalogCreaturesGetResponse, ApiConnectionActionConfiguration> CatalogCreaturesGet()
         {
             var apiCallPath = "/catalog/creature-types";
             var apiCallHttpMethod = "get";
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogPlaneswalkersGetResponse> CatalogPlaneswalkersGet()
+        public IBodyWorkflowAction<CatalogPlaneswalkersGetResponse, ApiConnectionActionConfiguration> CatalogPlaneswalkersGet()
         {
             var apiCallPath = "/catalog/planeswalker-types";
             var apiCallHttpMethod = "get";
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogLandsGetResponse> CatalogLandsGet()
+        public IBodyWorkflowAction<CatalogLandsGetResponse, ApiConnectionActionConfiguration> CatalogLandsGet()
         {
             var apiCallPath = "/catalog/land-types";
             var apiCallHttpMethod = "get";
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogArtifactsGetResponse> CatalogArtifactsGet()
+        public IBodyWorkflowAction<CatalogArtifactsGetResponse, ApiConnectionActionConfiguration> CatalogArtifactsGet()
         {
             var apiCallPath = "/catalog/artifact-types";
             var apiCallHttpMethod = "get";
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogEnchantmentsGetResponse> CatalogEnchantmentsGet()
+        public IBodyWorkflowAction<CatalogEnchantmentsGetResponse, ApiConnectionActionConfiguration> CatalogEnchantmentsGet()
         {
             var apiCallPath = "/catalog/enchantment-types";
             var apiCallHttpMethod = "get";
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogSpellGetResponse> CatalogSpellGet()
+        public IBodyWorkflowAction<CatalogSpellGetResponse, ApiConnectionActionConfiguration> CatalogSpellGet()
         {
             var apiCallPath = "/catalog/spell-types";
             var apiCallHttpMethod = "get";
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogPowersGetResponse> CatalogPowersGet()
+        public IBodyWorkflowAction<CatalogPowersGetResponse, ApiConnectionActionConfiguration> CatalogPowersGet()
         {
             var apiCallPath = "/catalog/powers";
             var apiCallHttpMethod = "get";
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogToughnessGetResponse> CatalogToughnessGet()
+        public IBodyWorkflowAction<CatalogToughnessGetResponse, ApiConnectionActionConfiguration> CatalogToughnessGet()
         {
             var apiCallPath = "/catalog/toughnesses";
             var apiCallHttpMethod = "get";
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogLoyaltiesGetResponse> CatalogLoyaltiesGet()
+        public IBodyWorkflowAction<CatalogLoyaltiesGetResponse, ApiConnectionActionConfiguration> CatalogLoyaltiesGet()
         {
             var apiCallPath = "/catalog/loyalties";
             var apiCallHttpMethod = "get";
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogWatermarksGetResponse> CatalogWatermarksGet()
+        public IBodyWorkflowAction<CatalogWatermarksGetResponse, ApiConnectionActionConfiguration> CatalogWatermarksGet()
         {
             var apiCallPath = "/catalog/watermarks";
             var apiCallHttpMethod = "get";
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogKeyAbilitiesGetResponse> CatalogKeyAbilitiesGet()
+        public IBodyWorkflowAction<CatalogKeyAbilitiesGetResponse, ApiConnectionActionConfiguration> CatalogKeyAbilitiesGet()
         {
             var apiCallPath = "/catalog/keyword-abilities";
             var apiCallHttpMethod = "get";
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogKeyActionsGetResponse> CatalogKeyActionsGet()
+        public IBodyWorkflowAction<CatalogKeyActionsGetResponse, ApiConnectionActionConfiguration> CatalogKeyActionsGet()
         {
             var apiCallPath = "/catalog/keyword-actions";
             var apiCallHttpMethod = "get";
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CatalogAbilitiesGetResponse> CatalogAbilitiesGet()
+        public IBodyWorkflowAction<CatalogAbilitiesGetResponse, ApiConnectionActionConfiguration> CatalogAbilitiesGet()
         {
             var apiCallPath = "/catalog/ability-words";
             var apiCallHttpMethod = "get";

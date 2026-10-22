@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
     public class RestcountriesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "restcountriesip")]
-        public IBodyWorkflowAction<ALLResponseItem[]> ALL()
+        public IBodyWorkflowAction<ALLResponseItem[], ApiConnectionActionConfiguration> ALL()
         {
             var apiCallPath = "/all";
             var apiCallHttpMethod = "get";

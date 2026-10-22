@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
+        public IBodyWorkflowAction<DetectPostResponse, ApiConnectionActionConfiguration> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
         {
             var __workflow_bodyheaders = WorkflowExpression.Compile(bodyheaders, nameof(bodyheaders), required: false);
-            return new DeferredBodyAction<DetectPostResponse>(() =>
+            return new DeferredBodyAction<DetectPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detect";
                 var apiCallHttpMethod = "post";
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
                 }
 
                 return new ApiConnectionAction<DetectPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<VersionGetResponse> VersionGet()
+        public IBodyWorkflowAction<VersionGetResponse, ApiConnectionActionConfiguration> VersionGet()
         {
             var apiCallPath = "/version_numbers";
             var apiCallHttpMethod = "get";

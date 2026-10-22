@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
     public class OpencagegeocodingipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
-        public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding(Expression<Func<string>> lat, Expression<Func<string>> @long)
+        public IBodyWorkflowAction<ReverseGeocodingResponse, ApiConnectionActionConfiguration> ReverseGeocoding(Expression<Func<string>> lat, Expression<Func<string>> @long)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
-            return new DeferredBodyAction<ReverseGeocodingResponse>(() =>
+            return new DeferredBodyAction<ReverseGeocodingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/json/reverse";
                 var apiCallHttpMethod = "get";
@@ -24,21 +24,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
                 callPayload.Headers["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 callPayload.Headers["long"] = ExpressionConverter.Convert(__workflow_long);
                 return new ApiConnectionAction<ReverseGeocodingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
-        public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding(Expression<Func<string>> placename)
+        public IBodyWorkflowAction<ForwardGeocodingResponse, ApiConnectionActionConfiguration> ForwardGeocoding(Expression<Func<string>> placename)
         {
             var __workflow_placename = WorkflowExpression.Compile(placename, nameof(placename), required: true);
-            return new DeferredBodyAction<ForwardGeocodingResponse>(() =>
+            return new DeferredBodyAction<ForwardGeocodingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/json/forward";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["placename"] = ExpressionConverter.Convert(__workflow_placename);
                 return new ApiConnectionAction<ForwardGeocodingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

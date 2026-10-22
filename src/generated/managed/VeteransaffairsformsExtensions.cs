@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
     public class VeteransaffairsformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<ListFormsResponse> ListForms(Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<ListFormsResponse, ApiConnectionActionConfiguration> ListForms(Expression<Func<string>> query = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
-            return new DeferredBodyAction<ListFormsResponse>(() =>
+            return new DeferredBodyAction<ListFormsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/forms";
                 var apiCallHttpMethod = "get";
@@ -23,20 +23,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
                 if (__workflow_query != null)
                     callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<ListFormsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
+        public IBodyWorkflowAction<FormShow, ApiConnectionActionConfiguration> GetFormByName(Expression<Func<string>> formName)
         {
             var __workflow_formName = WorkflowExpression.Compile(formName, nameof(formName), required: true);
-            return new DeferredBodyAction<FormShow>(() =>
+            return new DeferredBodyAction<FormShow, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forms/{0}", __workflow_formName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FormShow>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

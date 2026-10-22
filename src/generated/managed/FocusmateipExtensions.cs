@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
     public class FocusmateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        public IBodyWorkflowAction<ProfileResponse> Profile()
+        public IBodyWorkflowAction<ProfileResponse, ApiConnectionActionConfiguration> Profile()
         {
             var apiCallPath = "/v1/me";
             var apiCallHttpMethod = "get";
@@ -21,24 +21,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<PartnerProfileResponse, ApiConnectionActionConfiguration> PartnerProfile(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<PartnerProfileResponse>(() =>
+            return new DeferredBodyAction<PartnerProfileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PartnerProfileResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        public IBodyWorkflowAction<GetSessionsResponse> GetSessions(Expression<Func<string>> start, Expression<Func<string>> end)
+        public IBodyWorkflowAction<GetSessionsResponse, ApiConnectionActionConfiguration> GetSessions(Expression<Func<string>> start, Expression<Func<string>> end)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: true);
-            return new DeferredBodyAction<GetSessionsResponse>(() =>
+            return new DeferredBodyAction<GetSessionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/sessions";
                 var apiCallHttpMethod = "get";
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
                 callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<GetSessionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

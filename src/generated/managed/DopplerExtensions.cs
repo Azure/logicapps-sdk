@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
     public class DopplerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<JToken> DopplerSecretsListSecrets(Expression<Func<string>> projectName, Expression<Func<string>> configName, Expression<Func<bool>> includeDynamicSecrets = null, Expression<Func<bool>> includeManagedSecrets = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DopplerSecretsListSecrets(Expression<Func<string>> projectName, Expression<Func<string>> configName, Expression<Func<bool>> includeDynamicSecrets = null, Expression<Func<bool>> includeManagedSecrets = null)
         {
             var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: true);
             var __workflow_configName = WorkflowExpression.Compile(configName, nameof(configName), required: true);
             var __workflow_includeDynamicSecrets = WorkflowExpression.Compile(includeDynamicSecrets, nameof(includeDynamicSecrets), required: false);
             var __workflow_includeManagedSecrets = WorkflowExpression.Compile(includeManagedSecrets, nameof(includeManagedSecrets), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/secrets";
                 var apiCallHttpMethod = "get";
@@ -32,15 +32,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_includeManagedSecrets != null)
                     callPayload.Queries["Include Managed Secrets"] = ExpressionConverter.Convert(__workflow_includeManagedSecrets);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerSecretsUpdateSecretResponse> DopplerSecretsUpdateSecret(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig)
+        public IBodyWorkflowAction<DopplerSecretsUpdateSecretResponse, ApiConnectionActionConfiguration> DopplerSecretsUpdateSecret(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyconfig = WorkflowExpression.Compile(bodyconfig, nameof(bodyconfig), required: true);
-            return new DeferredBodyAction<DopplerSecretsUpdateSecretResponse>(() =>
+            return new DeferredBodyAction<DopplerSecretsUpdateSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/secrets";
                 var apiCallHttpMethod = "post";
@@ -65,16 +65,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerSecretsUpdateSecretResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerSecretsRetrieveSecretResponse> DopplerSecretsRetrieveSecret(Expression<Func<string>> project, Expression<Func<string>> config, Expression<Func<string>> name)
+        public IBodyWorkflowAction<DopplerSecretsRetrieveSecretResponse, ApiConnectionActionConfiguration> DopplerSecretsRetrieveSecret(Expression<Func<string>> project, Expression<Func<string>> config, Expression<Func<string>> name)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_config = WorkflowExpression.Compile(config, nameof(config), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<DopplerSecretsRetrieveSecretResponse>(() =>
+            return new DeferredBodyAction<DopplerSecretsRetrieveSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/secret";
                 var apiCallHttpMethod = "get";
@@ -83,16 +83,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 callPayload.Queries["config"] = ExpressionConverter.Convert(__workflow_config);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<DopplerSecretsRetrieveSecretResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<JToken> DopplerSecretsDeleteSecret(Expression<Func<string>> project, Expression<Func<string>> config, Expression<Func<string>> name)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DopplerSecretsDeleteSecret(Expression<Func<string>> project, Expression<Func<string>> config, Expression<Func<string>> name)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_config = WorkflowExpression.Compile(config, nameof(config), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/secret";
                 var apiCallHttpMethod = "delete";
@@ -101,17 +101,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 callPayload.Queries["config"] = ExpressionConverter.Convert(__workflow_config);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IWorkflowAction DopplerSecretsUpdateSecretNote(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig, Expression<Func<string>> bodysecret, Expression<Func<string>> bodynote)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DopplerSecretsUpdateSecretNote(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig, Expression<Func<string>> bodysecret, Expression<Func<string>> bodynote)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyconfig = WorkflowExpression.Compile(bodyconfig, nameof(bodyconfig), required: true);
             var __workflow_bodysecret = WorkflowExpression.Compile(bodysecret, nameof(bodysecret), required: true);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/secrets/note";
                 var apiCallHttpMethod = "post";
@@ -132,16 +132,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigListConfigResponse> DopplerConfigListConfig(Expression<Func<string>> project, Expression<Func<int>> page, Expression<Func<int>> perPage)
+        public IBodyWorkflowAction<DopplerConfigListConfigResponse, ApiConnectionActionConfiguration> DopplerConfigListConfig(Expression<Func<string>> project, Expression<Func<int>> page, Expression<Func<int>> perPage)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: true);
-            return new DeferredBodyAction<DopplerConfigListConfigResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigListConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs";
                 var apiCallHttpMethod = "get";
@@ -150,16 +150,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<DopplerConfigListConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigCreateConfigResponse> DopplerConfigCreateConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyenvironment, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<DopplerConfigCreateConfigResponse, ApiConnectionActionConfiguration> DopplerConfigCreateConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyenvironment, Expression<Func<string>> bodyname)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyenvironment = WorkflowExpression.Compile(bodyenvironment, nameof(bodyenvironment), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<DopplerConfigCreateConfigResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigCreateConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs";
                 var apiCallHttpMethod = "post";
@@ -178,15 +178,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigCreateConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigRetrieveConfigResponse> DopplerConfigRetrieveConfig(Expression<Func<string>> project, Expression<Func<string>> config = null)
+        public IBodyWorkflowAction<DopplerConfigRetrieveConfigResponse, ApiConnectionActionConfiguration> DopplerConfigRetrieveConfig(Expression<Func<string>> project, Expression<Func<string>> config = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_config = WorkflowExpression.Compile(config, nameof(config), required: false);
-            return new DeferredBodyAction<DopplerConfigRetrieveConfigResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigRetrieveConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config";
                 var apiCallHttpMethod = "get";
@@ -195,16 +195,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_config != null)
                     callPayload.Queries["config"] = ExpressionConverter.Convert(__workflow_config);
                 return new ApiConnectionAction<DopplerConfigRetrieveConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigUpdateConfigNameResponse> DopplerConfigUpdateConfigName(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<DopplerConfigUpdateConfigNameResponse, ApiConnectionActionConfiguration> DopplerConfigUpdateConfigName(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig, Expression<Func<string>> bodyname)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyconfig = WorkflowExpression.Compile(bodyconfig, nameof(bodyconfig), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<DopplerConfigUpdateConfigNameResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigUpdateConfigNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config";
                 var apiCallHttpMethod = "post";
@@ -223,16 +223,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigUpdateConfigNameResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigCloneConfigResponse> DopplerConfigCloneConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<DopplerConfigCloneConfigResponse, ApiConnectionActionConfiguration> DopplerConfigCloneConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig, Expression<Func<string>> bodyname)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyconfig = WorkflowExpression.Compile(bodyconfig, nameof(bodyconfig), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<DopplerConfigCloneConfigResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigCloneConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/clone";
                 var apiCallHttpMethod = "post";
@@ -251,15 +251,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigCloneConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigLockConfigResponse> DopplerConfigLockConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig)
+        public IBodyWorkflowAction<DopplerConfigLockConfigResponse, ApiConnectionActionConfiguration> DopplerConfigLockConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyconfig = WorkflowExpression.Compile(bodyconfig, nameof(bodyconfig), required: true);
-            return new DeferredBodyAction<DopplerConfigLockConfigResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigLockConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/lock";
                 var apiCallHttpMethod = "post";
@@ -276,15 +276,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigLockConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigUnlockConfigResponse> DopplerConfigUnlockConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig)
+        public IBodyWorkflowAction<DopplerConfigUnlockConfigResponse, ApiConnectionActionConfiguration> DopplerConfigUnlockConfig(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyconfig)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyconfig = WorkflowExpression.Compile(bodyconfig, nameof(bodyconfig), required: true);
-            return new DeferredBodyAction<DopplerConfigUnlockConfigResponse>(() =>
+            return new DeferredBodyAction<DopplerConfigUnlockConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/configs/config/unlock";
                 var apiCallHttpMethod = "post";
@@ -301,15 +301,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerConfigUnlockConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectsListResponse> DopplerProjectsList(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<DopplerProjectsListResponse, ApiConnectionActionConfiguration> DopplerProjectsList(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<DopplerProjectsListResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectsListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/projects";
                 var apiCallHttpMethod = "get";
@@ -321,15 +321,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<DopplerProjectsListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectsCreateResponse> DopplerProjectsCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
+        public IBodyWorkflowAction<DopplerProjectsCreateResponse, ApiConnectionActionConfiguration> DopplerProjectsCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            return new DeferredBodyAction<DopplerProjectsCreateResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/projects";
                 var apiCallHttpMethod = "post";
@@ -346,30 +346,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectsCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectsRetrieveResponse> DopplerProjectsRetrieve(Expression<Func<string>> project)
+        public IBodyWorkflowAction<DopplerProjectsRetrieveResponse, ApiConnectionActionConfiguration> DopplerProjectsRetrieve(Expression<Func<string>> project)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyAction<DopplerProjectsRetrieveResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectsRetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/projects/project";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<DopplerProjectsRetrieveResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectsUpdateResponse> DopplerProjectsUpdate(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
+        public IBodyWorkflowAction<DopplerProjectsUpdateResponse, ApiConnectionActionConfiguration> DopplerProjectsUpdate(Expression<Func<string>> bodyproject, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
         {
             var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            return new DeferredBodyAction<DopplerProjectsUpdateResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/projects/project";
                 var apiCallHttpMethod = "post";
@@ -388,11 +388,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectsUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectRolesListResponse> DopplerProjectRolesList()
+        public IBodyWorkflowAction<DopplerProjectRolesListResponse, ApiConnectionActionConfiguration> DopplerProjectRolesList()
         {
             var apiCallPath = "/v3/projects/roles";
             var apiCallHttpMethod = "get";
@@ -401,38 +401,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectRolesRetrieveResponse> DopplerProjectRolesRetrieve(Expression<Func<string>> role)
+        public IBodyWorkflowAction<DopplerProjectRolesRetrieveResponse, ApiConnectionActionConfiguration> DopplerProjectRolesRetrieve(Expression<Func<string>> role)
         {
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: true);
-            return new DeferredBodyAction<DopplerProjectRolesRetrieveResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectRolesRetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/roles/role/{0}", __workflow_role.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DopplerProjectRolesRetrieveResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<JToken> DopplerProjectRolesDelete(Expression<Func<string>> role)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DopplerProjectRolesDelete(Expression<Func<string>> role)
         {
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/roles/role/{0}", __workflow_role.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersListResponse> DopplerProjectMembersList(Expression<Func<string>> project, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<DopplerProjectMembersListResponse, ApiConnectionActionConfiguration> DopplerProjectMembersList(Expression<Func<string>> project, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<DopplerProjectMembersListResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectMembersListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/projects/project/members";
                 var apiCallHttpMethod = "get";
@@ -445,18 +445,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<DopplerProjectMembersListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersAddResponse> DopplerProjectMembersAdd(Expression<Func<string>> project, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyslug, Expression<Func<string>> bodyrole = null, Expression<Func<string[]>> bodyenvironments = null)
+        public IBodyWorkflowAction<DopplerProjectMembersAddResponse, ApiConnectionActionConfiguration> DopplerProjectMembersAdd(Expression<Func<string>> project, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyslug, Expression<Func<string>> bodyrole = null, Expression<Func<string[]>> bodyenvironments = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
             var __workflow_bodyenvironments = WorkflowExpression.Compile(bodyenvironments, nameof(bodyenvironments), required: false);
-            return new DeferredBodyAction<DopplerProjectMembersAddResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectMembersAddResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/projects/project/members";
                 var apiCallHttpMethod = "post";
@@ -486,50 +486,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectMembersAddResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse> DopplerProjectMembersRetrieve(Expression<Func<typeInput>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
+        public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse, ApiConnectionActionConfiguration> DopplerProjectMembersRetrieve(Expression<Func<typeInput>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyAction<DopplerProjectMembersRetrieveResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectMembersRetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/project/members/member/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<DopplerProjectMembersRetrieveResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<JToken> DopplerProjectMembersDelete(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DopplerProjectMembersDelete(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/project/members/member/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse> DopplerProjectMembersUpdate(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project, Expression<Func<string>> bodyrole = null, Expression<Func<string[]>> bodyenvironments = null)
+        public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse, ApiConnectionActionConfiguration> DopplerProjectMembersUpdate(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project, Expression<Func<string>> bodyrole = null, Expression<Func<string[]>> bodyenvironments = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
             var __workflow_bodyenvironments = WorkflowExpression.Compile(bodyenvironments, nameof(bodyenvironments), required: false);
-            return new DeferredBodyAction<DopplerProjectMembersUpdateResponse>(() =>
+            return new DeferredBodyAction<DopplerProjectMembersUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/projects/project/members/member/{0}/{1}", __workflow_type.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
                 }
 
                 return new ApiConnectionAction<DopplerProjectMembersUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

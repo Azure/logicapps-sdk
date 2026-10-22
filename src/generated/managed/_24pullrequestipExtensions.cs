@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
     public class _24pullrequestipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetUsersResponseItem[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<int>> page = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<GetUsersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetUsersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users.json";
                 var apiCallHttpMethod = "get";
@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects()
+        public IBodyWorkflowAction<GetProjectsResponseItem[], ApiConnectionActionConfiguration> GetProjects()
         {
             var apiCallPath = "/projects.json";
             var apiCallHttpMethod = "get";
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetPullRequestsResponseItem[]> GetPullRequests()
+        public IBodyWorkflowAction<GetPullRequestsResponseItem[], ApiConnectionActionConfiguration> GetPullRequests()
         {
             var apiCallPath = "/pull_requests.json";
             var apiCallHttpMethod = "get";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetContributionsInfoResponse> GetContributionsInfo()
+        public IBodyWorkflowAction<GetContributionsInfoResponse, ApiConnectionActionConfiguration> GetContributionsInfo()
         {
             var apiCallPath = "/pull_requests/meta.json";
             var apiCallHttpMethod = "get";
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetAllOrganisationsResponseItem[]> GetAllOrganisations()
+        public IBodyWorkflowAction<GetAllOrganisationsResponseItem[], ApiConnectionActionConfiguration> GetAllOrganisations()
         {
             var apiCallPath = "/organisations.json";
             var apiCallHttpMethod = "get";
@@ -63,29 +63,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> name)
+        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<GetUserResponse>(() =>
+            return new DeferredBodyAction<GetUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}.json", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetSpecificOrganisationResponse> GetSpecificOrganisation(Expression<Func<string>> organisation)
+        public IBodyWorkflowAction<GetSpecificOrganisationResponse, ApiConnectionActionConfiguration> GetSpecificOrganisation(Expression<Func<string>> organisation)
         {
             var __workflow_organisation = WorkflowExpression.Compile(organisation, nameof(organisation), required: true);
-            return new DeferredBodyAction<GetSpecificOrganisationResponse>(() =>
+            return new DeferredBodyAction<GetSpecificOrganisationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organisations/{0}.json", __workflow_organisation.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpecificOrganisationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class IaconnectjmlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<RunActiveDirectoryPowerShellAutomationScriptResponse> RunActiveDirectoryPowerShellAutomationScript(Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptworkflow, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = null)
+        public IBodyWorkflowAction<RunActiveDirectoryPowerShellAutomationScriptResponse, ApiConnectionActionConfiguration> RunActiveDirectoryPowerShellAutomationScript(Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptworkflow, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
             var __workflow_runActiveDirectoryPowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptworkflow, nameof(runActiveDirectoryPowerShellAutomationScriptworkflow), required: true);
             var __workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents, nameof(runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents), required: false);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
             var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
             var __workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters, nameof(runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters), required: false);
-            return new DeferredBodyAction<RunActiveDirectoryPowerShellAutomationScriptResponse>(() =>
+            return new DeferredBodyAction<RunActiveDirectoryPowerShellAutomationScriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunActiveDirectoryPowerShellAutomationScript";
                 var apiCallHttpMethod = "post";
@@ -225,11 +225,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunActiveDirectoryPowerShellAutomationScriptResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse> OpenActiveDirectoryPowerShellRunspaceWithCredentials(Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsusername, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialspassword, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = null, Expression<Func<bool>> openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = null, Expression<Func<int>> openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = null)
+        public IBodyWorkflowAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse, ApiConnectionActionConfiguration> OpenActiveDirectoryPowerShellRunspaceWithCredentials(Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsusername, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialspassword, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = null, Expression<Func<bool>> openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = null, Expression<Func<int>> openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = null)
         {
             var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsusername = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsusername, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsusername), required: true);
             var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialspassword = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialspassword, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialspassword), required: true);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer), required: false);
             var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL), required: false);
             var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort), required: false);
-            return new DeferredBodyAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse>(() =>
+            return new DeferredBodyAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenActiveDirectoryPowerShellRunspaceWithCredentials";
                 var apiCallHttpMethod = "post";
@@ -284,14 +284,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<CloseActiveDirectoryPowerShellRunspaceResponse> CloseActiveDirectoryPowerShellRunspace(Expression<Func<string>> closeActiveDirectoryPowerShellRunspaceworkflow)
+        public IBodyWorkflowAction<CloseActiveDirectoryPowerShellRunspaceResponse, ApiConnectionActionConfiguration> CloseActiveDirectoryPowerShellRunspace(Expression<Func<string>> closeActiveDirectoryPowerShellRunspaceworkflow)
         {
             var __workflow_closeActiveDirectoryPowerShellRunspaceworkflow = WorkflowExpression.Compile(closeActiveDirectoryPowerShellRunspaceworkflow, nameof(closeActiveDirectoryPowerShellRunspaceworkflow), required: true);
-            return new DeferredBodyAction<CloseActiveDirectoryPowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<CloseActiveDirectoryPowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/CloseActiveDirectoryPowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -306,14 +306,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseActiveDirectoryPowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsActiveDirectoryPowerShellRunspaceOpenResponse> IsActiveDirectoryPowerShellRunspaceOpen(Expression<Func<string>> isActiveDirectoryPowerShellRunspaceOpenworkflow)
+        public IBodyWorkflowAction<IsActiveDirectoryPowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsActiveDirectoryPowerShellRunspaceOpen(Expression<Func<string>> isActiveDirectoryPowerShellRunspaceOpenworkflow)
         {
             var __workflow_isActiveDirectoryPowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isActiveDirectoryPowerShellRunspaceOpenworkflow, nameof(isActiveDirectoryPowerShellRunspaceOpenworkflow), required: true);
-            return new DeferredBodyAction<IsActiveDirectoryPowerShellRunspaceOpenResponse>(() =>
+            return new DeferredBodyAction<IsActiveDirectoryPowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsActiveDirectoryPowerShellRunspaceOpen";
                 var apiCallHttpMethod = "post";
@@ -328,14 +328,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsActiveDirectoryPowerShellRunspaceOpenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse> OpenLocalPassthroughActiveDirectoryPowerShellRunspace(Expression<Func<string>> openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow)
+        public IBodyWorkflowAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse, ApiConnectionActionConfiguration> OpenLocalPassthroughActiveDirectoryPowerShellRunspace(Expression<Func<string>> openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow)
         {
             var __workflow_openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow = WorkflowExpression.Compile(openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow, nameof(openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow), required: true);
-            return new DeferredBodyAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenLocalPassthroughActiveDirectoryPowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -350,11 +350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryAddADUserResponse> ActiveDirectoryAddADUser(Expression<Func<string>> activeDirectoryAddADUsername, Expression<Func<string>> activeDirectoryAddADUserworkflow, Expression<Func<string>> activeDirectoryAddADUseruserPrincipalName = null, Expression<Func<string>> activeDirectoryAddADUsersamAccountName = null, Expression<Func<string>> activeDirectoryAddADUsergivenName = null, Expression<Func<string>> activeDirectoryAddADUsersurName = null, Expression<Func<string>> activeDirectoryAddADUserpath = null, Expression<Func<string>> activeDirectoryAddADUserdescription = null, Expression<Func<string>> activeDirectoryAddADUserdisplayName = null, Expression<Func<string>> activeDirectoryAddADUseraccountPassword = null, Expression<Func<bool>> activeDirectoryAddADUseraccountPasswordIsStoredPassword = null, Expression<Func<bool>> activeDirectoryAddADUserenabled = null, Expression<Func<bool>> activeDirectoryAddADUserchangePasswordAtLogon = null, Expression<Func<bool>> activeDirectoryAddADUsercannotChangePassword = null, Expression<Func<bool>> activeDirectoryAddADUserpasswordNeverExpires = null, Expression<Func<string>> activeDirectoryAddADUseraDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryAddADUserResponse, ApiConnectionActionConfiguration> ActiveDirectoryAddADUser(Expression<Func<string>> activeDirectoryAddADUsername, Expression<Func<string>> activeDirectoryAddADUserworkflow, Expression<Func<string>> activeDirectoryAddADUseruserPrincipalName = null, Expression<Func<string>> activeDirectoryAddADUsersamAccountName = null, Expression<Func<string>> activeDirectoryAddADUsergivenName = null, Expression<Func<string>> activeDirectoryAddADUsersurName = null, Expression<Func<string>> activeDirectoryAddADUserpath = null, Expression<Func<string>> activeDirectoryAddADUserdescription = null, Expression<Func<string>> activeDirectoryAddADUserdisplayName = null, Expression<Func<string>> activeDirectoryAddADUseraccountPassword = null, Expression<Func<bool>> activeDirectoryAddADUseraccountPasswordIsStoredPassword = null, Expression<Func<bool>> activeDirectoryAddADUserenabled = null, Expression<Func<bool>> activeDirectoryAddADUserchangePasswordAtLogon = null, Expression<Func<bool>> activeDirectoryAddADUsercannotChangePassword = null, Expression<Func<bool>> activeDirectoryAddADUserpasswordNeverExpires = null, Expression<Func<string>> activeDirectoryAddADUseraDServer = null)
         {
             var __workflow_activeDirectoryAddADUsername = WorkflowExpression.Compile(activeDirectoryAddADUsername, nameof(activeDirectoryAddADUsername), required: true);
             var __workflow_activeDirectoryAddADUserworkflow = WorkflowExpression.Compile(activeDirectoryAddADUserworkflow, nameof(activeDirectoryAddADUserworkflow), required: true);
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryAddADUsercannotChangePassword = WorkflowExpression.Compile(activeDirectoryAddADUsercannotChangePassword, nameof(activeDirectoryAddADUsercannotChangePassword), required: false);
             var __workflow_activeDirectoryAddADUserpasswordNeverExpires = WorkflowExpression.Compile(activeDirectoryAddADUserpasswordNeverExpires, nameof(activeDirectoryAddADUserpasswordNeverExpires), required: false);
             var __workflow_activeDirectoryAddADUseraDServer = WorkflowExpression.Compile(activeDirectoryAddADUseraDServer, nameof(activeDirectoryAddADUseraDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryAddADUserResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryAddADUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADUser";
                 var apiCallHttpMethod = "post";
@@ -523,11 +523,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetADUserByIdentityResponse> ActiveDirectoryGetADUserByIdentity(Expression<Func<string>> activeDirectoryGetADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryGetADUserByIdentityidentity = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityfilterPropertyName = null, Expression<Func<activeDirectoryGetADUserByIdentityfilterPropertyComparisonInput>> activeDirectoryGetADUserByIdentityfilterPropertyComparison = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityfilterPropertyValue = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitysearchOUBase = null, Expression<Func<bool>> activeDirectoryGetADUserByIdentitysearchOUBaseSubtree = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityproperties = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityaDServer = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = null)
+        public IBodyWorkflowAction<ActiveDirectoryGetADUserByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetADUserByIdentity(Expression<Func<string>> activeDirectoryGetADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryGetADUserByIdentityidentity = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityfilterPropertyName = null, Expression<Func<activeDirectoryGetADUserByIdentityfilterPropertyComparisonInput>> activeDirectoryGetADUserByIdentityfilterPropertyComparison = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityfilterPropertyValue = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitysearchOUBase = null, Expression<Func<bool>> activeDirectoryGetADUserByIdentitysearchOUBaseSubtree = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityproperties = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityaDServer = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = null)
         {
             var __workflow_activeDirectoryGetADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityworkflow, nameof(activeDirectoryGetADUserByIdentityworkflow), required: true);
             var __workflow_activeDirectoryGetADUserByIdentityidentity = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityidentity, nameof(activeDirectoryGetADUserByIdentityidentity), required: false);
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON, nameof(activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON), required: false);
             var __workflow_activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON, nameof(activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON), required: false);
             var __workflow_activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON, nameof(activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON), required: false);
-            return new DeferredBodyAction<ActiveDirectoryGetADUserByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetADUserByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADUserByIdentity";
                 var apiCallHttpMethod = "post";
@@ -642,15 +642,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADUserByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetOUFromUserDNResponse> ActiveDirectoryGetOUFromUserDN(Expression<Func<string>> activeDirectoryGetOUFromUserDNuserDN, Expression<Func<string>> activeDirectoryGetOUFromUserDNworkflow)
+        public IBodyWorkflowAction<ActiveDirectoryGetOUFromUserDNResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetOUFromUserDN(Expression<Func<string>> activeDirectoryGetOUFromUserDNuserDN, Expression<Func<string>> activeDirectoryGetOUFromUserDNworkflow)
         {
             var __workflow_activeDirectoryGetOUFromUserDNuserDN = WorkflowExpression.Compile(activeDirectoryGetOUFromUserDNuserDN, nameof(activeDirectoryGetOUFromUserDNuserDN), required: true);
             var __workflow_activeDirectoryGetOUFromUserDNworkflow = WorkflowExpression.Compile(activeDirectoryGetOUFromUserDNworkflow, nameof(activeDirectoryGetOUFromUserDNworkflow), required: true);
-            return new DeferredBodyAction<ActiveDirectoryGetOUFromUserDNResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetOUFromUserDNResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetOUFromUserDN";
                 var apiCallHttpMethod = "post";
@@ -667,15 +667,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetOUFromUserDNResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetDomainFQDNFromDNResponse> ActiveDirectoryGetDomainFQDNFromDN(Expression<Func<string>> activeDirectoryGetDomainFQDNFromDNdN, Expression<Func<string>> activeDirectoryGetDomainFQDNFromDNworkflow)
+        public IBodyWorkflowAction<ActiveDirectoryGetDomainFQDNFromDNResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetDomainFQDNFromDN(Expression<Func<string>> activeDirectoryGetDomainFQDNFromDNdN, Expression<Func<string>> activeDirectoryGetDomainFQDNFromDNworkflow)
         {
             var __workflow_activeDirectoryGetDomainFQDNFromDNdN = WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDNdN, nameof(activeDirectoryGetDomainFQDNFromDNdN), required: true);
             var __workflow_activeDirectoryGetDomainFQDNFromDNworkflow = WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDNworkflow, nameof(activeDirectoryGetDomainFQDNFromDNworkflow), required: true);
-            return new DeferredBodyAction<ActiveDirectoryGetDomainFQDNFromDNResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetDomainFQDNFromDNResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetDomainFQDNFromDN";
                 var apiCallHttpMethod = "post";
@@ -692,11 +692,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetDomainFQDNFromDNResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetADGroupByIdentityResponse> ActiveDirectoryGetADGroupByIdentity(Expression<Func<string>> activeDirectoryGetADGroupByIdentityworkflow, Expression<Func<string>> activeDirectoryGetADGroupByIdentityidentity = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityfilterPropertyName = null, Expression<Func<activeDirectoryGetADGroupByIdentityfilterPropertyComparisonInput>> activeDirectoryGetADGroupByIdentityfilterPropertyComparison = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityfilterPropertyValue = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentitysearchOUBase = null, Expression<Func<bool>> activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = null, Expression<Func<bool>> activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryGetADGroupByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetADGroupByIdentity(Expression<Func<string>> activeDirectoryGetADGroupByIdentityworkflow, Expression<Func<string>> activeDirectoryGetADGroupByIdentityidentity = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityfilterPropertyName = null, Expression<Func<activeDirectoryGetADGroupByIdentityfilterPropertyComparisonInput>> activeDirectoryGetADGroupByIdentityfilterPropertyComparison = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityfilterPropertyValue = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentitysearchOUBase = null, Expression<Func<bool>> activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = null, Expression<Func<bool>> activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryGetADGroupByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityworkflow, nameof(activeDirectoryGetADGroupByIdentityworkflow), required: true);
             var __workflow_activeDirectoryGetADGroupByIdentityidentity = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityidentity, nameof(activeDirectoryGetADGroupByIdentityidentity), required: false);
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree, nameof(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree), required: false);
             var __workflow_activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist, nameof(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist), required: false);
             var __workflow_activeDirectoryGetADGroupByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityaDServer, nameof(activeDirectoryGetADGroupByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryGetADGroupByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetADGroupByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADGroupByIdentity";
                 var apiCallHttpMethod = "post";
@@ -800,18 +800,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADGroupByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryAddADGroupMemberByIdentityResponse> ActiveDirectoryAddADGroupMemberByIdentity(Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityuserIdentity, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityworkflow, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentitygroupName = null, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryAddADGroupMemberByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryAddADGroupMemberByIdentity(Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityuserIdentity, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityworkflow, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentitygroupName = null, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryAddADGroupMemberByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityuserIdentity, nameof(activeDirectoryAddADGroupMemberByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryAddADGroupMemberByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityworkflow, nameof(activeDirectoryAddADGroupMemberByIdentityworkflow), required: true);
             var __workflow_activeDirectoryAddADGroupMemberByIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentitygroupIdentity, nameof(activeDirectoryAddADGroupMemberByIdentitygroupIdentity), required: false);
             var __workflow_activeDirectoryAddADGroupMemberByIdentitygroupName = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentitygroupName, nameof(activeDirectoryAddADGroupMemberByIdentitygroupName), required: false);
             var __workflow_activeDirectoryAddADGroupMemberByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityaDServer, nameof(activeDirectoryAddADGroupMemberByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryAddADGroupMemberByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryAddADGroupMemberByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADGroupMemberByIdentity";
                 var apiCallHttpMethod = "post";
@@ -846,11 +846,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADGroupMemberByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse> ActiveDirectoryAddMultipleADGroupMembersByIdentity(Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = null, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryAddMultipleADGroupMembersByIdentity(Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = null, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityworkflow), required: true);
             var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity, nameof(activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity), required: false);
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd), required: false);
             var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall), required: false);
             var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityaDServer, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddMultipleADGroupMembersByIdentity";
                 var apiCallHttpMethod = "post";
@@ -940,11 +940,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse> ActiveDirectoryAddADUserToMultipleADGroupsByName(Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON = null, Expression<Func<bool>> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd = null, Expression<Func<bool>> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = null, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = null, Expression<Func<int>> activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = null)
+        public IBodyWorkflowAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse, ApiConnectionActionConfiguration> ActiveDirectoryAddADUserToMultipleADGroupsByName(Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON = null, Expression<Func<bool>> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd = null, Expression<Func<bool>> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = null, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = null, Expression<Func<int>> activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = null)
         {
             var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity), required: true);
             var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameworkflow = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameworkflow), required: true);
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd), required: false);
             var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameaDServer, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameaDServer), required: false);
             var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall, nameof(activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall), required: false);
-            return new DeferredBodyAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADUserToMultipleADGroupsByName";
                 var apiCallHttpMethod = "post";
@@ -1020,16 +1020,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetADUserGroupMembershipResponse> ActiveDirectoryGetADUserGroupMembership(Expression<Func<string>> activeDirectoryGetADUserGroupMembershipuserIdentity, Expression<Func<string>> activeDirectoryGetADUserGroupMembershipworkflow, Expression<Func<string>> activeDirectoryGetADUserGroupMembershipaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryGetADUserGroupMembershipResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetADUserGroupMembership(Expression<Func<string>> activeDirectoryGetADUserGroupMembershipuserIdentity, Expression<Func<string>> activeDirectoryGetADUserGroupMembershipworkflow, Expression<Func<string>> activeDirectoryGetADUserGroupMembershipaDServer = null)
         {
             var __workflow_activeDirectoryGetADUserGroupMembershipuserIdentity = WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipuserIdentity, nameof(activeDirectoryGetADUserGroupMembershipuserIdentity), required: true);
             var __workflow_activeDirectoryGetADUserGroupMembershipworkflow = WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipworkflow, nameof(activeDirectoryGetADUserGroupMembershipworkflow), required: true);
             var __workflow_activeDirectoryGetADUserGroupMembershipaDServer = WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipaDServer, nameof(activeDirectoryGetADUserGroupMembershipaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryGetADUserGroupMembershipResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetADUserGroupMembershipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADUserGroupMembership";
                 var apiCallHttpMethod = "post";
@@ -1052,18 +1052,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADUserGroupMembershipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse> ActiveDirectoryModifyADUserStringPropertyByIdentity(Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityworkflow, Expression<Func<activeDirectoryModifyADUserStringPropertyByIdentitypropertiesListInputItem[]>> activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = null, Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityaDServer = null, Expression<Func<bool>> activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = null)
+        public IBodyWorkflowAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryModifyADUserStringPropertyByIdentity(Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityworkflow, Expression<Func<activeDirectoryModifyADUserStringPropertyByIdentitypropertiesListInputItem[]>> activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = null, Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityaDServer = null, Expression<Func<bool>> activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = null)
         {
             var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, nameof(activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityworkflow, nameof(activeDirectoryModifyADUserStringPropertyByIdentityworkflow), required: true);
             var __workflow_activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList, nameof(activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList), required: false);
             var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityaDServer, nameof(activeDirectoryModifyADUserStringPropertyByIdentityaDServer), required: false);
             var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue, nameof(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue), required: false);
-            return new DeferredBodyAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryModifyADUserStringPropertyByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1108,18 +1108,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse> ActiveDirectoryModifyADUserBooleanPropertyByIdentity(Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, Expression<Func<bool>> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = null, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryModifyADUserBooleanPropertyByIdentity(Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, Expression<Func<bool>> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = null, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName), required: true);
             var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow), required: true);
             var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue), required: false);
             var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryModifyADUserBooleanPropertyByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1160,11 +1160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryModifyADUserPropertiesResponse> ActiveDirectoryModifyADUserProperties(Expression<Func<string>> activeDirectoryModifyADUserPropertiesuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserPropertiesworkflow, Expression<Func<string>> activeDirectoryModifyADUserPropertiescity = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescompany = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountry = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountryString = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountryISO3166 = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdepartment = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdescription = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdisplayName = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesemailAddress = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesgivenName = null, Expression<Func<string>> activeDirectoryModifyADUserPropertieshomePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesinitials = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesiPPhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesmanager = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesmobilePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesnotes = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesoffice = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesofficePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiespostalCode = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesprofilePath = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesscriptPath = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesstate = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesstreetAddress = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiessurname = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiestitle = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryModifyADUserPropertiesResponse, ApiConnectionActionConfiguration> ActiveDirectoryModifyADUserProperties(Expression<Func<string>> activeDirectoryModifyADUserPropertiesuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserPropertiesworkflow, Expression<Func<string>> activeDirectoryModifyADUserPropertiescity = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescompany = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountry = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountryString = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountryISO3166 = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdepartment = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdescription = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdisplayName = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesemailAddress = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesgivenName = null, Expression<Func<string>> activeDirectoryModifyADUserPropertieshomePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesinitials = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesiPPhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesmanager = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesmobilePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesnotes = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesoffice = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesofficePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiespostalCode = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesprofilePath = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesscriptPath = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesstate = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesstreetAddress = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiessurname = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiestitle = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesaDServer = null)
         {
             var __workflow_activeDirectoryModifyADUserPropertiesuserIdentity = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesuserIdentity, nameof(activeDirectoryModifyADUserPropertiesuserIdentity), required: true);
             var __workflow_activeDirectoryModifyADUserPropertiesworkflow = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesworkflow, nameof(activeDirectoryModifyADUserPropertiesworkflow), required: true);
@@ -1194,7 +1194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryModifyADUserPropertiessurname = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiessurname, nameof(activeDirectoryModifyADUserPropertiessurname), required: false);
             var __workflow_activeDirectoryModifyADUserPropertiestitle = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiestitle, nameof(activeDirectoryModifyADUserPropertiestitle), required: false);
             var __workflow_activeDirectoryModifyADUserPropertiesaDServer = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesaDServer, nameof(activeDirectoryModifyADUserPropertiesaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryModifyADUserPropertiesResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryModifyADUserPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryModifyADUserProperties";
                 var apiCallHttpMethod = "post";
@@ -1367,17 +1367,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryModifyADUserPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryMoveADUserToOUByIdentityResponse> ActiveDirectoryMoveADUserToOUByIdentity(Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityuserIdentity, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentitytargetPath, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityworkflow, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryMoveADUserToOUByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryMoveADUserToOUByIdentity(Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityuserIdentity, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentitytargetPath, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityworkflow, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryMoveADUserToOUByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityuserIdentity, nameof(activeDirectoryMoveADUserToOUByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryMoveADUserToOUByIdentitytargetPath = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentitytargetPath, nameof(activeDirectoryMoveADUserToOUByIdentitytargetPath), required: true);
             var __workflow_activeDirectoryMoveADUserToOUByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityworkflow, nameof(activeDirectoryMoveADUserToOUByIdentityworkflow), required: true);
             var __workflow_activeDirectoryMoveADUserToOUByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityaDServer, nameof(activeDirectoryMoveADUserToOUByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryMoveADUserToOUByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryMoveADUserToOUByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryMoveADUserToOUByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1402,16 +1402,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryMoveADUserToOUByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryClearADUserAccountExpirationResponse> ActiveDirectoryClearADUserAccountExpiration(Expression<Func<string>> activeDirectoryClearADUserAccountExpirationuserIdentity, Expression<Func<string>> activeDirectoryClearADUserAccountExpirationworkflow, Expression<Func<string>> activeDirectoryClearADUserAccountExpirationaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryClearADUserAccountExpirationResponse, ApiConnectionActionConfiguration> ActiveDirectoryClearADUserAccountExpiration(Expression<Func<string>> activeDirectoryClearADUserAccountExpirationuserIdentity, Expression<Func<string>> activeDirectoryClearADUserAccountExpirationworkflow, Expression<Func<string>> activeDirectoryClearADUserAccountExpirationaDServer = null)
         {
             var __workflow_activeDirectoryClearADUserAccountExpirationuserIdentity = WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationuserIdentity, nameof(activeDirectoryClearADUserAccountExpirationuserIdentity), required: true);
             var __workflow_activeDirectoryClearADUserAccountExpirationworkflow = WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationworkflow, nameof(activeDirectoryClearADUserAccountExpirationworkflow), required: true);
             var __workflow_activeDirectoryClearADUserAccountExpirationaDServer = WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationaDServer, nameof(activeDirectoryClearADUserAccountExpirationaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryClearADUserAccountExpirationResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryClearADUserAccountExpirationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryClearADUserAccountExpiration";
                 var apiCallHttpMethod = "post";
@@ -1434,18 +1434,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryClearADUserAccountExpirationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryDirSyncResponse> ActiveDirectoryDirSync(Expression<Func<string>> activeDirectoryDirSyncworkflow, Expression<Func<activeDirectoryDirSyncpolicyTypeInput>> activeDirectoryDirSyncpolicyType = null, Expression<Func<string>> activeDirectoryDirSynccomputerName = null, Expression<Func<int>> activeDirectoryDirSyncmaxRetryAttempts = null, Expression<Func<int>> activeDirectoryDirSyncsecondsBetweenRetries = null)
+        public IBodyWorkflowAction<ActiveDirectoryDirSyncResponse, ApiConnectionActionConfiguration> ActiveDirectoryDirSync(Expression<Func<string>> activeDirectoryDirSyncworkflow, Expression<Func<activeDirectoryDirSyncpolicyTypeInput>> activeDirectoryDirSyncpolicyType = null, Expression<Func<string>> activeDirectoryDirSynccomputerName = null, Expression<Func<int>> activeDirectoryDirSyncmaxRetryAttempts = null, Expression<Func<int>> activeDirectoryDirSyncsecondsBetweenRetries = null)
         {
             var __workflow_activeDirectoryDirSyncworkflow = WorkflowExpression.Compile(activeDirectoryDirSyncworkflow, nameof(activeDirectoryDirSyncworkflow), required: true);
             var __workflow_activeDirectoryDirSyncpolicyType = WorkflowExpression.Compile(activeDirectoryDirSyncpolicyType, nameof(activeDirectoryDirSyncpolicyType), required: false);
             var __workflow_activeDirectoryDirSynccomputerName = WorkflowExpression.Compile(activeDirectoryDirSynccomputerName, nameof(activeDirectoryDirSynccomputerName), required: false);
             var __workflow_activeDirectoryDirSyncmaxRetryAttempts = WorkflowExpression.Compile(activeDirectoryDirSyncmaxRetryAttempts, nameof(activeDirectoryDirSyncmaxRetryAttempts), required: false);
             var __workflow_activeDirectoryDirSyncsecondsBetweenRetries = WorkflowExpression.Compile(activeDirectoryDirSyncsecondsBetweenRetries, nameof(activeDirectoryDirSyncsecondsBetweenRetries), required: false);
-            return new DeferredBodyAction<ActiveDirectoryDirSyncResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryDirSyncResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryDirSync";
                 var apiCallHttpMethod = "post";
@@ -1504,11 +1504,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryDirSyncResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveADUserByIdentityResponse> ActiveDirectoryRemoveADUserByIdentity(Expression<Func<string>> activeDirectoryRemoveADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryRemoveADUserByIdentityworkflow, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion = null, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = null, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = null, Expression<Func<string>> activeDirectoryRemoveADUserByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveADUserByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveADUserByIdentity(Expression<Func<string>> activeDirectoryRemoveADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryRemoveADUserByIdentityworkflow, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion = null, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = null, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = null, Expression<Func<string>> activeDirectoryRemoveADUserByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryRemoveADUserByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityuserIdentity, nameof(activeDirectoryRemoveADUserByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryRemoveADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityworkflow, nameof(activeDirectoryRemoveADUserByIdentityworkflow), required: true);
@@ -1516,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects, nameof(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects), required: false);
             var __workflow_activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive, nameof(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive), required: false);
             var __workflow_activeDirectoryRemoveADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityaDServer, nameof(activeDirectoryRemoveADUserByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveADUserByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveADUserByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADUserByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1587,11 +1587,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADUserByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryResetADUserPasswordByIdentityResponse> ActiveDirectoryResetADUserPasswordByIdentity(Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityuserIdentity, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentitynewPassword, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityworkflow, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitycannotChangePassword = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = null, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryResetADUserPasswordByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryResetADUserPasswordByIdentity(Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityuserIdentity, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentitynewPassword, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityworkflow, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitycannotChangePassword = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = null, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryResetADUserPasswordByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityuserIdentity, nameof(activeDirectoryResetADUserPasswordByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryResetADUserPasswordByIdentitynewPassword = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitynewPassword, nameof(activeDirectoryResetADUserPasswordByIdentitynewPassword), required: true);
@@ -1603,7 +1603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires, nameof(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires), required: false);
             var __workflow_activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice, nameof(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice), required: false);
             var __workflow_activeDirectoryResetADUserPasswordByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityaDServer, nameof(activeDirectoryResetADUserPasswordByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryResetADUserPasswordByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryResetADUserPasswordByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryResetADUserPasswordByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1724,17 +1724,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryResetADUserPasswordByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse> ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentity(Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, Expression<Func<bool>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentity(Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, Expression<Func<bool>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = null)
         {
             var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity), required: true);
             var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion), required: true);
             var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow), required: true);
             var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1759,16 +1759,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryDisableADUserByIdentityResponse> ActiveDirectoryDisableADUserByIdentity(Expression<Func<string>> activeDirectoryDisableADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryDisableADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryDisableADUserByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryDisableADUserByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryDisableADUserByIdentity(Expression<Func<string>> activeDirectoryDisableADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryDisableADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryDisableADUserByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryDisableADUserByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityuserIdentity, nameof(activeDirectoryDisableADUserByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryDisableADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityworkflow, nameof(activeDirectoryDisableADUserByIdentityworkflow), required: true);
             var __workflow_activeDirectoryDisableADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityaDServer, nameof(activeDirectoryDisableADUserByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryDisableADUserByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryDisableADUserByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryDisableADUserByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1791,16 +1791,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryDisableADUserByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryEnableADUserByIdentityResponse> ActiveDirectoryEnableADUserByIdentity(Expression<Func<string>> activeDirectoryEnableADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryEnableADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryEnableADUserByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryEnableADUserByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryEnableADUserByIdentity(Expression<Func<string>> activeDirectoryEnableADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryEnableADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryEnableADUserByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryEnableADUserByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityuserIdentity, nameof(activeDirectoryEnableADUserByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryEnableADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityworkflow, nameof(activeDirectoryEnableADUserByIdentityworkflow), required: true);
             var __workflow_activeDirectoryEnableADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityaDServer, nameof(activeDirectoryEnableADUserByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryEnableADUserByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryEnableADUserByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryEnableADUserByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1823,11 +1823,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryEnableADUserByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse> ActiveDirectorySetADUserHomeFolderByIdentity(Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityuserIdentity, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityworkflow, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityhomeDrive = null, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = null, Expression<Func<bool>> activeDirectorySetADUserHomeFolderByIdentitycreateFolder = null, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectorySetADUserHomeFolderByIdentity(Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityuserIdentity, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityworkflow, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityhomeDrive = null, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = null, Expression<Func<bool>> activeDirectorySetADUserHomeFolderByIdentitycreateFolder = null, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityaDServer = null)
         {
             var __workflow_activeDirectorySetADUserHomeFolderByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityuserIdentity, nameof(activeDirectorySetADUserHomeFolderByIdentityuserIdentity), required: true);
             var __workflow_activeDirectorySetADUserHomeFolderByIdentityworkflow = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityworkflow, nameof(activeDirectorySetADUserHomeFolderByIdentityworkflow), required: true);
@@ -1835,7 +1835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityhomeDirectory, nameof(activeDirectorySetADUserHomeFolderByIdentityhomeDirectory), required: false);
             var __workflow_activeDirectorySetADUserHomeFolderByIdentitycreateFolder = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentitycreateFolder, nameof(activeDirectorySetADUserHomeFolderByIdentitycreateFolder), required: false);
             var __workflow_activeDirectorySetADUserHomeFolderByIdentityaDServer = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityaDServer, nameof(activeDirectorySetADUserHomeFolderByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADUserHomeFolderByIdentity";
                 var apiCallHttpMethod = "post";
@@ -1886,17 +1886,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryCloneADUserGroupsResponse> ActiveDirectoryCloneADUserGroups(Expression<Func<string>> activeDirectoryCloneADUserGroupssourceUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserGroupsdestinationUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserGroupsworkflow, Expression<Func<string>> activeDirectoryCloneADUserGroupsaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryCloneADUserGroupsResponse, ApiConnectionActionConfiguration> ActiveDirectoryCloneADUserGroups(Expression<Func<string>> activeDirectoryCloneADUserGroupssourceUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserGroupsdestinationUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserGroupsworkflow, Expression<Func<string>> activeDirectoryCloneADUserGroupsaDServer = null)
         {
             var __workflow_activeDirectoryCloneADUserGroupssourceUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupssourceUserIdentity, nameof(activeDirectoryCloneADUserGroupssourceUserIdentity), required: true);
             var __workflow_activeDirectoryCloneADUserGroupsdestinationUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsdestinationUserIdentity, nameof(activeDirectoryCloneADUserGroupsdestinationUserIdentity), required: true);
             var __workflow_activeDirectoryCloneADUserGroupsworkflow = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsworkflow, nameof(activeDirectoryCloneADUserGroupsworkflow), required: true);
             var __workflow_activeDirectoryCloneADUserGroupsaDServer = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsaDServer, nameof(activeDirectoryCloneADUserGroupsaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryCloneADUserGroupsResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryCloneADUserGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryCloneADUserGroups";
                 var apiCallHttpMethod = "post";
@@ -1921,18 +1921,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryCloneADUserGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryCloneADUserPropertiesResponse> ActiveDirectoryCloneADUserProperties(Expression<Func<string>> activeDirectoryCloneADUserPropertiessourceUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserPropertiesdestinationUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserPropertiespropertiesToClone, Expression<Func<string>> activeDirectoryCloneADUserPropertiesworkflow, Expression<Func<string>> activeDirectoryCloneADUserPropertiesaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryCloneADUserPropertiesResponse, ApiConnectionActionConfiguration> ActiveDirectoryCloneADUserProperties(Expression<Func<string>> activeDirectoryCloneADUserPropertiessourceUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserPropertiesdestinationUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserPropertiespropertiesToClone, Expression<Func<string>> activeDirectoryCloneADUserPropertiesworkflow, Expression<Func<string>> activeDirectoryCloneADUserPropertiesaDServer = null)
         {
             var __workflow_activeDirectoryCloneADUserPropertiessourceUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiessourceUserIdentity, nameof(activeDirectoryCloneADUserPropertiessourceUserIdentity), required: true);
             var __workflow_activeDirectoryCloneADUserPropertiesdestinationUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesdestinationUserIdentity, nameof(activeDirectoryCloneADUserPropertiesdestinationUserIdentity), required: true);
             var __workflow_activeDirectoryCloneADUserPropertiespropertiesToClone = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiespropertiesToClone, nameof(activeDirectoryCloneADUserPropertiespropertiesToClone), required: true);
             var __workflow_activeDirectoryCloneADUserPropertiesworkflow = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesworkflow, nameof(activeDirectoryCloneADUserPropertiesworkflow), required: true);
             var __workflow_activeDirectoryCloneADUserPropertiesaDServer = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesaDServer, nameof(activeDirectoryCloneADUserPropertiesaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryCloneADUserPropertiesResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryCloneADUserPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryCloneADUserProperties";
                 var apiCallHttpMethod = "post";
@@ -1959,11 +1959,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryCloneADUserPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse> ActiveDirectoryRemoveADUserFromMultipleADGroupsByName(Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = null, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = null, Expression<Func<int>> activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveADUserFromMultipleADGroupsByName(Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = null, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = null, Expression<Func<int>> activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = null)
         {
             var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity), required: true);
             var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow), required: true);
@@ -1972,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove), required: false);
             var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer), required: false);
             var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADUserFromMultipleADGroupsByName";
                 var apiCallHttpMethod = "post";
@@ -2039,11 +2039,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse> ActiveDirectoryRemoveADUserFromAllGroups(Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsworkflow, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsuserIdentity = null, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsaDServer = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromAllGroupsrunAsThread = null, Expression<Func<int>> activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = null, Expression<Func<int>> activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveADUserFromAllGroups(Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsworkflow, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsuserIdentity = null, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsaDServer = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromAllGroupsrunAsThread = null, Expression<Func<int>> activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = null, Expression<Func<int>> activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = null)
         {
             var __workflow_activeDirectoryRemoveADUserFromAllGroupsworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsworkflow, nameof(activeDirectoryRemoveADUserFromAllGroupsworkflow), required: true);
             var __workflow_activeDirectoryRemoveADUserFromAllGroupsuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsuserIdentity, nameof(activeDirectoryRemoveADUserFromAllGroupsuserIdentity), required: false);
@@ -2053,7 +2053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryRemoveADUserFromAllGroupsrunAsThread = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsrunAsThread, nameof(activeDirectoryRemoveADUserFromAllGroupsrunAsThread), required: false);
             var __workflow_activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId, nameof(activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId), required: false);
             var __workflow_activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread, nameof(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADUserFromAllGroups";
                 var apiCallHttpMethod = "post";
@@ -2140,16 +2140,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryCheckOUExistsResponse> ActiveDirectoryCheckOUExists(Expression<Func<string>> activeDirectoryCheckOUExistsoUIdentity, Expression<Func<string>> activeDirectoryCheckOUExistsworkflow, Expression<Func<string>> activeDirectoryCheckOUExistsaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryCheckOUExistsResponse, ApiConnectionActionConfiguration> ActiveDirectoryCheckOUExists(Expression<Func<string>> activeDirectoryCheckOUExistsoUIdentity, Expression<Func<string>> activeDirectoryCheckOUExistsworkflow, Expression<Func<string>> activeDirectoryCheckOUExistsaDServer = null)
         {
             var __workflow_activeDirectoryCheckOUExistsoUIdentity = WorkflowExpression.Compile(activeDirectoryCheckOUExistsoUIdentity, nameof(activeDirectoryCheckOUExistsoUIdentity), required: true);
             var __workflow_activeDirectoryCheckOUExistsworkflow = WorkflowExpression.Compile(activeDirectoryCheckOUExistsworkflow, nameof(activeDirectoryCheckOUExistsworkflow), required: true);
             var __workflow_activeDirectoryCheckOUExistsaDServer = WorkflowExpression.Compile(activeDirectoryCheckOUExistsaDServer, nameof(activeDirectoryCheckOUExistsaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryCheckOUExistsResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryCheckOUExistsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryCheckOUExists";
                 var apiCallHttpMethod = "post";
@@ -2172,18 +2172,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryCheckOUExistsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse> ActiveDirectoryRemoveADGroupMemberByGroupIdentity(Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = null, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveADGroupMemberByGroupIdentity(Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = null, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = null)
         {
             var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow), required: true);
             var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity), required: false);
             var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName), required: false);
             var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADGroupMemberByGroupIdentity";
                 var apiCallHttpMethod = "post";
@@ -2218,11 +2218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse> ActiveDirectoryRemoveMultipleADGroupMembersByIdentity(Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = null, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveMultipleADGroupMembersByIdentity(Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = null, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow), required: true);
             var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity), required: false);
@@ -2231,7 +2231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove), required: false);
             var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall), required: false);
             var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveMultipleADGroupMembersByIdentity";
                 var apiCallHttpMethod = "post";
@@ -2312,16 +2312,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryUnlockADAccountByIdentityResponse> ActiveDirectoryUnlockADAccountByIdentity(Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityuserIdentity, Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityworkflow, Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryUnlockADAccountByIdentityResponse, ApiConnectionActionConfiguration> ActiveDirectoryUnlockADAccountByIdentity(Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityuserIdentity, Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityworkflow, Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityaDServer = null)
         {
             var __workflow_activeDirectoryUnlockADAccountByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityuserIdentity, nameof(activeDirectoryUnlockADAccountByIdentityuserIdentity), required: true);
             var __workflow_activeDirectoryUnlockADAccountByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityworkflow, nameof(activeDirectoryUnlockADAccountByIdentityworkflow), required: true);
             var __workflow_activeDirectoryUnlockADAccountByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityaDServer, nameof(activeDirectoryUnlockADAccountByIdentityaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryUnlockADAccountByIdentityResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryUnlockADAccountByIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryUnlockADAccountByIdentity";
                 var apiCallHttpMethod = "post";
@@ -2344,16 +2344,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryUnlockADAccountByIdentityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectorySetADServerResponse> ActiveDirectorySetADServer(Expression<Func<string>> activeDirectorySetADServerworkflow, Expression<Func<activeDirectorySetADServerpredefinedADServerChoiceInput>> activeDirectorySetADServerpredefinedADServerChoice = null, Expression<Func<string>> activeDirectorySetADServeraDServer = null)
+        public IBodyWorkflowAction<ActiveDirectorySetADServerResponse, ApiConnectionActionConfiguration> ActiveDirectorySetADServer(Expression<Func<string>> activeDirectorySetADServerworkflow, Expression<Func<activeDirectorySetADServerpredefinedADServerChoiceInput>> activeDirectorySetADServerpredefinedADServerChoice = null, Expression<Func<string>> activeDirectorySetADServeraDServer = null)
         {
             var __workflow_activeDirectorySetADServerworkflow = WorkflowExpression.Compile(activeDirectorySetADServerworkflow, nameof(activeDirectorySetADServerworkflow), required: true);
             var __workflow_activeDirectorySetADServerpredefinedADServerChoice = WorkflowExpression.Compile(activeDirectorySetADServerpredefinedADServerChoice, nameof(activeDirectorySetADServerpredefinedADServerChoice), required: false);
             var __workflow_activeDirectorySetADServeraDServer = WorkflowExpression.Compile(activeDirectorySetADServeraDServer, nameof(activeDirectorySetADServeraDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectorySetADServerResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectorySetADServerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADServer";
                 var apiCallHttpMethod = "post";
@@ -2390,17 +2390,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADServerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetDomainInfoResponse> ActiveDirectoryGetDomainInfo(Expression<Func<string>> activeDirectoryGetDomainInfoworkflow, Expression<Func<string>> activeDirectoryGetDomainInfoaDServer = null, Expression<Func<activeDirectoryGetDomainInfopredefinedIdentityInput>> activeDirectoryGetDomainInfopredefinedIdentity = null, Expression<Func<string>> activeDirectoryGetDomainInfoidentity = null)
+        public IBodyWorkflowAction<ActiveDirectoryGetDomainInfoResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetDomainInfo(Expression<Func<string>> activeDirectoryGetDomainInfoworkflow, Expression<Func<string>> activeDirectoryGetDomainInfoaDServer = null, Expression<Func<activeDirectoryGetDomainInfopredefinedIdentityInput>> activeDirectoryGetDomainInfopredefinedIdentity = null, Expression<Func<string>> activeDirectoryGetDomainInfoidentity = null)
         {
             var __workflow_activeDirectoryGetDomainInfoworkflow = WorkflowExpression.Compile(activeDirectoryGetDomainInfoworkflow, nameof(activeDirectoryGetDomainInfoworkflow), required: true);
             var __workflow_activeDirectoryGetDomainInfoaDServer = WorkflowExpression.Compile(activeDirectoryGetDomainInfoaDServer, nameof(activeDirectoryGetDomainInfoaDServer), required: false);
             var __workflow_activeDirectoryGetDomainInfopredefinedIdentity = WorkflowExpression.Compile(activeDirectoryGetDomainInfopredefinedIdentity, nameof(activeDirectoryGetDomainInfopredefinedIdentity), required: false);
             var __workflow_activeDirectoryGetDomainInfoidentity = WorkflowExpression.Compile(activeDirectoryGetDomainInfoidentity, nameof(activeDirectoryGetDomainInfoidentity), required: false);
-            return new DeferredBodyAction<ActiveDirectoryGetDomainInfoResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetDomainInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetDomainInfo";
                 var apiCallHttpMethod = "post";
@@ -2443,11 +2443,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetDomainInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryAddADGroupResponse> ActiveDirectoryAddADGroup(Expression<Func<string>> activeDirectoryAddADGroupname, Expression<Func<activeDirectoryAddADGroupgroupCategoryInput>> activeDirectoryAddADGroupgroupCategory, Expression<Func<activeDirectoryAddADGroupgroupScopeInput>> activeDirectoryAddADGroupgroupScope, Expression<Func<string>> activeDirectoryAddADGroupworkflow, Expression<Func<string>> activeDirectoryAddADGroupsamAccountName = null, Expression<Func<string>> activeDirectoryAddADGrouppath = null, Expression<Func<string>> activeDirectoryAddADGroupdescription = null, Expression<Func<string>> activeDirectoryAddADGroupnotes = null, Expression<Func<string>> activeDirectoryAddADGroupdisplayName = null, Expression<Func<string>> activeDirectoryAddADGrouphomePage = null, Expression<Func<string>> activeDirectoryAddADGroupmanagedBy = null, Expression<Func<bool>> activeDirectoryAddADGroupprotectedFromAccidentalDeletion = null, Expression<Func<string>> activeDirectoryAddADGroupaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryAddADGroupResponse, ApiConnectionActionConfiguration> ActiveDirectoryAddADGroup(Expression<Func<string>> activeDirectoryAddADGroupname, Expression<Func<activeDirectoryAddADGroupgroupCategoryInput>> activeDirectoryAddADGroupgroupCategory, Expression<Func<activeDirectoryAddADGroupgroupScopeInput>> activeDirectoryAddADGroupgroupScope, Expression<Func<string>> activeDirectoryAddADGroupworkflow, Expression<Func<string>> activeDirectoryAddADGroupsamAccountName = null, Expression<Func<string>> activeDirectoryAddADGrouppath = null, Expression<Func<string>> activeDirectoryAddADGroupdescription = null, Expression<Func<string>> activeDirectoryAddADGroupnotes = null, Expression<Func<string>> activeDirectoryAddADGroupdisplayName = null, Expression<Func<string>> activeDirectoryAddADGrouphomePage = null, Expression<Func<string>> activeDirectoryAddADGroupmanagedBy = null, Expression<Func<bool>> activeDirectoryAddADGroupprotectedFromAccidentalDeletion = null, Expression<Func<string>> activeDirectoryAddADGroupaDServer = null)
         {
             var __workflow_activeDirectoryAddADGroupname = WorkflowExpression.Compile(activeDirectoryAddADGroupname, nameof(activeDirectoryAddADGroupname), required: true);
             var __workflow_activeDirectoryAddADGroupgroupCategory = WorkflowExpression.Compile(activeDirectoryAddADGroupgroupCategory, nameof(activeDirectoryAddADGroupgroupCategory), required: true);
@@ -2462,7 +2462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryAddADGroupmanagedBy = WorkflowExpression.Compile(activeDirectoryAddADGroupmanagedBy, nameof(activeDirectoryAddADGroupmanagedBy), required: false);
             var __workflow_activeDirectoryAddADGroupprotectedFromAccidentalDeletion = WorkflowExpression.Compile(activeDirectoryAddADGroupprotectedFromAccidentalDeletion, nameof(activeDirectoryAddADGroupprotectedFromAccidentalDeletion), required: false);
             var __workflow_activeDirectoryAddADGroupaDServer = WorkflowExpression.Compile(activeDirectoryAddADGroupaDServer, nameof(activeDirectoryAddADGroupaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryAddADGroupResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryAddADGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADGroup";
                 var apiCallHttpMethod = "post";
@@ -2547,16 +2547,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddADGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryDoesADGroupExistResponse> ActiveDirectoryDoesADGroupExist(Expression<Func<string>> activeDirectoryDoesADGroupExistgroupIdentity, Expression<Func<string>> activeDirectoryDoesADGroupExistworkflow, Expression<Func<string>> activeDirectoryDoesADGroupExistaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryDoesADGroupExistResponse, ApiConnectionActionConfiguration> ActiveDirectoryDoesADGroupExist(Expression<Func<string>> activeDirectoryDoesADGroupExistgroupIdentity, Expression<Func<string>> activeDirectoryDoesADGroupExistworkflow, Expression<Func<string>> activeDirectoryDoesADGroupExistaDServer = null)
         {
             var __workflow_activeDirectoryDoesADGroupExistgroupIdentity = WorkflowExpression.Compile(activeDirectoryDoesADGroupExistgroupIdentity, nameof(activeDirectoryDoesADGroupExistgroupIdentity), required: true);
             var __workflow_activeDirectoryDoesADGroupExistworkflow = WorkflowExpression.Compile(activeDirectoryDoesADGroupExistworkflow, nameof(activeDirectoryDoesADGroupExistworkflow), required: true);
             var __workflow_activeDirectoryDoesADGroupExistaDServer = WorkflowExpression.Compile(activeDirectoryDoesADGroupExistaDServer, nameof(activeDirectoryDoesADGroupExistaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryDoesADGroupExistResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryDoesADGroupExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryDoesADGroupExist";
                 var apiCallHttpMethod = "post";
@@ -2579,18 +2579,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryDoesADGroupExistResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupResponse> ActiveDirectoryRemoveADGroup(Expression<Func<string>> activeDirectoryRemoveADGroupgroupIdentity, Expression<Func<string>> activeDirectoryRemoveADGroupworkflow, Expression<Func<bool>> activeDirectoryRemoveADGroupdeleteEvenIfProtected = null, Expression<Func<bool>> activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveADGroupaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveADGroup(Expression<Func<string>> activeDirectoryRemoveADGroupgroupIdentity, Expression<Func<string>> activeDirectoryRemoveADGroupworkflow, Expression<Func<bool>> activeDirectoryRemoveADGroupdeleteEvenIfProtected = null, Expression<Func<bool>> activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveADGroupaDServer = null)
         {
             var __workflow_activeDirectoryRemoveADGroupgroupIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADGroupgroupIdentity, nameof(activeDirectoryRemoveADGroupgroupIdentity), required: true);
             var __workflow_activeDirectoryRemoveADGroupworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADGroupworkflow, nameof(activeDirectoryRemoveADGroupworkflow), required: true);
             var __workflow_activeDirectoryRemoveADGroupdeleteEvenIfProtected = WorkflowExpression.Compile(activeDirectoryRemoveADGroupdeleteEvenIfProtected, nameof(activeDirectoryRemoveADGroupdeleteEvenIfProtected), required: false);
             var __workflow_activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = WorkflowExpression.Compile(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist, nameof(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist), required: false);
             var __workflow_activeDirectoryRemoveADGroupaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADGroupaDServer, nameof(activeDirectoryRemoveADGroupaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveADGroupResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveADGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADGroup";
                 var apiCallHttpMethod = "post";
@@ -2645,11 +2645,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveADGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryAddOUResponse> ActiveDirectoryAddOU(Expression<Func<string>> activeDirectoryAddOUname, Expression<Func<string>> activeDirectoryAddOUworkflow, Expression<Func<string>> activeDirectoryAddOUpath = null, Expression<Func<string>> activeDirectoryAddOUdescription = null, Expression<Func<string>> activeDirectoryAddOUdisplayName = null, Expression<Func<string>> activeDirectoryAddOUmanagedBy = null, Expression<Func<bool>> activeDirectoryAddOUprotectedFromAccidentalDeletion = null, Expression<Func<string>> activeDirectoryAddOUstreetAddress = null, Expression<Func<string>> activeDirectoryAddOUcity = null, Expression<Func<string>> activeDirectoryAddOUstate = null, Expression<Func<string>> activeDirectoryAddOUpostalCode = null, Expression<Func<string>> activeDirectoryAddOUaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryAddOUResponse, ApiConnectionActionConfiguration> ActiveDirectoryAddOU(Expression<Func<string>> activeDirectoryAddOUname, Expression<Func<string>> activeDirectoryAddOUworkflow, Expression<Func<string>> activeDirectoryAddOUpath = null, Expression<Func<string>> activeDirectoryAddOUdescription = null, Expression<Func<string>> activeDirectoryAddOUdisplayName = null, Expression<Func<string>> activeDirectoryAddOUmanagedBy = null, Expression<Func<bool>> activeDirectoryAddOUprotectedFromAccidentalDeletion = null, Expression<Func<string>> activeDirectoryAddOUstreetAddress = null, Expression<Func<string>> activeDirectoryAddOUcity = null, Expression<Func<string>> activeDirectoryAddOUstate = null, Expression<Func<string>> activeDirectoryAddOUpostalCode = null, Expression<Func<string>> activeDirectoryAddOUaDServer = null)
         {
             var __workflow_activeDirectoryAddOUname = WorkflowExpression.Compile(activeDirectoryAddOUname, nameof(activeDirectoryAddOUname), required: true);
             var __workflow_activeDirectoryAddOUworkflow = WorkflowExpression.Compile(activeDirectoryAddOUworkflow, nameof(activeDirectoryAddOUworkflow), required: true);
@@ -2663,7 +2663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectoryAddOUstate = WorkflowExpression.Compile(activeDirectoryAddOUstate, nameof(activeDirectoryAddOUstate), required: false);
             var __workflow_activeDirectoryAddOUpostalCode = WorkflowExpression.Compile(activeDirectoryAddOUpostalCode, nameof(activeDirectoryAddOUpostalCode), required: false);
             var __workflow_activeDirectoryAddOUaDServer = WorkflowExpression.Compile(activeDirectoryAddOUaDServer, nameof(activeDirectoryAddOUaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryAddOUResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryAddOUResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddOU";
                 var apiCallHttpMethod = "post";
@@ -2750,18 +2750,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryAddOUResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryRemoveOUResponse> ActiveDirectoryRemoveOU(Expression<Func<string>> activeDirectoryRemoveOUoUIdentity, Expression<Func<string>> activeDirectoryRemoveOUworkflow, Expression<Func<bool>> activeDirectoryRemoveOUdeleteEvenIfProtected = null, Expression<Func<bool>> activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveOUaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryRemoveOUResponse, ApiConnectionActionConfiguration> ActiveDirectoryRemoveOU(Expression<Func<string>> activeDirectoryRemoveOUoUIdentity, Expression<Func<string>> activeDirectoryRemoveOUworkflow, Expression<Func<bool>> activeDirectoryRemoveOUdeleteEvenIfProtected = null, Expression<Func<bool>> activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveOUaDServer = null)
         {
             var __workflow_activeDirectoryRemoveOUoUIdentity = WorkflowExpression.Compile(activeDirectoryRemoveOUoUIdentity, nameof(activeDirectoryRemoveOUoUIdentity), required: true);
             var __workflow_activeDirectoryRemoveOUworkflow = WorkflowExpression.Compile(activeDirectoryRemoveOUworkflow, nameof(activeDirectoryRemoveOUworkflow), required: true);
             var __workflow_activeDirectoryRemoveOUdeleteEvenIfProtected = WorkflowExpression.Compile(activeDirectoryRemoveOUdeleteEvenIfProtected, nameof(activeDirectoryRemoveOUdeleteEvenIfProtected), required: false);
             var __workflow_activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = WorkflowExpression.Compile(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist, nameof(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist), required: false);
             var __workflow_activeDirectoryRemoveOUaDServer = WorkflowExpression.Compile(activeDirectoryRemoveOUaDServer, nameof(activeDirectoryRemoveOUaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryRemoveOUResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryRemoveOUResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveOU";
                 var apiCallHttpMethod = "post";
@@ -2816,11 +2816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryRemoveOUResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse> ActiveDirectorySetADUserAccountExpirationEndOfDate(Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDateyear, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDatemonth, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDateday, Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateworkflow, Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse, ApiConnectionActionConfiguration> ActiveDirectorySetADUserAccountExpirationEndOfDate(Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDateyear, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDatemonth, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDateday, Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateworkflow, Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateaDServer = null)
         {
             var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, nameof(activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity), required: true);
             var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateyear = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateyear, nameof(activeDirectorySetADUserAccountExpirationEndOfDateyear), required: true);
@@ -2828,7 +2828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateday = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateday, nameof(activeDirectorySetADUserAccountExpirationEndOfDateday), required: true);
             var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateworkflow = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateworkflow, nameof(activeDirectorySetADUserAccountExpirationEndOfDateworkflow), required: true);
             var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateaDServer = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateaDServer, nameof(activeDirectorySetADUserAccountExpirationEndOfDateaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADUserAccountExpirationEndOfDate";
                 var apiCallHttpMethod = "post";
@@ -2857,17 +2857,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ActiveDirectoryGetADGroupMembersResponse> ActiveDirectoryGetADGroupMembers(Expression<Func<string>> activeDirectoryGetADGroupMembersgroupIdentity, Expression<Func<string>> activeDirectoryGetADGroupMembersworkflow, Expression<Func<bool>> activeDirectoryGetADGroupMembersrecursive = null, Expression<Func<string>> activeDirectoryGetADGroupMembersaDServer = null)
+        public IBodyWorkflowAction<ActiveDirectoryGetADGroupMembersResponse, ApiConnectionActionConfiguration> ActiveDirectoryGetADGroupMembers(Expression<Func<string>> activeDirectoryGetADGroupMembersgroupIdentity, Expression<Func<string>> activeDirectoryGetADGroupMembersworkflow, Expression<Func<bool>> activeDirectoryGetADGroupMembersrecursive = null, Expression<Func<string>> activeDirectoryGetADGroupMembersaDServer = null)
         {
             var __workflow_activeDirectoryGetADGroupMembersgroupIdentity = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersgroupIdentity, nameof(activeDirectoryGetADGroupMembersgroupIdentity), required: true);
             var __workflow_activeDirectoryGetADGroupMembersworkflow = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersworkflow, nameof(activeDirectoryGetADGroupMembersworkflow), required: true);
             var __workflow_activeDirectoryGetADGroupMembersrecursive = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersrecursive, nameof(activeDirectoryGetADGroupMembersrecursive), required: false);
             var __workflow_activeDirectoryGetADGroupMembersaDServer = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersaDServer, nameof(activeDirectoryGetADGroupMembersaDServer), required: false);
-            return new DeferredBodyAction<ActiveDirectoryGetADGroupMembersResponse>(() =>
+            return new DeferredBodyAction<ActiveDirectoryGetADGroupMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADGroupMembers";
                 var apiCallHttpMethod = "post";
@@ -2906,11 +2906,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ActiveDirectoryGetADGroupMembersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenExchangePowerShellRunspaceResponse> OpenExchangePowerShellRunspace(Expression<Func<string>> openExchangePowerShellRunspaceexchangeServerFQDN, Expression<Func<string>> openExchangePowerShellRunspaceworkflow, Expression<Func<string>> openExchangePowerShellRunspaceusername = null, Expression<Func<string>> openExchangePowerShellRunspacepassword = null, Expression<Func<bool>> openExchangePowerShellRunspaceuseSSL = null, Expression<Func<openExchangePowerShellRunspaceconnectionMethodInput>> openExchangePowerShellRunspaceconnectionMethod = null, Expression<Func<openExchangePowerShellRunspaceauthenticationMechanismInput>> openExchangePowerShellRunspaceauthenticationMechanism = null, Expression<Func<bool>> openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, Expression<Func<openExchangePowerShellRunspacecommandTypesToImportLocallyInput>> openExchangePowerShellRunspacecommandTypesToImportLocally = null, Expression<Func<string>> openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
+        public IBodyWorkflowAction<OpenExchangePowerShellRunspaceResponse, ApiConnectionActionConfiguration> OpenExchangePowerShellRunspace(Expression<Func<string>> openExchangePowerShellRunspaceexchangeServerFQDN, Expression<Func<string>> openExchangePowerShellRunspaceworkflow, Expression<Func<string>> openExchangePowerShellRunspaceusername = null, Expression<Func<string>> openExchangePowerShellRunspacepassword = null, Expression<Func<bool>> openExchangePowerShellRunspaceuseSSL = null, Expression<Func<openExchangePowerShellRunspaceconnectionMethodInput>> openExchangePowerShellRunspaceconnectionMethod = null, Expression<Func<openExchangePowerShellRunspaceauthenticationMechanismInput>> openExchangePowerShellRunspaceauthenticationMechanism = null, Expression<Func<bool>> openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, Expression<Func<openExchangePowerShellRunspacecommandTypesToImportLocallyInput>> openExchangePowerShellRunspacecommandTypesToImportLocally = null, Expression<Func<string>> openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
         {
             var __workflow_openExchangePowerShellRunspaceexchangeServerFQDN = WorkflowExpression.Compile(openExchangePowerShellRunspaceexchangeServerFQDN, nameof(openExchangePowerShellRunspaceexchangeServerFQDN), required: true);
             var __workflow_openExchangePowerShellRunspaceworkflow = WorkflowExpression.Compile(openExchangePowerShellRunspaceworkflow, nameof(openExchangePowerShellRunspaceworkflow), required: true);
@@ -2922,7 +2922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected, nameof(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected), required: false);
             var __workflow_openExchangePowerShellRunspacecommandTypesToImportLocally = WorkflowExpression.Compile(openExchangePowerShellRunspacecommandTypesToImportLocally, nameof(openExchangePowerShellRunspacecommandTypesToImportLocally), required: false);
             var __workflow_openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = WorkflowExpression.Compile(openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV, nameof(openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV), required: false);
-            return new DeferredBodyAction<OpenExchangePowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<OpenExchangePowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenExchangePowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -3037,16 +3037,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenExchangePowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsExchangePowerShellRunspaceOpenResponse> IsExchangePowerShellRunspaceOpen(Expression<Func<string>> isExchangePowerShellRunspaceOpenworkflow, Expression<Func<bool>> isExchangePowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
+        public IBodyWorkflowAction<IsExchangePowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsExchangePowerShellRunspaceOpen(Expression<Func<string>> isExchangePowerShellRunspaceOpenworkflow, Expression<Func<bool>> isExchangePowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
             var __workflow_isExchangePowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenworkflow, nameof(isExchangePowerShellRunspaceOpenworkflow), required: true);
             var __workflow_isExchangePowerShellRunspaceOpentestCommunications = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpentestCommunications, nameof(isExchangePowerShellRunspaceOpentestCommunications), required: false);
             var __workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
-            return new DeferredBodyAction<IsExchangePowerShellRunspaceOpenResponse>(() =>
+            return new DeferredBodyAction<IsExchangePowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsExchangePowerShellRunspaceOpen";
                 var apiCallHttpMethod = "post";
@@ -3093,11 +3093,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsExchangePowerShellRunspaceOpenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<RunExchangePowerShellAutomationScriptResponse> RunExchangePowerShellAutomationScript(Expression<Func<string>> runExchangePowerShellAutomationScriptworkflow, Expression<Func<string>> runExchangePowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runExchangePowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runExchangePowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runExchangePowerShellAutomationScriptpowerShellCommandParameters = null)
+        public IBodyWorkflowAction<RunExchangePowerShellAutomationScriptResponse, ApiConnectionActionConfiguration> RunExchangePowerShellAutomationScript(Expression<Func<string>> runExchangePowerShellAutomationScriptworkflow, Expression<Func<string>> runExchangePowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runExchangePowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runExchangePowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runExchangePowerShellAutomationScriptpowerShellCommandParameters = null)
         {
             var __workflow_runExchangePowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptworkflow, nameof(runExchangePowerShellAutomationScriptworkflow), required: true);
             var __workflow_runExchangePowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpowerShellScriptContents, nameof(runExchangePowerShellAutomationScriptpowerShellScriptContents), required: false);
@@ -3115,7 +3115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
             var __workflow_runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
             var __workflow_runExchangePowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpowerShellCommandParameters, nameof(runExchangePowerShellAutomationScriptpowerShellCommandParameters), required: false);
-            return new DeferredBodyAction<RunExchangePowerShellAutomationScriptResponse>(() =>
+            return new DeferredBodyAction<RunExchangePowerShellAutomationScriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunExchangePowerShellAutomationScript";
                 var apiCallHttpMethod = "post";
@@ -3310,14 +3310,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunExchangePowerShellAutomationScriptResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<CloseExchangePowerShellRunspaceResponse> CloseExchangePowerShellRunspace(Expression<Func<string>> closeExchangePowerShellRunspaceworkflow)
+        public IBodyWorkflowAction<CloseExchangePowerShellRunspaceResponse, ApiConnectionActionConfiguration> CloseExchangePowerShellRunspace(Expression<Func<string>> closeExchangePowerShellRunspaceworkflow)
         {
             var __workflow_closeExchangePowerShellRunspaceworkflow = WorkflowExpression.Compile(closeExchangePowerShellRunspaceworkflow, nameof(closeExchangePowerShellRunspaceworkflow), required: true);
-            return new DeferredBodyAction<CloseExchangePowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<CloseExchangePowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/CloseExchangePowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -3332,11 +3332,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseExchangePowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetMailboxResponse> ExchangeGetMailbox(Expression<Func<string>> exchangeGetMailboxworkflow, Expression<Func<string>> exchangeGetMailboxidentity = null, Expression<Func<string>> exchangeGetMailboxfilterPropertyName = null, Expression<Func<exchangeGetMailboxfilterPropertyComparisonInput>> exchangeGetMailboxfilterPropertyComparison = null, Expression<Func<string>> exchangeGetMailboxfilterPropertyValue = null, Expression<Func<exchangeGetMailboxrecipientTypeDetailsInput>> exchangeGetMailboxrecipientTypeDetails = null, Expression<Func<bool>> exchangeGetMailboxnoResultIsAnException = null)
+        public IBodyWorkflowAction<ExchangeGetMailboxResponse, ApiConnectionActionConfiguration> ExchangeGetMailbox(Expression<Func<string>> exchangeGetMailboxworkflow, Expression<Func<string>> exchangeGetMailboxidentity = null, Expression<Func<string>> exchangeGetMailboxfilterPropertyName = null, Expression<Func<exchangeGetMailboxfilterPropertyComparisonInput>> exchangeGetMailboxfilterPropertyComparison = null, Expression<Func<string>> exchangeGetMailboxfilterPropertyValue = null, Expression<Func<exchangeGetMailboxrecipientTypeDetailsInput>> exchangeGetMailboxrecipientTypeDetails = null, Expression<Func<bool>> exchangeGetMailboxnoResultIsAnException = null)
         {
             var __workflow_exchangeGetMailboxworkflow = WorkflowExpression.Compile(exchangeGetMailboxworkflow, nameof(exchangeGetMailboxworkflow), required: true);
             var __workflow_exchangeGetMailboxidentity = WorkflowExpression.Compile(exchangeGetMailboxidentity, nameof(exchangeGetMailboxidentity), required: false);
@@ -3345,7 +3345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeGetMailboxfilterPropertyValue = WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyValue, nameof(exchangeGetMailboxfilterPropertyValue), required: false);
             var __workflow_exchangeGetMailboxrecipientTypeDetails = WorkflowExpression.Compile(exchangeGetMailboxrecipientTypeDetails, nameof(exchangeGetMailboxrecipientTypeDetails), required: false);
             var __workflow_exchangeGetMailboxnoResultIsAnException = WorkflowExpression.Compile(exchangeGetMailboxnoResultIsAnException, nameof(exchangeGetMailboxnoResultIsAnException), required: false);
-            return new DeferredBodyAction<ExchangeGetMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetMailbox";
                 var apiCallHttpMethod = "post";
@@ -3416,11 +3416,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeDoesMailboxExistResponse> ExchangeDoesMailboxExist(Expression<Func<string>> exchangeDoesMailboxExistworkflow, Expression<Func<string>> exchangeDoesMailboxExistidentity = null, Expression<Func<string>> exchangeDoesMailboxExistfilterPropertyName = null, Expression<Func<exchangeDoesMailboxExistfilterPropertyComparisonInput>> exchangeDoesMailboxExistfilterPropertyComparison = null, Expression<Func<string>> exchangeDoesMailboxExistfilterPropertyValue = null, Expression<Func<exchangeDoesMailboxExistrecipientTypeDetailsInput>> exchangeDoesMailboxExistrecipientTypeDetails = null)
+        public IBodyWorkflowAction<ExchangeDoesMailboxExistResponse, ApiConnectionActionConfiguration> ExchangeDoesMailboxExist(Expression<Func<string>> exchangeDoesMailboxExistworkflow, Expression<Func<string>> exchangeDoesMailboxExistidentity = null, Expression<Func<string>> exchangeDoesMailboxExistfilterPropertyName = null, Expression<Func<exchangeDoesMailboxExistfilterPropertyComparisonInput>> exchangeDoesMailboxExistfilterPropertyComparison = null, Expression<Func<string>> exchangeDoesMailboxExistfilterPropertyValue = null, Expression<Func<exchangeDoesMailboxExistrecipientTypeDetailsInput>> exchangeDoesMailboxExistrecipientTypeDetails = null)
         {
             var __workflow_exchangeDoesMailboxExistworkflow = WorkflowExpression.Compile(exchangeDoesMailboxExistworkflow, nameof(exchangeDoesMailboxExistworkflow), required: true);
             var __workflow_exchangeDoesMailboxExistidentity = WorkflowExpression.Compile(exchangeDoesMailboxExistidentity, nameof(exchangeDoesMailboxExistidentity), required: false);
@@ -3428,7 +3428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeDoesMailboxExistfilterPropertyComparison = WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyComparison, nameof(exchangeDoesMailboxExistfilterPropertyComparison), required: false);
             var __workflow_exchangeDoesMailboxExistfilterPropertyValue = WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyValue, nameof(exchangeDoesMailboxExistfilterPropertyValue), required: false);
             var __workflow_exchangeDoesMailboxExistrecipientTypeDetails = WorkflowExpression.Compile(exchangeDoesMailboxExistrecipientTypeDetails, nameof(exchangeDoesMailboxExistrecipientTypeDetails), required: false);
-            return new DeferredBodyAction<ExchangeDoesMailboxExistResponse>(() =>
+            return new DeferredBodyAction<ExchangeDoesMailboxExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDoesMailboxExist";
                 var apiCallHttpMethod = "post";
@@ -3483,16 +3483,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDoesMailboxExistResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeAddDistributionGroupMemberResponse> ExchangeAddDistributionGroupMember(Expression<Func<string>> exchangeAddDistributionGroupMemberidentity, Expression<Func<string>> exchangeAddDistributionGroupMembermember, Expression<Func<string>> exchangeAddDistributionGroupMemberworkflow)
+        public IBodyWorkflowAction<ExchangeAddDistributionGroupMemberResponse, ApiConnectionActionConfiguration> ExchangeAddDistributionGroupMember(Expression<Func<string>> exchangeAddDistributionGroupMemberidentity, Expression<Func<string>> exchangeAddDistributionGroupMembermember, Expression<Func<string>> exchangeAddDistributionGroupMemberworkflow)
         {
             var __workflow_exchangeAddDistributionGroupMemberidentity = WorkflowExpression.Compile(exchangeAddDistributionGroupMemberidentity, nameof(exchangeAddDistributionGroupMemberidentity), required: true);
             var __workflow_exchangeAddDistributionGroupMembermember = WorkflowExpression.Compile(exchangeAddDistributionGroupMembermember, nameof(exchangeAddDistributionGroupMembermember), required: true);
             var __workflow_exchangeAddDistributionGroupMemberworkflow = WorkflowExpression.Compile(exchangeAddDistributionGroupMemberworkflow, nameof(exchangeAddDistributionGroupMemberworkflow), required: true);
-            return new DeferredBodyAction<ExchangeAddDistributionGroupMemberResponse>(() =>
+            return new DeferredBodyAction<ExchangeAddDistributionGroupMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeAddDistributionGroupMember";
                 var apiCallHttpMethod = "post";
@@ -3511,17 +3511,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeAddDistributionGroupMemberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeRemoveDistributionGroupMemberResponse> ExchangeRemoveDistributionGroupMember(Expression<Func<string>> exchangeRemoveDistributionGroupMemberidentity, Expression<Func<string>> exchangeRemoveDistributionGroupMembermember, Expression<Func<string>> exchangeRemoveDistributionGroupMemberworkflow, Expression<Func<bool>> exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
+        public IBodyWorkflowAction<ExchangeRemoveDistributionGroupMemberResponse, ApiConnectionActionConfiguration> ExchangeRemoveDistributionGroupMember(Expression<Func<string>> exchangeRemoveDistributionGroupMemberidentity, Expression<Func<string>> exchangeRemoveDistributionGroupMembermember, Expression<Func<string>> exchangeRemoveDistributionGroupMemberworkflow, Expression<Func<bool>> exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
         {
             var __workflow_exchangeRemoveDistributionGroupMemberidentity = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberidentity, nameof(exchangeRemoveDistributionGroupMemberidentity), required: true);
             var __workflow_exchangeRemoveDistributionGroupMembermember = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMembermember, nameof(exchangeRemoveDistributionGroupMembermember), required: true);
             var __workflow_exchangeRemoveDistributionGroupMemberworkflow = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberworkflow, nameof(exchangeRemoveDistributionGroupMemberworkflow), required: true);
             var __workflow_exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
-            return new DeferredBodyAction<ExchangeRemoveDistributionGroupMemberResponse>(() =>
+            return new DeferredBodyAction<ExchangeRemoveDistributionGroupMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeRemoveDistributionGroupMember";
                 var apiCallHttpMethod = "post";
@@ -3556,11 +3556,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeRemoveDistributionGroupMemberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetDistributionGroupResponse> ExchangeGetDistributionGroup(Expression<Func<string>> exchangeGetDistributionGroupworkflow, Expression<Func<string>> exchangeGetDistributionGroupidentity = null, Expression<Func<string>> exchangeGetDistributionGroupfilterPropertyName = null, Expression<Func<exchangeGetDistributionGroupfilterPropertyComparisonInput>> exchangeGetDistributionGroupfilterPropertyComparison = null, Expression<Func<string>> exchangeGetDistributionGroupfilterPropertyValue = null, Expression<Func<bool>> exchangeGetDistributionGroupnoResultIsAnException = null)
+        public IBodyWorkflowAction<ExchangeGetDistributionGroupResponse, ApiConnectionActionConfiguration> ExchangeGetDistributionGroup(Expression<Func<string>> exchangeGetDistributionGroupworkflow, Expression<Func<string>> exchangeGetDistributionGroupidentity = null, Expression<Func<string>> exchangeGetDistributionGroupfilterPropertyName = null, Expression<Func<exchangeGetDistributionGroupfilterPropertyComparisonInput>> exchangeGetDistributionGroupfilterPropertyComparison = null, Expression<Func<string>> exchangeGetDistributionGroupfilterPropertyValue = null, Expression<Func<bool>> exchangeGetDistributionGroupnoResultIsAnException = null)
         {
             var __workflow_exchangeGetDistributionGroupworkflow = WorkflowExpression.Compile(exchangeGetDistributionGroupworkflow, nameof(exchangeGetDistributionGroupworkflow), required: true);
             var __workflow_exchangeGetDistributionGroupidentity = WorkflowExpression.Compile(exchangeGetDistributionGroupidentity, nameof(exchangeGetDistributionGroupidentity), required: false);
@@ -3568,7 +3568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeGetDistributionGroupfilterPropertyComparison = WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyComparison, nameof(exchangeGetDistributionGroupfilterPropertyComparison), required: false);
             var __workflow_exchangeGetDistributionGroupfilterPropertyValue = WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyValue, nameof(exchangeGetDistributionGroupfilterPropertyValue), required: false);
             var __workflow_exchangeGetDistributionGroupnoResultIsAnException = WorkflowExpression.Compile(exchangeGetDistributionGroupnoResultIsAnException, nameof(exchangeGetDistributionGroupnoResultIsAnException), required: false);
-            return new DeferredBodyAction<ExchangeGetDistributionGroupResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetDistributionGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetDistributionGroup";
                 var apiCallHttpMethod = "post";
@@ -3633,15 +3633,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetDistributionGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetDistributionGroupMembersResponse> ExchangeGetDistributionGroupMembers(Expression<Func<string>> exchangeGetDistributionGroupMembersidentity, Expression<Func<string>> exchangeGetDistributionGroupMembersworkflow)
+        public IBodyWorkflowAction<ExchangeGetDistributionGroupMembersResponse, ApiConnectionActionConfiguration> ExchangeGetDistributionGroupMembers(Expression<Func<string>> exchangeGetDistributionGroupMembersidentity, Expression<Func<string>> exchangeGetDistributionGroupMembersworkflow)
         {
             var __workflow_exchangeGetDistributionGroupMembersidentity = WorkflowExpression.Compile(exchangeGetDistributionGroupMembersidentity, nameof(exchangeGetDistributionGroupMembersidentity), required: true);
             var __workflow_exchangeGetDistributionGroupMembersworkflow = WorkflowExpression.Compile(exchangeGetDistributionGroupMembersworkflow, nameof(exchangeGetDistributionGroupMembersworkflow), required: true);
-            return new DeferredBodyAction<ExchangeGetDistributionGroupMembersResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetDistributionGroupMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetDistributionGroupMembers";
                 var apiCallHttpMethod = "post";
@@ -3658,15 +3658,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetDistributionGroupMembersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetMailboxDistributionGroupMembershipResponse> ExchangeGetMailboxDistributionGroupMembership(Expression<Func<string>> exchangeGetMailboxDistributionGroupMembershipidentity, Expression<Func<string>> exchangeGetMailboxDistributionGroupMembershipworkflow)
+        public IBodyWorkflowAction<ExchangeGetMailboxDistributionGroupMembershipResponse, ApiConnectionActionConfiguration> ExchangeGetMailboxDistributionGroupMembership(Expression<Func<string>> exchangeGetMailboxDistributionGroupMembershipidentity, Expression<Func<string>> exchangeGetMailboxDistributionGroupMembershipworkflow)
         {
             var __workflow_exchangeGetMailboxDistributionGroupMembershipidentity = WorkflowExpression.Compile(exchangeGetMailboxDistributionGroupMembershipidentity, nameof(exchangeGetMailboxDistributionGroupMembershipidentity), required: true);
             var __workflow_exchangeGetMailboxDistributionGroupMembershipworkflow = WorkflowExpression.Compile(exchangeGetMailboxDistributionGroupMembershipworkflow, nameof(exchangeGetMailboxDistributionGroupMembershipworkflow), required: true);
-            return new DeferredBodyAction<ExchangeGetMailboxDistributionGroupMembershipResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetMailboxDistributionGroupMembershipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetMailboxDistributionGroupMembership";
                 var apiCallHttpMethod = "post";
@@ -3683,11 +3683,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetMailboxDistributionGroupMembershipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeNewDistributionGroupResponse> ExchangeNewDistributionGroup(Expression<Func<string>> exchangeNewDistributionGroupname, Expression<Func<string>> exchangeNewDistributionGroupworkflow, Expression<Func<string>> exchangeNewDistributionGroupalias = null, Expression<Func<string>> exchangeNewDistributionGroupdisplayName = null, Expression<Func<string>> exchangeNewDistributionGroupnotes = null, Expression<Func<string>> exchangeNewDistributionGroupmanagedBy = null, Expression<Func<string>> exchangeNewDistributionGroupmembers = null, Expression<Func<string>> exchangeNewDistributionGrouporganizationalUnit = null, Expression<Func<string>> exchangeNewDistributionGroupprimarySmtpAddress = null, Expression<Func<exchangeNewDistributionGroupmemberDepartRestrictionInput>> exchangeNewDistributionGroupmemberDepartRestriction = null, Expression<Func<exchangeNewDistributionGroupmemberJoinRestrictionInput>> exchangeNewDistributionGroupmemberJoinRestriction = null, Expression<Func<bool>> exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = null, Expression<Func<exchangeNewDistributionGrouptypeInput>> exchangeNewDistributionGrouptype = null, Expression<Func<bool>> exchangeNewDistributionGrouperrorIfGroupAlreadyExists = null)
+        public IBodyWorkflowAction<ExchangeNewDistributionGroupResponse, ApiConnectionActionConfiguration> ExchangeNewDistributionGroup(Expression<Func<string>> exchangeNewDistributionGroupname, Expression<Func<string>> exchangeNewDistributionGroupworkflow, Expression<Func<string>> exchangeNewDistributionGroupalias = null, Expression<Func<string>> exchangeNewDistributionGroupdisplayName = null, Expression<Func<string>> exchangeNewDistributionGroupnotes = null, Expression<Func<string>> exchangeNewDistributionGroupmanagedBy = null, Expression<Func<string>> exchangeNewDistributionGroupmembers = null, Expression<Func<string>> exchangeNewDistributionGrouporganizationalUnit = null, Expression<Func<string>> exchangeNewDistributionGroupprimarySmtpAddress = null, Expression<Func<exchangeNewDistributionGroupmemberDepartRestrictionInput>> exchangeNewDistributionGroupmemberDepartRestriction = null, Expression<Func<exchangeNewDistributionGroupmemberJoinRestrictionInput>> exchangeNewDistributionGroupmemberJoinRestriction = null, Expression<Func<bool>> exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = null, Expression<Func<exchangeNewDistributionGrouptypeInput>> exchangeNewDistributionGrouptype = null, Expression<Func<bool>> exchangeNewDistributionGrouperrorIfGroupAlreadyExists = null)
         {
             var __workflow_exchangeNewDistributionGroupname = WorkflowExpression.Compile(exchangeNewDistributionGroupname, nameof(exchangeNewDistributionGroupname), required: true);
             var __workflow_exchangeNewDistributionGroupworkflow = WorkflowExpression.Compile(exchangeNewDistributionGroupworkflow, nameof(exchangeNewDistributionGroupworkflow), required: true);
@@ -3703,7 +3703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = WorkflowExpression.Compile(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled, nameof(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled), required: false);
             var __workflow_exchangeNewDistributionGrouptype = WorkflowExpression.Compile(exchangeNewDistributionGrouptype, nameof(exchangeNewDistributionGrouptype), required: false);
             var __workflow_exchangeNewDistributionGrouperrorIfGroupAlreadyExists = WorkflowExpression.Compile(exchangeNewDistributionGrouperrorIfGroupAlreadyExists, nameof(exchangeNewDistributionGrouperrorIfGroupAlreadyExists), required: false);
-            return new DeferredBodyAction<ExchangeNewDistributionGroupResponse>(() =>
+            return new DeferredBodyAction<ExchangeNewDistributionGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeNewDistributionGroup";
                 var apiCallHttpMethod = "post";
@@ -3842,17 +3842,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeNewDistributionGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeRemoveDistributionGroupResponse> ExchangeRemoveDistributionGroup(Expression<Func<string>> exchangeRemoveDistributionGroupidentity, Expression<Func<string>> exchangeRemoveDistributionGroupworkflow, Expression<Func<bool>> exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = null)
+        public IBodyWorkflowAction<ExchangeRemoveDistributionGroupResponse, ApiConnectionActionConfiguration> ExchangeRemoveDistributionGroup(Expression<Func<string>> exchangeRemoveDistributionGroupidentity, Expression<Func<string>> exchangeRemoveDistributionGroupworkflow, Expression<Func<bool>> exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = null)
         {
             var __workflow_exchangeRemoveDistributionGroupidentity = WorkflowExpression.Compile(exchangeRemoveDistributionGroupidentity, nameof(exchangeRemoveDistributionGroupidentity), required: true);
             var __workflow_exchangeRemoveDistributionGroupworkflow = WorkflowExpression.Compile(exchangeRemoveDistributionGroupworkflow, nameof(exchangeRemoveDistributionGroupworkflow), required: true);
             var __workflow_exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck, nameof(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck), required: false);
             var __workflow_exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = WorkflowExpression.Compile(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist, nameof(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist), required: false);
-            return new DeferredBodyAction<ExchangeRemoveDistributionGroupResponse>(() =>
+            return new DeferredBodyAction<ExchangeRemoveDistributionGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeRemoveDistributionGroup";
                 var apiCallHttpMethod = "post";
@@ -3901,18 +3901,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeRemoveDistributionGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeAddMailboxPermissionResponse> ExchangeAddMailboxPermission(Expression<Func<string>> exchangeAddMailboxPermissionidentity, Expression<Func<string>> exchangeAddMailboxPermissionuser, Expression<Func<string>> exchangeAddMailboxPermissionaccessRights, Expression<Func<string>> exchangeAddMailboxPermissionworkflow, Expression<Func<bool>> exchangeAddMailboxPermissionautoMapping = null)
+        public IBodyWorkflowAction<ExchangeAddMailboxPermissionResponse, ApiConnectionActionConfiguration> ExchangeAddMailboxPermission(Expression<Func<string>> exchangeAddMailboxPermissionidentity, Expression<Func<string>> exchangeAddMailboxPermissionuser, Expression<Func<string>> exchangeAddMailboxPermissionaccessRights, Expression<Func<string>> exchangeAddMailboxPermissionworkflow, Expression<Func<bool>> exchangeAddMailboxPermissionautoMapping = null)
         {
             var __workflow_exchangeAddMailboxPermissionidentity = WorkflowExpression.Compile(exchangeAddMailboxPermissionidentity, nameof(exchangeAddMailboxPermissionidentity), required: true);
             var __workflow_exchangeAddMailboxPermissionuser = WorkflowExpression.Compile(exchangeAddMailboxPermissionuser, nameof(exchangeAddMailboxPermissionuser), required: true);
             var __workflow_exchangeAddMailboxPermissionaccessRights = WorkflowExpression.Compile(exchangeAddMailboxPermissionaccessRights, nameof(exchangeAddMailboxPermissionaccessRights), required: true);
             var __workflow_exchangeAddMailboxPermissionworkflow = WorkflowExpression.Compile(exchangeAddMailboxPermissionworkflow, nameof(exchangeAddMailboxPermissionworkflow), required: true);
             var __workflow_exchangeAddMailboxPermissionautoMapping = WorkflowExpression.Compile(exchangeAddMailboxPermissionautoMapping, nameof(exchangeAddMailboxPermissionautoMapping), required: false);
-            return new DeferredBodyAction<ExchangeAddMailboxPermissionResponse>(() =>
+            return new DeferredBodyAction<ExchangeAddMailboxPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeAddMailboxPermission";
                 var apiCallHttpMethod = "post";
@@ -3949,17 +3949,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeAddMailboxPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeRemoveMailboxPermissionResponse> ExchangeRemoveMailboxPermission(Expression<Func<string>> exchangeRemoveMailboxPermissionidentity, Expression<Func<string>> exchangeRemoveMailboxPermissionuser, Expression<Func<string>> exchangeRemoveMailboxPermissionaccessRights, Expression<Func<string>> exchangeRemoveMailboxPermissionworkflow)
+        public IBodyWorkflowAction<ExchangeRemoveMailboxPermissionResponse, ApiConnectionActionConfiguration> ExchangeRemoveMailboxPermission(Expression<Func<string>> exchangeRemoveMailboxPermissionidentity, Expression<Func<string>> exchangeRemoveMailboxPermissionuser, Expression<Func<string>> exchangeRemoveMailboxPermissionaccessRights, Expression<Func<string>> exchangeRemoveMailboxPermissionworkflow)
         {
             var __workflow_exchangeRemoveMailboxPermissionidentity = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionidentity, nameof(exchangeRemoveMailboxPermissionidentity), required: true);
             var __workflow_exchangeRemoveMailboxPermissionuser = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionuser, nameof(exchangeRemoveMailboxPermissionuser), required: true);
             var __workflow_exchangeRemoveMailboxPermissionaccessRights = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionaccessRights, nameof(exchangeRemoveMailboxPermissionaccessRights), required: true);
             var __workflow_exchangeRemoveMailboxPermissionworkflow = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionworkflow, nameof(exchangeRemoveMailboxPermissionworkflow), required: true);
-            return new DeferredBodyAction<ExchangeRemoveMailboxPermissionResponse>(() =>
+            return new DeferredBodyAction<ExchangeRemoveMailboxPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeRemoveMailboxPermission";
                 var apiCallHttpMethod = "post";
@@ -3980,15 +3980,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeRemoveMailboxPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeDisableMailboxResponse> ExchangeDisableMailbox(Expression<Func<string>> exchangeDisableMailboxidentity, Expression<Func<string>> exchangeDisableMailboxworkflow)
+        public IBodyWorkflowAction<ExchangeDisableMailboxResponse, ApiConnectionActionConfiguration> ExchangeDisableMailbox(Expression<Func<string>> exchangeDisableMailboxidentity, Expression<Func<string>> exchangeDisableMailboxworkflow)
         {
             var __workflow_exchangeDisableMailboxidentity = WorkflowExpression.Compile(exchangeDisableMailboxidentity, nameof(exchangeDisableMailboxidentity), required: true);
             var __workflow_exchangeDisableMailboxworkflow = WorkflowExpression.Compile(exchangeDisableMailboxworkflow, nameof(exchangeDisableMailboxworkflow), required: true);
-            return new DeferredBodyAction<ExchangeDisableMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeDisableMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDisableMailbox";
                 var apiCallHttpMethod = "post";
@@ -4005,15 +4005,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDisableMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeDisableRemoteMailboxResponse> ExchangeDisableRemoteMailbox(Expression<Func<string>> exchangeDisableRemoteMailboxidentity, Expression<Func<string>> exchangeDisableRemoteMailboxworkflow)
+        public IBodyWorkflowAction<ExchangeDisableRemoteMailboxResponse, ApiConnectionActionConfiguration> ExchangeDisableRemoteMailbox(Expression<Func<string>> exchangeDisableRemoteMailboxidentity, Expression<Func<string>> exchangeDisableRemoteMailboxworkflow)
         {
             var __workflow_exchangeDisableRemoteMailboxidentity = WorkflowExpression.Compile(exchangeDisableRemoteMailboxidentity, nameof(exchangeDisableRemoteMailboxidentity), required: true);
             var __workflow_exchangeDisableRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeDisableRemoteMailboxworkflow, nameof(exchangeDisableRemoteMailboxworkflow), required: true);
-            return new DeferredBodyAction<ExchangeDisableRemoteMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeDisableRemoteMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDisableRemoteMailbox";
                 var apiCallHttpMethod = "post";
@@ -4030,11 +4030,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDisableRemoteMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeEnableMailboxResponse> ExchangeEnableMailbox(Expression<Func<string>> exchangeEnableMailboxidentity, Expression<Func<string>> exchangeEnableMailboxworkflow, Expression<Func<string>> exchangeEnableMailboxalias = null, Expression<Func<string>> exchangeEnableMailboxdisplayName = null, Expression<Func<string>> exchangeEnableMailboxlinkedDomainController = null, Expression<Func<string>> exchangeEnableMailboxlinkedMasterAccount = null, Expression<Func<string>> exchangeEnableMailboxdatabase = null, Expression<Func<string>> exchangeEnableMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeEnableMailboxemailAddressPolicyEnabled = null)
+        public IBodyWorkflowAction<ExchangeEnableMailboxResponse, ApiConnectionActionConfiguration> ExchangeEnableMailbox(Expression<Func<string>> exchangeEnableMailboxidentity, Expression<Func<string>> exchangeEnableMailboxworkflow, Expression<Func<string>> exchangeEnableMailboxalias = null, Expression<Func<string>> exchangeEnableMailboxdisplayName = null, Expression<Func<string>> exchangeEnableMailboxlinkedDomainController = null, Expression<Func<string>> exchangeEnableMailboxlinkedMasterAccount = null, Expression<Func<string>> exchangeEnableMailboxdatabase = null, Expression<Func<string>> exchangeEnableMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeEnableMailboxemailAddressPolicyEnabled = null)
         {
             var __workflow_exchangeEnableMailboxidentity = WorkflowExpression.Compile(exchangeEnableMailboxidentity, nameof(exchangeEnableMailboxidentity), required: true);
             var __workflow_exchangeEnableMailboxworkflow = WorkflowExpression.Compile(exchangeEnableMailboxworkflow, nameof(exchangeEnableMailboxworkflow), required: true);
@@ -4045,7 +4045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeEnableMailboxdatabase = WorkflowExpression.Compile(exchangeEnableMailboxdatabase, nameof(exchangeEnableMailboxdatabase), required: false);
             var __workflow_exchangeEnableMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeEnableMailboxprimarySmtpAddress, nameof(exchangeEnableMailboxprimarySmtpAddress), required: false);
             var __workflow_exchangeEnableMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeEnableMailboxemailAddressPolicyEnabled, nameof(exchangeEnableMailboxemailAddressPolicyEnabled), required: false);
-            return new DeferredBodyAction<ExchangeEnableMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeEnableMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeEnableMailbox";
                 var apiCallHttpMethod = "post";
@@ -4104,11 +4104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeEnableMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeEnableRemoteMailboxResponse> ExchangeEnableRemoteMailbox(Expression<Func<string>> exchangeEnableRemoteMailboxidentity, Expression<Func<string>> exchangeEnableRemoteMailboxworkflow, Expression<Func<string>> exchangeEnableRemoteMailboxalias = null, Expression<Func<string>> exchangeEnableRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeEnableRemoteMailboxremoteRoutingAddress = null, Expression<Func<string>> exchangeEnableRemoteMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeEnableRemoteMailboxarchive = null, Expression<Func<bool>> exchangeEnableRemoteMailboxemailAddressPolicyEnabled = null)
+        public IBodyWorkflowAction<ExchangeEnableRemoteMailboxResponse, ApiConnectionActionConfiguration> ExchangeEnableRemoteMailbox(Expression<Func<string>> exchangeEnableRemoteMailboxidentity, Expression<Func<string>> exchangeEnableRemoteMailboxworkflow, Expression<Func<string>> exchangeEnableRemoteMailboxalias = null, Expression<Func<string>> exchangeEnableRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeEnableRemoteMailboxremoteRoutingAddress = null, Expression<Func<string>> exchangeEnableRemoteMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeEnableRemoteMailboxarchive = null, Expression<Func<bool>> exchangeEnableRemoteMailboxemailAddressPolicyEnabled = null)
         {
             var __workflow_exchangeEnableRemoteMailboxidentity = WorkflowExpression.Compile(exchangeEnableRemoteMailboxidentity, nameof(exchangeEnableRemoteMailboxidentity), required: true);
             var __workflow_exchangeEnableRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeEnableRemoteMailboxworkflow, nameof(exchangeEnableRemoteMailboxworkflow), required: true);
@@ -4118,7 +4118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeEnableRemoteMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeEnableRemoteMailboxprimarySmtpAddress, nameof(exchangeEnableRemoteMailboxprimarySmtpAddress), required: false);
             var __workflow_exchangeEnableRemoteMailboxarchive = WorkflowExpression.Compile(exchangeEnableRemoteMailboxarchive, nameof(exchangeEnableRemoteMailboxarchive), required: false);
             var __workflow_exchangeEnableRemoteMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeEnableRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeEnableRemoteMailboxemailAddressPolicyEnabled), required: false);
-            return new DeferredBodyAction<ExchangeEnableRemoteMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeEnableRemoteMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeEnableRemoteMailbox";
                 var apiCallHttpMethod = "post";
@@ -4181,11 +4181,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeEnableRemoteMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetRemoteMailboxResponse> ExchangeGetRemoteMailbox(Expression<Func<string>> exchangeGetRemoteMailboxworkflow, Expression<Func<string>> exchangeGetRemoteMailboxidentity = null, Expression<Func<string>> exchangeGetRemoteMailboxfilterPropertyName = null, Expression<Func<exchangeGetRemoteMailboxfilterPropertyComparisonInput>> exchangeGetRemoteMailboxfilterPropertyComparison = null, Expression<Func<string>> exchangeGetRemoteMailboxfilterPropertyValue = null, Expression<Func<bool>> exchangeGetRemoteMailboxnoResultIsAnException = null)
+        public IBodyWorkflowAction<ExchangeGetRemoteMailboxResponse, ApiConnectionActionConfiguration> ExchangeGetRemoteMailbox(Expression<Func<string>> exchangeGetRemoteMailboxworkflow, Expression<Func<string>> exchangeGetRemoteMailboxidentity = null, Expression<Func<string>> exchangeGetRemoteMailboxfilterPropertyName = null, Expression<Func<exchangeGetRemoteMailboxfilterPropertyComparisonInput>> exchangeGetRemoteMailboxfilterPropertyComparison = null, Expression<Func<string>> exchangeGetRemoteMailboxfilterPropertyValue = null, Expression<Func<bool>> exchangeGetRemoteMailboxnoResultIsAnException = null)
         {
             var __workflow_exchangeGetRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeGetRemoteMailboxworkflow, nameof(exchangeGetRemoteMailboxworkflow), required: true);
             var __workflow_exchangeGetRemoteMailboxidentity = WorkflowExpression.Compile(exchangeGetRemoteMailboxidentity, nameof(exchangeGetRemoteMailboxidentity), required: false);
@@ -4193,7 +4193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeGetRemoteMailboxfilterPropertyComparison = WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyComparison, nameof(exchangeGetRemoteMailboxfilterPropertyComparison), required: false);
             var __workflow_exchangeGetRemoteMailboxfilterPropertyValue = WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyValue, nameof(exchangeGetRemoteMailboxfilterPropertyValue), required: false);
             var __workflow_exchangeGetRemoteMailboxnoResultIsAnException = WorkflowExpression.Compile(exchangeGetRemoteMailboxnoResultIsAnException, nameof(exchangeGetRemoteMailboxnoResultIsAnException), required: false);
-            return new DeferredBodyAction<ExchangeGetRemoteMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetRemoteMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetRemoteMailbox";
                 var apiCallHttpMethod = "post";
@@ -4258,18 +4258,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetRemoteMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeDoesRemoteMailboxExistResponse> ExchangeDoesRemoteMailboxExist(Expression<Func<string>> exchangeDoesRemoteMailboxExistworkflow, Expression<Func<string>> exchangeDoesRemoteMailboxExistidentity = null, Expression<Func<string>> exchangeDoesRemoteMailboxExistfilterPropertyName = null, Expression<Func<exchangeDoesRemoteMailboxExistfilterPropertyComparisonInput>> exchangeDoesRemoteMailboxExistfilterPropertyComparison = null, Expression<Func<string>> exchangeDoesRemoteMailboxExistfilterPropertyValue = null)
+        public IBodyWorkflowAction<ExchangeDoesRemoteMailboxExistResponse, ApiConnectionActionConfiguration> ExchangeDoesRemoteMailboxExist(Expression<Func<string>> exchangeDoesRemoteMailboxExistworkflow, Expression<Func<string>> exchangeDoesRemoteMailboxExistidentity = null, Expression<Func<string>> exchangeDoesRemoteMailboxExistfilterPropertyName = null, Expression<Func<exchangeDoesRemoteMailboxExistfilterPropertyComparisonInput>> exchangeDoesRemoteMailboxExistfilterPropertyComparison = null, Expression<Func<string>> exchangeDoesRemoteMailboxExistfilterPropertyValue = null)
         {
             var __workflow_exchangeDoesRemoteMailboxExistworkflow = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistworkflow, nameof(exchangeDoesRemoteMailboxExistworkflow), required: true);
             var __workflow_exchangeDoesRemoteMailboxExistidentity = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistidentity, nameof(exchangeDoesRemoteMailboxExistidentity), required: false);
             var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyName = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyName, nameof(exchangeDoesRemoteMailboxExistfilterPropertyName), required: false);
             var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyComparison = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyComparison, nameof(exchangeDoesRemoteMailboxExistfilterPropertyComparison), required: false);
             var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyValue = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyValue, nameof(exchangeDoesRemoteMailboxExistfilterPropertyValue), required: false);
-            return new DeferredBodyAction<ExchangeDoesRemoteMailboxExistResponse>(() =>
+            return new DeferredBodyAction<ExchangeDoesRemoteMailboxExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDoesRemoteMailboxExist";
                 var apiCallHttpMethod = "post";
@@ -4318,11 +4318,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeDoesRemoteMailboxExistResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeNewMailboxResponse> ExchangeNewMailbox(Expression<Func<string>> exchangeNewMailboxname, Expression<Func<string>> exchangeNewMailboxuserPrincipalName, Expression<Func<string>> exchangeNewMailboxworkflow, Expression<Func<string>> exchangeNewMailboxfirstName = null, Expression<Func<string>> exchangeNewMailboxlastName = null, Expression<Func<string>> exchangeNewMailboxorganizationalUnit = null, Expression<Func<string>> exchangeNewMailboxdisplayName = null, Expression<Func<string>> exchangeNewMailboxalias = null, Expression<Func<string>> exchangeNewMailboxprimarySmtpAddress = null, Expression<Func<string>> exchangeNewMailboxsamAccountName = null, Expression<Func<string>> exchangeNewMailboxpassword = null, Expression<Func<bool>> exchangeNewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> exchangeNewMailboxresetPasswordOnNextLogon = null, Expression<Func<string>> exchangeNewMailboxdatabase = null, Expression<Func<bool>> exchangeNewMailboxsharedMailbox = null, Expression<Func<bool>> exchangeNewMailboxemailAddressPolicyEnabled = null, Expression<Func<bool>> exchangeNewMailboxarchive = null)
+        public IBodyWorkflowAction<ExchangeNewMailboxResponse, ApiConnectionActionConfiguration> ExchangeNewMailbox(Expression<Func<string>> exchangeNewMailboxname, Expression<Func<string>> exchangeNewMailboxuserPrincipalName, Expression<Func<string>> exchangeNewMailboxworkflow, Expression<Func<string>> exchangeNewMailboxfirstName = null, Expression<Func<string>> exchangeNewMailboxlastName = null, Expression<Func<string>> exchangeNewMailboxorganizationalUnit = null, Expression<Func<string>> exchangeNewMailboxdisplayName = null, Expression<Func<string>> exchangeNewMailboxalias = null, Expression<Func<string>> exchangeNewMailboxprimarySmtpAddress = null, Expression<Func<string>> exchangeNewMailboxsamAccountName = null, Expression<Func<string>> exchangeNewMailboxpassword = null, Expression<Func<bool>> exchangeNewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> exchangeNewMailboxresetPasswordOnNextLogon = null, Expression<Func<string>> exchangeNewMailboxdatabase = null, Expression<Func<bool>> exchangeNewMailboxsharedMailbox = null, Expression<Func<bool>> exchangeNewMailboxemailAddressPolicyEnabled = null, Expression<Func<bool>> exchangeNewMailboxarchive = null)
         {
             var __workflow_exchangeNewMailboxname = WorkflowExpression.Compile(exchangeNewMailboxname, nameof(exchangeNewMailboxname), required: true);
             var __workflow_exchangeNewMailboxuserPrincipalName = WorkflowExpression.Compile(exchangeNewMailboxuserPrincipalName, nameof(exchangeNewMailboxuserPrincipalName), required: true);
@@ -4341,7 +4341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeNewMailboxsharedMailbox = WorkflowExpression.Compile(exchangeNewMailboxsharedMailbox, nameof(exchangeNewMailboxsharedMailbox), required: false);
             var __workflow_exchangeNewMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeNewMailboxemailAddressPolicyEnabled, nameof(exchangeNewMailboxemailAddressPolicyEnabled), required: false);
             var __workflow_exchangeNewMailboxarchive = WorkflowExpression.Compile(exchangeNewMailboxarchive, nameof(exchangeNewMailboxarchive), required: false);
-            return new DeferredBodyAction<ExchangeNewMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeNewMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeNewMailbox";
                 var apiCallHttpMethod = "post";
@@ -4484,11 +4484,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeNewMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeNewRemoteMailboxResponse> ExchangeNewRemoteMailbox(Expression<Func<string>> exchangeNewRemoteMailboxname, Expression<Func<string>> exchangeNewRemoteMailboxuserPrincipalName, Expression<Func<string>> exchangeNewRemoteMailboxworkflow, Expression<Func<string>> exchangeNewRemoteMailboxfirstName = null, Expression<Func<string>> exchangeNewRemoteMailboxlastName = null, Expression<Func<string>> exchangeNewRemoteMailboxonPremisesOrganizationalUnit = null, Expression<Func<string>> exchangeNewRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeNewRemoteMailboxremoteRoutingAddress = null, Expression<Func<string>> exchangeNewRemoteMailboxalias = null, Expression<Func<string>> exchangeNewRemoteMailboxprimarySmtpAddress = null, Expression<Func<string>> exchangeNewRemoteMailboxsamAccountName = null, Expression<Func<string>> exchangeNewRemoteMailboxpassword = null, Expression<Func<bool>> exchangeNewRemoteMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> exchangeNewRemoteMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> exchangeNewRemoteMailboxsharedMailbox = null, Expression<Func<bool>> exchangeNewRemoteMailboxemailAddressPolicyEnabled = null, Expression<Func<bool>> exchangeNewRemoteMailboxarchive = null)
+        public IBodyWorkflowAction<ExchangeNewRemoteMailboxResponse, ApiConnectionActionConfiguration> ExchangeNewRemoteMailbox(Expression<Func<string>> exchangeNewRemoteMailboxname, Expression<Func<string>> exchangeNewRemoteMailboxuserPrincipalName, Expression<Func<string>> exchangeNewRemoteMailboxworkflow, Expression<Func<string>> exchangeNewRemoteMailboxfirstName = null, Expression<Func<string>> exchangeNewRemoteMailboxlastName = null, Expression<Func<string>> exchangeNewRemoteMailboxonPremisesOrganizationalUnit = null, Expression<Func<string>> exchangeNewRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeNewRemoteMailboxremoteRoutingAddress = null, Expression<Func<string>> exchangeNewRemoteMailboxalias = null, Expression<Func<string>> exchangeNewRemoteMailboxprimarySmtpAddress = null, Expression<Func<string>> exchangeNewRemoteMailboxsamAccountName = null, Expression<Func<string>> exchangeNewRemoteMailboxpassword = null, Expression<Func<bool>> exchangeNewRemoteMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> exchangeNewRemoteMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> exchangeNewRemoteMailboxsharedMailbox = null, Expression<Func<bool>> exchangeNewRemoteMailboxemailAddressPolicyEnabled = null, Expression<Func<bool>> exchangeNewRemoteMailboxarchive = null)
         {
             var __workflow_exchangeNewRemoteMailboxname = WorkflowExpression.Compile(exchangeNewRemoteMailboxname, nameof(exchangeNewRemoteMailboxname), required: true);
             var __workflow_exchangeNewRemoteMailboxuserPrincipalName = WorkflowExpression.Compile(exchangeNewRemoteMailboxuserPrincipalName, nameof(exchangeNewRemoteMailboxuserPrincipalName), required: true);
@@ -4507,7 +4507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeNewRemoteMailboxsharedMailbox = WorkflowExpression.Compile(exchangeNewRemoteMailboxsharedMailbox, nameof(exchangeNewRemoteMailboxsharedMailbox), required: false);
             var __workflow_exchangeNewRemoteMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeNewRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeNewRemoteMailboxemailAddressPolicyEnabled), required: false);
             var __workflow_exchangeNewRemoteMailboxarchive = WorkflowExpression.Compile(exchangeNewRemoteMailboxarchive, nameof(exchangeNewRemoteMailboxarchive), required: false);
-            return new DeferredBodyAction<ExchangeNewRemoteMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeNewRemoteMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeNewRemoteMailbox";
                 var apiCallHttpMethod = "post";
@@ -4650,15 +4650,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeNewRemoteMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetADServerToViewEntireForestResponse> ExchangeSetADServerToViewEntireForest(Expression<Func<bool>> exchangeSetADServerToViewEntireForestviewEntireForest, Expression<Func<string>> exchangeSetADServerToViewEntireForestworkflow)
+        public IBodyWorkflowAction<ExchangeSetADServerToViewEntireForestResponse, ApiConnectionActionConfiguration> ExchangeSetADServerToViewEntireForest(Expression<Func<bool>> exchangeSetADServerToViewEntireForestviewEntireForest, Expression<Func<string>> exchangeSetADServerToViewEntireForestworkflow)
         {
             var __workflow_exchangeSetADServerToViewEntireForestviewEntireForest = WorkflowExpression.Compile(exchangeSetADServerToViewEntireForestviewEntireForest, nameof(exchangeSetADServerToViewEntireForestviewEntireForest), required: true);
             var __workflow_exchangeSetADServerToViewEntireForestworkflow = WorkflowExpression.Compile(exchangeSetADServerToViewEntireForestworkflow, nameof(exchangeSetADServerToViewEntireForestworkflow), required: true);
-            return new DeferredBodyAction<ExchangeSetADServerToViewEntireForestResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetADServerToViewEntireForestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetADServerToViewEntireForest";
                 var apiCallHttpMethod = "post";
@@ -4675,11 +4675,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetADServerToViewEntireForestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetMailboxResponse> ExchangeSetMailbox(Expression<Func<string>> exchangeSetMailboxidentity, Expression<Func<string>> exchangeSetMailboxworkflow, Expression<Func<bool>> exchangeSetMailboxaccountDisabled = null, Expression<Func<string>> exchangeSetMailboxalias = null, Expression<Func<string>> exchangeSetMailboxdisplayName = null, Expression<Func<string>> exchangeSetMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetMailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute1 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute2 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute3 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute4 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute5 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute6 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute7 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute8 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute9 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute10 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute11 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute12 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute13 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute14 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute15 = null, Expression<Func<bool>> exchangeSetMailboxemailAddressPolicyEnabled = null)
+        public IBodyWorkflowAction<ExchangeSetMailboxResponse, ApiConnectionActionConfiguration> ExchangeSetMailbox(Expression<Func<string>> exchangeSetMailboxidentity, Expression<Func<string>> exchangeSetMailboxworkflow, Expression<Func<bool>> exchangeSetMailboxaccountDisabled = null, Expression<Func<string>> exchangeSetMailboxalias = null, Expression<Func<string>> exchangeSetMailboxdisplayName = null, Expression<Func<string>> exchangeSetMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetMailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute1 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute2 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute3 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute4 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute5 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute6 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute7 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute8 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute9 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute10 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute11 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute12 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute13 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute14 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute15 = null, Expression<Func<bool>> exchangeSetMailboxemailAddressPolicyEnabled = null)
         {
             var __workflow_exchangeSetMailboxidentity = WorkflowExpression.Compile(exchangeSetMailboxidentity, nameof(exchangeSetMailboxidentity), required: true);
             var __workflow_exchangeSetMailboxworkflow = WorkflowExpression.Compile(exchangeSetMailboxworkflow, nameof(exchangeSetMailboxworkflow), required: true);
@@ -4704,7 +4704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeSetMailboxcustomAttribute14 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute14, nameof(exchangeSetMailboxcustomAttribute14), required: false);
             var __workflow_exchangeSetMailboxcustomAttribute15 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute15, nameof(exchangeSetMailboxcustomAttribute15), required: false);
             var __workflow_exchangeSetMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeSetMailboxemailAddressPolicyEnabled, nameof(exchangeSetMailboxemailAddressPolicyEnabled), required: false);
-            return new DeferredBodyAction<ExchangeSetMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailbox";
                 var apiCallHttpMethod = "post";
@@ -4847,11 +4847,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetMailboxEmailAddressesResponse> ExchangeSetMailboxEmailAddresses(Expression<Func<string>> exchangeSetMailboxEmailAddressesidentity, Expression<Func<string>> exchangeSetMailboxEmailAddressesworkflow, Expression<Func<string>> exchangeSetMailboxEmailAddressesalias = null, Expression<Func<string>> exchangeSetMailboxEmailAddressesprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled = null, Expression<Func<string[]>> exchangeSetMailboxEmailAddressesemailAddressesToAddList = null, Expression<Func<bool>> exchangeSetMailboxEmailAddressesreplaceEmailAddresses = null, Expression<Func<string[]>> exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = null)
+        public IBodyWorkflowAction<ExchangeSetMailboxEmailAddressesResponse, ApiConnectionActionConfiguration> ExchangeSetMailboxEmailAddresses(Expression<Func<string>> exchangeSetMailboxEmailAddressesidentity, Expression<Func<string>> exchangeSetMailboxEmailAddressesworkflow, Expression<Func<string>> exchangeSetMailboxEmailAddressesalias = null, Expression<Func<string>> exchangeSetMailboxEmailAddressesprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled = null, Expression<Func<string[]>> exchangeSetMailboxEmailAddressesemailAddressesToAddList = null, Expression<Func<bool>> exchangeSetMailboxEmailAddressesreplaceEmailAddresses = null, Expression<Func<string[]>> exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = null)
         {
             var __workflow_exchangeSetMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesidentity, nameof(exchangeSetMailboxEmailAddressesidentity), required: true);
             var __workflow_exchangeSetMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesworkflow, nameof(exchangeSetMailboxEmailAddressesworkflow), required: true);
@@ -4861,7 +4861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeSetMailboxEmailAddressesemailAddressesToAddList = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressesToAddList, nameof(exchangeSetMailboxEmailAddressesemailAddressesToAddList), required: false);
             var __workflow_exchangeSetMailboxEmailAddressesreplaceEmailAddresses = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesreplaceEmailAddresses, nameof(exchangeSetMailboxEmailAddressesreplaceEmailAddresses), required: false);
             var __workflow_exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressesToRemoveList, nameof(exchangeSetMailboxEmailAddressesemailAddressesToRemoveList), required: false);
-            return new DeferredBodyAction<ExchangeSetMailboxEmailAddressesResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetMailboxEmailAddressesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailboxEmailAddresses";
                 var apiCallHttpMethod = "post";
@@ -4924,15 +4924,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxEmailAddressesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetMailboxEmailAddressesResponse> ExchangeGetMailboxEmailAddresses(Expression<Func<string>> exchangeGetMailboxEmailAddressesidentity, Expression<Func<string>> exchangeGetMailboxEmailAddressesworkflow)
+        public IBodyWorkflowAction<ExchangeGetMailboxEmailAddressesResponse, ApiConnectionActionConfiguration> ExchangeGetMailboxEmailAddresses(Expression<Func<string>> exchangeGetMailboxEmailAddressesidentity, Expression<Func<string>> exchangeGetMailboxEmailAddressesworkflow)
         {
             var __workflow_exchangeGetMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeGetMailboxEmailAddressesidentity, nameof(exchangeGetMailboxEmailAddressesidentity), required: true);
             var __workflow_exchangeGetMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeGetMailboxEmailAddressesworkflow, nameof(exchangeGetMailboxEmailAddressesworkflow), required: true);
-            return new DeferredBodyAction<ExchangeGetMailboxEmailAddressesResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetMailboxEmailAddressesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetMailboxEmailAddresses";
                 var apiCallHttpMethod = "post";
@@ -4949,11 +4949,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetMailboxEmailAddressesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetRemoteMailboxEmailAddressesResponse> ExchangeSetRemoteMailboxEmailAddresses(Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesidentity, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesworkflow, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesalias = null, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled = null, Expression<Func<string[]>> exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = null, Expression<Func<bool>> exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = null, Expression<Func<string[]>> exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = null)
+        public IBodyWorkflowAction<ExchangeSetRemoteMailboxEmailAddressesResponse, ApiConnectionActionConfiguration> ExchangeSetRemoteMailboxEmailAddresses(Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesidentity, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesworkflow, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesalias = null, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled = null, Expression<Func<string[]>> exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = null, Expression<Func<bool>> exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = null, Expression<Func<string[]>> exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = null)
         {
             var __workflow_exchangeSetRemoteMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesidentity, nameof(exchangeSetRemoteMailboxEmailAddressesidentity), required: true);
             var __workflow_exchangeSetRemoteMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesworkflow, nameof(exchangeSetRemoteMailboxEmailAddressesworkflow), required: true);
@@ -4963,7 +4963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList), required: false);
             var __workflow_exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses, nameof(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses), required: false);
             var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList), required: false);
-            return new DeferredBodyAction<ExchangeSetRemoteMailboxEmailAddressesResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetRemoteMailboxEmailAddressesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetRemoteMailboxEmailAddresses";
                 var apiCallHttpMethod = "post";
@@ -5026,15 +5026,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetRemoteMailboxEmailAddressesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeGetRemoteMailboxEmailAddressesResponse> ExchangeGetRemoteMailboxEmailAddresses(Expression<Func<string>> exchangeGetRemoteMailboxEmailAddressesidentity, Expression<Func<string>> exchangeGetRemoteMailboxEmailAddressesworkflow)
+        public IBodyWorkflowAction<ExchangeGetRemoteMailboxEmailAddressesResponse, ApiConnectionActionConfiguration> ExchangeGetRemoteMailboxEmailAddresses(Expression<Func<string>> exchangeGetRemoteMailboxEmailAddressesidentity, Expression<Func<string>> exchangeGetRemoteMailboxEmailAddressesworkflow)
         {
             var __workflow_exchangeGetRemoteMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeGetRemoteMailboxEmailAddressesidentity, nameof(exchangeGetRemoteMailboxEmailAddressesidentity), required: true);
             var __workflow_exchangeGetRemoteMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeGetRemoteMailboxEmailAddressesworkflow, nameof(exchangeGetRemoteMailboxEmailAddressesworkflow), required: true);
-            return new DeferredBodyAction<ExchangeGetRemoteMailboxEmailAddressesResponse>(() =>
+            return new DeferredBodyAction<ExchangeGetRemoteMailboxEmailAddressesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetRemoteMailboxEmailAddresses";
                 var apiCallHttpMethod = "post";
@@ -5051,11 +5051,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeGetRemoteMailboxEmailAddressesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeResetMailboxAttributesResponse> ExchangeResetMailboxAttributes(Expression<Func<string>> exchangeResetMailboxAttributesidentity, Expression<Func<string>> exchangeResetMailboxAttributesworkflow, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute1 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute2 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute3 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute4 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute5 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute6 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute7 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute8 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute9 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute10 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute11 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute12 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute13 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute14 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute15 = null)
+        public IBodyWorkflowAction<ExchangeResetMailboxAttributesResponse, ApiConnectionActionConfiguration> ExchangeResetMailboxAttributes(Expression<Func<string>> exchangeResetMailboxAttributesidentity, Expression<Func<string>> exchangeResetMailboxAttributesworkflow, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute1 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute2 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute3 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute4 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute5 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute6 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute7 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute8 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute9 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute10 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute11 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute12 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute13 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute14 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute15 = null)
         {
             var __workflow_exchangeResetMailboxAttributesidentity = WorkflowExpression.Compile(exchangeResetMailboxAttributesidentity, nameof(exchangeResetMailboxAttributesidentity), required: true);
             var __workflow_exchangeResetMailboxAttributesworkflow = WorkflowExpression.Compile(exchangeResetMailboxAttributesworkflow, nameof(exchangeResetMailboxAttributesworkflow), required: true);
@@ -5074,7 +5074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeResetMailboxAttributesresetCustomAttribute13 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute13, nameof(exchangeResetMailboxAttributesresetCustomAttribute13), required: false);
             var __workflow_exchangeResetMailboxAttributesresetCustomAttribute14 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute14, nameof(exchangeResetMailboxAttributesresetCustomAttribute14), required: false);
             var __workflow_exchangeResetMailboxAttributesresetCustomAttribute15 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute15, nameof(exchangeResetMailboxAttributesresetCustomAttribute15), required: false);
-            return new DeferredBodyAction<ExchangeResetMailboxAttributesResponse>(() =>
+            return new DeferredBodyAction<ExchangeResetMailboxAttributesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeResetMailboxAttributes";
                 var apiCallHttpMethod = "post";
@@ -5331,11 +5331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeResetMailboxAttributesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeResetRemoteMailboxAttributesResponse> ExchangeResetRemoteMailboxAttributes(Expression<Func<string>> exchangeResetRemoteMailboxAttributesidentity, Expression<Func<string>> exchangeResetRemoteMailboxAttributesworkflow, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute1 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute2 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute3 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute4 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute5 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute6 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute7 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute8 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute9 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute10 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute11 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute12 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = null)
+        public IBodyWorkflowAction<ExchangeResetRemoteMailboxAttributesResponse, ApiConnectionActionConfiguration> ExchangeResetRemoteMailboxAttributes(Expression<Func<string>> exchangeResetRemoteMailboxAttributesidentity, Expression<Func<string>> exchangeResetRemoteMailboxAttributesworkflow, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute1 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute2 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute3 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute4 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute5 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute6 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute7 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute8 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute9 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute10 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute11 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute12 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = null)
         {
             var __workflow_exchangeResetRemoteMailboxAttributesidentity = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesidentity, nameof(exchangeResetRemoteMailboxAttributesidentity), required: true);
             var __workflow_exchangeResetRemoteMailboxAttributesworkflow = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesworkflow, nameof(exchangeResetRemoteMailboxAttributesworkflow), required: true);
@@ -5354,7 +5354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute13, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute13), required: false);
             var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute14, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute14), required: false);
             var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute15, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute15), required: false);
-            return new DeferredBodyAction<ExchangeResetRemoteMailboxAttributesResponse>(() =>
+            return new DeferredBodyAction<ExchangeResetRemoteMailboxAttributesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeResetRemoteMailboxAttributes";
                 var apiCallHttpMethod = "post";
@@ -5611,11 +5611,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeResetRemoteMailboxAttributesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetRemoteMailboxResponse> ExchangeSetRemoteMailbox(Expression<Func<string>> exchangeSetRemoteMailboxidentity, Expression<Func<string>> exchangeSetRemoteMailboxworkflow, Expression<Func<string>> exchangeSetRemoteMailboxalias = null, Expression<Func<string>> exchangeSetRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeSetRemoteMailboxprimarySmtpAddress = null, Expression<Func<exchangeSetRemoteMailboxtypeInput>> exchangeSetRemoteMailboxtype = null, Expression<Func<bool>> exchangeSetRemoteMailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute1 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute2 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute3 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute4 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute5 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute6 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute7 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute8 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute9 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute10 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute11 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute12 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute13 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute14 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute15 = null, Expression<Func<bool>> exchangeSetRemoteMailboxemailAddressPolicyEnabled = null)
+        public IBodyWorkflowAction<ExchangeSetRemoteMailboxResponse, ApiConnectionActionConfiguration> ExchangeSetRemoteMailbox(Expression<Func<string>> exchangeSetRemoteMailboxidentity, Expression<Func<string>> exchangeSetRemoteMailboxworkflow, Expression<Func<string>> exchangeSetRemoteMailboxalias = null, Expression<Func<string>> exchangeSetRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeSetRemoteMailboxprimarySmtpAddress = null, Expression<Func<exchangeSetRemoteMailboxtypeInput>> exchangeSetRemoteMailboxtype = null, Expression<Func<bool>> exchangeSetRemoteMailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute1 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute2 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute3 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute4 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute5 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute6 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute7 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute8 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute9 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute10 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute11 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute12 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute13 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute14 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute15 = null, Expression<Func<bool>> exchangeSetRemoteMailboxemailAddressPolicyEnabled = null)
         {
             var __workflow_exchangeSetRemoteMailboxidentity = WorkflowExpression.Compile(exchangeSetRemoteMailboxidentity, nameof(exchangeSetRemoteMailboxidentity), required: true);
             var __workflow_exchangeSetRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeSetRemoteMailboxworkflow, nameof(exchangeSetRemoteMailboxworkflow), required: true);
@@ -5640,7 +5640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeSetRemoteMailboxcustomAttribute14 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute14, nameof(exchangeSetRemoteMailboxcustomAttribute14), required: false);
             var __workflow_exchangeSetRemoteMailboxcustomAttribute15 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute15, nameof(exchangeSetRemoteMailboxcustomAttribute15), required: false);
             var __workflow_exchangeSetRemoteMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeSetRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeSetRemoteMailboxemailAddressPolicyEnabled), required: false);
-            return new DeferredBodyAction<ExchangeSetRemoteMailboxResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetRemoteMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetRemoteMailbox";
                 var apiCallHttpMethod = "post";
@@ -5783,16 +5783,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetRemoteMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse> ExchangeSetMailboxSendOnBehalfOfPermission(Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissionidentity, Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissionworkflow)
+        public IBodyWorkflowAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse, ApiConnectionActionConfiguration> ExchangeSetMailboxSendOnBehalfOfPermission(Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissionidentity, Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissionworkflow)
         {
             var __workflow_exchangeSetMailboxSendOnBehalfOfPermissionidentity = WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissionidentity, nameof(exchangeSetMailboxSendOnBehalfOfPermissionidentity), required: true);
             var __workflow_exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo = WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, nameof(exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo), required: true);
             var __workflow_exchangeSetMailboxSendOnBehalfOfPermissionworkflow = WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissionworkflow, nameof(exchangeSetMailboxSendOnBehalfOfPermissionworkflow), required: true);
-            return new DeferredBodyAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailboxSendOnBehalfOfPermission";
                 var apiCallHttpMethod = "post";
@@ -5811,18 +5811,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeAddADPermissionResponse> ExchangeAddADPermission(Expression<Func<string>> exchangeAddADPermissionidentity, Expression<Func<string>> exchangeAddADPermissionuser, Expression<Func<string>> exchangeAddADPermissionworkflow, Expression<Func<string>> exchangeAddADPermissionaccessRights = null, Expression<Func<string>> exchangeAddADPermissionextendedRights = null)
+        public IBodyWorkflowAction<ExchangeAddADPermissionResponse, ApiConnectionActionConfiguration> ExchangeAddADPermission(Expression<Func<string>> exchangeAddADPermissionidentity, Expression<Func<string>> exchangeAddADPermissionuser, Expression<Func<string>> exchangeAddADPermissionworkflow, Expression<Func<string>> exchangeAddADPermissionaccessRights = null, Expression<Func<string>> exchangeAddADPermissionextendedRights = null)
         {
             var __workflow_exchangeAddADPermissionidentity = WorkflowExpression.Compile(exchangeAddADPermissionidentity, nameof(exchangeAddADPermissionidentity), required: true);
             var __workflow_exchangeAddADPermissionuser = WorkflowExpression.Compile(exchangeAddADPermissionuser, nameof(exchangeAddADPermissionuser), required: true);
             var __workflow_exchangeAddADPermissionworkflow = WorkflowExpression.Compile(exchangeAddADPermissionworkflow, nameof(exchangeAddADPermissionworkflow), required: true);
             var __workflow_exchangeAddADPermissionaccessRights = WorkflowExpression.Compile(exchangeAddADPermissionaccessRights, nameof(exchangeAddADPermissionaccessRights), required: false);
             var __workflow_exchangeAddADPermissionextendedRights = WorkflowExpression.Compile(exchangeAddADPermissionextendedRights, nameof(exchangeAddADPermissionextendedRights), required: false);
-            return new DeferredBodyAction<ExchangeAddADPermissionResponse>(() =>
+            return new DeferredBodyAction<ExchangeAddADPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeAddADPermission";
                 var apiCallHttpMethod = "post";
@@ -5853,11 +5853,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeAddADPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<ExchangeSetMailboxAutoReplyConfigurationResponse> ExchangeSetMailboxAutoReplyConfiguration(Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationidentity, Expression<Func<exchangeSetMailboxAutoReplyConfigurationautoReplyStateInput>> exchangeSetMailboxAutoReplyConfigurationautoReplyState, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationworkflow, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationinternalMessage = null, Expression<Func<exchangeSetMailboxAutoReplyConfigurationexternalAudienceInput>> exchangeSetMailboxAutoReplyConfigurationexternalAudience = null, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationexternalMessage = null)
+        public IBodyWorkflowAction<ExchangeSetMailboxAutoReplyConfigurationResponse, ApiConnectionActionConfiguration> ExchangeSetMailboxAutoReplyConfiguration(Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationidentity, Expression<Func<exchangeSetMailboxAutoReplyConfigurationautoReplyStateInput>> exchangeSetMailboxAutoReplyConfigurationautoReplyState, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationworkflow, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationinternalMessage = null, Expression<Func<exchangeSetMailboxAutoReplyConfigurationexternalAudienceInput>> exchangeSetMailboxAutoReplyConfigurationexternalAudience = null, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationexternalMessage = null)
         {
             var __workflow_exchangeSetMailboxAutoReplyConfigurationidentity = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationidentity, nameof(exchangeSetMailboxAutoReplyConfigurationidentity), required: true);
             var __workflow_exchangeSetMailboxAutoReplyConfigurationautoReplyState = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationautoReplyState, nameof(exchangeSetMailboxAutoReplyConfigurationautoReplyState), required: true);
@@ -5865,7 +5865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_exchangeSetMailboxAutoReplyConfigurationinternalMessage = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationinternalMessage, nameof(exchangeSetMailboxAutoReplyConfigurationinternalMessage), required: false);
             var __workflow_exchangeSetMailboxAutoReplyConfigurationexternalAudience = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationexternalAudience, nameof(exchangeSetMailboxAutoReplyConfigurationexternalAudience), required: false);
             var __workflow_exchangeSetMailboxAutoReplyConfigurationexternalMessage = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationexternalMessage, nameof(exchangeSetMailboxAutoReplyConfigurationexternalMessage), required: false);
-            return new DeferredBodyAction<ExchangeSetMailboxAutoReplyConfigurationResponse>(() =>
+            return new DeferredBodyAction<ExchangeSetMailboxAutoReplyConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailboxAutoReplyConfiguration";
                 var apiCallHttpMethod = "post";
@@ -5912,14 +5912,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<ExchangeSetMailboxAutoReplyConfigurationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsAzureADv2PowerShellModuleInstalledResponse> IsAzureADv2PowerShellModuleInstalled(Expression<Func<string>> isAzureADv2PowerShellModuleInstalledworkflow)
+        public IBodyWorkflowAction<IsAzureADv2PowerShellModuleInstalledResponse, ApiConnectionActionConfiguration> IsAzureADv2PowerShellModuleInstalled(Expression<Func<string>> isAzureADv2PowerShellModuleInstalledworkflow)
         {
             var __workflow_isAzureADv2PowerShellModuleInstalledworkflow = WorkflowExpression.Compile(isAzureADv2PowerShellModuleInstalledworkflow, nameof(isAzureADv2PowerShellModuleInstalledworkflow), required: true);
-            return new DeferredBodyAction<IsAzureADv2PowerShellModuleInstalledResponse>(() =>
+            return new DeferredBodyAction<IsAzureADv2PowerShellModuleInstalledResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/IsAzureADv2PowerShellModuleInstalled";
                 var apiCallHttpMethod = "post";
@@ -5934,11 +5934,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsAzureADv2PowerShellModuleInstalledResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceResponse> OpenAzureADv2PowerShellRunspace(Expression<Func<string>> openAzureADv2PowerShellRunspaceusername, Expression<Func<string>> openAzureADv2PowerShellRunspacepassword, Expression<Func<string>> openAzureADv2PowerShellRunspaceworkflow, Expression<Func<string>> openAzureADv2PowerShellRunspacetenantId = null, Expression<Func<openAzureADv2PowerShellRunspaceaPIToUseInput>> openAzureADv2PowerShellRunspaceaPIToUse = null, Expression<Func<string>> openAzureADv2PowerShellRunspaceauthenticationScope = null)
+        public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceResponse, ApiConnectionActionConfiguration> OpenAzureADv2PowerShellRunspace(Expression<Func<string>> openAzureADv2PowerShellRunspaceusername, Expression<Func<string>> openAzureADv2PowerShellRunspacepassword, Expression<Func<string>> openAzureADv2PowerShellRunspaceworkflow, Expression<Func<string>> openAzureADv2PowerShellRunspacetenantId = null, Expression<Func<openAzureADv2PowerShellRunspaceaPIToUseInput>> openAzureADv2PowerShellRunspaceaPIToUse = null, Expression<Func<string>> openAzureADv2PowerShellRunspaceauthenticationScope = null)
         {
             var __workflow_openAzureADv2PowerShellRunspaceusername = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceusername, nameof(openAzureADv2PowerShellRunspaceusername), required: true);
             var __workflow_openAzureADv2PowerShellRunspacepassword = WorkflowExpression.Compile(openAzureADv2PowerShellRunspacepassword, nameof(openAzureADv2PowerShellRunspacepassword), required: true);
@@ -5946,7 +5946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_openAzureADv2PowerShellRunspacetenantId = WorkflowExpression.Compile(openAzureADv2PowerShellRunspacetenantId, nameof(openAzureADv2PowerShellRunspacetenantId), required: false);
             var __workflow_openAzureADv2PowerShellRunspaceaPIToUse = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceaPIToUse, nameof(openAzureADv2PowerShellRunspaceaPIToUse), required: false);
             var __workflow_openAzureADv2PowerShellRunspaceauthenticationScope = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceauthenticationScope, nameof(openAzureADv2PowerShellRunspaceauthenticationScope), required: false);
-            return new DeferredBodyAction<OpenAzureADv2PowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<OpenAzureADv2PowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/OpenAzureADv2PowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -6003,18 +6003,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenAzureADv2PowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse> OpenAzureADv2PowerShellRunspaceWithCertificate(Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificateapplicationId, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificatetenantId, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificateworkflow, Expression<Func<openAzureADv2PowerShellRunspaceWithCertificateaPIToUseInput>> openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = null)
+        public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse, ApiConnectionActionConfiguration> OpenAzureADv2PowerShellRunspaceWithCertificate(Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificateapplicationId, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificatetenantId, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificateworkflow, Expression<Func<openAzureADv2PowerShellRunspaceWithCertificateaPIToUseInput>> openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = null)
         {
             var __workflow_openAzureADv2PowerShellRunspaceWithCertificateapplicationId = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateapplicationId, nameof(openAzureADv2PowerShellRunspaceWithCertificateapplicationId), required: true);
             var __workflow_openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, nameof(openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint), required: true);
             var __workflow_openAzureADv2PowerShellRunspaceWithCertificatetenantId = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificatetenantId, nameof(openAzureADv2PowerShellRunspaceWithCertificatetenantId), required: true);
             var __workflow_openAzureADv2PowerShellRunspaceWithCertificateworkflow = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateworkflow, nameof(openAzureADv2PowerShellRunspaceWithCertificateworkflow), required: true);
             var __workflow_openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse, nameof(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse), required: false);
-            return new DeferredBodyAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse>(() =>
+            return new DeferredBodyAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/OpenAzureADv2PowerShellRunspaceWithCertificate";
                 var apiCallHttpMethod = "post";
@@ -6051,15 +6051,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsAzureADv2PowerShellRunspaceOpenResponse> IsAzureADv2PowerShellRunspaceOpen(Expression<Func<string>> isAzureADv2PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
+        public IBodyWorkflowAction<IsAzureADv2PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsAzureADv2PowerShellRunspaceOpen(Expression<Func<string>> isAzureADv2PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
             var __workflow_isAzureADv2PowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenworkflow, nameof(isAzureADv2PowerShellRunspaceOpenworkflow), required: true);
             var __workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
-            return new DeferredBodyAction<IsAzureADv2PowerShellRunspaceOpenResponse>(() =>
+            return new DeferredBodyAction<IsAzureADv2PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/IsAzureADv2PowerShellRunspaceOpen";
                 var apiCallHttpMethod = "post";
@@ -6090,11 +6090,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsAzureADv2PowerShellRunspaceOpenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<RunAzureADv2PowerShellAutomationScriptResponse> RunAzureADv2PowerShellAutomationScript(Expression<Func<string>> runAzureADv2PowerShellAutomationScriptworkflow, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runAzureADv2PowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = null)
+        public IBodyWorkflowAction<RunAzureADv2PowerShellAutomationScriptResponse, ApiConnectionActionConfiguration> RunAzureADv2PowerShellAutomationScript(Expression<Func<string>> runAzureADv2PowerShellAutomationScriptworkflow, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runAzureADv2PowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = null)
         {
             var __workflow_runAzureADv2PowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptworkflow, nameof(runAzureADv2PowerShellAutomationScriptworkflow), required: true);
             var __workflow_runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpowerShellScriptContents, nameof(runAzureADv2PowerShellAutomationScriptpowerShellScriptContents), required: false);
@@ -6112,7 +6112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
             var __workflow_runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
             var __workflow_runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters, nameof(runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters), required: false);
-            return new DeferredBodyAction<RunAzureADv2PowerShellAutomationScriptResponse>(() =>
+            return new DeferredBodyAction<RunAzureADv2PowerShellAutomationScriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/RunAzureADv2PowerShellAutomationScript";
                 var apiCallHttpMethod = "post";
@@ -6307,14 +6307,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunAzureADv2PowerShellAutomationScriptResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<CloseAzureADv2PowerShellRunspaceResponse> CloseAzureADv2PowerShellRunspace(Expression<Func<string>> closeAzureADv2PowerShellRunspaceworkflow)
+        public IBodyWorkflowAction<CloseAzureADv2PowerShellRunspaceResponse, ApiConnectionActionConfiguration> CloseAzureADv2PowerShellRunspace(Expression<Func<string>> closeAzureADv2PowerShellRunspaceworkflow)
         {
             var __workflow_closeAzureADv2PowerShellRunspaceworkflow = WorkflowExpression.Compile(closeAzureADv2PowerShellRunspaceworkflow, nameof(closeAzureADv2PowerShellRunspaceworkflow), required: true);
-            return new DeferredBodyAction<CloseAzureADv2PowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<CloseAzureADv2PowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/CloseAzureADv2PowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -6329,11 +6329,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseAzureADv2PowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADUsersResponse> AzureADv2GetAzureADUsers(Expression<Func<string>> azureADv2GetAzureADUsersworkflow, Expression<Func<string>> azureADv2GetAzureADUsersobjectId = null, Expression<Func<string>> azureADv2GetAzureADUsersfilterPropertyName = null, Expression<Func<azureADv2GetAzureADUsersfilterPropertyComparisonInput>> azureADv2GetAzureADUsersfilterPropertyComparison = null, Expression<Func<string>> azureADv2GetAzureADUsersfilterPropertyValue = null, Expression<Func<bool>> azureADv2GetAzureADUsersnoResultIsAnException = null, Expression<Func<string>> azureADv2GetAzureADUserspropertiesToReturn = null)
+        public IBodyWorkflowAction<AzureADv2GetAzureADUsersResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADUsers(Expression<Func<string>> azureADv2GetAzureADUsersworkflow, Expression<Func<string>> azureADv2GetAzureADUsersobjectId = null, Expression<Func<string>> azureADv2GetAzureADUsersfilterPropertyName = null, Expression<Func<azureADv2GetAzureADUsersfilterPropertyComparisonInput>> azureADv2GetAzureADUsersfilterPropertyComparison = null, Expression<Func<string>> azureADv2GetAzureADUsersfilterPropertyValue = null, Expression<Func<bool>> azureADv2GetAzureADUsersnoResultIsAnException = null, Expression<Func<string>> azureADv2GetAzureADUserspropertiesToReturn = null)
         {
             var __workflow_azureADv2GetAzureADUsersworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUsersworkflow, nameof(azureADv2GetAzureADUsersworkflow), required: true);
             var __workflow_azureADv2GetAzureADUsersobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUsersobjectId, nameof(azureADv2GetAzureADUsersobjectId), required: false);
@@ -6342,7 +6342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2GetAzureADUsersfilterPropertyValue = WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyValue, nameof(azureADv2GetAzureADUsersfilterPropertyValue), required: false);
             var __workflow_azureADv2GetAzureADUsersnoResultIsAnException = WorkflowExpression.Compile(azureADv2GetAzureADUsersnoResultIsAnException, nameof(azureADv2GetAzureADUsersnoResultIsAnException), required: false);
             var __workflow_azureADv2GetAzureADUserspropertiesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADUserspropertiesToReturn, nameof(azureADv2GetAzureADUserspropertiesToReturn), required: false);
-            return new DeferredBodyAction<AzureADv2GetAzureADUsersResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUsers";
                 var apiCallHttpMethod = "post";
@@ -6413,11 +6413,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUsersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2AddAzureADUserResponse> AzureADv2AddAzureADUser(Expression<Func<string>> azureADv2AddAzureADUseruserPrincipalName, Expression<Func<bool>> azureADv2AddAzureADUseraccountEnabled, Expression<Func<string>> azureADv2AddAzureADUseraccountPassword, Expression<Func<string>> azureADv2AddAzureADUserdisplayName, Expression<Func<string>> azureADv2AddAzureADUsermailNickName, Expression<Func<string>> azureADv2AddAzureADUserworkflow, Expression<Func<bool>> azureADv2AddAzureADUseraccountPasswordIsStoredPassword = null, Expression<Func<string>> azureADv2AddAzureADUserfirstName = null, Expression<Func<string>> azureADv2AddAzureADUserlastName = null, Expression<Func<string>> azureADv2AddAzureADUsercity = null, Expression<Func<string>> azureADv2AddAzureADUsercompanyName = null, Expression<Func<string>> azureADv2AddAzureADUsercountry = null, Expression<Func<string>> azureADv2AddAzureADUserdepartment = null, Expression<Func<string>> azureADv2AddAzureADUserfaxNumber = null, Expression<Func<string>> azureADv2AddAzureADUserjobTitle = null, Expression<Func<string>> azureADv2AddAzureADUsermobilePhone = null, Expression<Func<string>> azureADv2AddAzureADUseroffice = null, Expression<Func<string>> azureADv2AddAzureADUserphoneNumber = null, Expression<Func<string>> azureADv2AddAzureADUserpostalCode = null, Expression<Func<string>> azureADv2AddAzureADUserpreferredLanguage = null, Expression<Func<string>> azureADv2AddAzureADUserstate = null, Expression<Func<string>> azureADv2AddAzureADUserstreetAddress = null, Expression<Func<string>> azureADv2AddAzureADUserusageLocation = null, Expression<Func<azureADv2AddAzureADUserageGroupInput>> azureADv2AddAzureADUserageGroup = null, Expression<Func<azureADv2AddAzureADUserconsentProvidedForMinorInput>> azureADv2AddAzureADUserconsentProvidedForMinor = null, Expression<Func<string>> azureADv2AddAzureADUseremployeeId = null, Expression<Func<bool>> azureADv2AddAzureADUserforceChangePasswordNextLogin = null, Expression<Func<bool>> azureADv2AddAzureADUserenforceChangePasswordPolicy = null, Expression<Func<bool>> azureADv2AddAzureADUserpasswordNeverExpires = null)
+        public IBodyWorkflowAction<AzureADv2AddAzureADUserResponse, ApiConnectionActionConfiguration> AzureADv2AddAzureADUser(Expression<Func<string>> azureADv2AddAzureADUseruserPrincipalName, Expression<Func<bool>> azureADv2AddAzureADUseraccountEnabled, Expression<Func<string>> azureADv2AddAzureADUseraccountPassword, Expression<Func<string>> azureADv2AddAzureADUserdisplayName, Expression<Func<string>> azureADv2AddAzureADUsermailNickName, Expression<Func<string>> azureADv2AddAzureADUserworkflow, Expression<Func<bool>> azureADv2AddAzureADUseraccountPasswordIsStoredPassword = null, Expression<Func<string>> azureADv2AddAzureADUserfirstName = null, Expression<Func<string>> azureADv2AddAzureADUserlastName = null, Expression<Func<string>> azureADv2AddAzureADUsercity = null, Expression<Func<string>> azureADv2AddAzureADUsercompanyName = null, Expression<Func<string>> azureADv2AddAzureADUsercountry = null, Expression<Func<string>> azureADv2AddAzureADUserdepartment = null, Expression<Func<string>> azureADv2AddAzureADUserfaxNumber = null, Expression<Func<string>> azureADv2AddAzureADUserjobTitle = null, Expression<Func<string>> azureADv2AddAzureADUsermobilePhone = null, Expression<Func<string>> azureADv2AddAzureADUseroffice = null, Expression<Func<string>> azureADv2AddAzureADUserphoneNumber = null, Expression<Func<string>> azureADv2AddAzureADUserpostalCode = null, Expression<Func<string>> azureADv2AddAzureADUserpreferredLanguage = null, Expression<Func<string>> azureADv2AddAzureADUserstate = null, Expression<Func<string>> azureADv2AddAzureADUserstreetAddress = null, Expression<Func<string>> azureADv2AddAzureADUserusageLocation = null, Expression<Func<azureADv2AddAzureADUserageGroupInput>> azureADv2AddAzureADUserageGroup = null, Expression<Func<azureADv2AddAzureADUserconsentProvidedForMinorInput>> azureADv2AddAzureADUserconsentProvidedForMinor = null, Expression<Func<string>> azureADv2AddAzureADUseremployeeId = null, Expression<Func<bool>> azureADv2AddAzureADUserforceChangePasswordNextLogin = null, Expression<Func<bool>> azureADv2AddAzureADUserenforceChangePasswordPolicy = null, Expression<Func<bool>> azureADv2AddAzureADUserpasswordNeverExpires = null)
         {
             var __workflow_azureADv2AddAzureADUseruserPrincipalName = WorkflowExpression.Compile(azureADv2AddAzureADUseruserPrincipalName, nameof(azureADv2AddAzureADUseruserPrincipalName), required: true);
             var __workflow_azureADv2AddAzureADUseraccountEnabled = WorkflowExpression.Compile(azureADv2AddAzureADUseraccountEnabled, nameof(azureADv2AddAzureADUseraccountEnabled), required: true);
@@ -6448,7 +6448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2AddAzureADUserforceChangePasswordNextLogin = WorkflowExpression.Compile(azureADv2AddAzureADUserforceChangePasswordNextLogin, nameof(azureADv2AddAzureADUserforceChangePasswordNextLogin), required: false);
             var __workflow_azureADv2AddAzureADUserenforceChangePasswordPolicy = WorkflowExpression.Compile(azureADv2AddAzureADUserenforceChangePasswordPolicy, nameof(azureADv2AddAzureADUserenforceChangePasswordPolicy), required: false);
             var __workflow_azureADv2AddAzureADUserpasswordNeverExpires = WorkflowExpression.Compile(azureADv2AddAzureADUserpasswordNeverExpires, nameof(azureADv2AddAzureADUserpasswordNeverExpires), required: false);
-            return new DeferredBodyAction<AzureADv2AddAzureADUserResponse>(() =>
+            return new DeferredBodyAction<AzureADv2AddAzureADUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AddAzureADUser";
                 var apiCallHttpMethod = "post";
@@ -6651,16 +6651,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AddAzureADUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveAzureADUserResponse> AzureADv2RemoveAzureADUser(Expression<Func<string>> azureADv2RemoveAzureADUserobjectId, Expression<Func<string>> azureADv2RemoveAzureADUserworkflow, Expression<Func<bool>> azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = null)
+        public IBodyWorkflowAction<AzureADv2RemoveAzureADUserResponse, ApiConnectionActionConfiguration> AzureADv2RemoveAzureADUser(Expression<Func<string>> azureADv2RemoveAzureADUserobjectId, Expression<Func<string>> azureADv2RemoveAzureADUserworkflow, Expression<Func<bool>> azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = null)
         {
             var __workflow_azureADv2RemoveAzureADUserobjectId = WorkflowExpression.Compile(azureADv2RemoveAzureADUserobjectId, nameof(azureADv2RemoveAzureADUserobjectId), required: true);
             var __workflow_azureADv2RemoveAzureADUserworkflow = WorkflowExpression.Compile(azureADv2RemoveAzureADUserworkflow, nameof(azureADv2RemoveAzureADUserworkflow), required: true);
             var __workflow_azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = WorkflowExpression.Compile(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist, nameof(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveAzureADUserResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveAzureADUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveAzureADUser";
                 var apiCallHttpMethod = "post";
@@ -6693,11 +6693,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveAzureADUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2ResetAzureADUserPasswordResponse> AzureADv2ResetAzureADUserPassword(Expression<Func<string>> azureADv2ResetAzureADUserPassworduserPrincipalName, Expression<Func<string>> azureADv2ResetAzureADUserPasswordnewPassword, Expression<Func<string>> azureADv2ResetAzureADUserPasswordworkflow, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = null, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = null, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = null)
+        public IBodyWorkflowAction<AzureADv2ResetAzureADUserPasswordResponse, ApiConnectionActionConfiguration> AzureADv2ResetAzureADUserPassword(Expression<Func<string>> azureADv2ResetAzureADUserPassworduserPrincipalName, Expression<Func<string>> azureADv2ResetAzureADUserPasswordnewPassword, Expression<Func<string>> azureADv2ResetAzureADUserPasswordworkflow, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = null, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = null, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = null)
         {
             var __workflow_azureADv2ResetAzureADUserPassworduserPrincipalName = WorkflowExpression.Compile(azureADv2ResetAzureADUserPassworduserPrincipalName, nameof(azureADv2ResetAzureADUserPassworduserPrincipalName), required: true);
             var __workflow_azureADv2ResetAzureADUserPasswordnewPassword = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordnewPassword, nameof(azureADv2ResetAzureADUserPasswordnewPassword), required: true);
@@ -6705,7 +6705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword, nameof(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword), required: false);
             var __workflow_azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin, nameof(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin), required: false);
             var __workflow_azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy, nameof(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy), required: false);
-            return new DeferredBodyAction<AzureADv2ResetAzureADUserPasswordResponse>(() =>
+            return new DeferredBodyAction<AzureADv2ResetAzureADUserPasswordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2ResetAzureADUserPassword";
                 var apiCallHttpMethod = "post";
@@ -6772,16 +6772,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2ResetAzureADUserPasswordResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADUserGroupMembershipResponse> AzureADv2GetAzureADUserGroupMembership(Expression<Func<string>> azureADv2GetAzureADUserGroupMembershipobjectId, Expression<Func<string>> azureADv2GetAzureADUserGroupMembershipworkflow, Expression<Func<string>> azureADv2GetAzureADUserGroupMembershippropertiesToReturn = null)
+        public IBodyWorkflowAction<AzureADv2GetAzureADUserGroupMembershipResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADUserGroupMembership(Expression<Func<string>> azureADv2GetAzureADUserGroupMembershipobjectId, Expression<Func<string>> azureADv2GetAzureADUserGroupMembershipworkflow, Expression<Func<string>> azureADv2GetAzureADUserGroupMembershippropertiesToReturn = null)
         {
             var __workflow_azureADv2GetAzureADUserGroupMembershipobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershipobjectId, nameof(azureADv2GetAzureADUserGroupMembershipobjectId), required: true);
             var __workflow_azureADv2GetAzureADUserGroupMembershipworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershipworkflow, nameof(azureADv2GetAzureADUserGroupMembershipworkflow), required: true);
             var __workflow_azureADv2GetAzureADUserGroupMembershippropertiesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershippropertiesToReturn, nameof(azureADv2GetAzureADUserGroupMembershippropertiesToReturn), required: false);
-            return new DeferredBodyAction<AzureADv2GetAzureADUserGroupMembershipResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADUserGroupMembershipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserGroupMembership";
                 var apiCallHttpMethod = "post";
@@ -6804,16 +6804,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserGroupMembershipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2IsUserInAzureADUserGroupResponse> AzureADv2IsUserInAzureADUserGroup(Expression<Func<string>> azureADv2IsUserInAzureADUserGroupobjectId, Expression<Func<string>> azureADv2IsUserInAzureADUserGroupgroupObjectId, Expression<Func<string>> azureADv2IsUserInAzureADUserGroupworkflow)
+        public IBodyWorkflowAction<AzureADv2IsUserInAzureADUserGroupResponse, ApiConnectionActionConfiguration> AzureADv2IsUserInAzureADUserGroup(Expression<Func<string>> azureADv2IsUserInAzureADUserGroupobjectId, Expression<Func<string>> azureADv2IsUserInAzureADUserGroupgroupObjectId, Expression<Func<string>> azureADv2IsUserInAzureADUserGroupworkflow)
         {
             var __workflow_azureADv2IsUserInAzureADUserGroupobjectId = WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupobjectId, nameof(azureADv2IsUserInAzureADUserGroupobjectId), required: true);
             var __workflow_azureADv2IsUserInAzureADUserGroupgroupObjectId = WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupgroupObjectId, nameof(azureADv2IsUserInAzureADUserGroupgroupObjectId), required: true);
             var __workflow_azureADv2IsUserInAzureADUserGroupworkflow = WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupworkflow, nameof(azureADv2IsUserInAzureADUserGroupworkflow), required: true);
-            return new DeferredBodyAction<AzureADv2IsUserInAzureADUserGroupResponse>(() =>
+            return new DeferredBodyAction<AzureADv2IsUserInAzureADUserGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2IsUserInAzureADUserGroup";
                 var apiCallHttpMethod = "post";
@@ -6832,17 +6832,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2IsUserInAzureADUserGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2AddUserToGroupResponse> AzureADv2AddUserToGroup(Expression<Func<string>> azureADv2AddUserToGroupuserObjectId, Expression<Func<string>> azureADv2AddUserToGroupgroupObjectId, Expression<Func<string>> azureADv2AddUserToGroupworkflow, Expression<Func<bool>> azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = null)
+        public IBodyWorkflowAction<AzureADv2AddUserToGroupResponse, ApiConnectionActionConfiguration> AzureADv2AddUserToGroup(Expression<Func<string>> azureADv2AddUserToGroupuserObjectId, Expression<Func<string>> azureADv2AddUserToGroupgroupObjectId, Expression<Func<string>> azureADv2AddUserToGroupworkflow, Expression<Func<bool>> azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = null)
         {
             var __workflow_azureADv2AddUserToGroupuserObjectId = WorkflowExpression.Compile(azureADv2AddUserToGroupuserObjectId, nameof(azureADv2AddUserToGroupuserObjectId), required: true);
             var __workflow_azureADv2AddUserToGroupgroupObjectId = WorkflowExpression.Compile(azureADv2AddUserToGroupgroupObjectId, nameof(azureADv2AddUserToGroupgroupObjectId), required: true);
             var __workflow_azureADv2AddUserToGroupworkflow = WorkflowExpression.Compile(azureADv2AddUserToGroupworkflow, nameof(azureADv2AddUserToGroupworkflow), required: true);
             var __workflow_azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst, nameof(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst), required: false);
-            return new DeferredBodyAction<AzureADv2AddUserToGroupResponse>(() =>
+            return new DeferredBodyAction<AzureADv2AddUserToGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AddUserToGroup";
                 var apiCallHttpMethod = "post";
@@ -6877,17 +6877,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AddUserToGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveUserFromGroupResponse> AzureADv2RemoveUserFromGroup(Expression<Func<string>> azureADv2RemoveUserFromGroupuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromGroupgroupObjectId, Expression<Func<string>> azureADv2RemoveUserFromGroupworkflow, Expression<Func<bool>> azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = null)
+        public IBodyWorkflowAction<AzureADv2RemoveUserFromGroupResponse, ApiConnectionActionConfiguration> AzureADv2RemoveUserFromGroup(Expression<Func<string>> azureADv2RemoveUserFromGroupuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromGroupgroupObjectId, Expression<Func<string>> azureADv2RemoveUserFromGroupworkflow, Expression<Func<bool>> azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = null)
         {
             var __workflow_azureADv2RemoveUserFromGroupuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupuserObjectId, nameof(azureADv2RemoveUserFromGroupuserObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromGroupgroupObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupgroupObjectId, nameof(azureADv2RemoveUserFromGroupgroupObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromGroupworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupworkflow, nameof(azureADv2RemoveUserFromGroupworkflow), required: true);
             var __workflow_azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst, nameof(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveUserFromGroupResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveUserFromGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromGroup";
                 var apiCallHttpMethod = "post";
@@ -6922,11 +6922,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2AddADUserToMultipleADGroupsResponse> AzureADv2AddADUserToMultipleADGroups(Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsuserObjectId, Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsworkflow, Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsgroupNamesJSON = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = null, Expression<Func<int>> azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = null)
+        public IBodyWorkflowAction<AzureADv2AddADUserToMultipleADGroupsResponse, ApiConnectionActionConfiguration> AzureADv2AddADUserToMultipleADGroups(Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsuserObjectId, Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsworkflow, Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsgroupNamesJSON = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = null, Expression<Func<int>> azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = null)
         {
             var __workflow_azureADv2AddADUserToMultipleADGroupsuserObjectId = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsuserObjectId, nameof(azureADv2AddADUserToMultipleADGroupsuserObjectId), required: true);
             var __workflow_azureADv2AddADUserToMultipleADGroupsworkflow = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsworkflow, nameof(azureADv2AddADUserToMultipleADGroupsworkflow), required: true);
@@ -6935,7 +6935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd, nameof(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd), required: false);
             var __workflow_azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst, nameof(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst), required: false);
             var __workflow_azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall, nameof(azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall), required: false);
-            return new DeferredBodyAction<AzureADv2AddADUserToMultipleADGroupsResponse>(() =>
+            return new DeferredBodyAction<AzureADv2AddADUserToMultipleADGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AddADUserToMultipleADGroups";
                 var apiCallHttpMethod = "post";
@@ -7012,11 +7012,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AddADUserToMultipleADGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse> AzureADv2RemoveADUserFromMultipleADGroups(Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsworkflow, Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = null, Expression<Func<int>> azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = null)
+        public IBodyWorkflowAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse, ApiConnectionActionConfiguration> AzureADv2RemoveADUserFromMultipleADGroups(Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsworkflow, Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = null, Expression<Func<int>> azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = null)
         {
             var __workflow_azureADv2RemoveADUserFromMultipleADGroupsuserObjectId = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, nameof(azureADv2RemoveADUserFromMultipleADGroupsuserObjectId), required: true);
             var __workflow_azureADv2RemoveADUserFromMultipleADGroupsworkflow = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsworkflow, nameof(azureADv2RemoveADUserFromMultipleADGroupsworkflow), required: true);
@@ -7025,7 +7025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove, nameof(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove), required: false);
             var __workflow_azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst, nameof(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst), required: false);
             var __workflow_azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall, nameof(azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveADUserFromMultipleADGroups";
                 var apiCallHttpMethod = "post";
@@ -7102,18 +7102,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveUserFromAllGroupsResponse> AzureADv2RemoveUserFromAllGroups(Expression<Func<string>> azureADv2RemoveUserFromAllGroupsuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromAllGroupsworkflow, Expression<Func<bool>> azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<int>> azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = null)
+        public IBodyWorkflowAction<AzureADv2RemoveUserFromAllGroupsResponse, ApiConnectionActionConfiguration> AzureADv2RemoveUserFromAllGroups(Expression<Func<string>> azureADv2RemoveUserFromAllGroupsuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromAllGroupsworkflow, Expression<Func<bool>> azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<int>> azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = null)
         {
             var __workflow_azureADv2RemoveUserFromAllGroupsuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsuserObjectId, nameof(azureADv2RemoveUserFromAllGroupsuserObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromAllGroupsworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsworkflow, nameof(azureADv2RemoveUserFromAllGroupsworkflow), required: true);
             var __workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove, nameof(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove), required: false);
             var __workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove, nameof(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove), required: false);
             var __workflow_azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall, nameof(azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveUserFromAllGroupsResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveUserFromAllGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromAllGroups";
                 var apiCallHttpMethod = "post";
@@ -7168,15 +7168,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromAllGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADLicenseSKUsResponse> AzureADv2GetAzureADLicenseSKUs(Expression<Func<string>> azureADv2GetAzureADLicenseSKUsworkflow, Expression<Func<azureADv2GetAzureADLicenseSKUsexpandPropertyInput>> azureADv2GetAzureADLicenseSKUsexpandProperty = null)
+        public IBodyWorkflowAction<AzureADv2GetAzureADLicenseSKUsResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADLicenseSKUs(Expression<Func<string>> azureADv2GetAzureADLicenseSKUsworkflow, Expression<Func<azureADv2GetAzureADLicenseSKUsexpandPropertyInput>> azureADv2GetAzureADLicenseSKUsexpandProperty = null)
         {
             var __workflow_azureADv2GetAzureADLicenseSKUsworkflow = WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUsworkflow, nameof(azureADv2GetAzureADLicenseSKUsworkflow), required: true);
             var __workflow_azureADv2GetAzureADLicenseSKUsexpandProperty = WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUsexpandProperty, nameof(azureADv2GetAzureADLicenseSKUsexpandProperty), required: false);
-            return new DeferredBodyAction<AzureADv2GetAzureADLicenseSKUsResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADLicenseSKUsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADLicenseSKUs";
                 var apiCallHttpMethod = "post";
@@ -7207,11 +7207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADLicenseSKUsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2SetAzureADUserLicenseResponse> AzureADv2SetAzureADUserLicense(Expression<Func<string>> azureADv2SetAzureADUserLicenseobjectId, Expression<Func<string>> azureADv2SetAzureADUserLicenseworkflow, Expression<Func<string>> azureADv2SetAzureADUserLicenselicenseToAdd = null, Expression<Func<azureADv2SetAzureADUserLicenselicensePlansChoiceInput>> azureADv2SetAzureADUserLicenselicensePlansChoice = null, Expression<Func<string>> azureADv2SetAzureADUserLicenselicensePlansCSV = null, Expression<Func<string>> azureADv2SetAzureADUserLicenselicensesToRemoveCSV = null, Expression<Func<string>> azureADv2SetAzureADUserLicenseusageLocation = null, Expression<Func<bool>> azureADv2SetAzureADUserLicenselocalScope = null)
+        public IBodyWorkflowAction<AzureADv2SetAzureADUserLicenseResponse, ApiConnectionActionConfiguration> AzureADv2SetAzureADUserLicense(Expression<Func<string>> azureADv2SetAzureADUserLicenseobjectId, Expression<Func<string>> azureADv2SetAzureADUserLicenseworkflow, Expression<Func<string>> azureADv2SetAzureADUserLicenselicenseToAdd = null, Expression<Func<azureADv2SetAzureADUserLicenselicensePlansChoiceInput>> azureADv2SetAzureADUserLicenselicensePlansChoice = null, Expression<Func<string>> azureADv2SetAzureADUserLicenselicensePlansCSV = null, Expression<Func<string>> azureADv2SetAzureADUserLicenselicensesToRemoveCSV = null, Expression<Func<string>> azureADv2SetAzureADUserLicenseusageLocation = null, Expression<Func<bool>> azureADv2SetAzureADUserLicenselocalScope = null)
         {
             var __workflow_azureADv2SetAzureADUserLicenseobjectId = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseobjectId, nameof(azureADv2SetAzureADUserLicenseobjectId), required: true);
             var __workflow_azureADv2SetAzureADUserLicenseworkflow = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseworkflow, nameof(azureADv2SetAzureADUserLicenseworkflow), required: true);
@@ -7221,7 +7221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2SetAzureADUserLicenselicensesToRemoveCSV = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensesToRemoveCSV, nameof(azureADv2SetAzureADUserLicenselicensesToRemoveCSV), required: false);
             var __workflow_azureADv2SetAzureADUserLicenseusageLocation = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseusageLocation, nameof(azureADv2SetAzureADUserLicenseusageLocation), required: false);
             var __workflow_azureADv2SetAzureADUserLicenselocalScope = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselocalScope, nameof(azureADv2SetAzureADUserLicenselocalScope), required: false);
-            return new DeferredBodyAction<AzureADv2SetAzureADUserLicenseResponse>(() =>
+            return new DeferredBodyAction<AzureADv2SetAzureADUserLicenseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2SetAzureADUserLicense";
                 var apiCallHttpMethod = "post";
@@ -7284,15 +7284,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2SetAzureADUserLicenseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADUserLicensesResponse> AzureADv2GetAzureADUserLicenses(Expression<Func<string>> azureADv2GetAzureADUserLicensesobjectId, Expression<Func<string>> azureADv2GetAzureADUserLicensesworkflow)
+        public IBodyWorkflowAction<AzureADv2GetAzureADUserLicensesResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADUserLicenses(Expression<Func<string>> azureADv2GetAzureADUserLicensesobjectId, Expression<Func<string>> azureADv2GetAzureADUserLicensesworkflow)
         {
             var __workflow_azureADv2GetAzureADUserLicensesobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserLicensesobjectId, nameof(azureADv2GetAzureADUserLicensesobjectId), required: true);
             var __workflow_azureADv2GetAzureADUserLicensesworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserLicensesworkflow, nameof(azureADv2GetAzureADUserLicensesworkflow), required: true);
-            return new DeferredBodyAction<AzureADv2GetAzureADUserLicensesResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADUserLicensesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserLicenses";
                 var apiCallHttpMethod = "post";
@@ -7309,16 +7309,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserLicensesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADUserLicenseServicePlansResponse> AzureADv2GetAzureADUserLicenseServicePlans(Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlansobjectId, Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlansworkflow)
+        public IBodyWorkflowAction<AzureADv2GetAzureADUserLicenseServicePlansResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADUserLicenseServicePlans(Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlansobjectId, Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlansworkflow)
         {
             var __workflow_azureADv2GetAzureADUserLicenseServicePlansobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlansobjectId, nameof(azureADv2GetAzureADUserLicenseServicePlansobjectId), required: true);
             var __workflow_azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber = WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, nameof(azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber), required: true);
             var __workflow_azureADv2GetAzureADUserLicenseServicePlansworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlansworkflow, nameof(azureADv2GetAzureADUserLicenseServicePlansworkflow), required: true);
-            return new DeferredBodyAction<AzureADv2GetAzureADUserLicenseServicePlansResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADUserLicenseServicePlansResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserLicenseServicePlans";
                 var apiCallHttpMethod = "post";
@@ -7337,15 +7337,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserLicenseServicePlansResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveAllAzureADUserLicenseResponse> AzureADv2RemoveAllAzureADUserLicense(Expression<Func<string>> azureADv2RemoveAllAzureADUserLicenseobjectId, Expression<Func<string>> azureADv2RemoveAllAzureADUserLicenseworkflow)
+        public IBodyWorkflowAction<AzureADv2RemoveAllAzureADUserLicenseResponse, ApiConnectionActionConfiguration> AzureADv2RemoveAllAzureADUserLicense(Expression<Func<string>> azureADv2RemoveAllAzureADUserLicenseobjectId, Expression<Func<string>> azureADv2RemoveAllAzureADUserLicenseworkflow)
         {
             var __workflow_azureADv2RemoveAllAzureADUserLicenseobjectId = WorkflowExpression.Compile(azureADv2RemoveAllAzureADUserLicenseobjectId, nameof(azureADv2RemoveAllAzureADUserLicenseobjectId), required: true);
             var __workflow_azureADv2RemoveAllAzureADUserLicenseworkflow = WorkflowExpression.Compile(azureADv2RemoveAllAzureADUserLicenseworkflow, nameof(azureADv2RemoveAllAzureADUserLicenseworkflow), required: true);
-            return new DeferredBodyAction<AzureADv2RemoveAllAzureADUserLicenseResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveAllAzureADUserLicenseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveAllAzureADUserLicense";
                 var apiCallHttpMethod = "post";
@@ -7362,11 +7362,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveAllAzureADUserLicenseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2SetAzureADUserResponse> AzureADv2SetAzureADUser(Expression<Func<string>> azureADv2SetAzureADUserobjectId, Expression<Func<string>> azureADv2SetAzureADUserworkflow, Expression<Func<string>> azureADv2SetAzureADUserfirstName = null, Expression<Func<string>> azureADv2SetAzureADUserlastName = null, Expression<Func<string>> azureADv2SetAzureADUserdisplayName = null, Expression<Func<string>> azureADv2SetAzureADUsercity = null, Expression<Func<string>> azureADv2SetAzureADUsercompanyName = null, Expression<Func<string>> azureADv2SetAzureADUsercountry = null, Expression<Func<string>> azureADv2SetAzureADUserdepartment = null, Expression<Func<string>> azureADv2SetAzureADUserfaxNumber = null, Expression<Func<string>> azureADv2SetAzureADUserjobTitle = null, Expression<Func<string>> azureADv2SetAzureADUsermobilePhone = null, Expression<Func<string>> azureADv2SetAzureADUseroffice = null, Expression<Func<string>> azureADv2SetAzureADUserphoneNumber = null, Expression<Func<string>> azureADv2SetAzureADUserpostalCode = null, Expression<Func<string>> azureADv2SetAzureADUserpreferredLanguage = null, Expression<Func<string>> azureADv2SetAzureADUserstate = null, Expression<Func<string>> azureADv2SetAzureADUserstreetAddress = null, Expression<Func<string>> azureADv2SetAzureADUserusageLocation = null, Expression<Func<azureADv2SetAzureADUserageGroupInput>> azureADv2SetAzureADUserageGroup = null, Expression<Func<azureADv2SetAzureADUserconsentProvidedForMinorInput>> azureADv2SetAzureADUserconsentProvidedForMinor = null, Expression<Func<string>> azureADv2SetAzureADUsermailNickName = null, Expression<Func<string>> azureADv2SetAzureADUseremployeeId = null)
+        public IBodyWorkflowAction<AzureADv2SetAzureADUserResponse, ApiConnectionActionConfiguration> AzureADv2SetAzureADUser(Expression<Func<string>> azureADv2SetAzureADUserobjectId, Expression<Func<string>> azureADv2SetAzureADUserworkflow, Expression<Func<string>> azureADv2SetAzureADUserfirstName = null, Expression<Func<string>> azureADv2SetAzureADUserlastName = null, Expression<Func<string>> azureADv2SetAzureADUserdisplayName = null, Expression<Func<string>> azureADv2SetAzureADUsercity = null, Expression<Func<string>> azureADv2SetAzureADUsercompanyName = null, Expression<Func<string>> azureADv2SetAzureADUsercountry = null, Expression<Func<string>> azureADv2SetAzureADUserdepartment = null, Expression<Func<string>> azureADv2SetAzureADUserfaxNumber = null, Expression<Func<string>> azureADv2SetAzureADUserjobTitle = null, Expression<Func<string>> azureADv2SetAzureADUsermobilePhone = null, Expression<Func<string>> azureADv2SetAzureADUseroffice = null, Expression<Func<string>> azureADv2SetAzureADUserphoneNumber = null, Expression<Func<string>> azureADv2SetAzureADUserpostalCode = null, Expression<Func<string>> azureADv2SetAzureADUserpreferredLanguage = null, Expression<Func<string>> azureADv2SetAzureADUserstate = null, Expression<Func<string>> azureADv2SetAzureADUserstreetAddress = null, Expression<Func<string>> azureADv2SetAzureADUserusageLocation = null, Expression<Func<azureADv2SetAzureADUserageGroupInput>> azureADv2SetAzureADUserageGroup = null, Expression<Func<azureADv2SetAzureADUserconsentProvidedForMinorInput>> azureADv2SetAzureADUserconsentProvidedForMinor = null, Expression<Func<string>> azureADv2SetAzureADUsermailNickName = null, Expression<Func<string>> azureADv2SetAzureADUseremployeeId = null)
         {
             var __workflow_azureADv2SetAzureADUserobjectId = WorkflowExpression.Compile(azureADv2SetAzureADUserobjectId, nameof(azureADv2SetAzureADUserobjectId), required: true);
             var __workflow_azureADv2SetAzureADUserworkflow = WorkflowExpression.Compile(azureADv2SetAzureADUserworkflow, nameof(azureADv2SetAzureADUserworkflow), required: true);
@@ -7391,7 +7391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2SetAzureADUserconsentProvidedForMinor = WorkflowExpression.Compile(azureADv2SetAzureADUserconsentProvidedForMinor, nameof(azureADv2SetAzureADUserconsentProvidedForMinor), required: false);
             var __workflow_azureADv2SetAzureADUsermailNickName = WorkflowExpression.Compile(azureADv2SetAzureADUsermailNickName, nameof(azureADv2SetAzureADUsermailNickName), required: false);
             var __workflow_azureADv2SetAzureADUseremployeeId = WorkflowExpression.Compile(azureADv2SetAzureADUseremployeeId, nameof(azureADv2SetAzureADUseremployeeId), required: false);
-            return new DeferredBodyAction<AzureADv2SetAzureADUserResponse>(() =>
+            return new DeferredBodyAction<AzureADv2SetAzureADUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2SetAzureADUser";
                 var apiCallHttpMethod = "post";
@@ -7534,11 +7534,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2SetAzureADUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2ResetAzureADUserPropertiesResponse> AzureADv2ResetAzureADUserProperties(Expression<Func<string>> azureADv2ResetAzureADUserPropertiesobjectId, Expression<Func<string>> azureADv2ResetAzureADUserPropertiesworkflow, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetFirstName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetLastName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCity = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCompanyName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCountry = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetDepartment = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetFaxNumber = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetJobTitle = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetMobilePhone = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetOffice = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPhoneNumber = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPostalCode = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPreferredLanguage = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetState = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetStreetAddress = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetUsageLocation = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetAgeGroup = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetEmployeeId = null)
+        public IBodyWorkflowAction<AzureADv2ResetAzureADUserPropertiesResponse, ApiConnectionActionConfiguration> AzureADv2ResetAzureADUserProperties(Expression<Func<string>> azureADv2ResetAzureADUserPropertiesobjectId, Expression<Func<string>> azureADv2ResetAzureADUserPropertiesworkflow, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetFirstName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetLastName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCity = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCompanyName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCountry = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetDepartment = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetFaxNumber = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetJobTitle = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetMobilePhone = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetOffice = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPhoneNumber = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPostalCode = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPreferredLanguage = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetState = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetStreetAddress = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetUsageLocation = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetAgeGroup = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetEmployeeId = null)
         {
             var __workflow_azureADv2ResetAzureADUserPropertiesobjectId = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesobjectId, nameof(azureADv2ResetAzureADUserPropertiesobjectId), required: true);
             var __workflow_azureADv2ResetAzureADUserPropertiesworkflow = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesworkflow, nameof(azureADv2ResetAzureADUserPropertiesworkflow), required: true);
@@ -7561,7 +7561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2ResetAzureADUserPropertiesresetAgeGroup = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetAgeGroup, nameof(azureADv2ResetAzureADUserPropertiesresetAgeGroup), required: false);
             var __workflow_azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor, nameof(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor), required: false);
             var __workflow_azureADv2ResetAzureADUserPropertiesresetEmployeeId = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetEmployeeId, nameof(azureADv2ResetAzureADUserPropertiesresetEmployeeId), required: false);
-            return new DeferredBodyAction<AzureADv2ResetAzureADUserPropertiesResponse>(() =>
+            return new DeferredBodyAction<AzureADv2ResetAzureADUserPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2ResetAzureADUserProperties";
                 var apiCallHttpMethod = "post";
@@ -7882,16 +7882,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2ResetAzureADUserPropertiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2SetAzureADUserManagerResponse> AzureADv2SetAzureADUserManager(Expression<Func<string>> azureADv2SetAzureADUserManagerobjectId, Expression<Func<string>> azureADv2SetAzureADUserManagerworkflow, Expression<Func<string>> azureADv2SetAzureADUserManagermanager = null)
+        public IBodyWorkflowAction<AzureADv2SetAzureADUserManagerResponse, ApiConnectionActionConfiguration> AzureADv2SetAzureADUserManager(Expression<Func<string>> azureADv2SetAzureADUserManagerobjectId, Expression<Func<string>> azureADv2SetAzureADUserManagerworkflow, Expression<Func<string>> azureADv2SetAzureADUserManagermanager = null)
         {
             var __workflow_azureADv2SetAzureADUserManagerobjectId = WorkflowExpression.Compile(azureADv2SetAzureADUserManagerobjectId, nameof(azureADv2SetAzureADUserManagerobjectId), required: true);
             var __workflow_azureADv2SetAzureADUserManagerworkflow = WorkflowExpression.Compile(azureADv2SetAzureADUserManagerworkflow, nameof(azureADv2SetAzureADUserManagerworkflow), required: true);
             var __workflow_azureADv2SetAzureADUserManagermanager = WorkflowExpression.Compile(azureADv2SetAzureADUserManagermanager, nameof(azureADv2SetAzureADUserManagermanager), required: false);
-            return new DeferredBodyAction<AzureADv2SetAzureADUserManagerResponse>(() =>
+            return new DeferredBodyAction<AzureADv2SetAzureADUserManagerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2SetAzureADUserManager";
                 var apiCallHttpMethod = "post";
@@ -7914,17 +7914,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2SetAzureADUserManagerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2NewSecurityGroupResponse> AzureADv2NewSecurityGroup(Expression<Func<string>> azureADv2NewSecurityGroupdisplayName, Expression<Func<string>> azureADv2NewSecurityGroupworkflow, Expression<Func<string>> azureADv2NewSecurityGroupdescription = null, Expression<Func<bool>> azureADv2NewSecurityGroupcheckGroupExists = null)
+        public IBodyWorkflowAction<AzureADv2NewSecurityGroupResponse, ApiConnectionActionConfiguration> AzureADv2NewSecurityGroup(Expression<Func<string>> azureADv2NewSecurityGroupdisplayName, Expression<Func<string>> azureADv2NewSecurityGroupworkflow, Expression<Func<string>> azureADv2NewSecurityGroupdescription = null, Expression<Func<bool>> azureADv2NewSecurityGroupcheckGroupExists = null)
         {
             var __workflow_azureADv2NewSecurityGroupdisplayName = WorkflowExpression.Compile(azureADv2NewSecurityGroupdisplayName, nameof(azureADv2NewSecurityGroupdisplayName), required: true);
             var __workflow_azureADv2NewSecurityGroupworkflow = WorkflowExpression.Compile(azureADv2NewSecurityGroupworkflow, nameof(azureADv2NewSecurityGroupworkflow), required: true);
             var __workflow_azureADv2NewSecurityGroupdescription = WorkflowExpression.Compile(azureADv2NewSecurityGroupdescription, nameof(azureADv2NewSecurityGroupdescription), required: false);
             var __workflow_azureADv2NewSecurityGroupcheckGroupExists = WorkflowExpression.Compile(azureADv2NewSecurityGroupcheckGroupExists, nameof(azureADv2NewSecurityGroupcheckGroupExists), required: false);
-            return new DeferredBodyAction<AzureADv2NewSecurityGroupResponse>(() =>
+            return new DeferredBodyAction<AzureADv2NewSecurityGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2NewSecurityGroup";
                 var apiCallHttpMethod = "post";
@@ -7963,16 +7963,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2NewSecurityGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveSecurityGroupResponse> AzureADv2RemoveSecurityGroup(Expression<Func<string>> azureADv2RemoveSecurityGroupgroupObjectId, Expression<Func<string>> azureADv2RemoveSecurityGroupworkflow, Expression<Func<bool>> azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = null)
+        public IBodyWorkflowAction<AzureADv2RemoveSecurityGroupResponse, ApiConnectionActionConfiguration> AzureADv2RemoveSecurityGroup(Expression<Func<string>> azureADv2RemoveSecurityGroupgroupObjectId, Expression<Func<string>> azureADv2RemoveSecurityGroupworkflow, Expression<Func<bool>> azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = null)
         {
             var __workflow_azureADv2RemoveSecurityGroupgroupObjectId = WorkflowExpression.Compile(azureADv2RemoveSecurityGroupgroupObjectId, nameof(azureADv2RemoveSecurityGroupgroupObjectId), required: true);
             var __workflow_azureADv2RemoveSecurityGroupworkflow = WorkflowExpression.Compile(azureADv2RemoveSecurityGroupworkflow, nameof(azureADv2RemoveSecurityGroupworkflow), required: true);
             var __workflow_azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = WorkflowExpression.Compile(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist, nameof(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveSecurityGroupResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveSecurityGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveSecurityGroup";
                 var apiCallHttpMethod = "post";
@@ -8005,11 +8005,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveSecurityGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2NewMicrosoft365GroupResponse> AzureADv2NewMicrosoft365Group(Expression<Func<string>> azureADv2NewMicrosoft365GroupdisplayName, Expression<Func<string>> azureADv2NewMicrosoft365Groupworkflow, Expression<Func<string>> azureADv2NewMicrosoft365Groupdescription = null, Expression<Func<string>> azureADv2NewMicrosoft365GroupmailNickname = null, Expression<Func<azureADv2NewMicrosoft365GroupgroupVisibilityInput>> azureADv2NewMicrosoft365GroupgroupVisibility = null, Expression<Func<bool>> azureADv2NewMicrosoft365GroupcheckGroupExists = null)
+        public IBodyWorkflowAction<AzureADv2NewMicrosoft365GroupResponse, ApiConnectionActionConfiguration> AzureADv2NewMicrosoft365Group(Expression<Func<string>> azureADv2NewMicrosoft365GroupdisplayName, Expression<Func<string>> azureADv2NewMicrosoft365Groupworkflow, Expression<Func<string>> azureADv2NewMicrosoft365Groupdescription = null, Expression<Func<string>> azureADv2NewMicrosoft365GroupmailNickname = null, Expression<Func<azureADv2NewMicrosoft365GroupgroupVisibilityInput>> azureADv2NewMicrosoft365GroupgroupVisibility = null, Expression<Func<bool>> azureADv2NewMicrosoft365GroupcheckGroupExists = null)
         {
             var __workflow_azureADv2NewMicrosoft365GroupdisplayName = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupdisplayName, nameof(azureADv2NewMicrosoft365GroupdisplayName), required: true);
             var __workflow_azureADv2NewMicrosoft365Groupworkflow = WorkflowExpression.Compile(azureADv2NewMicrosoft365Groupworkflow, nameof(azureADv2NewMicrosoft365Groupworkflow), required: true);
@@ -8017,7 +8017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2NewMicrosoft365GroupmailNickname = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupmailNickname, nameof(azureADv2NewMicrosoft365GroupmailNickname), required: false);
             var __workflow_azureADv2NewMicrosoft365GroupgroupVisibility = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupgroupVisibility, nameof(azureADv2NewMicrosoft365GroupgroupVisibility), required: false);
             var __workflow_azureADv2NewMicrosoft365GroupcheckGroupExists = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupcheckGroupExists, nameof(azureADv2NewMicrosoft365GroupcheckGroupExists), required: false);
-            return new DeferredBodyAction<AzureADv2NewMicrosoft365GroupResponse>(() =>
+            return new DeferredBodyAction<AzureADv2NewMicrosoft365GroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2NewMicrosoft365Group";
                 var apiCallHttpMethod = "post";
@@ -8078,11 +8078,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2NewMicrosoft365GroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetGroupsResponse> AzureADv2GetGroups(Expression<Func<string>> azureADv2GetGroupsworkflow, Expression<Func<string>> azureADv2GetGroupsobjectId = null, Expression<Func<string>> azureADv2GetGroupsfilterPropertyName = null, Expression<Func<azureADv2GetGroupsfilterPropertyComparisonInput>> azureADv2GetGroupsfilterPropertyComparison = null, Expression<Func<string>> azureADv2GetGroupsfilterPropertyValue = null, Expression<Func<bool>> azureADv2GetGroupsnoResultIsAnException = null, Expression<Func<string>> azureADv2GetGroupspropertiesToReturn = null)
+        public IBodyWorkflowAction<AzureADv2GetGroupsResponse, ApiConnectionActionConfiguration> AzureADv2GetGroups(Expression<Func<string>> azureADv2GetGroupsworkflow, Expression<Func<string>> azureADv2GetGroupsobjectId = null, Expression<Func<string>> azureADv2GetGroupsfilterPropertyName = null, Expression<Func<azureADv2GetGroupsfilterPropertyComparisonInput>> azureADv2GetGroupsfilterPropertyComparison = null, Expression<Func<string>> azureADv2GetGroupsfilterPropertyValue = null, Expression<Func<bool>> azureADv2GetGroupsnoResultIsAnException = null, Expression<Func<string>> azureADv2GetGroupspropertiesToReturn = null)
         {
             var __workflow_azureADv2GetGroupsworkflow = WorkflowExpression.Compile(azureADv2GetGroupsworkflow, nameof(azureADv2GetGroupsworkflow), required: true);
             var __workflow_azureADv2GetGroupsobjectId = WorkflowExpression.Compile(azureADv2GetGroupsobjectId, nameof(azureADv2GetGroupsobjectId), required: false);
@@ -8091,7 +8091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2GetGroupsfilterPropertyValue = WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyValue, nameof(azureADv2GetGroupsfilterPropertyValue), required: false);
             var __workflow_azureADv2GetGroupsnoResultIsAnException = WorkflowExpression.Compile(azureADv2GetGroupsnoResultIsAnException, nameof(azureADv2GetGroupsnoResultIsAnException), required: false);
             var __workflow_azureADv2GetGroupspropertiesToReturn = WorkflowExpression.Compile(azureADv2GetGroupspropertiesToReturn, nameof(azureADv2GetGroupspropertiesToReturn), required: false);
-            return new DeferredBodyAction<AzureADv2GetGroupsResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetGroups";
                 var apiCallHttpMethod = "post";
@@ -8162,15 +8162,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2EnableUserResponse> AzureADv2EnableUser(Expression<Func<string>> azureADv2EnableUseruserObjectId, Expression<Func<string>> azureADv2EnableUserworkflow)
+        public IBodyWorkflowAction<AzureADv2EnableUserResponse, ApiConnectionActionConfiguration> AzureADv2EnableUser(Expression<Func<string>> azureADv2EnableUseruserObjectId, Expression<Func<string>> azureADv2EnableUserworkflow)
         {
             var __workflow_azureADv2EnableUseruserObjectId = WorkflowExpression.Compile(azureADv2EnableUseruserObjectId, nameof(azureADv2EnableUseruserObjectId), required: true);
             var __workflow_azureADv2EnableUserworkflow = WorkflowExpression.Compile(azureADv2EnableUserworkflow, nameof(azureADv2EnableUserworkflow), required: true);
-            return new DeferredBodyAction<AzureADv2EnableUserResponse>(() =>
+            return new DeferredBodyAction<AzureADv2EnableUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2EnableUser";
                 var apiCallHttpMethod = "post";
@@ -8187,16 +8187,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2EnableUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2DisableUserResponse> AzureADv2DisableUser(Expression<Func<string>> azureADv2DisableUseruserObjectId, Expression<Func<string>> azureADv2DisableUserworkflow, Expression<Func<bool>> azureADv2DisableUserrevokeUserRefreshTokens = null)
+        public IBodyWorkflowAction<AzureADv2DisableUserResponse, ApiConnectionActionConfiguration> AzureADv2DisableUser(Expression<Func<string>> azureADv2DisableUseruserObjectId, Expression<Func<string>> azureADv2DisableUserworkflow, Expression<Func<bool>> azureADv2DisableUserrevokeUserRefreshTokens = null)
         {
             var __workflow_azureADv2DisableUseruserObjectId = WorkflowExpression.Compile(azureADv2DisableUseruserObjectId, nameof(azureADv2DisableUseruserObjectId), required: true);
             var __workflow_azureADv2DisableUserworkflow = WorkflowExpression.Compile(azureADv2DisableUserworkflow, nameof(azureADv2DisableUserworkflow), required: true);
             var __workflow_azureADv2DisableUserrevokeUserRefreshTokens = WorkflowExpression.Compile(azureADv2DisableUserrevokeUserRefreshTokens, nameof(azureADv2DisableUserrevokeUserRefreshTokens), required: false);
-            return new DeferredBodyAction<AzureADv2DisableUserResponse>(() =>
+            return new DeferredBodyAction<AzureADv2DisableUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2DisableUser";
                 var apiCallHttpMethod = "post";
@@ -8229,18 +8229,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2DisableUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2AssignUserToRoleResponse> AzureADv2AssignUserToRole(Expression<Func<string>> azureADv2AssignUserToRoleuserObjectId, Expression<Func<string>> azureADv2AssignUserToRoleroleObjectId, Expression<Func<string>> azureADv2AssignUserToRoleworkflow, Expression<Func<string>> azureADv2AssignUserToRoledirectoryScopeId = null, Expression<Func<bool>> azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = null)
+        public IBodyWorkflowAction<AzureADv2AssignUserToRoleResponse, ApiConnectionActionConfiguration> AzureADv2AssignUserToRole(Expression<Func<string>> azureADv2AssignUserToRoleuserObjectId, Expression<Func<string>> azureADv2AssignUserToRoleroleObjectId, Expression<Func<string>> azureADv2AssignUserToRoleworkflow, Expression<Func<string>> azureADv2AssignUserToRoledirectoryScopeId = null, Expression<Func<bool>> azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = null)
         {
             var __workflow_azureADv2AssignUserToRoleuserObjectId = WorkflowExpression.Compile(azureADv2AssignUserToRoleuserObjectId, nameof(azureADv2AssignUserToRoleuserObjectId), required: true);
             var __workflow_azureADv2AssignUserToRoleroleObjectId = WorkflowExpression.Compile(azureADv2AssignUserToRoleroleObjectId, nameof(azureADv2AssignUserToRoleroleObjectId), required: true);
             var __workflow_azureADv2AssignUserToRoleworkflow = WorkflowExpression.Compile(azureADv2AssignUserToRoleworkflow, nameof(azureADv2AssignUserToRoleworkflow), required: true);
             var __workflow_azureADv2AssignUserToRoledirectoryScopeId = WorkflowExpression.Compile(azureADv2AssignUserToRoledirectoryScopeId, nameof(azureADv2AssignUserToRoledirectoryScopeId), required: false);
             var __workflow_azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = WorkflowExpression.Compile(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst, nameof(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst), required: false);
-            return new DeferredBodyAction<AzureADv2AssignUserToRoleResponse>(() =>
+            return new DeferredBodyAction<AzureADv2AssignUserToRoleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AssignUserToRole";
                 var apiCallHttpMethod = "post";
@@ -8291,11 +8291,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AssignUserToRoleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2AssignUserToMultipleRolesResponse> AzureADv2AssignUserToMultipleRoles(Expression<Func<string>> azureADv2AssignUserToMultipleRolesuserObjectId, Expression<Func<string>> azureADv2AssignUserToMultipleRolesworkflow, Expression<Func<string>> azureADv2AssignUserToMultipleRolesrolesJSON = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign = null, Expression<Func<string>> azureADv2AssignUserToMultipleRolesdirectoryScopeId = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolescheckRoleIdsExist = null)
+        public IBodyWorkflowAction<AzureADv2AssignUserToMultipleRolesResponse, ApiConnectionActionConfiguration> AzureADv2AssignUserToMultipleRoles(Expression<Func<string>> azureADv2AssignUserToMultipleRolesuserObjectId, Expression<Func<string>> azureADv2AssignUserToMultipleRolesworkflow, Expression<Func<string>> azureADv2AssignUserToMultipleRolesrolesJSON = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign = null, Expression<Func<string>> azureADv2AssignUserToMultipleRolesdirectoryScopeId = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolescheckRoleIdsExist = null)
         {
             var __workflow_azureADv2AssignUserToMultipleRolesuserObjectId = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesuserObjectId, nameof(azureADv2AssignUserToMultipleRolesuserObjectId), required: true);
             var __workflow_azureADv2AssignUserToMultipleRolesworkflow = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesworkflow, nameof(azureADv2AssignUserToMultipleRolesworkflow), required: true);
@@ -8305,7 +8305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2AssignUserToMultipleRolesdirectoryScopeId = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesdirectoryScopeId, nameof(azureADv2AssignUserToMultipleRolesdirectoryScopeId), required: false);
             var __workflow_azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst, nameof(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst), required: false);
             var __workflow_azureADv2AssignUserToMultipleRolescheckRoleIdsExist = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolescheckRoleIdsExist, nameof(azureADv2AssignUserToMultipleRolescheckRoleIdsExist), required: false);
-            return new DeferredBodyAction<AzureADv2AssignUserToMultipleRolesResponse>(() =>
+            return new DeferredBodyAction<AzureADv2AssignUserToMultipleRolesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AssignUserToMultipleRoles";
                 var apiCallHttpMethod = "post";
@@ -8408,11 +8408,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2AssignUserToMultipleRolesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveUserFromMultipleRolesResponse> AzureADv2RemoveUserFromMultipleRoles(Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesworkflow, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesrolesJSON = null, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesdirectoryScopeId = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = null)
+        public IBodyWorkflowAction<AzureADv2RemoveUserFromMultipleRolesResponse, ApiConnectionActionConfiguration> AzureADv2RemoveUserFromMultipleRoles(Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesworkflow, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesrolesJSON = null, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesdirectoryScopeId = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = null)
         {
             var __workflow_azureADv2RemoveUserFromMultipleRolesuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesuserObjectId, nameof(azureADv2RemoveUserFromMultipleRolesuserObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromMultipleRolesworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesworkflow, nameof(azureADv2RemoveUserFromMultipleRolesworkflow), required: true);
@@ -8421,7 +8421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove), required: false);
             var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove), required: false);
             var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveUserFromMultipleRolesResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveUserFromMultipleRolesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromMultipleRoles";
                 var apiCallHttpMethod = "post";
@@ -8508,16 +8508,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromMultipleRolesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2IsUserInRoleResponse> AzureADv2IsUserInRole(Expression<Func<string>> azureADv2IsUserInRoleuserObjectId, Expression<Func<string>> azureADv2IsUserInRoleroleObjectId, Expression<Func<string>> azureADv2IsUserInRoleworkflow)
+        public IBodyWorkflowAction<AzureADv2IsUserInRoleResponse, ApiConnectionActionConfiguration> AzureADv2IsUserInRole(Expression<Func<string>> azureADv2IsUserInRoleuserObjectId, Expression<Func<string>> azureADv2IsUserInRoleroleObjectId, Expression<Func<string>> azureADv2IsUserInRoleworkflow)
         {
             var __workflow_azureADv2IsUserInRoleuserObjectId = WorkflowExpression.Compile(azureADv2IsUserInRoleuserObjectId, nameof(azureADv2IsUserInRoleuserObjectId), required: true);
             var __workflow_azureADv2IsUserInRoleroleObjectId = WorkflowExpression.Compile(azureADv2IsUserInRoleroleObjectId, nameof(azureADv2IsUserInRoleroleObjectId), required: true);
             var __workflow_azureADv2IsUserInRoleworkflow = WorkflowExpression.Compile(azureADv2IsUserInRoleworkflow, nameof(azureADv2IsUserInRoleworkflow), required: true);
-            return new DeferredBodyAction<AzureADv2IsUserInRoleResponse>(() =>
+            return new DeferredBodyAction<AzureADv2IsUserInRoleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2IsUserInRole";
                 var apiCallHttpMethod = "post";
@@ -8536,17 +8536,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2IsUserInRoleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADUserRoleAssignmentsResponse> AzureADv2GetAzureADUserRoleAssignments(Expression<Func<string>> azureADv2GetAzureADUserRoleAssignmentsobjectId, Expression<Func<string>> azureADv2GetAzureADUserRoleAssignmentsworkflow, Expression<Func<bool>> azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = null, Expression<Func<bool>> azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = null)
+        public IBodyWorkflowAction<AzureADv2GetAzureADUserRoleAssignmentsResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADUserRoleAssignments(Expression<Func<string>> azureADv2GetAzureADUserRoleAssignmentsobjectId, Expression<Func<string>> azureADv2GetAzureADUserRoleAssignmentsworkflow, Expression<Func<bool>> azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = null, Expression<Func<bool>> azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = null)
         {
             var __workflow_azureADv2GetAzureADUserRoleAssignmentsobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsobjectId, nameof(azureADv2GetAzureADUserRoleAssignmentsobjectId), required: true);
             var __workflow_azureADv2GetAzureADUserRoleAssignmentsworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsworkflow, nameof(azureADv2GetAzureADUserRoleAssignmentsworkflow), required: true);
             var __workflow_azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames, nameof(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames), required: false);
             var __workflow_azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds, nameof(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds), required: false);
-            return new DeferredBodyAction<AzureADv2GetAzureADUserRoleAssignmentsResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADUserRoleAssignmentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserRoleAssignments";
                 var apiCallHttpMethod = "post";
@@ -8595,17 +8595,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADUserRoleAssignmentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveUserFromRoleResponse> AzureADv2RemoveUserFromRole(Expression<Func<string>> azureADv2RemoveUserFromRoleuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromRoleroleObjectId, Expression<Func<string>> azureADv2RemoveUserFromRoleworkflow, Expression<Func<string>> azureADv2RemoveUserFromRoledirectoryScopeId = null)
+        public IBodyWorkflowAction<AzureADv2RemoveUserFromRoleResponse, ApiConnectionActionConfiguration> AzureADv2RemoveUserFromRole(Expression<Func<string>> azureADv2RemoveUserFromRoleuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromRoleroleObjectId, Expression<Func<string>> azureADv2RemoveUserFromRoleworkflow, Expression<Func<string>> azureADv2RemoveUserFromRoledirectoryScopeId = null)
         {
             var __workflow_azureADv2RemoveUserFromRoleuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromRoleuserObjectId, nameof(azureADv2RemoveUserFromRoleuserObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromRoleroleObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromRoleroleObjectId, nameof(azureADv2RemoveUserFromRoleroleObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromRoleworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromRoleworkflow, nameof(azureADv2RemoveUserFromRoleworkflow), required: true);
             var __workflow_azureADv2RemoveUserFromRoledirectoryScopeId = WorkflowExpression.Compile(azureADv2RemoveUserFromRoledirectoryScopeId, nameof(azureADv2RemoveUserFromRoledirectoryScopeId), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveUserFromRoleResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveUserFromRoleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromRole";
                 var apiCallHttpMethod = "post";
@@ -8640,17 +8640,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromRoleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2RemoveUserFromAllRolesResponse> AzureADv2RemoveUserFromAllRoles(Expression<Func<string>> azureADv2RemoveUserFromAllRolesuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromAllRolesworkflow, Expression<Func<bool>> azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = null)
+        public IBodyWorkflowAction<AzureADv2RemoveUserFromAllRolesResponse, ApiConnectionActionConfiguration> AzureADv2RemoveUserFromAllRoles(Expression<Func<string>> azureADv2RemoveUserFromAllRolesuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromAllRolesworkflow, Expression<Func<bool>> azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = null)
         {
             var __workflow_azureADv2RemoveUserFromAllRolesuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesuserObjectId, nameof(azureADv2RemoveUserFromAllRolesuserObjectId), required: true);
             var __workflow_azureADv2RemoveUserFromAllRolesworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesworkflow, nameof(azureADv2RemoveUserFromAllRolesworkflow), required: true);
             var __workflow_azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove, nameof(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove), required: false);
             var __workflow_azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove, nameof(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove), required: false);
-            return new DeferredBodyAction<AzureADv2RemoveUserFromAllRolesResponse>(() =>
+            return new DeferredBodyAction<AzureADv2RemoveUserFromAllRolesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromAllRoles";
                 var apiCallHttpMethod = "post";
@@ -8699,17 +8699,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2RemoveUserFromAllRolesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<AzureADv2GetAzureADGroupMembersResponse> AzureADv2GetAzureADGroupMembers(Expression<Func<string>> azureADv2GetAzureADGroupMembersgroupObjectId, Expression<Func<string>> azureADv2GetAzureADGroupMembersworkflow, Expression<Func<string>> azureADv2GetAzureADGroupMemberspropertiesToReturn = null, Expression<Func<string>> azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = null)
+        public IBodyWorkflowAction<AzureADv2GetAzureADGroupMembersResponse, ApiConnectionActionConfiguration> AzureADv2GetAzureADGroupMembers(Expression<Func<string>> azureADv2GetAzureADGroupMembersgroupObjectId, Expression<Func<string>> azureADv2GetAzureADGroupMembersworkflow, Expression<Func<string>> azureADv2GetAzureADGroupMemberspropertiesToReturn = null, Expression<Func<string>> azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = null)
         {
             var __workflow_azureADv2GetAzureADGroupMembersgroupObjectId = WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersgroupObjectId, nameof(azureADv2GetAzureADGroupMembersgroupObjectId), required: true);
             var __workflow_azureADv2GetAzureADGroupMembersworkflow = WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersworkflow, nameof(azureADv2GetAzureADGroupMembersworkflow), required: true);
             var __workflow_azureADv2GetAzureADGroupMemberspropertiesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADGroupMemberspropertiesToReturn, nameof(azureADv2GetAzureADGroupMemberspropertiesToReturn), required: false);
             var __workflow_azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn, nameof(azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn), required: false);
-            return new DeferredBodyAction<AzureADv2GetAzureADGroupMembersResponse>(() =>
+            return new DeferredBodyAction<AzureADv2GetAzureADGroupMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADGroupMembers";
                 var apiCallHttpMethod = "post";
@@ -8738,11 +8738,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<AzureADv2GetAzureADGroupMembersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenO365PowerShellRunspaceResponse> OpenO365PowerShellRunspace(Expression<Func<string>> openO365PowerShellRunspaceoffice365Username, Expression<Func<string>> openO365PowerShellRunspaceoffice365Password, Expression<Func<string>> openO365PowerShellRunspaceworkflow, Expression<Func<string>> openO365PowerShellRunspaceexchangeURL = null, Expression<Func<openO365PowerShellRunspaceconnectionMethodInput>> openO365PowerShellRunspaceconnectionMethod = null, Expression<Func<bool>> openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, Expression<Func<openO365PowerShellRunspacecommandTypesToImportLocallyInput>> openO365PowerShellRunspacecommandTypesToImportLocally = null, Expression<Func<string>> openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
+        public IBodyWorkflowAction<OpenO365PowerShellRunspaceResponse, ApiConnectionActionConfiguration> OpenO365PowerShellRunspace(Expression<Func<string>> openO365PowerShellRunspaceoffice365Username, Expression<Func<string>> openO365PowerShellRunspaceoffice365Password, Expression<Func<string>> openO365PowerShellRunspaceworkflow, Expression<Func<string>> openO365PowerShellRunspaceexchangeURL = null, Expression<Func<openO365PowerShellRunspaceconnectionMethodInput>> openO365PowerShellRunspaceconnectionMethod = null, Expression<Func<bool>> openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, Expression<Func<openO365PowerShellRunspacecommandTypesToImportLocallyInput>> openO365PowerShellRunspacecommandTypesToImportLocally = null, Expression<Func<string>> openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
         {
             var __workflow_openO365PowerShellRunspaceoffice365Username = WorkflowExpression.Compile(openO365PowerShellRunspaceoffice365Username, nameof(openO365PowerShellRunspaceoffice365Username), required: true);
             var __workflow_openO365PowerShellRunspaceoffice365Password = WorkflowExpression.Compile(openO365PowerShellRunspaceoffice365Password, nameof(openO365PowerShellRunspaceoffice365Password), required: true);
@@ -8752,7 +8752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected, nameof(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected), required: false);
             var __workflow_openO365PowerShellRunspacecommandTypesToImportLocally = WorkflowExpression.Compile(openO365PowerShellRunspacecommandTypesToImportLocally, nameof(openO365PowerShellRunspacecommandTypesToImportLocally), required: false);
             var __workflow_openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = WorkflowExpression.Compile(openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV, nameof(openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV), required: false);
-            return new DeferredBodyAction<OpenO365PowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<OpenO365PowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenO365PowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -8831,11 +8831,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenO365PowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<OpenO365PowerShellRunspaceWithCertificateResponse> OpenO365PowerShellRunspaceWithCertificate(Expression<Func<string>> openO365PowerShellRunspaceWithCertificateapplicationId, Expression<Func<string>> openO365PowerShellRunspaceWithCertificatecertificateThumbprint, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateorganization, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateworkflow, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateexchangeURL = null, Expression<Func<openO365PowerShellRunspaceWithCertificateconnectionMethodInput>> openO365PowerShellRunspaceWithCertificateconnectionMethod = null, Expression<Func<bool>> openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = null, Expression<Func<openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocallyInput>> openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = null, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = null)
+        public IBodyWorkflowAction<OpenO365PowerShellRunspaceWithCertificateResponse, ApiConnectionActionConfiguration> OpenO365PowerShellRunspaceWithCertificate(Expression<Func<string>> openO365PowerShellRunspaceWithCertificateapplicationId, Expression<Func<string>> openO365PowerShellRunspaceWithCertificatecertificateThumbprint, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateorganization, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateworkflow, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateexchangeURL = null, Expression<Func<openO365PowerShellRunspaceWithCertificateconnectionMethodInput>> openO365PowerShellRunspaceWithCertificateconnectionMethod = null, Expression<Func<bool>> openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = null, Expression<Func<openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocallyInput>> openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = null, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = null)
         {
             var __workflow_openO365PowerShellRunspaceWithCertificateapplicationId = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateapplicationId, nameof(openO365PowerShellRunspaceWithCertificateapplicationId), required: true);
             var __workflow_openO365PowerShellRunspaceWithCertificatecertificateThumbprint = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificatecertificateThumbprint, nameof(openO365PowerShellRunspaceWithCertificatecertificateThumbprint), required: true);
@@ -8846,7 +8846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected, nameof(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected), required: false);
             var __workflow_openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally, nameof(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally), required: false);
             var __workflow_openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV, nameof(openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV), required: false);
-            return new DeferredBodyAction<OpenO365PowerShellRunspaceWithCertificateResponse>(() =>
+            return new DeferredBodyAction<OpenO365PowerShellRunspaceWithCertificateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenO365PowerShellRunspaceWithCertificate";
                 var apiCallHttpMethod = "post";
@@ -8927,16 +8927,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<OpenO365PowerShellRunspaceWithCertificateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<IsO365PowerShellRunspaceOpenResponse> IsO365PowerShellRunspaceOpen(Expression<Func<string>> isO365PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isO365PowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
+        public IBodyWorkflowAction<IsO365PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration> IsO365PowerShellRunspaceOpen(Expression<Func<string>> isO365PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isO365PowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
             var __workflow_isO365PowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenworkflow, nameof(isO365PowerShellRunspaceOpenworkflow), required: true);
             var __workflow_isO365PowerShellRunspaceOpentestCommunications = WorkflowExpression.Compile(isO365PowerShellRunspaceOpentestCommunications, nameof(isO365PowerShellRunspaceOpentestCommunications), required: false);
             var __workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
-            return new DeferredBodyAction<IsO365PowerShellRunspaceOpenResponse>(() =>
+            return new DeferredBodyAction<IsO365PowerShellRunspaceOpenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsO365PowerShellRunspaceOpen";
                 var apiCallHttpMethod = "post";
@@ -8983,11 +8983,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<IsO365PowerShellRunspaceOpenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<RunO365PowerShellAutomationScriptResponse> RunO365PowerShellAutomationScript(Expression<Func<string>> runO365PowerShellAutomationScriptworkflow, Expression<Func<string>> runO365PowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runO365PowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runO365PowerShellAutomationScriptlocalScope = null, Expression<Func<bool>> runO365PowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runO365PowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runO365PowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runO365PowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runO365PowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runO365PowerShellAutomationScriptpowerShellCommandParameters = null)
+        public IBodyWorkflowAction<RunO365PowerShellAutomationScriptResponse, ApiConnectionActionConfiguration> RunO365PowerShellAutomationScript(Expression<Func<string>> runO365PowerShellAutomationScriptworkflow, Expression<Func<string>> runO365PowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runO365PowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runO365PowerShellAutomationScriptlocalScope = null, Expression<Func<bool>> runO365PowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runO365PowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runO365PowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runO365PowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runO365PowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runO365PowerShellAutomationScriptpowerShellCommandParameters = null)
         {
             var __workflow_runO365PowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runO365PowerShellAutomationScriptworkflow, nameof(runO365PowerShellAutomationScriptworkflow), required: true);
             var __workflow_runO365PowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpowerShellScriptContents, nameof(runO365PowerShellAutomationScriptpowerShellScriptContents), required: false);
@@ -9006,7 +9006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
             var __workflow_runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
             var __workflow_runO365PowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpowerShellCommandParameters, nameof(runO365PowerShellAutomationScriptpowerShellCommandParameters), required: false);
-            return new DeferredBodyAction<RunO365PowerShellAutomationScriptResponse>(() =>
+            return new DeferredBodyAction<RunO365PowerShellAutomationScriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunO365PowerShellAutomationScript";
                 var apiCallHttpMethod = "post";
@@ -9207,14 +9207,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<RunO365PowerShellAutomationScriptResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<CloseO365PowerShellRunspaceResponse> CloseO365PowerShellRunspace(Expression<Func<string>> closeO365PowerShellRunspaceworkflow)
+        public IBodyWorkflowAction<CloseO365PowerShellRunspaceResponse, ApiConnectionActionConfiguration> CloseO365PowerShellRunspace(Expression<Func<string>> closeO365PowerShellRunspaceworkflow)
         {
             var __workflow_closeO365PowerShellRunspaceworkflow = WorkflowExpression.Compile(closeO365PowerShellRunspaceworkflow, nameof(closeO365PowerShellRunspaceworkflow), required: true);
-            return new DeferredBodyAction<CloseO365PowerShellRunspaceResponse>(() =>
+            return new DeferredBodyAction<CloseO365PowerShellRunspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/CloseO365PowerShellRunspace";
                 var apiCallHttpMethod = "post";
@@ -9229,11 +9229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<CloseO365PowerShellRunspaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365GetO365MailboxResponse> O365GetO365Mailbox(Expression<Func<string>> o365GetO365Mailboxworkflow, Expression<Func<string>> o365GetO365Mailboxidentity = null, Expression<Func<string>> o365GetO365MailboxfilterPropertyName = null, Expression<Func<o365GetO365MailboxfilterPropertyComparisonInput>> o365GetO365MailboxfilterPropertyComparison = null, Expression<Func<string>> o365GetO365MailboxfilterPropertyValue = null, Expression<Func<o365GetO365MailboxrecipientTypeDetailsInput>> o365GetO365MailboxrecipientTypeDetails = null, Expression<Func<bool>> o365GetO365MailboxnoResultIsAnException = null)
+        public IBodyWorkflowAction<O365GetO365MailboxResponse, ApiConnectionActionConfiguration> O365GetO365Mailbox(Expression<Func<string>> o365GetO365Mailboxworkflow, Expression<Func<string>> o365GetO365Mailboxidentity = null, Expression<Func<string>> o365GetO365MailboxfilterPropertyName = null, Expression<Func<o365GetO365MailboxfilterPropertyComparisonInput>> o365GetO365MailboxfilterPropertyComparison = null, Expression<Func<string>> o365GetO365MailboxfilterPropertyValue = null, Expression<Func<o365GetO365MailboxrecipientTypeDetailsInput>> o365GetO365MailboxrecipientTypeDetails = null, Expression<Func<bool>> o365GetO365MailboxnoResultIsAnException = null)
         {
             var __workflow_o365GetO365Mailboxworkflow = WorkflowExpression.Compile(o365GetO365Mailboxworkflow, nameof(o365GetO365Mailboxworkflow), required: true);
             var __workflow_o365GetO365Mailboxidentity = WorkflowExpression.Compile(o365GetO365Mailboxidentity, nameof(o365GetO365Mailboxidentity), required: false);
@@ -9242,7 +9242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365GetO365MailboxfilterPropertyValue = WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyValue, nameof(o365GetO365MailboxfilterPropertyValue), required: false);
             var __workflow_o365GetO365MailboxrecipientTypeDetails = WorkflowExpression.Compile(o365GetO365MailboxrecipientTypeDetails, nameof(o365GetO365MailboxrecipientTypeDetails), required: false);
             var __workflow_o365GetO365MailboxnoResultIsAnException = WorkflowExpression.Compile(o365GetO365MailboxnoResultIsAnException, nameof(o365GetO365MailboxnoResultIsAnException), required: false);
-            return new DeferredBodyAction<O365GetO365MailboxResponse>(() =>
+            return new DeferredBodyAction<O365GetO365MailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetO365Mailbox";
                 var apiCallHttpMethod = "post";
@@ -9313,18 +9313,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetO365MailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365AddMailboxPermissionResponse> O365AddMailboxPermission(Expression<Func<string>> o365AddMailboxPermissionidentity, Expression<Func<string>> o365AddMailboxPermissionuser, Expression<Func<string>> o365AddMailboxPermissionaccessRights, Expression<Func<string>> o365AddMailboxPermissionworkflow, Expression<Func<bool>> o365AddMailboxPermissionautoMapping = null)
+        public IBodyWorkflowAction<O365AddMailboxPermissionResponse, ApiConnectionActionConfiguration> O365AddMailboxPermission(Expression<Func<string>> o365AddMailboxPermissionidentity, Expression<Func<string>> o365AddMailboxPermissionuser, Expression<Func<string>> o365AddMailboxPermissionaccessRights, Expression<Func<string>> o365AddMailboxPermissionworkflow, Expression<Func<bool>> o365AddMailboxPermissionautoMapping = null)
         {
             var __workflow_o365AddMailboxPermissionidentity = WorkflowExpression.Compile(o365AddMailboxPermissionidentity, nameof(o365AddMailboxPermissionidentity), required: true);
             var __workflow_o365AddMailboxPermissionuser = WorkflowExpression.Compile(o365AddMailboxPermissionuser, nameof(o365AddMailboxPermissionuser), required: true);
             var __workflow_o365AddMailboxPermissionaccessRights = WorkflowExpression.Compile(o365AddMailboxPermissionaccessRights, nameof(o365AddMailboxPermissionaccessRights), required: true);
             var __workflow_o365AddMailboxPermissionworkflow = WorkflowExpression.Compile(o365AddMailboxPermissionworkflow, nameof(o365AddMailboxPermissionworkflow), required: true);
             var __workflow_o365AddMailboxPermissionautoMapping = WorkflowExpression.Compile(o365AddMailboxPermissionautoMapping, nameof(o365AddMailboxPermissionautoMapping), required: false);
-            return new DeferredBodyAction<O365AddMailboxPermissionResponse>(() =>
+            return new DeferredBodyAction<O365AddMailboxPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365AddMailboxPermission";
                 var apiCallHttpMethod = "post";
@@ -9361,17 +9361,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365AddMailboxPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365RemoveMailboxPermissionResponse> O365RemoveMailboxPermission(Expression<Func<string>> o365RemoveMailboxPermissionidentity, Expression<Func<string>> o365RemoveMailboxPermissionuser, Expression<Func<string>> o365RemoveMailboxPermissionaccessRights, Expression<Func<string>> o365RemoveMailboxPermissionworkflow)
+        public IBodyWorkflowAction<O365RemoveMailboxPermissionResponse, ApiConnectionActionConfiguration> O365RemoveMailboxPermission(Expression<Func<string>> o365RemoveMailboxPermissionidentity, Expression<Func<string>> o365RemoveMailboxPermissionuser, Expression<Func<string>> o365RemoveMailboxPermissionaccessRights, Expression<Func<string>> o365RemoveMailboxPermissionworkflow)
         {
             var __workflow_o365RemoveMailboxPermissionidentity = WorkflowExpression.Compile(o365RemoveMailboxPermissionidentity, nameof(o365RemoveMailboxPermissionidentity), required: true);
             var __workflow_o365RemoveMailboxPermissionuser = WorkflowExpression.Compile(o365RemoveMailboxPermissionuser, nameof(o365RemoveMailboxPermissionuser), required: true);
             var __workflow_o365RemoveMailboxPermissionaccessRights = WorkflowExpression.Compile(o365RemoveMailboxPermissionaccessRights, nameof(o365RemoveMailboxPermissionaccessRights), required: true);
             var __workflow_o365RemoveMailboxPermissionworkflow = WorkflowExpression.Compile(o365RemoveMailboxPermissionworkflow, nameof(o365RemoveMailboxPermissionworkflow), required: true);
-            return new DeferredBodyAction<O365RemoveMailboxPermissionResponse>(() =>
+            return new DeferredBodyAction<O365RemoveMailboxPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveMailboxPermission";
                 var apiCallHttpMethod = "post";
@@ -9392,17 +9392,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveMailboxPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365AddDistributionGroupMemberResponse> O365AddDistributionGroupMember(Expression<Func<string>> o365AddDistributionGroupMemberidentity, Expression<Func<string>> o365AddDistributionGroupMembermember, Expression<Func<string>> o365AddDistributionGroupMemberworkflow, Expression<Func<bool>> o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
+        public IBodyWorkflowAction<O365AddDistributionGroupMemberResponse, ApiConnectionActionConfiguration> O365AddDistributionGroupMember(Expression<Func<string>> o365AddDistributionGroupMemberidentity, Expression<Func<string>> o365AddDistributionGroupMembermember, Expression<Func<string>> o365AddDistributionGroupMemberworkflow, Expression<Func<bool>> o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
         {
             var __workflow_o365AddDistributionGroupMemberidentity = WorkflowExpression.Compile(o365AddDistributionGroupMemberidentity, nameof(o365AddDistributionGroupMemberidentity), required: true);
             var __workflow_o365AddDistributionGroupMembermember = WorkflowExpression.Compile(o365AddDistributionGroupMembermember, nameof(o365AddDistributionGroupMembermember), required: true);
             var __workflow_o365AddDistributionGroupMemberworkflow = WorkflowExpression.Compile(o365AddDistributionGroupMemberworkflow, nameof(o365AddDistributionGroupMemberworkflow), required: true);
             var __workflow_o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
-            return new DeferredBodyAction<O365AddDistributionGroupMemberResponse>(() =>
+            return new DeferredBodyAction<O365AddDistributionGroupMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365AddDistributionGroupMember";
                 var apiCallHttpMethod = "post";
@@ -9437,11 +9437,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365AddDistributionGroupMemberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365GetO365DistributionGroupResponse> O365GetO365DistributionGroup(Expression<Func<string>> o365GetO365DistributionGroupworkflow, Expression<Func<string>> o365GetO365DistributionGroupidentity = null, Expression<Func<string>> o365GetO365DistributionGroupfilterPropertyName = null, Expression<Func<o365GetO365DistributionGroupfilterPropertyComparisonInput>> o365GetO365DistributionGroupfilterPropertyComparison = null, Expression<Func<string>> o365GetO365DistributionGroupfilterPropertyValue = null, Expression<Func<bool>> o365GetO365DistributionGroupnoResultIsAnException = null)
+        public IBodyWorkflowAction<O365GetO365DistributionGroupResponse, ApiConnectionActionConfiguration> O365GetO365DistributionGroup(Expression<Func<string>> o365GetO365DistributionGroupworkflow, Expression<Func<string>> o365GetO365DistributionGroupidentity = null, Expression<Func<string>> o365GetO365DistributionGroupfilterPropertyName = null, Expression<Func<o365GetO365DistributionGroupfilterPropertyComparisonInput>> o365GetO365DistributionGroupfilterPropertyComparison = null, Expression<Func<string>> o365GetO365DistributionGroupfilterPropertyValue = null, Expression<Func<bool>> o365GetO365DistributionGroupnoResultIsAnException = null)
         {
             var __workflow_o365GetO365DistributionGroupworkflow = WorkflowExpression.Compile(o365GetO365DistributionGroupworkflow, nameof(o365GetO365DistributionGroupworkflow), required: true);
             var __workflow_o365GetO365DistributionGroupidentity = WorkflowExpression.Compile(o365GetO365DistributionGroupidentity, nameof(o365GetO365DistributionGroupidentity), required: false);
@@ -9449,7 +9449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365GetO365DistributionGroupfilterPropertyComparison = WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyComparison, nameof(o365GetO365DistributionGroupfilterPropertyComparison), required: false);
             var __workflow_o365GetO365DistributionGroupfilterPropertyValue = WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyValue, nameof(o365GetO365DistributionGroupfilterPropertyValue), required: false);
             var __workflow_o365GetO365DistributionGroupnoResultIsAnException = WorkflowExpression.Compile(o365GetO365DistributionGroupnoResultIsAnException, nameof(o365GetO365DistributionGroupnoResultIsAnException), required: false);
-            return new DeferredBodyAction<O365GetO365DistributionGroupResponse>(() =>
+            return new DeferredBodyAction<O365GetO365DistributionGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetO365DistributionGroup";
                 var apiCallHttpMethod = "post";
@@ -9514,11 +9514,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetO365DistributionGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365NewO365DistributionGroupResponse> O365NewO365DistributionGroup(Expression<Func<string>> o365NewO365DistributionGroupname, Expression<Func<string>> o365NewO365DistributionGroupworkflow, Expression<Func<string>> o365NewO365DistributionGroupalias = null, Expression<Func<string>> o365NewO365DistributionGroupdisplayName = null, Expression<Func<string>> o365NewO365DistributionGroupnotes = null, Expression<Func<string>> o365NewO365DistributionGroupmanagedBy = null, Expression<Func<string>> o365NewO365DistributionGroupmembers = null, Expression<Func<string>> o365NewO365DistributionGrouporganizationalUnit = null, Expression<Func<string>> o365NewO365DistributionGroupprimarySmtpAddress = null, Expression<Func<o365NewO365DistributionGroupmemberDepartRestrictionInput>> o365NewO365DistributionGroupmemberDepartRestriction = null, Expression<Func<o365NewO365DistributionGroupmemberJoinRestrictionInput>> o365NewO365DistributionGroupmemberJoinRestriction = null, Expression<Func<bool>> o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = null, Expression<Func<o365NewO365DistributionGrouptypeInput>> o365NewO365DistributionGrouptype = null)
+        public IBodyWorkflowAction<O365NewO365DistributionGroupResponse, ApiConnectionActionConfiguration> O365NewO365DistributionGroup(Expression<Func<string>> o365NewO365DistributionGroupname, Expression<Func<string>> o365NewO365DistributionGroupworkflow, Expression<Func<string>> o365NewO365DistributionGroupalias = null, Expression<Func<string>> o365NewO365DistributionGroupdisplayName = null, Expression<Func<string>> o365NewO365DistributionGroupnotes = null, Expression<Func<string>> o365NewO365DistributionGroupmanagedBy = null, Expression<Func<string>> o365NewO365DistributionGroupmembers = null, Expression<Func<string>> o365NewO365DistributionGrouporganizationalUnit = null, Expression<Func<string>> o365NewO365DistributionGroupprimarySmtpAddress = null, Expression<Func<o365NewO365DistributionGroupmemberDepartRestrictionInput>> o365NewO365DistributionGroupmemberDepartRestriction = null, Expression<Func<o365NewO365DistributionGroupmemberJoinRestrictionInput>> o365NewO365DistributionGroupmemberJoinRestriction = null, Expression<Func<bool>> o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = null, Expression<Func<o365NewO365DistributionGrouptypeInput>> o365NewO365DistributionGrouptype = null)
         {
             var __workflow_o365NewO365DistributionGroupname = WorkflowExpression.Compile(o365NewO365DistributionGroupname, nameof(o365NewO365DistributionGroupname), required: true);
             var __workflow_o365NewO365DistributionGroupworkflow = WorkflowExpression.Compile(o365NewO365DistributionGroupworkflow, nameof(o365NewO365DistributionGroupworkflow), required: true);
@@ -9533,7 +9533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365NewO365DistributionGroupmemberJoinRestriction = WorkflowExpression.Compile(o365NewO365DistributionGroupmemberJoinRestriction, nameof(o365NewO365DistributionGroupmemberJoinRestriction), required: false);
             var __workflow_o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = WorkflowExpression.Compile(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled, nameof(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled), required: false);
             var __workflow_o365NewO365DistributionGrouptype = WorkflowExpression.Compile(o365NewO365DistributionGrouptype, nameof(o365NewO365DistributionGrouptype), required: false);
-            return new DeferredBodyAction<O365NewO365DistributionGroupResponse>(() =>
+            return new DeferredBodyAction<O365NewO365DistributionGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365NewO365DistributionGroup";
                 var apiCallHttpMethod = "post";
@@ -9646,17 +9646,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365NewO365DistributionGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365RemoveDistributionGroupResponse> O365RemoveDistributionGroup(Expression<Func<string>> o365RemoveDistributionGroupidentity, Expression<Func<string>> o365RemoveDistributionGroupworkflow, Expression<Func<bool>> o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveDistributionGrouperrorIfGroupDoesNotExist = null)
+        public IBodyWorkflowAction<O365RemoveDistributionGroupResponse, ApiConnectionActionConfiguration> O365RemoveDistributionGroup(Expression<Func<string>> o365RemoveDistributionGroupidentity, Expression<Func<string>> o365RemoveDistributionGroupworkflow, Expression<Func<bool>> o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveDistributionGrouperrorIfGroupDoesNotExist = null)
         {
             var __workflow_o365RemoveDistributionGroupidentity = WorkflowExpression.Compile(o365RemoveDistributionGroupidentity, nameof(o365RemoveDistributionGroupidentity), required: true);
             var __workflow_o365RemoveDistributionGroupworkflow = WorkflowExpression.Compile(o365RemoveDistributionGroupworkflow, nameof(o365RemoveDistributionGroupworkflow), required: true);
             var __workflow_o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck, nameof(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck), required: false);
             var __workflow_o365RemoveDistributionGrouperrorIfGroupDoesNotExist = WorkflowExpression.Compile(o365RemoveDistributionGrouperrorIfGroupDoesNotExist, nameof(o365RemoveDistributionGrouperrorIfGroupDoesNotExist), required: false);
-            return new DeferredBodyAction<O365RemoveDistributionGroupResponse>(() =>
+            return new DeferredBodyAction<O365RemoveDistributionGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveDistributionGroup";
                 var apiCallHttpMethod = "post";
@@ -9705,11 +9705,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveDistributionGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365SetO365MailboxResponse> O365SetO365Mailbox(Expression<Func<string>> o365SetO365Mailboxidentity, Expression<Func<string>> o365SetO365Mailboxworkflow, Expression<Func<bool>> o365SetO365MailboxaccountDisabled = null, Expression<Func<string>> o365SetO365Mailboxalias = null, Expression<Func<string>> o365SetO365MailboxdisplayName = null, Expression<Func<bool>> o365SetO365MailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute1 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute2 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute3 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute4 = null, Expression<Func<o365SetO365MailboxtypeInput>> o365SetO365Mailboxtype = null)
+        public IBodyWorkflowAction<O365SetO365MailboxResponse, ApiConnectionActionConfiguration> O365SetO365Mailbox(Expression<Func<string>> o365SetO365Mailboxidentity, Expression<Func<string>> o365SetO365Mailboxworkflow, Expression<Func<bool>> o365SetO365MailboxaccountDisabled = null, Expression<Func<string>> o365SetO365Mailboxalias = null, Expression<Func<string>> o365SetO365MailboxdisplayName = null, Expression<Func<bool>> o365SetO365MailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute1 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute2 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute3 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute4 = null, Expression<Func<o365SetO365MailboxtypeInput>> o365SetO365Mailboxtype = null)
         {
             var __workflow_o365SetO365Mailboxidentity = WorkflowExpression.Compile(o365SetO365Mailboxidentity, nameof(o365SetO365Mailboxidentity), required: true);
             var __workflow_o365SetO365Mailboxworkflow = WorkflowExpression.Compile(o365SetO365Mailboxworkflow, nameof(o365SetO365Mailboxworkflow), required: true);
@@ -9722,7 +9722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365SetO365MailboxcustomAttribute3 = WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute3, nameof(o365SetO365MailboxcustomAttribute3), required: false);
             var __workflow_o365SetO365MailboxcustomAttribute4 = WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute4, nameof(o365SetO365MailboxcustomAttribute4), required: false);
             var __workflow_o365SetO365Mailboxtype = WorkflowExpression.Compile(o365SetO365Mailboxtype, nameof(o365SetO365Mailboxtype), required: false);
-            return new DeferredBodyAction<O365SetO365MailboxResponse>(() =>
+            return new DeferredBodyAction<O365SetO365MailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365SetO365Mailbox";
                 var apiCallHttpMethod = "post";
@@ -9793,18 +9793,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365SetO365MailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365WaitForO365MailboxResponse> O365WaitForO365Mailbox(Expression<Func<string>> o365WaitForO365Mailboxidentity, Expression<Func<int>> o365WaitForO365MailboxnumberOfTimesToCheck, Expression<Func<int>> o365WaitForO365MailboxsecondsBetweenTries, Expression<Func<string>> o365WaitForO365Mailboxworkflow, Expression<Func<o365WaitForO365MailboxrecipientTypeDetailsInput>> o365WaitForO365MailboxrecipientTypeDetails = null)
+        public IBodyWorkflowAction<O365WaitForO365MailboxResponse, ApiConnectionActionConfiguration> O365WaitForO365Mailbox(Expression<Func<string>> o365WaitForO365Mailboxidentity, Expression<Func<int>> o365WaitForO365MailboxnumberOfTimesToCheck, Expression<Func<int>> o365WaitForO365MailboxsecondsBetweenTries, Expression<Func<string>> o365WaitForO365Mailboxworkflow, Expression<Func<o365WaitForO365MailboxrecipientTypeDetailsInput>> o365WaitForO365MailboxrecipientTypeDetails = null)
         {
             var __workflow_o365WaitForO365Mailboxidentity = WorkflowExpression.Compile(o365WaitForO365Mailboxidentity, nameof(o365WaitForO365Mailboxidentity), required: true);
             var __workflow_o365WaitForO365MailboxnumberOfTimesToCheck = WorkflowExpression.Compile(o365WaitForO365MailboxnumberOfTimesToCheck, nameof(o365WaitForO365MailboxnumberOfTimesToCheck), required: true);
             var __workflow_o365WaitForO365MailboxsecondsBetweenTries = WorkflowExpression.Compile(o365WaitForO365MailboxsecondsBetweenTries, nameof(o365WaitForO365MailboxsecondsBetweenTries), required: true);
             var __workflow_o365WaitForO365Mailboxworkflow = WorkflowExpression.Compile(o365WaitForO365Mailboxworkflow, nameof(o365WaitForO365Mailboxworkflow), required: true);
             var __workflow_o365WaitForO365MailboxrecipientTypeDetails = WorkflowExpression.Compile(o365WaitForO365MailboxrecipientTypeDetails, nameof(o365WaitForO365MailboxrecipientTypeDetails), required: false);
-            return new DeferredBodyAction<O365WaitForO365MailboxResponse>(() =>
+            return new DeferredBodyAction<O365WaitForO365MailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365WaitForO365Mailbox";
                 var apiCallHttpMethod = "post";
@@ -9831,11 +9831,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365WaitForO365MailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365SetO365MailboxAutoReplyConfigurationResponse> O365SetO365MailboxAutoReplyConfiguration(Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationidentity, Expression<Func<o365SetO365MailboxAutoReplyConfigurationautoReplyStateInput>> o365SetO365MailboxAutoReplyConfigurationautoReplyState, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationworkflow, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationinternalMessage = null, Expression<Func<o365SetO365MailboxAutoReplyConfigurationexternalAudienceInput>> o365SetO365MailboxAutoReplyConfigurationexternalAudience = null, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationexternalMessage = null)
+        public IBodyWorkflowAction<O365SetO365MailboxAutoReplyConfigurationResponse, ApiConnectionActionConfiguration> O365SetO365MailboxAutoReplyConfiguration(Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationidentity, Expression<Func<o365SetO365MailboxAutoReplyConfigurationautoReplyStateInput>> o365SetO365MailboxAutoReplyConfigurationautoReplyState, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationworkflow, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationinternalMessage = null, Expression<Func<o365SetO365MailboxAutoReplyConfigurationexternalAudienceInput>> o365SetO365MailboxAutoReplyConfigurationexternalAudience = null, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationexternalMessage = null)
         {
             var __workflow_o365SetO365MailboxAutoReplyConfigurationidentity = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationidentity, nameof(o365SetO365MailboxAutoReplyConfigurationidentity), required: true);
             var __workflow_o365SetO365MailboxAutoReplyConfigurationautoReplyState = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationautoReplyState, nameof(o365SetO365MailboxAutoReplyConfigurationautoReplyState), required: true);
@@ -9843,7 +9843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365SetO365MailboxAutoReplyConfigurationinternalMessage = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationinternalMessage, nameof(o365SetO365MailboxAutoReplyConfigurationinternalMessage), required: false);
             var __workflow_o365SetO365MailboxAutoReplyConfigurationexternalAudience = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationexternalAudience, nameof(o365SetO365MailboxAutoReplyConfigurationexternalAudience), required: false);
             var __workflow_o365SetO365MailboxAutoReplyConfigurationexternalMessage = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationexternalMessage, nameof(o365SetO365MailboxAutoReplyConfigurationexternalMessage), required: false);
-            return new DeferredBodyAction<O365SetO365MailboxAutoReplyConfigurationResponse>(() =>
+            return new DeferredBodyAction<O365SetO365MailboxAutoReplyConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365SetO365MailboxAutoReplyConfiguration";
                 var apiCallHttpMethod = "post";
@@ -9890,18 +9890,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365SetO365MailboxAutoReplyConfigurationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365RemoveDistributionGroupMemberResponse> O365RemoveDistributionGroupMember(Expression<Func<string>> o365RemoveDistributionGroupMembergroupIdentity, Expression<Func<string>> o365RemoveDistributionGroupMembermember, Expression<Func<string>> o365RemoveDistributionGroupMemberworkflow, Expression<Func<bool>> o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = null)
+        public IBodyWorkflowAction<O365RemoveDistributionGroupMemberResponse, ApiConnectionActionConfiguration> O365RemoveDistributionGroupMember(Expression<Func<string>> o365RemoveDistributionGroupMembergroupIdentity, Expression<Func<string>> o365RemoveDistributionGroupMembermember, Expression<Func<string>> o365RemoveDistributionGroupMemberworkflow, Expression<Func<bool>> o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = null)
         {
             var __workflow_o365RemoveDistributionGroupMembergroupIdentity = WorkflowExpression.Compile(o365RemoveDistributionGroupMembergroupIdentity, nameof(o365RemoveDistributionGroupMembergroupIdentity), required: true);
             var __workflow_o365RemoveDistributionGroupMembermember = WorkflowExpression.Compile(o365RemoveDistributionGroupMembermember, nameof(o365RemoveDistributionGroupMembermember), required: true);
             var __workflow_o365RemoveDistributionGroupMemberworkflow = WorkflowExpression.Compile(o365RemoveDistributionGroupMemberworkflow, nameof(o365RemoveDistributionGroupMemberworkflow), required: true);
             var __workflow_o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
             var __workflow_o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = WorkflowExpression.Compile(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup, nameof(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup), required: false);
-            return new DeferredBodyAction<O365RemoveDistributionGroupMemberResponse>(() =>
+            return new DeferredBodyAction<O365RemoveDistributionGroupMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveDistributionGroupMember";
                 var apiCallHttpMethod = "post";
@@ -9952,16 +9952,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveDistributionGroupMemberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365GetMailboxDistributionGroupMembershipResponse> O365GetMailboxDistributionGroupMembership(Expression<Func<string>> o365GetMailboxDistributionGroupMembershipmailboxIdentity, Expression<Func<string>> o365GetMailboxDistributionGroupMembershipworkflow, Expression<Func<string>> o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = null)
+        public IBodyWorkflowAction<O365GetMailboxDistributionGroupMembershipResponse, ApiConnectionActionConfiguration> O365GetMailboxDistributionGroupMembership(Expression<Func<string>> o365GetMailboxDistributionGroupMembershipmailboxIdentity, Expression<Func<string>> o365GetMailboxDistributionGroupMembershipworkflow, Expression<Func<string>> o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = null)
         {
             var __workflow_o365GetMailboxDistributionGroupMembershipmailboxIdentity = WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershipmailboxIdentity, nameof(o365GetMailboxDistributionGroupMembershipmailboxIdentity), required: true);
             var __workflow_o365GetMailboxDistributionGroupMembershipworkflow = WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershipworkflow, nameof(o365GetMailboxDistributionGroupMembershipworkflow), required: true);
             var __workflow_o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON, nameof(o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON), required: false);
-            return new DeferredBodyAction<O365GetMailboxDistributionGroupMembershipResponse>(() =>
+            return new DeferredBodyAction<O365GetMailboxDistributionGroupMembershipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetMailboxDistributionGroupMembership";
                 var apiCallHttpMethod = "post";
@@ -9984,16 +9984,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetMailboxDistributionGroupMembershipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365GetDistributionGroupMembersResponse> O365GetDistributionGroupMembers(Expression<Func<string>> o365GetDistributionGroupMembersgroupIdentity, Expression<Func<string>> o365GetDistributionGroupMembersworkflow, Expression<Func<string>> o365GetDistributionGroupMemberspropertiesToRetrieveJSON = null)
+        public IBodyWorkflowAction<O365GetDistributionGroupMembersResponse, ApiConnectionActionConfiguration> O365GetDistributionGroupMembers(Expression<Func<string>> o365GetDistributionGroupMembersgroupIdentity, Expression<Func<string>> o365GetDistributionGroupMembersworkflow, Expression<Func<string>> o365GetDistributionGroupMemberspropertiesToRetrieveJSON = null)
         {
             var __workflow_o365GetDistributionGroupMembersgroupIdentity = WorkflowExpression.Compile(o365GetDistributionGroupMembersgroupIdentity, nameof(o365GetDistributionGroupMembersgroupIdentity), required: true);
             var __workflow_o365GetDistributionGroupMembersworkflow = WorkflowExpression.Compile(o365GetDistributionGroupMembersworkflow, nameof(o365GetDistributionGroupMembersworkflow), required: true);
             var __workflow_o365GetDistributionGroupMemberspropertiesToRetrieveJSON = WorkflowExpression.Compile(o365GetDistributionGroupMemberspropertiesToRetrieveJSON, nameof(o365GetDistributionGroupMemberspropertiesToRetrieveJSON), required: false);
-            return new DeferredBodyAction<O365GetDistributionGroupMembersResponse>(() =>
+            return new DeferredBodyAction<O365GetDistributionGroupMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetDistributionGroupMembers";
                 var apiCallHttpMethod = "post";
@@ -10016,11 +10016,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365GetDistributionGroupMembersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365RemoveMailboxFromAllDistributionGroupsResponse> O365RemoveMailboxFromAllDistributionGroups(Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsworkflow, Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsrunAsThread = null, Expression<Func<int>> o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = null, Expression<Func<int>> o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = null)
+        public IBodyWorkflowAction<O365RemoveMailboxFromAllDistributionGroupsResponse, ApiConnectionActionConfiguration> O365RemoveMailboxFromAllDistributionGroups(Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsworkflow, Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsrunAsThread = null, Expression<Func<int>> o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = null, Expression<Func<int>> o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = null)
         {
             var __workflow_o365RemoveMailboxFromAllDistributionGroupsworkflow = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsworkflow, nameof(o365RemoveMailboxFromAllDistributionGroupsworkflow), required: true);
             var __workflow_o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity, nameof(o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity), required: false);
@@ -10031,7 +10031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365RemoveMailboxFromAllDistributionGroupsrunAsThread = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsrunAsThread, nameof(o365RemoveMailboxFromAllDistributionGroupsrunAsThread), required: false);
             var __workflow_o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId, nameof(o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId), required: false);
             var __workflow_o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread, nameof(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread), required: false);
-            return new DeferredBodyAction<O365RemoveMailboxFromAllDistributionGroupsResponse>(() =>
+            return new DeferredBodyAction<O365RemoveMailboxFromAllDistributionGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveMailboxFromAllDistributionGroups";
                 var apiCallHttpMethod = "post";
@@ -10144,11 +10144,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365RemoveMailboxFromAllDistributionGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365NewMailboxResponse> O365NewMailbox(Expression<Func<string>> o365NewMailboxmicrosoftOnlineServicesID, Expression<Func<string>> o365NewMailboxname, Expression<Func<string>> o365NewMailboxworkflow, Expression<Func<string>> o365NewMailboxfirstName = null, Expression<Func<string>> o365NewMailboxlastName = null, Expression<Func<string>> o365NewMailboxinitials = null, Expression<Func<string>> o365NewMailboxdisplayName = null, Expression<Func<string>> o365NewMailboxalias = null, Expression<Func<string>> o365NewMailboxprimarySmtpAddress = null, Expression<Func<string>> o365NewMailboxpassword = null, Expression<Func<bool>> o365NewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> o365NewMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> o365NewMailboxarchive = null, Expression<Func<string>> o365NewMailboxmailboxPlan = null, Expression<Func<string>> o365NewMailboxmailboxRegion = null)
+        public IBodyWorkflowAction<O365NewMailboxResponse, ApiConnectionActionConfiguration> O365NewMailbox(Expression<Func<string>> o365NewMailboxmicrosoftOnlineServicesID, Expression<Func<string>> o365NewMailboxname, Expression<Func<string>> o365NewMailboxworkflow, Expression<Func<string>> o365NewMailboxfirstName = null, Expression<Func<string>> o365NewMailboxlastName = null, Expression<Func<string>> o365NewMailboxinitials = null, Expression<Func<string>> o365NewMailboxdisplayName = null, Expression<Func<string>> o365NewMailboxalias = null, Expression<Func<string>> o365NewMailboxprimarySmtpAddress = null, Expression<Func<string>> o365NewMailboxpassword = null, Expression<Func<bool>> o365NewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> o365NewMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> o365NewMailboxarchive = null, Expression<Func<string>> o365NewMailboxmailboxPlan = null, Expression<Func<string>> o365NewMailboxmailboxRegion = null)
         {
             var __workflow_o365NewMailboxmicrosoftOnlineServicesID = WorkflowExpression.Compile(o365NewMailboxmicrosoftOnlineServicesID, nameof(o365NewMailboxmicrosoftOnlineServicesID), required: true);
             var __workflow_o365NewMailboxname = WorkflowExpression.Compile(o365NewMailboxname, nameof(o365NewMailboxname), required: true);
@@ -10165,7 +10165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365NewMailboxarchive = WorkflowExpression.Compile(o365NewMailboxarchive, nameof(o365NewMailboxarchive), required: false);
             var __workflow_o365NewMailboxmailboxPlan = WorkflowExpression.Compile(o365NewMailboxmailboxPlan, nameof(o365NewMailboxmailboxPlan), required: false);
             var __workflow_o365NewMailboxmailboxRegion = WorkflowExpression.Compile(o365NewMailboxmailboxRegion, nameof(o365NewMailboxmailboxRegion), required: false);
-            return new DeferredBodyAction<O365NewMailboxResponse>(() =>
+            return new DeferredBodyAction<O365NewMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365NewMailbox";
                 var apiCallHttpMethod = "post";
@@ -10286,11 +10286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365NewMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365NewSharedMailboxResponse> O365NewSharedMailbox(Expression<Func<string>> o365NewSharedMailboxname, Expression<Func<string>> o365NewSharedMailboxworkflow, Expression<Func<string>> o365NewSharedMailboxfirstName = null, Expression<Func<string>> o365NewSharedMailboxlastName = null, Expression<Func<string>> o365NewSharedMailboxinitials = null, Expression<Func<string>> o365NewSharedMailboxdisplayName = null, Expression<Func<string>> o365NewSharedMailboxalias = null, Expression<Func<string>> o365NewSharedMailboxprimarySmtpAddress = null, Expression<Func<bool>> o365NewSharedMailboxarchive = null, Expression<Func<string>> o365NewSharedMailboxmailboxRegion = null)
+        public IBodyWorkflowAction<O365NewSharedMailboxResponse, ApiConnectionActionConfiguration> O365NewSharedMailbox(Expression<Func<string>> o365NewSharedMailboxname, Expression<Func<string>> o365NewSharedMailboxworkflow, Expression<Func<string>> o365NewSharedMailboxfirstName = null, Expression<Func<string>> o365NewSharedMailboxlastName = null, Expression<Func<string>> o365NewSharedMailboxinitials = null, Expression<Func<string>> o365NewSharedMailboxdisplayName = null, Expression<Func<string>> o365NewSharedMailboxalias = null, Expression<Func<string>> o365NewSharedMailboxprimarySmtpAddress = null, Expression<Func<bool>> o365NewSharedMailboxarchive = null, Expression<Func<string>> o365NewSharedMailboxmailboxRegion = null)
         {
             var __workflow_o365NewSharedMailboxname = WorkflowExpression.Compile(o365NewSharedMailboxname, nameof(o365NewSharedMailboxname), required: true);
             var __workflow_o365NewSharedMailboxworkflow = WorkflowExpression.Compile(o365NewSharedMailboxworkflow, nameof(o365NewSharedMailboxworkflow), required: true);
@@ -10302,7 +10302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_o365NewSharedMailboxprimarySmtpAddress = WorkflowExpression.Compile(o365NewSharedMailboxprimarySmtpAddress, nameof(o365NewSharedMailboxprimarySmtpAddress), required: false);
             var __workflow_o365NewSharedMailboxarchive = WorkflowExpression.Compile(o365NewSharedMailboxarchive, nameof(o365NewSharedMailboxarchive), required: false);
             var __workflow_o365NewSharedMailboxmailboxRegion = WorkflowExpression.Compile(o365NewSharedMailboxmailboxRegion, nameof(o365NewSharedMailboxmailboxRegion), required: false);
-            return new DeferredBodyAction<O365NewSharedMailboxResponse>(() =>
+            return new DeferredBodyAction<O365NewSharedMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365NewSharedMailbox";
                 var apiCallHttpMethod = "post";
@@ -10377,18 +10377,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365NewSharedMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365EnableArchiveMailboxResponse> O365EnableArchiveMailbox(Expression<Func<string>> o365EnableArchiveMailboxidentity, Expression<Func<string>> o365EnableArchiveMailboxworkflow, Expression<Func<bool>> o365EnableArchiveMailboxcheckIfArchiveExists = null, Expression<Func<string>> o365EnableArchiveMailboxarchiveName = null, Expression<Func<bool>> o365EnableArchiveMailboxautoExpandingArchive = null)
+        public IBodyWorkflowAction<O365EnableArchiveMailboxResponse, ApiConnectionActionConfiguration> O365EnableArchiveMailbox(Expression<Func<string>> o365EnableArchiveMailboxidentity, Expression<Func<string>> o365EnableArchiveMailboxworkflow, Expression<Func<bool>> o365EnableArchiveMailboxcheckIfArchiveExists = null, Expression<Func<string>> o365EnableArchiveMailboxarchiveName = null, Expression<Func<bool>> o365EnableArchiveMailboxautoExpandingArchive = null)
         {
             var __workflow_o365EnableArchiveMailboxidentity = WorkflowExpression.Compile(o365EnableArchiveMailboxidentity, nameof(o365EnableArchiveMailboxidentity), required: true);
             var __workflow_o365EnableArchiveMailboxworkflow = WorkflowExpression.Compile(o365EnableArchiveMailboxworkflow, nameof(o365EnableArchiveMailboxworkflow), required: true);
             var __workflow_o365EnableArchiveMailboxcheckIfArchiveExists = WorkflowExpression.Compile(o365EnableArchiveMailboxcheckIfArchiveExists, nameof(o365EnableArchiveMailboxcheckIfArchiveExists), required: false);
             var __workflow_o365EnableArchiveMailboxarchiveName = WorkflowExpression.Compile(o365EnableArchiveMailboxarchiveName, nameof(o365EnableArchiveMailboxarchiveName), required: false);
             var __workflow_o365EnableArchiveMailboxautoExpandingArchive = WorkflowExpression.Compile(o365EnableArchiveMailboxautoExpandingArchive, nameof(o365EnableArchiveMailboxautoExpandingArchive), required: false);
-            return new DeferredBodyAction<O365EnableArchiveMailboxResponse>(() =>
+            return new DeferredBodyAction<O365EnableArchiveMailboxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365EnableArchiveMailbox";
                 var apiCallHttpMethod = "post";
@@ -10443,15 +10443,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365EnableArchiveMailboxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<O365DoesMailboxHaveAnArchiveResponse> O365DoesMailboxHaveAnArchive(Expression<Func<string>> o365DoesMailboxHaveAnArchiveidentity, Expression<Func<string>> o365DoesMailboxHaveAnArchiveworkflow)
+        public IBodyWorkflowAction<O365DoesMailboxHaveAnArchiveResponse, ApiConnectionActionConfiguration> O365DoesMailboxHaveAnArchive(Expression<Func<string>> o365DoesMailboxHaveAnArchiveidentity, Expression<Func<string>> o365DoesMailboxHaveAnArchiveworkflow)
         {
             var __workflow_o365DoesMailboxHaveAnArchiveidentity = WorkflowExpression.Compile(o365DoesMailboxHaveAnArchiveidentity, nameof(o365DoesMailboxHaveAnArchiveidentity), required: true);
             var __workflow_o365DoesMailboxHaveAnArchiveworkflow = WorkflowExpression.Compile(o365DoesMailboxHaveAnArchiveworkflow, nameof(o365DoesMailboxHaveAnArchiveworkflow), required: true);
-            return new DeferredBodyAction<O365DoesMailboxHaveAnArchiveResponse>(() =>
+            return new DeferredBodyAction<O365DoesMailboxHaveAnArchiveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365DoesMailboxHaveAnArchive";
                 var apiCallHttpMethod = "post";
@@ -10468,11 +10468,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<O365DoesMailboxHaveAnArchiveResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<JMLGetNextAvailableAccountNameResponse> JMLGetNextAvailableAccountName(Expression<Func<string>> jMLGetNextAvailableAccountNameworkflow, Expression<Func<string>> jMLGetNextAvailableAccountNamefirstName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamemiddleName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamelastName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldA = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldB = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldC = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldD = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableMStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableNStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableXStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamemaxAttempts = null, Expression<Func<bool>> jMLGetNextAvailableAccountNamefallbackCausesRetest = null, Expression<Func<string>> jMLGetNextAvailableAccountNamenumbersNotToUse = null, Expression<Func<string>> jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs = null, Expression<Func<bool>> jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs = null, Expression<Func<bool>> jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = null, Expression<Func<string>> jMLGetNextAvailableAccountNamesequenceA1 = null, Expression<Func<jMLGetNextAvailableAccountNamepropertiesToCheckListInputItem[]>> jMLGetNextAvailableAccountNamepropertiesToCheckList = null)
+        public IBodyWorkflowAction<JMLGetNextAvailableAccountNameResponse, ApiConnectionActionConfiguration> JMLGetNextAvailableAccountName(Expression<Func<string>> jMLGetNextAvailableAccountNameworkflow, Expression<Func<string>> jMLGetNextAvailableAccountNamefirstName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamemiddleName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamelastName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldA = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldB = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldC = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldD = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableMStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableNStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableXStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamemaxAttempts = null, Expression<Func<bool>> jMLGetNextAvailableAccountNamefallbackCausesRetest = null, Expression<Func<string>> jMLGetNextAvailableAccountNamenumbersNotToUse = null, Expression<Func<string>> jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs = null, Expression<Func<bool>> jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs = null, Expression<Func<bool>> jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = null, Expression<Func<string>> jMLGetNextAvailableAccountNamesequenceA1 = null, Expression<Func<jMLGetNextAvailableAccountNamepropertiesToCheckListInputItem[]>> jMLGetNextAvailableAccountNamepropertiesToCheckList = null)
         {
             var __workflow_jMLGetNextAvailableAccountNameworkflow = WorkflowExpression.Compile(jMLGetNextAvailableAccountNameworkflow, nameof(jMLGetNextAvailableAccountNameworkflow), required: true);
             var __workflow_jMLGetNextAvailableAccountNamefirstName = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefirstName, nameof(jMLGetNextAvailableAccountNamefirstName), required: false);
@@ -10493,7 +10493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
             var __workflow_jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = WorkflowExpression.Compile(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs, nameof(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs), required: false);
             var __workflow_jMLGetNextAvailableAccountNamesequenceA1 = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamesequenceA1, nameof(jMLGetNextAvailableAccountNamesequenceA1), required: false);
             var __workflow_jMLGetNextAvailableAccountNamepropertiesToCheckList = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamepropertiesToCheckList, nameof(jMLGetNextAvailableAccountNamepropertiesToCheckList), required: false);
-            return new DeferredBodyAction<JMLGetNextAvailableAccountNameResponse>(() =>
+            return new DeferredBodyAction<JMLGetNextAvailableAccountNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/JMLGetNextAvailableAccountName";
                 var apiCallHttpMethod = "post";
@@ -10686,16 +10686,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<JMLGetNextAvailableAccountNameResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
-        public IBodyWorkflowAction<JMLConnectToJMLEnvironmentResponse> JMLConnectToJMLEnvironment(Expression<Func<string>> jMLConnectToJMLEnvironmentworkflow, Expression<Func<string>> jMLConnectToJMLEnvironmentfriendlyName = null, Expression<Func<bool>> jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = null)
+        public IBodyWorkflowAction<JMLConnectToJMLEnvironmentResponse, ApiConnectionActionConfiguration> JMLConnectToJMLEnvironment(Expression<Func<string>> jMLConnectToJMLEnvironmentworkflow, Expression<Func<string>> jMLConnectToJMLEnvironmentfriendlyName = null, Expression<Func<bool>> jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = null)
         {
             var __workflow_jMLConnectToJMLEnvironmentworkflow = WorkflowExpression.Compile(jMLConnectToJMLEnvironmentworkflow, nameof(jMLConnectToJMLEnvironmentworkflow), required: true);
             var __workflow_jMLConnectToJMLEnvironmentfriendlyName = WorkflowExpression.Compile(jMLConnectToJMLEnvironmentfriendlyName, nameof(jMLConnectToJMLEnvironmentfriendlyName), required: false);
             var __workflow_jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected, nameof(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected), required: false);
-            return new DeferredBodyAction<JMLConnectToJMLEnvironmentResponse>(() =>
+            return new DeferredBodyAction<JMLConnectToJMLEnvironmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/JMLConnectToJMLEnvironment";
                 var apiCallHttpMethod = "post";
@@ -10732,7 +10732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
                 }
 
                 return new ApiConnectionAction<JMLConnectToJMLEnvironmentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

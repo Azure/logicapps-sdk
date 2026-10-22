@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
     public class BoomappconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS1Response> SMS1(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
+        public IBodyWorkflowAction<SMS1Response, ApiConnectionActionConfiguration> SMS1(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
             var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
             var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
             var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
-            return new DeferredBodyAction<SMS1Response>(() =>
+            return new DeferredBodyAction<SMS1Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms1";
                 var apiCallHttpMethod = "post";
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 }
 
                 return new ApiConnectionAction<SMS1Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS2Response> SMS2(Expression<Func<string>> bodyconversationId = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
+        public IBodyWorkflowAction<SMS2Response, ApiConnectionActionConfiguration> SMS2(Expression<Func<string>> bodyconversationId = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
             var __workflow_bodyconversationId = WorkflowExpression.Compile(bodyconversationId, nameof(bodyconversationId), required: false);
             var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
             var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
             var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
-            return new DeferredBodyAction<SMS2Response>(() =>
+            return new DeferredBodyAction<SMS2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms2";
                 var apiCallHttpMethod = "post";
@@ -172,11 +172,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 }
 
                 return new ApiConnectionAction<SMS2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS3Response> SMS3(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
+        public IBodyWorkflowAction<SMS3Response, ApiConnectionActionConfiguration> SMS3(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
             var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
             var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
             var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
-            return new DeferredBodyAction<SMS3Response>(() =>
+            return new DeferredBodyAction<SMS3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms3";
                 var apiCallHttpMethod = "post";
@@ -240,11 +240,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 }
 
                 return new ApiConnectionAction<SMS3Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<VOICEResponse> VOICE(Expression<Func<string>> bodyvoiceIntro = null, Expression<Func<string>> bodyvoiceThankYou = null, Expression<Func<string>> bodyvoiceRedirectMessage = null, Expression<Func<string>> bodyvoiceRedirectNonumber = null, Expression<Func<int>> bodyvoiceRetries = null, Expression<Func<int>> bodyvoiceDelay = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
+        public IBodyWorkflowAction<VOICEResponse, ApiConnectionActionConfiguration> VOICE(Expression<Func<string>> bodyvoiceIntro = null, Expression<Func<string>> bodyvoiceThankYou = null, Expression<Func<string>> bodyvoiceRedirectMessage = null, Expression<Func<string>> bodyvoiceRedirectNonumber = null, Expression<Func<int>> bodyvoiceRetries = null, Expression<Func<int>> bodyvoiceDelay = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
             var __workflow_bodyvoiceIntro = WorkflowExpression.Compile(bodyvoiceIntro, nameof(bodyvoiceIntro), required: false);
             var __workflow_bodyvoiceThankYou = WorkflowExpression.Compile(bodyvoiceThankYou, nameof(bodyvoiceThankYou), required: false);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
             var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
             var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
-            return new DeferredBodyAction<VOICEResponse>(() =>
+            return new DeferredBodyAction<VOICEResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/voice";
                 var apiCallHttpMethod = "post";
@@ -351,11 +351,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 }
 
                 return new ApiConnectionAction<VOICEResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<EMAILResponse> EMAIL(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyemailSubject = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<string[]>> bodyemailAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
+        public IBodyWorkflowAction<EMAILResponse, ApiConnectionActionConfiguration> EMAIL(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyemailSubject = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<string[]>> bodyemailAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
             var __workflow_bodyemailSubject = WorkflowExpression.Compile(bodyemailSubject, nameof(bodyemailSubject), required: false);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
             var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
             var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
-            return new DeferredBodyAction<EMAILResponse>(() =>
+            return new DeferredBodyAction<EMAILResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email";
                 var apiCallHttpMethod = "post";
@@ -447,13 +447,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 }
 
                 return new ApiConnectionAction<EMAILResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class BoomappconnectTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionTriggerConfiguration> GESTRESPONSESTRIGGER(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/get_responses";
             var apiCallHttpMethod = "get";
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
             return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse, ApiConnectionTriggerConfiguration> GETDRSTRIGGER(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/get_all_new_drs";
             var apiCallHttpMethod = "get";

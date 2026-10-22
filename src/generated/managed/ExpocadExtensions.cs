@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
     public class ExpocadActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth> BoothsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Booth, ApiConnectionActionConfiguration> BoothsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Booth>(() =>
+            return new DeferredBodyAction<Booth, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Booth>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[]> BoothsGetAllBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<deletedFilterInput>> deletedFilter = null)
+        public IBodyWorkflowAction<Booth[], ApiConnectionActionConfiguration> BoothsGetAllBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<deletedFilterInput>> deletedFilter = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_deletedFilter = WorkflowExpression.Compile(deletedFilter, nameof(deletedFilter), required: false);
-            return new DeferredBodyAction<Booth[]>(() =>
+            return new DeferredBodyAction<Booth[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -43,41 +43,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_deletedFilter != null)
                     callPayload.Queries["deletedFilter"] = ExpressionConverter.Convert(__workflow_deletedFilter);
                 return new ApiConnectionAction<Booth[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[]> BoothsGetAllAvailableBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Booth[], ApiConnectionActionConfiguration> BoothsGetAllAvailableBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Booth[]>(() =>
+            return new DeferredBodyAction<Booth[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/all/available", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Booth[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[]> BoothsGetAllRentedBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Booth[], ApiConnectionActionConfiguration> BoothsGetAllRentedBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Booth[]>(() =>
+            return new DeferredBodyAction<Booth[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/all/rented", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Booth[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> exhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null, Expression<Func<string>> status = null, Expression<Func<string>> comment = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> exhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null, Expression<Func<string>> status = null, Expression<Func<string>> comment = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_ratePlan = WorkflowExpression.Compile(ratePlan, nameof(ratePlan), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/rent", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -101,16 +101,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_comment != null)
                     callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUnRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsUnRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/unrent", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> exhibitorName = null, Expression<Func<string>> comment = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> exhibitorName = null, Expression<Func<string>> comment = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
             var __workflow_exhibitorName = WorkflowExpression.Compile(exhibitorName, nameof(exhibitorName), required: false);
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/hold", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -144,16 +144,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_comment != null)
                     callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUnHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsUnHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/unhold", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -161,16 +161,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsRentToHold(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsRentToHold(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/rentToHold", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -178,17 +178,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsHoldToRent(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsHoldToRent(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_ratePlan = WorkflowExpression.Compile(ratePlan, nameof(ratePlan), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/holdToRent", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -198,17 +198,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_ratePlan != null)
                     callPayload.Queries["ratePlan"] = ExpressionConverter.Convert(__workflow_ratePlan);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsCombineBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<int>> boundary, Expression<Func<string[]>> boothNumbers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsCombineBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<int>> boundary, Expression<Func<string[]>> boothNumbers = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_boundary = WorkflowExpression.Compile(boundary, nameof(boundary), required: true);
             var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/combine", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -217,16 +217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boundary"] = ExpressionConverter.Convert(__workflow_boundary);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothNumbers);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUncombineBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsUncombineBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/uncombine", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -234,16 +234,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsDeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsDeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/delete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -251,16 +251,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothNumbers);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUndeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsUndeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/undelete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -268,17 +268,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_boothNumbers);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsChangeBoothNumber(Expression<Func<string>> clientName, Expression<Func<string>> oldNumber, Expression<Func<string>> newNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsChangeBoothNumber(Expression<Func<string>> clientName, Expression<Func<string>> oldNumber, Expression<Func<string>> newNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_oldNumber = WorkflowExpression.Compile(oldNumber, nameof(oldNumber), required: true);
             var __workflow_newNumber = WorkflowExpression.Compile(newNumber, nameof(newNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/changenumber", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -287,17 +287,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["newNumber"] = ExpressionConverter.Convert(__workflow_newNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsSetBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsSetBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/classes/apply", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -306,17 +306,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsClearBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsClearBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/classes/remove", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -325,17 +325,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsSetBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> text, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsSetBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> text, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/displayNameOverride/set", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -344,16 +344,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsClearBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsClearBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/displayNameOverride/reset", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -361,17 +361,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsAddChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsAddChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_childExhibitorId = WorkflowExpression.Compile(childExhibitorId, nameof(childExhibitorId), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/childExhibitor/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -380,17 +380,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsRemoveChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BoothsRemoveChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_childExhibitorId = WorkflowExpression.Compile(childExhibitorId, nameof(childExhibitorId), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/booths/childExhibitor/remove", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -399,16 +399,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesGet(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesGet(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<BoothClass>(() =>
+            return new DeferredBodyAction<BoothClass, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -416,26 +416,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<BoothClass>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass[]> ClassesGetAllBoothClasses(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<BoothClass[], ApiConnectionActionConfiguration> ClassesGetAllBoothClasses(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<BoothClass[]>(() =>
+            return new DeferredBodyAction<BoothClass[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<BoothClass[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothClassid = WorkflowExpression.Compile(boothClassid, nameof(boothClassid), required: true);
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothClassdescription = WorkflowExpression.Compile(boothClassdescription, nameof(boothClassdescription), required: false);
             var __workflow_boothClassprioritity = WorkflowExpression.Compile(boothClassprioritity, nameof(boothClassprioritity), required: false);
             var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
-            return new DeferredBodyAction<BoothClass>(() =>
+            return new DeferredBodyAction<BoothClass, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -490,11 +490,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<BoothClass>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothClassid = WorkflowExpression.Compile(boothClassid, nameof(boothClassid), required: true);
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_boothClassdescription = WorkflowExpression.Compile(boothClassdescription, nameof(boothClassdescription), required: false);
             var __workflow_boothClassprioritity = WorkflowExpression.Compile(boothClassprioritity, nameof(boothClassprioritity), required: false);
             var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
-            return new DeferredBodyAction<BoothClass>(() =>
+            return new DeferredBodyAction<BoothClass, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/update", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -551,16 +551,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<BoothClass>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> ClassesDelete(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ClassesDelete(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/classes/delete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -568,59 +568,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["classId"] = ExpressionConverter.Convert(__workflow_classId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<ExpocadEvent[]> EventsGetAllEvents(Expression<Func<string>> clientName)
+        public IBodyWorkflowAction<ExpocadEvent[], ApiConnectionActionConfiguration> EventsGetAllEvents(Expression<Func<string>> clientName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
-            return new DeferredBodyAction<ExpocadEvent[]>(() =>
+            return new DeferredBodyAction<ExpocadEvent[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpocadEvent[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<EventStats> EventsGetEventStatistics(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<EventStats, ApiConnectionActionConfiguration> EventsGetEventStatistics(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<EventStats>(() =>
+            return new DeferredBodyAction<EventStats, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/stats", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<EventStats>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<ExpoEventInformation> EventsGetEventInformation(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<ExpoEventInformation, ApiConnectionActionConfiguration> EventsGetEventInformation(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<ExpoEventInformation>(() =>
+            return new DeferredBodyAction<ExpoEventInformation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/info", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<ExpoEventInformation>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsGet(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsGet(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Exhibitor>(() =>
+            return new DeferredBodyAction<Exhibitor, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -628,26 +628,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Exhibitor>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor[]> ExhibitorsGetAllExhibitors(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Exhibitor[], ApiConnectionActionConfiguration> ExhibitorsGetAllExhibitors(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Exhibitor[]>(() =>
+            return new DeferredBodyAction<Exhibitor[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Exhibitor[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_exhibitorexhibitorId = WorkflowExpression.Compile(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_exhibitorproductDescription = WorkflowExpression.Compile(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
             var __workflow_exhibitorstate = WorkflowExpression.Compile(exhibitorstate, nameof(exhibitorstate), required: false);
             var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
-            return new DeferredBodyAction<Exhibitor>(() =>
+            return new DeferredBodyAction<Exhibitor, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -906,11 +906,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<Exhibitor>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_exhibitorexhibitorId = WorkflowExpression.Compile(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_exhibitorproductDescription = WorkflowExpression.Compile(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
             var __workflow_exhibitorstate = WorkflowExpression.Compile(exhibitorstate, nameof(exhibitorstate), required: false);
             var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
-            return new DeferredBodyAction<Exhibitor>(() =>
+            return new DeferredBodyAction<Exhibitor, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/update", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1171,16 +1171,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<Exhibitor>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> ExhibitorsDeleteExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExhibitorsDeleteExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/exhibitors/delete", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1188,11 +1188,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Transaction[]> FinancialsGetAllTransactions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> boothNumber = null, Expression<Func<string>> expocadUser = null, Expression<Func<string>> glCode = null, Expression<Func<reversedFilterInput>> reversedFilter = null)
+        public IBodyWorkflowAction<Transaction[], ApiConnectionActionConfiguration> FinancialsGetAllTransactions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> boothNumber = null, Expression<Func<string>> expocadUser = null, Expression<Func<string>> glCode = null, Expression<Func<reversedFilterInput>> reversedFilter = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -1203,7 +1203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_expocadUser = WorkflowExpression.Compile(expocadUser, nameof(expocadUser), required: false);
             var __workflow_glCode = WorkflowExpression.Compile(glCode, nameof(glCode), required: false);
             var __workflow_reversedFilter = WorkflowExpression.Compile(reversedFilter, nameof(reversedFilter), required: false);
-            return new DeferredBodyAction<Transaction[]>(() =>
+            return new DeferredBodyAction<Transaction[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/transactions", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1224,16 +1224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_reversedFilter != null)
                     callPayload.Queries["reversedFilter"] = ExpressionConverter.Convert(__workflow_reversedFilter);
                 return new ApiConnectionAction<Transaction[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothFinancial> FinancialsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<BoothFinancial, ApiConnectionActionConfiguration> FinancialsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<BoothFinancial>(() =>
+            return new DeferredBodyAction<BoothFinancial, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/booths", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1241,17 +1241,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(__workflow_boothNumber);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<BoothFinancial>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Invoice> FinancialsGetInvoice(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> invoiceNo = null, Expression<Func<string>> exhibitorId = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> FinancialsGetInvoice(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> invoiceNo = null, Expression<Func<string>> exhibitorId = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_invoiceNo = WorkflowExpression.Compile(invoiceNo, nameof(invoiceNo), required: false);
             var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
-            return new DeferredBodyAction<Invoice>(() =>
+            return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/invoices", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1262,32 +1262,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_exhibitorId != null)
                     callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(__workflow_exhibitorId);
                 return new ApiConnectionAction<Invoice>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Invoice[]> FinancialsGetAllInvoices(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Invoice[], ApiConnectionActionConfiguration> FinancialsGetAllInvoices(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Invoice[]>(() =>
+            return new DeferredBodyAction<Invoice[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/invoices/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Invoice[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<MasterRequestItem[]> FinancialsGetRequestItemList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
+        public IBodyWorkflowAction<MasterRequestItem[], ApiConnectionActionConfiguration> FinancialsGetRequestItemList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_glCode = WorkflowExpression.Compile(glCode, nameof(glCode), required: false);
             var __workflow_transactionCode = WorkflowExpression.Compile(transactionCode, nameof(transactionCode), required: false);
-            return new DeferredBodyAction<MasterRequestItem[]>(() =>
+            return new DeferredBodyAction<MasterRequestItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/requestitemlist", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1298,11 +1298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_transactionCode != null)
                     callPayload.Queries["transactionCode"] = ExpressionConverter.Convert(__workflow_transactionCode);
                 return new ApiConnectionAction<MasterRequestItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<InvoiceRequestItem[]> FinancialsGetAssignedRequestItems(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> booth = null, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
+        public IBodyWorkflowAction<InvoiceRequestItem[], ApiConnectionActionConfiguration> FinancialsGetAssignedRequestItems(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> booth = null, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -1313,7 +1313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_booth = WorkflowExpression.Compile(booth, nameof(booth), required: false);
             var __workflow_glCode = WorkflowExpression.Compile(glCode, nameof(glCode), required: false);
             var __workflow_transactionCode = WorkflowExpression.Compile(transactionCode, nameof(transactionCode), required: false);
-            return new DeferredBodyAction<InvoiceRequestItem[]>(() =>
+            return new DeferredBodyAction<InvoiceRequestItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/requestitems", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1334,26 +1334,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_transactionCode != null)
                     callPayload.Queries["transactionCode"] = ExpressionConverter.Convert(__workflow_transactionCode);
                 return new ApiConnectionAction<InvoiceRequestItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<PaymentTypeItem[]> FinancialsGetPaymentTypeList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<PaymentTypeItem[], ApiConnectionActionConfiguration> FinancialsGetPaymentTypeList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<PaymentTypeItem[]>(() =>
+            return new DeferredBodyAction<PaymentTypeItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/paymenttypelist", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<PaymentTypeItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<InvoicePayment[]> FinancialsGetPayments(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> depositId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> paymentTypeCategory = null)
+        public IBodyWorkflowAction<InvoicePayment[], ApiConnectionActionConfiguration> FinancialsGetPayments(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> depositId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> paymentTypeCategory = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -1363,7 +1363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_paymentTypeCategory = WorkflowExpression.Compile(paymentTypeCategory, nameof(paymentTypeCategory), required: false);
-            return new DeferredBodyAction<InvoicePayment[]>(() =>
+            return new DeferredBodyAction<InvoicePayment[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/financials/payments", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1382,46 +1382,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 if (__workflow_paymentTypeCategory != null)
                     callPayload.Queries["PaymentTypeCategory"] = ExpressionConverter.Convert(__workflow_paymentTypeCategory);
                 return new ApiConnectionAction<InvoicePayment[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Pavilion[]> PavilionsGetAllPavilions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Pavilion[], ApiConnectionActionConfiguration> PavilionsGetAllPavilions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<Pavilion[]>(() =>
+            return new DeferredBodyAction<Pavilion[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/pavilions/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<Pavilion[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan> RatePlansGetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<RatePlan, ApiConnectionActionConfiguration> RatePlansGetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<RatePlan>(() =>
+            return new DeferredBodyAction<RatePlan, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/default", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<RatePlan>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> RatePlansSetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> name)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RatePlansSetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> name)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/default", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1429,26 +1429,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan[]> RatePlansGetAllRatePlans(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<RatePlan[], ApiConnectionActionConfiguration> RatePlansGetAllRatePlans(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<RatePlan[]>(() =>
+            return new DeferredBodyAction<RatePlan[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<RatePlan[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanname, Expression<Func<string>> ratePlanshortCode, Expression<Func<double>> ratePlangrossRate, Expression<Func<double>> ratePlanfixedDiscountRate, Expression<Func<double>> ratePlanpercentDiscountRate, Expression<Func<bool>> ratePlanisFixed)
+        public IBodyWorkflowAction<RatePlan, ApiConnectionActionConfiguration> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanname, Expression<Func<string>> ratePlanshortCode, Expression<Func<double>> ratePlangrossRate, Expression<Func<double>> ratePlanfixedDiscountRate, Expression<Func<double>> ratePlanpercentDiscountRate, Expression<Func<bool>> ratePlanisFixed)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -1458,7 +1458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
             var __workflow_ratePlanfixedDiscountRate = WorkflowExpression.Compile(ratePlanfixedDiscountRate, nameof(ratePlanfixedDiscountRate), required: true);
             var __workflow_ratePlanpercentDiscountRate = WorkflowExpression.Compile(ratePlanpercentDiscountRate, nameof(ratePlanpercentDiscountRate), required: true);
             var __workflow_ratePlanisFixed = WorkflowExpression.Compile(ratePlanisFixed, nameof(ratePlanisFixed), required: true);
-            return new DeferredBodyAction<RatePlan>(() =>
+            return new DeferredBodyAction<RatePlan, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/rateplans/add", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1484,22 +1484,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
                 }
 
                 return new ApiConnectionAction<RatePlan>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<ShowInShow[]> ShowInShowsGetAllShowinShows(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<ShowInShow[], ApiConnectionActionConfiguration> ShowInShowsGetAllShowinShows(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
-            return new DeferredBodyAction<ShowInShow[]>(() =>
+            return new DeferredBodyAction<ShowInShow[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/showinshows/all", __workflow_clientName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["databaseName"] = ExpressionConverter.Convert(__workflow_databaseName);
                 return new ApiConnectionAction<ShowInShow[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

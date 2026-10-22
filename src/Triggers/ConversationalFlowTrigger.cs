@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the trigger definition for the conversational flow.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> configured as a request trigger for agent flows.</returns>
-        protected internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
+        internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {

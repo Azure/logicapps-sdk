@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
     public class OpenfecActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
-        public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> CommitteeCommitteeIdCandidatesHistory(Expression<Func<string>> committeeId, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> page = null, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sort = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> perPage = null, Expression<Func<string>> electionFull = null)
+        public IBodyWorkflowAction<CommitteeCandidateHistoryResponse, ApiConnectionActionConfiguration> CommitteeCommitteeIdCandidatesHistory(Expression<Func<string>> committeeId, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> page = null, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sort = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> perPage = null, Expression<Func<string>> electionFull = null)
         {
             var __workflow_committeeId = WorkflowExpression.Compile(committeeId, nameof(committeeId), required: true);
             var __workflow_sortHideNull = WorkflowExpression.Compile(sortHideNull, nameof(sortHideNull), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
             var __workflow_sortNullOnly = WorkflowExpression.Compile(sortNullOnly, nameof(sortNullOnly), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_electionFull = WorkflowExpression.Compile(electionFull, nameof(electionFull), required: false);
-            return new DeferredBodyAction<CommitteeCandidateHistoryResponse>(() =>
+            return new DeferredBodyAction<CommitteeCandidateHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/committee/{0}/candidates/history/", __workflow_committeeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
                 if (__workflow_electionFull != null)
                     callPayload.Queries["election_full"] = ExpressionConverter.Convert(__workflow_electionFull);
                 return new ApiConnectionAction<CommitteeCandidateHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
-        public IBodyWorkflowAction<OperationsLogResponse> OperationsLog(Expression<Func<string>> formType, Expression<Func<string>> reportYear, Expression<Func<string>> sort, Expression<Func<string>> maxReceiptDate, Expression<Func<string>> reportType, Expression<Func<string>> perPage, Expression<Func<string>> candidateCommitteeId, Expression<Func<string>> minReceiptDate, Expression<Func<string>> minCoverageEndDate, Expression<Func<string>> page, Expression<Func<string>> statusNum, Expression<Func<string>> minTransactionDataCompleteDate, Expression<Func<string>> maxCoverageEndDate, Expression<Func<string>> maxTransactionDataCompleteDate, Expression<Func<string>> beginningImageNumber, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> amendmentIndicator = null)
+        public IBodyWorkflowAction<OperationsLogResponse, ApiConnectionActionConfiguration> OperationsLog(Expression<Func<string>> formType, Expression<Func<string>> reportYear, Expression<Func<string>> sort, Expression<Func<string>> maxReceiptDate, Expression<Func<string>> reportType, Expression<Func<string>> perPage, Expression<Func<string>> candidateCommitteeId, Expression<Func<string>> minReceiptDate, Expression<Func<string>> minCoverageEndDate, Expression<Func<string>> page, Expression<Func<string>> statusNum, Expression<Func<string>> minTransactionDataCompleteDate, Expression<Func<string>> maxCoverageEndDate, Expression<Func<string>> maxTransactionDataCompleteDate, Expression<Func<string>> beginningImageNumber, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> amendmentIndicator = null)
         {
             var __workflow_formType = WorkflowExpression.Compile(formType, nameof(formType), required: true);
             var __workflow_reportYear = WorkflowExpression.Compile(reportYear, nameof(reportYear), required: true);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
             var __workflow_sortNullOnly = WorkflowExpression.Compile(sortNullOnly, nameof(sortNullOnly), required: false);
             var __workflow_sortHideNull = WorkflowExpression.Compile(sortHideNull, nameof(sortHideNull), required: false);
             var __workflow_amendmentIndicator = WorkflowExpression.Compile(amendmentIndicator, nameof(amendmentIndicator), required: false);
-            return new DeferredBodyAction<OperationsLogResponse>(() =>
+            return new DeferredBodyAction<OperationsLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/operations-log/";
                 var apiCallHttpMethod = "get";
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
                 callPayload.Queries["max_transaction_data_complete_date"] = ExpressionConverter.Convert(__workflow_maxTransactionDataCompleteDate);
                 callPayload.Queries["beginning_image_number"] = ExpressionConverter.Convert(__workflow_beginningImageNumber);
                 return new ApiConnectionAction<OperationsLogResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

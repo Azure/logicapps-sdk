@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
     public class ShowcaseworkshopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ShowcaseShareSendEmail(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShowcaseShareSendEmail(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
         {
             var __workflow_workshopUid = WorkflowExpression.Compile(workshopUid, nameof(workshopUid), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
                 var apiCallHttpMethod = "post";
@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger ShowcaseSharedPageView(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShowcaseSharedPageView(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
         {
             var __workflow_workshopUid = WorkflowExpression.Compile(workshopUid, nameof(workshopUid), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
                 var apiCallHttpMethod = "post";
@@ -58,13 +58,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
         {
             var __workflow_workshopUid = WorkflowExpression.Compile(workshopUid, nameof(workshopUid), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
                 var apiCallHttpMethod = "post";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 }

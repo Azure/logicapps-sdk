@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
     public class PropublicacampaignipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateSearchResponse> CandidateSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<CandidateSearchResponse, ApiConnectionActionConfiguration> CandidateSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
-            return new DeferredBodyAction<CandidateSearchResponse>(() =>
+            return new DeferredBodyAction<CandidateSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/search.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -24,127 +24,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
                 if (__workflow_query != null)
                     callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<CandidateSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateGetResponse> CandidateGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CandidateGetResponse, ApiConnectionActionConfiguration> CandidateGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<CandidateGetResponse>(() =>
+            return new DeferredBodyAction<CandidateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateTopFinancialResponse> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<categoryInput>> category)
+        public IBodyWorkflowAction<CandidateTopFinancialResponse, ApiConnectionActionConfiguration> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<categoryInput>> category)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
-            return new DeferredBodyAction<CandidateTopFinancialResponse>(() =>
+            return new DeferredBodyAction<CandidateTopFinancialResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/leaders/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_category.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateTopFinancialResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateStateResponse> CandidateState(Expression<Func<string>> cycle, Expression<Func<string>> state)
+        public IBodyWorkflowAction<CandidateStateResponse, ApiConnectionActionConfiguration> CandidateState(Expression<Func<string>> cycle, Expression<Func<string>> state)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
-            return new DeferredBodyAction<CandidateStateResponse>(() =>
+            return new DeferredBodyAction<CandidateStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/races/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateStateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateRecentResponse> CandidateRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CandidateRecentResponse, ApiConnectionActionConfiguration> CandidateRecent(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<CandidateRecentResponse>(() =>
+            return new DeferredBodyAction<CandidateRecentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/new.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidateRecentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateRecentResponse> ContributionLateRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<ContributionLateRecentResponse, ApiConnectionActionConfiguration> ContributionLateRecent(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<ContributionLateRecentResponse>(() =>
+            return new DeferredBodyAction<ContributionLateRecentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contributions/48hour.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateRecentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateCandidateResponse> ContributionLateCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ContributionLateCandidateResponse, ApiConnectionActionConfiguration> ContributionLateCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<ContributionLateCandidateResponse>(() =>
+            return new DeferredBodyAction<ContributionLateCandidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/{1}/48hour.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateCandidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateCommitteeResponse> ContributionLateCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ContributionLateCommitteeResponse, ApiConnectionActionConfiguration> ContributionLateCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<ContributionLateCommitteeResponse>(() =>
+            return new DeferredBodyAction<ContributionLateCommitteeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/48hour.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateCommitteeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateDateResponse> ContributionLateDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<ContributionLateDateResponse, ApiConnectionActionConfiguration> ContributionLateDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
-            return new DeferredBodyAction<ContributionLateDateResponse>(() =>
+            return new DeferredBodyAction<ContributionLateDateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contributions/48hour/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContributionLateDateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeSearchResponse> CommitteeSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<CommitteeSearchResponse, ApiConnectionActionConfiguration> CommitteeSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
-            return new DeferredBodyAction<CommitteeSearchResponse>(() =>
+            return new DeferredBodyAction<CommitteeSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/search.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -152,299 +152,299 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
                 if (__workflow_query != null)
                     callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<CommitteeSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CommitteeGetResponse, ApiConnectionActionConfiguration> CommitteeGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<CommitteeGetResponse>(() =>
+            return new DeferredBodyAction<CommitteeGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentResponse> CommitteeRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeRecentResponse, ApiConnectionActionConfiguration> CommitteeRecent(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<CommitteeRecentResponse>(() =>
+            return new DeferredBodyAction<CommitteeRecentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/new.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeRecentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentPACsResponse> CommitteeRecentPACs(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeRecentPACsResponse, ApiConnectionActionConfiguration> CommitteeRecentPACs(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<CommitteeRecentPACsResponse>(() =>
+            return new DeferredBodyAction<CommitteeRecentPACsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/superpacs.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeRecentPACsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeFilingResponse> CommitteeFiling(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CommitteeFilingResponse, ApiConnectionActionConfiguration> CommitteeFiling(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<CommitteeFilingResponse>(() =>
+            return new DeferredBodyAction<CommitteeFilingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/filings.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeFilingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeLeadershipResponse> CommitteeLeadership(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeLeadershipResponse, ApiConnectionActionConfiguration> CommitteeLeadership(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<CommitteeLeadershipResponse>(() =>
+            return new DeferredBodyAction<CommitteeLeadershipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/leadership.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommitteeLeadershipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingSearchResponse> FilingSearch(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<FilingSearchResponse, ApiConnectionActionConfiguration> FilingSearch(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<FilingSearchResponse>(() =>
+            return new DeferredBodyAction<FilingSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/search.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingDateResponse> FilingDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<FilingDateResponse, ApiConnectionActionConfiguration> FilingDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
-            return new DeferredBodyAction<FilingDateResponse>(() =>
+            return new DeferredBodyAction<FilingDateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingDateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingFormTypeResponse> FilingFormType(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<FilingFormTypeResponse, ApiConnectionActionConfiguration> FilingFormType(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<FilingFormTypeResponse>(() =>
+            return new DeferredBodyAction<FilingFormTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/types.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingFormTypeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingTypeResponse> FilingType(Expression<Func<string>> cycle, Expression<Func<string>> formTypeId)
+        public IBodyWorkflowAction<FilingTypeResponse, ApiConnectionActionConfiguration> FilingType(Expression<Func<string>> cycle, Expression<Func<string>> formTypeId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_formTypeId = WorkflowExpression.Compile(formTypeId, nameof(formTypeId), required: true);
-            return new DeferredBodyAction<FilingTypeResponse>(() =>
+            return new DeferredBodyAction<FilingTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/types/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_formTypeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingTypeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingSummaryResponse> FilingSummary(Expression<Func<string>> cycle, Expression<Func<string>> filingId)
+        public IBodyWorkflowAction<FilingSummaryResponse, ApiConnectionActionConfiguration> FilingSummary(Expression<Func<string>> cycle, Expression<Func<string>> filingId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_filingId = WorkflowExpression.Compile(filingId, nameof(filingId), required: true);
-            return new DeferredBodyAction<FilingSummaryResponse>(() =>
+            return new DeferredBodyAction<FilingSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/filings/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_filingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingSummaryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureRecentResponse> ExpenditureRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<ExpenditureRecentResponse, ApiConnectionActionConfiguration> ExpenditureRecent(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<ExpenditureRecentResponse>(() =>
+            return new DeferredBodyAction<ExpenditureRecentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureRecentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureDateResponse> ExpenditureDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<ExpenditureDateResponse, ApiConnectionActionConfiguration> ExpenditureDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
-            return new DeferredBodyAction<ExpenditureDateResponse>(() =>
+            return new DeferredBodyAction<ExpenditureDateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/independent_expenditures/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureDateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureCommitteeResponse> ExpenditureCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ExpenditureCommitteeResponse, ApiConnectionActionConfiguration> ExpenditureCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<ExpenditureCommitteeResponse>(() =>
+            return new DeferredBodyAction<ExpenditureCommitteeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureCommitteeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureCandidateResponse> ExpenditureCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ExpenditureCandidateResponse, ApiConnectionActionConfiguration> ExpenditureCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<ExpenditureCandidateResponse>(() =>
+            return new DeferredBodyAction<ExpenditureCandidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/candidates/{1}/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureCandidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditurePresResponse> ExpenditurePres(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<ExpenditurePresResponse, ApiConnectionActionConfiguration> ExpenditurePres(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<ExpenditurePresResponse>(() =>
+            return new DeferredBodyAction<ExpenditurePresResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/president/independent_expenditures.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditurePresResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureOfficeResponse> ExpenditureOffice(Expression<Func<string>> cycle, Expression<Func<string>> office)
+        public IBodyWorkflowAction<ExpenditureOfficeResponse, ApiConnectionActionConfiguration> ExpenditureOffice(Expression<Func<string>> cycle, Expression<Func<string>> office)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_office = WorkflowExpression.Compile(office, nameof(office), required: true);
-            return new DeferredBodyAction<ExpenditureOfficeResponse>(() =>
+            return new DeferredBodyAction<ExpenditureOfficeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/independent_expenditures/race_totals/{1}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_office.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureOfficeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> ExpenditureRaceCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse, ApiConnectionActionConfiguration> ExpenditureRaceCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<ExpenditureRaceCommitteeResponse>(() =>
+            return new DeferredBodyAction<ExpenditureRaceCommitteeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/independent_expenditures/races.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExpenditureRaceCommitteeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommunicationRecentResponse, ApiConnectionActionConfiguration> CommunicationRecent(Expression<Func<string>> cycle)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
-            return new DeferredBodyAction<CommunicationRecentResponse>(() =>
+            return new DeferredBodyAction<CommunicationRecentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/electioneering_communications.json", __workflow_cycle.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommunicationRecentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationCommitteeResponse> CommunicationCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CommunicationCommitteeResponse, ApiConnectionActionConfiguration> CommunicationCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<CommunicationCommitteeResponse>(() =>
+            return new DeferredBodyAction<CommunicationCommitteeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/electioneering_communications.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommunicationCommitteeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<CommunicationDateResponse, ApiConnectionActionConfiguration> CommunicationDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
-            return new DeferredBodyAction<CommunicationDateResponse>(() =>
+            return new DeferredBodyAction<CommunicationDateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/electioneering_communications/{1}/{2}/{3}.json", __workflow_cycle.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CommunicationDateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<BundlerCommitteeResponse> BundlerCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<BundlerCommitteeResponse, ApiConnectionActionConfiguration> BundlerCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
             var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
-            return new DeferredBodyAction<BundlerCommitteeResponse>(() =>
+            return new DeferredBodyAction<BundlerCommitteeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/committees/{1}/lobbyist_bundlers.json", __workflow_cycle.WithUrlEncoding(1), __workflow_fecId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BundlerCommitteeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

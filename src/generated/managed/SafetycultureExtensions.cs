@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class SafetycultureActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<AuditSearchResponse> SearchAudits(Expression<Func<orderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<archivedInput>> archived = null, Expression<Func<completedInput>> completed = null, Expression<Func<ownerInput>> owner = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<AuditSearchResponse, ApiConnectionActionConfiguration> SearchAudits(Expression<Func<orderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<archivedInput>> archived = null, Expression<Func<completedInput>> completed = null, Expression<Func<ownerInput>> owner = null, Expression<Func<int>> limit = null)
         {
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_modifiedAfter = WorkflowExpression.Compile(modifiedAfter, nameof(modifiedAfter), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_completed = WorkflowExpression.Compile(completed, nameof(completed), required: false);
             var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<AuditSearchResponse>(() =>
+            return new DeferredBodyAction<AuditSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/audits/search";
                 var apiCallHttpMethod = "get";
@@ -49,28 +49,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<AuditSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById(Expression<Func<string>> auditId)
+        public IBodyWorkflowAction<GetAuditByIdResponse, ApiConnectionActionConfiguration> GetAuditById(Expression<Func<string>> auditId)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
-            return new DeferredBodyAction<GetAuditByIdResponse>(() =>
+            return new DeferredBodyAction<GetAuditByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
+        public IBodyWorkflowAction<GetAuditByIdResponse, ApiConnectionActionConfiguration> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
-            return new DeferredBodyAction<GetAuditByIdResponse>(() =>
+            return new DeferredBodyAction<GetAuditByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -89,17 +89,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 }
 
                 return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
+        public IBodyWorkflowAction<InitExportResponse, ApiConnectionActionConfiguration> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_timezone = WorkflowExpression.Compile(timezone, nameof(timezone), required: false);
             var __workflow_exportProfile = WorkflowExpression.Compile(exportProfile, nameof(exportProfile), required: false);
-            return new DeferredBodyAction<InitExportResponse>(() =>
+            return new DeferredBodyAction<InitExportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/export", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -111,66 +111,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 if (__workflow_exportProfile != null)
                     callPayload.Queries["export_profile"] = ExpressionConverter.Convert(__workflow_exportProfile);
                 return new ApiConnectionAction<InitExportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
+        public IBodyWorkflowAction<ExportStatusResponse, ApiConnectionActionConfiguration> PollExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
-            return new DeferredBodyAction<ExportStatusResponse>(() =>
+            return new DeferredBodyAction<ExportStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/exports/{1}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExportStatusResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<string> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/exports/{1}/{2}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1), __workflow_filename.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink(Expression<Func<string>> auditId)
+        public IBodyWorkflowAction<GetAuditLinkResponse, ApiConnectionActionConfiguration> GetWebReportLink(Expression<Func<string>> auditId)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
-            return new DeferredBodyAction<GetAuditLinkResponse>(() =>
+            return new DeferredBodyAction<GetAuditLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/web_report_link", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAuditLinkResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IWorkflowAction DeleteWebReportLink(Expression<Func<string>> auditId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteWebReportLink(Expression<Func<string>> auditId)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/web_report_link", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIDS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
+        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIDS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
         {
             var __workflow_searchActionsBodyauditIDS = WorkflowExpression.Compile(searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
             var __workflow_searchActionsBodyassignees = WorkflowExpression.Compile(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_searchActionsBodymodifiedbeforeDate = WorkflowExpression.Compile(searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
             var __workflow_searchActionsBodydueafterDate = WorkflowExpression.Compile(searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
             var __workflow_searchActionsBodyduebeforeDate = WorkflowExpression.Compile(searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
-            return new DeferredBodyAction<ActionsSearchResponse>(() =>
+            return new DeferredBodyAction<ActionsSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/search";
                 var apiCallHttpMethod = "post";
@@ -265,11 +265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 }
 
                 return new ApiConnectionAction<ActionsSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action> CreateAction(Expression<Func<string>> createActionBodyauditID = null, Expression<Func<string>> createActionBodyitemID = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> createActionBodyauditID = null, Expression<Func<string>> createActionBodyitemID = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
         {
             var __workflow_createActionBodyauditID = WorkflowExpression.Compile(createActionBodyauditID, nameof(createActionBodyauditID), required: false);
             var __workflow_createActionBodyitemID = WorkflowExpression.Compile(createActionBodyitemID, nameof(createActionBodyitemID), required: false);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_createActionBodystatus = WorkflowExpression.Compile(createActionBodystatus, nameof(createActionBodystatus), required: false);
             var __workflow_createActionBodydueAt = WorkflowExpression.Compile(createActionBodydueAt, nameof(createActionBodydueAt), required: false);
             var __workflow_createActionBodyassignees = WorkflowExpression.Compile(createActionBodyassignees, nameof(createActionBodyassignees), required: false);
-            return new DeferredBodyAction<Action>(() =>
+            return new DeferredBodyAction<Action, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions";
                 var apiCallHttpMethod = "post";
@@ -340,24 +340,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 }
 
                 return new ApiConnectionAction<Action>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<DeleteActionResponse> DeleteAction(Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<DeleteActionResponse, ApiConnectionActionConfiguration> DeleteAction(Expression<Func<string>> actionId)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            return new DeferredBodyAction<DeleteActionResponse>(() =>
+            return new DeferredBodyAction<DeleteActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteActionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_updateActionBodytitle = WorkflowExpression.Compile(updateActionBodytitle, nameof(updateActionBodytitle), required: false);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
             var __workflow_updateActionBodystatus = WorkflowExpression.Compile(updateActionBodystatus, nameof(updateActionBodystatus), required: false);
             var __workflow_updateActionBodydueAt = WorkflowExpression.Compile(updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
             var __workflow_updateActionBodyassignees = WorkflowExpression.Compile(updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
-            return new DeferredBodyAction<Action>(() =>
+            return new DeferredBodyAction<Action, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -415,30 +415,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 }
 
                 return new ApiConnectionAction<Action>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<string> GetMedia(Expression<Func<string>> auditId, Expression<Func<string>> mediaId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetMedia(Expression<Func<string>> auditId, Expression<Func<string>> mediaId)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_mediaId = WorkflowExpression.Compile(mediaId, nameof(mediaId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/media/{1}", __workflow_auditId.WithUrlEncoding(1), __workflow_mediaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
+        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_formatexportFormat = WorkflowExpression.Compile(formatexportFormat, nameof(formatexportFormat), required: false);
             var __workflow_formatpreferenceID = WorkflowExpression.Compile(formatpreferenceID, nameof(formatpreferenceID), required: false);
-            return new DeferredBodyAction<InitInspectionExportResponse>(() =>
+            return new DeferredBodyAction<InitInspectionExportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/report", __workflow_auditId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -473,21 +473,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 }
 
                 return new ApiConnectionAction<InitInspectionExportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
+        public IBodyWorkflowAction<InspectionExportStatusResponse, ApiConnectionActionConfiguration> PollInspectionExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
-            return new DeferredBodyAction<InspectionExportStatusResponse>(() =>
+            return new DeferredBodyAction<InspectionExportStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/report/{1}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InspectionExportStatusResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

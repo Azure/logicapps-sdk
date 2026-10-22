@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
     public class ShipstationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<StoresResponseItem[]> StoresGet()
+        public IBodyWorkflowAction<StoresResponseItem[], ApiConnectionActionConfiguration> StoresGet()
         {
             var apiCallPath = "/stores";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<MarketplacesResponseItem[]> StoresMarketplacesGet()
+        public IBodyWorkflowAction<MarketplacesResponseItem[], ApiConnectionActionConfiguration> StoresMarketplacesGet()
         {
             var apiCallPath = "/stores/marketplaces";
             var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
+        public IBodyWorkflowAction<RefreshStoreResponse, ApiConnectionActionConfiguration> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
         {
             var __workflow_bodystoreId = WorkflowExpression.Compile(bodystoreId, nameof(bodystoreId), required: false);
             var __workflow_bodyrefreshDate = WorkflowExpression.Compile(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
-            return new DeferredBodyAction<RefreshStoreResponse>(() =>
+            return new DeferredBodyAction<RefreshStoreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stores/refreshstore";
                 var apiCallHttpMethod = "post";
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
                 }
 
                 return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

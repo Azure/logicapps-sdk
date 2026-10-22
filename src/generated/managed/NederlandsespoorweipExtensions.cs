@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
     public class NederlandsespoorweipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        public IBodyWorkflowAction<GetArrivalsResponse> GetArrivals(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<int>> maxJourneys = null)
+        public IBodyWorkflowAction<GetArrivalsResponse, ApiConnectionActionConfiguration> GetArrivals(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<int>> maxJourneys = null)
         {
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             var __workflow_station = WorkflowExpression.Compile(station, nameof(station), required: false);
             var __workflow_uicCode = WorkflowExpression.Compile(uicCode, nameof(uicCode), required: false);
             var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
             var __workflow_maxJourneys = WorkflowExpression.Compile(maxJourneys, nameof(maxJourneys), required: false);
-            return new DeferredBodyAction<GetArrivalsResponse>(() =>
+            return new DeferredBodyAction<GetArrivalsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/arrivals";
                 var apiCallHttpMethod = "get";
@@ -35,18 +35,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
                 if (__workflow_maxJourneys != null)
                     callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
                 return new ApiConnectionAction<GetArrivalsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        public IBodyWorkflowAction<GetDeparturesResponse> GetDepartures(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<string>> maxJourneys = null)
+        public IBodyWorkflowAction<GetDeparturesResponse, ApiConnectionActionConfiguration> GetDepartures(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<string>> maxJourneys = null)
         {
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             var __workflow_station = WorkflowExpression.Compile(station, nameof(station), required: false);
             var __workflow_uicCode = WorkflowExpression.Compile(uicCode, nameof(uicCode), required: false);
             var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
             var __workflow_maxJourneys = WorkflowExpression.Compile(maxJourneys, nameof(maxJourneys), required: false);
-            return new DeferredBodyAction<GetDeparturesResponse>(() =>
+            return new DeferredBodyAction<GetDeparturesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/departures";
                 var apiCallHttpMethod = "get";
@@ -62,24 +62,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
                 if (__workflow_maxJourneys != null)
                     callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
                 return new ApiConnectionAction<GetDeparturesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions(Expression<Func<string>> stationCode)
+        public IBodyWorkflowAction<GetStationDisruptionsResponseItem[], ApiConnectionActionConfiguration> GetStationDisruptions(Expression<Func<string>> stationCode)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
-            return new DeferredBodyAction<GetStationDisruptionsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetStationDisruptionsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/disruptions/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        public IBodyWorkflowAction<GetStationsResponse> GetStations()
+        public IBodyWorkflowAction<GetStationsResponse, ApiConnectionActionConfiguration> GetStations()
         {
             var apiCallPath = "/api/v2/stations";
             var apiCallHttpMethod = "get";

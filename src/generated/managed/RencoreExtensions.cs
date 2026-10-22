@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class RencoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        public IWorkflowAction ApiAnalyze(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiAnalyze(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
         {
             var __workflow_analysisRequestfile = WorkflowExpression.Compile(analysisRequestfile, nameof(analysisRequestfile), required: true);
             var __workflow_analysisRequestfileName = WorkflowExpression.Compile(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
             var __workflow_analysisRequestlicense = WorkflowExpression.Compile(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/analyze";
                 var apiCallHttpMethod = "post";
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

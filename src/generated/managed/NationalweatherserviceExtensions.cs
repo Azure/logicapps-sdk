@@ -12,35 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
     public class NationalweatherserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Tafs(Expression<Func<string>> stationId)
+        public IBodyWorkflowAction<ProblemDetail, ApiConnectionActionConfiguration> Tafs(Expression<Func<string>> stationId)
         {
             var __workflow_stationId = WorkflowExpression.Compile(stationId, nameof(stationId), required: true);
-            return new DeferredBodyAction<ProblemDetail>(() =>
+            return new DeferredBodyAction<ProblemDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/tafs", __workflow_stationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProblemDetail>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Taf(Expression<Func<string>> stationId, Expression<Func<string>> date, Expression<Func<string>> time)
+        public IBodyWorkflowAction<ProblemDetail, ApiConnectionActionConfiguration> Taf(Expression<Func<string>> stationId, Expression<Func<string>> date, Expression<Func<string>> time)
         {
             var __workflow_stationId = WorkflowExpression.Compile(stationId, nameof(stationId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_time = WorkflowExpression.Compile(time, nameof(time), required: true);
-            return new DeferredBodyAction<ProblemDetail>(() =>
+            return new DeferredBodyAction<ProblemDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stations/{0}/tafs/{1}/{2}", __workflow_stationId.WithUrlEncoding(1), __workflow_date.WithUrlEncoding(1), __workflow_time.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProblemDetail>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarQueue(Expression<Func<string>> host, Expression<Func<int>> limit = null, Expression<Func<string>> arrived = null, Expression<Func<string>> created = null, Expression<Func<string>> published = null, Expression<Func<string>> station = null, Expression<Func<string>> type = null, Expression<Func<string>> feed = null, Expression<Func<int>> resolution = null)
+        public IBodyWorkflowAction<ProblemDetail, ApiConnectionActionConfiguration> RadarQueue(Expression<Func<string>> host, Expression<Func<int>> limit = null, Expression<Func<string>> arrived = null, Expression<Func<string>> created = null, Expression<Func<string>> published = null, Expression<Func<string>> station = null, Expression<Func<string>> type = null, Expression<Func<string>> feed = null, Expression<Func<int>> resolution = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: false);
             var __workflow_resolution = WorkflowExpression.Compile(resolution, nameof(resolution), required: false);
-            return new DeferredBodyAction<ProblemDetail>(() =>
+            return new DeferredBodyAction<ProblemDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/radar/queues/{0}", __workflow_host.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -73,16 +73,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
                 if (__workflow_resolution != null)
                     callPayload.Queries["resolution"] = ExpressionConverter.Convert(__workflow_resolution);
                 return new ApiConnectionAction<ProblemDetail>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarProfiler(Expression<Func<string>> stationId, Expression<Func<string>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<ProblemDetail, ApiConnectionActionConfiguration> RadarProfiler(Expression<Func<string>> stationId, Expression<Func<string>> time = null, Expression<Func<string>> interval = null)
         {
             var __workflow_stationId = WorkflowExpression.Compile(stationId, nameof(stationId), required: true);
             var __workflow_time = WorkflowExpression.Compile(time, nameof(time), required: false);
             var __workflow_interval = WorkflowExpression.Compile(interval, nameof(interval), required: false);
-            return new DeferredBodyAction<ProblemDetail>(() =>
+            return new DeferredBodyAction<ProblemDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/radar/profilers/{0}", __workflow_stationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
                 if (__workflow_interval != null)
                     callPayload.Queries["interval"] = ExpressionConverter.Convert(__workflow_interval);
                 return new ApiConnectionAction<ProblemDetail>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,58 +12,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
     public class ConfluenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<string>> cloudId)
+        public IBodyWorkflowAction<GetSpacesResponse, ApiConnectionActionConfiguration> GetSpaces(Expression<Func<string>> cloudId)
         {
             var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
-            return new DeferredBodyAction<GetSpacesResponse>(() =>
+            return new DeferredBodyAction<GetSpacesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", __workflow_cloudId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpacesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPages(Expression<Func<string>> cloudId)
+        public IBodyWorkflowAction<GetPagesResponse, ApiConnectionActionConfiguration> GetPages(Expression<Func<string>> cloudId)
         {
             var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
-            return new DeferredBodyAction<GetPagesResponse>(() =>
+            return new DeferredBodyAction<GetPagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", __workflow_cloudId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPagesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
+        public IBodyWorkflowAction<GetPagesResponse, ApiConnectionActionConfiguration> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
         {
             var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
-            return new DeferredBodyAction<GetPagesResponse>(() =>
+            return new DeferredBodyAction<GetPagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", __workflow_cloudId.WithUrlEncoding(1), __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPagesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
+        public IBodyWorkflowAction<GetPagesResponse, ApiConnectionActionConfiguration> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
         {
             var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
-            return new DeferredBodyAction<GetPagesResponse>(() =>
+            return new DeferredBodyAction<GetPagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", __workflow_cloudId.WithUrlEncoding(1), __workflow_pageId.WithUrlEncoding(1), __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPagesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

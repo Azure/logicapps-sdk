@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
     public class AftershipipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetUserActivatedCouriersResponse> GetUserActivatedCouriers()
+        public IBodyWorkflowAction<GetUserActivatedCouriersResponse, ApiConnectionActionConfiguration> GetUserActivatedCouriers()
         {
             var apiCallPath = "/couriers";
             var apiCallHttpMethod = "get";
@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<DetectCourierResponse> DetectCourier(Expression<Func<string>> bodytrackingtrackingNumber = null)
+        public IBodyWorkflowAction<DetectCourierResponse, ApiConnectionActionConfiguration> DetectCourier(Expression<Func<string>> bodytrackingtrackingNumber = null)
         {
             var __workflow_bodytrackingtrackingNumber = WorkflowExpression.Compile(bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
-            return new DeferredBodyAction<DetectCourierResponse>(() =>
+            return new DeferredBodyAction<DetectCourierResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/couriers/detect";
                 var apiCallHttpMethod = "post";
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<DetectCourierResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetAllCouriersResponse> GetAllCouriers()
+        public IBodyWorkflowAction<GetAllCouriersResponse, ApiConnectionActionConfiguration> GetAllCouriers()
         {
             var apiCallPath = "/couriers/all";
             var apiCallHttpMethod = "get";
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetTrackingsResponse> GetTrackings()
+        public IBodyWorkflowAction<GetTrackingsResponse, ApiConnectionActionConfiguration> GetTrackings()
         {
             var apiCallPath = "/trackings";
             var apiCallHttpMethod = "get";
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<CreateTrackingResponse> CreateTracking(Expression<Func<string>> bodytrackingslug = null, Expression<Func<string>> bodytrackingtrackingNumber = null, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<JToken[]>> bodytrackingsmses = null, Expression<Func<JToken[]>> bodytrackingemails = null, Expression<Func<string>> bodytrackingorderId = null, Expression<Func<string>> bodytrackingorderIdPath = null, Expression<Func<string>> bodytrackingcustomFieldsproductName = null, Expression<Func<string>> bodytrackingcustomFieldsproductPrice = null, Expression<Func<string>> bodytrackinglanguage = null, Expression<Func<string>> bodytrackingorderPromisedDeliveryDate = null, Expression<Func<string>> bodytrackingdeliveryType = null, Expression<Func<string>> bodytrackingpickupLocation = null, Expression<Func<string>> bodytrackingpickupNote = null)
+        public IBodyWorkflowAction<CreateTrackingResponse, ApiConnectionActionConfiguration> CreateTracking(Expression<Func<string>> bodytrackingslug = null, Expression<Func<string>> bodytrackingtrackingNumber = null, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<JToken[]>> bodytrackingsmses = null, Expression<Func<JToken[]>> bodytrackingemails = null, Expression<Func<string>> bodytrackingorderId = null, Expression<Func<string>> bodytrackingorderIdPath = null, Expression<Func<string>> bodytrackingcustomFieldsproductName = null, Expression<Func<string>> bodytrackingcustomFieldsproductPrice = null, Expression<Func<string>> bodytrackinglanguage = null, Expression<Func<string>> bodytrackingorderPromisedDeliveryDate = null, Expression<Func<string>> bodytrackingdeliveryType = null, Expression<Func<string>> bodytrackingpickupLocation = null, Expression<Func<string>> bodytrackingpickupNote = null)
         {
             var __workflow_bodytrackingslug = WorkflowExpression.Compile(bodytrackingslug, nameof(bodytrackingslug), required: false);
             var __workflow_bodytrackingtrackingNumber = WorkflowExpression.Compile(bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
             var __workflow_bodytrackingdeliveryType = WorkflowExpression.Compile(bodytrackingdeliveryType, nameof(bodytrackingdeliveryType), required: false);
             var __workflow_bodytrackingpickupLocation = WorkflowExpression.Compile(bodytrackingpickupLocation, nameof(bodytrackingpickupLocation), required: false);
             var __workflow_bodytrackingpickupNote = WorkflowExpression.Compile(bodytrackingpickupNote, nameof(bodytrackingpickupNote), required: false);
-            return new DeferredBodyAction<CreateTrackingResponse>(() =>
+            return new DeferredBodyAction<CreateTrackingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/trackings";
                 var apiCallHttpMethod = "post";
@@ -207,47 +207,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<CreateTrackingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetATrackingResponse> GetATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<GetATrackingResponse, ApiConnectionActionConfiguration> GetATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<GetATrackingResponse>(() =>
+            return new DeferredBodyAction<GetATrackingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetATrackingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<DeleteATrackingResponse> DeleteATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<DeleteATrackingResponse, ApiConnectionActionConfiguration> DeleteATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<DeleteATrackingResponse>(() =>
+            return new DeferredBodyAction<DeleteATrackingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<DeleteATrackingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<UpdateATrackingResponse> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<string>> bodytrackingnote = null)
+        public IBodyWorkflowAction<UpdateATrackingResponse, ApiConnectionActionConfiguration> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<string>> bodytrackingnote = null)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             var __workflow_bodytrackingtitle = WorkflowExpression.Compile(bodytrackingtitle, nameof(bodytrackingtitle), required: false);
             var __workflow_bodytrackingnote = WorkflowExpression.Compile(bodytrackingnote, nameof(bodytrackingnote), required: false);
-            return new DeferredBodyAction<UpdateATrackingResponse>(() =>
+            return new DeferredBodyAction<UpdateATrackingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -281,31 +281,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<UpdateATrackingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> RetrackAnExpiredTracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse, ApiConnectionActionConfiguration> RetrackAnExpiredTracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<RetrackAnExpiredTrackingResponse>(() =>
+            return new DeferredBodyAction<RetrackAnExpiredTrackingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}/retrack", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrackAnExpiredTrackingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<bodyreasonInput>> bodyreason = null)
+        public IBodyWorkflowAction<MarkTrackingAsCompletedResponse, ApiConnectionActionConfiguration> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<bodyreasonInput>> bodyreason = null)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            return new DeferredBodyAction<MarkTrackingAsCompletedResponse>(() =>
+            return new DeferredBodyAction<MarkTrackingAsCompletedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trackings/{0}/{1}/mark-as-completed", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -325,30 +325,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<MarkTrackingAsCompletedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetTrackingNotificationResponse> GetTrackingNotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<GetTrackingNotificationResponse, ApiConnectionActionConfiguration> GetTrackingNotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<GetTrackingNotificationResponse>(() =>
+            return new DeferredBodyAction<GetTrackingNotificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetTrackingNotificationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<AddANotificationResponse> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<AddANotificationResponse, ApiConnectionActionConfiguration> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<AddANotificationResponse>(() =>
+            return new DeferredBodyAction<AddANotificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}/{1}/add", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -386,15 +386,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<AddANotificationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<RemoveANotificationResponse> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<RemoveANotificationResponse, ApiConnectionActionConfiguration> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<RemoveANotificationResponse>(() =>
+            return new DeferredBodyAction<RemoveANotificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}/{1}/remove", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -432,22 +432,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
                 }
 
                 return new ApiConnectionAction<RemoveANotificationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetLastCheckpointResponse> GetLastCheckpoint(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<GetLastCheckpointResponse, ApiConnectionActionConfiguration> GetLastCheckpoint(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
-            return new DeferredBodyAction<GetLastCheckpointResponse>(() =>
+            return new DeferredBodyAction<GetLastCheckpointResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/last_checkpoint/{0}/{1}", __workflow_slug.WithUrlEncoding(1), __workflow_trackingNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetLastCheckpointResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

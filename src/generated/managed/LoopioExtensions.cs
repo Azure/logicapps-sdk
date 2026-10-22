@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopio
     public class LoopioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loopio")]
-        public IBodyWorkflowAction<ListStacksResponse> ListStacks(Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<ListStacksResponse, ApiConnectionActionConfiguration> ListStacks(Expression<Func<string>> fields = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<ListStacksResponse>(() =>
+            return new DeferredBodyAction<ListStacksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stacks";
                 var apiCallHttpMethod = "get";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopio
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<ListStacksResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

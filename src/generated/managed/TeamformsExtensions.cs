@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
     public class TeamformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<Team[]> Teams()
+        public IBodyWorkflowAction<Team[], ApiConnectionActionConfiguration> Teams()
         {
             var apiCallPath = "/teams";
             var apiCallHttpMethod = "get";
@@ -21,25 +21,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<FormMeta[]> Forms(Expression<Func<string>> groupId)
+        public IBodyWorkflowAction<FormMeta[], ApiConnectionActionConfiguration> Forms(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyAction<FormMeta[]>(() =>
+            return new DeferredBodyAction<FormMeta[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/forms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 return new ApiConnectionAction<FormMeta[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<FormSchema> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
+        public IBodyWorkflowAction<FormSchema, ApiConnectionActionConfiguration> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyAction<FormSchema>(() =>
+            return new DeferredBodyAction<FormSchema, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/form";
                 var apiCallHttpMethod = "get";
@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
                 return new ApiConnectionAction<FormSchema>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<File[]> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<File[], ApiConnectionActionConfiguration> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
-            return new DeferredBodyAction<File[]>(() =>
+            return new DeferredBodyAction<File[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/files";
                 var apiCallHttpMethod = "get";
@@ -63,15 +63,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<File[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<File> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<File, ApiConnectionActionConfiguration> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
-            return new DeferredBodyAction<File>(() =>
+            return new DeferredBodyAction<File, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf";
                 var apiCallHttpMethod = "get";
@@ -79,15 +79,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<File>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<string> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf-content";
                 var apiCallHttpMethod = "get";
@@ -95,16 +95,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<JToken> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/response";
                 var apiCallHttpMethod = "get";
@@ -113,19 +113,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
                 callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: false);
             var __workflow_triggers = WorkflowExpression.Compile(triggers, nameof(triggers), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/response-subscription";
                 var apiCallHttpMethod = "post";
@@ -147,14 +147,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/response-deletion-subscription";
                 var apiCallHttpMethod = "post";
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

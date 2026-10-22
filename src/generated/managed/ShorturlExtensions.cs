@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     public class ShorturlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
         {
             var __workflow_longUrl = WorkflowExpression.Compile(longUrl, nameof(longUrl), required: true);
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
             var __workflow_expiryDate = WorkflowExpression.Compile(expiryDate, nameof(expiryDate), required: false);
             var __workflow_redirectionCode = WorkflowExpression.Compile(redirectionCode, nameof(redirectionCode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/shorturl/create";
                 var apiCallHttpMethod = "post";
@@ -47,17 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 if (__workflow_redirectionCode != null)
                     callPayload.Queries["redirectionCode"] = ExpressionConverter.Convert(__workflow_redirectionCode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
         {
             var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: true);
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_licenseKey = WorkflowExpression.Compile(licenseKey, nameof(licenseKey), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/shorturl/delete";
                 var apiCallHttpMethod = "delete";
@@ -67,17 +67,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
                 callPayload.Queries["licenseKey"] = ExpressionConverter.Convert(__workflow_licenseKey);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls(Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlGetAllShortUrls(Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
         {
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_licenseKey = WorkflowExpression.Compile(licenseKey, nameof(licenseKey), required: true);
             var __workflow_generatedBy = WorkflowExpression.Compile(generatedBy, nameof(generatedBy), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/shorturl/getall";
                 var apiCallHttpMethod = "post";
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 if (__workflow_generatedBy != null)
                     callPayload.Queries["generatedBy"] = ExpressionConverter.Convert(__workflow_generatedBy);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
         {
             var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: true);
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
             var __workflow_maxUses = WorkflowExpression.Compile(maxUses, nameof(maxUses), required: false);
             var __workflow_expiryDate = WorkflowExpression.Compile(expiryDate, nameof(expiryDate), required: false);
             var __workflow_redirectionCode = WorkflowExpression.Compile(redirectionCode, nameof(redirectionCode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/shorturl/modify";
                 var apiCallHttpMethod = "patch";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
                 if (__workflow_redirectionCode != null)
                     callPayload.Queries["redirectionCode"] = ExpressionConverter.Convert(__workflow_redirectionCode);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

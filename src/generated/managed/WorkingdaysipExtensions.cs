@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
     public class WorkingdaysipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddWorkingDaysResponse> AddWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<AddWorkingDaysResponse, ApiConnectionActionConfiguration> AddWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_startTemplate = WorkflowExpression.Compile(startTemplate, nameof(startTemplate), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<AddWorkingDaysResponse>(() =>
+            return new DeferredBodyAction<AddWorkingDaysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/add_working_days";
                 var apiCallHttpMethod = "get";
@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWorkingDaysResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> Analyze(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_startTemplate = WorkflowExpression.Compile(startTemplate, nameof(startTemplate), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            return new DeferredBodyAction<AnalyzeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/analyse";
                 var apiCallHttpMethod = "get";
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<GetInfoDayResponse> GetInfoDay(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> date, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<GetInfoDayResponse, ApiConnectionActionConfiguration> GetInfoDay(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> date, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_weekend = WorkflowExpression.Compile(weekend, nameof(weekend), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<GetInfoDayResponse>(() =>
+            return new DeferredBodyAction<GetInfoDayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/get_info_day";
                 var apiCallHttpMethod = "get";
@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetInfoDayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<ListNonWorkingDaysResponse> ListNonWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<ListNonWorkingDaysResponse, ApiConnectionActionConfiguration> ListNonWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_weekend = WorkflowExpression.Compile(weekend, nameof(weekend), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<ListNonWorkingDaysResponse>(() =>
+            return new DeferredBodyAction<ListNonWorkingDaysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/list_non_working_days";
                 var apiCallHttpMethod = "get";
@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<ListNonWorkingDaysResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddWorkingHoursResponse> AddWorkingHours(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> startTime, Expression<Func<string>> incrementTime, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<AddWorkingHoursResponse, ApiConnectionActionConfiguration> AddWorkingHours(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> startTime, Expression<Func<string>> incrementTime, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_startTemplate = WorkflowExpression.Compile(startTemplate, nameof(startTemplate), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<AddWorkingHoursResponse>(() =>
+            return new DeferredBodyAction<AddWorkingHoursResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/add_working_hours";
                 var apiCallHttpMethod = "get";
@@ -212,11 +212,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWorkingHoursResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddPublicHolidaysResponse> AddPublicHolidays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<AddPublicHolidaysResponse, ApiConnectionActionConfiguration> AddPublicHolidays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_startTemplate = WorkflowExpression.Compile(startTemplate, nameof(startTemplate), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<AddPublicHolidaysResponse>(() =>
+            return new DeferredBodyAction<AddPublicHolidaysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/add_public_holidays";
                 var apiCallHttpMethod = "get";
@@ -256,11 +256,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddPublicHolidaysResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddWeekendDaysResponse> AddWeekendDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        public IBodyWorkflowAction<AddWeekendDaysResponse, ApiConnectionActionConfiguration> AddWeekendDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
             var __workflow_startTemplate = WorkflowExpression.Compile(startTemplate, nameof(startTemplate), required: false);
             var __workflow_useCustomConfiguration = WorkflowExpression.Compile(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: false);
-            return new DeferredBodyAction<AddWeekendDaysResponse>(() =>
+            return new DeferredBodyAction<AddWeekendDaysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/add_weekend_days";
                 var apiCallHttpMethod = "get";
@@ -300,14 +300,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                     callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWeekendDaysResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddressToConfigurationResponse> AddressToConfiguration(Expression<Func<string>> address)
+        public IBodyWorkflowAction<AddressToConfigurationResponse, ApiConnectionActionConfiguration> AddressToConfiguration(Expression<Func<string>> address)
         {
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
-            return new DeferredBodyAction<AddressToConfigurationResponse>(() =>
+            return new DeferredBodyAction<AddressToConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.2/address_to_configuration";
                 var apiCallHttpMethod = "get";
@@ -315,11 +315,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
                 callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddressToConfigurationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<QuotaResponse> Quota()
+        public IBodyWorkflowAction<QuotaResponse, ApiConnectionActionConfiguration> Quota()
         {
             var apiCallPath = "/1.2/quota";
             var apiCallHttpMethod = "get";

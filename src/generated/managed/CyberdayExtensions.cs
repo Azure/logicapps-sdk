@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
     public class CyberdayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems()
+        public IBodyWorkflowAction<GetSystemsResponseItem[], ApiConnectionActionConfiguration> GetSystems()
         {
             var apiCallPath = "/api/external/systems/topics/";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IBodyWorkflowAction<AddSystemResponse> AddSystem(Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<AddSystemResponse, ApiConnectionActionConfiguration> AddSystem(Expression<Func<string>> bodytitle = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            return new DeferredBodyAction<AddSystemResponse>(() =>
+            return new DeferredBodyAction<AddSystemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/systems/topics/";
                 var apiCallHttpMethod = "post";
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
                 }
 
                 return new ApiConnectionAction<AddSystemResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IWorkflowAction AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodyfieldssystemNickname = WorkflowExpression.Compile(bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
             var __workflow_bodyfieldsdataSystemPurpose = WorkflowExpression.Compile(bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
             var __workflow_bodyfieldslinkedSystemProviders = WorkflowExpression.Compile(bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
             var __workflow_bodyfieldspartnerResponsibilityDetails = WorkflowExpression.Compile(bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/external/systems/topics/advanced/";
                 var apiCallHttpMethod = "post";
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

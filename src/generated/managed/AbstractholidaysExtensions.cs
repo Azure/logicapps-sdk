@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
     public class AbstractholidaysActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractholidays")]
-        public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year = null, Expression<Func<string>> month = null, Expression<Func<string>> day = null)
+        public IBodyWorkflowAction<ListHolidaysResponseItem[], ApiConnectionActionConfiguration> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year = null, Expression<Func<string>> month = null, Expression<Func<string>> day = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: false);
-            return new DeferredBodyAction<ListHolidaysResponseItem[]>(() =>
+            return new DeferredBodyAction<ListHolidaysResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
                 if (__workflow_day != null)
                     callPayload.Queries["day"] = ExpressionConverter.Convert(__workflow_day);
                 return new ApiConnectionAction<ListHolidaysResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
     public class NavisphereActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction CreateOrder(Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateOrder(Expression<Func<string>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/orders";
                 var apiCallHttpMethod = "post";
@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction RatingRequest(Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RatingRequest(Expression<Func<string>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/quotes";
                 var apiCallHttpMethod = "post";
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction EventsCallback(Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EventsCallback(Expression<Func<string>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events/callback/here";
                 var apiCallHttpMethod = "post";
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction GenerateLabel(Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GenerateLabel(Expression<Func<string>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/labels";
                 var apiCallHttpMethod = "post";
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

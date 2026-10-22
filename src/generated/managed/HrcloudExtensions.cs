@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
     public class HrcloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IBodyWorkflowAction<GetEmployeeResponseItem[]> GetEmployee(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetEmployeeResponseItem[], ApiConnectionActionConfiguration> GetEmployee(Expression<Func<string>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetEmployeeResponseItem[]>(() =>
+            return new DeferredBodyAction<GetEmployeeResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
                 var apiCallHttpMethod = "get";
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetEmployeeResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IWorkflowAction AddEmployee(Expression<Func<string>> bodyxEmail, Expression<Func<string>> bodyxFirstName, Expression<Func<string>> bodyxLastName, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<string>> bodyxEmail, Expression<Func<string>> bodyxFirstName, Expression<Func<string>> bodyxLastName, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
         {
             var __workflow_bodyxEmail = WorkflowExpression.Compile(bodyxEmail, nameof(bodyxEmail), required: true);
             var __workflow_bodyxFirstName = WorkflowExpression.Compile(bodyxFirstName, nameof(bodyxFirstName), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var __workflow_bodyxPositionLookup = WorkflowExpression.Compile(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
             var __workflow_bodyxDivisionLookup = WorkflowExpression.Compile(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
             var __workflow_bodyxDepartmentLookup = WorkflowExpression.Compile(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
                 var apiCallHttpMethod = "post";
@@ -153,11 +153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IWorkflowAction UpdateEmployee(Expression<Func<string>> bodyid, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxEmail = null, Expression<Func<string>> bodyxFirstName = null, Expression<Func<string>> bodyxLastName = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<string>> bodyid, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxEmail = null, Expression<Func<string>> bodyxFirstName = null, Expression<Func<string>> bodyxLastName = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyxAddress1 = WorkflowExpression.Compile(bodyxAddress1, nameof(bodyxAddress1), required: false);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
             var __workflow_bodyxPositionLookup = WorkflowExpression.Compile(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
             var __workflow_bodyxDivisionLookup = WorkflowExpression.Compile(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
             var __workflow_bodyxDepartmentLookup = WorkflowExpression.Compile(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
                 var apiCallHttpMethod = "put";
@@ -287,14 +287,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IBodyWorkflowAction<GetDepartmentResponseItem[]> GetDepartment(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetDepartmentResponseItem[], ApiConnectionActionConfiguration> GetDepartment(Expression<Func<string>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetDepartmentResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDepartmentResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xDepartment";
                 var apiCallHttpMethod = "get";
@@ -303,14 +303,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetDepartmentResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IBodyWorkflowAction<GetLocationResponseItem[]> GetLocation(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetLocationResponseItem[], ApiConnectionActionConfiguration> GetLocation(Expression<Func<string>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetLocationResponseItem[]>(() =>
+            return new DeferredBodyAction<GetLocationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xLocation";
                 var apiCallHttpMethod = "get";
@@ -319,14 +319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetLocationResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IBodyWorkflowAction<GetPositionResponseItem[]> GetPosition(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetPositionResponseItem[], ApiConnectionActionConfiguration> GetPosition(Expression<Func<string>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetPositionResponseItem[]>(() =>
+            return new DeferredBodyAction<GetPositionResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xPosition";
                 var apiCallHttpMethod = "get";
@@ -335,14 +335,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetPositionResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IBodyWorkflowAction<GetDivisionResponseItem[]> GetDivision(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetDivisionResponseItem[], ApiConnectionActionConfiguration> GetDivision(Expression<Func<string>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetDivisionResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDivisionResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xDivision";
                 var apiCallHttpMethod = "get";
@@ -351,14 +351,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetDivisionResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> GetEmploymentStatus(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetEmploymentStatusResponseItem[], ApiConnectionActionConfiguration> GetEmploymentStatus(Expression<Func<string>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetEmploymentStatusResponseItem[]>(() =>
+            return new DeferredBodyAction<GetEmploymentStatusResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmploymentStatus";
                 var apiCallHttpMethod = "get";
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetEmploymentStatusResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

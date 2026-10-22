@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
     public class PlanfulActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<GetRulesResponseItem[]> GetRules()
+        public IBodyWorkflowAction<GetRulesResponseItem[], ApiConnectionActionConfiguration> GetRules()
         {
             var apiCallPath = "/financemodel/data/rules";
             var apiCallHttpMethod = "get";
@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<FileLoadResponse> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
+        public IBodyWorkflowAction<FileLoadResponse, ApiConnectionActionConfiguration> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
         {
             var __workflow_columnDelimiter = WorkflowExpression.Compile(columnDelimiter, nameof(columnDelimiter), required: true);
             var __workflow_dataLoadRuleName = WorkflowExpression.Compile(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
-            return new DeferredBodyAction<FileLoadResponse>(() =>
+            return new DeferredBodyAction<FileLoadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/financemodel/data/transferfile";
                 var apiCallHttpMethod = "post";
@@ -35,16 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
                     callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(__workflow_dataLoadRuleName);
                 callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(__workflow_columnDelimiter);
                 return new ApiConnectionAction<FileLoadResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetGLdataResponseItem[], ApiConnectionActionConfiguration> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
         {
             var __workflow_scenario = WorkflowExpression.Compile(scenario, nameof(scenario), required: true);
             var __workflow_fiscalYear = WorkflowExpression.Compile(fiscalYear, nameof(fiscalYear), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<GetGLdataResponseItem[]>(() =>
+            return new DeferredBodyAction<GetGLdataResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/financemodel/data/extract/gldata";
                 var apiCallHttpMethod = "get";
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
                 if (__workflow_filter != null)
                     callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

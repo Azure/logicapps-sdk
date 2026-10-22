@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
     public class PushoveripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
         {
             var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
             var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             var __workflow_bodyurlTitle = WorkflowExpression.Compile(bodyurlTitle, nameof(bodyurlTitle), required: false);
-            return new DeferredBodyAction<SendMessageResponse>(() =>
+            return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/messages.json";
                 var apiCallHttpMethod = "post";
@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<GetSoundsResponse> GetSounds()
+        public IBodyWorkflowAction<GetSoundsResponse, ApiConnectionActionConfiguration> GetSounds()
         {
             var apiCallPath = "/1/sounds.json";
             var apiCallHttpMethod = "get";
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
+        public IBodyWorkflowAction<ValidateKeyResponse, ApiConnectionActionConfiguration> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
         {
             var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
             var __workflow_bodydevice = WorkflowExpression.Compile(bodydevice, nameof(bodydevice), required: false);
-            return new DeferredBodyAction<ValidateKeyResponse>(() =>
+            return new DeferredBodyAction<ValidateKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/users/validate.json";
                 var apiCallHttpMethod = "post";
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 }
 
                 return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<LimitsResponse> Limits()
+        public IBodyWorkflowAction<LimitsResponse, ApiConnectionActionConfiguration> Limits()
         {
             var apiCallPath = "/1/apps/limits.json";
             var apiCallHttpMethod = "get";

@@ -7,7 +7,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>
-    public class ApiConnectionAction : WorkflowActionBase
+    public class ApiConnectionAction :
+        WorkflowActionBase,
+        IWorkflowAction<ApiConnectionActionConfiguration>
     {
         /// <summary>
         /// API connection action input.
@@ -19,10 +21,20 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="apiConnectionActionInput">The API connection action input.</param>
         internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
-            : base(WorkflowActionSettingProfiles.RetrySecureTracked)
+            : this(apiConnectionActionInput, new ApiConnectionActionConfiguration())
+        {
+        }
+
+        private ApiConnectionAction(
+            ApiConnectionActionInput apiConnectionActionInput,
+            ApiConnectionActionConfiguration configuration)
+            : base(configuration)
         {
             this.apiConnectionActionInput = apiConnectionActionInput;
+            this.Configuration = configuration;
         }
+
+        public ApiConnectionActionConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the action definition for this API connection action.
@@ -32,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        protected internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {
@@ -46,7 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents an API connection action with a strongly-typed output body.
     /// </summary>
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
-    public class ApiConnectionAction<T> : ApiConnectionAction, IBodyWorkflowAction<T>
+    public class ApiConnectionAction<T> :
+        ApiConnectionAction,
+        IBodyWorkflowAction<T, ApiConnectionActionConfiguration>
     {
         internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
             : base(apiConnectionActionInput)

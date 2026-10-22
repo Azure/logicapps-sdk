@@ -2,6 +2,9 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
+    using System.Linq;
+    using Microsoft.CodeAnalysis;
+    using Microsoft.CodeAnalysis.CSharp;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
@@ -87,7 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Equal(
                 new[] { "inputs", "outputs" },
                 definition.Definition.Actions["Compose"].RuntimeConfiguration.SecureData.Properties);
-            Assert.Throws<NotSupportedException>(() => compose.WithSecureOutputs());
         }
 
         [Fact]
@@ -118,10 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .WithConcurrency(1);
             Assert.Throws<InvalidOperationException>(
                 () => WorkflowFactory.CreateStatelessWorkflow("Stateless", concurrentRequest));
-
-            var compose = WorkflowActions.BuiltIn.Compose(() => "value");
-            Assert.Throws<NotSupportedException>(
-                () => compose.WithRetryPolicy(RetryPolicy.None()));
 
             var loopTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             loopTrigger.Then(WorkflowActions.BuiltIn.Control.ForEach(
@@ -173,7 +171,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                     entityName: () => "orders",
                     message: () => new SendMessageInputMessageType { ContentData = "order" })
                 .WithRetryPolicy(RetryPolicy.None())
-                .WithSecureInputsAndOutputs()
+                .WithSecureInputs()
+                .WithSecureOutputs()
                 .WithName("ServiceProvider");
             trigger.Then(managed).Then(serviceProvider);
 
@@ -205,6 +204,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Equal(2, generated.RuntimeConfiguration.Concurrency.Runs);
             Assert.Equal(4, generated.RuntimeConfiguration.Concurrency.MaximumWaitingRuns);
             Assert.Equal("service-bus", generated.Correlation.ClientTrackingId);
+        }
+
+        [Fact]
+        public void UnsupportedSettingsAreRejectedAtCompileTime()
+        {
+            const string Source = """
+                using Microsoft.Azure.Workflows.Sdk;
+                public sealed class Workflow
+                {
+                    public void Build()
+                    {
+                        var compose = WorkflowActions.BuiltIn.Compose(() => "value");
+                        compose.WithRetryPolicy(RetryPolicy.None());
+                        compose.WithSecureOutputs();
+                    }
+                }
+                """;
+            var compilation = CSharpCompilation.Create(
+                "UnsupportedSettings",
+                [CSharpSyntaxTree.ParseText(Source)],
+                ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES"))
+                    .Split(Path.PathSeparator)
+                    .Append(typeof(WorkflowActions).Assembly.Location)
+                    .Append(typeof(JToken).Assembly.Location)
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .Select(path => MetadataReference.CreateFromFile(path)),
+                new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+            var errors = compilation.GetDiagnostics()
+                .Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)
+                .ToArray();
+
+            Assert.Equal(2, errors.Length);
+            Assert.All(errors, error => Assert.Equal("CS0311", error.Id));
         }
     }
 }

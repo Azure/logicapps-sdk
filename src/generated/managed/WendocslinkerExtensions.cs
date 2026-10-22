@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
     public class WendocslinkerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishDocxResponse> PublishDocx(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
+        public IBodyWorkflowAction<PublishDocxResponse, ApiConnectionActionConfiguration> PublishDocx(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
             var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
             var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
             var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
             var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
-            return new DeferredBodyAction<PublishDocxResponse>(() =>
+            return new DeferredBodyAction<PublishDocxResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/docx";
                 var apiCallHttpMethod = "post";
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
                 }
 
                 return new ApiConnectionAction<PublishDocxResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishPDFResponse> PublishPDF(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
+        public IBodyWorkflowAction<PublishPDFResponse, ApiConnectionActionConfiguration> PublishPDF(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
             var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
             var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
             var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
             var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
-            return new DeferredBodyAction<PublishPDFResponse>(() =>
+            return new DeferredBodyAction<PublishPDFResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/pdf";
                 var apiCallHttpMethod = "post";
@@ -144,11 +144,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
                 }
 
                 return new ApiConnectionAction<PublishPDFResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishHtmlResponse> PublishHtml(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
+        public IBodyWorkflowAction<PublishHtmlResponse, ApiConnectionActionConfiguration> PublishHtml(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
             var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
             var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
             var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
             var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
             var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
-            return new DeferredBodyAction<PublishHtmlResponse>(() =>
+            return new DeferredBodyAction<PublishHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/html";
                 var apiCallHttpMethod = "post";
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
                 }
 
                 return new ApiConnectionAction<PublishHtmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
     public class SendmodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> messagemessagetext, Expression<Func<string[]>> messagerecipients, Expression<Func<string>> contentType = null, Expression<Func<string>> messagesenderid = null, Expression<Func<string>> messagecustomerid = null)
+        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<string>> messagemessagetext, Expression<Func<string[]>> messagerecipients, Expression<Func<string>> contentType = null, Expression<Func<string>> messagesenderid = null, Expression<Func<string>> messagecustomerid = null)
         {
             var __workflow_messagemessagetext = WorkflowExpression.Compile(messagemessagetext, nameof(messagemessagetext), required: true);
             var __workflow_messagerecipients = WorkflowExpression.Compile(messagerecipients, nameof(messagerecipients), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_messagesenderid = WorkflowExpression.Compile(messagesenderid, nameof(messagesenderid), required: false);
             var __workflow_messagecustomerid = WorkflowExpression.Compile(messagecustomerid, nameof(messagecustomerid), required: false);
-            return new DeferredBodyAction<SendSMSResponse>(() =>
+            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/send";
                 var apiCallHttpMethod = "post";
@@ -51,17 +51,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 }
 
                 return new ApiConnectionAction<SendSMSResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<OptoutCustomerResponse> OptoutCustomer(Expression<Func<string>> contentType, Expression<Func<string>> messagemobilenumber, Expression<Func<string>> messageoptoutresponse = null, Expression<Func<string>> messagereturnedresponse = null)
+        public IBodyWorkflowAction<OptoutCustomerResponse, ApiConnectionActionConfiguration> OptoutCustomer(Expression<Func<string>> contentType, Expression<Func<string>> messagemobilenumber, Expression<Func<string>> messageoptoutresponse = null, Expression<Func<string>> messagereturnedresponse = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_messagemobilenumber = WorkflowExpression.Compile(messagemobilenumber, nameof(messagemobilenumber), required: true);
             var __workflow_messageoptoutresponse = WorkflowExpression.Compile(messageoptoutresponse, nameof(messageoptoutresponse), required: false);
             var __workflow_messagereturnedresponse = WorkflowExpression.Compile(messagereturnedresponse, nameof(messagereturnedresponse), required: false);
-            return new DeferredBodyAction<OptoutCustomerResponse>(() =>
+            return new DeferredBodyAction<OptoutCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/optout";
                 var apiCallHttpMethod = "post";
@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 }
 
                 return new ApiConnectionAction<OptoutCustomerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<ImportCustomerResponse> ImportCustomer(Expression<Func<string>> importdatagroup, Expression<Func<string>> importdatamobilenumber, Expression<Func<string>> contentType = null, Expression<Func<string>> importdatafirstname = null, Expression<Func<string>> importdatasurname = null, Expression<Func<string>> importdataaddress = null, Expression<Func<string>> importdatatown = null, Expression<Func<string>> importdatacounty = null, Expression<Func<string>> importdataemail = null, Expression<Func<string>> importdatacustom1 = null, Expression<Func<string>> importdatacustom2 = null, Expression<Func<string>> importdatabusinessname = null, Expression<Func<string>> importdatadateofbirth = null)
+        public IBodyWorkflowAction<ImportCustomerResponse, ApiConnectionActionConfiguration> ImportCustomer(Expression<Func<string>> importdatagroup, Expression<Func<string>> importdatamobilenumber, Expression<Func<string>> contentType = null, Expression<Func<string>> importdatafirstname = null, Expression<Func<string>> importdatasurname = null, Expression<Func<string>> importdataaddress = null, Expression<Func<string>> importdatatown = null, Expression<Func<string>> importdatacounty = null, Expression<Func<string>> importdataemail = null, Expression<Func<string>> importdatacustom1 = null, Expression<Func<string>> importdatacustom2 = null, Expression<Func<string>> importdatabusinessname = null, Expression<Func<string>> importdatadateofbirth = null)
         {
             var __workflow_importdatagroup = WorkflowExpression.Compile(importdatagroup, nameof(importdatagroup), required: true);
             var __workflow_importdatamobilenumber = WorkflowExpression.Compile(importdatamobilenumber, nameof(importdatamobilenumber), required: true);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
             var __workflow_importdatacustom2 = WorkflowExpression.Compile(importdatacustom2, nameof(importdatacustom2), required: false);
             var __workflow_importdatabusinessname = WorkflowExpression.Compile(importdatabusinessname, nameof(importdatabusinessname), required: false);
             var __workflow_importdatadateofbirth = WorkflowExpression.Compile(importdatadateofbirth, nameof(importdatadateofbirth), required: false);
-            return new DeferredBodyAction<ImportCustomerResponse>(() =>
+            return new DeferredBodyAction<ImportCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/import";
                 var apiCallHttpMethod = "post";
@@ -188,14 +188,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 }
 
                 return new ApiConnectionAction<ImportCustomerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<CheckCreditsResponse> CheckCredits(Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<CheckCreditsResponse, ApiConnectionActionConfiguration> CheckCredits(Expression<Func<string>> contentType = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<CheckCreditsResponse>(() =>
+            return new DeferredBodyAction<CheckCreditsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/credits";
                 var apiCallHttpMethod = "get";
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction<CheckCreditsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

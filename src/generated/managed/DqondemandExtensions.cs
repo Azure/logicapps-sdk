@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     public class DqondemandActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsage> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate)
+        public IBodyWorkflowAction<GetUsage, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
-            return new DeferredBodyAction<GetUsage>(() =>
+            return new DeferredBodyAction<GetUsage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Account/Usage";
                 var apiCallHttpMethod = "get";
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["StartDate"] = ExpressionConverter.Convert(__workflow_startDate);
                 callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<GetUsage>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetPricesOutput> PricingGet()
+        public IBodyWorkflowAction<GetPricesOutput, ApiConnectionActionConfiguration> PricingGet()
         {
             var apiCallPath = "/Account/Prices";
             var apiCallHttpMethod = "get";
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalInt> BalanceGet()
+        public IBodyWorkflowAction<DQGlobalInt, ApiConnectionActionConfiguration> BalanceGet()
         {
             var apiCallPath = "/Account/Balance";
             var apiCallHttpMethod = "get";
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> CaseSingular(Expression<Func<string>> input, Expression<Func<caseTypeInput>> caseType, Expression<Func<languageInput>> language)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> CaseSingular(Expression<Func<string>> input, Expression<Func<caseTypeInput>> caseType, Expression<Func<languageInput>> language)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_caseType = WorkflowExpression.Compile(caseType, nameof(caseType), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Case";
                 var apiCallHttpMethod = "get";
@@ -60,16 +60,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["CaseType"] = ExpressionConverter.Convert(__workflow_caseType);
                 callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ClassifyGetResponse> ClassifyGet(Expression<Func<string>> input, Expression<Func<categoriesInput>> categories, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<ClassifyGetResponse, ApiConnectionActionConfiguration> ClassifyGet(Expression<Func<string>> input, Expression<Func<categoriesInput>> categories, Expression<Func<languageInput>> language = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
-            return new DeferredBodyAction<ClassifyGetResponse>(() =>
+            return new DeferredBodyAction<ClassifyGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Classify";
                 var apiCallHttpMethod = "get";
@@ -80,16 +80,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_language != null)
                     callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<ClassifyGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalFloat> CompareGet(Expression<Func<string>> input1, Expression<Func<string>> input2, Expression<Func<comparisonAlgorithmInput>> comparisonAlgorithm)
+        public IBodyWorkflowAction<DQGlobalFloat, ApiConnectionActionConfiguration> CompareGet(Expression<Func<string>> input1, Expression<Func<string>> input2, Expression<Func<comparisonAlgorithmInput>> comparisonAlgorithm)
         {
             var __workflow_input1 = WorkflowExpression.Compile(input1, nameof(input1), required: true);
             var __workflow_input2 = WorkflowExpression.Compile(input2, nameof(input2), required: true);
             var __workflow_comparisonAlgorithm = WorkflowExpression.Compile(comparisonAlgorithm, nameof(comparisonAlgorithm), required: true);
-            return new DeferredBodyAction<DQGlobalFloat>(() =>
+            return new DeferredBodyAction<DQGlobalFloat, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Compare";
                 var apiCallHttpMethod = "get";
@@ -98,16 +98,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input2"] = ExpressionConverter.Convert(__workflow_input2);
                 callPayload.Queries["ComparisonAlgorithm"] = ExpressionConverter.Convert(__workflow_comparisonAlgorithm);
                 return new ApiConnectionAction<DQGlobalFloat>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> EmailCongruenceGet(Expression<Func<string>> email, Expression<Func<string>> firstName, Expression<Func<string>> lastName)
+        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> EmailCongruenceGet(Expression<Func<string>> email, Expression<Func<string>> firstName, Expression<Func<string>> lastName)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
-            return new DeferredBodyAction<CongruenceResultSingle>(() =>
+            return new DeferredBodyAction<CongruenceResultSingle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Congruence/Email";
                 var apiCallHttpMethod = "get";
@@ -116,16 +116,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);
                 callPayload.Queries["LastName"] = ExpressionConverter.Convert(__workflow_lastName);
                 return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> CountryCongruenceGet(Expression<Func<string>> input, Expression<Func<string>> country, Expression<Func<actionTypeInput>> actionType)
+        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> CountryCongruenceGet(Expression<Func<string>> input, Expression<Func<string>> country, Expression<Func<actionTypeInput>> actionType)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
-            return new DeferredBodyAction<CongruenceResultSingle>(() =>
+            return new DeferredBodyAction<CongruenceResultSingle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Congruence/Country";
                 var apiCallHttpMethod = "get";
@@ -134,16 +134,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["ActionType"] = ExpressionConverter.Convert(__workflow_actionType);
                 return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> SalutationCongruenceGet(Expression<Func<string>> salutation, Expression<Func<string>> firstName, Expression<Func<languageInput>> language)
+        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> SalutationCongruenceGet(Expression<Func<string>> salutation, Expression<Func<string>> firstName, Expression<Func<languageInput>> language)
         {
             var __workflow_salutation = WorkflowExpression.Compile(salutation, nameof(salutation), required: true);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
-            return new DeferredBodyAction<CongruenceResultSingle>(() =>
+            return new DeferredBodyAction<CongruenceResultSingle, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Congruence/Salutation";
                 var apiCallHttpMethod = "get";
@@ -152,43 +152,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);
                 callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveGenderGetResponse> DeriveGenderGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DeriveGenderGetResponse, ApiConnectionActionConfiguration> DeriveGenderGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DeriveGenderGetResponse>(() =>
+            return new DeferredBodyAction<DeriveGenderGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Derive/Gender";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DeriveGenderGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveCityGetResponse> DeriveCityGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DeriveCityGetResponse, ApiConnectionActionConfiguration> DeriveCityGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DeriveCityGetResponse>(() =>
+            return new DeferredBodyAction<DeriveCityGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Derive/CountryFromCity";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DeriveCityGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DerivePostCodeGetResponse> DerivePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DerivePostCodeGetResponse, ApiConnectionActionConfiguration> DerivePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DerivePostCodeGetResponse>(() =>
+            return new DeferredBodyAction<DerivePostCodeGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Derive/FromPostalCode";
                 var apiCallHttpMethod = "get";
@@ -196,25 +196,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DerivePostCodeGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveEmailGetResponse> DeriveEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DeriveEmailGetResponse, ApiConnectionActionConfiguration> DeriveEmailGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DeriveEmailGetResponse>(() =>
+            return new DeferredBodyAction<DeriveEmailGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Derive/EmailType";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DeriveEmailGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveISOGetResponse> DeriveISOGet(Expression<Func<string>> email = null, Expression<Func<string>> url = null, Expression<Func<string>> phone = null, Expression<Func<string>> country = null, Expression<Func<string>> city = null, Expression<Func<int>> threshold = null, Expression<Func<bool>> onlyReturnBest = null, Expression<Func<bool>> defaultToCountry = null)
+        public IBodyWorkflowAction<DeriveISOGetResponse, ApiConnectionActionConfiguration> DeriveISOGet(Expression<Func<string>> email = null, Expression<Func<string>> url = null, Expression<Func<string>> phone = null, Expression<Func<string>> country = null, Expression<Func<string>> city = null, Expression<Func<int>> threshold = null, Expression<Func<bool>> onlyReturnBest = null, Expression<Func<bool>> defaultToCountry = null)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: false);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: false);
             var __workflow_onlyReturnBest = WorkflowExpression.Compile(onlyReturnBest, nameof(onlyReturnBest), required: false);
             var __workflow_defaultToCountry = WorkflowExpression.Compile(defaultToCountry, nameof(defaultToCountry), required: false);
-            return new DeferredBodyAction<DeriveISOGetResponse>(() =>
+            return new DeferredBodyAction<DeriveISOGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DeriveISO";
                 var apiCallHttpMethod = "get";
@@ -249,29 +249,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_defaultToCountry != null)
                     callPayload.Queries["DefaultToCountry"] = ExpressionConverter.Convert(__workflow_defaultToCountry);
                 return new ApiConnectionAction<DeriveISOGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatEmailGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/Email";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/PostCode";
                 var apiCallHttpMethod = "get";
@@ -279,15 +279,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatE164Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatE164Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/TelephoneE164";
                 var apiCallHttpMethod = "get";
@@ -295,15 +295,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatInternationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatInternationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/TelephoneInternational";
                 var apiCallHttpMethod = "get";
@@ -311,15 +311,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatNationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatNationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/TelephoneNational";
                 var apiCallHttpMethod = "get";
@@ -327,15 +327,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatRFC3966Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatRFC3966Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/TelephoneRFC3966";
                 var apiCallHttpMethod = "get";
@@ -343,15 +343,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatURLGet(Expression<Func<string>> input, Expression<Func<string>> uRLPrefix)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> FormatURLGet(Expression<Func<string>> input, Expression<Func<string>> uRLPrefix)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_uRLPrefix = WorkflowExpression.Compile(uRLPrefix, nameof(uRLPrefix), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Format/UrlAddress";
                 var apiCallHttpMethod = "get";
@@ -359,30 +359,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["URLPrefix"] = ExpressionConverter.Convert(__workflow_uRLPrefix);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GeneratePatternResponse> GeneratePattern(Expression<Func<inputInputItem[]>> input = null)
+        public IBodyWorkflowAction<GeneratePatternResponse, ApiConnectionActionConfiguration> GeneratePattern(Expression<Func<inputInputItem[]>> input = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
-            return new DeferredBodyAction<GeneratePatternResponse>(() =>
+            return new DeferredBodyAction<GeneratePatternResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> GenerateTokenGet(Expression<Func<string>> input, Expression<Func<generateAlgorithmTypeInput>> generateAlgorithmType, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> GenerateTokenGet(Expression<Func<string>> input, Expression<Func<generateAlgorithmTypeInput>> generateAlgorithmType, Expression<Func<languageInput>> language = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_generateAlgorithmType = WorkflowExpression.Compile(generateAlgorithmType, nameof(generateAlgorithmType), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GenerateToken";
                 var apiCallHttpMethod = "get";
@@ -393,15 +393,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_language != null)
                     callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParsePhoneGetResponse> ParsePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<ParsePhoneGetResponse, ApiConnectionActionConfiguration> ParsePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<ParsePhoneGetResponse>(() =>
+            return new DeferredBodyAction<ParsePhoneGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Parse/PhoneNumber";
                 var apiCallHttpMethod = "get";
@@ -409,59 +409,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<ParsePhoneGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParseEmailGetResponse> ParseEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ParseEmailGetResponse, ApiConnectionActionConfiguration> ParseEmailGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<ParseEmailGetResponse>(() =>
+            return new DeferredBodyAction<ParseEmailGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Parse/Email";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ParseEmailGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParseURLGetResponse> ParseURLGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ParseURLGetResponse, ApiConnectionActionConfiguration> ParseURLGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<ParseURLGetResponse>(() =>
+            return new DeferredBodyAction<ParseURLGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Parse/URL";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ParseURLGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ScoringResponse> Scoring(Expression<Func<inputInputItem2[]>> input = null)
+        public IBodyWorkflowAction<ScoringResponse, ApiConnectionActionConfiguration> Scoring(Expression<Func<inputInputItem2[]>> input = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
-            return new DeferredBodyAction<ScoringResponse>(() =>
+            return new DeferredBodyAction<ScoringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Scoring";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<ScoringResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> TransformGet(Expression<Func<string>> input, Expression<Func<entityTypeInput>> entityType, Expression<Func<operationTypeInput>> operationType, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> TransformGet(Expression<Func<string>> input, Expression<Func<entityTypeInput>> entityType, Expression<Func<operationTypeInput>> operationType, Expression<Func<languageInput>> language = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Transform";
                 var apiCallHttpMethod = "get";
@@ -473,43 +473,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_language != null)
                     callPayload.Queries["Language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform(Expression<Func<inputInputItem22[]>> input = null)
+        public IBodyWorkflowAction<SequenceTransformResponse, ApiConnectionActionConfiguration> SequenceTransform(Expression<Func<inputInputItem22[]>> input = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
-            return new DeferredBodyAction<SequenceTransformResponse>(() =>
+            return new DeferredBodyAction<SequenceTransformResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SequenceTransform";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> ValidateEmailGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Validate/Email";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidatePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> ValidatePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Validate/PostCode";
                 var apiCallHttpMethod = "get";
@@ -517,29 +517,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateURLGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> ValidateURLGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Validate/UrlAddress";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidatePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> ValidatePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Validate/Telephone";
                 var apiCallHttpMethod = "get";
@@ -547,15 +547,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateDateTimeGet(Expression<Func<string>> input, Expression<Func<string>> dateTimeFormat)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> ValidateDateTimeGet(Expression<Func<string>> input, Expression<Func<string>> dateTimeFormat)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_dateTimeFormat = WorkflowExpression.Compile(dateTimeFormat, nameof(dateTimeFormat), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Validate/DateTime";
                 var apiCallHttpMethod = "get";
@@ -563,29 +563,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["DateTimeFormat"] = ExpressionConverter.Convert(__workflow_dateTimeFormat);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusEmailGetResponse> ValidatePlusEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ValidatePlusEmailGetResponse, ApiConnectionActionConfiguration> ValidatePlusEmailGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<ValidatePlusEmailGetResponse>(() =>
+            return new DeferredBodyAction<ValidatePlusEmailGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ValidatePlus/Email";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ValidatePlusEmailGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> ValidatePlusPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse, ApiConnectionActionConfiguration> ValidatePlusPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<ValidatePlusPostCodeGetResponse>(() =>
+            return new DeferredBodyAction<ValidatePlusPostCodeGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ValidatePlus/PostCode";
                 var apiCallHttpMethod = "get";
@@ -593,25 +593,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusURLGetResponse> ValidatePlusURLGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ValidatePlusURLGetResponse, ApiConnectionActionConfiguration> ValidatePlusURLGet(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<ValidatePlusURLGetResponse>(() =>
+            return new DeferredBodyAction<ValidatePlusURLGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ValidatePlus/UrlAddress";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<ValidatePlusURLGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet(Expression<Func<providerInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
+        public IBodyWorkflowAction<VerifyAddressGetResponse, ApiConnectionActionConfiguration> VerifyAddressGet(Expression<Func<providerInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<VerifyAddressGetResponse>(() =>
+            return new DeferredBodyAction<VerifyAddressGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Verify/Address/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -642,16 +642,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 callPayload.Queries["Geocode"] = ExpressionConverter.Convert(__workflow_geocode);
                 return new ApiConnectionAction<VerifyAddressGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressFindResponse, ApiConnectionActionConfiguration> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<SearchAddressFindResponse>(() =>
+            return new DeferredBodyAction<SearchAddressFindResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Search/Address/Find/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -659,16 +659,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SearchAddressFindResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressRetrieveResponse, ApiConnectionActionConfiguration> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<SearchAddressRetrieveResponse>(() =>
+            return new DeferredBodyAction<SearchAddressRetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Search/Address/Retrieve/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -676,11 +676,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SearchAddressRetrieveResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressDeceasedResponse, ApiConnectionActionConfiguration> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_line3 = WorkflowExpression.Compile(line3, nameof(line3), required: false);
             var __workflow_town = WorkflowExpression.Compile(town, nameof(town), required: false);
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
-            return new DeferredBodyAction<SuppressDeceasedResponse>(() =>
+            return new DeferredBodyAction<SuppressDeceasedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Address/Deceased/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -716,11 +716,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Postcode"] = ExpressionConverter.Convert(__workflow_postcode);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SuppressDeceasedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressGoneAwayResponse, ApiConnectionActionConfiguration> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_line3 = WorkflowExpression.Compile(line3, nameof(line3), required: false);
             var __workflow_town = WorkflowExpression.Compile(town, nameof(town), required: false);
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
-            return new DeferredBodyAction<SuppressGoneAwayResponse>(() =>
+            return new DeferredBodyAction<SuppressGoneAwayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Address/GoneAway/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -756,11 +756,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Postcode"] = ExpressionConverter.Convert(__workflow_postcode);
                 callPayload.Queries["ISO2"] = ExpressionConverter.Convert(__workflow_iSO2);
                 return new ApiConnectionAction<SuppressGoneAwayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressRelocatedResponse, ApiConnectionActionConfiguration> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
             var __workflow_line3 = WorkflowExpression.Compile(line3, nameof(line3), required: false);
             var __workflow_town = WorkflowExpression.Compile(town, nameof(town), required: false);
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
-            return new DeferredBodyAction<SuppressRelocatedResponse>(() =>
+            return new DeferredBodyAction<SuppressRelocatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Address/Relocated/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -796,16 +796,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Postcode"] = ExpressionConverter.Convert(__workflow_postcode);
                 callPayload.Queries["ISO2"] = ExpressionConverter.Convert(__workflow_iSO2);
                 return new ApiConnectionAction<SuppressRelocatedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhonePersonalResponse, ApiConnectionActionConfiguration> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<SuppressPhonePersonalResponse>(() =>
+            return new DeferredBodyAction<SuppressPhonePersonalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Phone/Personal/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -813,16 +813,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SuppressPhonePersonalResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhoneCorporateResponse, ApiConnectionActionConfiguration> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<SuppressPhoneCorporateResponse>(() =>
+            return new DeferredBodyAction<SuppressPhoneCorporateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Suppress/Phone/Corporate/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -830,31 +830,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<SuppressPhoneCorporateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
+        public IBodyWorkflowAction<AuthenticateEmailGetResponse, ApiConnectionActionConfiguration> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredBodyAction<AuthenticateEmailGetResponse>(() =>
+            return new DeferredBodyAction<AuthenticateEmailGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Authenticate/Email/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<AuthenticateEmailGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<AuthenticatePhoneGetResponse, ApiConnectionActionConfiguration> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
-            return new DeferredBodyAction<AuthenticatePhoneGetResponse>(() =>
+            return new DeferredBodyAction<AuthenticatePhoneGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Authenticate/Phone/{0}", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -862,128 +862,128 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Phone"] = ExpressionConverter.Convert(__workflow_phone);
                 callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(__workflow_countryIdentifier);
                 return new ApiConnectionAction<AuthenticatePhoneGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllUpper(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsAllUpper(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsAllUpper";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllLower(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsAllLower(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsAllLower";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsMixedCase(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsMixedCase(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsMixedCase";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAlphaNumeric(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsAlphaNumeric(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsAlphaNumeric";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsNumeric(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsNumeric(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsNumeric";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO4217(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsISO4217(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO2(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsISO2(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsISO2Code";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO3(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtIsISO3(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/IsISO3Code";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveLeading(Expression<Func<string>> input, Expression<Func<string>> valToRemove, Expression<Func<bool>> leaveOneAtStart)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveLeading(Expression<Func<string>> input, Expression<Func<string>> valToRemove, Expression<Func<bool>> leaveOneAtStart)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_valToRemove = WorkflowExpression.Compile(valToRemove, nameof(valToRemove), required: true);
             var __workflow_leaveOneAtStart = WorkflowExpression.Compile(leaveOneAtStart, nameof(leaveOneAtStart), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/RemoveLeading";
                 var apiCallHttpMethod = "get";
@@ -992,15 +992,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["ValToRemove"] = ExpressionConverter.Convert(__workflow_valToRemove);
                 callPayload.Queries["LeaveOneAtStart"] = ExpressionConverter.Convert(__workflow_leaveOneAtStart);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveChars(Expression<Func<string>> input, Expression<Func<characterTypeInput>> characterType)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveChars(Expression<Func<string>> input, Expression<Func<characterTypeInput>> characterType)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_characterType = WorkflowExpression.Compile(characterType, nameof(characterType), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/RemoveCharacters";
                 var apiCallHttpMethod = "get";
@@ -1008,30 +1008,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["characterType"] = ExpressionConverter.Convert(__workflow_characterType);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveSingleWords(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveSingleWords(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceRepeatingText(Expression<Func<string>> input, Expression<Func<string>> repeatingValue, Expression<Func<string>> replacement)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtReplaceRepeatingText(Expression<Func<string>> input, Expression<Func<string>> repeatingValue, Expression<Func<string>> replacement)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_repeatingValue = WorkflowExpression.Compile(repeatingValue, nameof(repeatingValue), required: true);
             var __workflow_replacement = WorkflowExpression.Compile(replacement, nameof(replacement), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
                 var apiCallHttpMethod = "get";
@@ -1040,16 +1040,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["RepeatingValue"] = ExpressionConverter.Convert(__workflow_repeatingValue);
                 callPayload.Queries["Replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceEndsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtReplaceEndsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_stringToReplace = WorkflowExpression.Compile(stringToReplace, nameof(stringToReplace), required: true);
             var __workflow_replacement = WorkflowExpression.Compile(replacement, nameof(replacement), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
                 var apiCallHttpMethod = "get";
@@ -1058,16 +1058,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(__workflow_stringToReplace);
                 callPayload.Queries["replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceStartsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtReplaceStartsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_stringToReplace = WorkflowExpression.Compile(stringToReplace, nameof(stringToReplace), required: true);
             var __workflow_replacement = WorkflowExpression.Compile(replacement, nameof(replacement), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
                 var apiCallHttpMethod = "get";
@@ -1076,114 +1076,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(__workflow_stringToReplace);
                 callPayload.Queries["replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtStringToBinary(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtStringToBinary(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/StringToBinary";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtBinaryToString(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtBinaryToString(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/BinaryToString";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtStringToHex(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtStringToHex(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/StringToHex";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtHexToString(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtHexToString(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/HexToString";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReverse(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtReverse(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/Reverse";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtNormWhiteSpace(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtNormWhiteSpace(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtNormPhone(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtNormPhone(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedChars(Expression<Func<string>> input, Expression<Func<bool>> collapseNumerics, Expression<Func<int>> maximumRepeat = null)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtCollapseRepeatedChars(Expression<Func<string>> input, Expression<Func<bool>> collapseNumerics, Expression<Func<int>> maximumRepeat = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_collapseNumerics = WorkflowExpression.Compile(collapseNumerics, nameof(collapseNumerics), required: true);
             var __workflow_maximumRepeat = WorkflowExpression.Compile(maximumRepeat, nameof(maximumRepeat), required: false);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
                 var apiCallHttpMethod = "get";
@@ -1193,16 +1193,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 if (__workflow_maximumRepeat != null)
                     callPayload.Queries["maximumRepeat"] = ExpressionConverter.Convert(__workflow_maximumRepeat);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedType(Expression<Func<string>> input, Expression<Func<int>> maximumRepeat, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtCollapseRepeatedType(Expression<Func<string>> input, Expression<Func<int>> maximumRepeat, Expression<Func<typeInput>> type)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_maximumRepeat = WorkflowExpression.Compile(maximumRepeat, nameof(maximumRepeat), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
                 var apiCallHttpMethod = "get";
@@ -1211,30 +1211,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["MaximumRepeat"] = ExpressionConverter.Convert(__workflow_maximumRepeat);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveStopWords(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveStopWords(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/FilterStopWords";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRetainChars(Expression<Func<string>> input, Expression<Func<string>> replacement, Expression<Func<string>> charactersToRetain)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRetainChars(Expression<Func<string>> input, Expression<Func<string>> replacement, Expression<Func<string>> charactersToRetain)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_replacement = WorkflowExpression.Compile(replacement, nameof(replacement), required: true);
             var __workflow_charactersToRetain = WorkflowExpression.Compile(charactersToRetain, nameof(charactersToRetain), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/RetainCharacters";
                 var apiCallHttpMethod = "get";
@@ -1243,16 +1243,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["replacement"] = ExpressionConverter.Convert(__workflow_replacement);
                 callPayload.Queries["charactersToRetain"] = ExpressionConverter.Convert(__workflow_charactersToRetain);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtExtractChars(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtExtractChars(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_extractLength = WorkflowExpression.Compile(extractLength, nameof(extractLength), required: true);
             var __workflow_extractFrom = WorkflowExpression.Compile(extractFrom, nameof(extractFrom), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/ExtractCharacters";
                 var apiCallHttpMethod = "get";
@@ -1261,16 +1261,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["extractLength"] = ExpressionConverter.Convert(__workflow_extractLength);
                 callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(__workflow_extractFrom);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtExtractWords(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtExtractWords(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_extractLength = WorkflowExpression.Compile(extractLength, nameof(extractLength), required: true);
             var __workflow_extractFrom = WorkflowExpression.Compile(extractFrom, nameof(extractFrom), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/ExtractWords";
                 var apiCallHttpMethod = "get";
@@ -1279,29 +1279,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["extractLength"] = ExpressionConverter.Convert(__workflow_extractLength);
                 callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(__workflow_extractFrom);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveHTML(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveHTML(Expression<Func<string>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/RemoveHTML";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_checkfor = WorkflowExpression.Compile(checkfor, nameof(checkfor), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/EndsWith";
                 var apiCallHttpMethod = "get";
@@ -1309,15 +1309,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkfor"] = ExpressionConverter.Convert(__workflow_checkfor);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_checkfor = WorkflowExpression.Compile(checkfor, nameof(checkfor), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/StartsWith";
                 var apiCallHttpMethod = "get";
@@ -1325,15 +1325,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkfor"] = ExpressionConverter.Convert(__workflow_checkfor);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtEnsureEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_checkFor = WorkflowExpression.Compile(checkFor, nameof(checkFor), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/EnsureEndsWith";
                 var apiCallHttpMethod = "get";
@@ -1341,15 +1341,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkFor"] = ExpressionConverter.Convert(__workflow_checkFor);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtEnsureStartEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_checkFor = WorkflowExpression.Compile(checkFor, nameof(checkFor), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
                 var apiCallHttpMethod = "get";
@@ -1357,15 +1357,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkFor"] = ExpressionConverter.Convert(__workflow_checkFor);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtEnsureStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_checkFor = WorkflowExpression.Compile(checkFor, nameof(checkFor), required: true);
-            return new DeferredBodyAction<DQGlobal>(() =>
+            return new DeferredBodyAction<DQGlobal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/EnsureStartsWith";
                 var apiCallHttpMethod = "get";
@@ -1373,15 +1373,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["checkFor"] = ExpressionConverter.Convert(__workflow_checkFor);
                 return new ApiConnectionAction<DQGlobal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtStartWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtStartWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/StartsWithType";
                 var apiCallHttpMethod = "get";
@@ -1389,15 +1389,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtEndsWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            return new DeferredBodyAction<DQGlobalBool>(() =>
+            return new DeferredBodyAction<DQGlobalBool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StringExtension/EndsWithType";
                 var apiCallHttpMethod = "get";
@@ -1405,7 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 callPayload.Queries["Input"] = ExpressionConverter.Convert(__workflow_input);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

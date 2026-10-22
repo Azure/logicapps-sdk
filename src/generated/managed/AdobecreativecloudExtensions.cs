@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
     public class AdobecreativecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreatedAssetDetails, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CreatedAssetDetails>(() =>
+            return new DeferredBodyAction<CreatedAssetDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset";
                 var apiCallHttpMethod = "post";
@@ -26,42 +26,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<string> GetContentById(Expression<Func<string>> assetId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetContentById(Expression<Func<string>> assetId)
         {
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/id/content";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["asset_id"] = ExpressionConverter.Convert(__workflow_assetId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<AssetMetadata> GetMetadataById(Expression<Func<string>> assetId)
+        public IBodyWorkflowAction<AssetMetadata, ApiConnectionActionConfiguration> GetMetadataById(Expression<Func<string>> assetId)
         {
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
-            return new DeferredBodyAction<AssetMetadata>(() =>
+            return new DeferredBodyAction<AssetMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/id/metadata";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["asset_id"] = ExpressionConverter.Convert(__workflow_assetId);
                 return new ApiConnectionAction<AssetMetadata>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IWorkflowAction DeleteAssetByPath(Expression<Func<string>> path)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAssetByPath(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/path";
                 var apiCallHttpMethod = "delete";
@@ -69,57 +69,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 callPayload.Headers["If-Match"] = Convert.ToString("*");
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<string> GetContentByPath(Expression<Func<string>> path)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetContentByPath(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/path/content";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath(Expression<Func<string>> path)
+        public IBodyWorkflowAction<AssetMetadata, ApiConnectionActionConfiguration> GetMetadataByPath(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<AssetMetadata>(() =>
+            return new DeferredBodyAction<AssetMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/path/metadata";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<AssetMetadata>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory(Expression<Func<string>> path)
+        public IBodyWorkflowAction<DirectoryListing, ApiConnectionActionConfiguration> ListFilesInDirectory(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<DirectoryListing>(() =>
+            return new DeferredBodyAction<DirectoryListing, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/directory/path/assets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<DirectoryListing>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset(Expression<Func<string>> bodysourceAssetPath, Expression<Func<string>> bodydestinationAssetPath)
+        public IBodyWorkflowAction<CreatedAssetDetails, ApiConnectionActionConfiguration> CopyAsset(Expression<Func<string>> bodysourceAssetPath, Expression<Func<string>> bodydestinationAssetPath)
         {
             var __workflow_bodysourceAssetPath = WorkflowExpression.Compile(bodysourceAssetPath, nameof(bodysourceAssetPath), required: true);
             var __workflow_bodydestinationAssetPath = WorkflowExpression.Compile(bodydestinationAssetPath, nameof(bodydestinationAssetPath), required: true);
-            return new DeferredBodyAction<CreatedAssetDetails>(() =>
+            return new DeferredBodyAction<CreatedAssetDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/storage/cc/op/copy";
                 var apiCallHttpMethod = "post";
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
                 }
 
                 return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class AdobecreativecloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookSubscribeToAssetCreatedEvents(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeToAssetCreatedEvents(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook1/csm/cc/events/asset_created";
             var apiCallHttpMethod = "post";
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookSubscribeToAssetUpdatedEvents(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeToAssetUpdatedEvents(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook2/csm/cc/events/asset_updated";
             var apiCallHttpMethod = "post";

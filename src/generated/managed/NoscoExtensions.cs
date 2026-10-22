@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     public class NoscoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<IdeaboxesResponse> Ideaboxes()
+        public IBodyWorkflowAction<IdeaboxesResponse, ApiConnectionActionConfiguration> Ideaboxes()
         {
             var apiCallPath = "/integration/v1/ideaboxes";
             var apiCallHttpMethod = "get";
@@ -21,20 +21,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<GetIdeaResponse> GetIdea(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetIdeaResponse, ApiConnectionActionConfiguration> GetIdea(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetIdeaResponse>(() =>
+            return new DeferredBodyAction<GetIdeaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v1/ideas/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetIdeaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<IdeasResponse> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<IdeasResponse, ApiConnectionActionConfiguration> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
         {
             var __workflow_publishedAfter = WorkflowExpression.Compile(publishedAfter, nameof(publishedAfter), required: false);
             var __workflow_lastStageChangeAfter = WorkflowExpression.Compile(lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
             var __workflow_afterCursor = WorkflowExpression.Compile(afterCursor, nameof(afterCursor), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<IdeasResponse>(() =>
+            return new DeferredBodyAction<IdeasResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v1/ideas";
                 var apiCallHttpMethod = "get";
@@ -69,17 +69,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<IdeasResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class NoscoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse, ApiConnectionTriggerConfiguration> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, FlowRecurrence recurrence = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: true);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: true);
-            return new DeferredBodyTrigger<IdeaReachedStageTriggerResponse>(() =>
+            return new DeferredBodyTrigger<IdeaReachedStageTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
                 var apiCallHttpMethod = "get";
@@ -87,15 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                 callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(__workflow_ideaboxId);
                 callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
                 return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse, ApiConnectionTriggerConfiguration> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             var __workflow_statusId = WorkflowExpression.Compile(statusId, nameof(statusId), required: false);
-            return new DeferredBodyTrigger<IdeaStatusChangedTriggerResponse>(() =>
+            return new DeferredBodyTrigger<IdeaStatusChangedTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
                 var apiCallHttpMethod = "get";
@@ -107,14 +107,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                 if (__workflow_statusId != null)
                     callPayload.Queries["statusId"] = ExpressionConverter.Convert(__workflow_statusId);
                 return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse, ApiConnectionTriggerConfiguration> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
-            return new DeferredBodyTrigger<IdeaPublishedTriggerResponse>(() =>
+            return new DeferredBodyTrigger<IdeaPublishedTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
                 var apiCallHttpMethod = "get";
@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                 if (__workflow_stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
                 return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse, ApiConnectionTriggerConfiguration> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
-            return new DeferredBodyTrigger<IdeaEditedTriggerResponse>(() =>
+            return new DeferredBodyTrigger<IdeaEditedTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";
                 var apiCallHttpMethod = "get";
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                 if (__workflow_stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
                 return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

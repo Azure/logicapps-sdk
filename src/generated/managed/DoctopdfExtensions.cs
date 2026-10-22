@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        public IBodyWorkflowAction<DocToPDFResponse, ApiConnectionActionConfiguration> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
             var __workflow_publickey = WorkflowExpression.Compile(publickey, nameof(publickey), required: false);
             var __workflow_apikey = WorkflowExpression.Compile(apikey, nameof(apikey), required: false);
-            return new DeferredBodyAction<DocToPDFResponse>(() =>
+            return new DeferredBodyAction<DocToPDFResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/doctopdf";
                 var apiCallHttpMethod = "post";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
                 }
 
                 return new ApiConnectionAction<DocToPDFResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

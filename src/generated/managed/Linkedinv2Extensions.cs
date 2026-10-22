@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
     public class Linkedinv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ShareResponseV2> PostCompanyUpdate(Expression<Func<string>> bodycompany, Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
+        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostCompanyUpdate(Expression<Func<string>> bodycompany, Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
             var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: true);
             var __workflow_bodycommentary = WorkflowExpression.Compile(bodycommentary, nameof(bodycommentary), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var __workflow_bodyisReshareDisabledByAuthor = WorkflowExpression.Compile(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
             var __workflow_bodycontentarticledescription = WorkflowExpression.Compile(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
             var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
-            return new DeferredBodyAction<ShareResponseV2>(() =>
+            return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/company/rest/posts";
                 var apiCallHttpMethod = "post";
@@ -111,11 +111,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 }
 
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ShareResponseV2> PostUpdate(Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
+        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostUpdate(Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
             var __workflow_bodycommentary = WorkflowExpression.Compile(bodycommentary, nameof(bodycommentary), required: true);
             var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: true);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var __workflow_bodyisReshareDisabledByAuthor = WorkflowExpression.Compile(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
             var __workflow_bodycontentarticledescription = WorkflowExpression.Compile(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
             var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
-            return new DeferredBodyAction<ShareResponseV2>(() =>
+            return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/people/rest/posts";
                 var apiCallHttpMethod = "post";
@@ -211,11 +211,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 }
 
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ListCompaniesResponseV2Item[]> ListCompanies()
+        public IBodyWorkflowAction<ListCompaniesResponseV2Item[], ApiConnectionActionConfiguration> ListCompanies()
         {
             var apiCallPath = "/v2/organizationalEntityAcls";
             var apiCallHttpMethod = "get";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
     public class AssentlyesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken> GetCase(Expression<Func<string>> id)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetCase(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/getCase";
                 var apiCallHttpMethod = "get";
@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
                 callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
                 callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[]> FindCases(Expression<Func<object>> findCasesModel = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FindCases(Expression<Func<object>> findCasesModel = null)
         {
             var __workflow_findCasesModel = WorkflowExpression.Compile(findCasesModel, nameof(findCasesModel), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/findCases";
                 var apiCallHttpMethod = "get";
@@ -40,53 +40,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
                 callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_findCasesModel);
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[]> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
         {
             var __workflow_findTemplatesModel = WorkflowExpression.Compile(findTemplatesModel, nameof(findTemplatesModel), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/findTemplates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_findTemplatesModel);
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction CreateCase(Expression<Func<object>> caseModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCase(Expression<Func<object>> caseModel = null)
         {
             var __workflow_caseModel = WorkflowExpression.Compile(caseModel, nameof(caseModel), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/createCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_caseModel);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
         {
             var __workflow_createCaseFromTemplateModel = WorkflowExpression.Compile(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/createCaseFromTemplate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_createCaseFromTemplateModel);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction UpdateCase()
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCase()
         {
             var apiCallPath = "/v2/updateCase";
             var apiCallHttpMethod = "post";
@@ -102,109 +102,109 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
         {
             var __workflow_updateCaseMetadataModel = WorkflowExpression.Compile(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/updateCaseMetadata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateCaseMetadataModel);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction SendCase(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendCase(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/sendCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RequestApproval(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RequestApproval(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/requestApproval";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RemindCase(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemindCase(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/remindCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction DeleteCase(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteCase(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/deleteCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RecallCase(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RecallCase(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/recallCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction GetCaseByTemporaryId(Expression<Func<int>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCaseByTemporaryId(Expression<Func<int>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/getCaseByTemporaryId";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<string> GetFileOfCase(Expression<Func<string>> caseid, Expression<Func<string>> documentid)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileOfCase(Expression<Func<string>> caseid, Expression<Func<string>> documentid)
         {
             var __workflow_caseid = WorkflowExpression.Compile(caseid, nameof(caseid), required: true);
             var __workflow_documentid = WorkflowExpression.Compile(documentid, nameof(documentid), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/getdocumentdata";
                 var apiCallHttpMethod = "get";
@@ -212,16 +212,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
                 callPayload.Queries["caseid"] = ExpressionConverter.Convert(__workflow_caseid);
                 callPayload.Queries["documentid"] = ExpressionConverter.Convert(__workflow_documentid);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
         {
             var __workflow_eventPath = WorkflowExpression.Compile(eventPath, nameof(eventPath), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hook/v1/";
                 var apiCallHttpMethod = "post";
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
     public class ReadwiseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightListGetResponse> HighlightListGet(Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<int>> bookId = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> hightlightedAtLt = null, Expression<Func<string>> highlightedAtGt = null)
+        public IBodyWorkflowAction<HighlightListGetResponse, ApiConnectionActionConfiguration> HighlightListGet(Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<int>> bookId = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> hightlightedAtLt = null, Expression<Func<string>> highlightedAtGt = null)
         {
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
             var __workflow_hightlightedAtLt = WorkflowExpression.Compile(hightlightedAtLt, nameof(hightlightedAtLt), required: false);
             var __workflow_highlightedAtGt = WorkflowExpression.Compile(highlightedAtGt, nameof(highlightedAtGt), required: false);
-            return new DeferredBodyAction<HighlightListGetResponse>(() =>
+            return new DeferredBodyAction<HighlightListGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/highlights/";
                 var apiCallHttpMethod = "get";
@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 if (__workflow_highlightedAtGt != null)
                     callPayload.Queries["highlighted_at__gt"] = ExpressionConverter.Convert(__workflow_highlightedAtGt);
                 return new ApiConnectionAction<HighlightListGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
+        public IBodyWorkflowAction<HighlightSavePostResponseItem[], ApiConnectionActionConfiguration> HighlightSave(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
         {
             var __workflow_bodyhighlights = WorkflowExpression.Compile(bodyhighlights, nameof(bodyhighlights), required: true);
-            return new DeferredBodyAction<HighlightSavePostResponseItem[]>(() =>
+            return new DeferredBodyAction<HighlightSavePostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/highlights/";
                 var apiCallHttpMethod = "post";
@@ -63,16 +63,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 }
 
                 return new ApiConnectionAction<HighlightSavePostResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightExportGetResponse> HighlightExportGet(Expression<Func<string>> updatedAfter = null, Expression<Func<string>> ids = null, Expression<Func<string>> pageCursor = null)
+        public IBodyWorkflowAction<HighlightExportGetResponse, ApiConnectionActionConfiguration> HighlightExportGet(Expression<Func<string>> updatedAfter = null, Expression<Func<string>> ids = null, Expression<Func<string>> pageCursor = null)
         {
             var __workflow_updatedAfter = WorkflowExpression.Compile(updatedAfter, nameof(updatedAfter), required: false);
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_pageCursor = WorkflowExpression.Compile(pageCursor, nameof(pageCursor), required: false);
-            return new DeferredBodyAction<HighlightExportGetResponse>(() =>
+            return new DeferredBodyAction<HighlightExportGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/export/";
                 var apiCallHttpMethod = "get";
@@ -84,37 +84,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 if (__workflow_pageCursor != null)
                     callPayload.Queries["pageCursor"] = ExpressionConverter.Convert(__workflow_pageCursor);
                 return new ApiConnectionAction<HighlightExportGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HightlightDetailGetResponse> HightlightDetailGet(Expression<Func<string>> highlightId)
+        public IBodyWorkflowAction<HightlightDetailGetResponse, ApiConnectionActionConfiguration> HightlightDetailGet(Expression<Func<string>> highlightId)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
-            return new DeferredBodyAction<HightlightDetailGetResponse>(() =>
+            return new DeferredBodyAction<HightlightDetailGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<HightlightDetailGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> HighlightDelete(Expression<Func<string>> highlightId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HighlightDelete(Expression<Func<string>> highlightId)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightUpdatePatchResponse> HighlightUpdatePatch(Expression<Func<string>> highlightId, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodylocation = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycolor = null)
+        public IBodyWorkflowAction<HighlightUpdatePatchResponse, ApiConnectionActionConfiguration> HighlightUpdatePatch(Expression<Func<string>> highlightId, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodylocation = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycolor = null)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
-            return new DeferredBodyAction<HighlightUpdatePatchResponse>(() =>
+            return new DeferredBodyAction<HighlightUpdatePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -165,16 +165,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 }
 
                 return new ApiConnectionAction<HighlightUpdatePatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsGetResponse> HighlightTagsGet(Expression<Func<string>> highlightId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
+        public IBodyWorkflowAction<HighlightTagsGetResponse, ApiConnectionActionConfiguration> HighlightTagsGet(Expression<Func<string>> highlightId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<HighlightTagsGetResponse>(() =>
+            return new DeferredBodyAction<HighlightTagsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -184,15 +184,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<HighlightTagsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsPostResponse, ApiConnectionActionConfiguration> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<HighlightTagsPostResponse>(() =>
+            return new DeferredBodyAction<HighlightTagsPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags", __workflow_highlightId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -207,30 +207,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 }
 
                 return new ApiConnectionAction<HighlightTagsPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> HighlightTagsDelete(Expression<Func<string>> highlightId, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HighlightTagsDelete(Expression<Func<string>> highlightId, Expression<Func<string>> tagId)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags/{1}", __workflow_highlightId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsUpdateResponse> HighlightTagsUpdate(Expression<Func<string>> highlightId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsUpdateResponse, ApiConnectionActionConfiguration> HighlightTagsUpdate(Expression<Func<string>> highlightId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
         {
             var __workflow_highlightId = WorkflowExpression.Compile(highlightId, nameof(highlightId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<HighlightTagsUpdateResponse>(() =>
+            return new DeferredBodyAction<HighlightTagsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/highlights/{0}/tags/{1}", __workflow_highlightId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -245,11 +245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 }
 
                 return new ApiConnectionAction<HighlightTagsUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookListGetResponse> BookListGet(Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<int>> numHighlights = null, Expression<Func<int>> numHighlightsLt = null, Expression<Func<int>> numHighlightsGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> lastHighlightAtLt = null, Expression<Func<string>> lastHighlightGt = null)
+        public IBodyWorkflowAction<BookListGetResponse, ApiConnectionActionConfiguration> BookListGet(Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<int>> numHighlights = null, Expression<Func<int>> numHighlightsLt = null, Expression<Func<int>> numHighlightsGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> lastHighlightAtLt = null, Expression<Func<string>> lastHighlightGt = null)
         {
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
             var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
             var __workflow_lastHighlightAtLt = WorkflowExpression.Compile(lastHighlightAtLt, nameof(lastHighlightAtLt), required: false);
             var __workflow_lastHighlightGt = WorkflowExpression.Compile(lastHighlightGt, nameof(lastHighlightGt), required: false);
-            return new DeferredBodyAction<BookListGetResponse>(() =>
+            return new DeferredBodyAction<BookListGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/books/";
                 var apiCallHttpMethod = "get";
@@ -290,29 +290,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 if (__workflow_lastHighlightGt != null)
                     callPayload.Queries["last_highlight_gt"] = ExpressionConverter.Convert(__workflow_lastHighlightGt);
                 return new ApiConnectionAction<BookListGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookGetResponse> BookGet(Expression<Func<string>> bookId)
+        public IBodyWorkflowAction<BookGetResponse, ApiConnectionActionConfiguration> BookGet(Expression<Func<string>> bookId)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
-            return new DeferredBodyAction<BookGetResponse>(() =>
+            return new DeferredBodyAction<BookGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BookGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsGetResponse> BookTagsGet(Expression<Func<string>> bookId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
+        public IBodyWorkflowAction<BookTagsGetResponse, ApiConnectionActionConfiguration> BookTagsGet(Expression<Func<string>> bookId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<BookTagsGetResponse>(() =>
+            return new DeferredBodyAction<BookTagsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -322,15 +322,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<BookTagsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsCreateResponse> BookTagsCreate(Expression<Func<string>> bookId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<BookTagsCreateResponse, ApiConnectionActionConfiguration> BookTagsCreate(Expression<Func<string>> bookId, Expression<Func<string>> bodyname)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<BookTagsCreateResponse>(() =>
+            return new DeferredBodyAction<BookTagsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -345,30 +345,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 }
 
                 return new ApiConnectionAction<BookTagsCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> BookTagsDelete(Expression<Func<string>> bookId, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BookTagsDelete(Expression<Func<string>> bookId, Expression<Func<string>> tagId)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags/{1}", __workflow_bookId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsUpdateResponse> BookTagsUpdate(Expression<Func<string>> bookId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<BookTagsUpdateResponse, ApiConnectionActionConfiguration> BookTagsUpdate(Expression<Func<string>> bookId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<BookTagsUpdateResponse>(() =>
+            return new DeferredBodyAction<BookTagsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/books/{0}/tags/{1}", __workflow_bookId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
                 }
 
                 return new ApiConnectionAction<BookTagsUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

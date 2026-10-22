@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
     public class UsajobsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs(Expression<Func<string>> keyword = null, Expression<Func<string>> positionTitle = null, Expression<Func<int>> remunerationMinimumAmount = null, Expression<Func<int>> remunerationMaximumAmount = null, Expression<Func<string>> payGradeHigh = null, Expression<Func<string>> payGradeLow = null, Expression<Func<string>> jobCategoryCode = null, Expression<Func<bool>> remoteIndicator = null, Expression<Func<string>> locationName = null, Expression<Func<int>> radius = null, Expression<Func<bool>> relocationIndicator = null, Expression<Func<string>> travelPercentage = null, Expression<Func<string>> organization = null, Expression<Func<string>> positionOfferingTypeCode = null, Expression<Func<string>> positionScheduleTypeCode = null, Expression<Func<string>> securityClearanceRequired = null, Expression<Func<positionSensitivityInput>> positionSensitivity = null, Expression<Func<bool>> supervisoryStatus = null, Expression<Func<int>> datePosted = null, Expression<Func<string>> jobGradeCode = null, Expression<Func<string>> whoMayApply = null, Expression<Func<string>> salaryBucket = null, Expression<Func<string>> gradeBucket = null, Expression<Func<string>> hiringPath = null, Expression<Func<string>> missionCriticalTags = null, Expression<Func<string>> postingChannel = null, Expression<Func<fieldsInput>> fields = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
+        public IBodyWorkflowAction<SearchJobsResponse, ApiConnectionActionConfiguration> SearchJobs(Expression<Func<string>> keyword = null, Expression<Func<string>> positionTitle = null, Expression<Func<int>> remunerationMinimumAmount = null, Expression<Func<int>> remunerationMaximumAmount = null, Expression<Func<string>> payGradeHigh = null, Expression<Func<string>> payGradeLow = null, Expression<Func<string>> jobCategoryCode = null, Expression<Func<bool>> remoteIndicator = null, Expression<Func<string>> locationName = null, Expression<Func<int>> radius = null, Expression<Func<bool>> relocationIndicator = null, Expression<Func<string>> travelPercentage = null, Expression<Func<string>> organization = null, Expression<Func<string>> positionOfferingTypeCode = null, Expression<Func<string>> positionScheduleTypeCode = null, Expression<Func<string>> securityClearanceRequired = null, Expression<Func<positionSensitivityInput>> positionSensitivity = null, Expression<Func<bool>> supervisoryStatus = null, Expression<Func<int>> datePosted = null, Expression<Func<string>> jobGradeCode = null, Expression<Func<string>> whoMayApply = null, Expression<Func<string>> salaryBucket = null, Expression<Func<string>> gradeBucket = null, Expression<Func<string>> hiringPath = null, Expression<Func<string>> missionCriticalTags = null, Expression<Func<string>> postingChannel = null, Expression<Func<fieldsInput>> fields = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
         {
             var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
             var __workflow_positionTitle = WorkflowExpression.Compile(positionTitle, nameof(positionTitle), required: false);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
             var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
-            return new DeferredBodyAction<SearchJobsResponse>(() =>
+            return new DeferredBodyAction<SearchJobsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -113,14 +113,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_resultsPerPage != null)
                     callPayload.Queries["ResultsPerPage"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 return new ApiConnectionAction<SearchJobsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicHonorsResponse, ApiConnectionActionConfiguration> ListAcademicHonors(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListAcademicHonorsResponse>(() =>
+            return new DeferredBodyAction<ListAcademicHonorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/academichonors";
                 var apiCallHttpMethod = "get";
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAcademicHonorsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicLevelsResponse, ApiConnectionActionConfiguration> ListAcademicLevels(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListAcademicLevelsResponse>(() =>
+            return new DeferredBodyAction<ListAcademicLevelsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/academiclevels";
                 var apiCallHttpMethod = "get";
@@ -143,14 +143,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAcademicLevelsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListActionCodesResponse, ApiConnectionActionConfiguration> ListActionCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListActionCodesResponse>(() =>
+            return new DeferredBodyAction<ListActionCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/actioncodes";
                 var apiCallHttpMethod = "get";
@@ -158,14 +158,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListActionCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAgencySubelementsResponse, ApiConnectionActionConfiguration> ListAgencySubelements(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListAgencySubelementsResponse>(() =>
+            return new DeferredBodyAction<ListAgencySubelementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/agencysubelements";
                 var apiCallHttpMethod = "get";
@@ -173,14 +173,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAgencySubelementsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse, ApiConnectionActionConfiguration> ListAnnouncementClosingTypes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListAnnouncementClosingTypesResponse>(() =>
+            return new DeferredBodyAction<ListAnnouncementClosingTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/announcementclosingtypes";
                 var apiCallHttpMethod = "get";
@@ -188,14 +188,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAnnouncementClosingTypesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicantSuppliersResponse, ApiConnectionActionConfiguration> ListApplicantSuppliers(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListApplicantSuppliersResponse>(() =>
+            return new DeferredBodyAction<ListApplicantSuppliersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/applicantsuppliers";
                 var apiCallHttpMethod = "get";
@@ -203,14 +203,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListApplicantSuppliersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicationStatusesResponse, ApiConnectionActionConfiguration> ListApplicationStatuses(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListApplicationStatusesResponse>(() =>
+            return new DeferredBodyAction<ListApplicationStatusesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/applicationstatuses";
                 var apiCallHttpMethod = "get";
@@ -218,14 +218,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListApplicationStatusesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListCountriesResponse>(() =>
+            return new DeferredBodyAction<ListCountriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/countries";
                 var apiCallHttpMethod = "get";
@@ -233,15 +233,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCountriesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions(Expression<Func<string>> country = null, Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCountrySubdivisionsResponse, ApiConnectionActionConfiguration> ListCountrySubdivisions(Expression<Func<string>> country = null, Expression<Func<string>> lastmodified = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListCountrySubdivisionsResponse>(() =>
+            return new DeferredBodyAction<ListCountrySubdivisionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/countrysubdivisions";
                 var apiCallHttpMethod = "get";
@@ -251,14 +251,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCountrySubdivisionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse, ApiConnectionActionConfiguration> ListCyberWorkGroupings(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListCyberWorkGroupingsResponse>(() =>
+            return new DeferredBodyAction<ListCyberWorkGroupingsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/cyberworkgroupings";
                 var apiCallHttpMethod = "get";
@@ -266,14 +266,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCyberWorkGroupingsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkRolesResponse, ApiConnectionActionConfiguration> ListCyberWorkRoles(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListCyberWorkRolesResponse>(() =>
+            return new DeferredBodyAction<ListCyberWorkRolesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/cyberworkroles";
                 var apiCallHttpMethod = "get";
@@ -281,14 +281,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCyberWorkRolesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDegreeTypeCodesResponse, ApiConnectionActionConfiguration> ListDegreeTypeCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListDegreeTypeCodesResponse>(() =>
+            return new DeferredBodyAction<ListDegreeTypeCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/degreetypecodes";
                 var apiCallHttpMethod = "get";
@@ -296,14 +296,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDegreeTypeCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDisabilitiesResponse, ApiConnectionActionConfiguration> ListDisabilities(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListDisabilitiesResponse>(() =>
+            return new DeferredBodyAction<ListDisabilitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/disabilities";
                 var apiCallHttpMethod = "get";
@@ -311,14 +311,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDisabilitiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentationsResponse, ApiConnectionActionConfiguration> ListDocumentations(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListDocumentationsResponse>(() =>
+            return new DeferredBodyAction<ListDocumentationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/documentations";
                 var apiCallHttpMethod = "get";
@@ -326,14 +326,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDocumentationsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentFormatsResponse, ApiConnectionActionConfiguration> ListDocumentFormats(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListDocumentFormatsResponse>(() =>
+            return new DeferredBodyAction<ListDocumentFormatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/documentformats";
                 var apiCallHttpMethod = "get";
@@ -341,14 +341,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDocumentFormatsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListEthnicitiesResponse, ApiConnectionActionConfiguration> ListEthnicities(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListEthnicitiesResponse>(() =>
+            return new DeferredBodyAction<ListEthnicitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/ethnicities";
                 var apiCallHttpMethod = "get";
@@ -356,14 +356,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListEthnicitiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse, ApiConnectionActionConfiguration> ListFederalEmploymentStatuses(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListFederalEmploymentStatusesResponse>(() =>
+            return new DeferredBodyAction<ListFederalEmploymentStatusesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/federalemploymentstatuses";
                 var apiCallHttpMethod = "get";
@@ -371,14 +371,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListFederalEmploymentStatusesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListGeolocCodesResponse, ApiConnectionActionConfiguration> ListGeolocCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListGeolocCodesResponse>(() =>
+            return new DeferredBodyAction<ListGeolocCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/geoloccodes";
                 var apiCallHttpMethod = "get";
@@ -386,14 +386,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListGeolocCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListGsaGeolocCodesResponse, ApiConnectionActionConfiguration> ListGsaGeolocCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListGsaGeolocCodesResponse>(() =>
+            return new DeferredBodyAction<ListGsaGeolocCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/gsageoloccodes";
                 var apiCallHttpMethod = "get";
@@ -401,14 +401,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListGsaGeolocCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListHiringPathsResponse, ApiConnectionActionConfiguration> ListHiringPaths(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListHiringPathsResponse>(() =>
+            return new DeferredBodyAction<ListHiringPathsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/hiringpaths";
                 var apiCallHttpMethod = "get";
@@ -416,14 +416,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListHiringPathsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse, ApiConnectionActionConfiguration> ListKeyStandardRequirements(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListKeyStandardRequirementsResponse>(() =>
+            return new DeferredBodyAction<ListKeyStandardRequirementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/keystandardrequirements";
                 var apiCallHttpMethod = "get";
@@ -431,14 +431,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListKeyStandardRequirementsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageCodesResponse, ApiConnectionActionConfiguration> ListLanguageCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListLanguageCodesResponse>(() =>
+            return new DeferredBodyAction<ListLanguageCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/languagecodes";
                 var apiCallHttpMethod = "get";
@@ -446,14 +446,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLanguageCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageProficienciesResponse, ApiConnectionActionConfiguration> ListLanguageProficiencies(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListLanguageProficienciesResponse>(() =>
+            return new DeferredBodyAction<ListLanguageProficienciesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/languageproficiencies";
                 var apiCallHttpMethod = "get";
@@ -461,14 +461,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLanguageProficienciesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLocationExpansionsResponse, ApiConnectionActionConfiguration> ListLocationExpansions(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListLocationExpansionsResponse>(() =>
+            return new DeferredBodyAction<ListLocationExpansionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/locationexpansions";
                 var apiCallHttpMethod = "get";
@@ -476,14 +476,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLocationExpansionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse, ApiConnectionActionConfiguration> ListMilitaryStatusCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListMilitaryStatusCodesResponse>(() =>
+            return new DeferredBodyAction<ListMilitaryStatusCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/militarystatuscodes";
                 var apiCallHttpMethod = "get";
@@ -491,14 +491,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListMilitaryStatusCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListMissionCriticalCodesResponse, ApiConnectionActionConfiguration> ListMissionCriticalCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListMissionCriticalCodesResponse>(() =>
+            return new DeferredBodyAction<ListMissionCriticalCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/missioncriticalcodes";
                 var apiCallHttpMethod = "get";
@@ -506,14 +506,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListMissionCriticalCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListOccupationalSeriesResponse, ApiConnectionActionConfiguration> ListOccupationalSeries(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListOccupationalSeriesResponse>(() =>
+            return new DeferredBodyAction<ListOccupationalSeriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/occupationalseries";
                 var apiCallHttpMethod = "get";
@@ -521,14 +521,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListOccupationalSeriesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPayPlansResponse, ApiConnectionActionConfiguration> ListPayPlans(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListPayPlansResponse>(() =>
+            return new DeferredBodyAction<ListPayPlansResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/payplans";
                 var apiCallHttpMethod = "get";
@@ -536,14 +536,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPayPlansResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOfferingTypesResponse, ApiConnectionActionConfiguration> ListPositionOfferingTypes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListPositionOfferingTypesResponse>(() =>
+            return new DeferredBodyAction<ListPositionOfferingTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/positionofferingtypes";
                 var apiCallHttpMethod = "get";
@@ -551,14 +551,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionOfferingTypesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse, ApiConnectionActionConfiguration> ListPositionOpeningStatuses(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListPositionOpeningStatusesResponse>(() =>
+            return new DeferredBodyAction<ListPositionOpeningStatusesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/positionopeningstatuses";
                 var apiCallHttpMethod = "get";
@@ -566,14 +566,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionOpeningStatusesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionScheduleTypesResponse, ApiConnectionActionConfiguration> ListPositionScheduleTypes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListPositionScheduleTypesResponse>(() =>
+            return new DeferredBodyAction<ListPositionScheduleTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/positionscheduletypes";
                 var apiCallHttpMethod = "get";
@@ -581,14 +581,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionScheduleTypesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPostalCodesResponse, ApiConnectionActionConfiguration> ListPostalCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListPostalCodesResponse>(() =>
+            return new DeferredBodyAction<ListPostalCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/postalcodes";
                 var apiCallHttpMethod = "get";
@@ -596,14 +596,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPostalCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRaceCodesResponse, ApiConnectionActionConfiguration> ListRaceCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListRaceCodesResponse>(() =>
+            return new DeferredBodyAction<ListRaceCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/racecodes";
                 var apiCallHttpMethod = "get";
@@ -611,14 +611,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRaceCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRefereeTypeCodesResponse, ApiConnectionActionConfiguration> ListRefereeTypeCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListRefereeTypeCodesResponse>(() =>
+            return new DeferredBodyAction<ListRefereeTypeCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/refereetypecodes";
                 var apiCallHttpMethod = "get";
@@ -626,14 +626,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRefereeTypeCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse, ApiConnectionActionConfiguration> ListRemunerationRateIntervalCodes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListRemunerationRateIntervalCodesResponse>(() =>
+            return new DeferredBodyAction<ListRemunerationRateIntervalCodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/remunerationrateintervalcodes";
                 var apiCallHttpMethod = "get";
@@ -641,14 +641,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRemunerationRateIntervalCodesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse, ApiConnectionActionConfiguration> ListRequiredStandardDocuments(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListRequiredStandardDocumentsResponse>(() =>
+            return new DeferredBodyAction<ListRequiredStandardDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/requiredstandarddocuments";
                 var apiCallHttpMethod = "get";
@@ -656,14 +656,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRequiredStandardDocumentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListSecurityClearancesResponse, ApiConnectionActionConfiguration> ListSecurityClearances(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListSecurityClearancesResponse>(() =>
+            return new DeferredBodyAction<ListSecurityClearancesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/securityclearances";
                 var apiCallHttpMethod = "get";
@@ -671,14 +671,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListSecurityClearancesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListServiceTypesResponse, ApiConnectionActionConfiguration> ListServiceTypes(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListServiceTypesResponse>(() =>
+            return new DeferredBodyAction<ListServiceTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/servicetypes";
                 var apiCallHttpMethod = "get";
@@ -686,14 +686,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListServiceTypesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListSpecialHiringsResponse, ApiConnectionActionConfiguration> ListSpecialHirings(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListSpecialHiringsResponse>(() =>
+            return new DeferredBodyAction<ListSpecialHiringsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/specialhirings";
                 var apiCallHttpMethod = "get";
@@ -701,14 +701,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListSpecialHiringsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListTravelPercentagesResponse, ApiConnectionActionConfiguration> ListTravelPercentages(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListTravelPercentagesResponse>(() =>
+            return new DeferredBodyAction<ListTravelPercentagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/travelpercentages";
                 var apiCallHttpMethod = "get";
@@ -716,14 +716,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListTravelPercentagesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListWhoMayApplyResponse, ApiConnectionActionConfiguration> ListWhoMayApply(Expression<Func<string>> lastmodified = null)
         {
             var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
-            return new DeferredBodyAction<ListWhoMayApplyResponse>(() =>
+            return new DeferredBodyAction<ListWhoMayApplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codelist/whomayapply";
                 var apiCallHttpMethod = "get";
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
                 if (__workflow_lastmodified != null)
                     callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListWhoMayApplyResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

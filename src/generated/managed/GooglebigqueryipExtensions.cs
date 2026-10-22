@@ -12,17 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
     public class GooglebigqueryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlebigqueryip")]
-        public IBodyWorkflowAction<GetDatasetResponse> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
+        public IBodyWorkflowAction<GetDatasetResponse, ApiConnectionActionConfiguration> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_datasetId = WorkflowExpression.Compile(datasetId, nameof(datasetId), required: true);
-            return new DeferredBodyAction<GetDatasetResponse>(() =>
+            return new DeferredBodyAction<GetDatasetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_datasetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDatasetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

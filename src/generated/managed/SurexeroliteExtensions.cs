@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
     public class SurexeroliteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetStartedResponseItem[]> GetStarted()
+        public IBodyWorkflowAction<GetStartedResponseItem[], ApiConnectionActionConfiguration> GetStarted()
         {
             var apiCallPath = "/connections";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetInvoicesResponse> GetInvoices(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> statuses = null, Expression<Func<string>> iDs = null, Expression<Func<string>> invoiceNumbers = null, Expression<Func<string>> contactIDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetInvoicesResponse, ApiConnectionActionConfiguration> GetInvoices(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> statuses = null, Expression<Func<string>> iDs = null, Expression<Func<string>> invoiceNumbers = null, Expression<Func<string>> contactIDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var __workflow_contactIDs = WorkflowExpression.Compile(contactIDs, nameof(contactIDs), required: false);
             var __workflow_summaryOnly = WorkflowExpression.Compile(summaryOnly, nameof(summaryOnly), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<GetInvoicesResponse>(() =>
+            return new DeferredBodyAction<GetInvoicesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Invoices";
                 var apiCallHttpMethod = "get";
@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetInvoicesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<string>> bodytype, Expression<Func<bodylineItemsInputItem[]>> bodylineItems, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycontactcontactID = null, Expression<Func<string>> bodylineAmountTypes = null, Expression<Func<string>> bodyinvoiceNumber = null, Expression<Func<string>> bodycurrencyCode = null, Expression<Func<double>> bodycurrencyRate = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyexpectedPaymentDate = null)
+        public IBodyWorkflowAction<PostInvoiceResponse, ApiConnectionActionConfiguration> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<string>> bodytype, Expression<Func<bodylineItemsInputItem[]>> bodylineItems, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycontactcontactID = null, Expression<Func<string>> bodylineAmountTypes = null, Expression<Func<string>> bodyinvoiceNumber = null, Expression<Func<string>> bodycurrencyCode = null, Expression<Func<double>> bodycurrencyRate = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyexpectedPaymentDate = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var __workflow_bodycurrencyRate = WorkflowExpression.Compile(bodycurrencyRate, nameof(bodycurrencyRate), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyexpectedPaymentDate = WorkflowExpression.Compile(bodyexpectedPaymentDate, nameof(bodyexpectedPaymentDate), required: false);
-            return new DeferredBodyAction<PostInvoiceResponse>(() =>
+            return new DeferredBodyAction<PostInvoiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Invoices";
                 var apiCallHttpMethod = "post";
@@ -161,11 +161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 }
 
                 return new ApiConnectionAction<PostInvoiceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetContactsResponse> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> iDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
+        public IBodyWorkflowAction<GetContactsResponse, ApiConnectionActionConfiguration> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> iDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_includeArchived = WorkflowExpression.Compile(includeArchived, nameof(includeArchived), required: false);
             var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: false);
-            return new DeferredBodyAction<GetContactsResponse>(() =>
+            return new DeferredBodyAction<GetContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";
                 var apiCallHttpMethod = "get";
@@ -194,15 +194,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
                 return new ApiConnectionAction<GetContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostContactsResponse> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<bodycontactsInputItem[]>> bodycontacts)
+        public IBodyWorkflowAction<PostContactsResponse, ApiConnectionActionConfiguration> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<bodycontactsInputItem[]>> bodycontacts)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_bodycontacts = WorkflowExpression.Compile(bodycontacts, nameof(bodycontacts), required: true);
-            return new DeferredBodyAction<PostContactsResponse>(() =>
+            return new DeferredBodyAction<PostContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";
                 var apiCallHttpMethod = "post";
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
                 }
 
                 return new ApiConnectionAction<PostContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

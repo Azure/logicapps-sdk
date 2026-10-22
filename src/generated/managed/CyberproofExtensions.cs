@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
     public class CyberproofActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken> CPCreateExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPCreateExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
         {
             var __workflow_actionReqselectAction = WorkflowExpression.Compile(actionReqselectAction, nameof(actionReqselectAction), required: true);
             var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/executions/async";
                 var apiCallHttpMethod = "post";
@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction CPCreateWebhookExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPCreateWebhookExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
         {
             var __workflow_actionReqselectAction = WorkflowExpression.Compile(actionReqselectAction, nameof(actionReqselectAction), required: true);
             var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/webhooks/user-action";
                 var apiCallHttpMethod = "post";
@@ -60,16 +60,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction CPSetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
         {
             var __workflow_actionCustomReqalertId = WorkflowExpression.Compile(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
             var __workflow_actionCustomReqselectClassification = WorkflowExpression.Compile(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
             var __workflow_actionCustomReqselectField = WorkflowExpression.Compile(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/set";
                 var apiCallHttpMethod = "post";
@@ -88,16 +88,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken> CPGetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
         {
             var __workflow_actionCustomReqalertId = WorkflowExpression.Compile(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
             var __workflow_actionCustomReqselectClassification = WorkflowExpression.Compile(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
             var __workflow_actionCustomReqselectField = WorkflowExpression.Compile(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/get";
                 var apiCallHttpMethod = "post";
@@ -116,15 +116,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken> CPGetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectIncidentSummary)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectIncidentSummary)
         {
             var __workflow_actionCustomReqincidentId = WorkflowExpression.Compile(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
             var __workflow_actionCustomReqselectIncidentSummary = WorkflowExpression.Compile(actionCustomReqselectIncidentSummary, nameof(actionCustomReqselectIncidentSummary), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/get";
                 var apiCallHttpMethod = "post";
@@ -141,15 +141,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction CPSetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectValue)
         {
             var __workflow_actionCustomReqincidentId = WorkflowExpression.Compile(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
             var __workflow_actionCustomReqselectValue = WorkflowExpression.Compile(actionCustomReqselectValue, nameof(actionCustomReqselectValue), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/set";
                 var apiCallHttpMethod = "post";
@@ -166,17 +166,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class CyberproofTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CPTrigger(Expression<Func<string>> actionReqselectTrigger, Expression<Func<object>> actionReqparameters, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CPTrigger(Expression<Func<string>> actionReqselectTrigger, Expression<Func<object>> actionReqparameters, FlowRecurrence recurrence = null)
         {
             var __workflow_actionReqselectTrigger = WorkflowExpression.Compile(actionReqselectTrigger, nameof(actionReqselectTrigger), required: true);
             var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/webhooks";
                 var apiCallHttpMethod = "post";
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 }

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        public IBodyWorkflowAction<BitlinkV2> CreateBitlink(Expression<Func<string>> bodyuRL)
+        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<string>> bodyuRL)
         {
             var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: true);
-            return new DeferredBodyAction<BitlinkV2>(() =>
+            return new DeferredBodyAction<BitlinkV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/shorten";
                 var apiCallHttpMethod = "post";
@@ -30,22 +30,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
                 }
 
                 return new ApiConnectionAction<BitlinkV2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated(Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse, ApiConnectionTriggerConfiguration> OnBitlinkCreated(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<OnBitlinkCreatedResponse>(() =>
+            return new DeferredBodyTrigger<OnBitlinkCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/bitlinks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

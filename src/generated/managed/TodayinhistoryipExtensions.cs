@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
     public class TodayinhistoryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
-        public IBodyWorkflowAction<TodayGetResponse> TodayGet()
+        public IBodyWorkflowAction<TodayGetResponse, ApiConnectionActionConfiguration> TodayGet()
         {
             var apiCallPath = "/date";
             var apiCallHttpMethod = "get";
@@ -21,17 +21,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
-        public IBodyWorkflowAction<DayGetResponse> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<DayGetResponse, ApiConnectionActionConfiguration> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
-            return new DeferredBodyAction<DayGetResponse>(() =>
+            return new DeferredBodyAction<DayGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/date/{0}/{1}", __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DayGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

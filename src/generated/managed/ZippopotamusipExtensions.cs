@@ -12,32 +12,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
     public class ZippopotamusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
+        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse, ApiConnectionActionConfiguration> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: true);
-            return new DeferredBodyAction<GetDetailsByPostalCodeResponse>(() =>
+            return new DeferredBodyAction<GetDetailsByPostalCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_country.WithUrlEncoding(1), __workflow_postalCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
+        public IBodyWorkflowAction<GetDetailsByStateCityResponse, ApiConnectionActionConfiguration> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: true);
-            return new DeferredBodyAction<GetDetailsByStateCityResponse>(() =>
+            return new DeferredBodyAction<GetDetailsByStateCityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_country.WithUrlEncoding(1), __workflow_state.WithUrlEncoding(1), __workflow_city.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDetailsByStateCityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

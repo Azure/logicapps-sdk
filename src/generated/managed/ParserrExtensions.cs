@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
     public class ParserrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parserr")]
-        public IBodyWorkflowAction<ListInboxesResponseItem[]> ListInboxes()
+        public IBodyWorkflowAction<ListInboxesResponseItem[], ApiConnectionActionConfiguration> ListInboxes()
         {
             var apiCallPath = "/api/microsoft/user/emaillist";
             var apiCallHttpMethod = "get";
@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 
     public class ParserrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookEmailReceived(Expression<Func<string>> bodyemail, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/microsoft/subscription/create";
                 var apiCallHttpMethod = "post";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

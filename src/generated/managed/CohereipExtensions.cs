@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     public class CohereipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string[]>> bodytexts = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
+        public IBodyWorkflowAction<EmbedPostResponse, ApiConnectionActionConfiguration> Embed(Expression<Func<string[]>> bodytexts = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
             var __workflow_bodytexts = WorkflowExpression.Compile(bodytexts, nameof(bodytexts), required: false);
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
             var __workflow_bodytruncate = WorkflowExpression.Compile(bodytruncate, nameof(bodytruncate), required: false);
-            return new DeferredBodyAction<EmbedPostResponse>(() =>
+            return new DeferredBodyAction<EmbedPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/embed";
                 var apiCallHttpMethod = "post";
@@ -58,18 +58,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 }
 
                 return new ApiConnectionAction<EmbedPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<ClassifyPostResponse> Classify(Expression<Func<string[]>> bodyinputs = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodyexamplesInputItem[]>> bodyexamples = null, Expression<Func<string>> bodypreset = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
+        public IBodyWorkflowAction<ClassifyPostResponse, ApiConnectionActionConfiguration> Classify(Expression<Func<string[]>> bodyinputs = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodyexamplesInputItem[]>> bodyexamples = null, Expression<Func<string>> bodypreset = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
             var __workflow_bodyexamples = WorkflowExpression.Compile(bodyexamples, nameof(bodyexamples), required: false);
             var __workflow_bodypreset = WorkflowExpression.Compile(bodypreset, nameof(bodypreset), required: false);
             var __workflow_bodytruncate = WorkflowExpression.Compile(bodytruncate, nameof(bodytruncate), required: false);
-            return new DeferredBodyAction<ClassifyPostResponse>(() =>
+            return new DeferredBodyAction<ClassifyPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/classify";
                 var apiCallHttpMethod = "post";
@@ -122,14 +122,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 }
 
                 return new ApiConnectionAction<ClassifyPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<TokenPostResponse> Token(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TokenPostResponse, ApiConnectionActionConfiguration> Token(Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<TokenPostResponse>(() =>
+            return new DeferredBodyAction<TokenPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tokenize";
                 var apiCallHttpMethod = "post";
@@ -148,14 +148,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 }
 
                 return new ApiConnectionAction<TokenPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<DetokenPostResponse> Detoken(Expression<Func<int[]>> bodytokens = null)
+        public IBodyWorkflowAction<DetokenPostResponse, ApiConnectionActionConfiguration> Detoken(Expression<Func<int[]>> bodytokens = null)
         {
             var __workflow_bodytokens = WorkflowExpression.Compile(bodytokens, nameof(bodytokens), required: false);
-            return new DeferredBodyAction<DetokenPostResponse>(() =>
+            return new DeferredBodyAction<DetokenPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detokenize";
                 var apiCallHttpMethod = "post";
@@ -174,14 +174,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 }
 
                 return new ApiConnectionAction<DetokenPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<LanguagePostResponse> Language(Expression<Func<string[]>> bodytexts = null)
+        public IBodyWorkflowAction<LanguagePostResponse, ApiConnectionActionConfiguration> Language(Expression<Func<string[]>> bodytexts = null)
         {
             var __workflow_bodytexts = WorkflowExpression.Compile(bodytexts, nameof(bodytexts), required: false);
-            return new DeferredBodyAction<LanguagePostResponse>(() =>
+            return new DeferredBodyAction<LanguagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detect-language";
                 var apiCallHttpMethod = "post";
@@ -200,11 +200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 }
 
                 return new ApiConnectionAction<LanguagePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymessage, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodypreamble = null, Expression<Func<bodychatHistoryInputItem[]>> bodychatHistory = null, Expression<Func<string>> bodyconversationId = null, Expression<Func<bodypromptTruncationInput>> bodypromptTruncation = null, Expression<Func<bodyconnectorsInputItem[]>> bodyconnectors = null, Expression<Func<bool>> bodysearchQueriesOnly = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodycitationQualityInput>> bodycitationQuality = null, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<int>> bodymaxInputTokens = null, Expression<Func<int>> bodyk = null, Expression<Func<double>> bodyp = null, Expression<Func<double>> bodyseed = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
+        public IBodyWorkflowAction<ChatPostResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<string>> bodymessage, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodypreamble = null, Expression<Func<bodychatHistoryInputItem[]>> bodychatHistory = null, Expression<Func<string>> bodyconversationId = null, Expression<Func<bodypromptTruncationInput>> bodypromptTruncation = null, Expression<Func<bodyconnectorsInputItem[]>> bodyconnectors = null, Expression<Func<bool>> bodysearchQueriesOnly = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodycitationQualityInput>> bodycitationQuality = null, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<int>> bodymaxInputTokens = null, Expression<Func<int>> bodyk = null, Expression<Func<double>> bodyp = null, Expression<Func<double>> bodyseed = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
             var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
             var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
             var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
-            return new DeferredBodyAction<ChatPostResponse>(() =>
+            return new DeferredBodyAction<ChatPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/chat";
                 var apiCallHttpMethod = "post";
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 }
 
                 return new ApiConnectionAction<ChatPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

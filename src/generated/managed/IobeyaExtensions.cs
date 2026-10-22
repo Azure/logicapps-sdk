@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
     public class IobeyaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListRoomsResponse> ListRooms()
+        public IBodyWorkflowAction<ListRoomsResponse, ApiConnectionActionConfiguration> ListRooms()
         {
             var apiCallPath = "/rooms";
             var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms(Expression<Func<string>> bodyname, Expression<Func<string>> bodydomainName, Expression<Func<int>> bodymaximumBoards = null, Expression<Func<int>> bodymaximumUsers = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyadministrator = null)
+        public IBodyWorkflowAction<CreateRoomsResponse, ApiConnectionActionConfiguration> CreateRooms(Expression<Func<string>> bodyname, Expression<Func<string>> bodydomainName, Expression<Func<int>> bodymaximumBoards = null, Expression<Func<int>> bodymaximumUsers = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyadministrator = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydomainName = WorkflowExpression.Compile(bodydomainName, nameof(bodydomainName), required: true);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
             var __workflow_bodyadministrator = WorkflowExpression.Compile(bodyadministrator, nameof(bodyadministrator), required: false);
-            return new DeferredBodyAction<CreateRoomsResponse>(() =>
+            return new DeferredBodyAction<CreateRoomsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/rooms";
                 var apiCallHttpMethod = "post";
@@ -79,15 +79,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 }
 
                 return new ApiConnectionAction<CreateRoomsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListBoardsResponse> ListBoards(Expression<Func<string>> search = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<ListBoardsResponse, ApiConnectionActionConfiguration> ListBoards(Expression<Func<string>> search = null, Expression<Func<sortDirectionInput>> sortDirection = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
-            return new DeferredBodyAction<ListBoardsResponse>(() =>
+            return new DeferredBodyAction<ListBoardsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/boards";
                 var apiCallHttpMethod = "get";
@@ -100,15 +100,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 callPayload.Queries["page"] = Convert.ToString(1);
                 callPayload.Queries["size"] = Convert.ToString(200);
                 return new ApiConnectionAction<ListBoardsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<typeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<typeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
         {
             var __workflow_typeCard = WorkflowExpression.Compile(typeCard, nameof(typeCard), required: true);
             var __workflow_dynamicSchema = WorkflowExpression.Compile(dynamicSchema, nameof(dynamicSchema), required: false);
-            return new DeferredBodyAction<CreateCardResponse>(() =>
+            return new DeferredBodyAction<CreateCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards";
                 var apiCallHttpMethod = "post";
@@ -116,15 +116,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 callPayload.Headers["Type Card"] = ExpressionConverter.Convert(__workflow_typeCard);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);
                 return new ApiConnectionAction<CreateCardResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue(Expression<Func<string>> bodyboardId, Expression<Func<JToken[]>> bodyletters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQCDIndicatorsValue(Expression<Func<string>> bodyboardId, Expression<Func<JToken[]>> bodyletters)
         {
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             var __workflow_bodyletters = WorkflowExpression.Compile(bodyletters, nameof(bodyletters), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qcd/indicators-values";
                 var apiCallHttpMethod = "post";
@@ -141,11 +141,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<wedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<wedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
         {
             var __workflow_letterName = WorkflowExpression.Compile(letterName, nameof(letterName), required: true);
             var __workflow_indicatorName = WorkflowExpression.Compile(indicatorName, nameof(indicatorName), required: true);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
             var __workflow_wedgeNumber = WorkflowExpression.Compile(wedgeNumber, nameof(wedgeNumber), required: true);
             var __workflow_wedgeRing = WorkflowExpression.Compile(wedgeRing, nameof(wedgeRing), required: true);
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qcd/compute-indicator";
                 var apiCallHttpMethod = "get";
@@ -166,18 +166,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 if (__workflow_period != null)
                     callPayload.Queries["period"] = ExpressionConverter.Convert(__workflow_period);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity(Expression<Func<string>> boardId, Expression<Func<int>> page, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ListCardsActivityResponse, ApiConnectionActionConfiguration> ListCardsActivity(Expression<Func<string>> boardId, Expression<Func<int>> page, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<int>> size = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ListCardsActivityResponse>(() =>
+            return new DeferredBodyAction<ListCardsActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/activity";
                 var apiCallHttpMethod = "get";
@@ -192,31 +192,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ListCardsActivityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateAssetBoardImage(Expression<Func<string>> boardImageId, Expression<Func<object>> file, Expression<Func<fileContentTypeInput>> fileContentType)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateAssetBoardImage(Expression<Func<string>> boardImageId, Expression<Func<object>> file, Expression<Func<fileContentTypeInput>> fileContentType)
         {
             var __workflow_boardImageId = WorkflowExpression.Compile(boardImageId, nameof(boardImageId), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             var __workflow_fileContentType = WorkflowExpression.Compile(fileContentType, nameof(fileContentType), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/board-images/{0}/asset", __workflow_boardImageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodytitle = null)
         {
             var __workflow_gaugeId = WorkflowExpression.Compile(gaugeId, nameof(gaugeId), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gauges/{0}", __workflow_gaugeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

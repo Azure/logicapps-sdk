@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     public class AzureaisearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> IndexDocument(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> IndexDocument(Expression<Func<string>> indexName)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/indexDocument";
                 var apiCallHttpMethod = "post";
@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documentToIndex = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documentToIndex = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_documentToIndex = WorkflowExpression.Compile(documentToIndex, nameof(documentToIndex), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/indexDocuments";
                 var apiCallHttpMethod = "post";
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 callPayload.Queries["indexName"] = ExpressionConverter.Convert(__workflow_indexName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_documentToIndex);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[]> GetIndexesSchema(Expression<Func<bool>> onlyIntegratedVectorIndexes = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetIndexesSchema(Expression<Func<bool>> onlyIntegratedVectorIndexes = null)
         {
             var __workflow_onlyIntegratedVectorIndexes = WorkflowExpression.Compile(onlyIntegratedVectorIndexes, nameof(onlyIntegratedVectorIndexes), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/indexesSchema";
                 var apiCallHttpMethod = "get";
@@ -61,24 +61,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 if (__workflow_onlyIntegratedVectorIndexes != null)
                     callPayload.Queries["onlyIntegratedVectorIndexes"] = ExpressionConverter.Convert(__workflow_onlyIntegratedVectorIndexes);
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> GetIndexStatistics(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetIndexStatistics(Expression<Func<string>> indexName)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/indexStatistics/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[]> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> integratedVectorSearchRequestsearchText = null, Expression<Func<string[]>> integratedVectorSearchRequestvectorizedSearchFields = null, Expression<Func<string[]>> integratedVectorSearchRequestselectFields = null, Expression<Func<string>> integratedVectorSearchRequestfilterCondition = null, Expression<Func<string>> integratedVectorSearchRequestsessionId = null, Expression<Func<int>> integratedVectorSearchRequestnearestNeighbors = null, Expression<Func<int>> integratedVectorSearchRequesttopSearches = null, Expression<Func<int>> integratedVectorSearchRequestskipSearches = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> integratedVectorSearchRequestsearchText = null, Expression<Func<string[]>> integratedVectorSearchRequestvectorizedSearchFields = null, Expression<Func<string[]>> integratedVectorSearchRequestselectFields = null, Expression<Func<string>> integratedVectorSearchRequestfilterCondition = null, Expression<Func<string>> integratedVectorSearchRequestsessionId = null, Expression<Func<int>> integratedVectorSearchRequestnearestNeighbors = null, Expression<Func<int>> integratedVectorSearchRequesttopSearches = null, Expression<Func<int>> integratedVectorSearchRequestskipSearches = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_integratedVectorSearchRequestsearchText = WorkflowExpression.Compile(integratedVectorSearchRequestsearchText, nameof(integratedVectorSearchRequestsearchText), required: false);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
             var __workflow_integratedVectorSearchRequestnearestNeighbors = WorkflowExpression.Compile(integratedVectorSearchRequestnearestNeighbors, nameof(integratedVectorSearchRequestnearestNeighbors), required: false);
             var __workflow_integratedVectorSearchRequesttopSearches = WorkflowExpression.Compile(integratedVectorSearchRequesttopSearches, nameof(integratedVectorSearchRequesttopSearches), required: false);
             var __workflow_integratedVectorSearchRequestskipSearches = WorkflowExpression.Compile(integratedVectorSearchRequestskipSearches, nameof(integratedVectorSearchRequestskipSearches), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integratedVectorSearch/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 }
 
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[]> SemanticHybridSearch(Expression<Func<string>> indexName, Expression<Func<string>> semanticHybridSearchRequestsearchText = null, Expression<Func<string[]>> semanticHybridSearchRequestvectorizedSearchFields = null, Expression<Func<string>> semanticHybridSearchRequestsemanticConfiguration = null, Expression<Func<string[]>> semanticHybridSearchRequestselectFields = null, Expression<Func<string>> semanticHybridSearchRequestfilterCondition = null, Expression<Func<string>> semanticHybridSearchRequestsessionId = null, Expression<Func<int>> semanticHybridSearchRequestnearestNeighbors = null, Expression<Func<int>> semanticHybridSearchRequesttopSearches = null, Expression<Func<int>> semanticHybridSearchRequestskipSearches = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SemanticHybridSearch(Expression<Func<string>> indexName, Expression<Func<string>> semanticHybridSearchRequestsearchText = null, Expression<Func<string[]>> semanticHybridSearchRequestvectorizedSearchFields = null, Expression<Func<string>> semanticHybridSearchRequestsemanticConfiguration = null, Expression<Func<string[]>> semanticHybridSearchRequestselectFields = null, Expression<Func<string>> semanticHybridSearchRequestfilterCondition = null, Expression<Func<string>> semanticHybridSearchRequestsessionId = null, Expression<Func<int>> semanticHybridSearchRequestnearestNeighbors = null, Expression<Func<int>> semanticHybridSearchRequesttopSearches = null, Expression<Func<int>> semanticHybridSearchRequestskipSearches = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_semanticHybridSearchRequestsearchText = WorkflowExpression.Compile(semanticHybridSearchRequestsearchText, nameof(semanticHybridSearchRequestsearchText), required: false);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
             var __workflow_semanticHybridSearchRequestnearestNeighbors = WorkflowExpression.Compile(semanticHybridSearchRequestnearestNeighbors, nameof(semanticHybridSearchRequestnearestNeighbors), required: false);
             var __workflow_semanticHybridSearchRequesttopSearches = WorkflowExpression.Compile(semanticHybridSearchRequesttopSearches, nameof(semanticHybridSearchRequesttopSearches), required: false);
             var __workflow_semanticHybridSearchRequestskipSearches = WorkflowExpression.Compile(semanticHybridSearchRequestskipSearches, nameof(semanticHybridSearchRequestskipSearches), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/semanticHybridSearch/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -233,14 +233,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 }
 
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> indexName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<string>> indexName)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteDocument";
                 var apiCallHttpMethod = "post";
@@ -254,15 +254,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IWorkflowAction DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documentsToDelete = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documentsToDelete = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_documentsToDelete = WorkflowExpression.Compile(documentsToDelete, nameof(documentsToDelete), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteDocuments";
                 var apiCallHttpMethod = "post";
@@ -270,14 +270,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 callPayload.Queries["indexName"] = ExpressionConverter.Convert(__workflow_indexName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_documentsToDelete);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IWorkflowAction MergeDocument(Expression<Func<string>> indexName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MergeDocument(Expression<Func<string>> indexName)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mergeDocument";
                 var apiCallHttpMethod = "post";
@@ -291,11 +291,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<string[]> VectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> vectorFieldsName, Expression<Func<int>> nearestNeighbors, Expression<Func<double[]>> vectorFieldsValue = null, Expression<Func<string>> searchQuery = null, Expression<Func<searchModeInput>> searchMode = null, Expression<Func<string>> filterCondition = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> VectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> vectorFieldsName, Expression<Func<int>> nearestNeighbors, Expression<Func<double[]>> vectorFieldsValue = null, Expression<Func<string>> searchQuery = null, Expression<Func<searchModeInput>> searchMode = null, Expression<Func<string>> filterCondition = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_vectorFieldsName = WorkflowExpression.Compile(vectorFieldsName, nameof(vectorFieldsName), required: true);
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
             var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: false);
             var __workflow_searchMode = WorkflowExpression.Compile(searchMode, nameof(searchMode), required: false);
             var __workflow_filterCondition = WorkflowExpression.Compile(filterCondition, nameof(filterCondition), required: false);
-            return new DeferredBodyAction<string[]>(() =>
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vectorSearch";
                 var apiCallHttpMethod = "post";
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
                     callPayload.Queries["filterCondition"] = ExpressionConverter.Convert(__workflow_filterCondition);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_vectorFieldsValue);
                 return new ApiConnectionAction<string[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

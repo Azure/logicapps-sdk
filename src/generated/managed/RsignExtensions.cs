@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
     public class RsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetAuthTokenResponse> GetAuthToken(Expression<Func<string>> bodyreferenceKey, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodypassword)
+        public IBodyWorkflowAction<GetAuthTokenResponse, ApiConnectionActionConfiguration> GetAuthToken(Expression<Func<string>> bodyreferenceKey, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodypassword)
         {
             var __workflow_bodyreferenceKey = WorkflowExpression.Compile(bodyreferenceKey, nameof(bodyreferenceKey), required: true);
             var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: true);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            return new DeferredBodyAction<GetAuthTokenResponse>(() =>
+            return new DeferredBodyAction<GetAuthTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/V1/Authentication/AuthenticateUserV2";
                 var apiCallHttpMethod = "post";
@@ -36,17 +36,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
                 }
 
                 return new ApiConnectionAction<GetAuthTokenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> SendEnvelopeFromTemplate(Expression<Func<string>> authToken, Expression<Func<string>> bodytemplateCode, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping, Expression<Func<string>> bodyappKey = null)
+        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse, ApiConnectionActionConfiguration> SendEnvelopeFromTemplate(Expression<Func<string>> authToken, Expression<Func<string>> bodytemplateCode, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping, Expression<Func<string>> bodyappKey = null)
         {
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             var __workflow_bodytemplateCode = WorkflowExpression.Compile(bodytemplateCode, nameof(bodytemplateCode), required: true);
             var __workflow_bodytemplateRoleRecipientMapping = WorkflowExpression.Compile(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
             var __workflow_bodyappKey = WorkflowExpression.Compile(bodyappKey, nameof(bodyappKey), required: false);
-            return new DeferredBodyAction<SendEnvelopeFromTemplateResponse>(() =>
+            return new DeferredBodyAction<SendEnvelopeFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromTemplate";
                 var apiCallHttpMethod = "post";
@@ -70,17 +70,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
                 }
 
                 return new ApiConnectionAction<SendEnvelopeFromTemplateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> SendEnvelopeFromRule(Expression<Func<string>> authToken, Expression<Func<string>> bodyruleCode, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping)
+        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse, ApiConnectionActionConfiguration> SendEnvelopeFromRule(Expression<Func<string>> authToken, Expression<Func<string>> bodyruleCode, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping)
         {
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             var __workflow_bodyruleCode = WorkflowExpression.Compile(bodyruleCode, nameof(bodyruleCode), required: true);
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
             var __workflow_bodytemplateRoleRecipientMapping = WorkflowExpression.Compile(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
-            return new DeferredBodyAction<SendEnvelopeFromRuleResponse>(() =>
+            return new DeferredBodyAction<SendEnvelopeFromRuleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromRule";
                 var apiCallHttpMethod = "post";
@@ -100,16 +100,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
                 }
 
                 return new ApiConnectionAction<SendEnvelopeFromRuleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> GetEnvelopeStatusInfo(Expression<Func<string>> authToken, Expression<Func<string>> bodyenvelopeCode, Expression<Func<bodydetailOrSummaryInput>> bodydetailOrSummary)
+        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse, ApiConnectionActionConfiguration> GetEnvelopeStatusInfo(Expression<Func<string>> authToken, Expression<Func<string>> bodyenvelopeCode, Expression<Func<bodydetailOrSummaryInput>> bodydetailOrSummary)
         {
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             var __workflow_bodyenvelopeCode = WorkflowExpression.Compile(bodyenvelopeCode, nameof(bodyenvelopeCode), required: true);
             var __workflow_bodydetailOrSummary = WorkflowExpression.Compile(bodydetailOrSummary, nameof(bodydetailOrSummary), required: true);
-            return new DeferredBodyAction<GetEnvelopeStatusInfoResponse>(() =>
+            return new DeferredBodyAction<GetEnvelopeStatusInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/V1/Envelope/GetEnvelopeStatusInfo";
                 var apiCallHttpMethod = "post";
@@ -127,37 +127,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
                 }
 
                 return new ApiConnectionAction<GetEnvelopeStatusInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetTemplateInfoResponse> GetTemplateInfo(Expression<Func<string>> templateCode, Expression<Func<string>> authToken)
+        public IBodyWorkflowAction<GetTemplateInfoResponse, ApiConnectionActionConfiguration> GetTemplateInfo(Expression<Func<string>> templateCode, Expression<Func<string>> authToken)
         {
             var __workflow_templateCode = WorkflowExpression.Compile(templateCode, nameof(templateCode), required: true);
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
-            return new DeferredBodyAction<GetTemplateInfoResponse>(() =>
+            return new DeferredBodyAction<GetTemplateInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", __workflow_templateCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(__workflow_authToken);
                 return new ApiConnectionAction<GetTemplateInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> DownloadEnvelopeDocuments(Expression<Func<string>> envelopeCode, Expression<Func<string>> authToken)
+        public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse, ApiConnectionActionConfiguration> DownloadEnvelopeDocuments(Expression<Func<string>> envelopeCode, Expression<Func<string>> authToken)
         {
             var __workflow_envelopeCode = WorkflowExpression.Compile(envelopeCode, nameof(envelopeCode), required: true);
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
-            return new DeferredBodyAction<DownloadEnvelopeDocumentsResponse>(() =>
+            return new DeferredBodyAction<DownloadEnvelopeDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", __workflow_envelopeCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(__workflow_authToken);
                 return new ApiConnectionAction<DownloadEnvelopeDocumentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

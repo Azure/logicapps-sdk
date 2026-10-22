@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class ResendipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<EmailPostResponse> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
+        public IBodyWorkflowAction<EmailPostResponse, ApiConnectionActionConfiguration> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
         {
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
             var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: false);
             var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
             var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            return new DeferredBodyAction<EmailPostResponse>(() =>
+            return new DeferredBodyAction<EmailPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emails";
                 var apiCallHttpMethod = "post";
@@ -78,24 +78,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
                 }
 
                 return new ApiConnectionAction<EmailPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet(Expression<Func<string>> emailId)
+        public IBodyWorkflowAction<RetrieveGetResponse, ApiConnectionActionConfiguration> RetrieveGet(Expression<Func<string>> emailId)
         {
             var __workflow_emailId = WorkflowExpression.Compile(emailId, nameof(emailId), required: true);
-            return new DeferredBodyAction<RetrieveGetResponse>(() =>
+            return new DeferredBodyAction<RetrieveGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/emails/{0}", __workflow_emailId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RetrieveGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<ListGetResponse> ListGet()
+        public IBodyWorkflowAction<ListGetResponse, ApiConnectionActionConfiguration> ListGet()
         {
             var apiCallPath = "/domains";
             var apiCallHttpMethod = "get";
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<DomainPostResponse> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
+        public IBodyWorkflowAction<DomainPostResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            return new DeferredBodyAction<DomainPostResponse>(() =>
+            return new DeferredBodyAction<DomainPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domains";
                 var apiCallHttpMethod = "post";
@@ -139,33 +139,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
                 }
 
                 return new ApiConnectionAction<DomainPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<string> DomainDelete(Expression<Func<string>> domainId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DomainDelete(Expression<Func<string>> domainId)
         {
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}", __workflow_domainId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<string> Verify(Expression<Func<string>> domainId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Verify(Expression<Func<string>> domainId)
         {
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}", __workflow_domainId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

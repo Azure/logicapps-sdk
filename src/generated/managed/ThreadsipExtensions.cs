@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ThreadsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
+        public IBodyWorkflowAction<ThreadPostResponse, ApiConnectionActionConfiguration> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
         {
             var __workflow_bodychannel = WorkflowExpression.Compile(bodychannel, nameof(bodychannel), required: false);
             var __workflow_bodychannelID = WorkflowExpression.Compile(bodychannelID, nameof(bodychannelID), required: false);
             var __workflow_bodyblocks = WorkflowExpression.Compile(bodyblocks, nameof(bodyblocks), required: false);
-            return new DeferredBodyAction<ThreadPostResponse>(() =>
+            return new DeferredBodyAction<ThreadPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/postThread";
                 var apiCallHttpMethod = "post";
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 }
 
                 return new ApiConnectionAction<ThreadPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> bodythreadID)
+        public IBodyWorkflowAction<ThreadDeleteResponse, ApiConnectionActionConfiguration> ThreadDelete(Expression<Func<string>> bodythreadID)
         {
             var __workflow_bodythreadID = WorkflowExpression.Compile(bodythreadID, nameof(bodythreadID), required: true);
-            return new DeferredBodyAction<ThreadDeleteResponse>(() =>
+            return new DeferredBodyAction<ThreadDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteThread";
                 var apiCallHttpMethod = "post";
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 }
 
                 return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChannelsPostResponse> Channels()
+        public IBodyWorkflowAction<ChannelsPostResponse, ApiConnectionActionConfiguration> Channels()
         {
             var apiCallPath = "/channels";
             var apiCallHttpMethod = "post";
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<ChatPostResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
         {
             var __workflow_bodychat = WorkflowExpression.Compile(bodychat, nameof(bodychat), required: false);
             var __workflow_bodychatID = WorkflowExpression.Compile(bodychatID, nameof(bodychatID), required: false);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
-            return new DeferredBodyAction<ChatPostResponse>(() =>
+            return new DeferredBodyAction<ChatPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/postChatMessage";
                 var apiCallHttpMethod = "post";
@@ -119,14 +119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 }
 
                 return new ApiConnectionAction<ChatPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete(Expression<Func<string>> bodymessageID = null)
+        public IBodyWorkflowAction<ChatDeleteResponse, ApiConnectionActionConfiguration> ChatDelete(Expression<Func<string>> bodymessageID = null)
         {
             var __workflow_bodymessageID = WorkflowExpression.Compile(bodymessageID, nameof(bodymessageID), required: false);
-            return new DeferredBodyAction<ChatDeleteResponse>(() =>
+            return new DeferredBodyAction<ChatDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteChatMessage";
                 var apiCallHttpMethod = "post";
@@ -145,20 +145,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 }
 
                 return new ApiConnectionAction<ChatDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> data = null)
+        public IBodyWorkflowAction<FilePostResponse, ApiConnectionActionConfiguration> File(Expression<Func<object>> data = null)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
-            return new DeferredBodyAction<FilePostResponse>(() =>
+            return new DeferredBodyAction<FilePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploadFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

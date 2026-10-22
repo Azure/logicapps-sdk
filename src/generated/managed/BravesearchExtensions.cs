@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     public class BravesearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet(Expression<Func<string>> q, Expression<Func<cacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<uiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
+        public IBodyWorkflowAction<WebSearchGetResponse, ApiConnectionActionConfiguration> WebSearchGet(Expression<Func<string>> q, Expression<Func<cacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<uiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_cacheControl = WorkflowExpression.Compile(cacheControl, nameof(cacheControl), required: false);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
             var __workflow_extraSnippets = WorkflowExpression.Compile(extraSnippets, nameof(extraSnippets), required: false);
             var __workflow_summary = WorkflowExpression.Compile(summary, nameof(summary), required: false);
-            return new DeferredBodyAction<WebSearchGetResponse>(() =>
+            return new DeferredBodyAction<WebSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/res/v1/web/search";
                 var apiCallHttpMethod = "get";
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
                 if (__workflow_xLocPostalCode != null)
                     callPayload.Headers["X-Loc-Postal-Code"] = ExpressionConverter.Convert(__workflow_xLocPostalCode);
                 return new ApiConnectionAction<WebSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
+        public IBodyWorkflowAction<ImageSearchGetResponse, ApiConnectionActionConfiguration> ImageSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_safesearch = WorkflowExpression.Compile(safesearch, nameof(safesearch), required: false);
             var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
-            return new DeferredBodyAction<ImageSearchGetResponse>(() =>
+            return new DeferredBodyAction<ImageSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/res/v1/images/search";
                 var apiCallHttpMethod = "get";
@@ -134,11 +134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
                     callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(__workflow_spellcheck);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ImageSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
+        public IBodyWorkflowAction<VideoSearchGetResponse, ApiConnectionActionConfiguration> VideoSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_safesearch = WorkflowExpression.Compile(safesearch, nameof(safesearch), required: false);
             var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
-            return new DeferredBodyAction<VideoSearchGetResponse>(() =>
+            return new DeferredBodyAction<VideoSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/res/v1/videos/search";
                 var apiCallHttpMethod = "get";
@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
                     callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(__workflow_spellcheck);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<VideoSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<freshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
+        public IBodyWorkflowAction<NewsSearchGetResponse, ApiConnectionActionConfiguration> NewsSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<freshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
             var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
             var __workflow_freshness = WorkflowExpression.Compile(freshness, nameof(freshness), required: false);
             var __workflow_extraSnippets = WorkflowExpression.Compile(extraSnippets, nameof(extraSnippets), required: false);
-            return new DeferredBodyAction<NewsSearchGetResponse>(() =>
+            return new DeferredBodyAction<NewsSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/res/v1/news/search";
                 var apiCallHttpMethod = "get";
@@ -211,18 +211,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
                     callPayload.Queries["extra_snippets"] = ExpressionConverter.Convert(__workflow_extraSnippets);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<NewsSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
+        public IBodyWorkflowAction<SuggestionSearchGetResponse, ApiConnectionActionConfiguration> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_rich = WorkflowExpression.Compile(rich, nameof(rich), required: false);
-            return new DeferredBodyAction<SuggestionSearchGetResponse>(() =>
+            return new DeferredBodyAction<SuggestionSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/res/v1/suggest/search";
                 var apiCallHttpMethod = "get";
@@ -240,16 +240,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
                     callPayload.Queries["rich"] = ExpressionConverter.Convert(__workflow_rich);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<SuggestionSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null)
+        public IBodyWorkflowAction<SpellcheckSearchGetResponse, ApiConnectionActionConfiguration> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
-            return new DeferredBodyAction<SpellcheckSearchGetResponse>(() =>
+            return new DeferredBodyAction<SpellcheckSearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/res/v1/spellcheck/search";
                 var apiCallHttpMethod = "get";
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<SpellcheckSearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

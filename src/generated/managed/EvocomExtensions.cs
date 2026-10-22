@@ -12,26 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
     public class EvocomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
-        public IBodyWorkflowAction<TeamResponseV2[]> GetTeams(Expression<Func<string>> xEpTenant)
+        public IBodyWorkflowAction<TeamResponseV2[], ApiConnectionActionConfiguration> GetTeams(Expression<Func<string>> xEpTenant)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
-            return new DeferredBodyAction<TeamResponseV2[]>(() =>
+            return new DeferredBodyAction<TeamResponseV2[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Teams";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
                 return new ApiConnectionAction<TeamResponseV2[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
-        public IBodyWorkflowAction<RouteDefinitionsResponse> GetTemplates(Expression<Func<string>> xEpTenant, Expression<Func<int>> pageIndex = null, Expression<Func<int>> itemsPerPage = null)
+        public IBodyWorkflowAction<RouteDefinitionsResponse, ApiConnectionActionConfiguration> GetTemplates(Expression<Func<string>> xEpTenant, Expression<Func<int>> pageIndex = null, Expression<Func<int>> itemsPerPage = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_pageIndex = WorkflowExpression.Compile(pageIndex, nameof(pageIndex), required: false);
             var __workflow_itemsPerPage = WorkflowExpression.Compile(itemsPerPage, nameof(itemsPerPage), required: false);
-            return new DeferredBodyAction<RouteDefinitionsResponse>(() =>
+            return new DeferredBodyAction<RouteDefinitionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Route/Definitions";
                 var apiCallHttpMethod = "get";
@@ -44,17 +44,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Queries["itemsPerPage"] = ExpressionConverter.Convert(__workflow_itemsPerPage);
                 callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
                 return new ApiConnectionAction<RouteDefinitionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class EvocomTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Tasks/New";
                 var apiCallHttpMethod = "post";
@@ -76,16 +76,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_bodychangeType = WorkflowExpression.Compile(bodychangeType, nameof(bodychangeType), required: true);
             var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
             var __workflow_bodytaskStatus = WorkflowExpression.Compile(bodytaskStatus, nameof(bodytaskStatus), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Tasks/Change";
                 var apiCallHttpMethod = "post";
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewTeamTrigger(Expression<Func<string>> xEpTenant, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Teams/New";
                 var apiCallHttpMethod = "post";
@@ -137,14 +137,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_bodychangeType = WorkflowExpression.Compile(bodychangeType, nameof(bodychangeType), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Teams/Change";
                 var apiCallHttpMethod = "post";
@@ -162,14 +162,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_bodydefinitionId = WorkflowExpression.Compile(bodydefinitionId, nameof(bodydefinitionId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Processes/New";
                 var apiCallHttpMethod = "post";
@@ -187,16 +187,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_bodychangeType = WorkflowExpression.Compile(bodychangeType, nameof(bodychangeType), required: true);
             var __workflow_bodydefinitionId = WorkflowExpression.Compile(bodydefinitionId, nameof(bodydefinitionId), required: false);
             var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Processes/Change";
                 var apiCallHttpMethod = "post";
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

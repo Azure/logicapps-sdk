@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
     public class SchipholairportipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveFlightUsingGETResponse> RetrieveFlightUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveFlightUsingGETResponse, ApiConnectionActionConfiguration> RetrieveFlightUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> id)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<RetrieveFlightUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveFlightUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flights/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveFlightUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse> RetrieveFlightsForDateOrPeriodUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> scheduleDate = null, Expression<Func<string>> scheduleTime = null, Expression<Func<string>> flightName = null, Expression<Func<flightDirectionInput>> flightDirection = null, Expression<Func<string>> airline = null, Expression<Func<int>> airlineCode = null, Expression<Func<string>> route = null, Expression<Func<bool>> includedelays = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> fromDateTime = null, Expression<Func<string>> toDateTime = null, Expression<Func<string>> searchDateTimeField = null, Expression<Func<string>> fromScheduleDate = null, Expression<Func<string>> toScheduleDate = null)
+        public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse, ApiConnectionActionConfiguration> RetrieveFlightsForDateOrPeriodUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> scheduleDate = null, Expression<Func<string>> scheduleTime = null, Expression<Func<string>> flightName = null, Expression<Func<flightDirectionInput>> flightDirection = null, Expression<Func<string>> airline = null, Expression<Func<int>> airlineCode = null, Expression<Func<string>> route = null, Expression<Func<bool>> includedelays = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> fromDateTime = null, Expression<Func<string>> toDateTime = null, Expression<Func<string>> searchDateTimeField = null, Expression<Func<string>> fromScheduleDate = null, Expression<Func<string>> toScheduleDate = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_searchDateTimeField = WorkflowExpression.Compile(searchDateTimeField, nameof(searchDateTimeField), required: false);
             var __workflow_fromScheduleDate = WorkflowExpression.Compile(fromScheduleDate, nameof(fromScheduleDate), required: false);
             var __workflow_toScheduleDate = WorkflowExpression.Compile(toScheduleDate, nameof(toScheduleDate), required: false);
-            return new DeferredBodyAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveFlightsForDateOrPeriodUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flights";
                 var apiCallHttpMethod = "get";
@@ -95,18 +95,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse> RetrieveAllAirlinesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAllAirlinesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<RetrieveAllAirlinesUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveAllAirlinesUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airlines";
                 var apiCallHttpMethod = "get";
@@ -122,17 +122,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveAllAirlinesUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse> RetrieveAirlineUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> airline)
+        public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAirlineUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> airline)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: true);
-            return new DeferredBodyAction<RetrieveAirlineUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveAirlineUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airlines/{0}", __workflow_airline.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveAirlineUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse> RetrieveAllAircraftTypesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iataMain = null, Expression<Func<string>> iataSub = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAllAircraftTypesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iataMain = null, Expression<Func<string>> iataSub = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_iataSub = WorkflowExpression.Compile(iataSub, nameof(iataSub), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<RetrieveAllAircraftTypesUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveAllAircraftTypesUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aircrafttypes";
                 var apiCallHttpMethod = "get";
@@ -175,18 +175,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveAllAircraftTypesUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse> RetrieveAllDestinationsUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAllDestinationsUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<RetrieveAllDestinationsUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveAllDestinationsUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/destinations";
                 var apiCallHttpMethod = "get";
@@ -202,17 +202,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveAllDestinationsUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse> RetrieveDestinationUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iata)
+        public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse, ApiConnectionActionConfiguration> RetrieveDestinationUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iata)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_iata = WorkflowExpression.Compile(iata, nameof(iata), required: true);
-            return new DeferredBodyAction<RetrieveDestinationUsingGETResponse>(() =>
+            return new DeferredBodyAction<RetrieveDestinationUsingGETResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/destinations/{0}", __workflow_iata.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<RetrieveDestinationUsingGETResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

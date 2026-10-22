@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
     public class FinraActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string> EquityWeeklySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquityWeeklySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/data/group/otcMarket/name/weeklySummary";
                 var apiCallHttpMethod = "post";
@@ -24,15 +24,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
                 callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string> EquityMonthlySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquityMonthlySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/data/group/otcMarket/name/monthlySummary";
                 var apiCallHttpMethod = "post";
@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
                 callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string> EquityOTCBlockSummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquityOTCBlockSummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/data/group/otcMarket/name/otcBlocksSummary";
                 var apiCallHttpMethod = "post";
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
                 callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

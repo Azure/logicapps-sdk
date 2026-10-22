@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsofttranslatorv
     public class MicrosofttranslatorvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsofttranslatorv")]
-        public IBodyWorkflowAction<LanguageInfo[]> GetTranslateSupportedLanguages()
+        public IBodyWorkflowAction<LanguageInfo[], ApiConnectionActionConfiguration> GetTranslateSupportedLanguages()
         {
             var apiCallPath = "/languages";
             var apiCallHttpMethod = "get";

@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
     public class HaveibeenpwnedipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount(Expression<Func<string>> account, Expression<Func<bool>> truncateResponse = null, Expression<Func<string>> domain = null, Expression<Func<bool>> includeUnverified = null)
+        public IBodyWorkflowAction<AllBreachesAccountResponseItem[], ApiConnectionActionConfiguration> AllBreachesAccount(Expression<Func<string>> account, Expression<Func<bool>> truncateResponse = null, Expression<Func<string>> domain = null, Expression<Func<bool>> includeUnverified = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_truncateResponse = WorkflowExpression.Compile(truncateResponse, nameof(truncateResponse), required: false);
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             var __workflow_includeUnverified = WorkflowExpression.Compile(includeUnverified, nameof(includeUnverified), required: false);
-            return new DeferredBodyAction<AllBreachesAccountResponseItem[]>(() =>
+            return new DeferredBodyAction<AllBreachesAccountResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/breachedaccount/{0}", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
                 if (__workflow_includeUnverified != null)
                     callPayload.Queries["includeUnverified"] = ExpressionConverter.Convert(__workflow_includeUnverified);
                 return new ApiConnectionAction<AllBreachesAccountResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<string[]> DataClasses()
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> DataClasses()
         {
             var apiCallPath = "/api/v3/dataclasses";
             var apiCallHttpMethod = "get";
@@ -45,20 +45,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<PastesResponseItem[]> Pastes(Expression<Func<string>> account)
+        public IBodyWorkflowAction<PastesResponseItem[], ApiConnectionActionConfiguration> Pastes(Expression<Func<string>> account)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
-            return new DeferredBodyAction<PastesResponseItem[]>(() =>
+            return new DeferredBodyAction<PastesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/pasteaccount/{0}", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PastesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<AllBreachesResponseItem[]> AllBreaches()
+        public IBodyWorkflowAction<AllBreachesResponseItem[], ApiConnectionActionConfiguration> AllBreaches()
         {
             var apiCallPath = "/api/v3/breaches";
             var apiCallHttpMethod = "get";
@@ -67,20 +67,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<BreachSingleResponse> BreachSingle(Expression<Func<string>> name)
+        public IBodyWorkflowAction<BreachSingleResponse, ApiConnectionActionConfiguration> BreachSingle(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<BreachSingleResponse>(() =>
+            return new DeferredBodyAction<BreachSingleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/breach/{0}", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BreachSingleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<BreachRecentResponse> BreachRecent()
+        public IBodyWorkflowAction<BreachRecentResponse, ApiConnectionActionConfiguration> BreachRecent()
         {
             var apiCallPath = "/api/v3/latestbreach";
             var apiCallHttpMethod = "get";

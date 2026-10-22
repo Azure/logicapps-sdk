@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
     public class DocumentdbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<PostDocumentsResponse> CreateDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> xMsDocumentdbIsUpsert = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<PostDocumentsResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> xMsDocumentdbIsUpsert = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsDocumentdbPreTriggerInclude = WorkflowExpression.Compile(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
             var __workflow_xMsDocumentdbPostTriggerInclude = WorkflowExpression.Compile(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<PostDocumentsResponse>(() =>
+            return new DeferredBodyAction<PostDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<PostDocumentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> CreateStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration> CreateStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_bodyfunctionDefinition = WorkflowExpression.Compile(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<CreateStoredProcedureResponse>(() =>
+            return new DeferredBodyAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -96,11 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsDocumentdbPreTriggerInclude = WorkflowExpression.Compile(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
             var __workflow_xMsDocumentdbPostTriggerInclude = WorkflowExpression.Compile(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -139,18 +139,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<string> DeleteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
             var __workflow_sprocId = WorkflowExpression.Compile(sprocId, nameof(sprocId), required: true);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_sprocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -158,11 +158,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<JToken> ExecuteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<string>> parameters = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<string>> parameters = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsDocumentdbRawPartitionkey = WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_sprocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -182,11 +182,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<GetDocumentV2Response> GetDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<GetDocumentV2Response, ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<GetDocumentV2Response>(() =>
+            return new DeferredBodyAction<GetDocumentV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -225,11 +225,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetDocumentV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<GetDocumentsV3Response> GetDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<xMsVersionInput>> xMsVersion = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<GetDocumentsV3Response, ApiConnectionActionConfiguration> GetDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<xMsVersionInput>> xMsVersion = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<GetDocumentsV3Response>(() =>
+            return new DeferredBodyAction<GetDocumentsV3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -267,17 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetDocumentsV3Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<GetStoredProceduresResponse> GetStoredProcedures(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<GetStoredProceduresResponse, ApiConnectionActionConfiguration> GetStoredProcedures(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<GetStoredProceduresResponse>(() =>
+            return new DeferredBodyAction<GetStoredProceduresResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -285,11 +285,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_xMsVersion != null)
                     callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetStoredProceduresResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<QueryDocumentsV5Response> QueryDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText = null, Expression<Func<string>> partitionKey = null, Expression<Func<int>> maxItemCount = null, Expression<Func<string>> continuationToken = null, Expression<Func<consistencyLevelInput>> consistencyLevel = null, Expression<Func<string>> sessionToken = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<QueryDocumentsV5Response, ApiConnectionActionConfiguration> QueryDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText = null, Expression<Func<string>> partitionKey = null, Expression<Func<int>> maxItemCount = null, Expression<Func<string>> continuationToken = null, Expression<Func<consistencyLevelInput>> consistencyLevel = null, Expression<Func<string>> sessionToken = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_sessionToken = WorkflowExpression.Compile(sessionToken, nameof(sessionToken), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<QueryDocumentsV5Response>(() =>
+            return new DeferredBodyAction<QueryDocumentsV5Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_containerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -324,11 +324,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 if (__workflow_purviewAccountName != null)
                     callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
                 return new ApiConnectionAction<QueryDocumentsV5Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<PutDocumentResponse> ReplaceDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<PutDocumentResponse, ApiConnectionActionConfiguration> ReplaceDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_xMsDocumentdbPreTriggerInclude = WorkflowExpression.Compile(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
             var __workflow_xMsDocumentdbPostTriggerInclude = WorkflowExpression.Compile(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<PutDocumentResponse>(() =>
+            return new DeferredBodyAction<PutDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -374,11 +374,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<PutDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> ReplaceStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration> ReplaceStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
             var __workflow_cosmosDbAccountName = WorkflowExpression.Compile(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
             var __workflow_bodyfunctionDefinition = WorkflowExpression.Compile(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_xMsVersion = WorkflowExpression.Compile(xMsVersion, nameof(xMsVersion), required: false);
-            return new DeferredBodyAction<CreateStoredProcedureResponse>(() =>
+            return new DeferredBodyAction<CreateStoredProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", __workflow_cosmosDbAccountName.WithUrlEncoding(1), __workflow_databaseId.WithUrlEncoding(1), __workflow_collectionId.WithUrlEncoding(1), __workflow_sprocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
                 }
 
                 return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

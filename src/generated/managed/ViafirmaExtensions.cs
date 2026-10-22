@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
     public class ViafirmaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodynotificationsharedLinkemail, Expression<Func<string>> bodynotificationtext = null, Expression<Func<string>> bodynotificationdetail = null, Expression<Func<string>> bodynotificationsharedLinksubject = null, Expression<Func<string>> bodydocumenttemplateCode = null, Expression<Func<string>> bodycallbackMails = null)
+        public IBodyWorkflowAction<SendSignRequestResponse, ApiConnectionActionConfiguration> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodynotificationsharedLinkemail, Expression<Func<string>> bodynotificationtext = null, Expression<Func<string>> bodynotificationdetail = null, Expression<Func<string>> bodynotificationsharedLinksubject = null, Expression<Func<string>> bodydocumenttemplateCode = null, Expression<Func<string>> bodycallbackMails = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
             var __workflow_bodynotificationsharedLinksubject = WorkflowExpression.Compile(bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
             var __workflow_bodydocumenttemplateCode = WorkflowExpression.Compile(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
             var __workflow_bodycallbackMails = WorkflowExpression.Compile(bodycallbackMails, nameof(bodycallbackMails), required: false);
-            return new DeferredBodyAction<SendSignRequestResponse>(() =>
+            return new DeferredBodyAction<SendSignRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents/api/v3/messages/";
                 var apiCallHttpMethod = "post";
@@ -106,17 +106,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
                 }
 
                 return new ApiConnectionAction<SendSignRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodydocumenttemplateCode = null)
+        public IBodyWorkflowAction<CreateSignRequestResponse, ApiConnectionActionConfiguration> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodydocumenttemplateCode = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_bodygroupCode = WorkflowExpression.Compile(bodygroupCode, nameof(bodygroupCode), required: true);
             var __workflow_bodydocumenttemplateCode = WorkflowExpression.Compile(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
-            return new DeferredBodyAction<CreateSignRequestResponse>(() =>
+            return new DeferredBodyAction<CreateSignRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents/api/v3/messages/dispatch";
                 var apiCallHttpMethod = "post";
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
                 }
 
                 return new ApiConnectionAction<CreateSignRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

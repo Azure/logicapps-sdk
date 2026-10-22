@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class PdfcrossActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string> MergePDF(Expression<Func<string[]>> filesfileContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<string[]>> filesfileContent)
         {
             var __workflow_filesfileContent = WorkflowExpression.Compile(filesfileContent, nameof(filesfileContent), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/merge";
                 var apiCallHttpMethod = "post";
@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string> AddWatermarkText(Expression<Func<string>> filefileContent, Expression<Func<string>> filewatermarkText)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddWatermarkText(Expression<Func<string>> filefileContent, Expression<Func<string>> filewatermarkText)
         {
             var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
             var __workflow_filewatermarkText = WorkflowExpression.Compile(filewatermarkText, nameof(filewatermarkText), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/watermark_text";
                 var apiCallHttpMethod = "post";
@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string> AddPassword(Expression<Func<string>> filefileContent, Expression<Func<string>> filepassword)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPassword(Expression<Func<string>> filefileContent, Expression<Func<string>> filepassword)
         {
             var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
             var __workflow_filepassword = WorkflowExpression.Compile(filepassword, nameof(filepassword), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/password";
                 var apiCallHttpMethod = "post";
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string> AddImage(Expression<Func<string>> filefileContent, Expression<Func<string>> fileimageContent, Expression<Func<double>> filepositionX, Expression<Func<double>> filepositionY, Expression<Func<string>> fileaddType, Expression<Func<double>> filefromPage = null, Expression<Func<double>> filetoPage = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddImage(Expression<Func<string>> filefileContent, Expression<Func<string>> fileimageContent, Expression<Func<double>> filepositionX, Expression<Func<double>> filepositionY, Expression<Func<string>> fileaddType, Expression<Func<double>> filefromPage = null, Expression<Func<double>> filetoPage = null)
         {
             var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
             var __workflow_fileimageContent = WorkflowExpression.Compile(fileimageContent, nameof(fileimageContent), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
             var __workflow_fileaddType = WorkflowExpression.Compile(fileaddType, nameof(fileaddType), required: true);
             var __workflow_filefromPage = WorkflowExpression.Compile(filefromPage, nameof(filefromPage), required: false);
             var __workflow_filetoPage = WorkflowExpression.Compile(filetoPage, nameof(filetoPage), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/image";
                 var apiCallHttpMethod = "post";
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

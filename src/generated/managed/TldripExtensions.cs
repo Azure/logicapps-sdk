@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
     public class TldripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHuman(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
+        public IBodyWorkflowAction<ArticleHumanPostResponse, ApiConnectionActionConfiguration> ArticleHuman(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: false);
             var __workflow_bodymaxLength = WorkflowExpression.Compile(bodymaxLength, nameof(bodymaxLength), required: false);
             var __workflow_bodyisDetailed = WorkflowExpression.Compile(bodyisDetailed, nameof(bodyisDetailed), required: false);
-            return new DeferredBodyAction<ArticleHumanPostResponse>(() =>
+            return new DeferredBodyAction<ArticleHumanPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-url/";
                 var apiCallHttpMethod = "post";
@@ -71,16 +71,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 }
 
                 return new ApiConnectionAction<ArticleHumanPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticle(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
+        public IBodyWorkflowAction<ExtractArticlePostResponse, ApiConnectionActionConfiguration> ExtractArticle(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodynumSentences = WorkflowExpression.Compile(bodynumSentences, nameof(bodynumSentences), required: false);
             var __workflow_bodyisDetailed = WorkflowExpression.Compile(bodyisDetailed, nameof(bodyisDetailed), required: false);
-            return new DeferredBodyAction<ExtractArticlePostResponse>(() =>
+            return new DeferredBodyAction<ExtractArticlePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-url/";
                 var apiCallHttpMethod = "post";
@@ -117,16 +117,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 }
 
                 return new ApiConnectionAction<ExtractArticlePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<TextHumanPostResponse> TextHuman(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
+        public IBodyWorkflowAction<TextHumanPostResponse, ApiConnectionActionConfiguration> TextHuman(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: false);
             var __workflow_bodymaxLength = WorkflowExpression.Compile(bodymaxLength, nameof(bodymaxLength), required: false);
-            return new DeferredBodyAction<TextHumanPostResponse>(() =>
+            return new DeferredBodyAction<TextHumanPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-text/";
                 var apiCallHttpMethod = "post";
@@ -173,15 +173,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 }
 
                 return new ApiConnectionAction<TextHumanPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractTextPostResponse> ExtractText(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
+        public IBodyWorkflowAction<ExtractTextPostResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodynumSentences = WorkflowExpression.Compile(bodynumSentences, nameof(bodynumSentences), required: false);
-            return new DeferredBodyAction<ExtractTextPostResponse>(() =>
+            return new DeferredBodyAction<ExtractTextPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-text/";
                 var apiCallHttpMethod = "post";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 }
 
                 return new ApiConnectionAction<ExtractTextPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

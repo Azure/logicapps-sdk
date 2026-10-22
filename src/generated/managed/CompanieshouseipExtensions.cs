@@ -12,176 +12,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
     public class CompanieshouseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<CompanyByNumberResponse, ApiConnectionActionConfiguration> CompanyByNumber(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<CompanyByNumberResponse>(() =>
+            return new DeferredBodyAction<CompanyByNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ListPscResponse, ApiConnectionActionConfiguration> ListPsc(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<ListPscResponse>(() =>
+            return new DeferredBodyAction<ListPscResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control-statements", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListPscResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ListStatementsPscResponse, ApiConnectionActionConfiguration> ListStatementsPsc(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<ListStatementsPscResponse>(() =>
+            return new DeferredBodyAction<ListStatementsPscResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
+        public IBodyWorkflowAction<IndividualPscResponse, ApiConnectionActionConfiguration> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             var __workflow_pCSId = WorkflowExpression.Compile(pCSId, nameof(pCSId), required: true);
-            return new DeferredBodyAction<IndividualPscResponse>(() =>
+            return new DeferredBodyAction<IndividualPscResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_pCSId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndividualPscResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<UKEstablishmentsResponse, ApiConnectionActionConfiguration> UKEstablishments(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<UKEstablishmentsResponse>(() =>
+            return new DeferredBodyAction<UKEstablishmentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/uk-establishments", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
+        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse, ApiConnectionActionConfiguration> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
         {
             var __workflow_officerId = WorkflowExpression.Compile(officerId, nameof(officerId), required: true);
-            return new DeferredBodyAction<OfficerAppointmentByOfficerIdResponse>(() =>
+            return new DeferredBodyAction<OfficerAppointmentByOfficerIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/officers/{0}/appointments", __workflow_officerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse, ApiConnectionActionConfiguration> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
-            return new DeferredBodyAction<FilingHistoryByNumberAndIdResponse>(() =>
+            return new DeferredBodyAction<FilingHistoryByNumberAndIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/filing-history/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ChargesByNumberResponse, ApiConnectionActionConfiguration> ChargesByNumber(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<ChargesByNumberResponse>(() =>
+            return new DeferredBodyAction<ChargesByNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/charges", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
+        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse, ApiConnectionActionConfiguration> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             var __workflow_chargeId = WorkflowExpression.Compile(chargeId, nameof(chargeId), required: true);
-            return new DeferredBodyAction<ChargesByNumberAndChargeIdResponse>(() =>
+            return new DeferredBodyAction<ChargesByNumberAndChargeIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/charges/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_chargeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<AddressByNumberResponse, ApiConnectionActionConfiguration> AddressByNumber(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<AddressByNumberResponse>(() =>
+            return new DeferredBodyAction<AddressByNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/registered-office-address", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<CompanyOfficersByNumberResponse, ApiConnectionActionConfiguration> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<CompanyOfficersByNumberResponse>(() =>
+            return new DeferredBodyAction<CompanyOfficersByNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/officers", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
+        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse, ApiConnectionActionConfiguration> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             var __workflow_appointmentId = WorkflowExpression.Compile(appointmentId, nameof(appointmentId), required: true);
-            return new DeferredBodyAction<CompanyOfficersByNumberAndAppointmentIdResponse>(() =>
+            return new DeferredBodyAction<CompanyOfficersByNumberAndAppointmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/appointments/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_appointmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse, ApiConnectionActionConfiguration> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            return new DeferredBodyAction<FilingHistoryByCompNumberResponse>(() =>
+            return new DeferredBodyAction<FilingHistoryByCompNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/filing-history", __workflow_companyNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

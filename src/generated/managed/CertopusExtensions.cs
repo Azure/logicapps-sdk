@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
     public class CertopusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
-        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
+        public IBodyWorkflowAction<CreateCredentialResponse, ApiConnectionActionConfiguration> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
             var __workflow_bodyorganisationId = WorkflowExpression.Compile(bodyorganisationId, nameof(bodyorganisationId), required: true);
             var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
             var __workflow_bodygenerate = WorkflowExpression.Compile(bodygenerate, nameof(bodygenerate), required: false);
             var __workflow_bodypublish = WorkflowExpression.Compile(bodypublish, nameof(bodypublish), required: false);
             var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
-            return new DeferredBodyAction<CreateCredentialResponse>(() =>
+            return new DeferredBodyAction<CreateCredentialResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/certificates";
                 var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
                 }
 
                 return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

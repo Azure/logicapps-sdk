@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class _365trainingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<UserProfile> GetUserProfile()
+        public IBodyWorkflowAction<UserProfile, ApiConnectionActionConfiguration> GetUserProfile()
         {
             var apiCallPath = "/UserProfile";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<CourseSummaryResponse> ListCourses(Expression<Func<string>> publishedFrom = null, Expression<Func<string>> publishedTo = null, Expression<Func<double>> priceFrom = null, Expression<Func<double>> priceTo = null, Expression<Func<bool>> isNew = null, Expression<Func<string>> moreToken = null)
+        public IBodyWorkflowAction<CourseSummaryResponse, ApiConnectionActionConfiguration> ListCourses(Expression<Func<string>> publishedFrom = null, Expression<Func<string>> publishedTo = null, Expression<Func<double>> priceFrom = null, Expression<Func<double>> priceTo = null, Expression<Func<bool>> isNew = null, Expression<Func<string>> moreToken = null)
         {
             var __workflow_publishedFrom = WorkflowExpression.Compile(publishedFrom, nameof(publishedFrom), required: false);
             var __workflow_publishedTo = WorkflowExpression.Compile(publishedTo, nameof(publishedTo), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var __workflow_priceTo = WorkflowExpression.Compile(priceTo, nameof(priceTo), required: false);
             var __workflow_isNew = WorkflowExpression.Compile(isNew, nameof(isNew), required: false);
             var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
-            return new DeferredBodyAction<CourseSummaryResponse>(() =>
+            return new DeferredBodyAction<CourseSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ListCourses";
                 var apiCallHttpMethod = "get";
@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<InstructorSummaryResponse> ListInstructors(Expression<Func<string>> moreToken = null)
+        public IBodyWorkflowAction<InstructorSummaryResponse, ApiConnectionActionConfiguration> ListInstructors(Expression<Func<string>> moreToken = null)
         {
             var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
-            return new DeferredBodyAction<InstructorSummaryResponse>(() =>
+            return new DeferredBodyAction<InstructorSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ListInstructors";
                 var apiCallHttpMethod = "get";
@@ -62,14 +62,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<MyCoursesResponse> ListMyCourses(Expression<Func<string>> moreToken = null)
+        public IBodyWorkflowAction<MyCoursesResponse, ApiConnectionActionConfiguration> ListMyCourses(Expression<Func<string>> moreToken = null)
         {
             var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
-            return new DeferredBodyAction<MyCoursesResponse>(() =>
+            return new DeferredBodyAction<MyCoursesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ListMyCourses";
                 var apiCallHttpMethod = "get";
@@ -77,14 +77,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<MyCoursesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<IdeaSummaryResponse> ListIdeas(Expression<Func<string>> moreToken = null)
+        public IBodyWorkflowAction<IdeaSummaryResponse, ApiConnectionActionConfiguration> ListIdeas(Expression<Func<string>> moreToken = null)
         {
             var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
-            return new DeferredBodyAction<IdeaSummaryResponse>(() =>
+            return new DeferredBodyAction<IdeaSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ListIdeas";
                 var apiCallHttpMethod = "get";
@@ -92,42 +92,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_moreToken != null)
                     callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
                 return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<CourseDetail> GetCourse(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CourseDetail, ApiConnectionActionConfiguration> GetCourse(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CourseDetail>(() =>
+            return new DeferredBodyAction<CourseDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetCourse";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<CourseDetail>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IWorkflowAction AddIdeaVote(Expression<Func<string>> ideaID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddIdeaVote(Expression<Func<string>> ideaID)
         {
             var __workflow_ideaID = WorkflowExpression.Compile(ideaID, nameof(ideaID), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddIdeaVote";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(__workflow_ideaID);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<InstructorDetail> GetInstructor(Expression<Func<string>> id = null)
+        public IBodyWorkflowAction<InstructorDetail, ApiConnectionActionConfiguration> GetInstructor(Expression<Func<string>> id = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<InstructorDetail>(() =>
+            return new DeferredBodyAction<InstructorDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetInstructor";
                 var apiCallHttpMethod = "get";
@@ -135,27 +135,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 if (__workflow_id != null)
                     callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<InstructorDetail>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class _365trainingTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewCourseUserNotification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCourseUserNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewCourseUserNotification";
             var apiCallHttpMethod = "post";
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NewIdeaNotification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewIdeaNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewIdeaNotification";
             var apiCallHttpMethod = "post";
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NewCoursePublishedNotification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCoursePublishedNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewCoursePublishedNotification";
             var apiCallHttpMethod = "post";

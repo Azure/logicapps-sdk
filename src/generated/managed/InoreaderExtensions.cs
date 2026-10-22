@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
     public class InoreaderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IBodyWorkflowAction<AddSubscriptionResponse> AddSubscription(Expression<Func<string>> bodyquickadd = null)
+        public IBodyWorkflowAction<AddSubscriptionResponse, ApiConnectionActionConfiguration> AddSubscription(Expression<Func<string>> bodyquickadd = null)
         {
             var __workflow_bodyquickadd = WorkflowExpression.Compile(bodyquickadd, nameof(bodyquickadd), required: false);
-            return new DeferredBodyAction<AddSubscriptionResponse>(() =>
+            return new DeferredBodyAction<AddSubscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscription/quickadd";
                 var apiCallHttpMethod = "post";
@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 }
 
                 return new ApiConnectionAction<AddSubscriptionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction EditSubscription(Expression<Func<string>> streamId, Expression<Func<string>> bodyt)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditSubscription(Expression<Func<string>> streamId, Expression<Func<string>> bodyt)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             var __workflow_bodyt = WorkflowExpression.Compile(bodyt, nameof(bodyt), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscription/edit";
                 var apiCallHttpMethod = "post";
@@ -58,29 +58,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction UnsubscribeSubscription(Expression<Func<string>> streamId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UnsubscribeSubscription(Expression<Func<string>> streamId)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/unsubscribe/subscription/edit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction RemoveSubscriptionFromFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveSubscriptionFromFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/remove/subscription/edit";
                 var apiCallHttpMethod = "post";
@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 callPayload.Queries["tagId"] = ExpressionConverter.Convert(__workflow_tagId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction AddSubscriptionToFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSubscriptionToFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add/subscription/edit";
                 var apiCallHttpMethod = "post";
@@ -104,39 +104,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 callPayload.Queries["tagId"] = ExpressionConverter.Convert(__workflow_tagId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction DeleteTag(Expression<Func<string>> tagId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTag(Expression<Func<string>> tagId)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/disable-tag";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tagId"] = ExpressionConverter.Convert(__workflow_tagId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IBodyWorkflowAction<UnreadCount> GetUnreadCountForStream(Expression<Func<string>> streamId)
+        public IBodyWorkflowAction<UnreadCount, ApiConnectionActionConfiguration> GetUnreadCountForStream(Expression<Func<string>> streamId)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
-            return new DeferredBodyAction<UnreadCount>(() =>
+            return new DeferredBodyAction<UnreadCount, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/single/unread-count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 return new ApiConnectionAction<UnreadCount>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IBodyWorkflowAction<UnreadCount[]> GetUnreadCount()
+        public IBodyWorkflowAction<UnreadCount[], ApiConnectionActionConfiguration> GetUnreadCount()
         {
             var apiCallPath = "/unread-count";
             var apiCallHttpMethod = "get";
@@ -145,11 +145,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IBodyWorkflowAction<StreamContentsResponseItem[]> StreamContents(Expression<Func<string>> streamId, Expression<Func<int>> n = null)
+        public IBodyWorkflowAction<StreamContentsResponseItem[], ApiConnectionActionConfiguration> StreamContents(Expression<Func<string>> streamId, Expression<Func<int>> n = null)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
-            return new DeferredBodyAction<StreamContentsResponseItem[]>(() =>
+            return new DeferredBodyAction<StreamContentsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/stream/contents/{0}", __workflow_streamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -157,13 +157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 if (__workflow_n != null)
                     callPayload.Queries["n"] = ExpressionConverter.Convert(__workflow_n);
                 return new ApiConnectionAction<StreamContentsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class InoreaderTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Subscription[]> OnNewSubscription(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription[], ApiConnectionTriggerConfiguration> OnNewSubscription(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/subscription/list";
             var apiCallHttpMethod = "get";
@@ -171,11 +171,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             return new ApiConnectionTrigger<Subscription[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnreadCount, ApiConnectionTriggerConfiguration> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target, FlowRecurrence recurrence = null)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
-            return new DeferredBodyTrigger<UnreadCount>(() =>
+            return new DeferredBodyTrigger<UnreadCount, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/unread-count";
                 var apiCallHttpMethod = "get";
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
                 return new ApiConnectionTrigger<UnreadCount>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

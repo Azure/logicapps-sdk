@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
     public class DB2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<DeleteRowOutput> DeleteRow(Expression<Func<string>> table, Expression<Func<object>> searchCondition)
+        public IOutputWorkflowAction<DeleteRowOutput, DeleteRowActionConfiguration> DeleteRow(Expression<Func<string>> table, Expression<Func<object>> searchCondition)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_searchCondition = WorkflowExpression.Compile(searchCondition, nameof(searchCondition), required: true);
-            return new DeferredOutputAction<DeleteRowOutput>(() =>
+            return new DeferredOutputAction<DeleteRowOutput, DeleteRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["table"] = ExpressionConverter.ConvertO(__workflow_table);
@@ -30,15 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<DeleteRowOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<ExecuteNonQueryOutput> ExecuteNonQuery(Expression<Func<string>> statement, Expression<Func<object>> sqlParameters = null)
+        public IOutputWorkflowAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration> ExecuteNonQuery(Expression<Func<string>> statement, Expression<Func<object>> sqlParameters = null)
         {
             var __workflow_statement = WorkflowExpression.Compile(statement, nameof(statement), required: true);
             var __workflow_sqlParameters = WorkflowExpression.Compile(sqlParameters, nameof(sqlParameters), required: false);
-            return new DeferredOutputAction<ExecuteNonQueryOutput>(() =>
+            return new DeferredOutputAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["statement"] = ExpressionConverter.ConvertO(__workflow_statement);
@@ -53,15 +54,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<ExecuteNonQueryOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
+        public IBodyWorkflowAction<JToken[], ExecuteQueryActionConfiguration> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ExecuteQueryActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
@@ -76,14 +77,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables(Expression<Func<string>> schema = null)
+        public IBodyWorkflowAction<GetTablesOutputItem[], GetTablesActionConfiguration> GetTables(Expression<Func<string>> schema = null)
         {
             var __workflow_schema = WorkflowExpression.Compile(schema, nameof(schema), required: false);
-            return new DeferredBodyAction<GetTablesOutputItem[]>(() =>
+            return new DeferredBodyAction<GetTablesOutputItem[], GetTablesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 if (__workflow_schema != null)
@@ -97,15 +98,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<InsertRowOutput> InsertRow(Expression<Func<string>> table, Expression<Func<object>> insertParameters)
+        public IOutputWorkflowAction<InsertRowOutput, InsertRowActionConfiguration> InsertRow(Expression<Func<string>> table, Expression<Func<object>> insertParameters)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_insertParameters = WorkflowExpression.Compile(insertParameters, nameof(insertParameters), required: true);
-            return new DeferredOutputAction<InsertRowOutput>(() =>
+            return new DeferredOutputAction<InsertRowOutput, InsertRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["table"] = ExpressionConverter.ConvertO(__workflow_table);
@@ -116,15 +117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<InsertRowOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IBodyWorkflowAction<JToken[]> StoredProcedure(Expression<Func<string>> procedureName, Expression<Func<object>> procedureParameters = null)
+        public IBodyWorkflowAction<JToken[], StoredProcedureActionConfiguration> StoredProcedure(Expression<Func<string>> procedureName, Expression<Func<object>> procedureParameters = null)
         {
             var __workflow_procedureName = WorkflowExpression.Compile(procedureName, nameof(procedureName), required: true);
             var __workflow_procedureParameters = WorkflowExpression.Compile(procedureParameters, nameof(procedureParameters), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], StoredProcedureActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["procedureName"] = ExpressionConverter.ConvertO(__workflow_procedureName);
@@ -139,16 +140,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<UpdateRowOutput> UpdateRow(Expression<Func<string>> table, Expression<Func<object>> updatedColumns, Expression<Func<object>> searchCondition)
+        public IOutputWorkflowAction<UpdateRowOutput, UpdateRowActionConfiguration> UpdateRow(Expression<Func<string>> table, Expression<Func<object>> updatedColumns, Expression<Func<object>> searchCondition)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_updatedColumns = WorkflowExpression.Compile(updatedColumns, nameof(updatedColumns), required: true);
             var __workflow_searchCondition = WorkflowExpression.Compile(searchCondition, nameof(searchCondition), required: true);
-            return new DeferredOutputAction<UpdateRowOutput>(() =>
+            return new DeferredOutputAction<UpdateRowOutput, UpdateRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["table"] = ExpressionConverter.ConvertO(__workflow_table);
@@ -160,8 +161,64 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputAction<UpdateRowOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class DeleteRowActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ExecuteNonQueryActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ExecuteQueryActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetTablesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class InsertRowActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class StoredProcedureActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class UpdateRowActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class DeleteRowOutput

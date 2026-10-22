@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
     public class RevueipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<List[]> GetAllLists()
+        public IBodyWorkflowAction<List[], ApiConnectionActionConfiguration> GetAllLists()
         {
             var apiCallPath = "/lists";
             var apiCallHttpMethod = "get";
@@ -21,46 +21,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<List> GetList(Expression<Func<string>> id)
+        public IBodyWorkflowAction<List, ApiConnectionActionConfiguration> GetList(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<List>(() =>
+            return new DeferredBodyAction<List, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<List>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Export> GetExport(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Export, ApiConnectionActionConfiguration> GetExport(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Export>(() =>
+            return new DeferredBodyAction<Export, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/exports/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Export>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Export> StartExport(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Export, ApiConnectionActionConfiguration> StartExport(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Export>(() =>
+            return new DeferredBodyAction<Export, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/exports/lists/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Export>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Item[]> GetItems()
+        public IBodyWorkflowAction<Item[], ApiConnectionActionConfiguration> GetItems()
         {
             var apiCallPath = "/items";
             var apiCallHttpMethod = "get";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<SentIssue> GetLatestIssue()
+        public IBodyWorkflowAction<SentIssue, ApiConnectionActionConfiguration> GetLatestIssue()
         {
             var apiCallPath = "/issues/latest";
             var apiCallHttpMethod = "get";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<SentIssue[]> GetAllSentIssues()
+        public IBodyWorkflowAction<SentIssue[], ApiConnectionActionConfiguration> GetAllSentIssues()
         {
             var apiCallPath = "/issues";
             var apiCallHttpMethod = "get";
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Issue[]> GetCurrentIssue()
+        public IBodyWorkflowAction<Issue[], ApiConnectionActionConfiguration> GetCurrentIssue()
         {
             var apiCallPath = "/issues/current";
             var apiCallHttpMethod = "get";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber[]> GetAllSubscribers()
+        public IBodyWorkflowAction<Subscriber[], ApiConnectionActionConfiguration> GetAllSubscribers()
         {
             var apiCallPath = "/subscribers";
             var apiCallHttpMethod = "get";
@@ -105,13 +105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> AddSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
-            return new DeferredBodyAction<Subscriber>(() =>
+            return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers";
                 var apiCallHttpMethod = "post";
@@ -144,17 +144,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
                 }
 
                 return new ApiConnectionAction<Subscriber>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> UpdateSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
-            return new DeferredBodyAction<Subscriber>(() =>
+            return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers";
                 var apiCallHttpMethod = "patch";
@@ -187,11 +187,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
                 }
 
                 return new ApiConnectionAction<Subscriber>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber[]> GetUnsubscribed()
+        public IBodyWorkflowAction<Subscriber[], ApiConnectionActionConfiguration> GetUnsubscribed()
         {
             var apiCallPath = "/subscribers/unsubscribed";
             var apiCallHttpMethod = "get";
@@ -200,13 +200,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> UnsubscribeSubscriber(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UnsubscribeSubscriber(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
-            return new DeferredBodyAction<Subscriber>(() =>
+            return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers/unsubscribe";
                 var apiCallHttpMethod = "post";
@@ -253,11 +253,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
                 }
 
                 return new ApiConnectionAction<Subscriber>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Account> GetProfileURL()
+        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> GetProfileURL()
         {
             var apiCallPath = "/accounts/me";
             var apiCallHttpMethod = "get";

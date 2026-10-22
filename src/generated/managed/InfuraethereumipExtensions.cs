@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
     public class InfuraethereumipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthGasPriceResponse> EthGasPrice()
+        public IBodyWorkflowAction<EthGasPriceResponse, ApiConnectionActionConfiguration> EthGasPrice()
         {
             var apiCallPath = "/eth_gasPrice";
             var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthBlockNumberResponse> EthBlockNumber()
+        public IBodyWorkflowAction<EthBlockNumberResponse, ApiConnectionActionConfiguration> EthBlockNumber()
         {
             var apiCallPath = "/eth_blockNumber";
             var apiCallHttpMethod = "post";
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthGetBalanceResponse> EthGetBalance(Expression<Func<string>> bodyParamsaddress = null, Expression<Func<bodyParamsblockInput>> bodyParamsblock = null)
+        public IBodyWorkflowAction<EthGetBalanceResponse, ApiConnectionActionConfiguration> EthGetBalance(Expression<Func<string>> bodyParamsaddress = null, Expression<Func<bodyParamsblockInput>> bodyParamsblock = null)
         {
             var __workflow_bodyParamsaddress = WorkflowExpression.Compile(bodyParamsaddress, nameof(bodyParamsaddress), required: false);
             var __workflow_bodyParamsblock = WorkflowExpression.Compile(bodyParamsblock, nameof(bodyParamsblock), required: false);
-            return new DeferredBodyAction<EthGetBalanceResponse>(() =>
+            return new DeferredBodyAction<EthGetBalanceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/eth_getBalance";
                 var apiCallHttpMethod = "post";
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
                 }
 
                 return new ApiConnectionAction<EthGetBalanceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
     public class TradegovActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<BSPResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
             var __workflow_itaOffices = WorkflowExpression.Compile(itaOffices, nameof(itaOffices), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<BSPResponse>(() =>
+            return new DeferredBodyAction<BSPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/business_service_providers/v1/search";
                 var apiCallHttpMethod = "get";
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<BSPResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<BSPCountResponse> BusinessServiceProvidersCount()
+        public IBodyWorkflowAction<BSPCountResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersCount()
         {
             var apiCallPath = "/business_service_providers/v1/count";
             var apiCallHttpMethod = "get";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<fuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ScreeningListSearchResponse, ApiConnectionActionConfiguration> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<fuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_fuzzyName = WorkflowExpression.Compile(fuzzyName, nameof(fuzzyName), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var __workflow_fullAddress = WorkflowExpression.Compile(fullAddress, nameof(fullAddress), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ScreeningListSearchResponse>(() =>
+            return new DeferredBodyAction<ScreeningListSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/consolidated_screening_list/v1/search";
                 var apiCallHttpMethod = "get";
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ScreeningListSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ScreeningSourcesResponse> ConsolidatedScreeningListSources()
+        public IBodyWorkflowAction<ScreeningSourcesResponse, ApiConnectionActionConfiguration> ConsolidatedScreeningListSources()
         {
             var apiCallPath = "/consolidated_screening_list/v1/sources";
             var apiCallHttpMethod = "get";
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList(Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeMinimisListResponse, ApiConnectionActionConfiguration> DeMinimisList(Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<DeMinimisListResponse>(() =>
+            return new DeferredBodyAction<DeMinimisListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/de_minimis/v1/list";
                 var apiCallHttpMethod = "get";
@@ -119,16 +119,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch(Expression<Func<string>> countryCodes = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeMinimisListResponse, ApiConnectionActionConfiguration> DeMinimisSearch(Expression<Func<string>> countryCodes = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
             var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<DeMinimisListResponse>(() =>
+            return new DeferredBodyAction<DeMinimisListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/de_minimis/v1/search";
                 var apiCallHttpMethod = "get";
@@ -140,11 +140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ITAOfficeSearchResponse, ApiConnectionActionConfiguration> ITAOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var __workflow_assignedZipCodes = WorkflowExpression.Compile(assignedZipCodes, nameof(assignedZipCodes), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<ITAOfficeSearchResponse>(() =>
+            return new DeferredBodyAction<ITAOfficeSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ita_office_locations/v1/search";
                 var apiCallHttpMethod = "get";
@@ -170,11 +170,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ITAOfficeSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ITAOfficeCountResponse> ITAOfficeLocationsCount()
+        public IBodyWorkflowAction<ITAOfficeCountResponse, ApiConnectionActionConfiguration> ITAOfficeLocationsCount()
         {
             var apiCallPath = "/ita_office_locations/v1/count";
             var apiCallHttpMethod = "get";
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch(Expression<Func<string>> sources = null, Expression<Func<string>> countries = null, Expression<Func<string>> eventTypes = null, Expression<Func<string>> industries = null, Expression<Func<string>> states = null, Expression<Func<string>> q = null, Expression<Func<string>> startDateRangeFrom = null, Expression<Func<string>> startDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TradeEventSearchResponse, ApiConnectionActionConfiguration> TradeEventsSearch(Expression<Func<string>> sources = null, Expression<Func<string>> countries = null, Expression<Func<string>> eventTypes = null, Expression<Func<string>> industries = null, Expression<Func<string>> states = null, Expression<Func<string>> q = null, Expression<Func<string>> startDateRangeFrom = null, Expression<Func<string>> startDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
             var __workflow_sources = WorkflowExpression.Compile(sources, nameof(sources), required: false);
             var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var __workflow_startDateRangeTo = WorkflowExpression.Compile(startDateRangeTo, nameof(startDateRangeTo), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TradeEventSearchResponse>(() =>
+            return new DeferredBodyAction<TradeEventSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/trade_events/v1/search";
                 var apiCallHttpMethod = "get";
@@ -221,11 +221,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TradeEventSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeEventCountResponse> TradeEventsCount()
+        public IBodyWorkflowAction<TradeEventCountResponse, ApiConnectionActionConfiguration> TradeEventsCount()
         {
             var apiCallPath = "/trade_events/v1/count";
             var apiCallHttpMethod = "get";
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> tenderStartDateRangeFrom = null, Expression<Func<string>> tenderStartDateRangeTo = null, Expression<Func<string>> contractStartDateRangeFrom = null, Expression<Func<string>> contractStartDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TradeLeadsSearchResponse, ApiConnectionActionConfiguration> SearchTradeLeads(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> tenderStartDateRangeFrom = null, Expression<Func<string>> tenderStartDateRangeTo = null, Expression<Func<string>> contractStartDateRangeFrom = null, Expression<Func<string>> contractStartDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
             var __workflow_contractStartDateRangeTo = WorkflowExpression.Compile(contractStartDateRangeTo, nameof(contractStartDateRangeTo), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TradeLeadsSearchResponse>(() =>
+            return new DeferredBodyAction<TradeLeadsSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/trade_leads/v1/search";
                 var apiCallHttpMethod = "get";
@@ -266,11 +266,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TradeLeadsSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeLeadsCountResponse> GetTradeLeadsCount()
+        public IBodyWorkflowAction<TradeLeadsCountResponse, ApiConnectionActionConfiguration> GetTradeLeadsCount()
         {
             var apiCallPath = "/trade_leads/v1/count";
             var apiCallHttpMethod = "get";

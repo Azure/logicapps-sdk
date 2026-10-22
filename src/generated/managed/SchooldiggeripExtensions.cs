@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     public class SchooldiggeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIAutocompleteSchoolResult> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<levelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
+        public IBodyWorkflowAction<APIAutocompleteSchoolResult, ApiConnectionActionConfiguration> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<levelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_qSearchCityStateName = WorkflowExpression.Compile(qSearchCityStateName, nameof(qSearchCityStateName), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_boxLatitudeSE = WorkflowExpression.Compile(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
             var __workflow_boxLongitudeSE = WorkflowExpression.Compile(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
             var __workflow_returnCount = WorkflowExpression.Compile(returnCount, nameof(returnCount), required: false);
-            return new DeferredBodyAction<APIAutocompleteSchoolResult>(() =>
+            return new DeferredBodyAction<APIAutocompleteSchoolResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/autocomplete/schools";
                 var apiCallHttpMethod = "get";
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_returnCount != null)
                     callPayload.Queries["returnCount"] = ExpressionConverter.Convert(__workflow_returnCount);
                 return new ApiConnectionAction<APIAutocompleteSchoolResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrictList2> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
+        public IBodyWorkflowAction<APIDistrictList2, ApiConnectionActionConfiguration> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_includeUnrankedDistrictsInRankSort = WorkflowExpression.Compile(includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
-            return new DeferredBodyAction<APIDistrictList2>(() =>
+            return new DeferredBodyAction<APIDistrictList2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/districts";
                 var apiCallHttpMethod = "get";
@@ -108,31 +108,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_includeUnrankedDistrictsInRankSort != null)
                     callPayload.Queries["includeUnrankedDistrictsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedDistrictsInRankSort);
                 return new ApiConnectionAction<APIDistrictList2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrict12> DistrictsGetDistrict2(Expression<Func<string>> id)
+        public IBodyWorkflowAction<APIDistrict12, ApiConnectionActionConfiguration> DistrictsGetDistrict2(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<APIDistrict12>(() =>
+            return new DeferredBodyAction<APIDistrict12, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/districts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APIDistrict12>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolListRank2> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<levelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<APISchoolListRank2, ApiConnectionActionConfiguration> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<levelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<APISchoolListRank2>(() =>
+            return new DeferredBodyAction<APISchoolListRank2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/rankings/schools/{0}", __workflow_st.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -146,17 +146,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<APISchoolListRank2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrictListRank2> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<APIDistrictListRank2, ApiConnectionActionConfiguration> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<APIDistrictListRank2>(() =>
+            return new DeferredBodyAction<APIDistrictListRank2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/rankings/districts/{0}", __workflow_st.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<APIDistrictListRank2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolList2> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtID = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
+        public IBodyWorkflowAction<APISchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtID = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_includeUnrankedSchoolsInRankSort = WorkflowExpression.Compile(includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
-            return new DeferredBodyAction<APISchoolList2>(() =>
+            return new DeferredBodyAction<APISchoolList2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/schools";
                 var apiCallHttpMethod = "get";
@@ -263,20 +263,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                 if (__workflow_includeUnrankedSchoolsInRankSort != null)
                     callPayload.Queries["includeUnrankedSchoolsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedSchoolsInRankSort);
                 return new ApiConnectionAction<APISchoolList2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchool20Full> SchoolsGetSchool20(Expression<Func<string>> id)
+        public IBodyWorkflowAction<APISchool20Full, ApiConnectionActionConfiguration> SchoolsGetSchool20(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<APISchool20Full>(() =>
+            return new DeferredBodyAction<APISchool20Full, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/schools/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APISchool20Full>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

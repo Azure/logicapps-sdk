@@ -12,17 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractcompanyenric
     public class AbstractcompanyenricActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractcompanyenric")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<ValidateResponse, ApiConnectionActionConfiguration> Validate(Expression<Func<string>> domain)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
-            return new DeferredBodyAction<ValidateResponse>(() =>
+            return new DeferredBodyAction<ValidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

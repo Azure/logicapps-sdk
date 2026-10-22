@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
     public class CognitoformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
             var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribenewentry";
                 var apiCallHttpMethod = "post";
@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
             var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribeupdateentry";
                 var apiCallHttpMethod = "post";
@@ -58,13 +58,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EntryDeleted(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
             var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribeentrydeleted";
                 var apiCallHttpMethod = "post";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 }

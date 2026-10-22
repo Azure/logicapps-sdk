@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
     public class IaconnectdynamiccodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IWorkflowAction ImportAssemblyFromLocalFile(Expression<Func<string>> importAssemblyFromLocalFilelocalAssemblyFilePath, Expression<Func<string>> importAssemblyFromLocalFileassemblyName, Expression<Func<string>> importAssemblyFromLocalFileworkflow, Expression<Func<bool>> importAssemblyFromLocalFilecompress = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportAssemblyFromLocalFile(Expression<Func<string>> importAssemblyFromLocalFilelocalAssemblyFilePath, Expression<Func<string>> importAssemblyFromLocalFileassemblyName, Expression<Func<string>> importAssemblyFromLocalFileworkflow, Expression<Func<bool>> importAssemblyFromLocalFilecompress = null)
         {
             var __workflow_importAssemblyFromLocalFilelocalAssemblyFilePath = WorkflowExpression.Compile(importAssemblyFromLocalFilelocalAssemblyFilePath, nameof(importAssemblyFromLocalFilelocalAssemblyFilePath), required: true);
             var __workflow_importAssemblyFromLocalFileassemblyName = WorkflowExpression.Compile(importAssemblyFromLocalFileassemblyName, nameof(importAssemblyFromLocalFileassemblyName), required: true);
             var __workflow_importAssemblyFromLocalFileworkflow = WorkflowExpression.Compile(importAssemblyFromLocalFileworkflow, nameof(importAssemblyFromLocalFileworkflow), required: true);
             var __workflow_importAssemblyFromLocalFilecompress = WorkflowExpression.Compile(importAssemblyFromLocalFilecompress, nameof(importAssemblyFromLocalFilecompress), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/ImportAssemblyFromLocalFile";
                 var apiCallHttpMethod = "post";
@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IWorkflowAction AddAssemblySearchFolder(Expression<Func<string>> addAssemblySearchFolderfolderPath, Expression<Func<string>> addAssemblySearchFolderworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddAssemblySearchFolder(Expression<Func<string>> addAssemblySearchFolderfolderPath, Expression<Func<string>> addAssemblySearchFolderworkflow)
         {
             var __workflow_addAssemblySearchFolderfolderPath = WorkflowExpression.Compile(addAssemblySearchFolderfolderPath, nameof(addAssemblySearchFolderfolderPath), required: true);
             var __workflow_addAssemblySearchFolderworkflow = WorkflowExpression.Compile(addAssemblySearchFolderworkflow, nameof(addAssemblySearchFolderworkflow), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/AddAssemblySearchFolder";
                 var apiCallHttpMethod = "post";
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IWorkflowAction ClearAssemblySearchFolders(Expression<Func<string>> clearAssemblySearchFoldersworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ClearAssemblySearchFolders(Expression<Func<string>> clearAssemblySearchFoldersworkflow)
         {
             var __workflow_clearAssemblySearchFoldersworkflow = WorkflowExpression.Compile(clearAssemblySearchFoldersworkflow, nameof(clearAssemblySearchFoldersworkflow), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/ClearAssemblySearchFolders";
                 var apiCallHttpMethod = "post";
@@ -100,14 +100,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<IsPowerShellAutomationInstalledResponse> IsPowerShellAutomationInstalled(Expression<Func<string>> isPowerShellAutomationInstalledworkflow)
+        public IBodyWorkflowAction<IsPowerShellAutomationInstalledResponse, ApiConnectionActionConfiguration> IsPowerShellAutomationInstalled(Expression<Func<string>> isPowerShellAutomationInstalledworkflow)
         {
             var __workflow_isPowerShellAutomationInstalledworkflow = WorkflowExpression.Compile(isPowerShellAutomationInstalledworkflow, nameof(isPowerShellAutomationInstalledworkflow), required: true);
-            return new DeferredBodyAction<IsPowerShellAutomationInstalledResponse>(() =>
+            return new DeferredBodyAction<IsPowerShellAutomationInstalledResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/isPowerShellAutomationInstalled";
                 var apiCallHttpMethod = "post";
@@ -122,15 +122,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<IsPowerShellAutomationInstalledResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<IsPowerShellModuleInstalledResponse> IsPowerShellModuleInstalled(Expression<Func<string>> isPowerShellModuleInstalledpowerShellModuleName, Expression<Func<string>> isPowerShellModuleInstalledworkflow)
+        public IBodyWorkflowAction<IsPowerShellModuleInstalledResponse, ApiConnectionActionConfiguration> IsPowerShellModuleInstalled(Expression<Func<string>> isPowerShellModuleInstalledpowerShellModuleName, Expression<Func<string>> isPowerShellModuleInstalledworkflow)
         {
             var __workflow_isPowerShellModuleInstalledpowerShellModuleName = WorkflowExpression.Compile(isPowerShellModuleInstalledpowerShellModuleName, nameof(isPowerShellModuleInstalledpowerShellModuleName), required: true);
             var __workflow_isPowerShellModuleInstalledworkflow = WorkflowExpression.Compile(isPowerShellModuleInstalledworkflow, nameof(isPowerShellModuleInstalledworkflow), required: true);
-            return new DeferredBodyAction<IsPowerShellModuleInstalledResponse>(() =>
+            return new DeferredBodyAction<IsPowerShellModuleInstalledResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/isPowerShellModuleInstalled";
                 var apiCallHttpMethod = "post";
@@ -147,11 +147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<IsPowerShellModuleInstalledResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RunPowerShellAutomationScriptResponse> RunPowerShellAutomationScript(Expression<Func<string>> runPowerShellAutomationScriptworkflow, Expression<Func<string>> runPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<string>> runPowerShellAutomationScriptcomputerName = null, Expression<Func<bool>> runPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<runPowerShellAutomationScriptauthenticationMechanismInput>> runPowerShellAutomationScriptauthenticationMechanism = null, Expression<Func<int>> runPowerShellAutomationScriptconnectionAttempts = null, Expression<Func<string>> runPowerShellAutomationScriptusername = null, Expression<Func<string>> runPowerShellAutomationScriptpassword = null, Expression<Func<bool>> runPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnSecureStrings = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runPowerShellAutomationScriptpowerShellCommandParameters = null)
+        public IBodyWorkflowAction<RunPowerShellAutomationScriptResponse, ApiConnectionActionConfiguration> RunPowerShellAutomationScript(Expression<Func<string>> runPowerShellAutomationScriptworkflow, Expression<Func<string>> runPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<string>> runPowerShellAutomationScriptcomputerName = null, Expression<Func<bool>> runPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<runPowerShellAutomationScriptauthenticationMechanismInput>> runPowerShellAutomationScriptauthenticationMechanism = null, Expression<Func<int>> runPowerShellAutomationScriptconnectionAttempts = null, Expression<Func<string>> runPowerShellAutomationScriptusername = null, Expression<Func<string>> runPowerShellAutomationScriptpassword = null, Expression<Func<bool>> runPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnSecureStrings = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
             var __workflow_runPowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runPowerShellAutomationScriptworkflow, nameof(runPowerShellAutomationScriptworkflow), required: true);
             var __workflow_runPowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runPowerShellAutomationScriptpowerShellScriptContents, nameof(runPowerShellAutomationScriptpowerShellScriptContents), required: false);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_runPowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runPowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runPowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
             var __workflow_runPowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runPowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runPowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
             var __workflow_runPowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runPowerShellAutomationScriptpowerShellCommandParameters, nameof(runPowerShellAutomationScriptpowerShellCommandParameters), required: false);
-            return new DeferredBodyAction<RunPowerShellAutomationScriptResponse>(() =>
+            return new DeferredBodyAction<RunPowerShellAutomationScriptResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunPowerShellScript";
                 var apiCallHttpMethod = "post";
@@ -426,17 +426,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RunPowerShellAutomationScriptResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetPowerShellVersionResponse> GetPowerShellVersion(Expression<Func<string>> getPowerShellVersionworkflow, Expression<Func<string>> getPowerShellVersioncomputerName = null, Expression<Func<getPowerShellVersionauthenticationMechanismInput>> getPowerShellVersionauthenticationMechanism = null, Expression<Func<int>> getPowerShellVersionconnectionAttempts = null)
+        public IBodyWorkflowAction<GetPowerShellVersionResponse, ApiConnectionActionConfiguration> GetPowerShellVersion(Expression<Func<string>> getPowerShellVersionworkflow, Expression<Func<string>> getPowerShellVersioncomputerName = null, Expression<Func<getPowerShellVersionauthenticationMechanismInput>> getPowerShellVersionauthenticationMechanism = null, Expression<Func<int>> getPowerShellVersionconnectionAttempts = null)
         {
             var __workflow_getPowerShellVersionworkflow = WorkflowExpression.Compile(getPowerShellVersionworkflow, nameof(getPowerShellVersionworkflow), required: true);
             var __workflow_getPowerShellVersioncomputerName = WorkflowExpression.Compile(getPowerShellVersioncomputerName, nameof(getPowerShellVersioncomputerName), required: false);
             var __workflow_getPowerShellVersionauthenticationMechanism = WorkflowExpression.Compile(getPowerShellVersionauthenticationMechanism, nameof(getPowerShellVersionauthenticationMechanism), required: false);
             var __workflow_getPowerShellVersionconnectionAttempts = WorkflowExpression.Compile(getPowerShellVersionconnectionAttempts, nameof(getPowerShellVersionconnectionAttempts), required: false);
-            return new DeferredBodyAction<GetPowerShellVersionResponse>(() =>
+            return new DeferredBodyAction<GetPowerShellVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/GetPowerShellVersion";
                 var apiCallHttpMethod = "post";
@@ -479,18 +479,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetPowerShellVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexMatchResponse> GetRegexMatch(Expression<Func<string>> getRegexMatchtextToMatch, Expression<Func<string>> getRegexMatchregex, Expression<Func<int>> getRegexMatchsearchIndex = null, Expression<Func<bool>> getRegexMatchcaseSensitive = null, Expression<Func<int>> getRegexMatchregexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexMatchResponse, ApiConnectionActionConfiguration> GetRegexMatch(Expression<Func<string>> getRegexMatchtextToMatch, Expression<Func<string>> getRegexMatchregex, Expression<Func<int>> getRegexMatchsearchIndex = null, Expression<Func<bool>> getRegexMatchcaseSensitive = null, Expression<Func<int>> getRegexMatchregexTimeoutInSeconds = null)
         {
             var __workflow_getRegexMatchtextToMatch = WorkflowExpression.Compile(getRegexMatchtextToMatch, nameof(getRegexMatchtextToMatch), required: true);
             var __workflow_getRegexMatchregex = WorkflowExpression.Compile(getRegexMatchregex, nameof(getRegexMatchregex), required: true);
             var __workflow_getRegexMatchsearchIndex = WorkflowExpression.Compile(getRegexMatchsearchIndex, nameof(getRegexMatchsearchIndex), required: false);
             var __workflow_getRegexMatchcaseSensitive = WorkflowExpression.Compile(getRegexMatchcaseSensitive, nameof(getRegexMatchcaseSensitive), required: false);
             var __workflow_getRegexMatchregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexMatchregexTimeoutInSeconds, nameof(getRegexMatchregexTimeoutInSeconds), required: false);
-            return new DeferredBodyAction<GetRegexMatchResponse>(() =>
+            return new DeferredBodyAction<GetRegexMatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexMatch";
                 var apiCallHttpMethod = "post";
@@ -555,11 +555,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexMatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexMatchesResponse> GetRegexMatches(Expression<Func<string>> getRegexMatchestextToMatch, Expression<Func<string>> getRegexMatchesregex, Expression<Func<int>> getRegexMatchesmaximumMatches = null, Expression<Func<bool>> getRegexMatchescaseSensitive = null, Expression<Func<bool>> getRegexMatchestrimResults = null, Expression<Func<bool>> getRegexMatchesremoveEmptyResults = null, Expression<Func<int>> getRegexMatchesregexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexMatchesResponse, ApiConnectionActionConfiguration> GetRegexMatches(Expression<Func<string>> getRegexMatchestextToMatch, Expression<Func<string>> getRegexMatchesregex, Expression<Func<int>> getRegexMatchesmaximumMatches = null, Expression<Func<bool>> getRegexMatchescaseSensitive = null, Expression<Func<bool>> getRegexMatchestrimResults = null, Expression<Func<bool>> getRegexMatchesremoveEmptyResults = null, Expression<Func<int>> getRegexMatchesregexTimeoutInSeconds = null)
         {
             var __workflow_getRegexMatchestextToMatch = WorkflowExpression.Compile(getRegexMatchestextToMatch, nameof(getRegexMatchestextToMatch), required: true);
             var __workflow_getRegexMatchesregex = WorkflowExpression.Compile(getRegexMatchesregex, nameof(getRegexMatchesregex), required: true);
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getRegexMatchestrimResults = WorkflowExpression.Compile(getRegexMatchestrimResults, nameof(getRegexMatchestrimResults), required: false);
             var __workflow_getRegexMatchesremoveEmptyResults = WorkflowExpression.Compile(getRegexMatchesremoveEmptyResults, nameof(getRegexMatchesremoveEmptyResults), required: false);
             var __workflow_getRegexMatchesregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexMatchesregexTimeoutInSeconds, nameof(getRegexMatchesregexTimeoutInSeconds), required: false);
-            return new DeferredBodyAction<GetRegexMatchesResponse>(() =>
+            return new DeferredBodyAction<GetRegexMatchesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexMatches";
                 var apiCallHttpMethod = "post";
@@ -665,11 +665,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexMatchesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexSplitResponse> GetRegexSplit(Expression<Func<string>> getRegexSplittextToSplit, Expression<Func<string>> getRegexSplitregex, Expression<Func<bool>> getRegexSplitcaseSensitive = null, Expression<Func<bool>> getRegexSplittrimResults = null, Expression<Func<bool>> getRegexSplitremoveEmptyResults = null, Expression<Func<int>> getRegexSplitregexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexSplitResponse, ApiConnectionActionConfiguration> GetRegexSplit(Expression<Func<string>> getRegexSplittextToSplit, Expression<Func<string>> getRegexSplitregex, Expression<Func<bool>> getRegexSplitcaseSensitive = null, Expression<Func<bool>> getRegexSplittrimResults = null, Expression<Func<bool>> getRegexSplitremoveEmptyResults = null, Expression<Func<int>> getRegexSplitregexTimeoutInSeconds = null)
         {
             var __workflow_getRegexSplittextToSplit = WorkflowExpression.Compile(getRegexSplittextToSplit, nameof(getRegexSplittextToSplit), required: true);
             var __workflow_getRegexSplitregex = WorkflowExpression.Compile(getRegexSplitregex, nameof(getRegexSplitregex), required: true);
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getRegexSplittrimResults = WorkflowExpression.Compile(getRegexSplittrimResults, nameof(getRegexSplittrimResults), required: false);
             var __workflow_getRegexSplitremoveEmptyResults = WorkflowExpression.Compile(getRegexSplitremoveEmptyResults, nameof(getRegexSplitremoveEmptyResults), required: false);
             var __workflow_getRegexSplitregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexSplitregexTimeoutInSeconds, nameof(getRegexSplitregexTimeoutInSeconds), required: false);
-            return new DeferredBodyAction<GetRegexSplitResponse>(() =>
+            return new DeferredBodyAction<GetRegexSplitResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexSplit";
                 var apiCallHttpMethod = "post";
@@ -758,11 +758,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexSplitResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetRegexGroupMatchesResponse> GetRegexGroupMatches(Expression<Func<string>> getRegexGroupMatchestextToMatch, Expression<Func<string>> getRegexGroupMatchesregex, Expression<Func<string[]>> getRegexGroupMatchesgroupsToRetrieve = null, Expression<Func<int>> getRegexGroupMatchessearchIndex = null, Expression<Func<bool>> getRegexGroupMatchescaseSensitive = null, Expression<Func<int>> getRegexGroupMatchesregexTimeoutInSeconds = null)
+        public IBodyWorkflowAction<GetRegexGroupMatchesResponse, ApiConnectionActionConfiguration> GetRegexGroupMatches(Expression<Func<string>> getRegexGroupMatchestextToMatch, Expression<Func<string>> getRegexGroupMatchesregex, Expression<Func<string[]>> getRegexGroupMatchesgroupsToRetrieve = null, Expression<Func<int>> getRegexGroupMatchessearchIndex = null, Expression<Func<bool>> getRegexGroupMatchescaseSensitive = null, Expression<Func<int>> getRegexGroupMatchesregexTimeoutInSeconds = null)
         {
             var __workflow_getRegexGroupMatchestextToMatch = WorkflowExpression.Compile(getRegexGroupMatchestextToMatch, nameof(getRegexGroupMatchestextToMatch), required: true);
             var __workflow_getRegexGroupMatchesregex = WorkflowExpression.Compile(getRegexGroupMatchesregex, nameof(getRegexGroupMatchesregex), required: true);
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getRegexGroupMatchessearchIndex = WorkflowExpression.Compile(getRegexGroupMatchessearchIndex, nameof(getRegexGroupMatchessearchIndex), required: false);
             var __workflow_getRegexGroupMatchescaseSensitive = WorkflowExpression.Compile(getRegexGroupMatchescaseSensitive, nameof(getRegexGroupMatchescaseSensitive), required: false);
             var __workflow_getRegexGroupMatchesregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexGroupMatchesregexTimeoutInSeconds, nameof(getRegexGroupMatchesregexTimeoutInSeconds), required: false);
-            return new DeferredBodyAction<GetRegexGroupMatchesResponse>(() =>
+            return new DeferredBodyAction<GetRegexGroupMatchesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexGroupMatches";
                 var apiCallHttpMethod = "post";
@@ -841,15 +841,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetRegexGroupMatchesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse> CreateJSONFromInputVariables(Expression<Func<createJSONFromInputVariablesinputVariablesInputItem[]>> createJSONFromInputVariablesinputVariables, Expression<Func<bool>> createJSONFromInputVariablesreturnAsJSONTable)
+        public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse, ApiConnectionActionConfiguration> CreateJSONFromInputVariables(Expression<Func<createJSONFromInputVariablesinputVariablesInputItem[]>> createJSONFromInputVariablesinputVariables, Expression<Func<bool>> createJSONFromInputVariablesreturnAsJSONTable)
         {
             var __workflow_createJSONFromInputVariablesinputVariables = WorkflowExpression.Compile(createJSONFromInputVariablesinputVariables, nameof(createJSONFromInputVariablesinputVariables), required: true);
             var __workflow_createJSONFromInputVariablesreturnAsJSONTable = WorkflowExpression.Compile(createJSONFromInputVariablesreturnAsJSONTable, nameof(createJSONFromInputVariablesreturnAsJSONTable), required: true);
-            return new DeferredBodyAction<CreateJSONFromInputVariablesResponse>(() =>
+            return new DeferredBodyAction<CreateJSONFromInputVariablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/CreateJSONFromInputVariables";
                 var apiCallHttpMethod = "post";
@@ -866,16 +866,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<CreateJSONFromInputVariablesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse> GetJSONTableFromStringArray(Expression<Func<string[]>> getJSONTableFromStringArrayinputArray, Expression<Func<string>> getJSONTableFromStringArraycolumnName, Expression<Func<bool>> getJSONTableFromStringArraydropEmptyItems = null)
+        public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse, ApiConnectionActionConfiguration> GetJSONTableFromStringArray(Expression<Func<string[]>> getJSONTableFromStringArrayinputArray, Expression<Func<string>> getJSONTableFromStringArraycolumnName, Expression<Func<bool>> getJSONTableFromStringArraydropEmptyItems = null)
         {
             var __workflow_getJSONTableFromStringArrayinputArray = WorkflowExpression.Compile(getJSONTableFromStringArrayinputArray, nameof(getJSONTableFromStringArrayinputArray), required: true);
             var __workflow_getJSONTableFromStringArraycolumnName = WorkflowExpression.Compile(getJSONTableFromStringArraycolumnName, nameof(getJSONTableFromStringArraycolumnName), required: true);
             var __workflow_getJSONTableFromStringArraydropEmptyItems = WorkflowExpression.Compile(getJSONTableFromStringArraydropEmptyItems, nameof(getJSONTableFromStringArraydropEmptyItems), required: false);
-            return new DeferredBodyAction<GetJSONTableFromStringArrayResponse>(() =>
+            return new DeferredBodyAction<GetJSONTableFromStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetJSONTableFromStringArray";
                 var apiCallHttpMethod = "post";
@@ -908,11 +908,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetJSONTableFromStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterJSONTableResponse> FilterJSONTable(Expression<Func<string>> filterJSONTablejSONTable, Expression<Func<string>> filterJSONTablefilter, Expression<Func<string>> filterJSONTablesortColumnName = null, Expression<Func<bool>> filterJSONTableascending = null, Expression<Func<string>> filterJSONTablesortColumnName2 = null, Expression<Func<bool>> filterJSONTableascending2 = null, Expression<Func<string>> filterJSONTablesortColumnName3 = null, Expression<Func<bool>> filterJSONTableascending3 = null)
+        public IBodyWorkflowAction<FilterJSONTableResponse, ApiConnectionActionConfiguration> FilterJSONTable(Expression<Func<string>> filterJSONTablejSONTable, Expression<Func<string>> filterJSONTablefilter, Expression<Func<string>> filterJSONTablesortColumnName = null, Expression<Func<bool>> filterJSONTableascending = null, Expression<Func<string>> filterJSONTablesortColumnName2 = null, Expression<Func<bool>> filterJSONTableascending2 = null, Expression<Func<string>> filterJSONTablesortColumnName3 = null, Expression<Func<bool>> filterJSONTableascending3 = null)
         {
             var __workflow_filterJSONTablejSONTable = WorkflowExpression.Compile(filterJSONTablejSONTable, nameof(filterJSONTablejSONTable), required: true);
             var __workflow_filterJSONTablefilter = WorkflowExpression.Compile(filterJSONTablefilter, nameof(filterJSONTablefilter), required: true);
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_filterJSONTableascending2 = WorkflowExpression.Compile(filterJSONTableascending2, nameof(filterJSONTableascending2), required: false);
             var __workflow_filterJSONTablesortColumnName3 = WorkflowExpression.Compile(filterJSONTablesortColumnName3, nameof(filterJSONTablesortColumnName3), required: false);
             var __workflow_filterJSONTableascending3 = WorkflowExpression.Compile(filterJSONTableascending3, nameof(filterJSONTableascending3), required: false);
-            return new DeferredBodyAction<FilterJSONTableResponse>(() =>
+            return new DeferredBodyAction<FilterJSONTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterJSONTable";
                 var apiCallHttpMethod = "post";
@@ -1005,11 +1005,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<FilterJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterTableResponse> FilterTable(Expression<Func<JToken[]>> filterTableinputTable, Expression<Func<string>> filterTablefilter, Expression<Func<string>> filterTablesortColumnName = null, Expression<Func<bool>> filterTableascending = null, Expression<Func<string>> filterTablesortColumnName2 = null, Expression<Func<bool>> filterTableascending2 = null, Expression<Func<string>> filterTablesortColumnName3 = null, Expression<Func<bool>> filterTableascending3 = null)
+        public IBodyWorkflowAction<FilterTableResponse, ApiConnectionActionConfiguration> FilterTable(Expression<Func<JToken[]>> filterTableinputTable, Expression<Func<string>> filterTablefilter, Expression<Func<string>> filterTablesortColumnName = null, Expression<Func<bool>> filterTableascending = null, Expression<Func<string>> filterTablesortColumnName2 = null, Expression<Func<bool>> filterTableascending2 = null, Expression<Func<string>> filterTablesortColumnName3 = null, Expression<Func<bool>> filterTableascending3 = null)
         {
             var __workflow_filterTableinputTable = WorkflowExpression.Compile(filterTableinputTable, nameof(filterTableinputTable), required: true);
             var __workflow_filterTablefilter = WorkflowExpression.Compile(filterTablefilter, nameof(filterTablefilter), required: true);
@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_filterTableascending2 = WorkflowExpression.Compile(filterTableascending2, nameof(filterTableascending2), required: false);
             var __workflow_filterTablesortColumnName3 = WorkflowExpression.Compile(filterTablesortColumnName3, nameof(filterTablesortColumnName3), required: false);
             var __workflow_filterTableascending3 = WorkflowExpression.Compile(filterTableascending3, nameof(filterTableascending3), required: false);
-            return new DeferredBodyAction<FilterTableResponse>(() =>
+            return new DeferredBodyAction<FilterTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterTable";
                 var apiCallHttpMethod = "post";
@@ -1102,11 +1102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<FilterTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortTableResponse> SortTable(Expression<Func<JToken[]>> sortTableinputTable, Expression<Func<string>> sortTablesortColumnName, Expression<Func<bool>> sortTableascending, Expression<Func<string>> sortTablesortColumnName2 = null, Expression<Func<bool>> sortTableascending2 = null, Expression<Func<string>> sortTablesortColumnName3 = null, Expression<Func<bool>> sortTableascending3 = null)
+        public IBodyWorkflowAction<SortTableResponse, ApiConnectionActionConfiguration> SortTable(Expression<Func<JToken[]>> sortTableinputTable, Expression<Func<string>> sortTablesortColumnName, Expression<Func<bool>> sortTableascending, Expression<Func<string>> sortTablesortColumnName2 = null, Expression<Func<bool>> sortTableascending2 = null, Expression<Func<string>> sortTablesortColumnName3 = null, Expression<Func<bool>> sortTableascending3 = null)
         {
             var __workflow_sortTableinputTable = WorkflowExpression.Compile(sortTableinputTable, nameof(sortTableinputTable), required: true);
             var __workflow_sortTablesortColumnName = WorkflowExpression.Compile(sortTablesortColumnName, nameof(sortTablesortColumnName), required: true);
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_sortTableascending2 = WorkflowExpression.Compile(sortTableascending2, nameof(sortTableascending2), required: false);
             var __workflow_sortTablesortColumnName3 = WorkflowExpression.Compile(sortTablesortColumnName3, nameof(sortTablesortColumnName3), required: false);
             var __workflow_sortTableascending3 = WorkflowExpression.Compile(sortTableascending3, nameof(sortTableascending3), required: false);
-            return new DeferredBodyAction<SortTableResponse>(() =>
+            return new DeferredBodyAction<SortTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortTable";
                 var apiCallHttpMethod = "post";
@@ -1178,11 +1178,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<SortTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortJSONTableResponse> SortJSONTable(Expression<Func<string>> sortJSONTablejSONTable, Expression<Func<string>> sortJSONTablesortColumnName, Expression<Func<bool>> sortJSONTableascending = null, Expression<Func<string>> sortJSONTablesortColumnName2 = null, Expression<Func<bool>> sortJSONTableascending2 = null, Expression<Func<string>> sortJSONTablesortColumnName3 = null, Expression<Func<bool>> sortJSONTableascending3 = null)
+        public IBodyWorkflowAction<SortJSONTableResponse, ApiConnectionActionConfiguration> SortJSONTable(Expression<Func<string>> sortJSONTablejSONTable, Expression<Func<string>> sortJSONTablesortColumnName, Expression<Func<bool>> sortJSONTableascending = null, Expression<Func<string>> sortJSONTablesortColumnName2 = null, Expression<Func<bool>> sortJSONTableascending2 = null, Expression<Func<string>> sortJSONTablesortColumnName3 = null, Expression<Func<bool>> sortJSONTableascending3 = null)
         {
             var __workflow_sortJSONTablejSONTable = WorkflowExpression.Compile(sortJSONTablejSONTable, nameof(sortJSONTablejSONTable), required: true);
             var __workflow_sortJSONTablesortColumnName = WorkflowExpression.Compile(sortJSONTablesortColumnName, nameof(sortJSONTablesortColumnName), required: true);
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_sortJSONTableascending2 = WorkflowExpression.Compile(sortJSONTableascending2, nameof(sortJSONTableascending2), required: false);
             var __workflow_sortJSONTablesortColumnName3 = WorkflowExpression.Compile(sortJSONTablesortColumnName3, nameof(sortJSONTablesortColumnName3), required: false);
             var __workflow_sortJSONTableascending3 = WorkflowExpression.Compile(sortJSONTableascending3, nameof(sortJSONTableascending3), required: false);
-            return new DeferredBodyAction<SortJSONTableResponse>(() =>
+            return new DeferredBodyAction<SortJSONTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortJSONTable";
                 var apiCallHttpMethod = "post";
@@ -1268,16 +1268,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<SortJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetTableFromStringArrayResponse> GetTableFromStringArray(Expression<Func<string[]>> getTableFromStringArrayinputArray, Expression<Func<string>> getTableFromStringArraycolumnName, Expression<Func<bool>> getTableFromStringArraydropEmptyItems = null)
+        public IBodyWorkflowAction<GetTableFromStringArrayResponse, ApiConnectionActionConfiguration> GetTableFromStringArray(Expression<Func<string[]>> getTableFromStringArrayinputArray, Expression<Func<string>> getTableFromStringArraycolumnName, Expression<Func<bool>> getTableFromStringArraydropEmptyItems = null)
         {
             var __workflow_getTableFromStringArrayinputArray = WorkflowExpression.Compile(getTableFromStringArrayinputArray, nameof(getTableFromStringArrayinputArray), required: true);
             var __workflow_getTableFromStringArraycolumnName = WorkflowExpression.Compile(getTableFromStringArraycolumnName, nameof(getTableFromStringArraycolumnName), required: true);
             var __workflow_getTableFromStringArraydropEmptyItems = WorkflowExpression.Compile(getTableFromStringArraydropEmptyItems, nameof(getTableFromStringArraydropEmptyItems), required: false);
-            return new DeferredBodyAction<GetTableFromStringArrayResponse>(() =>
+            return new DeferredBodyAction<GetTableFromStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetTableFromStringArray";
                 var apiCallHttpMethod = "post";
@@ -1310,11 +1310,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetTableFromStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetTableFromJSONResponse> GetTableFromJSON(Expression<Func<string>> getTableFromJSONjSONTable, Expression<Func<int>> getTableFromJSONstartRowIndex, Expression<Func<int>> getTableFromJSONnumberOfRowsToRetrieve = null, Expression<Func<int>> getTableFromJSONstartColumnIndex = null, Expression<Func<string>> getTableFromJSONstartColumnName = null, Expression<Func<int>> getTableFromJSONnumberOfColumnsToRetrieve = null)
+        public IBodyWorkflowAction<GetTableFromJSONResponse, ApiConnectionActionConfiguration> GetTableFromJSON(Expression<Func<string>> getTableFromJSONjSONTable, Expression<Func<int>> getTableFromJSONstartRowIndex, Expression<Func<int>> getTableFromJSONnumberOfRowsToRetrieve = null, Expression<Func<int>> getTableFromJSONstartColumnIndex = null, Expression<Func<string>> getTableFromJSONstartColumnName = null, Expression<Func<int>> getTableFromJSONnumberOfColumnsToRetrieve = null)
         {
             var __workflow_getTableFromJSONjSONTable = WorkflowExpression.Compile(getTableFromJSONjSONTable, nameof(getTableFromJSONjSONTable), required: true);
             var __workflow_getTableFromJSONstartRowIndex = WorkflowExpression.Compile(getTableFromJSONstartRowIndex, nameof(getTableFromJSONstartRowIndex), required: true);
@@ -1322,7 +1322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getTableFromJSONstartColumnIndex = WorkflowExpression.Compile(getTableFromJSONstartColumnIndex, nameof(getTableFromJSONstartColumnIndex), required: false);
             var __workflow_getTableFromJSONstartColumnName = WorkflowExpression.Compile(getTableFromJSONstartColumnName, nameof(getTableFromJSONstartColumnName), required: false);
             var __workflow_getTableFromJSONnumberOfColumnsToRetrieve = WorkflowExpression.Compile(getTableFromJSONnumberOfColumnsToRetrieve, nameof(getTableFromJSONnumberOfColumnsToRetrieve), required: false);
-            return new DeferredBodyAction<GetTableFromJSONResponse>(() =>
+            return new DeferredBodyAction<GetTableFromJSONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetTableFromJSON";
                 var apiCallHttpMethod = "post";
@@ -1373,16 +1373,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetTableFromJSONResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<SortStringArrayResponse> SortStringArray(Expression<Func<string[]>> sortStringArrayinputArray, Expression<Func<bool>> sortStringArrayascending = null, Expression<Func<bool>> sortStringArraycaseSensitive = null)
+        public IBodyWorkflowAction<SortStringArrayResponse, ApiConnectionActionConfiguration> SortStringArray(Expression<Func<string[]>> sortStringArrayinputArray, Expression<Func<bool>> sortStringArrayascending = null, Expression<Func<bool>> sortStringArraycaseSensitive = null)
         {
             var __workflow_sortStringArrayinputArray = WorkflowExpression.Compile(sortStringArrayinputArray, nameof(sortStringArrayinputArray), required: true);
             var __workflow_sortStringArrayascending = WorkflowExpression.Compile(sortStringArrayascending, nameof(sortStringArrayascending), required: false);
             var __workflow_sortStringArraycaseSensitive = WorkflowExpression.Compile(sortStringArraycaseSensitive, nameof(sortStringArraycaseSensitive), required: false);
-            return new DeferredBodyAction<SortStringArrayResponse>(() =>
+            return new DeferredBodyAction<SortStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortStringArray";
                 var apiCallHttpMethod = "post";
@@ -1429,16 +1429,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<SortStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<FilterStringArrayResponse> FilterStringArray(Expression<Func<string[]>> filterStringArrayinputArray, Expression<Func<string>> filterStringArraycolumnName, Expression<Func<string>> filterStringArrayfilter)
+        public IBodyWorkflowAction<FilterStringArrayResponse, ApiConnectionActionConfiguration> FilterStringArray(Expression<Func<string[]>> filterStringArrayinputArray, Expression<Func<string>> filterStringArraycolumnName, Expression<Func<string>> filterStringArrayfilter)
         {
             var __workflow_filterStringArrayinputArray = WorkflowExpression.Compile(filterStringArrayinputArray, nameof(filterStringArrayinputArray), required: true);
             var __workflow_filterStringArraycolumnName = WorkflowExpression.Compile(filterStringArraycolumnName, nameof(filterStringArraycolumnName), required: true);
             var __workflow_filterStringArrayfilter = WorkflowExpression.Compile(filterStringArrayfilter, nameof(filterStringArrayfilter), required: true);
-            return new DeferredBodyAction<FilterStringArrayResponse>(() =>
+            return new DeferredBodyAction<FilterStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterStringArray";
                 var apiCallHttpMethod = "post";
@@ -1457,16 +1457,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<FilterStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInStringArrayResponse> InsertRowInStringArray(Expression<Func<string[]>> insertRowInStringArrayinputArray, Expression<Func<int>> insertRowInStringArrayrowIndex, Expression<Func<string>> insertRowInStringArrayvalueToInsert = null)
+        public IBodyWorkflowAction<InsertRowInStringArrayResponse, ApiConnectionActionConfiguration> InsertRowInStringArray(Expression<Func<string[]>> insertRowInStringArrayinputArray, Expression<Func<int>> insertRowInStringArrayrowIndex, Expression<Func<string>> insertRowInStringArrayvalueToInsert = null)
         {
             var __workflow_insertRowInStringArrayinputArray = WorkflowExpression.Compile(insertRowInStringArrayinputArray, nameof(insertRowInStringArrayinputArray), required: true);
             var __workflow_insertRowInStringArrayrowIndex = WorkflowExpression.Compile(insertRowInStringArrayrowIndex, nameof(insertRowInStringArrayrowIndex), required: true);
             var __workflow_insertRowInStringArrayvalueToInsert = WorkflowExpression.Compile(insertRowInStringArrayvalueToInsert, nameof(insertRowInStringArrayvalueToInsert), required: false);
-            return new DeferredBodyAction<InsertRowInStringArrayResponse>(() =>
+            return new DeferredBodyAction<InsertRowInStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInStringArray";
                 var apiCallHttpMethod = "post";
@@ -1489,16 +1489,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInTableResponse> InsertRowInTable(Expression<Func<JToken[]>> insertRowInTableinputTable, Expression<Func<int>> insertRowInTablerowIndex, Expression<Func<string>> insertRowInTablerowToInsertJSON = null)
+        public IBodyWorkflowAction<InsertRowInTableResponse, ApiConnectionActionConfiguration> InsertRowInTable(Expression<Func<JToken[]>> insertRowInTableinputTable, Expression<Func<int>> insertRowInTablerowIndex, Expression<Func<string>> insertRowInTablerowToInsertJSON = null)
         {
             var __workflow_insertRowInTableinputTable = WorkflowExpression.Compile(insertRowInTableinputTable, nameof(insertRowInTableinputTable), required: true);
             var __workflow_insertRowInTablerowIndex = WorkflowExpression.Compile(insertRowInTablerowIndex, nameof(insertRowInTablerowIndex), required: true);
             var __workflow_insertRowInTablerowToInsertJSON = WorkflowExpression.Compile(insertRowInTablerowToInsertJSON, nameof(insertRowInTablerowToInsertJSON), required: false);
-            return new DeferredBodyAction<InsertRowInTableResponse>(() =>
+            return new DeferredBodyAction<InsertRowInTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInTable";
                 var apiCallHttpMethod = "post";
@@ -1521,16 +1521,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInJSONTableResponse> InsertRowInJSONTable(Expression<Func<string>> insertRowInJSONTablejSONTable, Expression<Func<int>> insertRowInJSONTablerowIndex, Expression<Func<string>> insertRowInJSONTablerowToInsertJSON = null)
+        public IBodyWorkflowAction<InsertRowInJSONTableResponse, ApiConnectionActionConfiguration> InsertRowInJSONTable(Expression<Func<string>> insertRowInJSONTablejSONTable, Expression<Func<int>> insertRowInJSONTablerowIndex, Expression<Func<string>> insertRowInJSONTablerowToInsertJSON = null)
         {
             var __workflow_insertRowInJSONTablejSONTable = WorkflowExpression.Compile(insertRowInJSONTablejSONTable, nameof(insertRowInJSONTablejSONTable), required: true);
             var __workflow_insertRowInJSONTablerowIndex = WorkflowExpression.Compile(insertRowInJSONTablerowIndex, nameof(insertRowInJSONTablerowIndex), required: true);
             var __workflow_insertRowInJSONTablerowToInsertJSON = WorkflowExpression.Compile(insertRowInJSONTablerowToInsertJSON, nameof(insertRowInJSONTablerowToInsertJSON), required: false);
-            return new DeferredBodyAction<InsertRowInJSONTableResponse>(() =>
+            return new DeferredBodyAction<InsertRowInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInJSONTable";
                 var apiCallHttpMethod = "post";
@@ -1553,16 +1553,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse> InsertRowInJSONTableFromInputVariables(Expression<Func<string>> insertRowInJSONTableFromInputVariablesjSONTable, Expression<Func<int>> insertRowInJSONTableFromInputVariablesrowIndex, Expression<Func<insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItem[]>> insertRowInJSONTableFromInputVariablesrowToInsertInputVariables)
+        public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse, ApiConnectionActionConfiguration> InsertRowInJSONTableFromInputVariables(Expression<Func<string>> insertRowInJSONTableFromInputVariablesjSONTable, Expression<Func<int>> insertRowInJSONTableFromInputVariablesrowIndex, Expression<Func<insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItem[]>> insertRowInJSONTableFromInputVariablesrowToInsertInputVariables)
         {
             var __workflow_insertRowInJSONTableFromInputVariablesjSONTable = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesjSONTable, nameof(insertRowInJSONTableFromInputVariablesjSONTable), required: true);
             var __workflow_insertRowInJSONTableFromInputVariablesrowIndex = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesrowIndex, nameof(insertRowInJSONTableFromInputVariablesrowIndex), required: true);
             var __workflow_insertRowInJSONTableFromInputVariablesrowToInsertInputVariables = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables, nameof(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables), required: true);
-            return new DeferredBodyAction<InsertRowInJSONTableFromInputVariablesResponse>(() =>
+            return new DeferredBodyAction<InsertRowInJSONTableFromInputVariablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInJSONTableFromInputVariables";
                 var apiCallHttpMethod = "post";
@@ -1581,16 +1581,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<InsertRowInJSONTableFromInputVariablesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteItemsInStringArrayResponse> DeleteItemsInStringArray(Expression<Func<string[]>> deleteItemsInStringArrayinputArray, Expression<Func<int>> deleteItemsInStringArraystartItemIndex, Expression<Func<int>> deleteItemsInStringArraynumberOfItemsToDelete)
+        public IBodyWorkflowAction<DeleteItemsInStringArrayResponse, ApiConnectionActionConfiguration> DeleteItemsInStringArray(Expression<Func<string[]>> deleteItemsInStringArrayinputArray, Expression<Func<int>> deleteItemsInStringArraystartItemIndex, Expression<Func<int>> deleteItemsInStringArraynumberOfItemsToDelete)
         {
             var __workflow_deleteItemsInStringArrayinputArray = WorkflowExpression.Compile(deleteItemsInStringArrayinputArray, nameof(deleteItemsInStringArrayinputArray), required: true);
             var __workflow_deleteItemsInStringArraystartItemIndex = WorkflowExpression.Compile(deleteItemsInStringArraystartItemIndex, nameof(deleteItemsInStringArraystartItemIndex), required: true);
             var __workflow_deleteItemsInStringArraynumberOfItemsToDelete = WorkflowExpression.Compile(deleteItemsInStringArraynumberOfItemsToDelete, nameof(deleteItemsInStringArraynumberOfItemsToDelete), required: true);
-            return new DeferredBodyAction<DeleteItemsInStringArrayResponse>(() =>
+            return new DeferredBodyAction<DeleteItemsInStringArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteItemsInStringArray";
                 var apiCallHttpMethod = "post";
@@ -1609,16 +1609,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteItemsInStringArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteRowsInTableResponse> DeleteRowsInTable(Expression<Func<JToken[]>> deleteRowsInTableinputTable, Expression<Func<int>> deleteRowsInTablestartRowIndex, Expression<Func<int>> deleteRowsInTablenumberOfRowsToDelete)
+        public IBodyWorkflowAction<DeleteRowsInTableResponse, ApiConnectionActionConfiguration> DeleteRowsInTable(Expression<Func<JToken[]>> deleteRowsInTableinputTable, Expression<Func<int>> deleteRowsInTablestartRowIndex, Expression<Func<int>> deleteRowsInTablenumberOfRowsToDelete)
         {
             var __workflow_deleteRowsInTableinputTable = WorkflowExpression.Compile(deleteRowsInTableinputTable, nameof(deleteRowsInTableinputTable), required: true);
             var __workflow_deleteRowsInTablestartRowIndex = WorkflowExpression.Compile(deleteRowsInTablestartRowIndex, nameof(deleteRowsInTablestartRowIndex), required: true);
             var __workflow_deleteRowsInTablenumberOfRowsToDelete = WorkflowExpression.Compile(deleteRowsInTablenumberOfRowsToDelete, nameof(deleteRowsInTablenumberOfRowsToDelete), required: true);
-            return new DeferredBodyAction<DeleteRowsInTableResponse>(() =>
+            return new DeferredBodyAction<DeleteRowsInTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteRowsInTable";
                 var apiCallHttpMethod = "post";
@@ -1637,16 +1637,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteRowsInTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteRowsInJSONTableResponse> DeleteRowsInJSONTable(Expression<Func<string>> deleteRowsInJSONTablejSONTable, Expression<Func<int>> deleteRowsInJSONTablestartRowIndex, Expression<Func<int>> deleteRowsInJSONTablenumberOfRowsToDelete)
+        public IBodyWorkflowAction<DeleteRowsInJSONTableResponse, ApiConnectionActionConfiguration> DeleteRowsInJSONTable(Expression<Func<string>> deleteRowsInJSONTablejSONTable, Expression<Func<int>> deleteRowsInJSONTablestartRowIndex, Expression<Func<int>> deleteRowsInJSONTablenumberOfRowsToDelete)
         {
             var __workflow_deleteRowsInJSONTablejSONTable = WorkflowExpression.Compile(deleteRowsInJSONTablejSONTable, nameof(deleteRowsInJSONTablejSONTable), required: true);
             var __workflow_deleteRowsInJSONTablestartRowIndex = WorkflowExpression.Compile(deleteRowsInJSONTablestartRowIndex, nameof(deleteRowsInJSONTablestartRowIndex), required: true);
             var __workflow_deleteRowsInJSONTablenumberOfRowsToDelete = WorkflowExpression.Compile(deleteRowsInJSONTablenumberOfRowsToDelete, nameof(deleteRowsInJSONTablenumberOfRowsToDelete), required: true);
-            return new DeferredBodyAction<DeleteRowsInJSONTableResponse>(() =>
+            return new DeferredBodyAction<DeleteRowsInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteRowsInJSONTable";
                 var apiCallHttpMethod = "post";
@@ -1665,16 +1665,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteRowsInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RenameColumnInTableResponse> RenameColumnInTable(Expression<Func<JToken[]>> renameColumnInTableinputTable, Expression<Func<string>> renameColumnInTablesourceColumnName, Expression<Func<string>> renameColumnInTablenewColumnName)
+        public IBodyWorkflowAction<RenameColumnInTableResponse, ApiConnectionActionConfiguration> RenameColumnInTable(Expression<Func<JToken[]>> renameColumnInTableinputTable, Expression<Func<string>> renameColumnInTablesourceColumnName, Expression<Func<string>> renameColumnInTablenewColumnName)
         {
             var __workflow_renameColumnInTableinputTable = WorkflowExpression.Compile(renameColumnInTableinputTable, nameof(renameColumnInTableinputTable), required: true);
             var __workflow_renameColumnInTablesourceColumnName = WorkflowExpression.Compile(renameColumnInTablesourceColumnName, nameof(renameColumnInTablesourceColumnName), required: true);
             var __workflow_renameColumnInTablenewColumnName = WorkflowExpression.Compile(renameColumnInTablenewColumnName, nameof(renameColumnInTablenewColumnName), required: true);
-            return new DeferredBodyAction<RenameColumnInTableResponse>(() =>
+            return new DeferredBodyAction<RenameColumnInTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/RenameColumnInTable";
                 var apiCallHttpMethod = "post";
@@ -1693,16 +1693,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RenameColumnInTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RenameColumnInJSONTableResponse> RenameColumnInJSONTable(Expression<Func<string>> renameColumnInJSONTablejSONTable, Expression<Func<string>> renameColumnInJSONTablesourceColumnName, Expression<Func<string>> renameColumnInJSONTablenewColumnName)
+        public IBodyWorkflowAction<RenameColumnInJSONTableResponse, ApiConnectionActionConfiguration> RenameColumnInJSONTable(Expression<Func<string>> renameColumnInJSONTablejSONTable, Expression<Func<string>> renameColumnInJSONTablesourceColumnName, Expression<Func<string>> renameColumnInJSONTablenewColumnName)
         {
             var __workflow_renameColumnInJSONTablejSONTable = WorkflowExpression.Compile(renameColumnInJSONTablejSONTable, nameof(renameColumnInJSONTablejSONTable), required: true);
             var __workflow_renameColumnInJSONTablesourceColumnName = WorkflowExpression.Compile(renameColumnInJSONTablesourceColumnName, nameof(renameColumnInJSONTablesourceColumnName), required: true);
             var __workflow_renameColumnInJSONTablenewColumnName = WorkflowExpression.Compile(renameColumnInJSONTablenewColumnName, nameof(renameColumnInJSONTablenewColumnName), required: true);
-            return new DeferredBodyAction<RenameColumnInJSONTableResponse>(() =>
+            return new DeferredBodyAction<RenameColumnInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/RenameColumnInJSONTable";
                 var apiCallHttpMethod = "post";
@@ -1721,17 +1721,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RenameColumnInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteColumnsInTableResponse> DeleteColumnsInTable(Expression<Func<JToken[]>> deleteColumnsInTableinputTable, Expression<Func<int>> deleteColumnsInTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInTablecolumnNameToDelete = null)
+        public IBodyWorkflowAction<DeleteColumnsInTableResponse, ApiConnectionActionConfiguration> DeleteColumnsInTable(Expression<Func<JToken[]>> deleteColumnsInTableinputTable, Expression<Func<int>> deleteColumnsInTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInTablecolumnNameToDelete = null)
         {
             var __workflow_deleteColumnsInTableinputTable = WorkflowExpression.Compile(deleteColumnsInTableinputTable, nameof(deleteColumnsInTableinputTable), required: true);
             var __workflow_deleteColumnsInTablenumberOfColumnsToDelete = WorkflowExpression.Compile(deleteColumnsInTablenumberOfColumnsToDelete, nameof(deleteColumnsInTablenumberOfColumnsToDelete), required: true);
             var __workflow_deleteColumnsInTablestartColumnIndex = WorkflowExpression.Compile(deleteColumnsInTablestartColumnIndex, nameof(deleteColumnsInTablestartColumnIndex), required: false);
             var __workflow_deleteColumnsInTablecolumnNameToDelete = WorkflowExpression.Compile(deleteColumnsInTablecolumnNameToDelete, nameof(deleteColumnsInTablecolumnNameToDelete), required: false);
-            return new DeferredBodyAction<DeleteColumnsInTableResponse>(() =>
+            return new DeferredBodyAction<DeleteColumnsInTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteColumnsInTable";
                 var apiCallHttpMethod = "post";
@@ -1760,17 +1760,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteColumnsInTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse> DeleteColumnsInJSONTable(Expression<Func<string>> deleteColumnsInJSONTablejSONTable, Expression<Func<int>> deleteColumnsInJSONTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInJSONTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInJSONTablecolumnNameToDelete = null)
+        public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse, ApiConnectionActionConfiguration> DeleteColumnsInJSONTable(Expression<Func<string>> deleteColumnsInJSONTablejSONTable, Expression<Func<int>> deleteColumnsInJSONTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInJSONTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInJSONTablecolumnNameToDelete = null)
         {
             var __workflow_deleteColumnsInJSONTablejSONTable = WorkflowExpression.Compile(deleteColumnsInJSONTablejSONTable, nameof(deleteColumnsInJSONTablejSONTable), required: true);
             var __workflow_deleteColumnsInJSONTablenumberOfColumnsToDelete = WorkflowExpression.Compile(deleteColumnsInJSONTablenumberOfColumnsToDelete, nameof(deleteColumnsInJSONTablenumberOfColumnsToDelete), required: true);
             var __workflow_deleteColumnsInJSONTablestartColumnIndex = WorkflowExpression.Compile(deleteColumnsInJSONTablestartColumnIndex, nameof(deleteColumnsInJSONTablestartColumnIndex), required: false);
             var __workflow_deleteColumnsInJSONTablecolumnNameToDelete = WorkflowExpression.Compile(deleteColumnsInJSONTablecolumnNameToDelete, nameof(deleteColumnsInJSONTablecolumnNameToDelete), required: false);
-            return new DeferredBodyAction<DeleteColumnsInJSONTableResponse>(() =>
+            return new DeferredBodyAction<DeleteColumnsInJSONTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteColumnsInJSONTable";
                 var apiCallHttpMethod = "post";
@@ -1799,16 +1799,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<DeleteColumnsInJSONTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringArrayFromTableColumnResponse> GetStringArrayFromTableColumn(Expression<Func<JToken[]>> getStringArrayFromTableColumninputTable, Expression<Func<int>> getStringArrayFromTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromTableColumncolumnName = null)
+        public IBodyWorkflowAction<GetStringArrayFromTableColumnResponse, ApiConnectionActionConfiguration> GetStringArrayFromTableColumn(Expression<Func<JToken[]>> getStringArrayFromTableColumninputTable, Expression<Func<int>> getStringArrayFromTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromTableColumncolumnName = null)
         {
             var __workflow_getStringArrayFromTableColumninputTable = WorkflowExpression.Compile(getStringArrayFromTableColumninputTable, nameof(getStringArrayFromTableColumninputTable), required: true);
             var __workflow_getStringArrayFromTableColumncolumnIndex = WorkflowExpression.Compile(getStringArrayFromTableColumncolumnIndex, nameof(getStringArrayFromTableColumncolumnIndex), required: false);
             var __workflow_getStringArrayFromTableColumncolumnName = WorkflowExpression.Compile(getStringArrayFromTableColumncolumnName, nameof(getStringArrayFromTableColumncolumnName), required: false);
-            return new DeferredBodyAction<GetStringArrayFromTableColumnResponse>(() =>
+            return new DeferredBodyAction<GetStringArrayFromTableColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringArrayFromTableColumn";
                 var apiCallHttpMethod = "post";
@@ -1835,16 +1835,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringArrayFromTableColumnResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse> GetStringArrayFromJSONTableColumn(Expression<Func<string>> getStringArrayFromJSONTableColumnjSONTable, Expression<Func<int>> getStringArrayFromJSONTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromJSONTableColumncolumnName = null)
+        public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse, ApiConnectionActionConfiguration> GetStringArrayFromJSONTableColumn(Expression<Func<string>> getStringArrayFromJSONTableColumnjSONTable, Expression<Func<int>> getStringArrayFromJSONTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromJSONTableColumncolumnName = null)
         {
             var __workflow_getStringArrayFromJSONTableColumnjSONTable = WorkflowExpression.Compile(getStringArrayFromJSONTableColumnjSONTable, nameof(getStringArrayFromJSONTableColumnjSONTable), required: true);
             var __workflow_getStringArrayFromJSONTableColumncolumnIndex = WorkflowExpression.Compile(getStringArrayFromJSONTableColumncolumnIndex, nameof(getStringArrayFromJSONTableColumncolumnIndex), required: false);
             var __workflow_getStringArrayFromJSONTableColumncolumnName = WorkflowExpression.Compile(getStringArrayFromJSONTableColumncolumnName, nameof(getStringArrayFromJSONTableColumncolumnName), required: false);
-            return new DeferredBodyAction<GetStringArrayFromJSONTableColumnResponse>(() =>
+            return new DeferredBodyAction<GetStringArrayFromJSONTableColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringArrayFromJSONTableColumn";
                 var apiCallHttpMethod = "post";
@@ -1871,11 +1871,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringArrayFromJSONTableColumnResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringFromJSONTableCellResponse> GetStringFromJSONTableCell(Expression<Func<string>> getStringFromJSONTableCelljSONTable, Expression<Func<int>> getStringFromJSONTableCellrowIndex = null, Expression<Func<int>> getStringFromJSONTableCellcolumnIndex = null, Expression<Func<string>> getStringFromJSONTableCellcolumnName = null, Expression<Func<bool>> getStringFromJSONTableCellfallBackIfCellDoesNotExist = null, Expression<Func<string>> getStringFromJSONTableCellfallbackValue = null)
+        public IBodyWorkflowAction<GetStringFromJSONTableCellResponse, ApiConnectionActionConfiguration> GetStringFromJSONTableCell(Expression<Func<string>> getStringFromJSONTableCelljSONTable, Expression<Func<int>> getStringFromJSONTableCellrowIndex = null, Expression<Func<int>> getStringFromJSONTableCellcolumnIndex = null, Expression<Func<string>> getStringFromJSONTableCellcolumnName = null, Expression<Func<bool>> getStringFromJSONTableCellfallBackIfCellDoesNotExist = null, Expression<Func<string>> getStringFromJSONTableCellfallbackValue = null)
         {
             var __workflow_getStringFromJSONTableCelljSONTable = WorkflowExpression.Compile(getStringFromJSONTableCelljSONTable, nameof(getStringFromJSONTableCelljSONTable), required: true);
             var __workflow_getStringFromJSONTableCellrowIndex = WorkflowExpression.Compile(getStringFromJSONTableCellrowIndex, nameof(getStringFromJSONTableCellrowIndex), required: false);
@@ -1883,7 +1883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getStringFromJSONTableCellcolumnName = WorkflowExpression.Compile(getStringFromJSONTableCellcolumnName, nameof(getStringFromJSONTableCellcolumnName), required: false);
             var __workflow_getStringFromJSONTableCellfallBackIfCellDoesNotExist = WorkflowExpression.Compile(getStringFromJSONTableCellfallBackIfCellDoesNotExist, nameof(getStringFromJSONTableCellfallBackIfCellDoesNotExist), required: false);
             var __workflow_getStringFromJSONTableCellfallbackValue = WorkflowExpression.Compile(getStringFromJSONTableCellfallbackValue, nameof(getStringFromJSONTableCellfallbackValue), required: false);
-            return new DeferredBodyAction<GetStringFromJSONTableCellResponse>(() =>
+            return new DeferredBodyAction<GetStringFromJSONTableCellResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringFromJSONTableCell";
                 var apiCallHttpMethod = "post";
@@ -1938,11 +1938,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringFromJSONTableCellResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetStringBetweenResponse> GetStringBetween(Expression<Func<string>> getStringBetweeninputString = null, Expression<Func<string>> getStringBetweenstartSearchString = null, Expression<Func<string>> getStringBetweenendSearchString = null, Expression<Func<bool>> getStringBetweensearchLineByLine = null, Expression<Func<bool>> getStringBetweenthrowExceptionIfNotFound = null, Expression<Func<bool>> getStringBetweentrimResult = null, Expression<Func<bool>> getStringBetweensearchIsRegularExpression = null, Expression<Func<bool>> getStringBetweencaseSensitiveSearch = null)
+        public IBodyWorkflowAction<GetStringBetweenResponse, ApiConnectionActionConfiguration> GetStringBetween(Expression<Func<string>> getStringBetweeninputString = null, Expression<Func<string>> getStringBetweenstartSearchString = null, Expression<Func<string>> getStringBetweenendSearchString = null, Expression<Func<bool>> getStringBetweensearchLineByLine = null, Expression<Func<bool>> getStringBetweenthrowExceptionIfNotFound = null, Expression<Func<bool>> getStringBetweentrimResult = null, Expression<Func<bool>> getStringBetweensearchIsRegularExpression = null, Expression<Func<bool>> getStringBetweencaseSensitiveSearch = null)
         {
             var __workflow_getStringBetweeninputString = WorkflowExpression.Compile(getStringBetweeninputString, nameof(getStringBetweeninputString), required: false);
             var __workflow_getStringBetweenstartSearchString = WorkflowExpression.Compile(getStringBetweenstartSearchString, nameof(getStringBetweenstartSearchString), required: false);
@@ -1952,7 +1952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getStringBetweentrimResult = WorkflowExpression.Compile(getStringBetweentrimResult, nameof(getStringBetweentrimResult), required: false);
             var __workflow_getStringBetweensearchIsRegularExpression = WorkflowExpression.Compile(getStringBetweensearchIsRegularExpression, nameof(getStringBetweensearchIsRegularExpression), required: false);
             var __workflow_getStringBetweencaseSensitiveSearch = WorkflowExpression.Compile(getStringBetweencaseSensitiveSearch, nameof(getStringBetweencaseSensitiveSearch), required: false);
-            return new DeferredBodyAction<GetStringBetweenResponse>(() =>
+            return new DeferredBodyAction<GetStringBetweenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringBetween";
                 var apiCallHttpMethod = "post";
@@ -2063,16 +2063,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetStringBetweenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LoadIAConnectLookupTableResponse> LoadIAConnectLookupTable(Expression<Func<string>> loadIAConnectLookupTablepath, Expression<Func<bool>> loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, Expression<Func<string>> loadIAConnectLookupTableworkflow)
+        public IBodyWorkflowAction<LoadIAConnectLookupTableResponse, ApiConnectionActionConfiguration> LoadIAConnectLookupTable(Expression<Func<string>> loadIAConnectLookupTablepath, Expression<Func<bool>> loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, Expression<Func<string>> loadIAConnectLookupTableworkflow)
         {
             var __workflow_loadIAConnectLookupTablepath = WorkflowExpression.Compile(loadIAConnectLookupTablepath, nameof(loadIAConnectLookupTablepath), required: true);
             var __workflow_loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad = WorkflowExpression.Compile(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, nameof(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad), required: true);
             var __workflow_loadIAConnectLookupTableworkflow = WorkflowExpression.Compile(loadIAConnectLookupTableworkflow, nameof(loadIAConnectLookupTableworkflow), required: true);
-            return new DeferredBodyAction<LoadIAConnectLookupTableResponse>(() =>
+            return new DeferredBodyAction<LoadIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/LoadIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
@@ -2091,14 +2091,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LoadIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetIAConnectLookupTableSummaryResponse> GetIAConnectLookupTableSummary(Expression<Func<string>> getIAConnectLookupTableSummaryworkflow)
+        public IBodyWorkflowAction<GetIAConnectLookupTableSummaryResponse, ApiConnectionActionConfiguration> GetIAConnectLookupTableSummary(Expression<Func<string>> getIAConnectLookupTableSummaryworkflow)
         {
             var __workflow_getIAConnectLookupTableSummaryworkflow = WorkflowExpression.Compile(getIAConnectLookupTableSummaryworkflow, nameof(getIAConnectLookupTableSummaryworkflow), required: true);
-            return new DeferredBodyAction<GetIAConnectLookupTableSummaryResponse>(() =>
+            return new DeferredBodyAction<GetIAConnectLookupTableSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetIAConnectLookupTableSummary";
                 var apiCallHttpMethod = "post";
@@ -2113,15 +2113,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetIAConnectLookupTableSummaryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RemoveIAConnectLookupTableResponse> RemoveIAConnectLookupTable(Expression<Func<string>> removeIAConnectLookupTablelookupTableName, Expression<Func<string>> removeIAConnectLookupTableworkflow)
+        public IBodyWorkflowAction<RemoveIAConnectLookupTableResponse, ApiConnectionActionConfiguration> RemoveIAConnectLookupTable(Expression<Func<string>> removeIAConnectLookupTablelookupTableName, Expression<Func<string>> removeIAConnectLookupTableworkflow)
         {
             var __workflow_removeIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(removeIAConnectLookupTablelookupTableName, nameof(removeIAConnectLookupTablelookupTableName), required: true);
             var __workflow_removeIAConnectLookupTableworkflow = WorkflowExpression.Compile(removeIAConnectLookupTableworkflow, nameof(removeIAConnectLookupTableworkflow), required: true);
-            return new DeferredBodyAction<RemoveIAConnectLookupTableResponse>(() =>
+            return new DeferredBodyAction<RemoveIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/RemoveIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
@@ -2138,14 +2138,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RemoveIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RemoveAllIAConnectLookupTablesResponse> RemoveAllIAConnectLookupTables(Expression<Func<string>> removeAllIAConnectLookupTablesworkflow)
+        public IBodyWorkflowAction<RemoveAllIAConnectLookupTablesResponse, ApiConnectionActionConfiguration> RemoveAllIAConnectLookupTables(Expression<Func<string>> removeAllIAConnectLookupTablesworkflow)
         {
             var __workflow_removeAllIAConnectLookupTablesworkflow = WorkflowExpression.Compile(removeAllIAConnectLookupTablesworkflow, nameof(removeAllIAConnectLookupTablesworkflow), required: true);
-            return new DeferredBodyAction<RemoveAllIAConnectLookupTablesResponse>(() =>
+            return new DeferredBodyAction<RemoveAllIAConnectLookupTablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/RemoveAllIAConnectLookupTables";
                 var apiCallHttpMethod = "post";
@@ -2160,11 +2160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RemoveAllIAConnectLookupTablesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LookupValueFromIAConnectLookupTableResponse> LookupValueFromIAConnectLookupTable(Expression<Func<string>> lookupValueFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupValueFromIAConnectLookupTablesearchResultValueColumnName, Expression<Func<string>> lookupValueFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupValueFromIAConnectLookupTableinputDataJSON = null, Expression<Func<int>> lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = null, Expression<Func<bool>> lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = null)
+        public IBodyWorkflowAction<LookupValueFromIAConnectLookupTableResponse, ApiConnectionActionConfiguration> LookupValueFromIAConnectLookupTable(Expression<Func<string>> lookupValueFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupValueFromIAConnectLookupTablesearchResultValueColumnName, Expression<Func<string>> lookupValueFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupValueFromIAConnectLookupTableinputDataJSON = null, Expression<Func<int>> lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = null, Expression<Func<bool>> lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = null)
         {
             var __workflow_lookupValueFromIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablelookupTableName, nameof(lookupValueFromIAConnectLookupTablelookupTableName), required: true);
             var __workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnName = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablesearchResultValueColumnName, nameof(lookupValueFromIAConnectLookupTablesearchResultValueColumnName), required: true);
@@ -2172,7 +2172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_lookupValueFromIAConnectLookupTableinputDataJSON = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableinputDataJSON, nameof(lookupValueFromIAConnectLookupTableinputDataJSON), required: false);
             var __workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex, nameof(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex), required: false);
             var __workflow_lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
-            return new DeferredBodyAction<LookupValueFromIAConnectLookupTableResponse>(() =>
+            return new DeferredBodyAction<LookupValueFromIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/LookupValueFromIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
@@ -2229,11 +2229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LookupValueFromIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LookupColumnsFromIAConnectLookupTableResponse> LookupColumnsFromIAConnectLookupTable(Expression<Func<string>> lookupColumnsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupColumnsFromIAConnectLookupTablereturnFormatInput>> lookupColumnsFromIAConnectLookupTablereturnFormat = null)
+        public IBodyWorkflowAction<LookupColumnsFromIAConnectLookupTableResponse, ApiConnectionActionConfiguration> LookupColumnsFromIAConnectLookupTable(Expression<Func<string>> lookupColumnsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupColumnsFromIAConnectLookupTablereturnFormatInput>> lookupColumnsFromIAConnectLookupTablereturnFormat = null)
         {
             var __workflow_lookupColumnsFromIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablelookupTableName, nameof(lookupColumnsFromIAConnectLookupTablelookupTableName), required: true);
             var __workflow_lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, nameof(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName), required: true);
@@ -2242,7 +2242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
             var __workflow_lookupColumnsFromIAConnectLookupTablereturnBlankCells = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablereturnBlankCells, nameof(lookupColumnsFromIAConnectLookupTablereturnBlankCells), required: false);
             var __workflow_lookupColumnsFromIAConnectLookupTablereturnFormat = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablereturnFormat, nameof(lookupColumnsFromIAConnectLookupTablereturnFormat), required: false);
-            return new DeferredBodyAction<LookupColumnsFromIAConnectLookupTableResponse>(() =>
+            return new DeferredBodyAction<LookupColumnsFromIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/LookupColumnsFromIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
@@ -2315,11 +2315,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LookupColumnsFromIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<RemoveCharactersFromStringResponse> RemoveCharactersFromString(Expression<Func<string>> removeCharactersFromStringinputString = null, Expression<Func<string>> removeCharactersFromStringcharactersToRemoveFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveDiacriticsFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNonAlphaNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveLowercaseCharactersFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveUppercaseCharactersFromInputString = null)
+        public IBodyWorkflowAction<RemoveCharactersFromStringResponse, ApiConnectionActionConfiguration> RemoveCharactersFromString(Expression<Func<string>> removeCharactersFromStringinputString = null, Expression<Func<string>> removeCharactersFromStringcharactersToRemoveFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveDiacriticsFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNonAlphaNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveLowercaseCharactersFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveUppercaseCharactersFromInputString = null)
         {
             var __workflow_removeCharactersFromStringinputString = WorkflowExpression.Compile(removeCharactersFromStringinputString, nameof(removeCharactersFromStringinputString), required: false);
             var __workflow_removeCharactersFromStringcharactersToRemoveFromInputString = WorkflowExpression.Compile(removeCharactersFromStringcharactersToRemoveFromInputString, nameof(removeCharactersFromStringcharactersToRemoveFromInputString), required: false);
@@ -2328,7 +2328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_removeCharactersFromStringremoveNumericFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveNumericFromInputString, nameof(removeCharactersFromStringremoveNumericFromInputString), required: false);
             var __workflow_removeCharactersFromStringremoveLowercaseCharactersFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveLowercaseCharactersFromInputString, nameof(removeCharactersFromStringremoveLowercaseCharactersFromInputString), required: false);
             var __workflow_removeCharactersFromStringremoveUppercaseCharactersFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveUppercaseCharactersFromInputString, nameof(removeCharactersFromStringremoveUppercaseCharactersFromInputString), required: false);
-            return new DeferredBodyAction<RemoveCharactersFromStringResponse>(() =>
+            return new DeferredBodyAction<RemoveCharactersFromStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/RemoveCharactersFromString";
                 var apiCallHttpMethod = "post";
@@ -2433,11 +2433,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<RemoveCharactersFromStringResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetColumnFromIAConnectListResponse> GetColumnFromIAConnectList(Expression<Func<string>> getColumnFromIAConnectListlistName, Expression<Func<int>> getColumnFromIAConnectListsearchColumnIndex = null, Expression<Func<string>> getColumnFromIAConnectListsearchColumnName = null, Expression<Func<bool>> getColumnFromIAConnectListreturnBlankCells = null, Expression<Func<bool>> getColumnFromIAConnectListfallBackIfListDoesNotExist = null, Expression<Func<string>> getColumnFromIAConnectListfallbackValue = null, Expression<Func<getColumnFromIAConnectListreturnFormatInput>> getColumnFromIAConnectListreturnFormat = null)
+        public IBodyWorkflowAction<GetColumnFromIAConnectListResponse, ApiConnectionActionConfiguration> GetColumnFromIAConnectList(Expression<Func<string>> getColumnFromIAConnectListlistName, Expression<Func<int>> getColumnFromIAConnectListsearchColumnIndex = null, Expression<Func<string>> getColumnFromIAConnectListsearchColumnName = null, Expression<Func<bool>> getColumnFromIAConnectListreturnBlankCells = null, Expression<Func<bool>> getColumnFromIAConnectListfallBackIfListDoesNotExist = null, Expression<Func<string>> getColumnFromIAConnectListfallbackValue = null, Expression<Func<getColumnFromIAConnectListreturnFormatInput>> getColumnFromIAConnectListreturnFormat = null)
         {
             var __workflow_getColumnFromIAConnectListlistName = WorkflowExpression.Compile(getColumnFromIAConnectListlistName, nameof(getColumnFromIAConnectListlistName), required: true);
             var __workflow_getColumnFromIAConnectListsearchColumnIndex = WorkflowExpression.Compile(getColumnFromIAConnectListsearchColumnIndex, nameof(getColumnFromIAConnectListsearchColumnIndex), required: false);
@@ -2446,7 +2446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
             var __workflow_getColumnFromIAConnectListfallBackIfListDoesNotExist = WorkflowExpression.Compile(getColumnFromIAConnectListfallBackIfListDoesNotExist, nameof(getColumnFromIAConnectListfallBackIfListDoesNotExist), required: false);
             var __workflow_getColumnFromIAConnectListfallbackValue = WorkflowExpression.Compile(getColumnFromIAConnectListfallbackValue, nameof(getColumnFromIAConnectListfallbackValue), required: false);
             var __workflow_getColumnFromIAConnectListreturnFormat = WorkflowExpression.Compile(getColumnFromIAConnectListreturnFormat, nameof(getColumnFromIAConnectListreturnFormat), required: false);
-            return new DeferredBodyAction<GetColumnFromIAConnectListResponse>(() =>
+            return new DeferredBodyAction<GetColumnFromIAConnectListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetColumnFromIAConnectList";
                 var apiCallHttpMethod = "post";
@@ -2537,15 +2537,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetColumnFromIAConnectListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetIAConnectListContentsResponse> GetIAConnectListContents(Expression<Func<string>> getIAConnectListContentslistName, Expression<Func<getIAConnectListContentsreturnFormatInput>> getIAConnectListContentsreturnFormat = null)
+        public IBodyWorkflowAction<GetIAConnectListContentsResponse, ApiConnectionActionConfiguration> GetIAConnectListContents(Expression<Func<string>> getIAConnectListContentslistName, Expression<Func<getIAConnectListContentsreturnFormatInput>> getIAConnectListContentsreturnFormat = null)
         {
             var __workflow_getIAConnectListContentslistName = WorkflowExpression.Compile(getIAConnectListContentslistName, nameof(getIAConnectListContentslistName), required: true);
             var __workflow_getIAConnectListContentsreturnFormat = WorkflowExpression.Compile(getIAConnectListContentsreturnFormat, nameof(getIAConnectListContentsreturnFormat), required: false);
-            return new DeferredBodyAction<GetIAConnectListContentsResponse>(() =>
+            return new DeferredBodyAction<GetIAConnectListContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetIAConnectListContents";
                 var apiCallHttpMethod = "post";
@@ -2576,18 +2576,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetIAConnectListContentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<LookupDataCellsFromIAConnectLookupTableResponse> LookupDataCellsFromIAConnectLookupTable(Expression<Func<string>> lookupDataCellsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupDataCellsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupDataCellsFromIAConnectLookupTablereturnFormatInput>> lookupDataCellsFromIAConnectLookupTablereturnFormat = null)
+        public IBodyWorkflowAction<LookupDataCellsFromIAConnectLookupTableResponse, ApiConnectionActionConfiguration> LookupDataCellsFromIAConnectLookupTable(Expression<Func<string>> lookupDataCellsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupDataCellsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupDataCellsFromIAConnectLookupTablereturnFormatInput>> lookupDataCellsFromIAConnectLookupTablereturnFormat = null)
         {
             var __workflow_lookupDataCellsFromIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablelookupTableName, nameof(lookupDataCellsFromIAConnectLookupTablelookupTableName), required: true);
             var __workflow_lookupDataCellsFromIAConnectLookupTableinputDataJSON = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTableinputDataJSON, nameof(lookupDataCellsFromIAConnectLookupTableinputDataJSON), required: false);
             var __workflow_lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
             var __workflow_lookupDataCellsFromIAConnectLookupTablereturnBlankCells = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablereturnBlankCells, nameof(lookupDataCellsFromIAConnectLookupTablereturnBlankCells), required: false);
             var __workflow_lookupDataCellsFromIAConnectLookupTablereturnFormat = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablereturnFormat, nameof(lookupDataCellsFromIAConnectLookupTablereturnFormat), required: false);
-            return new DeferredBodyAction<LookupDataCellsFromIAConnectLookupTableResponse>(() =>
+            return new DeferredBodyAction<LookupDataCellsFromIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/LookupDataCellsFromIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
@@ -2656,15 +2656,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<LookupDataCellsFromIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<GetIAConnectLookupTableContentsResponse> GetIAConnectLookupTableContents(Expression<Func<string>> getIAConnectLookupTableContentslookupTableName, Expression<Func<getIAConnectLookupTableContentsreturnFormatInput>> getIAConnectLookupTableContentsreturnFormat = null)
+        public IBodyWorkflowAction<GetIAConnectLookupTableContentsResponse, ApiConnectionActionConfiguration> GetIAConnectLookupTableContents(Expression<Func<string>> getIAConnectLookupTableContentslookupTableName, Expression<Func<getIAConnectLookupTableContentsreturnFormatInput>> getIAConnectLookupTableContentsreturnFormat = null)
         {
             var __workflow_getIAConnectLookupTableContentslookupTableName = WorkflowExpression.Compile(getIAConnectLookupTableContentslookupTableName, nameof(getIAConnectLookupTableContentslookupTableName), required: true);
             var __workflow_getIAConnectLookupTableContentsreturnFormat = WorkflowExpression.Compile(getIAConnectLookupTableContentsreturnFormat, nameof(getIAConnectLookupTableContentsreturnFormat), required: false);
-            return new DeferredBodyAction<GetIAConnectLookupTableContentsResponse>(() =>
+            return new DeferredBodyAction<GetIAConnectLookupTableContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetIAConnectLookupTableContents";
                 var apiCallHttpMethod = "post";
@@ -2695,16 +2695,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<GetIAConnectLookupTableContentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse> UploadCSVToIAConnectLookupTable(Expression<Func<string>> uploadCSVToIAConnectLookupTablelookupTableName, Expression<Func<string>> uploadCSVToIAConnectLookupTablecSVData, Expression<Func<bool>> uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = null)
+        public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse, ApiConnectionActionConfiguration> UploadCSVToIAConnectLookupTable(Expression<Func<string>> uploadCSVToIAConnectLookupTablelookupTableName, Expression<Func<string>> uploadCSVToIAConnectLookupTablecSVData, Expression<Func<bool>> uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = null)
         {
             var __workflow_uploadCSVToIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablelookupTableName, nameof(uploadCSVToIAConnectLookupTablelookupTableName), required: true);
             var __workflow_uploadCSVToIAConnectLookupTablecSVData = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablecSVData, nameof(uploadCSVToIAConnectLookupTablecSVData), required: true);
             var __workflow_uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist, nameof(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist), required: false);
-            return new DeferredBodyAction<UploadCSVToIAConnectLookupTableResponse>(() =>
+            return new DeferredBodyAction<UploadCSVToIAConnectLookupTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/UploadCSVToIAConnectLookupTable";
                 var apiCallHttpMethod = "post";
@@ -2737,16 +2737,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<UploadCSVToIAConnectLookupTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<UploadCSVToIAConnectListResponse> UploadCSVToIAConnectList(Expression<Func<string>> uploadCSVToIAConnectListlistName, Expression<Func<string>> uploadCSVToIAConnectListcSVData, Expression<Func<bool>> uploadCSVToIAConnectListcreateListIfNotExist = null)
+        public IBodyWorkflowAction<UploadCSVToIAConnectListResponse, ApiConnectionActionConfiguration> UploadCSVToIAConnectList(Expression<Func<string>> uploadCSVToIAConnectListlistName, Expression<Func<string>> uploadCSVToIAConnectListcSVData, Expression<Func<bool>> uploadCSVToIAConnectListcreateListIfNotExist = null)
         {
             var __workflow_uploadCSVToIAConnectListlistName = WorkflowExpression.Compile(uploadCSVToIAConnectListlistName, nameof(uploadCSVToIAConnectListlistName), required: true);
             var __workflow_uploadCSVToIAConnectListcSVData = WorkflowExpression.Compile(uploadCSVToIAConnectListcSVData, nameof(uploadCSVToIAConnectListcSVData), required: true);
             var __workflow_uploadCSVToIAConnectListcreateListIfNotExist = WorkflowExpression.Compile(uploadCSVToIAConnectListcreateListIfNotExist, nameof(uploadCSVToIAConnectListcreateListIfNotExist), required: false);
-            return new DeferredBodyAction<UploadCSVToIAConnectListResponse>(() =>
+            return new DeferredBodyAction<UploadCSVToIAConnectListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/UploadCSVToIAConnectList";
                 var apiCallHttpMethod = "post";
@@ -2779,14 +2779,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<UploadCSVToIAConnectListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
-        public IBodyWorkflowAction<ConvertArrayToJSONResponse> ConvertArrayToJSON(Expression<Func<JToken[]>> convertArrayToJSONinputObject)
+        public IBodyWorkflowAction<ConvertArrayToJSONResponse, ApiConnectionActionConfiguration> ConvertArrayToJSON(Expression<Func<JToken[]>> convertArrayToJSONinputObject)
         {
             var __workflow_convertArrayToJSONinputObject = WorkflowExpression.Compile(convertArrayToJSONinputObject, nameof(convertArrayToJSONinputObject), required: true);
-            return new DeferredBodyAction<ConvertArrayToJSONResponse>(() =>
+            return new DeferredBodyAction<ConvertArrayToJSONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DynamicCode/ConvertArrayToJSON";
                 var apiCallHttpMethod = "post";
@@ -2801,7 +2801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
                 }
 
                 return new ApiConnectionAction<ConvertArrayToJSONResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

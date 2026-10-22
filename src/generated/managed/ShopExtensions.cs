@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
     public class ShopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query = null, Expression<Func<double>> priceMin = null, Expression<Func<double>> priceMax = null, Expression<Func<string>> similarToId = null, Expression<Func<string>> numResults = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> query = null, Expression<Func<double>> priceMin = null, Expression<Func<double>> priceMax = null, Expression<Func<string>> similarToId = null, Expression<Func<string>> numResults = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_priceMin = WorkflowExpression.Compile(priceMin, nameof(priceMin), required: false);
             var __workflow_priceMax = WorkflowExpression.Compile(priceMax, nameof(priceMax), required: false);
             var __workflow_similarToId = WorkflowExpression.Compile(similarToId, nameof(similarToId), required: false);
             var __workflow_numResults = WorkflowExpression.Compile(numResults, nameof(numResults), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/openai/search";
                 var apiCallHttpMethod = "get";
@@ -35,21 +35,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
                 if (__workflow_numResults != null)
                     callPayload.Queries["num_results"] = ExpressionConverter.Convert(__workflow_numResults);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
-        public IBodyWorkflowAction<SearchResponse> Details(Expression<Func<string>> ids)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Details(Expression<Func<string>> ids)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/openai/details";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

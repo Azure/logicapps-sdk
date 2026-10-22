@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
     public class DecentralandipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetDistrictsResponse> GetDistricts()
+        public IBodyWorkflowAction<GetDistrictsResponse, ApiConnectionActionConfiguration> GetDistricts()
         {
             var apiCallPath = "/districts";
             var apiCallHttpMethod = "get";
@@ -21,21 +21,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails(Expression<Func<string>> x, Expression<Func<string>> y)
+        public IBodyWorkflowAction<GetParcelDetailsResponse, ApiConnectionActionConfiguration> GetParcelDetails(Expression<Func<string>> x, Expression<Func<string>> y)
         {
             var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
             var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
-            return new DeferredBodyAction<GetParcelDetailsResponse>(() =>
+            return new DeferredBodyAction<GetParcelDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parcels/{0}/{1}", __workflow_x.WithUrlEncoding(1), __workflow_y.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetParcelDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap(Expression<Func<string>> x, Expression<Func<string>> y, Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<int>> size, Expression<Func<bool>> publication)
+        public IBodyWorkflowAction<GetParcelMapResponse, ApiConnectionActionConfiguration> GetParcelMap(Expression<Func<string>> x, Expression<Func<string>> y, Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<int>> size, Expression<Func<bool>> publication)
         {
             var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
             var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
             var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: true);
             var __workflow_publication = WorkflowExpression.Compile(publication, nameof(publication), required: true);
-            return new DeferredBodyAction<GetParcelMapResponse>(() =>
+            return new DeferredBodyAction<GetParcelMapResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parcels/{0}/{1}/map.png", __workflow_x.WithUrlEncoding(1), __workflow_y.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -53,18 +53,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
                 callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 callPayload.Queries["publication"] = ExpressionConverter.Convert(__workflow_publication);
                 return new ApiConnectionAction<GetParcelMapResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetTilesResponse> GetId(Expression<Func<string>> x1, Expression<Func<string>> x2, Expression<Func<string>> y1, Expression<Func<string>> y2, Expression<Func<string>> include)
+        public IBodyWorkflowAction<GetTilesResponse, ApiConnectionActionConfiguration> GetId(Expression<Func<string>> x1, Expression<Func<string>> x2, Expression<Func<string>> y1, Expression<Func<string>> y2, Expression<Func<string>> include)
         {
             var __workflow_x1 = WorkflowExpression.Compile(x1, nameof(x1), required: true);
             var __workflow_x2 = WorkflowExpression.Compile(x2, nameof(x2), required: true);
             var __workflow_y1 = WorkflowExpression.Compile(y1, nameof(y1), required: true);
             var __workflow_y2 = WorkflowExpression.Compile(y2, nameof(y2), required: true);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
-            return new DeferredBodyAction<GetTilesResponse>(() =>
+            return new DeferredBodyAction<GetTilesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tiles";
                 var apiCallHttpMethod = "get";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
                 callPayload.Queries["y2"] = ExpressionConverter.Convert(__workflow_y2);
                 callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<GetTilesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

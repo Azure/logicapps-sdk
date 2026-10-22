@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
     public class SigmaconsocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ProcessjobResponse> Processjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyprocess, Expression<Func<string>> bodyaction, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
+        public IBodyWorkflowAction<ProcessjobResponse, ApiConnectionActionConfiguration> Processjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyprocess, Expression<Func<string>> bodyaction, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_bodyprocess = WorkflowExpression.Compile(bodyprocess, nameof(bodyprocess), required: true);
             var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
             var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
             var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
-            return new DeferredBodyAction<ProcessjobResponse>(() =>
+            return new DeferredBodyAction<ProcessjobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/job/process";
                 var apiCallHttpMethod = "post";
@@ -45,17 +45,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
                 }
 
                 return new ApiConnectionAction<ProcessjobResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ConsolidationjobResponse> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyconsoCode, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
+        public IBodyWorkflowAction<ConsolidationjobResponse, ApiConnectionActionConfiguration> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyconsoCode, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_bodyconsoCode = WorkflowExpression.Compile(bodyconsoCode, nameof(bodyconsoCode), required: true);
             var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
             var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
-            return new DeferredBodyAction<ConsolidationjobResponse>(() =>
+            return new DeferredBodyAction<ConsolidationjobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/job/consolidation";
                 var apiCallHttpMethod = "post";
@@ -79,17 +79,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
                 }
 
                 return new ApiConnectionAction<ConsolidationjobResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ScheduledjobResponse> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyjobScheduleName, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
+        public IBodyWorkflowAction<ScheduledjobResponse, ApiConnectionActionConfiguration> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyjobScheduleName, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_bodyjobScheduleName = WorkflowExpression.Compile(bodyjobScheduleName, nameof(bodyjobScheduleName), required: true);
             var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
             var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
-            return new DeferredBodyAction<ScheduledjobResponse>(() =>
+            return new DeferredBodyAction<ScheduledjobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/job/scheduledjob";
                 var apiCallHttpMethod = "post";
@@ -113,18 +113,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
                 }
 
                 return new ApiConnectionAction<ScheduledjobResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ImportFileResponse> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyimportStructureCode, Expression<Func<string>> bodycustomerCode, Expression<Func<string>> bodybase64File, Expression<Func<bool>> bodywaitForResult = null)
+        public IBodyWorkflowAction<ImportFileResponse, ApiConnectionActionConfiguration> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyimportStructureCode, Expression<Func<string>> bodycustomerCode, Expression<Func<string>> bodybase64File, Expression<Func<bool>> bodywaitForResult = null)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_bodyimportStructureCode = WorkflowExpression.Compile(bodyimportStructureCode, nameof(bodyimportStructureCode), required: true);
             var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
             var __workflow_bodybase64File = WorkflowExpression.Compile(bodybase64File, nameof(bodybase64File), required: true);
             var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
-            return new DeferredBodyAction<ImportFileResponse>(() =>
+            return new DeferredBodyAction<ImportFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/hub/import";
                 var apiCallHttpMethod = "post";
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
                 }
 
                 return new ApiConnectionAction<ImportFileResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

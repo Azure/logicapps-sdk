@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
     public class PropublicanonprofiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_stateId = WorkflowExpression.Compile(stateId, nameof(stateId), required: false);
             var __workflow_nteeId = WorkflowExpression.Compile(nteeId, nameof(nteeId), required: false);
             var __workflow_cCodeId = WorkflowExpression.Compile(cCodeId, nameof(cCodeId), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search.json";
                 var apiCallHttpMethod = "get";
@@ -35,20 +35,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
                 if (__workflow_cCodeId != null)
                     callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(__workflow_cCodeId);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
+        public IBodyWorkflowAction<NonprofitGetResponse, ApiConnectionActionConfiguration> NonprofitGet(Expression<Func<string>> ein)
         {
             var __workflow_ein = WorkflowExpression.Compile(ein, nameof(ein), required: true);
-            return new DeferredBodyAction<NonprofitGetResponse>(() =>
+            return new DeferredBodyAction<NonprofitGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}.json", __workflow_ein.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NonprofitGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

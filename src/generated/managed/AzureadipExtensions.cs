@@ -12,23 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     public class AzureadipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetRiskUserResult, ApiConnectionActionConfiguration> GetRiskUser(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetRiskUserResult>(() =>
+            return new DeferredBodyAction<GetRiskUserResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/riskyUsers/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRiskUserResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction ConfirmRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmRiskUser(Expression<Func<string[]>> bodyuserIds = null)
         {
             var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/riskyUsers/confirmCompromised";
                 var apiCallHttpMethod = "post";
@@ -47,27 +47,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskDetection> RiskDetections(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetRiskDetection, ApiConnectionActionConfiguration> RiskDetections(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetRiskDetection>(() =>
+            return new DeferredBodyAction<GetRiskDetection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/riskDetections/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRiskDetection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction DismissRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DismissRiskUser(Expression<Func<string[]>> bodyuserIds = null)
         {
             var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/riskyUsers/dismiss";
                 var apiCallHttpMethod = "post";
@@ -86,20 +86,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetRiskHistory, ApiConnectionActionConfiguration> GetRiskUserHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetRiskHistory>(() =>
+            return new DeferredBodyAction<GetRiskHistory, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/riskyUsers/{0}/history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRiskHistory>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

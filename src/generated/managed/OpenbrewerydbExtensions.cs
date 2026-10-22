@@ -12,20 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
     public class OpenbrewerydbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery> GetBrewery(Expression<Func<string>> obdbId)
+        public IBodyWorkflowAction<RefBrewery, ApiConnectionActionConfiguration> GetBrewery(Expression<Func<string>> obdbId)
         {
             var __workflow_obdbId = WorkflowExpression.Compile(obdbId, nameof(obdbId), required: true);
-            return new DeferredBodyAction<RefBrewery>(() =>
+            return new DeferredBodyAction<RefBrewery, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/breweries/{0}", __workflow_obdbId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RefBrewery>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[]> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<RefBrewery[], ApiConnectionActionConfiguration> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
             var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var __workflow_byType = WorkflowExpression.Compile(byType, nameof(byType), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<RefBrewery[]>(() =>
+            return new DeferredBodyAction<RefBrewery[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/breweries";
                 var apiCallHttpMethod = "get";
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<RefBrewery[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[]> GetRandom(Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<RefBrewery[], ApiConnectionActionConfiguration> GetRandom(Expression<Func<int>> size = null)
         {
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<RefBrewery[]>(() =>
+            return new DeferredBodyAction<RefBrewery[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/breweries/random";
                 var apiCallHttpMethod = "get";
@@ -75,25 +75,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<RefBrewery[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[]> SearchBreweries(Expression<Func<string>> query)
+        public IBodyWorkflowAction<RefBrewery[], ApiConnectionActionConfiguration> SearchBreweries(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<RefBrewery[]>(() =>
+            return new DeferredBodyAction<RefBrewery[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/breweries/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<RefBrewery[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<CountBreweriesResponse> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null)
+        public IBodyWorkflowAction<CountBreweriesResponse, ApiConnectionActionConfiguration> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null)
         {
             var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
             var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
             var __workflow_byState = WorkflowExpression.Compile(byState, nameof(byState), required: false);
             var __workflow_byPostal = WorkflowExpression.Compile(byPostal, nameof(byPostal), required: false);
             var __workflow_byType = WorkflowExpression.Compile(byType, nameof(byType), required: false);
-            return new DeferredBodyAction<CountBreweriesResponse>(() =>
+            return new DeferredBodyAction<CountBreweriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/breweries/meta";
                 var apiCallHttpMethod = "get";
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
                 if (__workflow_byType != null)
                     callPayload.Queries["by_type"] = ExpressionConverter.Convert(__workflow_byType);
                 return new ApiConnectionAction<CountBreweriesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

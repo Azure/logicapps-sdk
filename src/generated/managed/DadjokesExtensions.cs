@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
     public class DadjokesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokes")]
-        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet(Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JokeGetResponseItem[], ApiConnectionActionConfiguration> JokeGet(Expression<Func<int>> limit = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<JokeGetResponseItem[]>(() =>
+            return new DeferredBodyAction<JokeGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/dadjokes";
                 var apiCallHttpMethod = "get";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Headers["X-RapidAPI-Host"] = Convert.ToString("dad-jokes-by-api-ninjas.p.rapidapi.com");
                 return new ApiConnectionAction<JokeGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

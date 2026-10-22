@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
     public class NewyorktimesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ArticleSearchResponse, ApiConnectionActionConfiguration> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<ArticleSearchResponse>(() =>
+            return new DeferredBodyAction<ArticleSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search/v2/articlesearch.json";
                 var apiCallHttpMethod = "get";
@@ -28,33 +28,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
                 if (__workflow_endDate != null)
                     callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
+        public IBodyWorkflowAction<TopStoriesResponse, ApiConnectionActionConfiguration> TopStories(Expression<Func<sectionInput>> section)
         {
             var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: true);
-            return new DeferredBodyAction<TopStoriesResponse>(() =>
+            return new DeferredBodyAction<TopStoriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/topstories/v2/{0}.json", __workflow_section.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TopStoriesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<MostViewedResponse, ApiConnectionActionConfiguration> MostViewed(Expression<Func<periodInput>> period)
         {
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
-            return new DeferredBodyAction<MostViewedResponse>(() =>
+            return new DeferredBodyAction<MostViewedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/mostpopular/v2/viewed/{0}.json", __workflow_period.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MostViewedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

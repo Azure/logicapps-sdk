@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     public class SapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CallRfc(Expression<Func<CallRfcInputInputBodyTypeType>> inputBodyType = null, Expression<Func<string>> rfcName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null, Expression<Func<bool>> safeType = null, Expression<Func<CallRfcInputOutputBodyTypeType>> outputBodyType = null)
+        public IBodyWorkflowAction<JToken, CallRfcActionConfiguration> CallRfc(Expression<Func<CallRfcInputInputBodyTypeType>> inputBodyType = null, Expression<Func<string>> rfcName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null, Expression<Func<bool>> safeType = null, Expression<Func<CallRfcInputOutputBodyTypeType>> outputBodyType = null)
         {
             var __workflow_inputBodyType = WorkflowExpression.Compile(inputBodyType, nameof(inputBodyType), required: false);
             var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: false);
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: false);
             var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
             var __workflow_outputBodyType = WorkflowExpression.Compile(outputBodyType, nameof(outputBodyType), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, CallRfcActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 if (__workflow_inputBodyType != null)
@@ -82,15 +83,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<CreateRfcTransactionOutput, CreateRfcTransactionActionConfiguration> CreateRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
-            return new DeferredBodyAction<CreateRfcTransactionOutput>(() =>
+            return new DeferredBodyAction<CreateRfcTransactionOutput, CreateRfcTransactionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
@@ -105,15 +106,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CreateRfcTransactionOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<GetRfcTransactionOutput, GetRfcTransactionActionConfiguration> GetRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
-            return new DeferredBodyAction<GetRfcTransactionOutput>(() =>
+            return new DeferredBodyAction<GetRfcTransactionOutput, GetRfcTransactionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
@@ -128,17 +129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetRfcTransactionOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction(Expression<Func<object>> body, Expression<Func<string>> tId, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null)
+        public IBodyWorkflowAction<AddRfcToTransactionOutput, AddRfcToTransactionActionConfiguration> AddRfcToTransaction(Expression<Func<object>> body, Expression<Func<string>> tId, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: false);
-            return new DeferredBodyAction<AddRfcToTransactionOutput>(() =>
+            return new DeferredBodyAction<AddRfcToTransactionOutput, AddRfcToTransactionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
@@ -159,15 +160,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<AddRfcToTransactionOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<CommitRfcTransactionOutput, CommitRfcTransactionActionConfiguration> CommitRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
-            return new DeferredBodyAction<CommitRfcTransactionOutput>(() =>
+            return new DeferredBodyAction<CommitRfcTransactionOutput, CommitRfcTransactionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
@@ -182,14 +183,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CommitRfcTransactionOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IWorkflowAction ConfirmTransactionId(Expression<Func<string>> tId)
+        public IWorkflowAction<ConfirmTransactionIdActionConfiguration> ConfirmTransactionId(Expression<Func<string>> tId)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ConfirmTransactionIdActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
@@ -199,17 +200,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIDocOutput> SendIDoc(Expression<Func<SendIDocInputIdocFormatType>> idocFormat, Expression<Func<bool>> confirmTid, Expression<Func<string>> tId = null, Expression<Func<bool>> allowUnreleasedSegmentV2 = null)
+        public IBodyWorkflowAction<SendIDocOutput, SendIDocActionConfiguration> SendIDoc(Expression<Func<SendIDocInputIdocFormatType>> idocFormat, Expression<Func<bool>> confirmTid, Expression<Func<string>> tId = null, Expression<Func<bool>> allowUnreleasedSegmentV2 = null)
         {
             var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: true);
             var __workflow_confirmTid = WorkflowExpression.Compile(confirmTid, nameof(confirmTid), required: true);
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
             var __workflow_allowUnreleasedSegmentV2 = WorkflowExpression.Compile(allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
-            return new DeferredBodyAction<SendIDocOutput>(() =>
+            return new DeferredBodyAction<SendIDocOutput, SendIDocActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(__workflow_idocFormat);
@@ -234,11 +235,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendIDocOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit, Expression<Func<object>> body, Expression<Func<string>> sessionId = null, Expression<Func<bool>> safeType = null)
+        public IBodyWorkflowAction<BapiCallMethodOutput, BapiCallMethodActionConfiguration> BapiCallMethod(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit, Expression<Func<object>> body, Expression<Func<string>> sessionId = null, Expression<Func<bool>> safeType = null)
         {
             var __workflow_businessObject = WorkflowExpression.Compile(businessObject, nameof(businessObject), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -246,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
-            return new DeferredBodyAction<BapiCallMethodOutput>(() =>
+            return new DeferredBodyAction<BapiCallMethodOutput, BapiCallMethodActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["businessObject"] = ExpressionConverter.ConvertO(__workflow_businessObject);
@@ -269,27 +270,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BapiCallMethodOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CreateSessionOutput> CreateSession()
+        public IBodyWorkflowAction<CreateSessionOutput, CreateSessionActionConfiguration> CreateSession()
         {
-            return new DeferredBodyAction<CreateSessionOutput>(() =>
+            return new DeferredBodyAction<CreateSessionOutput, CreateSessionActionConfiguration>(() =>
             {
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createSession", connectionName: connectionId)
                 };
                 return new ServiceProviderAction<CreateSessionOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IWorkflowAction CloseSession(Expression<Func<string>> sessionId)
+        public IWorkflowAction<CloseSessionActionConfiguration> CloseSession(Expression<Func<string>> sessionId)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<CloseSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
@@ -299,16 +300,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiCommitOutput> BapiCommit(Expression<Func<string>> sessionId, Expression<Func<bool>> wait, Expression<Func<bool>> closeSession)
+        public IBodyWorkflowAction<BapiCommitOutput, BapiCommitActionConfiguration> BapiCommit(Expression<Func<string>> sessionId, Expression<Func<bool>> wait, Expression<Func<bool>> closeSession)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: true);
             var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: true);
-            return new DeferredBodyAction<BapiCommitOutput>(() =>
+            return new DeferredBodyAction<BapiCommitOutput, BapiCommitActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
@@ -320,15 +321,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BapiCommitOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession)
+        public IBodyWorkflowAction<BapiRollbackOutput, BapiRollbackActionConfiguration> BapiRollback(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: true);
-            return new DeferredBodyAction<BapiRollbackOutput>(() =>
+            return new DeferredBodyAction<BapiRollbackOutput, BapiRollbackActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
@@ -339,11 +340,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BapiRollbackOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<ReadTableOutput> ReadTable(Expression<Func<string>> tableName, Expression<Func<string[]>> fieldNames = null, Expression<Func<string[]>> whereFilters = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> numberOfRowsToRead = null, Expression<Func<string>> delimiter = null, Expression<Func<ReadTableInputReturnFormatType>> returnFormat = null)
+        public IBodyWorkflowAction<ReadTableOutput, ReadTableActionConfiguration> ReadTable(Expression<Func<string>> tableName, Expression<Func<string[]>> fieldNames = null, Expression<Func<string[]>> whereFilters = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> numberOfRowsToRead = null, Expression<Func<string>> delimiter = null, Expression<Func<ReadTableInputReturnFormatType>> returnFormat = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_fieldNames = WorkflowExpression.Compile(fieldNames, nameof(fieldNames), required: false);
@@ -352,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             var __workflow_numberOfRowsToRead = WorkflowExpression.Compile(numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
             var __workflow_delimiter = WorkflowExpression.Compile(delimiter, nameof(delimiter), required: false);
             var __workflow_returnFormat = WorkflowExpression.Compile(returnFormat, nameof(returnFormat), required: false);
-            return new DeferredBodyAction<ReadTableOutput>(() =>
+            return new DeferredBodyAction<ReadTableOutput, ReadTableActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -396,15 +397,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReadTableOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> GetSchemaV2(Expression<Func<GetSchemaV2InputOperationTypeType>> operationType, Expression<Func<string>> fileNamePrefix = null)
+        public IBodyWorkflowAction<JToken, GetSchemaV2ActionConfiguration> GetSchemaV2(Expression<Func<GetSchemaV2InputOperationTypeType>> operationType, Expression<Func<string>> fileNamePrefix = null)
         {
             var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
             var __workflow_fileNamePrefix = WorkflowExpression.Compile(fileNamePrefix, nameof(fileNamePrefix), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, GetSchemaV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(__workflow_operationType);
@@ -419,15 +420,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<GetIDocListOutput> GetIDocList(Expression<Func<GetIDocListInputDirectionType>> direction, Expression<Func<string>> tId)
+        public IBodyWorkflowAction<GetIDocListOutput, GetIDocListActionConfiguration> GetIDocList(Expression<Func<GetIDocListInputDirectionType>> direction, Expression<Func<string>> tId)
         {
             var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
-            return new DeferredBodyAction<GetIDocListOutput>(() =>
+            return new DeferredBodyAction<GetIDocListOutput, GetIDocListActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["direction"] = ExpressionConverter.ConvertO(__workflow_direction);
@@ -438,14 +439,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetIDocListOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus(Expression<Func<int>> iDocNumber)
+        public IBodyWorkflowAction<GetIDocStatusOutput, GetIDocStatusActionConfiguration> GetIDocStatus(Expression<Func<int>> iDocNumber)
         {
             var __workflow_iDocNumber = WorkflowExpression.Compile(iDocNumber, nameof(iDocNumber), required: true);
-            return new DeferredBodyAction<GetIDocStatusOutput>(() =>
+            return new DeferredBodyAction<GetIDocStatusOutput, GetIDocStatusActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(__workflow_iDocNumber);
@@ -455,15 +456,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetIDocStatusOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IWorkflowAction RespondToSapServer(Expression<Func<string>> body, Expression<Func<bool>> safeType = null)
+        public IWorkflowAction<RespondToSapServerActionConfiguration> RespondToSapServer(Expression<Func<string>> body, Expression<Func<bool>> safeType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<RespondToSapServerActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
@@ -478,11 +479,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IWorkflowAction SendExceptionToSapServer(Expression<Func<string>> sendExceptionToSapServerErrorMessage, Expression<Func<string>> sendExceptionToSapServerExceptionName = null, Expression<Func<string>> sendExceptionToSapServerMessageType = null, Expression<Func<string>> sendExceptionToSapServerMessageClass = null, Expression<Func<string>> sendExceptionToSapServerMessageNumber = null, Expression<Func<bool>> sendExceptionToSapServerIsAbapMessage = null)
+        public IWorkflowAction<SendExceptionToSapServerActionConfiguration> SendExceptionToSapServer(Expression<Func<string>> sendExceptionToSapServerErrorMessage, Expression<Func<string>> sendExceptionToSapServerExceptionName = null, Expression<Func<string>> sendExceptionToSapServerMessageType = null, Expression<Func<string>> sendExceptionToSapServerMessageClass = null, Expression<Func<string>> sendExceptionToSapServerMessageNumber = null, Expression<Func<bool>> sendExceptionToSapServerIsAbapMessage = null)
         {
             var __workflow_sendExceptionToSapServerErrorMessage = WorkflowExpression.Compile(sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
             var __workflow_sendExceptionToSapServerExceptionName = WorkflowExpression.Compile(sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
@@ -490,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             var __workflow_sendExceptionToSapServerMessageClass = WorkflowExpression.Compile(sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
             var __workflow_sendExceptionToSapServerMessageNumber = WorkflowExpression.Compile(sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
             var __workflow_sendExceptionToSapServerIsAbapMessage = WorkflowExpression.Compile(sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<SendExceptionToSapServerActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerErrorMessage);
@@ -525,14 +526,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> RunDiagnostics(Expression<Func<RunDiagnosticsInputOperationTypeType>> operationType)
+        public IBodyWorkflowAction<JToken, RunDiagnosticsActionConfiguration> RunDiagnostics(Expression<Func<RunDiagnosticsInputOperationTypeType>> operationType)
         {
             var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, RunDiagnosticsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(__workflow_operationType);
@@ -542,13 +543,165 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class CallRfcActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CreateRfcTransactionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetRfcTransactionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class AddRfcToTransactionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CommitRfcTransactionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ConfirmTransactionIdActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SendIDocActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class BapiCallMethodActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CreateSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CloseSessionActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class BapiCommitActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class BapiRollbackActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ReadTableActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSchemaV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetIDocListActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetIDocStatusActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class RespondToSapServerActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SendExceptionToSapServerActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class RunDiagnosticsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerInputIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
+        public IBodyWorkflowTrigger<SapTriggerOutput, SapTriggerTriggerConfiguration> SapTrigger(Expression<Func<SapTriggerInputIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
         {
             var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: true);
             var __workflow_degreeOfParallelism = WorkflowExpression.Compile(degreeOfParallelism, nameof(degreeOfParallelism), required: true);
@@ -560,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             var __workflow_defaultIDocRelease = WorkflowExpression.Compile(defaultIDocRelease, nameof(defaultIDocRelease), required: false);
             var __workflow_receivedIDocTypeReleaseMapping = WorkflowExpression.Compile(receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
             var __workflow_gatewayWithoutWorkProcess = WorkflowExpression.Compile(gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
-            return new DeferredBodyTrigger<SapTriggerOutput>(() =>
+            return new DeferredBodyTrigger<SapTriggerOutput, SapTriggerTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(__workflow_idocFormat);
@@ -603,8 +756,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class SapTriggerTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class SapTriggerOutput

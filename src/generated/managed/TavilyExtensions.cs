@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     public class TavilyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<SearchPostResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic = null, Expression<Func<bodysearchDepthInput>> bodysearchDepth = null, Expression<Func<int>> bodychunksPerSource = null, Expression<Func<int>> bodymaxResults = null, Expression<Func<bodytimeRangeInput>> bodytimeRange = null, Expression<Func<int>> bodydays = null, Expression<Func<bool>> bodyincludeAnswer = null, Expression<Func<bool>> bodyincludeRawContent = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bool>> bodyincludeImageDescriptions = null, Expression<Func<string[]>> bodyincludeDomains = null, Expression<Func<string[]>> bodyexcludeDomains = null)
+        public IBodyWorkflowAction<SearchPostResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic = null, Expression<Func<bodysearchDepthInput>> bodysearchDepth = null, Expression<Func<int>> bodychunksPerSource = null, Expression<Func<int>> bodymaxResults = null, Expression<Func<bodytimeRangeInput>> bodytimeRange = null, Expression<Func<int>> bodydays = null, Expression<Func<bool>> bodyincludeAnswer = null, Expression<Func<bool>> bodyincludeRawContent = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bool>> bodyincludeImageDescriptions = null, Expression<Func<string[]>> bodyincludeDomains = null, Expression<Func<string[]>> bodyexcludeDomains = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var __workflow_bodyincludeImageDescriptions = WorkflowExpression.Compile(bodyincludeImageDescriptions, nameof(bodyincludeImageDescriptions), required: false);
             var __workflow_bodyincludeDomains = WorkflowExpression.Compile(bodyincludeDomains, nameof(bodyincludeDomains), required: false);
             var __workflow_bodyexcludeDomains = WorkflowExpression.Compile(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
-            return new DeferredBodyAction<SearchPostResponse>(() =>
+            return new DeferredBodyAction<SearchPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "post";
@@ -184,16 +184,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<SearchPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<ExtractPostResponse> Extract(Expression<Func<string>> bodyurls, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
+        public IBodyWorkflowAction<ExtractPostResponse, ApiConnectionActionConfiguration> Extract(Expression<Func<string>> bodyurls, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
             var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_bodyincludeImages = WorkflowExpression.Compile(bodyincludeImages, nameof(bodyincludeImages), required: false);
             var __workflow_bodyextractDepth = WorkflowExpression.Compile(bodyextractDepth, nameof(bodyextractDepth), required: false);
-            return new DeferredBodyAction<ExtractPostResponse>(() =>
+            return new DeferredBodyAction<ExtractPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extract";
                 var apiCallHttpMethod = "post";
@@ -240,11 +240,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<ExtractPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<CrawlPostResponse> Crawl(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
+        public IBodyWorkflowAction<CrawlPostResponse, ApiConnectionActionConfiguration> Crawl(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodymaxDepth = WorkflowExpression.Compile(bodymaxDepth, nameof(bodymaxDepth), required: false);
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var __workflow_bodyincludeImages = WorkflowExpression.Compile(bodyincludeImages, nameof(bodyincludeImages), required: false);
             var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
             var __workflow_bodyextractDepth = WorkflowExpression.Compile(bodyextractDepth, nameof(bodyextractDepth), required: false);
-            return new DeferredBodyAction<CrawlPostResponse>(() =>
+            return new DeferredBodyAction<CrawlPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/crawl";
                 var apiCallHttpMethod = "post";
@@ -396,11 +396,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<CrawlPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<MapPostResponse> Map(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null)
+        public IBodyWorkflowAction<MapPostResponse, ApiConnectionActionConfiguration> Map(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodymaxDepth = WorkflowExpression.Compile(bodymaxDepth, nameof(bodymaxDepth), required: false);
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
             var __workflow_bodyexcludeDomains = WorkflowExpression.Compile(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
             var __workflow_bodyallowExternal = WorkflowExpression.Compile(bodyallowExternal, nameof(bodyallowExternal), required: false);
             var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
-            return new DeferredBodyAction<MapPostResponse>(() =>
+            return new DeferredBodyAction<MapPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/map";
                 var apiCallHttpMethod = "post";
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 }
 
                 return new ApiConnectionAction<MapPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

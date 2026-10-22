@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     public class GofileroomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyaccessToApproveDocsOnly = WorkflowExpression.Compile(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
             var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
             var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
-            return new DeferredBodyAction<CreateGroupResponse>(() =>
+            return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/creategroup";
                 var apiCallHttpMethod = "post";
@@ -121,18 +121,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodygroupName = null)
+        public IBodyWorkflowAction<SetGroupDocSecurityResponse, ApiConnectionActionConfiguration> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodygroupName = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodycabinetName = WorkflowExpression.Compile(bodycabinetName, nameof(bodycabinetName), required: false);
             var __workflow_bodydocumentSecurity = WorkflowExpression.Compile(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
             var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
-            return new DeferredBodyAction<SetGroupDocSecurityResponse>(() =>
+            return new DeferredBodyAction<SetGroupDocSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/documentsecurity";
                 var apiCallHttpMethod = "post";
@@ -171,11 +171,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetGroupDocSecurityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<string>> bodyrenameGroup = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
+        public IBodyWorkflowAction<ModifyGroupResponse, ApiConnectionActionConfiguration> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<string>> bodyrenameGroup = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyaccessToApproveDocsOnly = WorkflowExpression.Compile(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
             var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
             var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
-            return new DeferredBodyAction<ModifyGroupResponse>(() =>
+            return new DeferredBodyAction<ModifyGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/modifygroup";
                 var apiCallHttpMethod = "post";
@@ -291,15 +291,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<ModifyGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetGroupPermissionsResponse> GetGroupPermissions(Expression<Func<string>> groupName = null, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetGroupPermissionsResponse, ApiConnectionActionConfiguration> GetGroupPermissions(Expression<Func<string>> groupName = null, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetGroupPermissionsResponse>(() =>
+            return new DeferredBodyAction<GetGroupPermissionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/permissions";
                 var apiCallHttpMethod = "get";
@@ -309,11 +309,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetGroupPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodygroupName = null)
+        public IBodyWorkflowAction<SetGroupPermissionsResponse, ApiConnectionActionConfiguration> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodygroupName = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodycabinet = WorkflowExpression.Compile(bodycabinet, nameof(bodycabinet), required: false);
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodycabinetPermissionread = WorkflowExpression.Compile(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
             var __workflow_bodydrawerPermissions = WorkflowExpression.Compile(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
-            return new DeferredBodyAction<SetGroupPermissionsResponse>(() =>
+            return new DeferredBodyAction<SetGroupPermissionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/permissions";
                 var apiCallHttpMethod = "post";
@@ -402,17 +402,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetGroupPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> GetGroupDocumentSecurity(Expression<Func<string>> groupName, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetGroupDocumentSecurityResponse, ApiConnectionActionConfiguration> GetGroupDocumentSecurity(Expression<Func<string>> groupName, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             var __workflow_cabinetName = WorkflowExpression.Compile(cabinetName, nameof(cabinetName), required: true);
             var __workflow_drawerName = WorkflowExpression.Compile(drawerName, nameof(drawerName), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetGroupDocumentSecurityResponse>(() =>
+            return new DeferredBodyAction<GetGroupDocumentSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", __workflow_groupName.WithUrlEncoding(1), __workflow_cabinetName.WithUrlEncoding(1), __workflow_drawerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -420,14 +420,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetGroupDocumentSecurityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetGroupsResponseItem[]> GetGroups(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetGroupsResponseItem[], ApiConnectionActionConfiguration> GetGroups(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetGroupsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetGroupsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/groups";
                 var apiCallHttpMethod = "get";
@@ -435,11 +435,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetGroupsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateUsersResponse> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
+        public IBodyWorkflowAction<CreateUsersResponse, ApiConnectionActionConfiguration> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
             var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
             var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
-            return new DeferredBodyAction<CreateUsersResponse>(() =>
+            return new DeferredBodyAction<CreateUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/createuser";
                 var apiCallHttpMethod = "post";
@@ -608,16 +608,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateUsersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteUserResponse> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginId = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null)
+        public IBodyWorkflowAction<DeleteUserResponse, ApiConnectionActionConfiguration> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginId = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyloginId = WorkflowExpression.Compile(bodyloginId, nameof(bodyloginId), required: false);
             var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: false);
-            return new DeferredBodyAction<DeleteUserResponse>(() =>
+            return new DeferredBodyAction<DeleteUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/delete";
                 var apiCallHttpMethod = "post";
@@ -644,18 +644,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DeleteUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem2[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodyloginId = null)
+        public IBodyWorkflowAction<SetUserDocSecurityResponse, ApiConnectionActionConfiguration> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem2[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodyloginId = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodycabinetName = WorkflowExpression.Compile(bodycabinetName, nameof(bodycabinetName), required: false);
             var __workflow_bodydocumentSecurity = WorkflowExpression.Compile(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
             var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
             var __workflow_bodyloginId = WorkflowExpression.Compile(bodyloginId, nameof(bodyloginId), required: false);
-            return new DeferredBodyAction<SetUserDocSecurityResponse>(() =>
+            return new DeferredBodyAction<SetUserDocSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/documentsecurity";
                 var apiCallHttpMethod = "post";
@@ -694,16 +694,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetUserDocSecurityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodyuserType, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUserInfoResponse, ApiConnectionActionConfiguration> GetUserInfo(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodyuserType, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_bodyloginName = WorkflowExpression.Compile(bodyloginName, nameof(bodyloginName), required: true);
             var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetUserInfoResponse>(() =>
+            return new DeferredBodyAction<GetUserInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/getuser";
                 var apiCallHttpMethod = "post";
@@ -722,15 +722,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetLicensesResponse> GetLicenses(Expression<Func<licenseInput>> license = null, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetLicensesResponse, ApiConnectionActionConfiguration> GetLicenses(Expression<Func<licenseInput>> license = null, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetLicensesResponse>(() =>
+            return new DeferredBodyAction<GetLicensesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/licenses";
                 var apiCallHttpMethod = "get";
@@ -740,11 +740,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetLicensesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyUserResponse> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisChangeNextLogin = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
+        public IBodyWorkflowAction<ModifyUserResponse, ApiConnectionActionConfiguration> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisChangeNextLogin = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
             var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
             var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
-            return new DeferredBodyAction<ModifyUserResponse>(() =>
+            return new DeferredBodyAction<ModifyUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/modifyuser";
                 var apiCallHttpMethod = "post";
@@ -919,14 +919,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<ModifyUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetPasswordPolicyResponse> GetPasswordPolicy(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetPasswordPolicyResponse, ApiConnectionActionConfiguration> GetPasswordPolicy(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetPasswordPolicyResponse>(() =>
+            return new DeferredBodyAction<GetPasswordPolicyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/passwordpolicy";
                 var apiCallHttpMethod = "get";
@@ -934,11 +934,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetPasswordPolicyResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodyloginId = null)
+        public IBodyWorkflowAction<SetUserPermissionsResponse, ApiConnectionActionConfiguration> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodyloginId = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodycabinet = WorkflowExpression.Compile(bodycabinet, nameof(bodycabinet), required: false);
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodycabinetPermissionread = WorkflowExpression.Compile(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
             var __workflow_bodydrawerPermissions = WorkflowExpression.Compile(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
             var __workflow_bodyloginId = WorkflowExpression.Compile(bodyloginId, nameof(bodyloginId), required: false);
-            return new DeferredBodyAction<SetUserPermissionsResponse>(() =>
+            return new DeferredBodyAction<SetUserPermissionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/permissions";
                 var apiCallHttpMethod = "post";
@@ -1027,14 +1027,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<SetUserPermissionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetListOfReportsResponse> GetListOfReports(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetListOfReportsResponse, ApiConnectionActionConfiguration> GetListOfReports(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetListOfReportsResponse>(() =>
+            return new DeferredBodyAction<GetListOfReportsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/reports";
                 var apiCallHttpMethod = "get";
@@ -1042,14 +1042,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetListOfReportsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUploadLocationResponse> GetUploadLocation(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUploadLocationResponse, ApiConnectionActionConfiguration> GetUploadLocation(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetUploadLocationResponse>(() =>
+            return new DeferredBodyAction<GetUploadLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/uploadlocations";
                 var apiCallHttpMethod = "get";
@@ -1057,17 +1057,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUploadLocationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserDocumentSecurityResponse> GetUserDocumentSecurity(Expression<Func<string>> loginId, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUserDocumentSecurityResponse, ApiConnectionActionConfiguration> GetUserDocumentSecurity(Expression<Func<string>> loginId, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_loginId = WorkflowExpression.Compile(loginId, nameof(loginId), required: true);
             var __workflow_cabinetName = WorkflowExpression.Compile(cabinetName, nameof(cabinetName), required: true);
             var __workflow_drawerName = WorkflowExpression.Compile(drawerName, nameof(drawerName), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetUserDocumentSecurityResponse>(() =>
+            return new DeferredBodyAction<GetUserDocumentSecurityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", __workflow_loginId.WithUrlEncoding(1), __workflow_cabinetName.WithUrlEncoding(1), __workflow_drawerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1075,15 +1075,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUserDocumentSecurityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserPermissionResponse> GetUserPermission(Expression<Func<string>> login, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUserPermissionResponse, ApiConnectionActionConfiguration> GetUserPermission(Expression<Func<string>> login, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetUserPermissionResponse>(() =>
+            return new DeferredBodyAction<GetUserPermissionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/user/{0}/permissions", __workflow_login.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1091,15 +1091,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUserPermissionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUsersResponseItem[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetUsersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetUsersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/administration/users";
                 var apiCallHttpMethod = "get";
@@ -1109,15 +1109,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetLookupListResponseItem[]> GetLookupList(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetLookupListResponseItem[], ApiConnectionActionConfiguration> GetLookupList(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_drawerId = WorkflowExpression.Compile(drawerId, nameof(drawerId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetLookupListResponseItem[]>(() =>
+            return new DeferredBodyAction<GetLookupListResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/administration/{0}/clients", __workflow_drawerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1125,16 +1125,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetLookupListResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
+        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
             var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
-            return new DeferredBodyAction<CreateDocumentResponse>(() =>
+            return new DeferredBodyAction<CreateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents";
                 var apiCallHttpMethod = "post";
@@ -1161,16 +1161,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
+        public IBodyWorkflowAction<CopyDocumentResponseItem[], ApiConnectionActionConfiguration> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: false);
             var __workflow_bodyindexValues = WorkflowExpression.Compile(bodyindexValues, nameof(bodyindexValues), required: false);
-            return new DeferredBodyAction<CopyDocumentResponseItem[]>(() =>
+            return new DeferredBodyAction<CopyDocumentResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents/copy";
                 var apiCallHttpMethod = "post";
@@ -1197,15 +1197,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CopyDocumentResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> GetDocumentStatus(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<GetDocumentStatusResponseItem[], ApiConnectionActionConfiguration> GetDocumentStatus(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GetDocumentStatusResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDocumentStatusResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents/getdocumentstatus";
                 var apiCallHttpMethod = "post";
@@ -1214,15 +1214,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetDocumentStatusResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<string> MergePDF(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents/mergePDFs";
                 var apiCallHttpMethod = "post";
@@ -1231,16 +1231,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
+        public IBodyWorkflowAction<DocumentReindexResponseItem[], ApiConnectionActionConfiguration> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: false);
             var __workflow_bodyindexValues = WorkflowExpression.Compile(bodyindexValues, nameof(bodyindexValues), required: false);
-            return new DeferredBodyAction<DocumentReindexResponseItem[]>(() =>
+            return new DeferredBodyAction<DocumentReindexResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents/reindex";
                 var apiCallHttpMethod = "post";
@@ -1267,11 +1267,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DocumentReindexResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyfilterindexValuesInputItem[]>> bodyfilterindexValues = null, Expression<Func<int>> bodynumberOfRows = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<string>> bodysortField = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null)
+        public IBodyWorkflowAction<DocumentSearchResponse, ApiConnectionActionConfiguration> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyfilterindexValuesInputItem[]>> bodyfilterindexValues = null, Expression<Func<int>> bodynumberOfRows = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<string>> bodysortField = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
@@ -1280,7 +1280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
             var __workflow_bodysortField = WorkflowExpression.Compile(bodysortField, nameof(bodysortField), required: false);
             var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
-            return new DeferredBodyAction<DocumentSearchResponse>(() =>
+            return new DeferredBodyAction<DocumentSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents/search";
                 var apiCallHttpMethod = "post";
@@ -1339,15 +1339,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DocumentSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> TaxsortDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<TaxsortDocumentResponseItem[], ApiConnectionActionConfiguration> TaxsortDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaxsortDocumentResponseItem[]>(() =>
+            return new DeferredBodyAction<TaxsortDocumentResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents/taxsort";
                 var apiCallHttpMethod = "post";
@@ -1356,15 +1356,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TaxsortDocumentResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentDeleteResponseItem[]> DocumentDelete(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<DocumentDeleteResponseItem[], ApiConnectionActionConfiguration> DocumentDelete(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<DocumentDeleteResponseItem[]>(() =>
+            return new DeferredBodyAction<DocumentDeleteResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/delete", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1372,15 +1372,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<DocumentDeleteResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IWorkflowAction GetDocument(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/file", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1388,15 +1388,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDocumentHistoryResponse> GetDocumentHistory(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetDocumentHistoryResponse, ApiConnectionActionConfiguration> GetDocumentHistory(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetDocumentHistoryResponse>(() =>
+            return new DeferredBodyAction<GetDocumentHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/history", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1404,15 +1404,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDocumentHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> GetDocumentIndexes(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetDocumentIndexesResponseItem[], ApiConnectionActionConfiguration> GetDocumentIndexes(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetDocumentIndexesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDocumentIndexesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/indexes", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1420,16 +1420,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDocumentIndexesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyisPublished, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyisPublished, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_bodyisPublished = WorkflowExpression.Compile(bodyisPublished, nameof(bodyisPublished), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<PublishDocumentStatusResponseItem[]>(() =>
+            return new DeferredBodyAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/status", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1446,14 +1446,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<PublishDocumentStatusResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDrawersResponseItem[]> GetDrawers(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetDrawersResponseItem[], ApiConnectionActionConfiguration> GetDrawers(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetDrawersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDrawersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/drawers";
                 var apiCallHttpMethod = "get";
@@ -1461,15 +1461,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDrawersResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> GetDrawerIndexes(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetDrawerIndexesResponseItem[], ApiConnectionActionConfiguration> GetDrawerIndexes(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_drawerId = WorkflowExpression.Compile(drawerId, nameof(drawerId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetDrawerIndexesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDrawerIndexesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/drawers/{0}/indexes", __workflow_drawerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1477,11 +1477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDrawerIndexesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodypageNumber = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodyworkflowDescription = null)
+        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse, ApiConnectionActionConfiguration> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodypageNumber = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodyworkflowDescription = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyaccountable = WorkflowExpression.Compile(bodyaccountable, nameof(bodyaccountable), required: false);
@@ -1516,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodytotalDaysInProcess = WorkflowExpression.Compile(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
             var __workflow_bodyworkflow = WorkflowExpression.Compile(bodyworkflow, nameof(bodyworkflow), required: false);
             var __workflow_bodyworkflowDescription = WorkflowExpression.Compile(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
-            return new DeferredBodyAction<GetFirmFlowDeliverableReportResponse>(() =>
+            return new DeferredBodyAction<GetFirmFlowDeliverableReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/firmflowreports/TrackingReportByDeliverable";
                 var apiCallHttpMethod = "post";
@@ -1723,16 +1723,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<GetFirmFlowDeliverableReportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
+        public IBodyWorkflowAction<ValidateIndexesResponse, ApiConnectionActionConfiguration> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
             var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
-            return new DeferredBodyAction<ValidateIndexesResponse>(() =>
+            return new DeferredBodyAction<ValidateIndexesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/indexes/validate";
                 var apiCallHttpMethod = "post";
@@ -1759,15 +1759,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<ValidateIndexesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> GetDynamicRulesForIndex(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[], ApiConnectionActionConfiguration> GetDynamicRulesForIndex(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetDynamicRulesForIndexResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDynamicRulesForIndexResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/dynamicrules", __workflow_indexId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1775,11 +1775,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetDynamicRulesForIndexResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyindexValue = null, Expression<Func<bodysearchTypeInput>> bodysearchType = null)
+        public IBodyWorkflowAction<IndexLookupListFindResponseItem[], ApiConnectionActionConfiguration> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyindexValue = null, Expression<Func<bodysearchTypeInput>> bodysearchType = null)
         {
             var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -1787,7 +1787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
             var __workflow_bodyindexValue = WorkflowExpression.Compile(bodyindexValue, nameof(bodyindexValue), required: false);
             var __workflow_bodysearchType = WorkflowExpression.Compile(bodysearchType, nameof(bodysearchType), required: false);
-            return new DeferredBodyAction<IndexLookupListFindResponseItem[]>(() =>
+            return new DeferredBodyAction<IndexLookupListFindResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/lookuplist", __workflow_indexId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1826,15 +1826,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<IndexLookupListFindResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> GetListTypeIndexData(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[], ApiConnectionActionConfiguration> GetListTypeIndexData(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetListTypeIndexDataResponseItem[]>(() =>
+            return new DeferredBodyAction<GetListTypeIndexDataResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/values", __workflow_indexId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1842,16 +1842,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetListTypeIndexDataResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetChildIndexesResponseItem[]> GetChildIndexes(Expression<Func<string>> indexId, Expression<Func<string>> listId, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetChildIndexesResponseItem[], ApiConnectionActionConfiguration> GetChildIndexes(Expression<Func<string>> indexId, Expression<Func<string>> listId, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<GetChildIndexesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetChildIndexesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", __workflow_indexId.WithUrlEncoding(1), __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1859,15 +1859,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<GetChildIndexesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodypassword)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodypassword)
         {
             var __workflow_bodyloginName = WorkflowExpression.Compile(bodyloginName, nameof(bodyloginName), required: true);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            return new DeferredBodyAction<LoginResponse>(() =>
+            return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/user/login";
                 var apiCallHttpMethod = "post";
@@ -1884,14 +1884,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<LoginResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<LogoutResponse> Logout(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<LogoutResponse, ApiConnectionActionConfiguration> Logout(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<LogoutResponse>(() =>
+            return new DeferredBodyAction<LogoutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/user/logout";
                 var apiCallHttpMethod = "get";
@@ -1899,14 +1899,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<LogoutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<bool> ValidateToken(Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> ValidateToken(Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
-            return new DeferredBodyAction<bool>(() =>
+            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/user/validate";
                 var apiCallHttpMethod = "get";
@@ -1914,11 +1914,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 if (__workflow_xAuthorization != null)
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 return new ApiConnectionAction<bool>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateWorkflowResponse> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawer = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyfolderId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodyfilingworkflowName = null, Expression<Func<string>> bodyfilingdescription = null, Expression<Func<string>> bodyfilingstatusName = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null)
+        public IBodyWorkflowAction<CreateWorkflowResponse, ApiConnectionActionConfiguration> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawer = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyfolderId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodyfilingworkflowName = null, Expression<Func<string>> bodyfilingdescription = null, Expression<Func<string>> bodyfilingstatusName = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydrawer = WorkflowExpression.Compile(bodydrawer, nameof(bodydrawer), required: false);
@@ -1947,7 +1947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyinformationFieldsvalue = WorkflowExpression.Compile(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
             var __workflow_bodyroutingSummaryresponsibleField = WorkflowExpression.Compile(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
             var __workflow_bodyroutingSummaryvalue = WorkflowExpression.Compile(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
-            return new DeferredBodyAction<CreateWorkflowResponse>(() =>
+            return new DeferredBodyAction<CreateWorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
                 var apiCallHttpMethod = "post";
@@ -2174,17 +2174,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<CreateWorkflowResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string[]>> bodydeliverableNames = null)
+        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[], ApiConnectionActionConfiguration> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string[]>> bodydeliverableNames = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
             var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
             var __workflow_bodydeliverableNames = WorkflowExpression.Compile(bodydeliverableNames, nameof(bodydeliverableNames), required: false);
-            return new DeferredBodyAction<DeleteMasterDeliverableResponseItem[]>(() =>
+            return new DeferredBodyAction<DeleteMasterDeliverableResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/DeleteDeliverableList";
                 var apiCallHttpMethod = "post";
@@ -2217,15 +2217,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DeleteMasterDeliverableResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteWorkflowsResponse> DeleteWorkflows(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null)
+        public IBodyWorkflowAction<DeleteWorkflowsResponse, ApiConnectionActionConfiguration> DeleteWorkflows(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyfilingId = WorkflowExpression.Compile(bodyfilingId, nameof(bodyfilingId), required: false);
-            return new DeferredBodyAction<DeleteWorkflowsResponse>(() =>
+            return new DeferredBodyAction<DeleteWorkflowsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/DeleteWorkflows";
                 var apiCallHttpMethod = "post";
@@ -2246,11 +2246,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<DeleteWorkflowsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditMasterDeliverableResponse> EditMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycurrentdeliverableName = null, Expression<Func<string>> bodyupdatedeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
+        public IBodyWorkflowAction<EditMasterDeliverableResponse, ApiConnectionActionConfiguration> EditMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycurrentdeliverableName = null, Expression<Func<string>> bodyupdatedeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodycurrentdeliverableName = WorkflowExpression.Compile(bodycurrentdeliverableName, nameof(bodycurrentdeliverableName), required: false);
@@ -2263,7 +2263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
             var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
             var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
-            return new DeferredBodyAction<EditMasterDeliverableResponse>(() =>
+            return new DeferredBodyAction<EditMasterDeliverableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/UpdateDeliverableList";
                 var apiCallHttpMethod = "post";
@@ -2338,11 +2338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<EditMasterDeliverableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyfilingId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string[]>> bodynotesnoteid = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null, Expression<Func<bool>> bodyreindexDocs = null)
+        public IBodyWorkflowAction<EditWorkflowResponse, ApiConnectionActionConfiguration> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyfilingId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string[]>> bodynotesnoteid = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null, Expression<Func<bool>> bodyreindexDocs = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyfilingId = WorkflowExpression.Compile(bodyfilingId, nameof(bodyfilingId), required: false);
@@ -2368,7 +2368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyroutingSummaryresponsibleField = WorkflowExpression.Compile(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
             var __workflow_bodyroutingSummaryvalue = WorkflowExpression.Compile(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
             var __workflow_bodyreindexDocs = WorkflowExpression.Compile(bodyreindexDocs, nameof(bodyreindexDocs), required: false);
-            return new DeferredBodyAction<EditWorkflowResponse>(() =>
+            return new DeferredBodyAction<EditWorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/EditWorkflow";
                 var apiCallHttpMethod = "post";
@@ -2569,18 +2569,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<EditWorkflowResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
+        public IBodyWorkflowAction<GetMasterDeliverableResponse, ApiConnectionActionConfiguration> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
             var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
             var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
             var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
-            return new DeferredBodyAction<GetMasterDeliverableResponse>(() =>
+            return new DeferredBodyAction<GetMasterDeliverableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/GetDeliverableList";
                 var apiCallHttpMethod = "post";
@@ -2619,11 +2619,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<GetMasterDeliverableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
+        public IBodyWorkflowAction<TrackingReportByWorkflowResponse, ApiConnectionActionConfiguration> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
@@ -2657,7 +2657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyinformationFields = WorkflowExpression.Compile(bodyinformationFields, nameof(bodyinformationFields), required: false);
             var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
             var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
-            return new DeferredBodyAction<TrackingReportByWorkflowResponse>(() =>
+            return new DeferredBodyAction<TrackingReportByWorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
                 var apiCallHttpMethod = "post";
@@ -2858,11 +2858,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<TrackingReportByWorkflowResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
+        public IBodyWorkflowAction<AddMasterDeliverableResponse, ApiConnectionActionConfiguration> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydeliverableName = WorkflowExpression.Compile(bodydeliverableName, nameof(bodydeliverableName), required: false);
@@ -2874,7 +2874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
             var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
             var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
-            return new DeferredBodyAction<AddMasterDeliverableResponse>(() =>
+            return new DeferredBodyAction<AddMasterDeliverableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/SaveDeliverableList";
                 var apiCallHttpMethod = "post";
@@ -2943,11 +2943,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<AddMasterDeliverableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
+        public IBodyWorkflowAction<RouteWorkflowV2Response, ApiConnectionActionConfiguration> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodyfilingId = WorkflowExpression.Compile(bodyfilingId, nameof(bodyfilingId), required: false);
@@ -2961,7 +2961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyroutingNote = WorkflowExpression.Compile(bodyroutingNote, nameof(bodyroutingNote), required: false);
             var __workflow_bodyemailNotify = WorkflowExpression.Compile(bodyemailNotify, nameof(bodyemailNotify), required: false);
-            return new DeferredBodyAction<RouteWorkflowV2Response>(() =>
+            return new DeferredBodyAction<RouteWorkflowV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/V2/Route";
                 var apiCallHttpMethod = "post";
@@ -3042,11 +3042,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
+        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response, ApiConnectionActionConfiguration> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
@@ -3082,7 +3082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             var __workflow_bodyinformationFields = WorkflowExpression.Compile(bodyinformationFields, nameof(bodyinformationFields), required: false);
             var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
             var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
-            return new DeferredBodyAction<TrackingReportByDeliverableV2Response>(() =>
+            return new DeferredBodyAction<TrackingReportByDeliverableV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";
                 var apiCallHttpMethod = "post";
@@ -3295,7 +3295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                 }
 
                 return new ApiConnectionAction<TrackingReportByDeliverableV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

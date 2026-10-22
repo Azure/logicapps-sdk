@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
     public class DataflowssmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSResponse> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<SMSResponse, ApiConnectionActionConfiguration> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
         {
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: true);
             var __workflow_senderId = WorkflowExpression.Compile(senderId, nameof(senderId), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<SMSResponse>(() =>
+            return new DeferredBodyAction<SMSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/send";
                 var apiCallHttpMethod = "get";
@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<SMSResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSList> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SMSList, ApiConnectionActionConfiguration> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<SMSList>(() =>
+            return new DeferredBodyAction<SMSList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms";
                 var apiCallHttpMethod = "get";
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SMSList>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<Profile> GetProfile()
+        public IBodyWorkflowAction<Profile, ApiConnectionActionConfiguration> GetProfile()
         {
             var apiCallPath = "/me";
             var apiCallHttpMethod = "get";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<Balance> GetBalance()
+        public IBodyWorkflowAction<Balance, ApiConnectionActionConfiguration> GetBalance()
         {
             var apiCallPath = "/balance";
             var apiCallHttpMethod = "get";

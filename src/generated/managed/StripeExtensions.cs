@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
     public class StripeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<ProductResponse> UpdateProduct(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
+        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             var __workflow_bodyimages = WorkflowExpression.Compile(bodyimages, nameof(bodyimages), required: false);
             var __workflow_bodyshippable = WorkflowExpression.Compile(bodyshippable, nameof(bodyshippable), required: false);
             var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            return new DeferredBodyAction<ProductResponse>(() =>
+            return new DeferredBodyAction<ProductResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/products/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
                 }
 
                 return new ApiConnectionAction<ProductResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<ProductResponse> CreateProduct(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
+        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             var __workflow_bodyimages = WorkflowExpression.Compile(bodyimages, nameof(bodyimages), required: false);
             var __workflow_bodyshippable = WorkflowExpression.Compile(bodyshippable, nameof(bodyshippable), required: false);
             var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            return new DeferredBodyAction<ProductResponse>(() =>
+            return new DeferredBodyAction<ProductResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/products";
                 var apiCallHttpMethod = "post";
@@ -144,29 +144,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
                 }
 
                 return new ApiConnectionAction<ProductResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse> GetCustomer(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> GetCustomer(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CustomerResponse>(() =>
+            return new DeferredBodyAction<CustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/customers/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CustomerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse> UpdateCustomer(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            return new DeferredBodyAction<CustomerResponse>(() =>
+            return new DeferredBodyAction<CustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/customers/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -191,15 +191,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
                 }
 
                 return new ApiConnectionAction<CustomerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse> CreateCustomer(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            return new DeferredBodyAction<CustomerResponse>(() =>
+            return new DeferredBodyAction<CustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/customers";
                 var apiCallHttpMethod = "post";
@@ -224,13 +224,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
                 }
 
                 return new ApiConnectionAction<CustomerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class StripeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListCustomersResponseItem[], ApiConnectionTriggerConfiguration> OnNewCustomer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/customers";
             var apiCallHttpMethod = "get";
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnNewOrder(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/orders";
             var apiCallHttpMethod = "get";
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListChargesResponseItem[], ApiConnectionTriggerConfiguration> OnNewCharge(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/charges";
             var apiCallHttpMethod = "get";
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
             return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[], ApiConnectionTriggerConfiguration> OnNewInvoiceItem(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/invoiceitems";
             var apiCallHttpMethod = "get";

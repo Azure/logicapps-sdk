@@ -12,27 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
     public class AbstractvatvalidatorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> vatNumber)
+        public IBodyWorkflowAction<ValidateResponse, ApiConnectionActionConfiguration> Validate(Expression<Func<string>> vatNumber)
         {
             var __workflow_vatNumber = WorkflowExpression.Compile(vatNumber, nameof(vatNumber), required: true);
-            return new DeferredBodyAction<ValidateResponse>(() =>
+            return new DeferredBodyAction<ValidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/validate/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["vat_number"] = ExpressionConverter.Convert(__workflow_vatNumber);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
-        public IBodyWorkflowAction<CalculateResponse> Calculate(Expression<Func<string>> amount, Expression<Func<string>> countryCode, Expression<Func<bool>> isVatIncl = null, Expression<Func<string>> vatCategory = null)
+        public IBodyWorkflowAction<CalculateResponse, ApiConnectionActionConfiguration> Calculate(Expression<Func<string>> amount, Expression<Func<string>> countryCode, Expression<Func<bool>> isVatIncl = null, Expression<Func<string>> vatCategory = null)
         {
             var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             var __workflow_isVatIncl = WorkflowExpression.Compile(isVatIncl, nameof(isVatIncl), required: false);
             var __workflow_vatCategory = WorkflowExpression.Compile(vatCategory, nameof(vatCategory), required: false);
-            return new DeferredBodyAction<CalculateResponse>(() =>
+            return new DeferredBodyAction<CalculateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/calculate/";
                 var apiCallHttpMethod = "get";
@@ -44,21 +44,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
                 if (__workflow_vatCategory != null)
                     callPayload.Queries["vat_category"] = ExpressionConverter.Convert(__workflow_vatCategory);
                 return new ApiConnectionAction<CalculateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
-        public IBodyWorkflowAction<ListCategoriesResponseItem[]> ListCategories(Expression<Func<string>> countryCode)
+        public IBodyWorkflowAction<ListCategoriesResponseItem[], ApiConnectionActionConfiguration> ListCategories(Expression<Func<string>> countryCode)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
-            return new DeferredBodyAction<ListCategoriesResponseItem[]>(() =>
+            return new DeferredBodyAction<ListCategoriesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/categories/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<ListCategoriesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

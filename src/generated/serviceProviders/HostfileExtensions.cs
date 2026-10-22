@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,12 +16,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
     public class HostfileActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
-        public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<JToken[]>> rows)
+        public IBodyWorkflowAction<GenerateFileContentsOutput, GenerateFileContentsActionConfiguration> GenerateFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<JToken[]>> rows)
         {
             var __workflow_hidx = WorkflowExpression.Compile(hidx, nameof(hidx), required: true);
             var __workflow_schema = WorkflowExpression.Compile(schema, nameof(schema), required: true);
             var __workflow_rows = WorkflowExpression.Compile(rows, nameof(rows), required: true);
-            return new DeferredBodyAction<GenerateFileContentsOutput>(() =>
+            return new DeferredBodyAction<GenerateFileContentsOutput, GenerateFileContentsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(__workflow_hidx);
@@ -32,16 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GenerateFileContentsOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
-        public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<string>> contents)
+        public IBodyWorkflowAction<ParseFileContentsOutput, ParseFileContentsActionConfiguration> ParseFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<string>> contents)
         {
             var __workflow_hidx = WorkflowExpression.Compile(hidx, nameof(hidx), required: true);
             var __workflow_schema = WorkflowExpression.Compile(schema, nameof(schema), required: true);
             var __workflow_contents = WorkflowExpression.Compile(contents, nameof(contents), required: true);
-            return new DeferredBodyAction<ParseFileContentsOutput>(() =>
+            return new DeferredBodyAction<ParseFileContentsOutput, ParseFileContentsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(__workflow_hidx);
@@ -53,8 +54,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ParseFileContentsOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class GenerateFileContentsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ParseFileContentsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class GenerateFileContentsOutput

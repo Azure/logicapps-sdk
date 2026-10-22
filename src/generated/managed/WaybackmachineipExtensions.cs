@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
     public class WaybackmachineipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
-        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
+        public IBodyWorkflowAction<GetSnapshotResponse, ApiConnectionActionConfiguration> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_timestamp = WorkflowExpression.Compile(timestamp, nameof(timestamp), required: false);
-            return new DeferredBodyAction<GetSnapshotResponse>(() =>
+            return new DeferredBodyAction<GetSnapshotResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wayback/available";
                 var apiCallHttpMethod = "get";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
                 if (__workflow_timestamp != null)
                     callPayload.Queries["timestamp"] = ExpressionConverter.Convert(__workflow_timestamp);
                 return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

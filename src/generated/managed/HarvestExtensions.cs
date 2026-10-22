@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
     public class HarvestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<ListAllContactsResponseItem[]> ListAllContacts()
+        public IBodyWorkflowAction<ListAllContactsResponseItem[], ApiConnectionActionConfiguration> ListAllContacts()
         {
             var apiCallPath = "/contacts";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction AddNewContact(Expression<Func<int>> bodycontactclientId = null, Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontactofficePhone = null, Expression<Func<string>> bodycontactmobilePhone = null, Expression<Func<string>> bodycontactfax = null, Expression<Func<string>> bodycontacttitle = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewContact(Expression<Func<int>> bodycontactclientId = null, Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontactofficePhone = null, Expression<Func<string>> bodycontactmobilePhone = null, Expression<Func<string>> bodycontactfax = null, Expression<Func<string>> bodycontacttitle = null)
         {
             var __workflow_bodycontactclientId = WorkflowExpression.Compile(bodycontactclientId, nameof(bodycontactclientId), required: false);
             var __workflow_bodycontactfirstName = WorkflowExpression.Compile(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_bodycontactmobilePhone = WorkflowExpression.Compile(bodycontactmobilePhone, nameof(bodycontactmobilePhone), required: false);
             var __workflow_bodycontactfax = WorkflowExpression.Compile(bodycontactfax, nameof(bodycontactfax), required: false);
             var __workflow_bodycontacttitle = WorkflowExpression.Compile(bodycontacttitle, nameof(bodycontacttitle), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<ListAllClientsResponseItem[]> ListAllClients()
+        public IBodyWorkflowAction<ListAllClientsResponseItem[], ApiConnectionActionConfiguration> ListAllClients()
         {
             var apiCallPath = "/clients";
             var apiCallHttpMethod = "get";
@@ -113,13 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction AddNewClient(Expression<Func<string>> bodyclientname = null, Expression<Func<string>> bodyclientcurrency = null, Expression<Func<string>> bodyclientcurrencySymbol = null, Expression<Func<string>> bodyclientdetails = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewClient(Expression<Func<string>> bodyclientname = null, Expression<Func<string>> bodyclientcurrency = null, Expression<Func<string>> bodyclientcurrencySymbol = null, Expression<Func<string>> bodyclientdetails = null)
         {
             var __workflow_bodyclientname = WorkflowExpression.Compile(bodyclientname, nameof(bodyclientname), required: false);
             var __workflow_bodyclientcurrency = WorkflowExpression.Compile(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
             var __workflow_bodyclientcurrencySymbol = WorkflowExpression.Compile(bodyclientcurrencySymbol, nameof(bodyclientcurrencySymbol), required: false);
             var __workflow_bodyclientdetails = WorkflowExpression.Compile(bodyclientdetails, nameof(bodyclientdetails), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/clients";
                 var apiCallHttpMethod = "post";
@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction CreateUser(Expression<Func<string>> bodyuseremail = null, Expression<Func<bool>> bodyuserisAdmin = null, Expression<Func<string>> bodyuserfirstName = null, Expression<Func<string>> bodyuserlastName = null, Expression<Func<bool>> bodyuserisContractor = null, Expression<Func<string>> bodyuserphone = null, Expression<Func<double>> bodyuserhourlyRate = null, Expression<Func<string>> bodyuserdepartment = null, Expression<Func<double>> bodyusercostRate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyuseremail = null, Expression<Func<bool>> bodyuserisAdmin = null, Expression<Func<string>> bodyuserfirstName = null, Expression<Func<string>> bodyuserlastName = null, Expression<Func<bool>> bodyuserisContractor = null, Expression<Func<string>> bodyuserphone = null, Expression<Func<double>> bodyuserhourlyRate = null, Expression<Func<string>> bodyuserdepartment = null, Expression<Func<double>> bodyusercostRate = null)
         {
             var __workflow_bodyuseremail = WorkflowExpression.Compile(bodyuseremail, nameof(bodyuseremail), required: false);
             var __workflow_bodyuserisAdmin = WorkflowExpression.Compile(bodyuserisAdmin, nameof(bodyuserisAdmin), required: false);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_bodyuserhourlyRate = WorkflowExpression.Compile(bodyuserhourlyRate, nameof(bodyuserhourlyRate), required: false);
             var __workflow_bodyuserdepartment = WorkflowExpression.Compile(bodyuserdepartment, nameof(bodyuserdepartment), required: false);
             var __workflow_bodyusercostRate = WorkflowExpression.Compile(bodyusercostRate, nameof(bodyusercostRate), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/people";
                 var apiCallHttpMethod = "post";
@@ -256,11 +256,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> UpdateTimeEntry(Expression<Func<string>> dAYENTRYID, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartedDateTime = null, Expression<Func<string>> bodyendedDateTime = null, Expression<Func<string>> bodydate = null)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<string>> dAYENTRYID, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartedDateTime = null, Expression<Func<string>> bodyendedDateTime = null, Expression<Func<string>> bodydate = null)
         {
             var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             var __workflow_bodystartedDateTime = WorkflowExpression.Compile(bodystartedDateTime, nameof(bodystartedDateTime), required: false);
             var __workflow_bodyendedDateTime = WorkflowExpression.Compile(bodyendedDateTime, nameof(bodyendedDateTime), required: false);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
+            return new DeferredBodyAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/daily/update/{0}", __workflow_dAYENTRYID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -310,18 +310,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 }
 
                 return new ApiConnectionAction<UpdateTimeEntryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> CreateTimeEntry(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyhours = null, Expression<Func<string>> bodydate = null)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyhours = null, Expression<Func<string>> bodydate = null)
         {
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
             var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
             var __workflow_bodyhours = WorkflowExpression.Compile(bodyhours, nameof(bodyhours), required: false);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
+            return new DeferredBodyAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/daily/add";
                 var apiCallHttpMethod = "post";
@@ -356,11 +356,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 }
 
                 return new ApiConnectionAction<UpdateTimeEntryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<ListProjectsResponseItem[]> ListProjects()
+        public IBodyWorkflowAction<ListProjectsResponseItem[], ApiConnectionActionConfiguration> ListProjects()
         {
             var apiCallPath = "/projects/";
             var apiCallHttpMethod = "get";
@@ -369,24 +369,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction DeleteTimeEntry(Expression<Func<string>> dAYENTRYID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
             var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/daily/delete/{0}", __workflow_dAYENTRYID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction AddUserToProject(Expression<Func<string>> projectId, Expression<Func<int>> bodyuseruserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserToProject(Expression<Func<string>> projectId, Expression<Func<int>> bodyuseruserId = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodyuseruserId = WorkflowExpression.Compile(bodyuseruserId, nameof(bodyuseruserId), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/user_assignments", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -413,24 +413,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> GetTimeEntry(Expression<Func<string>> dAYENTRYID)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> GetTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
             var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
-            return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
+            return new DeferredBodyAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/daily/show/{0}", __workflow_dAYENTRYID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UpdateTimeEntryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<ListTasksResponseItem[]> ListTasks()
+        public IBodyWorkflowAction<ListTasksResponseItem[], ApiConnectionActionConfiguration> ListTasks()
         {
             var apiCallPath = "/tasks";
             var apiCallHttpMethod = "get";
@@ -439,22 +439,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<GetUserByIDResponse> GetUser(Expression<Func<string>> uSERID)
+        public IBodyWorkflowAction<GetUserByIDResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> uSERID)
         {
             var __workflow_uSERID = WorkflowExpression.Compile(uSERID, nameof(uSERID), required: true);
-            return new DeferredBodyAction<GetUserByIDResponse>(() =>
+            return new DeferredBodyAction<GetUserByIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}", __workflow_uSERID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserByIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class HarvestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetUserByIDResponse[]> TrigNewUser(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetUserByIDResponse[], ApiConnectionTriggerConfiguration> TrigNewUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/people";
             var apiCallHttpMethod = "get";
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<GetUserByIDResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListAllClientsResponseItem[]> TrigNewClient(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListAllClientsResponseItem[], ApiConnectionTriggerConfiguration> TrigNewClient(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/clients";
             var apiCallHttpMethod = "get";
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListAllClientsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListAllContactsResponseItem[]> TrigNewContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListAllContactsResponseItem[], ApiConnectionTriggerConfiguration> TrigNewContact(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListAllContactsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListProjectsResponseItem[]> TrigNewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseItem[], ApiConnectionTriggerConfiguration> TrigNewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/projects";
             var apiCallHttpMethod = "get";
@@ -486,10 +486,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListProjectsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
         {
             var __workflow_ofUser = WorkflowExpression.Compile(ofUser, nameof(ofUser), required: false);
-            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
+            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/daily";
                 var apiCallHttpMethod = "get";
@@ -497,14 +497,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 if (__workflow_ofUser != null)
                     callPayload.Queries["of_user"] = ExpressionConverter.Convert(__workflow_ofUser);
                 return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_ofUser = WorkflowExpression.Compile(ofUser, nameof(ofUser), required: false);
-            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
+            return new DeferredBodyTrigger<GetTimeEntriesForDayResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/daily/day/year";
                 var apiCallHttpMethod = "get";
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 if (__workflow_ofUser != null)
                     callPayload.Queries["of_user"] = ExpressionConverter.Convert(__workflow_ofUser);
                 return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

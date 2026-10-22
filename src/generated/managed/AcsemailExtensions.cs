@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
     public class AcsemailActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
-        public IBodyWorkflowAction<EmailSendResult> SendEmailGAVersion(Expression<Func<string>> emailMessagesenderAddress, Expression<Func<string>> emailMessagecontentsubject, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<emailMessagerecipientstoInputItem[]>> emailMessagerecipientsto = null, Expression<Func<emailMessagerecipientscCInputItem[]>> emailMessagerecipientscC = null, Expression<Func<emailMessagerecipientsbCCInputItem[]>> emailMessagerecipientsbCC = null, Expression<Func<string>> emailMessagecontenthtml = null, Expression<Func<emailMessagereplyToInputItem[]>> emailMessagereplyTo = null, Expression<Func<emailMessageattachmentsInputItem[]>> emailMessageattachments = null, Expression<Func<EmailCustomHeader[]>> emailMessageheaders = null, Expression<Func<bool>> emailMessageuserEngagementTrackingDisabled = null)
+        public IBodyWorkflowAction<EmailSendResult, ApiConnectionActionConfiguration> SendEmailGAVersion(Expression<Func<string>> emailMessagesenderAddress, Expression<Func<string>> emailMessagecontentsubject, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<emailMessagerecipientstoInputItem[]>> emailMessagerecipientsto = null, Expression<Func<emailMessagerecipientscCInputItem[]>> emailMessagerecipientscC = null, Expression<Func<emailMessagerecipientsbCCInputItem[]>> emailMessagerecipientsbCC = null, Expression<Func<string>> emailMessagecontenthtml = null, Expression<Func<emailMessagereplyToInputItem[]>> emailMessagereplyTo = null, Expression<Func<emailMessageattachmentsInputItem[]>> emailMessageattachments = null, Expression<Func<EmailCustomHeader[]>> emailMessageheaders = null, Expression<Func<bool>> emailMessageuserEngagementTrackingDisabled = null)
         {
             var __workflow_emailMessagesenderAddress = WorkflowExpression.Compile(emailMessagesenderAddress, nameof(emailMessagesenderAddress), required: true);
             var __workflow_emailMessagecontentsubject = WorkflowExpression.Compile(emailMessagecontentsubject, nameof(emailMessagecontentsubject), required: true);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
             var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
             var __workflow_emailMessageheaders = WorkflowExpression.Compile(emailMessageheaders, nameof(emailMessageheaders), required: false);
             var __workflow_emailMessageuserEngagementTrackingDisabled = WorkflowExpression.Compile(emailMessageuserEngagementTrackingDisabled, nameof(emailMessageuserEngagementTrackingDisabled), required: false);
-            return new DeferredBodyAction<EmailSendResult>(() =>
+            return new DeferredBodyAction<EmailSendResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emails:sendGAVersion";
                 var apiCallHttpMethod = "post";
@@ -123,21 +123,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
                 }
 
                 return new ApiConnectionAction<EmailSendResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
-        public IBodyWorkflowAction<EmailSendResult> GetMessageStatusGAVersion(Expression<Func<string>> operationId)
+        public IBodyWorkflowAction<EmailSendResult, ApiConnectionActionConfiguration> GetMessageStatusGAVersion(Expression<Func<string>> operationId)
         {
             var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
-            return new DeferredBodyAction<EmailSendResult>(() =>
+            return new DeferredBodyAction<EmailSendResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/emails/operations/{0}", __workflow_operationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");
                 return new ApiConnectionAction<EmailSendResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

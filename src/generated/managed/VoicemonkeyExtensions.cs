@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     public class VoicemonkeyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement(Expression<Func<string>> bodydeviceID, Expression<Func<string>> bodytext = null, Expression<Func<bodyvoiceInput>> bodyvoice = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodychimeInput>> bodychime = null, Expression<Func<string>> bodyaudio = null, Expression<Func<string>> bodybackgroundAudio = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodynoBackground = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodymediaWidth = null, Expression<Func<int>> bodymediaHeight = null, Expression<Func<bodymediaScalingInput>> bodymediaScaling = null, Expression<Func<bodymediaAlignmentInput>> bodymediaAlignment = null, Expression<Func<int>> bodymediaRadius = null, Expression<Func<string>> bodyvideo = null, Expression<Func<int>> bodyvideoRepeat = null, Expression<Func<string>> bodyechoDotWithClockDisplay = null)
+        public IBodyWorkflowAction<MakeAnnouncementResponse, ApiConnectionActionConfiguration> MakeAnnouncement(Expression<Func<string>> bodydeviceID, Expression<Func<string>> bodytext = null, Expression<Func<bodyvoiceInput>> bodyvoice = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodychimeInput>> bodychime = null, Expression<Func<string>> bodyaudio = null, Expression<Func<string>> bodybackgroundAudio = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodynoBackground = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodymediaWidth = null, Expression<Func<int>> bodymediaHeight = null, Expression<Func<bodymediaScalingInput>> bodymediaScaling = null, Expression<Func<bodymediaAlignmentInput>> bodymediaAlignment = null, Expression<Func<int>> bodymediaRadius = null, Expression<Func<string>> bodyvideo = null, Expression<Func<int>> bodyvideoRepeat = null, Expression<Func<string>> bodyechoDotWithClockDisplay = null)
         {
             var __workflow_bodydeviceID = WorkflowExpression.Compile(bodydeviceID, nameof(bodydeviceID), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
             var __workflow_bodyvideo = WorkflowExpression.Compile(bodyvideo, nameof(bodyvideo), required: false);
             var __workflow_bodyvideoRepeat = WorkflowExpression.Compile(bodyvideoRepeat, nameof(bodyvideoRepeat), required: false);
             var __workflow_bodyechoDotWithClockDisplay = WorkflowExpression.Compile(bodyechoDotWithClockDisplay, nameof(bodyechoDotWithClockDisplay), required: false);
-            return new DeferredBodyAction<MakeAnnouncementResponse>(() =>
+            return new DeferredBodyAction<MakeAnnouncementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/announcement";
                 var apiCallHttpMethod = "post";
@@ -149,14 +149,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
                 }
 
                 return new ApiConnectionAction<MakeAnnouncementResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine(Expression<Func<string>> bodydeviceID)
+        public IBodyWorkflowAction<TriggerRoutineResponse, ApiConnectionActionConfiguration> TriggerRoutine(Expression<Func<string>> bodydeviceID)
         {
             var __workflow_bodydeviceID = WorkflowExpression.Compile(bodydeviceID, nameof(bodydeviceID), required: true);
-            return new DeferredBodyAction<TriggerRoutineResponse>(() =>
+            return new DeferredBodyAction<TriggerRoutineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/trigger";
                 var apiCallHttpMethod = "post";
@@ -171,14 +171,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
                 }
 
                 return new ApiConnectionAction<TriggerRoutineResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow(Expression<Func<int>> bodyflowID)
+        public IBodyWorkflowAction<TriggerFlowResponse, ApiConnectionActionConfiguration> TriggerFlow(Expression<Func<int>> bodyflowID)
         {
             var __workflow_bodyflowID = WorkflowExpression.Compile(bodyflowID, nameof(bodyflowID), required: true);
-            return new DeferredBodyAction<TriggerFlowResponse>(() =>
+            return new DeferredBodyAction<TriggerFlowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flows";
                 var apiCallHttpMethod = "post";
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
                 }
 
                 return new ApiConnectionAction<TriggerFlowResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

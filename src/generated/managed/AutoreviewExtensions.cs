@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
     public class AutoreviewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<GETInfoResponse> GETInfo()
+        public IBodyWorkflowAction<GETInfoResponse, ApiConnectionActionConfiguration> GETInfo()
         {
             var apiCallPath = "/v2/autoreview/";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IWorkflowAction POSTHttp(Expression<Func<string>> path = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> POSTHttp(Expression<Func<string>> path = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/";
                 var apiCallHttpMethod = "post";
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTJsonResponse> POSTJson(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<string[]>> bodyconfigscomplexity = null, Expression<Func<string[]>> bodyconfigsscoring = null)
+        public IBodyWorkflowAction<POSTJsonResponse, ApiConnectionActionConfiguration> POSTJson(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<string[]>> bodyconfigscomplexity = null, Expression<Func<string[]>> bodyconfigsscoring = null)
         {
             var __workflow_bodyflowPropertiesdisplayName = WorkflowExpression.Compile(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
             var __workflow_bodyflowPropertiesflowId = WorkflowExpression.Compile(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var __workflow_bodyflowPropertiesenvironment = WorkflowExpression.Compile(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
             var __workflow_bodyconfigscomplexity = WorkflowExpression.Compile(bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
             var __workflow_bodyconfigsscoring = WorkflowExpression.Compile(bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
-            return new DeferredBodyAction<POSTJsonResponse>(() =>
+            return new DeferredBodyAction<POSTJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/json";
                 var apiCallHttpMethod = "post";
@@ -158,11 +158,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction<POSTJsonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IWorkflowAction POSTFile(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> POSTFile(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
         {
             var __workflow_bodyflowPropertiesdisplayName = WorkflowExpression.Compile(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
             var __workflow_bodyflowPropertiesflowId = WorkflowExpression.Compile(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             var __workflow_bodyconfigfileType = WorkflowExpression.Compile(bodyconfigfileType, nameof(bodyconfigfileType), required: false);
             var __workflow_bodyconfigcomplexity = WorkflowExpression.Compile(bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
             var __workflow_bodyconfigscoring = WorkflowExpression.Compile(bodyconfigscoring, nameof(bodyconfigscoring), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/autoreview/file";
                 var apiCallHttpMethod = "post";
@@ -276,17 +276,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram(Expression<Func<string>> bodypropertiesdisplayName = null, Expression<Func<string>> bodypropertiesflowId = null, Expression<Func<string>> bodypropertiesowner = null, Expression<Func<string>> bodypropertiesenvironment = null)
+        public IBodyWorkflowAction<POSTDiagramResponse, ApiConnectionActionConfiguration> POSTDiagram(Expression<Func<string>> bodypropertiesdisplayName = null, Expression<Func<string>> bodypropertiesflowId = null, Expression<Func<string>> bodypropertiesowner = null, Expression<Func<string>> bodypropertiesenvironment = null)
         {
             var __workflow_bodypropertiesdisplayName = WorkflowExpression.Compile(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
             var __workflow_bodypropertiesflowId = WorkflowExpression.Compile(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
             var __workflow_bodypropertiesowner = WorkflowExpression.Compile(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
             var __workflow_bodypropertiesenvironment = WorkflowExpression.Compile(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
-            return new DeferredBodyAction<POSTDiagramResponse>(() =>
+            return new DeferredBodyAction<POSTDiagramResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/diagram";
                 var apiCallHttpMethod = "post";
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 }
 
                 return new ApiConnectionAction<POSTDiagramResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

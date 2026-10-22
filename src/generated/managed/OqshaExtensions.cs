@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
     public class OqshaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
+        public IBodyWorkflowAction<CreateIncidentResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             var __workflow_bodyanonymouslyReported = WorkflowExpression.Compile(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
             var __workflow_bodycheckListData = WorkflowExpression.Compile(bodycheckListData, nameof(bodycheckListData), required: false);
-            return new DeferredBodyAction<CreateIncidentResponse>(() =>
+            return new DeferredBodyAction<CreateIncidentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Organisations/3/Incidents";
                 var apiCallHttpMethod = "post";
@@ -90,18 +90,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                 }
 
                 return new ApiConnectionAction<CreateIncidentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_bodyuserUid = WorkflowExpression.Compile(bodyuserUid, nameof(bodyuserUid), required: false);
             var __workflow_bodyappPassword = WorkflowExpression.Compile(bodyappPassword, nameof(bodyappPassword), required: false);
             var __workflow_bodyacceptConditions = WorkflowExpression.Compile(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
             var __workflow_bodyisOqsha = WorkflowExpression.Compile(bodyisOqsha, nameof(bodyisOqsha), required: false);
-            return new DeferredBodyAction<LoginResponse>(() =>
+            return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/App/Login";
                 var apiCallHttpMethod = "post";
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
                 }
 
                 return new ApiConnectionAction<LoginResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

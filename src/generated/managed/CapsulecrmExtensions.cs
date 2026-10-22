@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     public class CapsulecrmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<ListOpportunitiesResponse> ListOpportunities()
+        public IBodyWorkflowAction<ListOpportunitiesResponse, ApiConnectionActionConfiguration> ListOpportunities()
         {
             var apiCallPath = "/opportunities";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOpportunityResponse> CreateOpportunity(Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestoneid, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
+        public IBodyWorkflowAction<CreateOpportunityResponse, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestoneid, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
         {
             var __workflow_bodyopportunitypartypartyId = WorkflowExpression.Compile(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
             var __workflow_bodyopportunitymilestoneid = WorkflowExpression.Compile(bodyopportunitymilestoneid, nameof(bodyopportunitymilestoneid), required: true);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var __workflow_bodyopportunitywinningProbability = WorkflowExpression.Compile(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
             var __workflow_bodyopportunityexpectedamount = WorkflowExpression.Compile(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
             var __workflow_bodyopportunityexpectedcurrency = WorkflowExpression.Compile(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
-            return new DeferredBodyAction<CreateOpportunityResponse>(() =>
+            return new DeferredBodyAction<CreateOpportunityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/opportunities";
                 var apiCallHttpMethod = "post";
@@ -130,24 +130,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreateOpportunityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<GetOpportunityResponse> GetOpportunity(Expression<Func<string>> opportunityId)
+        public IBodyWorkflowAction<GetOpportunityResponse, ApiConnectionActionConfiguration> GetOpportunity(Expression<Func<string>> opportunityId)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
-            return new DeferredBodyAction<GetOpportunityResponse>(() =>
+            return new DeferredBodyAction<GetOpportunityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOpportunityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOpportunityResponse> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestonemilestoneId, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
+        public IBodyWorkflowAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestonemilestoneId, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             var __workflow_bodyopportunitypartypartyId = WorkflowExpression.Compile(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var __workflow_bodyopportunitywinningProbability = WorkflowExpression.Compile(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
             var __workflow_bodyopportunityexpectedamount = WorkflowExpression.Compile(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
             var __workflow_bodyopportunityexpectedcurrency = WorkflowExpression.Compile(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
-            return new DeferredBodyAction<UpdateOpportunityResponse>(() =>
+            return new DeferredBodyAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -257,24 +257,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<UpdateOpportunityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<string> DeleteOpportunity(Expression<Func<string>> opportunityId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteOpportunity(Expression<Func<string>> opportunityId)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson(Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
         {
             var __workflow_bodypartylastName = WorkflowExpression.Compile(bodypartylastName, nameof(bodypartylastName), required: false);
             var __workflow_bodypartyfirstName = WorkflowExpression.Compile(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
             var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
             var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
-            return new DeferredBodyAction<CreatePersonResponse>(() =>
+            return new DeferredBodyAction<CreatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/person/parties";
                 var apiCallHttpMethod = "post";
@@ -471,11 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreatePersonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdatePersonResponse> UpdatePerson(Expression<Func<string>> personId, Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<UpdatePersonResponse, ApiConnectionActionConfiguration> UpdatePerson(Expression<Func<string>> personId, Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
             var __workflow_bodypartylastName = WorkflowExpression.Compile(bodypartylastName, nameof(bodypartylastName), required: false);
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
             var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
             var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
-            return new DeferredBodyAction<UpdatePersonResponse>(() =>
+            return new DeferredBodyAction<UpdatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/person/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -673,11 +673,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<UpdatePersonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOrganisationResponse> CreateOrganisation(Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<CreateOrganisationResponse, ApiConnectionActionConfiguration> CreateOrganisation(Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
         {
             var __workflow_bodypartyname = WorkflowExpression.Compile(bodypartyname, nameof(bodypartyname), required: false);
             var __workflow_bodypartyabout = WorkflowExpression.Compile(bodypartyabout, nameof(bodypartyabout), required: false);
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
             var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
             var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
-            return new DeferredBodyAction<CreateOrganisationResponse>(() =>
+            return new DeferredBodyAction<CreateOrganisationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/organisation/parties";
                 var apiCallHttpMethod = "post";
@@ -846,11 +846,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreateOrganisationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOrganisationResponse> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        public IBodyWorkflowAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodypartyname = WorkflowExpression.Compile(bodypartyname, nameof(bodypartyname), required: false);
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             var __workflow_bodypartyaddressesaddressCountry = WorkflowExpression.Compile(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
             var __workflow_bodypartyaddressesaddressType = WorkflowExpression.Compile(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
             var __workflow_bodypartytags = WorkflowExpression.Compile(bodypartytags, nameof(bodypartytags), required: false);
-            return new DeferredBodyAction<UpdateOrganisationResponse>(() =>
+            return new DeferredBodyAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organisation/parties/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1020,11 +1020,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<UpdateOrganisationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<ListpartiesResponse> ListParties()
+        public IBodyWorkflowAction<ListpartiesResponse, ApiConnectionActionConfiguration> ListParties()
         {
             var apiCallPath = "/parties";
             var apiCallHttpMethod = "get";
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<ListpartiesResponse> ListPeople()
+        public IBodyWorkflowAction<ListpartiesResponse, ApiConnectionActionConfiguration> ListPeople()
         {
             var apiCallPath = "/people/parties";
             var apiCallHttpMethod = "get";
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<ListpartiesResponse> ListOrganizations()
+        public IBodyWorkflowAction<ListpartiesResponse, ApiConnectionActionConfiguration> ListOrganizations()
         {
             var apiCallPath = "/organisations/parties";
             var apiCallHttpMethod = "get";
@@ -1051,33 +1051,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<GetPartyResponse> GetParty(Expression<Func<string>> personId)
+        public IBodyWorkflowAction<GetPartyResponse, ApiConnectionActionConfiguration> GetParty(Expression<Func<string>> personId)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
-            return new DeferredBodyAction<GetPartyResponse>(() =>
+            return new DeferredBodyAction<GetPartyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPartyResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<string> DeleteParty(Expression<Func<string>> personId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteParty(Expression<Func<string>> personId)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<ListTasksResponse> ListTasks()
+        public IBodyWorkflowAction<ListTasksResponse, ApiConnectionActionConfiguration> ListTasks()
         {
             var apiCallPath = "/tasks";
             var apiCallHttpMethod = "get";
@@ -1086,14 +1086,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodytaskdescription = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<string>> bodytaskdueTime = null, Expression<Func<string>> bodytaskdetails = null, Expression<Func<int>> bodytaskpartyid = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodytaskdescription = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<string>> bodytaskdueTime = null, Expression<Func<string>> bodytaskdetails = null, Expression<Func<int>> bodytaskpartyid = null)
         {
             var __workflow_bodytaskdescription = WorkflowExpression.Compile(bodytaskdescription, nameof(bodytaskdescription), required: false);
             var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
             var __workflow_bodytaskdueTime = WorkflowExpression.Compile(bodytaskdueTime, nameof(bodytaskdueTime), required: false);
             var __workflow_bodytaskdetails = WorkflowExpression.Compile(bodytaskdetails, nameof(bodytaskdetails), required: false);
             var __workflow_bodytaskpartyid = WorkflowExpression.Compile(bodytaskpartyid, nameof(bodytaskpartyid), required: false);
-            return new DeferredBodyAction<CreateTaskResponse>(() =>
+            return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
                 var apiCallHttpMethod = "post";
@@ -1152,14 +1152,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CompleteTaskResponse> CompleteTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<CompleteTaskResponse, ApiConnectionActionConfiguration> CompleteTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<CompleteTaskResponse>(() =>
+            return new DeferredBodyAction<CompleteTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1182,13 +1182,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
                 }
 
                 return new ApiConnectionAction<CompleteTaskResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class CapsulecrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OpportunityResponse[]> OnNewOpportunity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration> OnNewOpportunity(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_trigger/opportunities";
             var apiCallHttpMethod = "get";
@@ -1196,7 +1196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<OpportunityResponse[]> OnUpdateOpportunity(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[], ApiConnectionTriggerConfiguration> OnUpdateOpportunity(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/update_trigger/opportunities";
             var apiCallHttpMethod = "get";
@@ -1204,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TaskResponse[]> OnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskResponse[], ApiConnectionTriggerConfiguration> OnNewTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_trigger/tasks";
             var apiCallHttpMethod = "get";
@@ -1212,7 +1212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
             return new ApiConnectionTrigger<TaskResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<PartyResponse[]> OnNewParty(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PartyResponse[], ApiConnectionTriggerConfiguration> OnNewParty(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_trigger/parties";
             var apiCallHttpMethod = "get";

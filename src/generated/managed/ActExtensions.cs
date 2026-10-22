@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
     public class ActActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
-        public IBodyWorkflowAction<ActWebApiModelsContact> CreateContact(Expression<Func<string>> contactfullName = null, Expression<Func<string>> contactemailAddress = null, Expression<Func<string>> contactcompany = null, Expression<Func<string>> contactidStatus = null, Expression<Func<string>> contactreferredBy = null, Expression<Func<string>> contactjobTitle = null, Expression<Func<string>> contactbusinessPhoneNumber = null, Expression<Func<string>> contactmobilePhoneNumber = null)
+        public IBodyWorkflowAction<ActWebApiModelsContact, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> contactfullName = null, Expression<Func<string>> contactemailAddress = null, Expression<Func<string>> contactcompany = null, Expression<Func<string>> contactidStatus = null, Expression<Func<string>> contactreferredBy = null, Expression<Func<string>> contactjobTitle = null, Expression<Func<string>> contactbusinessPhoneNumber = null, Expression<Func<string>> contactmobilePhoneNumber = null)
         {
             var __workflow_contactfullName = WorkflowExpression.Compile(contactfullName, nameof(contactfullName), required: false);
             var __workflow_contactemailAddress = WorkflowExpression.Compile(contactemailAddress, nameof(contactemailAddress), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
             var __workflow_contactjobTitle = WorkflowExpression.Compile(contactjobTitle, nameof(contactjobTitle), required: false);
             var __workflow_contactbusinessPhoneNumber = WorkflowExpression.Compile(contactbusinessPhoneNumber, nameof(contactbusinessPhoneNumber), required: false);
             var __workflow_contactmobilePhoneNumber = WorkflowExpression.Compile(contactmobilePhoneNumber, nameof(contactmobilePhoneNumber), required: false);
-            return new DeferredBodyAction<ActWebApiModelsContact>(() =>
+            return new DeferredBodyAction<ActWebApiModelsContact, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Contacts/";
                 var apiCallHttpMethod = "post";
@@ -91,26 +91,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
                 }
 
                 return new ApiConnectionAction<ActWebApiModelsContact>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
-        public IBodyWorkflowAction<ActWebApiModelsContact> GetContact(Expression<Func<string>> contactid)
+        public IBodyWorkflowAction<ActWebApiModelsContact, ApiConnectionActionConfiguration> GetContact(Expression<Func<string>> contactid)
         {
             var __workflow_contactid = WorkflowExpression.Compile(contactid, nameof(contactid), required: true);
-            return new DeferredBodyAction<ActWebApiModelsContact>(() =>
+            return new DeferredBodyAction<ActWebApiModelsContact, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Contacts/{0}", __workflow_contactid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ActWebApiModelsContact>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class ActTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActWebApiModelsContact[]> TrigNewContact(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActWebApiModelsContact[], ApiConnectionTriggerConfiguration> TrigNewContact(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/Contacts/";
             var apiCallHttpMethod = "get";

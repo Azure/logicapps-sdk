@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
     public class AddresslabsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
-        public IBodyWorkflowAction<ParseAddressResponse> ParseAddress(Expression<Func<string>> bodyaddress)
+        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> ParseAddress(Expression<Func<string>> bodyaddress)
         {
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
-            return new DeferredBodyAction<ParseAddressResponse>(() =>
+            return new DeferredBodyAction<ParseAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/parsed-address";
                 var apiCallHttpMethod = "post";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
                 }
 
                 return new ApiConnectionAction<ParseAddressResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

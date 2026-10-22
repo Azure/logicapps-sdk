@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
     public class OpenfdadrugipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugAdverseEventResponse> DrugAdverseEvent(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugAdverseEventResponse, ApiConnectionActionConfiguration> DrugAdverseEvent(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugAdverseEventResponse>(() =>
+            return new DeferredBodyAction<DrugAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/event.json";
                 var apiCallHttpMethod = "get";
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugAdverseEventResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugLabelingResponse> DrugLabeling(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugLabelingResponse, ApiConnectionActionConfiguration> DrugLabeling(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugLabelingResponse>(() =>
+            return new DeferredBodyAction<DrugLabelingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/label.json";
                 var apiCallHttpMethod = "get";
@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugLabelingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugNDCResponse> DrugNDC(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugNDCResponse, ApiConnectionActionConfiguration> DrugNDC(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugNDCResponse>(() =>
+            return new DeferredBodyAction<DrugNDCResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ndc.json";
                 var apiCallHttpMethod = "get";
@@ -62,15 +62,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugNDCResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugEnforcementResponse> DrugEnforcement(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugEnforcementResponse, ApiConnectionActionConfiguration> DrugEnforcement(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugEnforcementResponse>(() =>
+            return new DeferredBodyAction<DrugEnforcementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/enforcement.json";
                 var apiCallHttpMethod = "get";
@@ -80,15 +80,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugEnforcementResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugsFDAResponse> DrugsFDA(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugsFDAResponse, ApiConnectionActionConfiguration> DrugsFDA(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<DrugsFDAResponse>(() =>
+            return new DeferredBodyAction<DrugsFDAResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/drugsfda.json";
                 var apiCallHttpMethod = "get";
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<DrugsFDAResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

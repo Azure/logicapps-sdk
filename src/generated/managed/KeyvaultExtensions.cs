@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
     public class KeyvaultActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadataCollection> ListKeys()
+        public IBodyWorkflowAction<KeyMetadataCollection, ApiConnectionActionConfiguration> ListKeys()
         {
             var apiCallPath = "/keys";
             var apiCallHttpMethod = "get";
@@ -21,52 +21,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<KeyMetadataCollection, ApiConnectionActionConfiguration> ListKeyVersions(Expression<Func<string>> keyName)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
-            return new DeferredBodyAction<KeyMetadataCollection>(() =>
+            return new DeferredBodyAction<KeyMetadataCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<KeyMetadata, ApiConnectionActionConfiguration> GetKeyMetadata(Expression<Func<string>> keyName)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
-            return new DeferredBodyAction<KeyMetadata>(() =>
+            return new DeferredBodyAction<KeyMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/metadata", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KeyMetadata>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion)
+        public IBodyWorkflowAction<KeyMetadata, ApiConnectionActionConfiguration> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
-            return new DeferredBodyAction<KeyMetadata>(() =>
+            return new DeferredBodyAction<KeyMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/metadata", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KeyMetadata>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
             var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
-            return new DeferredBodyAction<KeyEncryptOutput>(() =>
+            return new DeferredBodyAction<KeyEncryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/encrypt", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -83,17 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
                 }
 
                 return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
             var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
             var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
-            return new DeferredBodyAction<KeyEncryptOutput>(() =>
+            return new DeferredBodyAction<KeyEncryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/encrypt", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -110,16 +110,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
                 }
 
                 return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
             var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
-            return new DeferredBodyAction<KeyDecryptOutput>(() =>
+            return new DeferredBodyAction<KeyDecryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/decrypt", __workflow_keyName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -136,17 +136,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
                 }
 
                 return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
             var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
             var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
-            return new DeferredBodyAction<KeyDecryptOutput>(() =>
+            return new DeferredBodyAction<KeyDecryptOutput, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/keys/{0}/versions/{1}/decrypt", __workflow_keyName.WithUrlEncoding(1), __workflow_keyVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -163,11 +163,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
                 }
 
                 return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadataCollection> ListSecrets()
+        public IBodyWorkflowAction<SecretMetadataCollection, ApiConnectionActionConfiguration> ListSecrets()
         {
             var apiCallPath = "/secrets";
             var apiCallHttpMethod = "get";
@@ -176,70 +176,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<SecretMetadataCollection, ApiConnectionActionConfiguration> ListSecretVersions(Expression<Func<string>> secretName)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
-            return new DeferredBodyAction<SecretMetadataCollection>(() =>
+            return new DeferredBodyAction<SecretMetadataCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/versions", __workflow_secretName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<SecretMetadata, ApiConnectionActionConfiguration> GetSecretMetadata(Expression<Func<string>> secretName)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
-            return new DeferredBodyAction<SecretMetadata>(() =>
+            return new DeferredBodyAction<SecretMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/metadata", __workflow_secretName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SecretMetadata>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        public IBodyWorkflowAction<SecretMetadata, ApiConnectionActionConfiguration> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             var __workflow_secretVersion = WorkflowExpression.Compile(secretVersion, nameof(secretVersion), required: true);
-            return new DeferredBodyAction<SecretMetadata>(() =>
+            return new DeferredBodyAction<SecretMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/versions/{1}/metadata", __workflow_secretName.WithUrlEncoding(1), __workflow_secretVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SecretMetadata>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecret(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<Secret, ApiConnectionActionConfiguration> GetSecret(Expression<Func<string>> secretName)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
-            return new DeferredBodyAction<Secret>(() =>
+            return new DeferredBodyAction<Secret, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/value", __workflow_secretName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Secret>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        public IBodyWorkflowAction<Secret, ApiConnectionActionConfiguration> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             var __workflow_secretVersion = WorkflowExpression.Compile(secretVersion, nameof(secretVersion), required: true);
-            return new DeferredBodyAction<Secret>(() =>
+            return new DeferredBodyAction<Secret, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secrets/{0}/versions/{1}/value", __workflow_secretName.WithUrlEncoding(1), __workflow_secretVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Secret>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

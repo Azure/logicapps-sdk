@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
     public class FishwatchipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fishwatchip")]
-        public IBodyWorkflowAction<SpeciesResponseItem[]> ListSpecies()
+        public IBodyWorkflowAction<SpeciesResponseItem[], ApiConnectionActionConfiguration> ListSpecies()
         {
             var apiCallPath = "/species";
             var apiCallHttpMethod = "get";
@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fishwatchip")]
-        public IBodyWorkflowAction<SpeciesResponseItem[]> GetSpecies(Expression<Func<string>> species)
+        public IBodyWorkflowAction<SpeciesResponseItem[], ApiConnectionActionConfiguration> GetSpecies(Expression<Func<string>> species)
         {
             var __workflow_species = WorkflowExpression.Compile(species, nameof(species), required: true);
-            return new DeferredBodyAction<SpeciesResponseItem[]>(() =>
+            return new DeferredBodyAction<SpeciesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/species/{0}", __workflow_species.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SpeciesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

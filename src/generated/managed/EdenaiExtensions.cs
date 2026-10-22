@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
     public class EdenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyoption = null, Expression<Func<double>> bodyrate = null, Expression<Func<double>> bodypitch = null, Expression<Func<double>> bodyvolume = null, Expression<Func<string>> bodyaudioFormat = null, Expression<Func<double>> bodysamplingRate = null)
+        public IBodyWorkflowAction<TextToSpeechResponse, ApiConnectionActionConfiguration> TextToSpeech(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyoption = null, Expression<Func<double>> bodyrate = null, Expression<Func<double>> bodypitch = null, Expression<Func<double>> bodyvolume = null, Expression<Func<string>> bodyaudioFormat = null, Expression<Func<double>> bodysamplingRate = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
             var __workflow_bodyvolume = WorkflowExpression.Compile(bodyvolume, nameof(bodyvolume), required: false);
             var __workflow_bodyaudioFormat = WorkflowExpression.Compile(bodyaudioFormat, nameof(bodyaudioFormat), required: false);
             var __workflow_bodysamplingRate = WorkflowExpression.Compile(bodysamplingRate, nameof(bodysamplingRate), required: false);
-            return new DeferredBodyAction<TextToSpeechResponse>(() =>
+            return new DeferredBodyAction<TextToSpeechResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/audio/text_to_speech";
                 var apiCallHttpMethod = "post";
@@ -190,31 +190,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<TextToSpeechResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ExplicitContentDetectionResponse> ExplicitContentDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<ExplicitContentDetectionResponse, ApiConnectionActionConfiguration> ExplicitContentDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<ExplicitContentDetectionResponse>(() =>
+            return new DeferredBodyAction<ExplicitContentDetectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/image/explicit_content";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExplicitContentDetectionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextGenerationResponse> TextGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
+        public IBodyWorkflowAction<TextGenerationResponse, ApiConnectionActionConfiguration> TextGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
             var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            return new DeferredBodyAction<TextGenerationResponse>(() =>
+            return new DeferredBodyAction<TextGenerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/generation";
                 var apiCallHttpMethod = "post";
@@ -291,18 +291,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<TextGenerationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ChatResponse> Chat(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodychatGlobalAction = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
+        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodychatGlobalAction = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodychatGlobalAction = WorkflowExpression.Compile(bodychatGlobalAction, nameof(bodychatGlobalAction), required: false);
             var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
             var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            return new DeferredBodyAction<ChatResponse>(() =>
+            return new DeferredBodyAction<ChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/chat";
                 var apiCallHttpMethod = "post";
@@ -385,16 +385,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<ChatResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TopicExtractionResponse, ApiConnectionActionConfiguration> TopicExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<TopicExtractionResponse>(() =>
+            return new DeferredBodyAction<TopicExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/topic_extraction";
                 var apiCallHttpMethod = "post";
@@ -447,16 +447,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<TopicExtractionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<KeywordExtractionResponse, ApiConnectionActionConfiguration> KeywordExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<KeywordExtractionResponse>(() =>
+            return new DeferredBodyAction<KeywordExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/keyword_extraction";
                 var apiCallHttpMethod = "post";
@@ -509,16 +509,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<KeywordExtractionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration> NamedEntityRecognition(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<NamedEntityRecognitionResponse>(() =>
+            return new DeferredBodyAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/named_entity_recognition";
                 var apiCallHttpMethod = "post";
@@ -571,45 +571,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<NamedEntityRecognitionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<AnonymizationResponse> Anonymization(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<AnonymizationResponse, ApiConnectionActionConfiguration> Anonymization(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<AnonymizationResponse>(() =>
+            return new DeferredBodyAction<AnonymizationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/image/anonymization";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AnonymizationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<FaceDetectionResponse> FaceDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<FaceDetectionResponse, ApiConnectionActionConfiguration> FaceDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<FaceDetectionResponse>(() =>
+            return new DeferredBodyAction<FaceDetectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/image/face_detection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FaceDetectionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyresolution = null, Expression<Func<double>> bodynumImages = null)
+        public IBodyWorkflowAction<ImageGenerationResponse, ApiConnectionActionConfiguration> ImageGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyresolution = null, Expression<Func<double>> bodynumImages = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodyresolution = WorkflowExpression.Compile(bodyresolution, nameof(bodyresolution), required: false);
             var __workflow_bodynumImages = WorkflowExpression.Compile(bodynumImages, nameof(bodynumImages), required: false);
-            return new DeferredBodyAction<ImageGenerationResponse>(() =>
+            return new DeferredBodyAction<ImageGenerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/image/generation";
                 var apiCallHttpMethod = "post";
@@ -678,17 +678,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<ImageGenerationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TranslationResponse> Translation(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodysourceLanguage = null, Expression<Func<string>> bodytargetLanguage = null)
+        public IBodyWorkflowAction<TranslationResponse, ApiConnectionActionConfiguration> Translation(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodysourceLanguage = null, Expression<Func<string>> bodytargetLanguage = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodysourceLanguage = WorkflowExpression.Compile(bodysourceLanguage, nameof(bodysourceLanguage), required: false);
             var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
-            return new DeferredBodyAction<TranslationResponse>(() =>
+            return new DeferredBodyAction<TranslationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/translation/automatic_translation";
                 var apiCallHttpMethod = "post";
@@ -757,16 +757,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<TranslationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextModerationResponse> TextModeration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TextModerationResponse, ApiConnectionActionConfiguration> TextModeration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<TextModerationResponse>(() =>
+            return new DeferredBodyAction<TextModerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/moderation";
                 var apiCallHttpMethod = "post";
@@ -819,17 +819,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<TextModerationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> bodyproviders = null, Expression<Func<double>> bodyoutputSentences = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylanguage = null)
+        public IBodyWorkflowAction<SummarizationResponse, ApiConnectionActionConfiguration> Summarization(Expression<Func<string>> bodyproviders = null, Expression<Func<double>> bodyoutputSentences = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylanguage = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodyoutputSentences = WorkflowExpression.Compile(bodyoutputSentences, nameof(bodyoutputSentences), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            return new DeferredBodyAction<SummarizationResponse>(() =>
+            return new DeferredBodyAction<SummarizationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/summarize";
                 var apiCallHttpMethod = "post";
@@ -906,15 +906,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<SummarizationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetection(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<LanguageDetectionResponse>(() =>
+            return new DeferredBodyAction<LanguageDetectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/translation/language_detection";
                 var apiCallHttpMethod = "post";
@@ -951,16 +951,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<LanguageDetectionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> SentimentAnalysis(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
             var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
+            return new DeferredBodyAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/sentiment_analysis";
                 var apiCallHttpMethod = "post";
@@ -1013,65 +1013,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 }
 
                 return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<InvoiceParserResponse> InvoiceParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
+        public IBodyWorkflowAction<InvoiceParserResponse, ApiConnectionActionConfiguration> InvoiceParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<InvoiceParserResponse>(() =>
+            return new DeferredBodyAction<InvoiceParserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ocr/invoice_parser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InvoiceParserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ResumeParserResponse> ResumeParser(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<ResumeParserResponse, ApiConnectionActionConfiguration> ResumeParser(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<ResumeParserResponse>(() =>
+            return new DeferredBodyAction<ResumeParserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ocr/resume_parser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResumeParserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<IdentityParserResponse> IdentityParser(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<IdentityParserResponse, ApiConnectionActionConfiguration> IdentityParser(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<IdentityParserResponse>(() =>
+            return new DeferredBodyAction<IdentityParserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ocr/identity_parser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IdentityParserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ReceiptParserResponse> ReceiptParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
+        public IBodyWorkflowAction<ReceiptParserResponse, ApiConnectionActionConfiguration> ReceiptParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
         {
             var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<ReceiptParserResponse>(() =>
+            return new DeferredBodyAction<ReceiptParserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ocr/receipt_parser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ReceiptParserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

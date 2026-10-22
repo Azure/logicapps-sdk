@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     public class KagiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SummarizePostResponse> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
+        public IBodyWorkflowAction<SummarizePostResponse, ApiConnectionActionConfiguration> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
             var __workflow_bodysummaryType = WorkflowExpression.Compile(bodysummaryType, nameof(bodysummaryType), required: false);
             var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
             var __workflow_bodycache = WorkflowExpression.Compile(bodycache, nameof(bodycache), required: false);
-            return new DeferredBodyAction<SummarizePostResponse>(() =>
+            return new DeferredBodyAction<SummarizePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/summarize";
                 var apiCallHttpMethod = "post";
@@ -89,14 +89,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 }
 
                 return new ApiConnectionAction<SummarizePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTPostResponse> FastGPT(Expression<Func<string>> bodyquery)
+        public IBodyWorkflowAction<FastGPTPostResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<string>> bodyquery)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            return new DeferredBodyAction<FastGPTPostResponse>(() =>
+            return new DeferredBodyAction<FastGPTPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
                 var apiCallHttpMethod = "post";
@@ -111,15 +111,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 }
 
                 return new ApiConnectionAction<FastGPTPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SearchGetResponse, ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> q, Expression<Func<int>> limit = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<SearchGetResponse>(() =>
+            return new DeferredBodyAction<SearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/search/";
                 var apiCallHttpMethod = "get";
@@ -128,42 +128,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet(Expression<Func<string>> q)
+        public IBodyWorkflowAction<EnrichmentWebGetResponse, ApiConnectionActionConfiguration> EnrichmentWebGet(Expression<Func<string>> q)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
-            return new DeferredBodyAction<EnrichmentWebGetResponse>(() =>
+            return new DeferredBodyAction<EnrichmentWebGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/enrich/web";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<EnrichmentWebGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet(Expression<Func<string>> q)
+        public IBodyWorkflowAction<EnrichmentNewsGetResponse, ApiConnectionActionConfiguration> EnrichmentNewsGet(Expression<Func<string>> q)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
-            return new DeferredBodyAction<EnrichmentNewsGetResponse>(() =>
+            return new DeferredBodyAction<EnrichmentNewsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/enrich/news";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<EnrichmentNewsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet(Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SmallWebGetResponse, ApiConnectionActionConfiguration> SmallWebGet(Expression<Func<int>> limit = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<SmallWebGetResponse>(() =>
+            return new DeferredBodyAction<SmallWebGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/smallweb/feed/";
                 var apiCallHttpMethod = "get";
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SmallWebGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

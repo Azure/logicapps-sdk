@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
     public class TaxidproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
+        public IBodyWorkflowAction<ValidateResponse, ApiConnectionActionConfiguration> Validate(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_tin = WorkflowExpression.Compile(tin, nameof(tin), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             var __workflow_isIrs = WorkflowExpression.Compile(isIrs, nameof(isIrs), required: false);
-            return new DeferredBodyAction<ValidateResponse>(() =>
+            return new DeferredBodyAction<ValidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate";
                 var apiCallHttpMethod = "get";
@@ -33,18 +33,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
                 if (__workflow_isIrs != null)
                     callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
-        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
+        public IBodyWorkflowAction<LookupResponse, ApiConnectionActionConfiguration> Lookup(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_tin = WorkflowExpression.Compile(tin, nameof(tin), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             var __workflow_isIrs = WorkflowExpression.Compile(isIrs, nameof(isIrs), required: false);
-            return new DeferredBodyAction<LookupResponse>(() =>
+            return new DeferredBodyAction<LookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lookup";
                 var apiCallHttpMethod = "get";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
                 if (__workflow_isIrs != null)
                     callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
                 return new ApiConnectionAction<LookupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
     public class ClimatiqipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateResponse> EmissionEstimate(Expression<Func<string>> bodyemissionFactoruuid = null, Expression<Func<string>> bodyemissionFactoractivityId = null, Expression<Func<string>> bodyemissionFactorsource = null, Expression<Func<string>> bodyemissionFactorregion = null, Expression<Func<bool>> bodyemissionFactorregionFallback = null, Expression<Func<string>> bodyemissionFactoryear = null, Expression<Func<string>> bodyemissionFactorlcaActivity = null, Expression<Func<string>> bodyemissionFactorcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        public IBodyWorkflowAction<EmissionEstimateResponse, ApiConnectionActionConfiguration> EmissionEstimate(Expression<Func<string>> bodyemissionFactoruuid = null, Expression<Func<string>> bodyemissionFactoractivityId = null, Expression<Func<string>> bodyemissionFactorsource = null, Expression<Func<string>> bodyemissionFactorregion = null, Expression<Func<bool>> bodyemissionFactorregionFallback = null, Expression<Func<string>> bodyemissionFactoryear = null, Expression<Func<string>> bodyemissionFactorlcaActivity = null, Expression<Func<string>> bodyemissionFactorcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
         {
             var __workflow_bodyemissionFactoruuid = WorkflowExpression.Compile(bodyemissionFactoruuid, nameof(bodyemissionFactoruuid), required: false);
             var __workflow_bodyemissionFactoractivityId = WorkflowExpression.Compile(bodyemissionFactoractivityId, nameof(bodyemissionFactoractivityId), required: false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
             var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
             var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
-            return new DeferredBodyAction<EmissionEstimateResponse>(() =>
+            return new DeferredBodyAction<EmissionEstimateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/estimate";
                 var apiCallHttpMethod = "post";
@@ -211,28 +211,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<EmissionEstimateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateBulkResponse> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EmissionEstimateBulkResponse>(() =>
+            return new DeferredBodyAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/batch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EmissionEstimateBulkResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<TravelFlightResponse> TravelFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
+        public IBodyWorkflowAction<TravelFlightResponse, ApiConnectionActionConfiguration> TravelFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
         {
             var __workflow_bodylegs = WorkflowExpression.Compile(bodylegs, nameof(bodylegs), required: true);
-            return new DeferredBodyAction<TravelFlightResponse>(() =>
+            return new DeferredBodyAction<TravelFlightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/travel/flights";
                 var apiCallHttpMethod = "post";
@@ -247,14 +247,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<TravelFlightResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<FreightFlightResponse> FreightFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
+        public IBodyWorkflowAction<FreightFlightResponse, ApiConnectionActionConfiguration> FreightFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
         {
             var __workflow_bodylegs = WorkflowExpression.Compile(bodylegs, nameof(bodylegs), required: true);
-            return new DeferredBodyAction<FreightFlightResponse>(() =>
+            return new DeferredBodyAction<FreightFlightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/freight/flights";
                 var apiCallHttpMethod = "post";
@@ -269,11 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<FreightFlightResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeMetadataResponse> ComputeMetadata()
+        public IBodyWorkflowAction<ComputeMetadataResponse, ApiConnectionActionConfiguration> ComputeMetadata()
         {
             var apiCallPath = "/compute";
             var apiCallHttpMethod = "get";
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeCPUResponse> ComputeCPU(Expression<Func<string>> provider, Expression<Func<int>> bodycpuCount, Expression<Func<string>> bodyregion, Expression<Func<int>> bodycpuLoad, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydurationUnit = null)
+        public IBodyWorkflowAction<ComputeCPUResponse, ApiConnectionActionConfiguration> ComputeCPU(Expression<Func<string>> provider, Expression<Func<int>> bodycpuCount, Expression<Func<string>> bodyregion, Expression<Func<int>> bodycpuLoad, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydurationUnit = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_bodycpuCount = WorkflowExpression.Compile(bodycpuCount, nameof(bodycpuCount), required: true);
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodycpuLoad = WorkflowExpression.Compile(bodycpuLoad, nameof(bodycpuLoad), required: true);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
             var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
-            return new DeferredBodyAction<ComputeCPUResponse>(() =>
+            return new DeferredBodyAction<ComputeCPUResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/cpu", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -317,11 +317,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ComputeCPUResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeStorageResponse> ComputeStorage(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<bodystorageTypeInput>> bodystorageType, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
+        public IBodyWorkflowAction<ComputeStorageResponse, ApiConnectionActionConfiguration> ComputeStorage(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<bodystorageTypeInput>> bodystorageType, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
             var __workflow_bodydataUnit = WorkflowExpression.Compile(bodydataUnit, nameof(bodydataUnit), required: false);
             var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
-            return new DeferredBodyAction<ComputeStorageResponse>(() =>
+            return new DeferredBodyAction<ComputeStorageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/storage", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -363,11 +363,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ComputeStorageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeMemoryResponse> ComputeMemory(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
+        public IBodyWorkflowAction<ComputeMemoryResponse, ApiConnectionActionConfiguration> ComputeMemory(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
             var __workflow_bodydataUnit = WorkflowExpression.Compile(bodydataUnit, nameof(bodydataUnit), required: false);
             var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
-            return new DeferredBodyAction<ComputeMemoryResponse>(() =>
+            return new DeferredBodyAction<ComputeMemoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/compute/{0}/memory", __workflow_provider.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -406,11 +406,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ComputeMemoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ClassificationResponse> Classification(Expression<Func<string>> bodyclassificationclassificationType = null, Expression<Func<string>> bodyclassificationclassificationCode = null, Expression<Func<string>> bodyclassificationsource = null, Expression<Func<string>> bodyclassificationregion = null, Expression<Func<bool>> bodyclassificationregionFallback = null, Expression<Func<string>> bodyclassificationyear = null, Expression<Func<string>> bodyclassificationlcaActivity = null, Expression<Func<string>> bodyclassificationcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        public IBodyWorkflowAction<ClassificationResponse, ApiConnectionActionConfiguration> Classification(Expression<Func<string>> bodyclassificationclassificationType = null, Expression<Func<string>> bodyclassificationclassificationCode = null, Expression<Func<string>> bodyclassificationsource = null, Expression<Func<string>> bodyclassificationregion = null, Expression<Func<bool>> bodyclassificationregionFallback = null, Expression<Func<string>> bodyclassificationyear = null, Expression<Func<string>> bodyclassificationlcaActivity = null, Expression<Func<string>> bodyclassificationcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
         {
             var __workflow_bodyclassificationclassificationType = WorkflowExpression.Compile(bodyclassificationclassificationType, nameof(bodyclassificationclassificationType), required: false);
             var __workflow_bodyclassificationclassificationCode = WorkflowExpression.Compile(bodyclassificationclassificationCode, nameof(bodyclassificationclassificationCode), required: false);
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
             var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
             var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
-            return new DeferredBodyAction<ClassificationResponse>(() =>
+            return new DeferredBodyAction<ClassificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/classifications/estimate";
                 var apiCallHttpMethod = "post";
@@ -609,11 +609,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<ClassificationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomResponse> Custom(Expression<Func<string>> bodycustomActivitylabel = null, Expression<Func<string>> bodycustomActivitysource = null, Expression<Func<string>> bodycustomActivityregion = null, Expression<Func<bool>> bodycustomActivityregionFallback = null, Expression<Func<string>> bodycustomActivityyear = null, Expression<Func<string>> bodycustomActivitylcaActivity = null, Expression<Func<string>> bodycustomActivitycalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
+        public IBodyWorkflowAction<CustomResponse, ApiConnectionActionConfiguration> Custom(Expression<Func<string>> bodycustomActivitylabel = null, Expression<Func<string>> bodycustomActivitysource = null, Expression<Func<string>> bodycustomActivityregion = null, Expression<Func<bool>> bodycustomActivityregionFallback = null, Expression<Func<string>> bodycustomActivityyear = null, Expression<Func<string>> bodycustomActivitylcaActivity = null, Expression<Func<string>> bodycustomActivitycalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
         {
             var __workflow_bodycustomActivitylabel = WorkflowExpression.Compile(bodycustomActivitylabel, nameof(bodycustomActivitylabel), required: false);
             var __workflow_bodycustomActivitysource = WorkflowExpression.Compile(bodycustomActivitysource, nameof(bodycustomActivitysource), required: false);
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
             var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
             var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
-            return new DeferredBodyAction<CustomResponse>(() =>
+            return new DeferredBodyAction<CustomResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/custom-activities/estimate";
                 var apiCallHttpMethod = "post";
@@ -805,25 +805,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 }
 
                 return new ApiConnectionAction<CustomResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomBatchResponse> CustomBatch(Expression<Func<bodyInputItem2[]>> body = null)
+        public IBodyWorkflowAction<CustomBatchResponse, ApiConnectionActionConfiguration> CustomBatch(Expression<Func<bodyInputItem2[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CustomBatchResponse>(() =>
+            return new DeferredBodyAction<CustomBatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/custom-activities/batch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomBatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<FactorsSearchResponse> FactorsSearch(Expression<Func<string>> query = null, Expression<Func<string>> uuid = null, Expression<Func<string>> activityId = null, Expression<Func<string>> id = null, Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null, Expression<Func<string>> unitType = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
+        public IBodyWorkflowAction<FactorsSearchResponse, ApiConnectionActionConfiguration> FactorsSearch(Expression<Func<string>> query = null, Expression<Func<string>> uuid = null, Expression<Func<string>> activityId = null, Expression<Func<string>> id = null, Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null, Expression<Func<string>> unitType = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: false);
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_unitType = WorkflowExpression.Compile(unitType, nameof(unitType), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
-            return new DeferredBodyAction<FactorsSearchResponse>(() =>
+            return new DeferredBodyAction<FactorsSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -873,11 +873,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_resultsPerPage != null)
                     callPayload.Queries["results_per_page"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 return new ApiConnectionAction<FactorsSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<SourcesResponse> Sources(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<SourcesResponse, ApiConnectionActionConfiguration> Sources(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<SourcesResponse>(() =>
+            return new DeferredBodyAction<SourcesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/sources";
                 var apiCallHttpMethod = "get";
@@ -909,11 +909,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<SourcesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<YearsResponse> Years(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<YearsResponse, ApiConnectionActionConfiguration> Years(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<YearsResponse>(() =>
+            return new DeferredBodyAction<YearsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/years";
                 var apiCallHttpMethod = "get";
@@ -945,11 +945,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<YearsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<RegionsResponse> Regions(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<RegionsResponse, ApiConnectionActionConfiguration> Regions(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<RegionsResponse>(() =>
+            return new DeferredBodyAction<RegionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/regions";
                 var apiCallHttpMethod = "get";
@@ -981,11 +981,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<RegionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CategoriesResponse> Categories(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<CategoriesResponse, ApiConnectionActionConfiguration> Categories(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -995,7 +995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<CategoriesResponse>(() =>
+            return new DeferredBodyAction<CategoriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/categories";
                 var apiCallHttpMethod = "get";
@@ -1017,11 +1017,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<CategoriesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<SectorsResponse> Sectors(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<SectorsResponse, ApiConnectionActionConfiguration> Sectors(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -1031,7 +1031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<SectorsResponse>(() =>
+            return new DeferredBodyAction<SectorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/sectors";
                 var apiCallHttpMethod = "get";
@@ -1053,11 +1053,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<SectorsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<LifeCycleActivitiesResponse> LifeCycleActivities(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<LifeCycleActivitiesResponse, ApiConnectionActionConfiguration> LifeCycleActivities(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<LifeCycleActivitiesResponse>(() =>
+            return new DeferredBodyAction<LifeCycleActivitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/lca-activities";
                 var apiCallHttpMethod = "get";
@@ -1089,11 +1089,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<LifeCycleActivitiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<UnitTypesResponse> UnitTypes(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
+        public IBodyWorkflowAction<UnitTypesResponse, ApiConnectionActionConfiguration> UnitTypes(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
             var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -1103,7 +1103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
             var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
-            return new DeferredBodyAction<UnitTypesResponse>(() =>
+            return new DeferredBodyAction<UnitTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emission-factors/unit-types";
                 var apiCallHttpMethod = "get";
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
                 if (__workflow_calculationMethod != null)
                     callPayload.Queries["calculation_method"] = ExpressionConverter.Convert(__workflow_calculationMethod);
                 return new ApiConnectionAction<UnitTypesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

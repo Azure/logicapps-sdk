@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
     public class Translatorv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<Language[]> Languages()
+        public IBodyWorkflowAction<Language[], ApiConnectionActionConfiguration> Languages()
         {
             var apiCallPath = "/Languages";
             var apiCallHttpMethod = "get";
@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<string> Translate(Expression<Func<string>> to, Expression<Func<string>> bodytext, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Translate(Expression<Func<string>> to, Expression<Func<string>> bodytext, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
         {
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
             var __workflow_textType = WorkflowExpression.Compile(textType, nameof(textType), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Translate";
                 var apiCallHttpMethod = "post";
@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<Language> Detect(Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<Language, ApiConnectionActionConfiguration> Detect(Expression<Func<string>> bodytext)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<Language>(() =>
+            return new DeferredBodyAction<Language, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Detect";
                 var apiCallHttpMethod = "post";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
                 }
 
                 return new ApiConnectionAction<Language>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

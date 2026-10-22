@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
     public class MailboxvalidatoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateSingleResponse, ApiConnectionActionConfiguration> ValidateSingle(Expression<Func<string>> email)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredBodyAction<ValidateSingleResponse>(() =>
+            return new DeferredBodyAction<ValidateSingleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validation/single";
                 var apiCallHttpMethod = "get";
@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ValidateSingleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateDisposableResponse, ApiConnectionActionConfiguration> ValidateDisposable(Expression<Func<string>> email)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredBodyAction<ValidateDisposableResponse>(() =>
+            return new DeferredBodyAction<ValidateDisposableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email/disposable";
                 var apiCallHttpMethod = "get";
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ValidateDisposableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateFreeResponse, ApiConnectionActionConfiguration> ValidateFree(Expression<Func<string>> email)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredBodyAction<ValidateFreeResponse>(() =>
+            return new DeferredBodyAction<ValidateFreeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email/free";
                 var apiCallHttpMethod = "get";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ValidateFreeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

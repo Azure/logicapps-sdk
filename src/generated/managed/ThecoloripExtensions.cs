@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
     public class ThecoloripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<ColorGetResponse> ColorGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null)
+        public IBodyWorkflowAction<ColorGetResponse, ApiConnectionActionConfiguration> ColorGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null)
         {
             var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: false);
             var __workflow_rgb = WorkflowExpression.Compile(rgb, nameof(rgb), required: false);
             var __workflow_hsl = WorkflowExpression.Compile(hsl, nameof(hsl), required: false);
             var __workflow_cmyk = WorkflowExpression.Compile(cmyk, nameof(cmyk), required: false);
-            return new DeferredBodyAction<ColorGetResponse>(() =>
+            return new DeferredBodyAction<ColorGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/id";
                 var apiCallHttpMethod = "get";
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
                     callPayload.Queries["cmyk"] = ExpressionConverter.Convert(__workflow_cmyk);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ColorGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<SchemeGetResponse, ApiConnectionActionConfiguration> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
         {
             var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: false);
             var __workflow_rgb = WorkflowExpression.Compile(rgb, nameof(rgb), required: false);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
             var __workflow_cmyk = WorkflowExpression.Compile(cmyk, nameof(cmyk), required: false);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            return new DeferredBodyAction<SchemeGetResponse>(() =>
+            return new DeferredBodyAction<SchemeGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/scheme";
                 var apiCallHttpMethod = "get";
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
                 if (__workflow_count != null)
                     callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<SchemeGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
     public class AplaceioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<string>> sessionId = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> countries = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<string>> lang = null)
+        public IBodyWorkflowAction<SearchGetResponse, ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> q, Expression<Func<string>> sessionId = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> countries = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<string>> lang = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
             var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
-            return new DeferredBodyAction<SearchGetResponse>(() =>
+            return new DeferredBodyAction<SearchGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -43,15 +43,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
                 if (__workflow_lang != null)
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<SearchGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        public IBodyWorkflowAction<PIPGetResponse> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
+        public IBodyWorkflowAction<PIPGetResponse, ApiConnectionActionConfiguration> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
-            return new DeferredBodyAction<PIPGetResponse>(() =>
+            return new DeferredBodyAction<PIPGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pip";
                 var apiCallHttpMethod = "get";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
                 if (__workflow_lon != null)
                     callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
                 return new ApiConnectionAction<PIPGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

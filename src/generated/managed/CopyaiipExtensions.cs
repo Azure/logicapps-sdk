@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
     public class CopyaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet(Expression<Func<string>> workflowId, Expression<Func<int>> size = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<WorkflowsGetResponse, ApiConnectionActionConfiguration> WorkflowsGet(Expression<Func<string>> workflowId, Expression<Func<int>> size = null, Expression<Func<int>> page = null)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<WorkflowsGetResponse>(() =>
+            return new DeferredBodyAction<WorkflowsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<WorkflowsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowPostResponse> Workflow(Expression<Func<string>> workflowId)
+        public IBodyWorkflowAction<WorkflowPostResponse, ApiConnectionActionConfiguration> Workflow(Expression<Func<string>> workflowId)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            return new DeferredBodyAction<WorkflowPostResponse>(() =>
+            return new DeferredBodyAction<WorkflowPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -65,21 +65,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
                 }
 
                 return new ApiConnectionAction<WorkflowPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet(Expression<Func<string>> workflowId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<WorkflowGetResponse, ApiConnectionActionConfiguration> WorkflowGet(Expression<Func<string>> workflowId, Expression<Func<string>> runId)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
-            return new DeferredBodyAction<WorkflowGetResponse>(() =>
+            return new DeferredBodyAction<WorkflowGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run/{1}", __workflow_workflowId.WithUrlEncoding(1), __workflow_runId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WorkflowGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

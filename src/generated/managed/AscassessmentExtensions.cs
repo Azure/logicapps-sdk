@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascassessment
 
     public class AscassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASCAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASCAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Microsoft.Security/Assessment/subscribe";
             var apiCallHttpMethod = "post";

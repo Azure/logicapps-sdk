@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     public class GroupmgrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval(Expression<Func<string>> bodylistItemId, Expression<Func<bodyapprovedInput>> bodyapproved)
+        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrGroupApproval(Expression<Func<string>> bodylistItemId, Expression<Func<bodyapprovedInput>> bodyapproved)
         {
             var __workflow_bodylistItemId = WorkflowExpression.Compile(bodylistItemId, nameof(bodylistItemId), required: true);
             var __workflow_bodyapproved = WorkflowExpression.Compile(bodyapproved, nameof(bodyapproved), required: true);
-            return new DeferredBodyAction<GroupExtended>(() =>
+            return new DeferredBodyAction<GroupExtended, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ConfimationTrigger";
                 var apiCallHttpMethod = "post";
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 }
 
                 return new ApiConnectionAction<GroupExtended>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string[]>> bodyowners, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycreatedBy = null)
+        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrCreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string[]>> bodyowners, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycreatedBy = null)
         {
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var __workflow_bodycreateTeam = WorkflowExpression.Compile(bodycreateTeam, nameof(bodycreateTeam), required: false);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodycreatedBy = WorkflowExpression.Compile(bodycreatedBy, nameof(bodycreatedBy), required: false);
-            return new DeferredBodyAction<GroupExtended>(() =>
+            return new DeferredBodyAction<GroupExtended, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
                 var apiCallHttpMethod = "post";
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 }
 
                 return new ApiConnectionAction<GroupExtended>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodyowners = null, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrUpdateGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodyowners = null, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             var __workflow_bodyisPublic = WorkflowExpression.Compile(bodyisPublic, nameof(bodyisPublic), required: false);
             var __workflow_bodycreateTeam = WorkflowExpression.Compile(bodycreateTeam, nameof(bodycreateTeam), required: false);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            return new DeferredBodyAction<GroupExtended>(() =>
+            return new DeferredBodyAction<GroupExtended, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
                 var apiCallHttpMethod = "put";
@@ -214,14 +214,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 }
 
                 return new ApiConnectionAction<GroupExtended>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction GroupMgrDeleteGroup(Expression<Func<string>> bodylistItemId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupMgrDeleteGroup(Expression<Func<string>> bodylistItemId)
         {
             var __workflow_bodylistItemId = WorkflowExpression.Compile(bodylistItemId, nameof(bodylistItemId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
                 var apiCallHttpMethod = "delete";
@@ -236,15 +236,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction GroupMgrArchiveGroup(Expression<Func<string>> bodylistItemId, Expression<Func<bodyarchiveInput>> bodyarchive)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupMgrArchiveGroup(Expression<Func<string>> bodylistItemId, Expression<Func<bodyarchiveInput>> bodyarchive)
         {
             var __workflow_bodylistItemId = WorkflowExpression.Compile(bodylistItemId, nameof(bodylistItemId), required: true);
             var __workflow_bodyarchive = WorkflowExpression.Compile(bodyarchive, nameof(bodyarchive), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
                 var apiCallHttpMethod = "patch";
@@ -261,16 +261,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class GroupmgrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger GroupMgrGroupRequested(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupRequested(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhookrequest/GroupRequested";
                 var apiCallHttpMethod = "post";
@@ -287,10 +287,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger GroupMgrGroupCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupCreated";
             var apiCallHttpMethod = "post";
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GroupMgrGroupUpdated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupUpdated";
             var apiCallHttpMethod = "post";
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GroupMgrGroupDeleted(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupDeleted";
             var apiCallHttpMethod = "post";

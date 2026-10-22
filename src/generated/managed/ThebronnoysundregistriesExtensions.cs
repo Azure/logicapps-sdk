@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
     public class ThebronnoysundregistriesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetAllSearchResponse> GetAllSearch(Expression<Func<string>> navn = null, Expression<Func<string>> fraRegistreringsdatoEnhetsregisteret = null, Expression<Func<string>> tilRegistreringsdatoEnhetsregisteret = null, Expression<Func<bool>> konkurs = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetAllSearchResponse, ApiConnectionActionConfiguration> GetAllSearch(Expression<Func<string>> navn = null, Expression<Func<string>> fraRegistreringsdatoEnhetsregisteret = null, Expression<Func<string>> tilRegistreringsdatoEnhetsregisteret = null, Expression<Func<bool>> konkurs = null, Expression<Func<string>> sort = null)
         {
             var __workflow_navn = WorkflowExpression.Compile(navn, nameof(navn), required: false);
             var __workflow_fraRegistreringsdatoEnhetsregisteret = WorkflowExpression.Compile(fraRegistreringsdatoEnhetsregisteret, nameof(fraRegistreringsdatoEnhetsregisteret), required: false);
             var __workflow_tilRegistreringsdatoEnhetsregisteret = WorkflowExpression.Compile(tilRegistreringsdatoEnhetsregisteret, nameof(tilRegistreringsdatoEnhetsregisteret), required: false);
             var __workflow_konkurs = WorkflowExpression.Compile(konkurs, nameof(konkurs), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<GetAllSearchResponse>(() =>
+            return new DeferredBodyAction<GetAllSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/enheter";
                 var apiCallHttpMethod = "get";
@@ -35,42 +35,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetAllSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber(Expression<Func<string>> orgnr)
+        public IBodyWorkflowAction<GetByOrganizationNumberResponse, ApiConnectionActionConfiguration> GetByOrganizationNumber(Expression<Func<string>> orgnr)
         {
             var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
-            return new DeferredBodyAction<GetByOrganizationNumberResponse>(() =>
+            return new DeferredBodyAction<GetByOrganizationNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/enheter/{0}", __workflow_orgnr.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetByOrganizationNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles(Expression<Func<string>> orgnr)
+        public IBodyWorkflowAction<GetEntityRolesResponse, ApiConnectionActionConfiguration> GetEntityRoles(Expression<Func<string>> orgnr)
         {
             var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
-            return new DeferredBodyAction<GetEntityRolesResponse>(() =>
+            return new DeferredBodyAction<GetEntityRolesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", __workflow_orgnr.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetEntityRolesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetAllSearchSubResponse> GetAllSearchSub(Expression<Func<string>> navn = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetAllSearchSubResponse, ApiConnectionActionConfiguration> GetAllSearchSub(Expression<Func<string>> navn = null, Expression<Func<string>> sort = null)
         {
             var __workflow_navn = WorkflowExpression.Compile(navn, nameof(navn), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<GetAllSearchSubResponse>(() =>
+            return new DeferredBodyAction<GetAllSearchSubResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/underenheter";
                 var apiCallHttpMethod = "get";
@@ -80,28 +80,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetAllSearchSubResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber(Expression<Func<string>> orgnr)
+        public IBodyWorkflowAction<GetSubByOrganizationNumberResponse, ApiConnectionActionConfiguration> GetSubByOrganizationNumber(Expression<Func<string>> orgnr)
         {
             var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
-            return new DeferredBodyAction<GetSubByOrganizationNumberResponse>(() =>
+            return new DeferredBodyAction<GetSubByOrganizationNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/underenheter/{0}", __workflow_orgnr.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSubByOrganizationNumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetEntitiesUpdatesResponse> GetEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
+        public IBodyWorkflowAction<GetEntitiesUpdatesResponse, ApiConnectionActionConfiguration> GetEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
         {
             var __workflow_dato = WorkflowExpression.Compile(dato, nameof(dato), required: false);
             var __workflow_oppdateringsid = WorkflowExpression.Compile(oppdateringsid, nameof(oppdateringsid), required: false);
-            return new DeferredBodyAction<GetEntitiesUpdatesResponse>(() =>
+            return new DeferredBodyAction<GetEntitiesUpdatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/oppdateringer/enheter";
                 var apiCallHttpMethod = "get";
@@ -111,15 +111,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
                 if (__workflow_oppdateringsid != null)
                     callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(__workflow_oppdateringsid);
                 return new ApiConnectionAction<GetEntitiesUpdatesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> GetSubEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
+        public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse, ApiConnectionActionConfiguration> GetSubEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
         {
             var __workflow_dato = WorkflowExpression.Compile(dato, nameof(dato), required: false);
             var __workflow_oppdateringsid = WorkflowExpression.Compile(oppdateringsid, nameof(oppdateringsid), required: false);
-            return new DeferredBodyAction<GetSubEntitiesUpdatesResponse>(() =>
+            return new DeferredBodyAction<GetSubEntitiesUpdatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/oppdateringer/underenheter";
                 var apiCallHttpMethod = "get";
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
                 if (__workflow_oppdateringsid != null)
                     callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(__workflow_oppdateringsid);
                 return new ApiConnectionAction<GetSubEntitiesUpdatesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

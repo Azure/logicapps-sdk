@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
     public class DiscordipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<User> GetCurrentUser()
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> GetCurrentUser()
         {
             var apiCallPath = "/v9/users/@me";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Connection[]> GetUserConnections()
+        public IBodyWorkflowAction<Connection[], ApiConnectionActionConfiguration> GetUserConnections()
         {
             var apiCallPath = "/v9/users/@me/connections";
             var apiCallHttpMethod = "get";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Guild[]> GetCurrentUserGuilds()
+        public IBodyWorkflowAction<Guild[], ApiConnectionActionConfiguration> GetCurrentUserGuilds()
         {
             var apiCallPath = "/v9/users/@me/guilds";
             var apiCallHttpMethod = "get";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
+        public IBodyWorkflowAction<Webhook, ApiConnectionActionConfiguration> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
         {
             var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
             var __workflow_webhookToken = WorkflowExpression.Compile(webhookToken, nameof(webhookToken), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
             var __workflow_bodyavatarURL = WorkflowExpression.Compile(bodyavatarURL, nameof(bodyavatarURL), required: false);
-            return new DeferredBodyAction<Webhook>(() =>
+            return new DeferredBodyAction<Webhook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v9/webhooks/{0}/{1}", __workflow_webhookId.WithUrlEncoding(1), __workflow_webhookToken.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
                 }
 
                 return new ApiConnectionAction<Webhook>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

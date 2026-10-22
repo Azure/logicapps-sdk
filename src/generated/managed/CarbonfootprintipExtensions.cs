@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     public class CarbonfootprintipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<AirQualityHealthIndexResponse> AirQualityHealthIndex(Expression<Func<string>> o3, Expression<Func<string>> nO2, Expression<Func<string>> pM)
+        public IBodyWorkflowAction<AirQualityHealthIndexResponse, ApiConnectionActionConfiguration> AirQualityHealthIndex(Expression<Func<string>> o3, Expression<Func<string>> nO2, Expression<Func<string>> pM)
         {
             var __workflow_o3 = WorkflowExpression.Compile(o3, nameof(o3), required: true);
             var __workflow_nO2 = WorkflowExpression.Compile(nO2, nameof(nO2), required: true);
             var __workflow_pM = WorkflowExpression.Compile(pM, nameof(pM), required: true);
-            return new DeferredBodyAction<AirQualityHealthIndexResponse>(() =>
+            return new DeferredBodyAction<AirQualityHealthIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AirQualityHealthIndex";
                 var apiCallHttpMethod = "get";
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["NO2"] = ExpressionConverter.Convert(__workflow_nO2);
                 callPayload.Queries["PM"] = ExpressionConverter.Convert(__workflow_pM);
                 return new ApiConnectionAction<AirQualityHealthIndexResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<TreeEquivalentResponse> TreeEquivalent(Expression<Func<string>> weight, Expression<Func<unitInput>> unit)
+        public IBodyWorkflowAction<TreeEquivalentResponse, ApiConnectionActionConfiguration> TreeEquivalent(Expression<Func<string>> weight, Expression<Func<unitInput>> unit)
         {
             var __workflow_weight = WorkflowExpression.Compile(weight, nameof(weight), required: true);
             var __workflow_unit = WorkflowExpression.Compile(unit, nameof(unit), required: true);
-            return new DeferredBodyAction<TreeEquivalentResponse>(() =>
+            return new DeferredBodyAction<TreeEquivalentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/TreeEquivalent";
                 var apiCallHttpMethod = "get";
@@ -42,15 +42,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["weight"] = ExpressionConverter.Convert(__workflow_weight);
                 callPayload.Queries["unit"] = ExpressionConverter.Convert(__workflow_unit);
                 return new ApiConnectionAction<TreeEquivalentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse> TraditionalHydroToCarbonFootprint(Expression<Func<string>> consumption, Expression<Func<locationInput>> location)
+        public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration> TraditionalHydroToCarbonFootprint(Expression<Func<string>> consumption, Expression<Func<locationInput>> location)
         {
             var __workflow_consumption = WorkflowExpression.Compile(consumption, nameof(consumption), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
-            return new DeferredBodyAction<TraditionalHydroToCarbonFootprintResponse>(() =>
+            return new DeferredBodyAction<TraditionalHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/TraditionalHydroToCarbonFootprint";
                 var apiCallHttpMethod = "get";
@@ -58,15 +58,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["consumption"] = ExpressionConverter.Convert(__workflow_consumption);
                 callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
                 return new ApiConnectionAction<TraditionalHydroToCarbonFootprintResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse> CleanHydroToCarbonFootprint(Expression<Func<energyInput>> energy, Expression<Func<string>> consumption)
+        public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration> CleanHydroToCarbonFootprint(Expression<Func<energyInput>> energy, Expression<Func<string>> consumption)
         {
             var __workflow_energy = WorkflowExpression.Compile(energy, nameof(energy), required: true);
             var __workflow_consumption = WorkflowExpression.Compile(consumption, nameof(consumption), required: true);
-            return new DeferredBodyAction<CleanHydroToCarbonFootprintResponse>(() =>
+            return new DeferredBodyAction<CleanHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CleanHydroToCarbonFootprint";
                 var apiCallHttpMethod = "get";
@@ -74,15 +74,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["energy"] = ExpressionConverter.Convert(__workflow_energy);
                 callPayload.Queries["consumption"] = ExpressionConverter.Convert(__workflow_consumption);
                 return new ApiConnectionAction<CleanHydroToCarbonFootprintResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<FuelToCO2eResponse> FuelToCO2e(Expression<Func<typeInput>> type, Expression<Func<string>> litres)
+        public IBodyWorkflowAction<FuelToCO2eResponse, ApiConnectionActionConfiguration> FuelToCO2e(Expression<Func<typeInput>> type, Expression<Func<string>> litres)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_litres = WorkflowExpression.Compile(litres, nameof(litres), required: true);
-            return new DeferredBodyAction<FuelToCO2eResponse>(() =>
+            return new DeferredBodyAction<FuelToCO2eResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FuelToCO2e";
                 var apiCallHttpMethod = "get";
@@ -90,15 +90,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Queries["litres"] = ExpressionConverter.Convert(__workflow_litres);
                 return new ApiConnectionAction<FuelToCO2eResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse> CarbonFootprintFromCarTravel(Expression<Func<string>> distance, Expression<Func<vehicleInput>> vehicle)
+        public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse, ApiConnectionActionConfiguration> CarbonFootprintFromCarTravel(Expression<Func<string>> distance, Expression<Func<vehicleInput>> vehicle)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_vehicle = WorkflowExpression.Compile(vehicle, nameof(vehicle), required: true);
-            return new DeferredBodyAction<CarbonFootprintFromCarTravelResponse>(() =>
+            return new DeferredBodyAction<CarbonFootprintFromCarTravelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarbonFootprintFromCarTravel";
                 var apiCallHttpMethod = "get";
@@ -106,15 +106,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 callPayload.Queries["vehicle"] = ExpressionConverter.Convert(__workflow_vehicle);
                 return new ApiConnectionAction<CarbonFootprintFromCarTravelResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromFlightResponse> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CarbonFootprintFromFlightResponse, ApiConnectionActionConfiguration> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            return new DeferredBodyAction<CarbonFootprintFromFlightResponse>(() =>
+            return new DeferredBodyAction<CarbonFootprintFromFlightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarbonFootprintFromFlight";
                 var apiCallHttpMethod = "get";
@@ -122,15 +122,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<CarbonFootprintFromFlightResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse> CarbonFootprintFromMotorBike(Expression<Func<typeInput>> type, Expression<Func<string>> distance)
+        public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse, ApiConnectionActionConfiguration> CarbonFootprintFromMotorBike(Expression<Func<typeInput>> type, Expression<Func<string>> distance)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
-            return new DeferredBodyAction<CarbonFootprintFromMotorBikeResponse>(() =>
+            return new DeferredBodyAction<CarbonFootprintFromMotorBikeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarbonFootprintFromMotorBike";
                 var apiCallHttpMethod = "get";
@@ -138,15 +138,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 return new ApiConnectionAction<CarbonFootprintFromMotorBikeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse, ApiConnectionActionConfiguration> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
-            return new DeferredBodyAction<CarbonFootprintFromPublicTransitResponse>(() =>
+            return new DeferredBodyAction<CarbonFootprintFromPublicTransitResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarbonFootprintFromPublicTransit";
                 var apiCallHttpMethod = "get";
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<CarbonFootprintFromPublicTransitResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

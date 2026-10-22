@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
     public class FinnishbisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
+        public IBodyWorkflowAction<CompanyByBISCodeResponse, ApiConnectionActionConfiguration> CompanyByBISCode(Expression<Func<string>> businessId)
         {
             var __workflow_businessId = WorkflowExpression.Compile(businessId, nameof(businessId), required: true);
-            return new DeferredBodyAction<CompanyByBISCodeResponse>(() =>
+            return new DeferredBodyAction<CompanyByBISCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bis/v1/{0}", __workflow_businessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
+        public IBodyWorkflowAction<CompanySearchResponse, ApiConnectionActionConfiguration> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             var __workflow_totalResults = WorkflowExpression.Compile(totalResults, nameof(totalResults), required: false);
-            return new DeferredBodyAction<CompanySearchResponse>(() =>
+            return new DeferredBodyAction<CompanySearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bis/v1";
                 var apiCallHttpMethod = "get";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
                 if (__workflow_totalResults != null)
                     callPayload.Queries["totalResults"] = ExpressionConverter.Convert(__workflow_totalResults);
                 return new ApiConnectionAction<CompanySearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
     public class RefugerestroomsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsByDateResponseItem[]> RestroomsByDate(Expression<Func<int>> day, Expression<Func<int>> month, Expression<Func<int>> year, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null, Expression<Func<bool>> updated = null)
+        public IBodyWorkflowAction<RestroomsByDateResponseItem[], ApiConnectionActionConfiguration> RestroomsByDate(Expression<Func<int>> day, Expression<Func<int>> month, Expression<Func<int>> year, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null, Expression<Func<bool>> updated = null)
         {
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var __workflow_ada = WorkflowExpression.Compile(ada, nameof(ada), required: false);
             var __workflow_unisex = WorkflowExpression.Compile(unisex, nameof(unisex), required: false);
             var __workflow_updated = WorkflowExpression.Compile(updated, nameof(updated), required: false);
-            return new DeferredBodyAction<RestroomsByDateResponseItem[]>(() =>
+            return new DeferredBodyAction<RestroomsByDateResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/restrooms/by_date";
                 var apiCallHttpMethod = "get";
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                 callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
                 callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
                 return new ApiConnectionAction<RestroomsByDateResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> RestroomsByLocation(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        public IBodyWorkflowAction<RestroomsByLocationResponseItem[], ApiConnectionActionConfiguration> RestroomsByLocation(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_ada = WorkflowExpression.Compile(ada, nameof(ada), required: false);
             var __workflow_unisex = WorkflowExpression.Compile(unisex, nameof(unisex), required: false);
-            return new DeferredBodyAction<RestroomsByLocationResponseItem[]>(() =>
+            return new DeferredBodyAction<RestroomsByLocationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/restrooms/by_location";
                 var apiCallHttpMethod = "get";
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                 callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsSearchResponseItem[]> RestroomsSearch(Expression<Func<string>> query, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        public IBodyWorkflowAction<RestroomsSearchResponseItem[], ApiConnectionActionConfiguration> RestroomsSearch(Expression<Func<string>> query, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_ada = WorkflowExpression.Compile(ada, nameof(ada), required: false);
             var __workflow_unisex = WorkflowExpression.Compile(unisex, nameof(unisex), required: false);
-            return new DeferredBodyAction<RestroomsSearchResponseItem[]>(() =>
+            return new DeferredBodyAction<RestroomsSearchResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/restrooms/search";
                 var apiCallHttpMethod = "get";
@@ -104,18 +104,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                     callPayload.Queries["unisex"] = ExpressionConverter.Convert(__workflow_unisex);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<RestroomsSearchResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsResponseItem[]> Restrooms(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        public IBodyWorkflowAction<RestroomsResponseItem[], ApiConnectionActionConfiguration> Restrooms(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_ada = WorkflowExpression.Compile(ada, nameof(ada), required: false);
             var __workflow_unisex = WorkflowExpression.Compile(unisex, nameof(unisex), required: false);
-            return new DeferredBodyAction<RestroomsResponseItem[]>(() =>
+            return new DeferredBodyAction<RestroomsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/restrooms";
                 var apiCallHttpMethod = "get";
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
                 if (__workflow_unisex != null)
                     callPayload.Queries["unisex"] = ExpressionConverter.Convert(__workflow_unisex);
                 return new ApiConnectionAction<RestroomsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

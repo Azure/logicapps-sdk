@@ -12,26 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     public class PowerbiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<ListedScorecards> GetScorecards(Expression<Func<string>> groupid)
+        public IBodyWorkflowAction<ListedScorecards, ApiConnectionActionConfiguration> GetScorecards(Expression<Func<string>> groupid)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
-            return new DeferredBodyAction<ListedScorecards>(() =>
+            return new DeferredBodyAction<ListedScorecards, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", __workflow_groupid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 return new ApiConnectionAction<ListedScorecards>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<CreatedScorecard> CreateScorecard(Expression<Func<string>> groupid, Expression<Func<string>> scorecardname, Expression<Func<string>> scorecarddescription = null)
+        public IBodyWorkflowAction<CreatedScorecard, ApiConnectionActionConfiguration> CreateScorecard(Expression<Func<string>> groupid, Expression<Func<string>> scorecardname, Expression<Func<string>> scorecarddescription = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardname = WorkflowExpression.Compile(scorecardname, nameof(scorecardname), required: true);
             var __workflow_scorecarddescription = WorkflowExpression.Compile(scorecarddescription, nameof(scorecarddescription), required: false);
-            return new DeferredBodyAction<CreatedScorecard>(() =>
+            return new DeferredBodyAction<CreatedScorecard, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", __workflow_groupid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<CreatedScorecard>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<FetchedGoals> GetMultipleGoals(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId)
+        public IBodyWorkflowAction<FetchedGoals, ApiConnectionActionConfiguration> GetMultipleGoals(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
-            return new DeferredBodyAction<FetchedGoals>(() =>
+            return new DeferredBodyAction<FetchedGoals, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -69,11 +69,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["$expand"] = Convert.ToString("aggregations");
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 return new ApiConnectionAction<FetchedGoals>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalname, Expression<Func<string>> goalowner = null, Expression<Func<string>> goalcurrentValue = null, Expression<Func<string>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null, Expression<Func<string>> goalnote = null, Expression<Func<string>> goalparentGoalId = null)
+        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalname, Expression<Func<string>> goalowner = null, Expression<Func<string>> goalcurrentValue = null, Expression<Func<string>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null, Expression<Func<string>> goalnote = null, Expression<Func<string>> goalparentGoalId = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var __workflow_goalcompletionDate = WorkflowExpression.Compile(goalcompletionDate, nameof(goalcompletionDate), required: false);
             var __workflow_goalnote = WorkflowExpression.Compile(goalnote, nameof(goalnote), required: false);
             var __workflow_goalparentGoalId = WorkflowExpression.Compile(goalparentGoalId, nameof(goalparentGoalId), required: false);
-            return new DeferredBodyAction<CreateGoalResponse>(() =>
+            return new DeferredBodyAction<CreateGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -160,16 +160,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<CreateGoalResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<FetchedGoal> GetGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
+        public IBodyWorkflowAction<FetchedGoal, ApiConnectionActionConfiguration> GetGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
             var __workflow_goalId = WorkflowExpression.Compile(goalId, nameof(goalId), required: true);
-            return new DeferredBodyAction<FetchedGoal>(() =>
+            return new DeferredBodyAction<FetchedGoal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -177,11 +177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Queries["$expand"] = Convert.ToString("aggregations");
                 return new ApiConnectionAction<FetchedGoal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalname = null, Expression<Func<string>> goalowner = null, Expression<Func<double>> goalcurrentValue = null, Expression<Func<double>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalname = null, Expression<Func<string>> goalowner = null, Expression<Func<double>> goalcurrentValue = null, Expression<Func<double>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var __workflow_goalstatus = WorkflowExpression.Compile(goalstatus, nameof(goalstatus), required: false);
             var __workflow_goalstartDate = WorkflowExpression.Compile(goalstartDate, nameof(goalstartDate), required: false);
             var __workflow_goalcompletionDate = WorkflowExpression.Compile(goalcompletionDate, nameof(goalcompletionDate), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -259,18 +259,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<QueryExecutionResults> ExecuteDatasetQuery(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> specificationqueryText, Expression<Func<bool>> specificationserializerSettingsnullsIncluded = null, Expression<Func<string>> specificationimpersonateUser = null)
+        public IBodyWorkflowAction<QueryExecutionResults, ApiConnectionActionConfiguration> ExecuteDatasetQuery(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> specificationqueryText, Expression<Func<bool>> specificationserializerSettingsnullsIncluded = null, Expression<Func<string>> specificationimpersonateUser = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
             var __workflow_specificationqueryText = WorkflowExpression.Compile(specificationqueryText, nameof(specificationqueryText), required: true);
             var __workflow_specificationserializerSettingsnullsIncluded = WorkflowExpression.Compile(specificationserializerSettingsnullsIncluded, nameof(specificationserializerSettingsnullsIncluded), required: false);
             var __workflow_specificationimpersonateUser = WorkflowExpression.Compile(specificationimpersonateUser, nameof(specificationimpersonateUser), required: false);
-            return new DeferredBodyAction<QueryExecutionResults>(() =>
+            return new DeferredBodyAction<QueryExecutionResults, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", __workflow_groupid.WithUrlEncoding(1), __workflow_datasetid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -316,15 +316,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<QueryExecutionResults>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<JToken> ExecuteDatasetQueriesJson(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteDatasetQueriesJson(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/internalFlowActionOverloadAsJson/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", __workflow_groupid.WithUrlEncoding(1), __workflow_datasetid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -338,17 +338,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction AddRows(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> tablename, Expression<Func<object>> payload = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddRows(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> tablename, Expression<Func<object>> payload = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
             var __workflow_tablename = WorkflowExpression.Compile(tablename, nameof(tablename), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/tables/{2}/rows", __workflow_groupid.WithUrlEncoding(1), __workflow_datasetid.WithUrlEncoding(1), __workflow_tablename.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -356,18 +356,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_payload);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction GoalValueCheckinNote(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<string>> note = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GoalValueCheckinNote(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<string>> note = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
             var __workflow_goalId = WorkflowExpression.Compile(goalId, nameof(goalId), required: true);
             var __workflow_goalCheckin = WorkflowExpression.Compile(goalCheckin, nameof(goalCheckin), required: true);
             var __workflow_note = WorkflowExpression.Compile(note, nameof(note), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})/notes", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1), __workflow_goalCheckin.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -375,11 +375,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_note);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction GoalValueCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> checkindate, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null, Expression<Func<string>> checkinnote = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GoalValueCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> checkindate, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null, Expression<Func<string>> checkinnote = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var __workflow_checkinvalue = WorkflowExpression.Compile(checkinvalue, nameof(checkinvalue), required: false);
             var __workflow_checkinstatus = WorkflowExpression.Compile(checkinstatus, nameof(checkinstatus), required: false);
             var __workflow_checkinnote = WorkflowExpression.Compile(checkinnote, nameof(checkinnote), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -432,16 +432,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<GetGoalCheckinsResponse> GetGoalCheckins(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
+        public IBodyWorkflowAction<GetGoalCheckinsResponse, ApiConnectionActionConfiguration> GetGoalCheckins(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
             var __workflow_goalId = WorkflowExpression.Compile(goalId, nameof(goalId), required: true);
-            return new DeferredBodyAction<GetGoalCheckinsResponse>(() =>
+            return new DeferredBodyAction<GetGoalCheckinsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -449,11 +449,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Queries["$expand"] = Convert.ToString("notes");
                 return new ApiConnectionAction<GetGoalCheckinsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction UpdateGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var __workflow_goalCheckin = WorkflowExpression.Compile(goalCheckin, nameof(goalCheckin), required: true);
             var __workflow_checkinvalue = WorkflowExpression.Compile(checkinvalue, nameof(checkinvalue), required: false);
             var __workflow_checkinstatus = WorkflowExpression.Compile(checkinstatus, nameof(checkinstatus), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1), __workflow_goalCheckin.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -497,17 +497,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<GetGoalCheckinResponse> GetGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin)
+        public IBodyWorkflowAction<GetGoalCheckinResponse, ApiConnectionActionConfiguration> GetGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
             var __workflow_goalId = WorkflowExpression.Compile(goalId, nameof(goalId), required: true);
             var __workflow_goalCheckin = WorkflowExpression.Compile(goalCheckin, nameof(goalCheckin), required: true);
-            return new DeferredBodyAction<GetGoalCheckinResponse>(() =>
+            return new DeferredBodyAction<GetGoalCheckinResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", __workflow_groupid.WithUrlEncoding(1), __workflow_scorecardId.WithUrlEncoding(1), __workflow_goalId.WithUrlEncoding(1), __workflow_goalCheckin.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -515,26 +515,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 callPayload.Queries["$expand"] = Convert.ToString("notes");
                 return new ApiConnectionAction<GetGoalCheckinResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction RefreshDataset(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RefreshDataset(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/refreshes", __workflow_groupid.WithUrlEncoding(1), __workflow_datasetid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPowerBIReportformatInput>> exportPayloadPowerBIReportformat, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, Expression<Func<bool>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, Expression<Func<ExportFilter[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, Expression<Func<ExportReportPage[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, Expression<Func<EffectiveIdentity[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPowerBIReportformatInput>> exportPayloadPowerBIReportformat, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, Expression<Func<bool>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, Expression<Func<ExportFilter[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, Expression<Func<ExportReportPage[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, Expression<Func<EffectiveIdentity[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_reportid = WorkflowExpression.Compile(reportid, nameof(reportid), required: true);
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
             var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters), required: false);
             var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages), required: false);
             var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", __workflow_groupid.WithUrlEncoding(1), __workflow_reportid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -627,18 +627,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<string> InitiateExportToFileForPaginatedReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPaginatedReportformatInput>> exportPayloadPaginatedReportformat, Expression<Func<EffectiveIdentity[]>> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, Expression<Func<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]>> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InitiateExportToFileForPaginatedReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPaginatedReportformatInput>> exportPayloadPaginatedReportformat, Expression<Func<EffectiveIdentity[]>> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, Expression<Func<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]>> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_reportid = WorkflowExpression.Compile(reportid, nameof(reportid), required: true);
             var __workflow_exportPayloadPaginatedReportformat = WorkflowExpression.Compile(exportPayloadPaginatedReportformat, nameof(exportPayloadPaginatedReportformat), required: true);
             var __workflow_exportPayloadPaginatedReportpaginatedReportConfigurationidentities = WorkflowExpression.Compile(exportPayloadPaginatedReportpaginatedReportConfigurationidentities, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationidentities), required: false);
             var __workflow_exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = WorkflowExpression.Compile(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportToPaginatedReports", __workflow_groupid.WithUrlEncoding(1), __workflow_reportid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
     public class MockarooipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
-        public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema(Expression<Func<string>> bodyschemaName = null, Expression<Func<string>> bodyschemaJSON = null, Expression<Func<int>> bodyrecordCount = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GenerateDataFromExistingSchema(Expression<Func<string>> bodyschemaName = null, Expression<Func<string>> bodyschemaJSON = null, Expression<Func<int>> bodyrecordCount = null)
         {
             var __workflow_bodyschemaName = WorkflowExpression.Compile(bodyschemaName, nameof(bodyschemaName), required: false);
             var __workflow_bodyschemaJSON = WorkflowExpression.Compile(bodyschemaJSON, nameof(bodyschemaJSON), required: false);
             var __workflow_bodyrecordCount = WorkflowExpression.Compile(bodyrecordCount, nameof(bodyrecordCount), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/generate.json";
                 var apiCallHttpMethod = "post";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
                 }
 
                 return new ApiConnectionAction<JToken[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

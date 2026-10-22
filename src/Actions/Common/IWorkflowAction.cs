@@ -33,11 +33,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IWorkflowAction : IWorkflowOperation
     {
         /// <summary>
-        /// Gets the settings configured for this action.
-        /// </summary>
-        WorkflowActionConfiguration Configuration { get; }
-
-        /// <summary>
         /// Generates the <see cref="FlowTemplateAction"/> definition for this action, which is
         /// serialized into the workflow's JSON definition.
         /// </summary>
@@ -53,6 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// the conditional execution edges in the workflow graph.
         /// </summary>
         Dictionary<string, FlowStatus[]> RunAfterConfig { get; }
+    }
+
+    public interface IWorkflowAction<TConfiguration> :
+        IWorkflowAction,
+        IWorkflowOperation<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
     }
 
     /// <summary>
@@ -85,6 +87,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         T Body { get; }
     }
 
+    public interface IBodyWorkflowAction<T, TConfiguration> :
+        IBodyWorkflowAction<T>,
+        IWorkflowAction<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
+    }
+
     /// <summary>
     /// Represents a workflow action that produces a strongly-typed structured output, typically used
     /// for data-transformation actions such as Compose where the full output is a single typed value.
@@ -111,6 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         T Output { get; }
     }
 
+    public interface IOutputWorkflowAction<T, TConfiguration> :
+        IOutputWorkflowAction<T>,
+        IWorkflowAction<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
+    }
+
     /// <summary>
     /// Extends IWorkflowAction to support variable actions.
     /// </summary>
@@ -125,6 +141,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the name of the variable.
         /// </summary>
         string VariableName { get; }
+    }
+
+    public interface IVariableWorkflowAction<TConfiguration> :
+        IVariableWorkflowAction,
+        IWorkflowAction<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
     }
 
     /// <summary>
@@ -145,6 +168,24 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Adds a tool whose callback returns the tool branch chain.
         /// </summary>
         IAgentWorkflowAction AddTool<T>(
+            Func<IAgentToolContext<T>, OperationChain> tool,
+            string description,
+            T parameters)
+            where T : class;
+    }
+
+    public interface IAgentWorkflowAction<TConfiguration> :
+        IAgentWorkflowAction,
+        IWorkflowAction<TConfiguration>
+        where TConfiguration : IWorkflowOperationConfiguration
+    {
+        new IAgentWorkflowAction<TConfiguration> AddTool<T>(
+            Func<IAgentToolContext<T>, IWorkflowAction> tool,
+            string description,
+            T parameters)
+            where T : class;
+
+        new IAgentWorkflowAction<TConfiguration> AddTool<T>(
             Func<IAgentToolContext<T>, OperationChain> tool,
             string description,
             T parameters)

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
     public class RijksoverheidipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
-        public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays(Expression<Func<int>> rows = null, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<SchoolHolidaysResponseItem[], ApiConnectionActionConfiguration> SchoolHolidays(Expression<Func<int>> rows = null, Expression<Func<string>> output = null)
         {
             var __workflow_rows = WorkflowExpression.Compile(rows, nameof(rows), required: false);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
-            return new DeferredBodyAction<SchoolHolidaysResponseItem[]>(() =>
+            return new DeferredBodyAction<SchoolHolidaysResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
                 var apiCallHttpMethod = "get";
@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
                 if (__workflow_output != null)
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
-        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse, ApiConnectionActionConfiguration> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
         {
             var __workflow_schoolyear = WorkflowExpression.Compile(schoolyear, nameof(schoolyear), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
-            return new DeferredBodyAction<SchoolHolidaysPerSchoolYearResponse>(() =>
+            return new DeferredBodyAction<SchoolHolidaysPerSchoolYearResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", __workflow_schoolyear.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
                 if (__workflow_output != null)
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

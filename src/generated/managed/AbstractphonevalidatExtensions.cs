@@ -12,17 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractphonevalidat
     public class AbstractphonevalidatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractphonevalidat")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> phone)
+        public IBodyWorkflowAction<ValidateResponse, ApiConnectionActionConfiguration> Validate(Expression<Func<string>> phone)
         {
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
-            return new DeferredBodyAction<ValidateResponse>(() =>
+            return new DeferredBodyAction<ValidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["phone"] = ExpressionConverter.Convert(__workflow_phone);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

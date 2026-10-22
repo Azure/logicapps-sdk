@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
     public class PolygonActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetDailyOpenCloseResponse> GetDailyOpenClose(Expression<Func<string>> stocksTicker, Expression<Func<string>> date, Expression<Func<bool>> adjusted = null)
+        public IBodyWorkflowAction<GetDailyOpenCloseResponse, ApiConnectionActionConfiguration> GetDailyOpenClose(Expression<Func<string>> stocksTicker, Expression<Func<string>> date, Expression<Func<bool>> adjusted = null)
         {
             var __workflow_stocksTicker = WorkflowExpression.Compile(stocksTicker, nameof(stocksTicker), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_adjusted = WorkflowExpression.Compile(adjusted, nameof(adjusted), required: false);
-            return new DeferredBodyAction<GetDailyOpenCloseResponse>(() =>
+            return new DeferredBodyAction<GetDailyOpenCloseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/open-close/{0}/{1}", __workflow_stocksTicker.WithUrlEncoding(1), __workflow_date.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_adjusted != null)
                     callPayload.Queries["adjusted"] = ExpressionConverter.Convert(__workflow_adjusted);
                 return new ApiConnectionAction<GetDailyOpenCloseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetTickersResponse> GetTickers(Expression<Func<string>> ticker = null, Expression<Func<typeInput>> type = null, Expression<Func<marketInput>> market = null, Expression<Func<string>> exchange = null, Expression<Func<string>> cusip = null, Expression<Func<string>> cik = null, Expression<Func<string>> date = null, Expression<Func<string>> search = null, Expression<Func<bool>> active = null, Expression<Func<orderInput>> order = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetTickersResponse, ApiConnectionActionConfiguration> GetTickers(Expression<Func<string>> ticker = null, Expression<Func<typeInput>> type = null, Expression<Func<marketInput>> market = null, Expression<Func<string>> exchange = null, Expression<Func<string>> cusip = null, Expression<Func<string>> cik = null, Expression<Func<string>> date = null, Expression<Func<string>> search = null, Expression<Func<bool>> active = null, Expression<Func<orderInput>> order = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<GetTickersResponse>(() =>
+            return new DeferredBodyAction<GetTickersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/reference/tickers";
                 var apiCallHttpMethod = "get";
@@ -73,15 +73,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetTickersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetTickerDetailsResponse> GetTickerDetails(Expression<Func<string>> ticker, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetTickerDetailsResponse, ApiConnectionActionConfiguration> GetTickerDetails(Expression<Func<string>> ticker, Expression<Func<string>> date = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
-            return new DeferredBodyAction<GetTickerDetailsResponse>(() =>
+            return new DeferredBodyAction<GetTickerDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/reference/tickers/{0}", __workflow_ticker.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -89,15 +89,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_date != null)
                     callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetTickerDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetTickerEventsResponse> GetTickerEvents(Expression<Func<string>> id, Expression<Func<string>> types = null)
+        public IBodyWorkflowAction<GetTickerEventsResponse, ApiConnectionActionConfiguration> GetTickerEvents(Expression<Func<string>> id, Expression<Func<string>> types = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_types = WorkflowExpression.Compile(types, nameof(types), required: false);
-            return new DeferredBodyAction<GetTickerEventsResponse>(() =>
+            return new DeferredBodyAction<GetTickerEventsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vX/reference/tickers/{0}/events", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_types != null)
                     callPayload.Queries["types"] = ExpressionConverter.Convert(__workflow_types);
                 return new ApiConnectionAction<GetTickerEventsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockSplitsResponse> GetStockSplits(Expression<Func<string>> ticker, Expression<Func<string>> executionDate = null, Expression<Func<bool>> reverseSplit = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<GetStockSplitsResponse, ApiConnectionActionConfiguration> GetStockSplits(Expression<Func<string>> ticker, Expression<Func<string>> executionDate = null, Expression<Func<bool>> reverseSplit = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: true);
             var __workflow_executionDate = WorkflowExpression.Compile(executionDate, nameof(executionDate), required: false);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<GetStockSplitsResponse>(() =>
+            return new DeferredBodyAction<GetStockSplitsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/reference/splits";
                 var apiCallHttpMethod = "get";
@@ -135,11 +135,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetStockSplitsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockDividendsResponse> GetStockDividends(Expression<Func<string>> ticker, Expression<Func<string>> exDividendDate = null, Expression<Func<string>> recordDate = null, Expression<Func<string>> declarationDate = null, Expression<Func<string>> payDate = null, Expression<Func<frequencyInput>> frequency = null, Expression<Func<double>> cashAmount = null, Expression<Func<dividendTypeInput>> dividendType = null)
+        public IBodyWorkflowAction<GetStockDividendsResponse, ApiConnectionActionConfiguration> GetStockDividends(Expression<Func<string>> ticker, Expression<Func<string>> exDividendDate = null, Expression<Func<string>> recordDate = null, Expression<Func<string>> declarationDate = null, Expression<Func<string>> payDate = null, Expression<Func<frequencyInput>> frequency = null, Expression<Func<double>> cashAmount = null, Expression<Func<dividendTypeInput>> dividendType = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: true);
             var __workflow_exDividendDate = WorkflowExpression.Compile(exDividendDate, nameof(exDividendDate), required: false);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_frequency = WorkflowExpression.Compile(frequency, nameof(frequency), required: false);
             var __workflow_cashAmount = WorkflowExpression.Compile(cashAmount, nameof(cashAmount), required: false);
             var __workflow_dividendType = WorkflowExpression.Compile(dividendType, nameof(dividendType), required: false);
-            return new DeferredBodyAction<GetStockDividendsResponse>(() =>
+            return new DeferredBodyAction<GetStockDividendsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/reference/dividends";
                 var apiCallHttpMethod = "get";
@@ -170,11 +170,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_dividendType != null)
                     callPayload.Queries["dividend_type"] = ExpressionConverter.Convert(__workflow_dividendType);
                 return new ApiConnectionAction<GetStockDividendsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockFinancialDetailsResponse> GetStockFinancialDetails(Expression<Func<string>> ticker = null, Expression<Func<string>> cik = null, Expression<Func<string>> companyName = null, Expression<Func<string>> sic = null, Expression<Func<string>> filingDate = null, Expression<Func<string>> periodOfReportDate = null, Expression<Func<timeframeInput>> timeframe = null, Expression<Func<bool>> includeSources = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<GetStockFinancialDetailsResponse, ApiConnectionActionConfiguration> GetStockFinancialDetails(Expression<Func<string>> ticker = null, Expression<Func<string>> cik = null, Expression<Func<string>> companyName = null, Expression<Func<string>> sic = null, Expression<Func<string>> filingDate = null, Expression<Func<string>> periodOfReportDate = null, Expression<Func<timeframeInput>> timeframe = null, Expression<Func<bool>> includeSources = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: false);
             var __workflow_cik = WorkflowExpression.Compile(cik, nameof(cik), required: false);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<GetStockFinancialDetailsResponse>(() =>
+            return new DeferredBodyAction<GetStockFinancialDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vX/reference/financials";
                 var apiCallHttpMethod = "get";
@@ -215,15 +215,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetStockFinancialDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetExchangesResponse> GetExchanges(Expression<Func<assetClassInput>> assetClass = null, Expression<Func<localeInput>> locale = null)
+        public IBodyWorkflowAction<GetExchangesResponse, ApiConnectionActionConfiguration> GetExchanges(Expression<Func<assetClassInput>> assetClass = null, Expression<Func<localeInput>> locale = null)
         {
             var __workflow_assetClass = WorkflowExpression.Compile(assetClass, nameof(assetClass), required: false);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
-            return new DeferredBodyAction<GetExchangesResponse>(() =>
+            return new DeferredBodyAction<GetExchangesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/reference/exchanges";
                 var apiCallHttpMethod = "get";
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<GetExchangesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

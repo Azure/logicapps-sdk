@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
     public class YaradoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IBodyWorkflowAction<GetRobotsResponseItem[]> GetRobots()
+        public IBodyWorkflowAction<GetRobotsResponseItem[], ApiConnectionActionConfiguration> GetRobots()
         {
             var apiCallPath = "/v1/robots";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IBodyWorkflowAction<GetTaskFilesResponseItem[]> GetTaskFiles()
+        public IBodyWorkflowAction<GetTaskFilesResponseItem[], ApiConnectionActionConfiguration> GetTaskFiles()
         {
             var apiCallPath = "/v1/task-files";
             var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
         {
             var __workflow_bodyrobotId = WorkflowExpression.Compile(bodyrobotId, nameof(bodyrobotId), required: true);
             var __workflow_bodytaskFileId = WorkflowExpression.Compile(bodytaskFileId, nameof(bodytaskFileId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/task-schedules";
                 var apiCallHttpMethod = "post";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

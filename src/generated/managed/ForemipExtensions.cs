@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
     public class ForemipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
-        public IBodyWorkflowAction<Articles200Item[]> GetArticles(Expression<Func<int>> page, Expression<Func<int>> perPage, Expression<Func<string>> tag, Expression<Func<string>> tags = null, Expression<Func<string>> tagsExclude = null, Expression<Func<string>> username = null, Expression<Func<string>> state = null, Expression<Func<string>> top = null, Expression<Func<string>> collectionId = null)
+        public IBodyWorkflowAction<Articles200Item[], ApiConnectionActionConfiguration> GetArticles(Expression<Func<int>> page, Expression<Func<int>> perPage, Expression<Func<string>> tag, Expression<Func<string>> tags = null, Expression<Func<string>> tagsExclude = null, Expression<Func<string>> username = null, Expression<Func<string>> state = null, Expression<Func<string>> top = null, Expression<Func<string>> collectionId = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: false);
-            return new DeferredBodyAction<Articles200Item[]>(() =>
+            return new DeferredBodyAction<Articles200Item[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/articles";
                 var apiCallHttpMethod = "get";
@@ -47,22 +47,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
                 if (__workflow_collectionId != null)
                     callPayload.Queries["collection_id"] = ExpressionConverter.Convert(__workflow_collectionId);
                 return new ApiConnectionAction<Articles200Item[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
-        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId, Expression<Func<string>> url)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> userId, Expression<Func<string>> url)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
-            return new DeferredBodyAction<User>(() =>
+            return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<User>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

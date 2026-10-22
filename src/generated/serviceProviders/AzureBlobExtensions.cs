@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
     public class AzureBlobActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<BlobExistsOutput> BlobExists(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
+        public IBodyWorkflowAction<BlobExistsOutput, BlobExistsActionConfiguration> BlobExists(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
-            return new DeferredBodyAction<BlobExistsOutput>(() =>
+            return new DeferredBodyAction<BlobExistsOutput, BlobExistsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -30,15 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BlobExistsOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IWorkflowAction DeleteBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
+        public IWorkflowAction<DeleteBlobActionConfiguration> DeleteBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<DeleteBlobActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -49,14 +50,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IWorkflowAction DeleteBlobFromUri(Expression<Func<string>> blobUri)
+        public IWorkflowAction<DeleteBlobFromUriActionConfiguration> DeleteBlobFromUri(Expression<Func<string>> blobUri)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<DeleteBlobFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -66,16 +67,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ReadBlobOutput> ReadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<bool>> inferContentType = null)
+        public IBodyWorkflowAction<ReadBlobOutput, ReadBlobActionConfiguration> ReadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyAction<ReadBlobOutput>(() =>
+            return new DeferredBodyAction<ReadBlobOutput, ReadBlobActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -91,15 +92,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReadBlobOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ReadBlobFromUriOutput> ReadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<bool>> inferContentType = null)
+        public IBodyWorkflowAction<ReadBlobFromUriOutput, ReadBlobFromUriActionConfiguration> ReadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyAction<ReadBlobFromUriOutput>(() =>
+            return new DeferredBodyAction<ReadBlobFromUriOutput, ReadBlobFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -114,17 +115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReadBlobFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<UploadBlobOutput> UploadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<object>> content, Expression<Func<UploadBlobInputOverrideIfExistsType>> overrideIfExists = null)
+        public IBodyWorkflowAction<UploadBlobOutput, UploadBlobActionConfiguration> UploadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<object>> content, Expression<Func<UploadBlobInputOverrideIfExistsType>> overrideIfExists = null)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
-            return new DeferredBodyAction<UploadBlobOutput>(() =>
+            return new DeferredBodyAction<UploadBlobOutput, UploadBlobActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -141,16 +142,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<UploadBlobOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<UploadBlobFromUriOutput> UploadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<object>> content, Expression<Func<UploadBlobFromUriInputOverrideIfExistsType>> overrideIfExists = null)
+        public IBodyWorkflowAction<UploadBlobFromUriOutput, UploadBlobFromUriActionConfiguration> UploadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<object>> content, Expression<Func<UploadBlobFromUriInputOverrideIfExistsType>> overrideIfExists = null)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
-            return new DeferredBodyAction<UploadBlobFromUriOutput>(() =>
+            return new DeferredBodyAction<UploadBlobFromUriOutput, UploadBlobFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -166,17 +167,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<UploadBlobFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ListBlobsOutput> ListBlobs(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null, Expression<Func<string>> pageMarker = null, Expression<Func<bool>> excludeSubFolderBlobs = null)
+        public IBodyWorkflowAction<ListBlobsOutput, ListBlobsActionConfiguration> ListBlobs(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null, Expression<Func<string>> pageMarker = null, Expression<Func<bool>> excludeSubFolderBlobs = null)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobNamePrefix = WorkflowExpression.Compile(blobNamePrefix, nameof(blobNamePrefix), required: false);
             var __workflow_pageMarker = WorkflowExpression.Compile(pageMarker, nameof(pageMarker), required: false);
             var __workflow_excludeSubFolderBlobs = WorkflowExpression.Compile(excludeSubFolderBlobs, nameof(excludeSubFolderBlobs), required: false);
-            return new DeferredBodyAction<ListBlobsOutput>(() =>
+            return new DeferredBodyAction<ListBlobsOutput, ListBlobsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -201,15 +202,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListBlobsOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ListBlobsFromUriOutput> ListBlobsFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> pageMarker = null)
+        public IBodyWorkflowAction<ListBlobsFromUriOutput, ListBlobsFromUriActionConfiguration> ListBlobsFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> pageMarker = null)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             var __workflow_pageMarker = WorkflowExpression.Compile(pageMarker, nameof(pageMarker), required: false);
-            return new DeferredBodyAction<ListBlobsFromUriOutput>(() =>
+            return new DeferredBodyAction<ListBlobsFromUriOutput, ListBlobsFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -224,15 +225,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListBlobsFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ListBlobDirectoriesOutput> ListBlobDirectories(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null)
+        public IBodyWorkflowAction<ListBlobDirectoriesOutput, ListBlobDirectoriesActionConfiguration> ListBlobDirectories(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobNamePrefix = WorkflowExpression.Compile(blobNamePrefix, nameof(blobNamePrefix), required: false);
-            return new DeferredBodyAction<ListBlobDirectoriesOutput>(() =>
+            return new DeferredBodyAction<ListBlobDirectoriesOutput, ListBlobDirectoriesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -247,14 +248,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListBlobDirectoriesOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ListContainersOutput> ListContainers(Expression<Func<string>> pageMarker = null)
+        public IBodyWorkflowAction<ListContainersOutput, ListContainersActionConfiguration> ListContainers(Expression<Func<string>> pageMarker = null)
         {
             var __workflow_pageMarker = WorkflowExpression.Compile(pageMarker, nameof(pageMarker), required: false);
-            return new DeferredBodyAction<ListContainersOutput>(() =>
+            return new DeferredBodyAction<ListContainersOutput, ListContainersActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 if (__workflow_pageMarker != null)
@@ -268,11 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ListContainersOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetBlobSASUriOutput> GetBlobSASUri(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
+        public IBodyWorkflowAction<GetBlobSASUriOutput, GetBlobSASUriActionConfiguration> GetBlobSASUri(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
@@ -282,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             var __workflow_expiryTime = WorkflowExpression.Compile(expiryTime, nameof(expiryTime), required: false);
             var __workflow_sharedAccessProtocol = WorkflowExpression.Compile(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
             var __workflow_ipAddressRange = WorkflowExpression.Compile(ipAddressRange, nameof(ipAddressRange), required: false);
-            return new DeferredBodyAction<GetBlobSASUriOutput>(() =>
+            return new DeferredBodyAction<GetBlobSASUriOutput, GetBlobSASUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -323,11 +324,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobSASUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetBlobSASUriFromUriOutput> GetBlobSASUriFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriFromUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriFromUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
+        public IBodyWorkflowAction<GetBlobSASUriFromUriOutput, GetBlobSASUriFromUriActionConfiguration> GetBlobSASUriFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriFromUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriFromUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             var __workflow_groupPolicyIdentifier = WorkflowExpression.Compile(groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
@@ -336,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
             var __workflow_expiryTime = WorkflowExpression.Compile(expiryTime, nameof(expiryTime), required: false);
             var __workflow_sharedAccessProtocol = WorkflowExpression.Compile(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
             var __workflow_ipAddressRange = WorkflowExpression.Compile(ipAddressRange, nameof(ipAddressRange), required: false);
-            return new DeferredBodyAction<GetBlobSASUriFromUriOutput>(() =>
+            return new DeferredBodyAction<GetBlobSASUriFromUriOutput, GetBlobSASUriFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -376,15 +377,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobSASUriFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetBlobMetadataOutput> GetBlobMetadata(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
+        public IBodyWorkflowAction<GetBlobMetadataOutput, GetBlobMetadataActionConfiguration> GetBlobMetadata(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
-            return new DeferredBodyAction<GetBlobMetadataOutput>(() =>
+            return new DeferredBodyAction<GetBlobMetadataOutput, GetBlobMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -395,14 +396,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobMetadataOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetBlobMetadataFromUriOutput> GetBlobMetadataFromUri(Expression<Func<string>> blobUri)
+        public IBodyWorkflowAction<GetBlobMetadataFromUriOutput, GetBlobMetadataFromUriActionConfiguration> GetBlobMetadataFromUri(Expression<Func<string>> blobUri)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
-            return new DeferredBodyAction<GetBlobMetadataFromUriOutput>(() =>
+            return new DeferredBodyAction<GetBlobMetadataFromUriOutput, GetBlobMetadataFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -412,14 +413,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetBlobMetadataFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetContainerMetadataOutput> GetContainerMetadata(Expression<Func<string>> containerName)
+        public IBodyWorkflowAction<GetContainerMetadataOutput, GetContainerMetadataActionConfiguration> GetContainerMetadata(Expression<Func<string>> containerName)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
-            return new DeferredBodyAction<GetContainerMetadataOutput>(() =>
+            return new DeferredBodyAction<GetContainerMetadataOutput, GetContainerMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -429,18 +430,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetContainerMetadataOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<CopyBlobOutput> CopyBlob(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationBlobName, Expression<Func<bool>> overrideIfExists = null)
+        public IBodyWorkflowAction<CopyBlobOutput, CopyBlobActionConfiguration> CopyBlob(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationBlobName, Expression<Func<bool>> overrideIfExists = null)
         {
             var __workflow_sourceContainerName = WorkflowExpression.Compile(sourceContainerName, nameof(sourceContainerName), required: true);
             var __workflow_sourceBlobName = WorkflowExpression.Compile(sourceBlobName, nameof(sourceBlobName), required: true);
             var __workflow_destinationContainerName = WorkflowExpression.Compile(destinationContainerName, nameof(destinationContainerName), required: true);
             var __workflow_destinationBlobName = WorkflowExpression.Compile(destinationBlobName, nameof(destinationBlobName), required: true);
             var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
-            return new DeferredBodyAction<CopyBlobOutput>(() =>
+            return new DeferredBodyAction<CopyBlobOutput, CopyBlobActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sourceContainerName"] = ExpressionConverter.ConvertO(__workflow_sourceContainerName);
@@ -458,16 +459,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CopyBlobOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<CopyBlobFromUriOutput> CopyBlobFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<bool>> overrideIfExists = null)
+        public IBodyWorkflowAction<CopyBlobFromUriOutput, CopyBlobFromUriActionConfiguration> CopyBlobFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<bool>> overrideIfExists = null)
         {
             var __workflow_sourceBlobUri = WorkflowExpression.Compile(sourceBlobUri, nameof(sourceBlobUri), required: true);
             var __workflow_destinationBlobUri = WorkflowExpression.Compile(destinationBlobUri, nameof(destinationBlobUri), required: true);
             var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
-            return new DeferredBodyAction<CopyBlobFromUriOutput>(() =>
+            return new DeferredBodyAction<CopyBlobFromUriOutput, CopyBlobFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sourceBlobUri"] = ExpressionConverter.ConvertO(__workflow_sourceBlobUri);
@@ -483,14 +484,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CopyBlobFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<GetAccessPoliciesOutputItem[]> GetAccessPolicies(Expression<Func<string>> containerName)
+        public IBodyWorkflowAction<GetAccessPoliciesOutputItem[], GetAccessPoliciesActionConfiguration> GetAccessPolicies(Expression<Func<string>> containerName)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
-            return new DeferredBodyAction<GetAccessPoliciesOutputItem[]>(() =>
+            return new DeferredBodyAction<GetAccessPoliciesOutputItem[], GetAccessPoliciesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -500,16 +501,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetAccessPoliciesOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IWorkflowAction SetBlobTier(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<SetBlobTierInputBlobAccessTierType>> blobAccessTier)
+        public IWorkflowAction<SetBlobTierActionConfiguration> SetBlobTier(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<SetBlobTierInputBlobAccessTierType>> blobAccessTier)
         {
             var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
             var __workflow_blobAccessTier = WorkflowExpression.Compile(blobAccessTier, nameof(blobAccessTier), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<SetBlobTierActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["containerName"] = ExpressionConverter.ConvertO(__workflow_containerName);
@@ -521,15 +522,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IWorkflowAction SetBlobTierFromUri(Expression<Func<string>> blobUri, Expression<Func<SetBlobTierFromUriInputBlobAccessTierType>> blobAccessTier)
+        public IWorkflowAction<SetBlobTierFromUriActionConfiguration> SetBlobTierFromUri(Expression<Func<string>> blobUri, Expression<Func<SetBlobTierFromUriInputBlobAccessTierType>> blobAccessTier)
         {
             var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             var __workflow_blobAccessTier = WorkflowExpression.Compile(blobAccessTier, nameof(blobAccessTier), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<SetBlobTierFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["blobUri"] = ExpressionConverter.ConvertO(__workflow_blobUri);
@@ -540,18 +541,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ExtractArchiveFromBlobPathOutput> ExtractArchiveFromBlobPath(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationFolderPath, Expression<Func<ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
+        public IBodyWorkflowAction<ExtractArchiveFromBlobPathOutput, ExtractArchiveFromBlobPathActionConfiguration> ExtractArchiveFromBlobPath(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationFolderPath, Expression<Func<ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
             var __workflow_sourceContainerName = WorkflowExpression.Compile(sourceContainerName, nameof(sourceContainerName), required: true);
             var __workflow_sourceBlobName = WorkflowExpression.Compile(sourceBlobName, nameof(sourceBlobName), required: true);
             var __workflow_destinationContainerName = WorkflowExpression.Compile(destinationContainerName, nameof(destinationContainerName), required: true);
             var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: true);
             var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
-            return new DeferredBodyAction<ExtractArchiveFromBlobPathOutput>(() =>
+            return new DeferredBodyAction<ExtractArchiveFromBlobPathOutput, ExtractArchiveFromBlobPathActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sourceContainerName"] = ExpressionConverter.ConvertO(__workflow_sourceContainerName);
@@ -569,16 +570,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveFromBlobPathOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ExtractArchiveFromUriOutput> ExtractArchiveFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
+        public IBodyWorkflowAction<ExtractArchiveFromUriOutput, ExtractArchiveFromUriActionConfiguration> ExtractArchiveFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
             var __workflow_sourceBlobUri = WorkflowExpression.Compile(sourceBlobUri, nameof(sourceBlobUri), required: true);
             var __workflow_destinationBlobUri = WorkflowExpression.Compile(destinationBlobUri, nameof(destinationBlobUri), required: true);
             var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
-            return new DeferredBodyAction<ExtractArchiveFromUriOutput>(() =>
+            return new DeferredBodyAction<ExtractArchiveFromUriOutput, ExtractArchiveFromUriActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["sourceBlobUri"] = ExpressionConverter.ConvertO(__workflow_sourceBlobUri);
@@ -594,17 +595,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveFromUriOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
-        public IBodyWorkflowAction<ExtractArchiveFromContentOutput> ExtractArchiveFromContent(Expression<Func<string>> destinationContainerName, Expression<Func<string>> content = null, Expression<Func<string>> destinationFolderPath = null, Expression<Func<ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
+        public IBodyWorkflowAction<ExtractArchiveFromContentOutput, ExtractArchiveFromContentActionConfiguration> ExtractArchiveFromContent(Expression<Func<string>> destinationContainerName, Expression<Func<string>> content = null, Expression<Func<string>> destinationFolderPath = null, Expression<Func<ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
             var __workflow_destinationContainerName = WorkflowExpression.Compile(destinationContainerName, nameof(destinationContainerName), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
             var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: false);
             var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
-            return new DeferredBodyAction<ExtractArchiveFromContentOutput>(() =>
+            return new DeferredBodyAction<ExtractArchiveFromContentOutput, ExtractArchiveFromContentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 if (__workflow_content != null)
@@ -629,16 +630,208 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExtractArchiveFromContentOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class BlobExistsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class DeleteBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class DeleteBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ReadBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ReadBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class UploadBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class UploadBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ListBlobsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ListBlobsFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ListBlobDirectoriesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ListContainersActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetBlobSASUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetBlobSASUriFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetBlobMetadataActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetBlobMetadataFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetContainerMetadataActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CopyBlobActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CopyBlobFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetAccessPoliciesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SetBlobTierActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SetBlobTierFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ExtractArchiveFromBlobPathActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ExtractArchiveFromUriActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ExtractArchiveFromContentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class AzureBlobTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput> WhenABlobIsAddedOrModified(Expression<Func<string>> path)
+        public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput, WhenABlobIsAddedOrModifiedTriggerConfiguration> WhenABlobIsAddedOrModified(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyTrigger<WhenABlobIsAddedOrModifiedOutput>(() =>
+            return new DeferredBodyTrigger<WhenABlobIsAddedOrModifiedOutput, WhenABlobIsAddedOrModifiedTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["path"] = ExpressionConverter.ConvertO(__workflow_path);
@@ -648,8 +841,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenABlobIsAddedOrModifiedOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class WhenABlobIsAddedOrModifiedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class WhenABlobIsAddedOrModifiedOutput
