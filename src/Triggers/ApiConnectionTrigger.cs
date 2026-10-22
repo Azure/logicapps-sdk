@@ -9,9 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an API connection trigger in a workflow.
     /// </summary>
-    public class ApiConnectionTrigger :
-        WorkflowTriggerBase,
-        IWorkflowTrigger<ApiConnectionTriggerConfiguration>
+    public class ApiConnectionTrigger : WorkflowTriggerBase<ApiConnectionTriggerConfiguration>
     {
         /// <summary>
         /// The type of the flow template operation.
@@ -42,20 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal ApiConnectionTrigger(
             ApiConnectionNotificationActionInput input,
             string triggerName = null)
-            : this(input, new ApiConnectionTriggerConfiguration(), triggerName)
-        {
-        }
-
-        private ApiConnectionTrigger(
-            ApiConnectionNotificationActionInput input,
-            ApiConnectionTriggerConfiguration configuration,
-            string triggerName)
-            : base(configuration)
         {
             this._type = FlowTemplateOperationType.ApiConnectionNotification;
             this._inputs = input;
             this.Name = triggerName ?? "ApiConnectionTrigger";
-            this.Configuration = configuration;
         }
 
         /// <summary>
@@ -70,17 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             string triggerName = null,
             FlowRecurrence recurrence = null,
             bool enableSplitOn = false)
-            : this(input, new ApiConnectionTriggerConfiguration(), triggerName, recurrence, enableSplitOn)
-        {
-        }
-
-        private ApiConnectionTrigger(
-            ApiConnectionActionInput input,
-            ApiConnectionTriggerConfiguration configuration,
-            string triggerName,
-            FlowRecurrence recurrence,
-            bool enableSplitOn)
-            : base(configuration)
         {
             this._type = FlowTemplateOperationType.ApiConnection;
             this.Name = triggerName ?? "ApiConnectionTrigger";
@@ -91,10 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Interval = 1,
                 };
             this.SplitOn = enableSplitOn ? "@triggerOutputs()?['body']" : null;
-            this.Configuration = configuration;
         }
-
-        public ApiConnectionTriggerConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the trigger definition as a flow template trigger.

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The AppendToArrayVariable action appends a value to an existing array workflow variable.
     /// </summary>
-    public class AppendToArrayVariableAction : WorkflowActionBase, IVariableWorkflowAction
+    public class AppendToArrayVariableAction : WorkflowActionBase<VariableActionConfiguration>, IVariableWorkflowAction
     {
         private readonly string variableName;
         private readonly JToken value;

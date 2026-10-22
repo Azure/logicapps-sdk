@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeQuery", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], ExecuteQueryActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<InsertRowActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "deleteRows", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], DeleteRowsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getRows", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], GetRowsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getRowsV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetRowsV2Output>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetRowsV2Output, GetRowsV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "updateRows", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], UpdateRowsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getTables", connectionName: connectionId)
                 };
-                return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetTablesOutputItem[], GetTablesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeStoredProcedure", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExecuteStoredProcedureOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExecuteStoredProcedureOutput, ExecuteStoredProcedureActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsUpdated", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<JToken[], WhenARowIsUpdatedTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsDeleted", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<JToken[], WhenARowIsDeletedTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsInserted", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<JToken[], WhenARowIsInsertedTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<JToken[], WhenARowIsModifiedTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

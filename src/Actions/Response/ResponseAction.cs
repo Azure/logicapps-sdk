@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The response action to return a response with specific status code, headers, and body from the workflow.
     /// </summary>
-    public class ResponseAction : WorkflowActionBase
+    public class ResponseAction : WorkflowActionBase<ResponseActionConfiguration>
     {
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The Switch action evaluates an expression and routes to one of several cases.
     /// </summary>
-    public class SwitchAction : WorkflowActionBase
+    public class SwitchAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly JToken onExpression;
         private readonly Dictionary<string, SwitchCase> cases;

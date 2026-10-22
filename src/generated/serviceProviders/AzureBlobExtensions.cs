@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "blobExists", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BlobExistsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BlobExistsOutput, BlobExistsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "deleteBlob", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteBlobActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "deleteBlobFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteBlobFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "readBlob", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReadBlobOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ReadBlobOutput, ReadBlobActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "readBlobFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReadBlobFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ReadBlobFromUriOutput, ReadBlobFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "uploadBlob", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UploadBlobOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UploadBlobOutput, UploadBlobActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "uploadBlobFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UploadBlobFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UploadBlobFromUriOutput, UploadBlobFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "listBlobs", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListBlobsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListBlobsOutput, ListBlobsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "listBlobsFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListBlobsFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListBlobsFromUriOutput, ListBlobsFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "listBlobDirectories", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListBlobDirectoriesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListBlobDirectoriesOutput, ListBlobDirectoriesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "listContainers", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListContainersOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListContainersOutput, ListContainersActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobSASUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetBlobSASUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetBlobSASUriOutput, GetBlobSASUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobSASUriFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetBlobSASUriFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetBlobSASUriFromUriOutput, GetBlobSASUriFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetBlobMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetBlobMetadataOutput, GetBlobMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getBlobMetadataFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetBlobMetadataFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetBlobMetadataFromUriOutput, GetBlobMetadataFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getContainerMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetContainerMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetContainerMetadataOutput, GetContainerMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "copyBlob", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CopyBlobOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CopyBlobOutput, CopyBlobActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "copyBlobFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CopyBlobFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CopyBlobFromUriOutput, CopyBlobFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "getAccessPolicies", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetAccessPoliciesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetAccessPoliciesOutputItem[], GetAccessPoliciesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "setBlobTier", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SetBlobTierActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "setBlobTierFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SetBlobTierFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "extractArchiveFromBlobPath", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveFromBlobPathOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveFromBlobPathOutput, ExtractArchiveFromBlobPathActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "extractArchiveFromUri", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveFromUriOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveFromUriOutput, ExtractArchiveFromUriActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "extractArchiveFromContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveFromContentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveFromContentOutput, ExtractArchiveFromContentActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureBlob", operationId: "whenABlobIsAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenABlobIsAddedOrModifiedOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<WhenABlobIsAddedOrModifiedOutput, WhenABlobIsAddedOrModifiedTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

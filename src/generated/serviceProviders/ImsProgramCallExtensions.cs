@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ImsProgramCall
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/imsProgramCall", operationId: "executeMethod", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, ExecuteMethodActionConfiguration>(serviceProviderInput);
             });
         }
     }

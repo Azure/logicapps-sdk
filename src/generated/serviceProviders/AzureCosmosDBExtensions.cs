@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "BulkCreateOrUpdateDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BulkCreateOrUpdateDocumentOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BulkCreateOrUpdateDocumentOutputItem[], BulkCreateOrUpdateDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "CreateOrUpdateDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateOrUpdateDocumentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateOrUpdateDocumentOutput, CreateOrUpdateDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "DeleteDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteDocumentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<DeleteDocumentOutput, DeleteDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "QueryDocuments", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<QueryDocumentsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<QueryDocumentsOutput, QueryDocumentsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "ReadDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReadDocumentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ReadDocumentOutput, ReadDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "PatchItem", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<PatchItemOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<PatchItemOutput, PatchItemActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "whenADocumentIsCreatedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[], WhenADocumentIsCreatedOrModifiedTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

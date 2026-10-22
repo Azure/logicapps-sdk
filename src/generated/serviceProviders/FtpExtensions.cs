@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFtpFileContentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContentV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFtpFileContentV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFileMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetFileMetadataOutput, GetFileMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "createFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateFileOutput, CreateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "updateFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UpdateFileOutput, UpdateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "deleteFtpFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteFtpFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "listFilesInFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListFilesInFolderOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListFilesInFolderOutputItem[], ListFilesInFolderActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "extractArchive", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "whenFtpFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The DecrementVariable action decrements a numeric workflow variable by a specified value.
     /// </summary>
-    public class DecrementVariableAction : WorkflowActionBase, IVariableWorkflowAction
+    public class DecrementVariableAction : WorkflowActionBase<VariableActionConfiguration>, IVariableWorkflowAction
     {
         private readonly string variableName;
         private readonly JToken value;

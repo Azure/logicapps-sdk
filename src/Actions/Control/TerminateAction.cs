@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The Terminate action stops workflow execution with a specified status.
     /// </summary>
-    public class TerminateAction : WorkflowActionBase
+    public class TerminateAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly string status;
         private readonly string message;

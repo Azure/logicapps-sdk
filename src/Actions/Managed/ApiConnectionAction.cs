@@ -7,9 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>
-    public class ApiConnectionAction :
-        WorkflowActionBase,
-        IWorkflowAction<ApiConnectionActionConfiguration>
+    public class ApiConnectionAction : WorkflowActionBase<ApiConnectionActionConfiguration>
     {
         /// <summary>
         /// API connection action input.
@@ -21,20 +19,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="apiConnectionActionInput">The API connection action input.</param>
         internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
-            : this(apiConnectionActionInput, new ApiConnectionActionConfiguration())
-        {
-        }
-
-        private ApiConnectionAction(
-            ApiConnectionActionInput apiConnectionActionInput,
-            ApiConnectionActionConfiguration configuration)
-            : base(configuration)
         {
             this.apiConnectionActionInput = apiConnectionActionInput;
-            this.Configuration = configuration;
         }
-
-        public ApiConnectionActionConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the action definition for this API connection action.

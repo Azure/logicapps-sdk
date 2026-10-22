@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The ForEach action iterates over a collection and executes actions for each item.
     /// </summary>
-    public class ForEachAction : WorkflowActionBase
+    public class ForEachAction : WorkflowActionBase<ForEachActionConfiguration>
     {
         private readonly JToken items;
         private readonly IWorkflowAction actionsRoot;

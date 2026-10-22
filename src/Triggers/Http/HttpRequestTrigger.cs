@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a workflow trigger for HTTP requests, providing a strongly-typed output.
     /// </summary>
-    public class HttpRequestTrigger : WorkflowTriggerBase, IOutputWorkflowTrigger<HttpRequestTriggerOutput>
+    public class HttpRequestTrigger : WorkflowTriggerBase<HttpRequestTriggerConfiguration>, IOutputWorkflowTrigger<HttpRequestTriggerOutput>
     {
         /// <summary>
         /// The request input parameters.

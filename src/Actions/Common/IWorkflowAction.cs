@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </remarks>
     /// <seealso cref="IBodyWorkflowAction{T}"/>
     /// <seealso cref="IOutputWorkflowAction{T}"/>
-    /// <seealso cref="WorkflowActionBase"/>
     /// <seealso cref="RunAfter"/>
     public interface IWorkflowAction : IWorkflowOperation
     {

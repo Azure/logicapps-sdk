@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The scope action groups a set of actions together.
     /// </summary>
-    public class ScopeAction : WorkflowActionBase
+    public class ScopeAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly IWorkflowAction actionsRoot;
 

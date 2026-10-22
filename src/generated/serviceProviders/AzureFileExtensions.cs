@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "copyFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CopyFileOutput, CopyFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "extractArchive", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "createFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateFileOutput, CreateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "deleteFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<bool>(serviceProviderInput);
+                return new ServiceProviderOutputAction<bool, DeleteFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFileContentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContentV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFileContentV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileContentByPath", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFileContentByPathActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetFileMetadataOutput, GetFileMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "getFileMetadataByPath", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetFileMetadataByPathOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetFileMetadataByPathOutput, GetFileMetadataByPathActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "listFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListFolderOutputItem[], ListFolderActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "updateFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UpdateFileOutput, UpdateFileActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "whenFilesAreAdded", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOutputItem[], WhenFilesAreAddedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

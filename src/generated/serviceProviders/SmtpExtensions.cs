@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
+                return new ServiceProviderOutputAction<SendEmailOutput, SendEmailActionConfiguration>(serviceProviderInput);
             });
         }
     }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The InitializeVariable action declares and optionally sets the initial value of a workflow variable.
     /// </summary>
-    public class InitializeVariableAction : WorkflowActionBase, IVariableWorkflowAction
+    public class InitializeVariableAction : WorkflowActionBase<VariableActionConfiguration>, IVariableWorkflowAction
     {
         private readonly string variableName;
         private readonly string variableType;

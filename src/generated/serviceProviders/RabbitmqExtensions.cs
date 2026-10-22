@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "sendRabbitMQMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendRabbitMQMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendRabbitMQMessageOutput, SendRabbitMQMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "createQueue", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateQueueOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateQueueOutput, CreateQueueActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "completeMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CompleteMessageActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "receiveRabbitMQMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveRabbitMQMessagesOutput, ReceiveRabbitMQMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "peeklockRabbitMQMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<PeeklockRabbitMQMessagesOutput, PeeklockRabbitMQMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

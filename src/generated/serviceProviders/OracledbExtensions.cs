@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "getTables", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetTablesOutputItem[], GetTablesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "executeQuery", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], ExecuteQueryActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "getRows", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], GetRowsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<InsertRowActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "executeStoredProcedure", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExecuteStoredProcedureOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExecuteStoredProcedureOutput, ExecuteStoredProcedureActionConfiguration>(serviceProviderInput);
             });
         }
     }

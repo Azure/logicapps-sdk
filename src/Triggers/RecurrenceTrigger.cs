@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a workflow recurrence trigger.
     /// Encapsulates recurrence configuration such as frequency, interval, count, start time, and time zone.
     /// </summary>
-    public class RecurrenceTrigger : WorkflowTriggerBase
+    public class RecurrenceTrigger : WorkflowTriggerBase<RecurrenceTriggerConfiguration>
     {
         /// <summary>
         /// Gets or sets the frequency of the recurrence (e.g., Minute, Hour, Day).

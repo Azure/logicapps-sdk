@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The Until action repeatedly executes actions until a condition is met.
     /// </summary>
-    public class UntilAction : WorkflowActionBase
+    public class UntilAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly string expression;
         private readonly IWorkflowAction actionsRoot;

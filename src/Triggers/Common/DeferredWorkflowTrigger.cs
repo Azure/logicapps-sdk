@@ -2,27 +2,15 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     internal class DeferredWorkflowTrigger<TConfiguration> :
-        WorkflowTriggerBase,
-        IWorkflowTrigger<TConfiguration>
+        WorkflowTriggerBase<TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        private readonly Func<WorkflowTriggerBase> factory;
+        private readonly Func<WorkflowTriggerBase<TConfiguration>> factory;
 
-        internal DeferredWorkflowTrigger(Func<WorkflowTriggerBase> factory)
-            : this(factory, new TConfiguration())
-        {
-        }
-
-        private DeferredWorkflowTrigger(
-            Func<WorkflowTriggerBase> factory,
-            TConfiguration configuration)
-            : base(configuration)
+        internal DeferredWorkflowTrigger(Func<WorkflowTriggerBase<TConfiguration>> factory)
         {
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
-            this.Configuration = configuration;
         }
-
-        public TConfiguration Configuration { get; }
 
         internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null) =>
             this.factory().BuildTriggerDefinition(flowKind);
@@ -33,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IBodyWorkflowTrigger<T, TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        internal DeferredBodyTrigger(Func<WorkflowTriggerBase> factory)
+        internal DeferredBodyTrigger(Func<WorkflowTriggerBase<TConfiguration>> factory)
             : base(factory) { }
 
         public T TriggerBody => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
@@ -44,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IOutputWorkflowTrigger<T, TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        internal DeferredOutputTrigger(Func<WorkflowTriggerBase> factory)
+        internal DeferredOutputTrigger(Func<WorkflowTriggerBase<TConfiguration>> factory)
             : base(factory) { }
 
         public T TriggerOutput => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");

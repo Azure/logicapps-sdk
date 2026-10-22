@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "appendFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<AppendFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "copyFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CopyFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "createFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateFileOutput, CreateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "deleteFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFileContentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileContentV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFileContentV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetFileMetadataOutput, GetFileMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "listFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListFolderOutputItem[], ListFolderActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "renameFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<RenameFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "updateFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UpdateFileOutput, UpdateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "extractArchive", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAdded", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOutputItem[], WhenFilesAreAddedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

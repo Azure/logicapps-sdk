@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.CicsProgramCall
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "executeMethod", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, ExecuteMethodActionConfiguration>(serviceProviderInput);
             });
         }
     }

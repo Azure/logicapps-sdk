@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BrowseMessageOutput, BrowseMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BrowseBatchOutput, BrowseBatchActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ReceiveMessageOutput, ReceiveMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ReceiveBatchOutput, ReceiveBatchActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendMessageOutput, SendMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendBatchOutput, SendBatchActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CompleteMessageOutput, CompleteMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CompleteBatchOutput, CompleteBatchActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<MoveMessageToDeadLetterQueueOutput, MoveMessageToDeadLetterQueueActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<PollBrowseMessagesOutput, PollBrowseMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

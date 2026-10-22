@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<PutMessageOutput>(serviceProviderInput);
+                return new ServiceProviderOutputAction<PutMessageOutput, PutMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "getMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesOutputItem[], GetMessagesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "deleteMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putQueue", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<PutQueueActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "listQueues", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListQueuesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListQueuesOutput, ListQueuesActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "receiveQueueMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveQueueMessagesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveQueueMessagesOutput, ReceiveQueueMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "specifiedNumberOfMessagesAvailable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<int>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<int, SpecifiedNumberOfMessagesAvailableTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

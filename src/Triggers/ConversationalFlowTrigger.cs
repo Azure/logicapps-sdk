@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Represents a conversational flow trigger for agent-based workflows.
     /// </summary>
-    public class ConversationalFlowTrigger : WorkflowTriggerBase
+    public class ConversationalFlowTrigger : WorkflowTriggerBase<ConversationalFlowTriggerConfiguration>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConversationalFlowTrigger"/> class.

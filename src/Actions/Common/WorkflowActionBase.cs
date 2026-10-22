@@ -24,24 +24,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </para>
     /// </remarks>
     /// <seealso cref="IWorkflowAction"/>
-    /// <seealso cref="WorkflowTriggerBase"/>
-    public abstract class WorkflowActionBase : IWorkflowAction
+    public abstract class WorkflowActionBase<TConfiguration> :
+        IWorkflowAction<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        /// <summary>
-        /// Initializes a workflow action without optional settings.
-        /// </summary>
         internal WorkflowActionBase()
-            : this(new EmptyWorkflowOperationConfiguration())
         {
-        }
-
-        /// <summary>
-        /// Initializes a new workflow action.
-        /// </summary>
-        /// <param name="configuration">The action configuration.</param>
-        internal WorkflowActionBase(IWorkflowOperationConfiguration configuration)
-        {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            this.Configuration = new TConfiguration();
         }
 
         /// <summary>
@@ -59,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new Dictionary<string, FlowStatus[]>();
 
-        private IWorkflowOperationConfiguration Configuration { get; }
+        public TConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the action definition as a FlowTemplateAction.

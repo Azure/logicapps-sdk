@@ -4,27 +4,15 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Workflows.Sdk
 {
     internal class DeferredWorkflowAction<TConfiguration> :
-        WorkflowActionBase,
-        IWorkflowAction<TConfiguration>
+        WorkflowActionBase<TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        private readonly Func<WorkflowActionBase> factory;
+        private readonly Func<WorkflowActionBase<TConfiguration>> factory;
 
-        internal DeferredWorkflowAction(Func<WorkflowActionBase> factory)
-            : this(factory, new TConfiguration())
-        {
-        }
-
-        private DeferredWorkflowAction(
-            Func<WorkflowActionBase> factory,
-            TConfiguration configuration)
-            : base(configuration)
+        internal DeferredWorkflowAction(Func<WorkflowActionBase<TConfiguration>> factory)
         {
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
-            this.Configuration = configuration;
         }
-
-        public TConfiguration Configuration { get; }
 
         internal override FlowTemplateAction BuildActionDefinition(
             string flowName,
@@ -37,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IBodyWorkflowAction<T, TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        internal DeferredBodyAction(Func<WorkflowActionBase> factory)
+        internal DeferredBodyAction(Func<WorkflowActionBase<TConfiguration>> factory)
             : base(factory) { }
 
         public T Body => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
@@ -48,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IOutputWorkflowAction<T, TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        internal DeferredOutputAction(Func<WorkflowActionBase> factory)
+        internal DeferredOutputAction(Func<WorkflowActionBase<TConfiguration>> factory)
             : base(factory) { }
 
         public T Output => throw new InvalidOperationException("Workflow data is available only inside a compiled value expression.");
@@ -59,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IVariableWorkflowAction<TConfiguration>
         where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        internal DeferredVariableAction(string name, Func<WorkflowActionBase> factory)
+        internal DeferredVariableAction(string name, Func<WorkflowActionBase<TConfiguration>> factory)
             : base(factory) => this.VariableName = name;
 
         public string VariableName { get; }

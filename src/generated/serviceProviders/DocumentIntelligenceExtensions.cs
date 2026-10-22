@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<AnalyzeDocumentOutput, AnalyzeDocumentActionConfiguration>(serviceProviderInput);
             });
         }
     }

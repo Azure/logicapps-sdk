@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "callRfc", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, CallRfcActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createRfcTransaction", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateRfcTransactionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateRfcTransactionOutput, CreateRfcTransactionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getRfcTransaction", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetRfcTransactionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetRfcTransactionOutput, GetRfcTransactionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "addRfcToTransaction", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<AddRfcToTransactionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<AddRfcToTransactionOutput, AddRfcToTransactionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "commitRfcTransaction", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CommitRfcTransactionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CommitRfcTransactionOutput, CommitRfcTransactionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<ConfirmTransactionIdActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendIDoc", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendIDocOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendIDocOutput, SendIDocActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCallMethod", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BapiCallMethodOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BapiCallMethodOutput, BapiCallMethodActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createSession", connectionName: connectionId)
                 };
-                return new ServiceProviderAction<CreateSessionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateSessionOutput, CreateSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "closeSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CloseSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCommit", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BapiCommitOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BapiCommitOutput, BapiCommitActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiRollback", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<BapiRollbackOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<BapiRollbackOutput, BapiRollbackActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "readTable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReadTableOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ReadTableOutput, ReadTableActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchemaV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetSchemaV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocList", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetIDocListOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetIDocListOutput, GetIDocListActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocStatus", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetIDocStatusOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetIDocStatusOutput, GetIDocStatusActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "respondToSapServer", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<RespondToSapServerActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendExceptionToSapServer", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SendExceptionToSapServerActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnostics", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, RunDiagnosticsActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "SapTrigger", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<SapTriggerOutput, SapTriggerTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

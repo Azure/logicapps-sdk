@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The agent entity that represents a model deployment and its settings.
     /// </summary>
-    public class AgentAction : WorkflowActionBase
+    public class AgentAction : WorkflowActionBase<AgentActionConfiguration>
     {
         /// <summary>
         /// Gets or sets the agent model type.

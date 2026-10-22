@@ -98,5 +98,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         public string ClientTrackingId { get; set; }
     }
 
+    public sealed class ConversationalFlowTriggerConfiguration :
+        IWorkflowOperationConfiguration
+    {
+    }
+
     #endregion
 }
