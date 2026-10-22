@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<PublishEventsActionConfiguration>(serviceProviderInput);
             });
         }
     }

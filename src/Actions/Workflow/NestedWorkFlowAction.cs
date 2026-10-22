@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The nested flow action allows calling a workflow within another workflow.
     /// </summary>
-    public class NestedWorkflowAction : WorkflowActionBase
+    public class NestedWorkflowAction : WorkflowActionBase<NestedWorkflowActionConfiguration>
     {
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.

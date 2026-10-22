@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </remarks>
     /// <seealso cref="IOutputWorkflowTrigger{T}"/>
     /// <seealso cref="IBodyWorkflowTrigger{T}"/>
-    /// <seealso cref="WorkflowTriggerBase"/>
     /// <seealso cref="WorkflowFactory"/>
     public interface IWorkflowTrigger : IWorkflowOperation
     {

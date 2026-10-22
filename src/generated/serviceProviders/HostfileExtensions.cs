@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "generateFileContents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GenerateFileContentsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GenerateFileContentsOutput, GenerateFileContentsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "parseFileContents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ParseFileContentsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ParseFileContentsOutput, ParseFileContentsActionConfiguration>(serviceProviderInput);
             });
         }
     }

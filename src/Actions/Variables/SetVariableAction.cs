@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The SetVariable action sets a workflow variable to a new value.
     /// </summary>
-    public class SetVariableAction : WorkflowActionBase, IVariableWorkflowAction
+    public class SetVariableAction : WorkflowActionBase<VariableActionConfiguration>, IVariableWorkflowAction
     {
         private readonly string variableName;
         private readonly JToken value;

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "SendMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendMessageOutput, SendMessageActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "ReceiveMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveMessageOutput, ReceiveMessageTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

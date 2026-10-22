@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class ComposeAction : WorkflowActionBase
+    public class ComposeAction : WorkflowActionBase<ComposeActionConfiguration>
     {
         /// <summary>
         /// Gets or sets the name.

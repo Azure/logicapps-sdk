@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetArrayEmbeddingsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetArrayEmbeddingsOutput, GetArrayEmbeddingsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSingleEmbeddingOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSingleEmbeddingOutput, GetSingleEmbeddingActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletions", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetChatCompletionsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetChatCompletionsOutput, GetChatCompletionsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getMultipleChatCompletions", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMultipleChatCompletionsOutput, GetMultipleChatCompletionsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getCompletion", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetCompletionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetCompletionOutput, GetCompletionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletionsUsingPromptTemplate", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetChatCompletionsUsingPromptTemplateOutput, GetChatCompletionsUsingPromptTemplateActionConfiguration>(serviceProviderInput);
             });
         }
     }

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "executeCode", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExecuteCodeOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExecuteCodeOutput, ExecuteCodeActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileUpload", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<FileUploadOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<FileUploadOutput, FileUploadActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDownload", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<FileDownloadActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDelete", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<FileDeleteActionConfiguration>(serviceProviderInput);
             });
         }
     }

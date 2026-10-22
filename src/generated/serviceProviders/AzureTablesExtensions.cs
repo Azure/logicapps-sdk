@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "createTable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateTableOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateTableOutput, CreateTableActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "listTables", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListTablesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListTablesOutput, ListTablesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteTable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteTableActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "upsertEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<UpsertEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "updateEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<UpdateEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "getEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetEntityOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetEntityOutput, GetEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "queryEntities", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<QueryEntitiesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<QueryEntitiesOutput, QueryEntitiesActionConfiguration>(serviceProviderInput);
             });
         }
     }

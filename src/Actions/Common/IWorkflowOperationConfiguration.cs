@@ -69,8 +69,4 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     #endregion
 
-    internal sealed class EmptyWorkflowOperationConfiguration : IWorkflowOperationConfiguration
-    {
-    }
-
 }

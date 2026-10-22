@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SendEventActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SendEventsActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<ReplicateEventsActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveEventsOutputItem[], ReceiveEventsTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveEventsForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The AppendToStringVariable action appends a string to an existing string workflow variable.
     /// </summary>
-    public class AppendToStringVariableAction : WorkflowActionBase, IVariableWorkflowAction
+    public class AppendToStringVariableAction : WorkflowActionBase<VariableActionConfiguration>, IVariableWorkflowAction
     {
         private readonly string variableName;
         private readonly JToken value;

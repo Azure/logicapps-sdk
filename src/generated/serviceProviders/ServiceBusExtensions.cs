@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SendMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<SendMessagesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<ReplicateMessagesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CompleteQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<AbandonQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeadLetterQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<RenewLockQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeferQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromQueueV2Output, GetDeferredMessageFromQueueV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromQueueV2OutputItem[], GetMessagesFromQueueV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CompleteTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<AbandonTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeadLetterTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<RenewLockTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeferTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromTopicV2Output, GetDeferredMessageFromTopicV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromTopicV2OutputItem[], GetMessagesFromTopicV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "createTopicSubscription", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CreateTopicSubscriptionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteTopicSubscriptionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CompleteMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<AbandonMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeadLetterMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeferMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromQueueSessionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromQueueSessionOutput, GetDeferredMessageFromQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromTopicSessionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromTopicSessionOutput, GetDeferredMessageFromTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromQueueSessionOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromQueueSessionOutputItem[], GetMessagesFromQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromTopicSessionOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromTopicSessionOutputItem[], GetMessagesFromTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<RenewQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<RenewTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CloseQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<CloseTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveQueueMessagesOutputItem[], ReceiveQueueMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveTopicMessagesOutputItem[], ReceiveTopicMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessagesForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessagesForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockQueueMessagesV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<PeekLockQueueMessagesV2OutputItem[], PeekLockQueueMessagesV2TriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -1167,7 +1167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockTopicMessagesV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<PeekLockTopicMessagesV2OutputItem[], PeekLockTopicMessagesV2TriggerConfiguration>(serviceProviderInput);
             });
         }
 
@@ -1195,7 +1195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -1247,7 +1247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -1271,7 +1271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The compose action allows combining multiple inputs into a single output.
     /// </summary>
-    public class CSharpScriptCode : WorkflowActionBase
+    public class CSharpScriptCode : WorkflowActionBase<CustomCodeActionConfiguration>
     {
         /// <summary>
         /// Gets or sets the name.

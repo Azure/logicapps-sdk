@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         private readonly Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>> tools =
             new Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>>();
 
-        internal DeferredAgentAction(Func<WorkflowActionBase> factory)
+        internal DeferredAgentAction(Func<WorkflowActionBase<TConfiguration>> factory)
             : base(factory)
         {
         }

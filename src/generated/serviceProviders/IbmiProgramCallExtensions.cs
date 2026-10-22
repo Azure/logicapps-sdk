@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.IbmiProgramCall
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/ibmiProgramCall", operationId: "executeMethod", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, ExecuteMethodActionConfiguration>(serviceProviderInput);
             });
         }
     }

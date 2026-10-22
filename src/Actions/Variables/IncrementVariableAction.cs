@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The IncrementVariable action increments a numeric workflow variable by a specified value.
     /// </summary>
-    public class IncrementVariableAction : WorkflowActionBase, IVariableWorkflowAction
+    public class IncrementVariableAction : WorkflowActionBase<VariableActionConfiguration>, IVariableWorkflowAction
     {
         private readonly string variableName;
         private readonly JToken value;

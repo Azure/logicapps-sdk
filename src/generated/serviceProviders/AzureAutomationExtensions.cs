@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "createJob", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateJobOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateJobOutput, CreateJobActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetJobStatusOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetJobStatusOutput, GetJobStatusActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobOutput", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<string>(serviceProviderInput);
+                return new ServiceProviderBodyAction<string, GetJobOutputActionConfiguration>(serviceProviderInput);
             });
         }
     }

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The condition (If) action evaluates an expression and executes one of two branches.
     /// </summary>
-    public class ConditionAction : WorkflowActionBase
+    public class ConditionAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly string expression;
         private readonly IWorkflowAction trueBranchRoot;

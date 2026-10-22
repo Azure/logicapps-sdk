@@ -26,24 +26,13 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </para>
     /// </remarks>
     /// <seealso cref="IWorkflowTrigger"/>
-    /// <seealso cref="WorkflowActionBase"/>
-    public abstract class WorkflowTriggerBase : IWorkflowTrigger
+    public abstract class WorkflowTriggerBase<TConfiguration> :
+        IWorkflowTrigger<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
-        /// <summary>
-        /// Initializes a workflow trigger without optional settings.
-        /// </summary>
         internal WorkflowTriggerBase()
-            : this(new EmptyWorkflowOperationConfiguration())
         {
-        }
-
-        /// <summary>
-        /// Initializes a new workflow trigger.
-        /// </summary>
-        /// <param name="configuration">The trigger configuration.</param>
-        internal WorkflowTriggerBase(IWorkflowOperationConfiguration configuration)
-        {
-            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            this.Configuration = new TConfiguration();
         }
 
         /// <summary>
@@ -56,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
-        private IWorkflowOperationConfiguration Configuration { get; }
+        public TConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the trigger definition for the workflow.

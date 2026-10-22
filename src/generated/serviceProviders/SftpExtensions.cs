@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getFileContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetFileContentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetFileContentOutput, GetFileContentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "uploadFileContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UploadFileContentOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UploadFileContentOutput, UploadFileContentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<GetMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "listFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListFolderOutputItem[], ListFolderActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<DeleteFileOutput, DeleteFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "createFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateFolderOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateFolderOutput, CreateFolderActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "renameFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<RenameFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<RenameFileOutput, RenameFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "copyFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CopyFileOutput, CopyFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getFileContentV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFileContentV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "extractArchive", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteFolderActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[], WhenFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFileIsAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFileIsAddedOrModifiedOutput, WhenFileIsAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
     }

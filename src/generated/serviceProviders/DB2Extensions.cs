@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "deleteRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<DeleteRowOutput>(serviceProviderInput);
+                return new ServiceProviderOutputAction<DeleteRowOutput, DeleteRowActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeNonQuery", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<ExecuteNonQueryOutput>(serviceProviderInput);
+                return new ServiceProviderOutputAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeQuery", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], ExecuteQueryActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "getTables", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetTablesOutputItem[], GetTablesActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<InsertRowOutput>(serviceProviderInput);
+                return new ServiceProviderOutputAction<InsertRowOutput, InsertRowActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "storedProcedure", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], StoredProcedureActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "updateRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<UpdateRowOutput>(serviceProviderInput);
+                return new ServiceProviderOutputAction<UpdateRowOutput, UpdateRowActionConfiguration>(serviceProviderInput);
             });
         }
     }

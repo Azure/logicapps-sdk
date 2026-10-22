@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The HTTP action to send HTTP requests to external services.
     /// </summary>
-    public class HttpAction : WorkflowActionBase
+    public class HttpAction : WorkflowActionBase<HttpActionConfiguration>
     {
         /// <summary>
         /// Gets the URI of the HTTP request.
