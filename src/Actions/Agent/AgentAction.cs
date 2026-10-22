@@ -4,9 +4,20 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
     using Microsoft.Azure.Workflows.Sdk.Entities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+
+    public sealed class AgentActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
 
     /// <summary>
     /// The agent entity that represents a model deployment and its settings.

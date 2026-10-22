@@ -6,6 +6,22 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using Newtonsoft.Json.Linq;
 
+    public sealed class HttpRequestTriggerConfiguration :
+        IWorkflowOperationConfiguration,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder,
+        ITriggerConcurrencyConfigurationHolder,
+        IClientTrackingIdConfigurationHolder,
+        IRequestSchemaValidationConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+        public int? ConcurrentRuns { get; set; }
+        public int? MaximumWaitingRuns { get; set; }
+        public string ClientTrackingId { get; set; }
+        public bool SchemaValidationEnabled { get; set; }
+    }
+
     /// <summary>
     /// Represents a workflow trigger for HTTP requests, providing a strongly-typed output.
     /// </summary>

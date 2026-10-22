@@ -4,6 +4,23 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class ApiConnectionActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
     /// <summary>
     /// Represents an action that performs an API connection operation in a workflow.
     /// </summary>

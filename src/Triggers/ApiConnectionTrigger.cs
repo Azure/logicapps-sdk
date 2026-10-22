@@ -6,6 +6,22 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    public sealed class ApiConnectionTriggerConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder,
+        ITriggerConcurrencyConfigurationHolder,
+        IClientTrackingIdConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+        public int? ConcurrentRuns { get; set; }
+        public int? MaximumWaitingRuns { get; set; }
+        public string ClientTrackingId { get; set; }
+    }
+
     /// <summary>
     /// Represents an API connection trigger in a workflow.
     /// </summary>

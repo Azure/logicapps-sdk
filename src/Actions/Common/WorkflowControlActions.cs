@@ -125,24 +125,4 @@ namespace Microsoft.Azure.Workflows.Sdk
                 () => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)));
         }
     }
-
-    #region Action Configurations
-
-    public sealed class ControlActionConfiguration :
-        IWorkflowOperationConfiguration,
-        ITrackedPropertiesConfigurationHolder
-    {
-        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
-    }
-
-    public sealed class ForEachActionConfiguration :
-        IWorkflowOperationConfiguration,
-        ITrackedPropertiesConfigurationHolder,
-        IIterationConcurrencyConfigurationHolder
-    {
-        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
-        public int? MaximumParallelIterations { get; set; }
-    }
-
-    #endregion
 }
