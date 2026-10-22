@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
     public class UnixtimestampipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime(Expression<Func<int>> unixtimestamp = null)
+        public IBodyWorkflowAction<Unix2UTCDateTimeResponse, ApiConnectionActionConfiguration> Unix2UTCDateTime(Expression<Func<int>> unixtimestamp = null)
         {
             var __workflow_unixtimestamp = WorkflowExpression.Compile(unixtimestamp, nameof(unixtimestamp), required: false);
-            return new DeferredBodyAction<Unix2UTCDateTimeResponse>(() =>
+            return new DeferredBodyAction<Unix2UTCDateTimeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
                 var apiCallHttpMethod = "get";
@@ -23,15 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 if (__workflow_unixtimestamp != null)
                     callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(__workflow_unixtimestamp);
                 return new ApiConnectionAction<Unix2UTCDateTimeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
         {
             var __workflow_bodyunixTimeStamp = WorkflowExpression.Compile(bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
             var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            return new DeferredBodyAction<Unix2DateTimeTimezoneResponse>(() =>
+            return new DeferredBodyAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
                 var apiCallHttpMethod = "post";
@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 }
 
                 return new ApiConnectionAction<Unix2DateTimeTimezoneResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp(Expression<Func<string>> datetime = null)
+        public IBodyWorkflowAction<DateTime2UnixTimestampResponse, ApiConnectionActionConfiguration> DateTime2UnixTimestamp(Expression<Func<string>> datetime = null)
         {
             var __workflow_datetime = WorkflowExpression.Compile(datetime, nameof(datetime), required: false);
-            return new DeferredBodyAction<DateTime2UnixTimestampResponse>(() =>
+            return new DeferredBodyAction<DateTime2UnixTimestampResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tounixtimestamp";
                 var apiCallHttpMethod = "get";
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 if (__workflow_datetime != null)
                     callPayload.Queries["datetime"] = ExpressionConverter.Convert(__workflow_datetime);
                 return new ApiConnectionAction<DateTime2UnixTimestampResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

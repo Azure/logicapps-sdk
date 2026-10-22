@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
     public class ZapiernlaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        public IBodyWorkflowAction<ExposedActionResponseSchema> ExposedGet()
+        public IBodyWorkflowAction<ExposedActionResponseSchema, ApiConnectionActionConfiguration> ExposedGet()
         {
             var apiCallPath = "/api/v1/exposed/";
             var apiCallHttpMethod = "get";
@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        public IBodyWorkflowAction<ActionPostResponse> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
+        public IBodyWorkflowAction<ActionPostResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: true);
             var __workflow_bodypreviewOnly = WorkflowExpression.Compile(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
-            return new DeferredBodyAction<ActionPostResponse>(() =>
+            return new DeferredBodyAction<ActionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
                 }
 
                 return new ApiConnectionAction<ActionPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

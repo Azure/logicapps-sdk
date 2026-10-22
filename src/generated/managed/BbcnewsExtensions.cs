@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
     public class BbcnewsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<NewsResponse> GetNewsByTopic(Expression<Func<string>> lang, Expression<Func<string>> topic = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<NewsResponse, ApiConnectionActionConfiguration> GetNewsByTopic(Expression<Func<string>> lang, Expression<Func<string>> topic = null, Expression<Func<int>> limit = null)
         {
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
             var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<NewsResponse>(() =>
+            return new DeferredBodyAction<NewsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/news";
                 var apiCallHttpMethod = "get";
@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<NewsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<NewsResponse> GetLatestNews(Expression<Func<string>> lang, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<NewsResponse, ApiConnectionActionConfiguration> GetLatestNews(Expression<Func<string>> lang, Expression<Func<int>> limit = null)
         {
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<NewsResponse>(() =>
+            return new DeferredBodyAction<NewsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest";
                 var apiCallHttpMethod = "get";
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<NewsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<LanguagesResponse> GetLanguages()
+        public IBodyWorkflowAction<LanguagesResponse, ApiConnectionActionConfiguration> GetLanguages()
         {
             var apiCallPath = "/languages";
             var apiCallHttpMethod = "get";

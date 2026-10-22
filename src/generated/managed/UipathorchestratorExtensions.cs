@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodystartInfoprocessName = null, Expression<Func<int>> bodystartInfojobsCount = null, Expression<Func<bodystartInfosourceInput>> bodystartInfosource = null, Expression<Func<bodystartInfojobPriorityInput>> bodystartInfojobPriority = null, Expression<Func<bodystartInforuntimeTypeInput>> bodystartInforuntimeType = null, Expression<Func<string>> bodystartInfoinputArguments = null, Expression<Func<string>> bodystartInforeference = null)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodystartInfoprocessName = null, Expression<Func<int>> bodystartInfojobsCount = null, Expression<Func<bodystartInfosourceInput>> bodystartInfosource = null, Expression<Func<bodystartInfojobPriorityInput>> bodystartInfojobPriority = null, Expression<Func<bodystartInforuntimeTypeInput>> bodystartInforuntimeType = null, Expression<Func<string>> bodystartInfoinputArguments = null, Expression<Func<string>> bodystartInforeference = null)
         {
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
             var __workflow_bodystartInfoprocessName = WorkflowExpression.Compile(bodystartInfoprocessName, nameof(bodystartInfoprocessName), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             var __workflow_bodystartInforuntimeType = WorkflowExpression.Compile(bodystartInforuntimeType, nameof(bodystartInforuntimeType), required: false);
             var __workflow_bodystartInfoinputArguments = WorkflowExpression.Compile(bodystartInfoinputArguments, nameof(bodystartInfoinputArguments), required: false);
             var __workflow_bodystartInforeference = WorkflowExpression.Compile(bodystartInforeference, nameof(bodystartInforeference), required: false);
-            return new DeferredBodyAction<ODataValueOfIEnumerableOfJobDto>(() =>
+            return new DeferredBodyAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
                 var apiCallHttpMethod = "post";
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
                 }
 
                 return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<QueueItemDto> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataname = null, Expression<Func<bodyitemDatapriorityInput>> bodyitemDatapriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDatareference = null, Expression<Func<string>> bodyitemDataprogress = null)
+        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataname = null, Expression<Func<bodyitemDatapriorityInput>> bodyitemDatapriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDatareference = null, Expression<Func<string>> bodyitemDataprogress = null)
         {
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
             var __workflow_bodyitemDataname = WorkflowExpression.Compile(bodyitemDataname, nameof(bodyitemDataname), required: false);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
             var __workflow_bodyitemDatariskSLADate = WorkflowExpression.Compile(bodyitemDatariskSLADate, nameof(bodyitemDatariskSLADate), required: false);
             var __workflow_bodyitemDatareference = WorkflowExpression.Compile(bodyitemDatareference, nameof(bodyitemDatareference), required: false);
             var __workflow_bodyitemDataprogress = WorkflowExpression.Compile(bodyitemDataprogress, nameof(bodyitemDataprogress), required: false);
-            return new DeferredBodyAction<QueueItemDto>(() =>
+            return new DeferredBodyAction<QueueItemDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
                 var apiCallHttpMethod = "post";
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
                 }
 
                 return new ApiConnectionAction<QueueItemDto>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

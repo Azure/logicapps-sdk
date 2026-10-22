@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     public class NutrientconverttopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> Convert(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDataoutputFormatInput>> inputDataoutputFormat, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<string>> inputDatatemplateFileContent = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> Convert(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDataoutputFormatInput>> inputDataoutputFormat, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<string>> inputDatatemplateFileContent = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
             var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
             var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputDataoverrideSettings = WorkflowExpression.Compile(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
             var __workflow_inputDatatemplateFileContent = WorkflowExpression.Compile(inputDatatemplateFileContent, nameof(inputDatatemplateFileContent), required: false);
             var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert";
                 var apiCallHttpMethod = "post";
@@ -79,11 +79,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertCad(Expression<Func<string>> inputCadDatasourceFileName, Expression<Func<string>> inputCadDatasourceFileContent, Expression<Func<inputCadDatapaperSizeInput>> inputCadDatapaperSize = null, Expression<Func<string>> inputCadDatapaperSizeCustom = null, Expression<Func<string>> inputCadDatapageMargins = null, Expression<Func<string>> inputCadDatabackgroundColor = null, Expression<Func<inputCadDataforegroundColorInput>> inputCadDataforegroundColor = null, Expression<Func<string>> inputCadDataforegroundColorCustom = null, Expression<Func<inputCadDataemptyLayoutDetectionInput>> inputCadDataemptyLayoutDetection = null, Expression<Func<inputCadDatalayoutSortOrderInput>> inputCadDatalayoutSortOrder = null, Expression<Func<int>> inputCadDatastartPage = null, Expression<Func<int>> inputCadDataendPage = null, Expression<Func<string>> inputCadDataoverrideSettings = null, Expression<Func<bool>> inputCadDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertCad(Expression<Func<string>> inputCadDatasourceFileName, Expression<Func<string>> inputCadDatasourceFileContent, Expression<Func<inputCadDatapaperSizeInput>> inputCadDatapaperSize = null, Expression<Func<string>> inputCadDatapaperSizeCustom = null, Expression<Func<string>> inputCadDatapageMargins = null, Expression<Func<string>> inputCadDatabackgroundColor = null, Expression<Func<inputCadDataforegroundColorInput>> inputCadDataforegroundColor = null, Expression<Func<string>> inputCadDataforegroundColorCustom = null, Expression<Func<inputCadDataemptyLayoutDetectionInput>> inputCadDataemptyLayoutDetection = null, Expression<Func<inputCadDatalayoutSortOrderInput>> inputCadDatalayoutSortOrder = null, Expression<Func<int>> inputCadDatastartPage = null, Expression<Func<int>> inputCadDataendPage = null, Expression<Func<string>> inputCadDataoverrideSettings = null, Expression<Func<bool>> inputCadDatafailOnError = null)
         {
             var __workflow_inputCadDatasourceFileName = WorkflowExpression.Compile(inputCadDatasourceFileName, nameof(inputCadDatasourceFileName), required: true);
             var __workflow_inputCadDatasourceFileContent = WorkflowExpression.Compile(inputCadDatasourceFileContent, nameof(inputCadDatasourceFileContent), required: true);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputCadDataendPage = WorkflowExpression.Compile(inputCadDataendPage, nameof(inputCadDataendPage), required: false);
             var __workflow_inputCadDataoverrideSettings = WorkflowExpression.Compile(inputCadDataoverrideSettings, nameof(inputCadDataoverrideSettings), required: false);
             var __workflow_inputCadDatafailOnError = WorkflowExpression.Compile(inputCadDatafailOnError, nameof(inputCadDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_cad";
                 var apiCallHttpMethod = "post";
@@ -270,11 +270,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertEmail(Expression<Func<string>> inputEmailDatasourceFileName, Expression<Func<string>> inputEmailDatasourceFileContent, Expression<Func<bool>> inputEmailDataincludeAttachments = null, Expression<Func<inputEmailDataattachmentActionInput>> inputEmailDataattachmentAction = null, Expression<Func<bool>> inputEmailDataattachmentSummary = null, Expression<Func<inputEmailDataunsupportedAttachmentActionInput>> inputEmailDataunsupportedAttachmentAction = null, Expression<Func<string>> inputEmailDataincludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataexcludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataviewportSize = null, Expression<Func<inputEmailDatapaperSizeInput>> inputEmailDatapaperSize = null, Expression<Func<string>> inputEmailDatapaperSizeCustom = null, Expression<Func<string>> inputEmailDatapageMargins = null, Expression<Func<bool>> inputEmailDataattachmentErrors = null, Expression<Func<int>> inputEmailDataminImageSize = null, Expression<Func<bool>> inputEmailDataofflineMode = null, Expression<Func<int>> inputEmailDatastartPage = null, Expression<Func<int>> inputEmailDataendPage = null, Expression<Func<inputEmailDataconversionQualityInput>> inputEmailDataconversionQuality = null, Expression<Func<string>> inputEmailDataoverrideSettings = null, Expression<Func<bool>> inputEmailDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertEmail(Expression<Func<string>> inputEmailDatasourceFileName, Expression<Func<string>> inputEmailDatasourceFileContent, Expression<Func<bool>> inputEmailDataincludeAttachments = null, Expression<Func<inputEmailDataattachmentActionInput>> inputEmailDataattachmentAction = null, Expression<Func<bool>> inputEmailDataattachmentSummary = null, Expression<Func<inputEmailDataunsupportedAttachmentActionInput>> inputEmailDataunsupportedAttachmentAction = null, Expression<Func<string>> inputEmailDataincludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataexcludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataviewportSize = null, Expression<Func<inputEmailDatapaperSizeInput>> inputEmailDatapaperSize = null, Expression<Func<string>> inputEmailDatapaperSizeCustom = null, Expression<Func<string>> inputEmailDatapageMargins = null, Expression<Func<bool>> inputEmailDataattachmentErrors = null, Expression<Func<int>> inputEmailDataminImageSize = null, Expression<Func<bool>> inputEmailDataofflineMode = null, Expression<Func<int>> inputEmailDatastartPage = null, Expression<Func<int>> inputEmailDataendPage = null, Expression<Func<inputEmailDataconversionQualityInput>> inputEmailDataconversionQuality = null, Expression<Func<string>> inputEmailDataoverrideSettings = null, Expression<Func<bool>> inputEmailDatafailOnError = null)
         {
             var __workflow_inputEmailDatasourceFileName = WorkflowExpression.Compile(inputEmailDatasourceFileName, nameof(inputEmailDatasourceFileName), required: true);
             var __workflow_inputEmailDatasourceFileContent = WorkflowExpression.Compile(inputEmailDatasourceFileContent, nameof(inputEmailDatasourceFileContent), required: true);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputEmailDataconversionQuality = WorkflowExpression.Compile(inputEmailDataconversionQuality, nameof(inputEmailDataconversionQuality), required: false);
             var __workflow_inputEmailDataoverrideSettings = WorkflowExpression.Compile(inputEmailDataoverrideSettings, nameof(inputEmailDataoverrideSettings), required: false);
             var __workflow_inputEmailDatafailOnError = WorkflowExpression.Compile(inputEmailDatafailOnError, nameof(inputEmailDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_email";
                 var apiCallHttpMethod = "post";
@@ -523,11 +523,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertExcel(Expression<Func<string>> inputExcelDatasourceFileName, Expression<Func<string>> inputExcelDatasourceFileContent, Expression<Func<inputExcelDataoutputFormatInput>> inputExcelDataoutputFormat, Expression<Func<inputExcelDatarangeInput>> inputExcelDatarange = null, Expression<Func<bool>> inputExcelDatarevealHiddenRows = null, Expression<Func<bool>> inputExcelDatarevealHiddenColumns = null, Expression<Func<int>> inputExcelDatafitToPagesWide = null, Expression<Func<int>> inputExcelDatafitToPagesTall = null, Expression<Func<int>> inputExcelDatastartPage = null, Expression<Func<int>> inputExcelDataendPage = null, Expression<Func<inputExcelDataqualityInput>> inputExcelDataquality = null, Expression<Func<string>> inputExcelDataoverrideSettings = null, Expression<Func<bool>> inputExcelDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertExcel(Expression<Func<string>> inputExcelDatasourceFileName, Expression<Func<string>> inputExcelDatasourceFileContent, Expression<Func<inputExcelDataoutputFormatInput>> inputExcelDataoutputFormat, Expression<Func<inputExcelDatarangeInput>> inputExcelDatarange = null, Expression<Func<bool>> inputExcelDatarevealHiddenRows = null, Expression<Func<bool>> inputExcelDatarevealHiddenColumns = null, Expression<Func<int>> inputExcelDatafitToPagesWide = null, Expression<Func<int>> inputExcelDatafitToPagesTall = null, Expression<Func<int>> inputExcelDatastartPage = null, Expression<Func<int>> inputExcelDataendPage = null, Expression<Func<inputExcelDataqualityInput>> inputExcelDataquality = null, Expression<Func<string>> inputExcelDataoverrideSettings = null, Expression<Func<bool>> inputExcelDatafailOnError = null)
         {
             var __workflow_inputExcelDatasourceFileName = WorkflowExpression.Compile(inputExcelDatasourceFileName, nameof(inputExcelDatasourceFileName), required: true);
             var __workflow_inputExcelDatasourceFileContent = WorkflowExpression.Compile(inputExcelDatasourceFileContent, nameof(inputExcelDatasourceFileContent), required: true);
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputExcelDataquality = WorkflowExpression.Compile(inputExcelDataquality, nameof(inputExcelDataquality), required: false);
             var __workflow_inputExcelDataoverrideSettings = WorkflowExpression.Compile(inputExcelDataoverrideSettings, nameof(inputExcelDataoverrideSettings), required: false);
             var __workflow_inputExcelDatafailOnError = WorkflowExpression.Compile(inputExcelDatafailOnError, nameof(inputExcelDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_excel";
                 var apiCallHttpMethod = "post";
@@ -663,11 +663,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertHtml(Expression<Func<string>> inputDatasourceURLOrHTML, Expression<Func<inputDatapageOrientationInput>> inputDatapageOrientation = null, Expression<Func<inputDatamediaTypeInput>> inputDatamediaType = null, Expression<Func<inputDataauthenticationTypeInput>> inputDataauthenticationType = null, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDataviewportSize = null, Expression<Func<int>> inputDataconversionDelay = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertHtml(Expression<Func<string>> inputDatasourceURLOrHTML, Expression<Func<inputDatapageOrientationInput>> inputDatapageOrientation = null, Expression<Func<inputDatamediaTypeInput>> inputDatamediaType = null, Expression<Func<inputDataauthenticationTypeInput>> inputDataauthenticationType = null, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDataviewportSize = null, Expression<Func<int>> inputDataconversionDelay = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
             var __workflow_inputDatasourceURLOrHTML = WorkflowExpression.Compile(inputDatasourceURLOrHTML, nameof(inputDatasourceURLOrHTML), required: true);
             var __workflow_inputDatapageOrientation = WorkflowExpression.Compile(inputDatapageOrientation, nameof(inputDatapageOrientation), required: false);
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputDataviewportSize = WorkflowExpression.Compile(inputDataviewportSize, nameof(inputDataviewportSize), required: false);
             var __workflow_inputDataconversionDelay = WorkflowExpression.Compile(inputDataconversionDelay, nameof(inputDataconversionDelay), required: false);
             var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_html";
                 var apiCallHttpMethod = "post";
@@ -783,11 +783,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertInfopath(Expression<Func<string>> inputInfopathDatasourceFileName, Expression<Func<string>> inputInfopathDatasourceFileContent, Expression<Func<inputInfopathDataoutputFormatInput>> inputInfopathDataoutputFormat, Expression<Func<string>> inputInfopathDatatemplateFileContent = null, Expression<Func<string>> inputInfopathDataviewNames = null, Expression<Func<bool>> inputInfopathDataincludeAttachment = null, Expression<Func<inputInfopathDataattachmentActionInput>> inputInfopathDataattachmentAction = null, Expression<Func<inputInfopathDataunsupportedAttachmentActionInput>> inputInfopathDataunsupportedAttachmentAction = null, Expression<Func<bool>> inputInfopathDatabreakMergeOnError = null, Expression<Func<string>> inputInfopathDataincludeAttachmentFilter = null, Expression<Func<string>> inputInfopathDataexcludeAttachmentFilter = null, Expression<Func<inputInfopathDatadefaultPaperSizeInput>> inputInfopathDatadefaultPaperSize = null, Expression<Func<string>> inputInfopathDatadefaultPaperSizeCustom = null, Expression<Func<inputInfopathDataforcePaperSizeInput>> inputInfopathDataforcePaperSize = null, Expression<Func<string>> inputInfopathDataforcePaperSizeCustom = null, Expression<Func<inputInfopathDatadefaultPageOrientationInput>> inputInfopathDatadefaultPageOrientation = null, Expression<Func<inputInfopathDataforcePageOrientationInput>> inputInfopathDataforcePageOrientation = null, Expression<Func<int>> inputInfopathDatastartPage = null, Expression<Func<int>> inputInfopathDataendPage = null, Expression<Func<inputInfopathDataconversionQualityInput>> inputInfopathDataconversionQuality = null, Expression<Func<string>> inputInfopathDataoverrideSettings = null, Expression<Func<bool>> inputInfopathDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertInfopath(Expression<Func<string>> inputInfopathDatasourceFileName, Expression<Func<string>> inputInfopathDatasourceFileContent, Expression<Func<inputInfopathDataoutputFormatInput>> inputInfopathDataoutputFormat, Expression<Func<string>> inputInfopathDatatemplateFileContent = null, Expression<Func<string>> inputInfopathDataviewNames = null, Expression<Func<bool>> inputInfopathDataincludeAttachment = null, Expression<Func<inputInfopathDataattachmentActionInput>> inputInfopathDataattachmentAction = null, Expression<Func<inputInfopathDataunsupportedAttachmentActionInput>> inputInfopathDataunsupportedAttachmentAction = null, Expression<Func<bool>> inputInfopathDatabreakMergeOnError = null, Expression<Func<string>> inputInfopathDataincludeAttachmentFilter = null, Expression<Func<string>> inputInfopathDataexcludeAttachmentFilter = null, Expression<Func<inputInfopathDatadefaultPaperSizeInput>> inputInfopathDatadefaultPaperSize = null, Expression<Func<string>> inputInfopathDatadefaultPaperSizeCustom = null, Expression<Func<inputInfopathDataforcePaperSizeInput>> inputInfopathDataforcePaperSize = null, Expression<Func<string>> inputInfopathDataforcePaperSizeCustom = null, Expression<Func<inputInfopathDatadefaultPageOrientationInput>> inputInfopathDatadefaultPageOrientation = null, Expression<Func<inputInfopathDataforcePageOrientationInput>> inputInfopathDataforcePageOrientation = null, Expression<Func<int>> inputInfopathDatastartPage = null, Expression<Func<int>> inputInfopathDataendPage = null, Expression<Func<inputInfopathDataconversionQualityInput>> inputInfopathDataconversionQuality = null, Expression<Func<string>> inputInfopathDataoverrideSettings = null, Expression<Func<bool>> inputInfopathDatafailOnError = null)
         {
             var __workflow_inputInfopathDatasourceFileName = WorkflowExpression.Compile(inputInfopathDatasourceFileName, nameof(inputInfopathDatasourceFileName), required: true);
             var __workflow_inputInfopathDatasourceFileContent = WorkflowExpression.Compile(inputInfopathDatasourceFileContent, nameof(inputInfopathDatasourceFileContent), required: true);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputInfopathDataconversionQuality = WorkflowExpression.Compile(inputInfopathDataconversionQuality, nameof(inputInfopathDataconversionQuality), required: false);
             var __workflow_inputInfopathDataoverrideSettings = WorkflowExpression.Compile(inputInfopathDataoverrideSettings, nameof(inputInfopathDataoverrideSettings), required: false);
             var __workflow_inputInfopathDatafailOnError = WorkflowExpression.Compile(inputInfopathDatafailOnError, nameof(inputInfopathDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_infopath";
                 var apiCallHttpMethod = "post";
@@ -986,18 +986,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertPdfa(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDatapDFProfileInput>> inputPdfDatapDFProfile, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPdfa(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDatapDFProfileInput>> inputPdfDatapDFProfile, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
         {
             var __workflow_inputPdfDatasourceFileName = WorkflowExpression.Compile(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
             var __workflow_inputPdfDatasourceFileContent = WorkflowExpression.Compile(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
             var __workflow_inputPdfDatapDFProfile = WorkflowExpression.Compile(inputPdfDatapDFProfile, nameof(inputPdfDatapDFProfile), required: true);
             var __workflow_inputPdfDataoverrideSettings = WorkflowExpression.Compile(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
             var __workflow_inputPdfDatafailOnError = WorkflowExpression.Compile(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_pdfa";
                 var apiCallHttpMethod = "post";
@@ -1050,11 +1050,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint(Expression<Func<string>> inputPowerpointDatasourceFileName, Expression<Func<string>> inputPowerpointDatasourceFileContent, Expression<Func<inputPowerpointDataoutputFormatInput>> inputPowerpointDataoutputFormat, Expression<Func<inputPowerpointDatarangeInput>> inputPowerpointDatarange = null, Expression<Func<inputPowerpointDataprintLayoutHandoutsInput>> inputPowerpointDataprintLayoutHandouts = null, Expression<Func<bool>> inputPowerpointDataframeSlides = null, Expression<Func<int>> inputPowerpointDatastartPage = null, Expression<Func<int>> inputPowerpointDataendPage = null, Expression<Func<inputPowerpointDataqualityInput>> inputPowerpointDataquality = null, Expression<Func<string>> inputPowerpointDataoverrideSettings = null, Expression<Func<bool>> inputPowerpointDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPowerpoint(Expression<Func<string>> inputPowerpointDatasourceFileName, Expression<Func<string>> inputPowerpointDatasourceFileContent, Expression<Func<inputPowerpointDataoutputFormatInput>> inputPowerpointDataoutputFormat, Expression<Func<inputPowerpointDatarangeInput>> inputPowerpointDatarange = null, Expression<Func<inputPowerpointDataprintLayoutHandoutsInput>> inputPowerpointDataprintLayoutHandouts = null, Expression<Func<bool>> inputPowerpointDataframeSlides = null, Expression<Func<int>> inputPowerpointDatastartPage = null, Expression<Func<int>> inputPowerpointDataendPage = null, Expression<Func<inputPowerpointDataqualityInput>> inputPowerpointDataquality = null, Expression<Func<string>> inputPowerpointDataoverrideSettings = null, Expression<Func<bool>> inputPowerpointDatafailOnError = null)
         {
             var __workflow_inputPowerpointDatasourceFileName = WorkflowExpression.Compile(inputPowerpointDatasourceFileName, nameof(inputPowerpointDatasourceFileName), required: true);
             var __workflow_inputPowerpointDatasourceFileContent = WorkflowExpression.Compile(inputPowerpointDatasourceFileContent, nameof(inputPowerpointDatasourceFileContent), required: true);
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputPowerpointDataquality = WorkflowExpression.Compile(inputPowerpointDataquality, nameof(inputPowerpointDataquality), required: false);
             var __workflow_inputPowerpointDataoverrideSettings = WorkflowExpression.Compile(inputPowerpointDataoverrideSettings, nameof(inputPowerpointDataoverrideSettings), required: false);
             var __workflow_inputPowerpointDatafailOnError = WorkflowExpression.Compile(inputPowerpointDatafailOnError, nameof(inputPowerpointDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_powerpoint";
                 var apiCallHttpMethod = "post";
@@ -1176,11 +1176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertVisio(Expression<Func<string>> inputVisioDatasourceFileName, Expression<Func<string>> inputVisioDatasourceFileContent, Expression<Func<inputVisioDataoutputFormatInput>> inputVisioDataoutputFormat, Expression<Func<inputVisioDatarangeInput>> inputVisioDatarange = null, Expression<Func<int>> inputVisioDatastartPage = null, Expression<Func<int>> inputVisioDataendPage = null, Expression<Func<inputVisioDataqualityInput>> inputVisioDataquality = null, Expression<Func<string>> inputVisioDataoverrideSettings = null, Expression<Func<bool>> inputVisioDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<string>> inputVisioDatasourceFileName, Expression<Func<string>> inputVisioDatasourceFileContent, Expression<Func<inputVisioDataoutputFormatInput>> inputVisioDataoutputFormat, Expression<Func<inputVisioDatarangeInput>> inputVisioDatarange = null, Expression<Func<int>> inputVisioDatastartPage = null, Expression<Func<int>> inputVisioDataendPage = null, Expression<Func<inputVisioDataqualityInput>> inputVisioDataquality = null, Expression<Func<string>> inputVisioDataoverrideSettings = null, Expression<Func<bool>> inputVisioDatafailOnError = null)
         {
             var __workflow_inputVisioDatasourceFileName = WorkflowExpression.Compile(inputVisioDatasourceFileName, nameof(inputVisioDatasourceFileName), required: true);
             var __workflow_inputVisioDatasourceFileContent = WorkflowExpression.Compile(inputVisioDatasourceFileContent, nameof(inputVisioDatasourceFileContent), required: true);
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputVisioDataquality = WorkflowExpression.Compile(inputVisioDataquality, nameof(inputVisioDataquality), required: false);
             var __workflow_inputVisioDataoverrideSettings = WorkflowExpression.Compile(inputVisioDataoverrideSettings, nameof(inputVisioDataoverrideSettings), required: false);
             var __workflow_inputVisioDatafailOnError = WorkflowExpression.Compile(inputVisioDatafailOnError, nameof(inputVisioDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_visio";
                 var apiCallHttpMethod = "post";
@@ -1268,11 +1268,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertWord(Expression<Func<string>> inputWordDatasourceFileName, Expression<Func<string>> inputWordDatasourceFileContent, Expression<Func<inputWordDataoutputFormatInput>> inputWordDataoutputFormat, Expression<Func<inputWordDatadisplayForReviewInput>> inputWordDatadisplayForReview = null, Expression<Func<inputWordDatareviewMarkupModeInput>> inputWordDatareviewMarkupMode = null, Expression<Func<inputWordDatagenerateBookmarksInput>> inputWordDatagenerateBookmarks = null, Expression<Func<int>> inputWordDatastartPage = null, Expression<Func<int>> inputWordDataendPage = null, Expression<Func<inputWordDataqualityInput>> inputWordDataquality = null, Expression<Func<string>> inputWordDataoverrideSettings = null, Expression<Func<bool>> inputWordDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertWord(Expression<Func<string>> inputWordDatasourceFileName, Expression<Func<string>> inputWordDatasourceFileContent, Expression<Func<inputWordDataoutputFormatInput>> inputWordDataoutputFormat, Expression<Func<inputWordDatadisplayForReviewInput>> inputWordDatadisplayForReview = null, Expression<Func<inputWordDatareviewMarkupModeInput>> inputWordDatareviewMarkupMode = null, Expression<Func<inputWordDatagenerateBookmarksInput>> inputWordDatagenerateBookmarks = null, Expression<Func<int>> inputWordDatastartPage = null, Expression<Func<int>> inputWordDataendPage = null, Expression<Func<inputWordDataqualityInput>> inputWordDataquality = null, Expression<Func<string>> inputWordDataoverrideSettings = null, Expression<Func<bool>> inputWordDatafailOnError = null)
         {
             var __workflow_inputWordDatasourceFileName = WorkflowExpression.Compile(inputWordDatasourceFileName, nameof(inputWordDatasourceFileName), required: true);
             var __workflow_inputWordDatasourceFileContent = WorkflowExpression.Compile(inputWordDatasourceFileContent, nameof(inputWordDatasourceFileContent), required: true);
@@ -1285,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
             var __workflow_inputWordDataquality = WorkflowExpression.Compile(inputWordDataquality, nameof(inputWordDataquality), required: false);
             var __workflow_inputWordDataoverrideSettings = WorkflowExpression.Compile(inputWordDataoverrideSettings, nameof(inputWordDataoverrideSettings), required: false);
             var __workflow_inputWordDatafailOnError = WorkflowExpression.Compile(inputWordDatafailOnError, nameof(inputWordDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_word";
                 var apiCallHttpMethod = "post";
@@ -1394,7 +1394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
                 }
 
                 return new ApiConnectionAction<OperationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

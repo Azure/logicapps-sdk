@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdataconnectai
     public class CdataconnectaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdataconnectai")]
-        public IWorkflowAction InvokeMCP(Expression<Func<string>> accept = null, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> accept = null, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
             var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
             var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp";
                 var apiCallHttpMethod = "post";
@@ -79,11 +79,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdataconnectai
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdataconnectai")]
-        public IBodyWorkflowAction<OAuthAuthorizationServerMetadataResponse> OAuthAuthorizationServerMetadata()
+        public IBodyWorkflowAction<OAuthAuthorizationServerMetadataResponse, ApiConnectionActionConfiguration> OAuthAuthorizationServerMetadata()
         {
             var apiCallPath = "/.well-known/oauth-authorization-server";
             var apiCallHttpMethod = "get";

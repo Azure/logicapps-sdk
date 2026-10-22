@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
     public class MeekouActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> HtmlToPdf(Expression<Func<string>> htmlContent = null, Expression<Func<string>> xCustomHost = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> HtmlToPdf(Expression<Func<string>> htmlContent = null, Expression<Func<string>> xCustomHost = null)
         {
             var __workflow_htmlContent = WorkflowExpression.Compile(htmlContent, nameof(htmlContent), required: false);
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
-            return new DeferredBodyAction<Response>(() =>
+            return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/File/HtmlToPdf";
                 var apiCallHttpMethod = "post";
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 if (__workflow_xCustomHost != null)
                     callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction<Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IWorkflowAction SwaggerThreeToTwo(Expression<Func<string>> swaggerUrl = null, Expression<Func<string>> xCustomHost = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SwaggerThreeToTwo(Expression<Func<string>> swaggerUrl = null, Expression<Func<string>> xCustomHost = null)
         {
             var __workflow_swaggerUrl = WorkflowExpression.Compile(swaggerUrl, nameof(swaggerUrl), required: false);
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/File/SwaggerThreeToTwo";
                 var apiCallHttpMethod = "post";
@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 if (__workflow_xCustomHost != null)
                     callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> Evaluate(Expression<Func<string>> formula = null, Expression<Func<string>> xCustomHost = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Evaluate(Expression<Func<string>> formula = null, Expression<Func<string>> xCustomHost = null)
         {
             var __workflow_formula = WorkflowExpression.Compile(formula, nameof(formula), required: false);
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
-            return new DeferredBodyAction<Response>(() =>
+            return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Math/Evaluate";
                 var apiCallHttpMethod = "post";
@@ -62,16 +62,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 if (__workflow_xCustomHost != null)
                     callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction<Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodypath = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodypath = null)
         {
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
-            return new DeferredBodyAction<Response>(() =>
+            return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Math/Sum";
                 var apiCallHttpMethod = "post";
@@ -98,15 +98,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 }
 
                 return new ApiConnectionAction<Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> RoundUp(Expression<Func<double>> input = null, Expression<Func<string>> xCustomHost = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> RoundUp(Expression<Func<double>> input = null, Expression<Func<string>> xCustomHost = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
-            return new DeferredBodyAction<Response>(() =>
+            return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Math/RoundUp";
                 var apiCallHttpMethod = "post";
@@ -116,16 +116,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 if (__workflow_xCustomHost != null)
                     callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction<Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodypattern = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodypattern = null)
         {
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: false);
-            return new DeferredBodyAction<Response>(() =>
+            return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Text/Regex";
                 var apiCallHttpMethod = "post";
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
                 }
 
                 return new ApiConnectionAction<Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

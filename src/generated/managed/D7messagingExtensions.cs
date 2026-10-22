@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
     public class D7messagingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<D7BalanceResponse> D7Balance()
+        public IBodyWorkflowAction<D7BalanceResponse, ApiConnectionActionConfiguration> D7Balance()
         {
             var apiCallPath = "/messages/v1/balance";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<NumberLookupResponse> NumberLookup(Expression<Func<string>> bodyrecipient)
+        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<string>> bodyrecipient)
         {
             var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
-            return new DeferredBodyAction<NumberLookupResponse>(() =>
+            return new DeferredBodyAction<NumberLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hlr/v1/lookup";
                 var apiCallHttpMethod = "post";
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
                 }
 
                 return new ApiConnectionAction<NumberLookupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPSendOTPResponse> OTPSendOTP(Expression<Func<string>> bodyoriginator, Expression<Func<string>> bodyrecipient, Expression<Func<string>> bodycontent, Expression<Func<bodydataCodingInput>> bodydataCoding, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodyretryDelay = null, Expression<Func<string>> bodyretryCount = null, Expression<Func<string>> bodyotpCodeLength = null, Expression<Func<bodyotpTypeInput>> bodyotpType = null, Expression<Func<string>> bodysuccessUrl = null, Expression<Func<string>> bodyfailureUrl = null)
+        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<string>> bodyoriginator, Expression<Func<string>> bodyrecipient, Expression<Func<string>> bodycontent, Expression<Func<bodydataCodingInput>> bodydataCoding, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodyretryDelay = null, Expression<Func<string>> bodyretryCount = null, Expression<Func<string>> bodyotpCodeLength = null, Expression<Func<bodyotpTypeInput>> bodyotpType = null, Expression<Func<string>> bodysuccessUrl = null, Expression<Func<string>> bodyfailureUrl = null)
         {
             var __workflow_bodyoriginator = WorkflowExpression.Compile(bodyoriginator, nameof(bodyoriginator), required: true);
             var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
             var __workflow_bodyotpType = WorkflowExpression.Compile(bodyotpType, nameof(bodyotpType), required: false);
             var __workflow_bodysuccessUrl = WorkflowExpression.Compile(bodysuccessUrl, nameof(bodysuccessUrl), required: false);
             var __workflow_bodyfailureUrl = WorkflowExpression.Compile(bodyfailureUrl, nameof(bodyfailureUrl), required: false);
-            return new DeferredBodyAction<OTPSendOTPResponse>(() =>
+            return new DeferredBodyAction<OTPSendOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/send-otp";
                 var apiCallHttpMethod = "post";
@@ -119,14 +119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
                 }
 
                 return new ApiConnectionAction<OTPSendOTPResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPResendOTPResponse> OTPResendOTP(Expression<Func<string>> bodyotpId)
+        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<string>> bodyotpId)
         {
             var __workflow_bodyotpId = WorkflowExpression.Compile(bodyotpId, nameof(bodyotpId), required: true);
-            return new DeferredBodyAction<OTPResendOTPResponse>(() =>
+            return new DeferredBodyAction<OTPResendOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/resend-otp";
                 var apiCallHttpMethod = "post";
@@ -141,15 +141,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
                 }
 
                 return new ApiConnectionAction<OTPResendOTPResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPVerifyOTPResponse> OTPVerifyOTP(Expression<Func<string>> bodyotpCode, Expression<Func<string>> bodyotpId = null)
+        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<string>> bodyotpCode, Expression<Func<string>> bodyotpId = null)
         {
             var __workflow_bodyotpCode = WorkflowExpression.Compile(bodyotpCode, nameof(bodyotpCode), required: true);
             var __workflow_bodyotpId = WorkflowExpression.Compile(bodyotpId, nameof(bodyotpId), required: false);
-            return new DeferredBodyAction<OTPVerifyOTPResponse>(() =>
+            return new DeferredBodyAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/verify-otp";
                 var apiCallHttpMethod = "post";
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
                 }
 
                 return new ApiConnectionAction<OTPVerifyOTPResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

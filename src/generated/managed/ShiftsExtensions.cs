@@ -12,26 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class ShiftsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ScheduleResponse> GetSchedule(Expression<Func<string>> teamId)
+        public IBodyWorkflowAction<ScheduleResponse, ApiConnectionActionConfiguration> GetSchedule(Expression<Func<string>> teamId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            return new DeferredBodyAction<ScheduleResponse>(() =>
+            return new DeferredBodyAction<ScheduleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ScheduleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListTimesOffResponse> ListTimesOff(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListTimesOffResponse, ApiConnectionActionConfiguration> ListTimesOff(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListTimesOffResponse>(() =>
+            return new DeferredBodyAction<ListTimesOffResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timesoff", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListTimesOffResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<TimeOffResponse> CreateTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestvaluetimeOffReason = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null)
+        public IBodyWorkflowAction<TimeOffResponse, ApiConnectionActionConfiguration> CreateTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestvaluetimeOffReason = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_requestuserID = WorkflowExpression.Compile(requestuserID, nameof(requestuserID), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var __workflow_requestvaluestartTime = WorkflowExpression.Compile(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
             var __workflow_requestvalueendTime = WorkflowExpression.Compile(requestvalueendTime, nameof(requestvalueendTime), required: false);
             var __workflow_requestvaluetheme = WorkflowExpression.Compile(requestvaluetheme, nameof(requestvaluetheme), required: false);
-            return new DeferredBodyAction<TimeOffResponse>(() =>
+            return new DeferredBodyAction<TimeOffResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timesoff", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -112,45 +112,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction<TimeOffResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<TimeOffResponse> GetTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
+        public IBodyWorkflowAction<TimeOffResponse, ApiConnectionActionConfiguration> GetTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_timeOffId = WorkflowExpression.Compile(timeOffId, nameof(timeOffId), required: true);
-            return new DeferredBodyAction<TimeOffResponse>(() =>
+            return new DeferredBodyAction<TimeOffResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timesoff/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_timeOffId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TimeOffResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction DeleteTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> timeOffId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_timeOffId = WorkflowExpression.Compile(timeOffId, nameof(timeOffId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timesoff/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_timeOffId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListShiftsResponse> ListShifts(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListShiftsResponse, ApiConnectionActionConfiguration> ListShifts(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListShiftsResponse>(() =>
+            return new DeferredBodyAction<ListShiftsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/shifts", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -162,11 +162,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListShiftsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ShiftResponse> CreateShift(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestvaluedisplayName = null, Expression<Func<string>> requestvaluenotes = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null, Expression<Func<requestvalueactivitiesInputItem[]>> requestvalueactivities = null)
+        public IBodyWorkflowAction<ShiftResponse, ApiConnectionActionConfiguration> CreateShift(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestvaluedisplayName = null, Expression<Func<string>> requestvaluenotes = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null, Expression<Func<requestvalueactivitiesInputItem[]>> requestvalueactivities = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_requestuserID = WorkflowExpression.Compile(requestuserID, nameof(requestuserID), required: true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var __workflow_requestvalueendTime = WorkflowExpression.Compile(requestvalueendTime, nameof(requestvalueendTime), required: false);
             var __workflow_requestvaluetheme = WorkflowExpression.Compile(requestvaluetheme, nameof(requestvaluetheme), required: false);
             var __workflow_requestvalueactivities = WorkflowExpression.Compile(requestvalueactivities, nameof(requestvalueactivities), required: false);
-            return new DeferredBodyAction<ShiftResponse>(() =>
+            return new DeferredBodyAction<ShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/shifts", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -252,45 +252,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction<ShiftResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ShiftResponse> GetShift(Expression<Func<string>> teamId, Expression<Func<string>> shiftId)
+        public IBodyWorkflowAction<ShiftResponse, ApiConnectionActionConfiguration> GetShift(Expression<Func<string>> teamId, Expression<Func<string>> shiftId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_shiftId = WorkflowExpression.Compile(shiftId, nameof(shiftId), required: true);
-            return new DeferredBodyAction<ShiftResponse>(() =>
+            return new DeferredBodyAction<ShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/shifts/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_shiftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ShiftResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction DeleteShift(Expression<Func<string>> teamId, Expression<Func<string>> shiftId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteShift(Expression<Func<string>> teamId, Expression<Func<string>> shiftId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_shiftId = WorkflowExpression.Compile(shiftId, nameof(shiftId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/shifts/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_shiftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListOpenShiftsResponse> ListOpenShifts(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListOpenShiftsResponse, ApiConnectionActionConfiguration> ListOpenShifts(Expression<Func<string>> teamId, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListOpenShiftsResponse>(() =>
+            return new DeferredBodyAction<ListOpenShiftsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShifts", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -302,11 +302,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListOpenShiftsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse> CreateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
+        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> CreateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_requestsharedOpenShiftstartTime = WorkflowExpression.Compile(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var __workflow_requestsharedOpenShiftnotes = WorkflowExpression.Compile(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
             var __workflow_requestsharedOpenShifttheme = WorkflowExpression.Compile(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
             var __workflow_requestsharedOpenShiftactivities = WorkflowExpression.Compile(requestsharedOpenShiftactivities, nameof(requestsharedOpenShiftactivities), required: false);
-            return new DeferredBodyAction<OpenShiftResponse>(() =>
+            return new DeferredBodyAction<OpenShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShifts", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -384,25 +384,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction<OpenShiftResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse> GetOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId)
+        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> GetOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftId = WorkflowExpression.Compile(openShiftId, nameof(openShiftId), required: true);
-            return new DeferredBodyAction<OpenShiftResponse>(() =>
+            return new DeferredBodyAction<OpenShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_openShiftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OpenShiftResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse> UpdateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
+        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> UpdateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftId = WorkflowExpression.Compile(openShiftId, nameof(openShiftId), required: true);
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var __workflow_requestsharedOpenShiftnotes = WorkflowExpression.Compile(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
             var __workflow_requestsharedOpenShifttheme = WorkflowExpression.Compile(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
             var __workflow_requestsharedOpenShiftactivities = WorkflowExpression.Compile(requestsharedOpenShiftactivities, nameof(requestsharedOpenShiftactivities), required: false);
-            return new DeferredBodyAction<OpenShiftResponse>(() =>
+            return new DeferredBodyAction<OpenShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_openShiftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -481,29 +481,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction<OpenShiftResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction DeleteOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftId = WorkflowExpression.Compile(openShiftId, nameof(openShiftId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShifts/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_openShiftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<GetTimeOffReasonsResponse> ListTimeOffReasons(Expression<Func<string>> teamId, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<GetTimeOffReasonsResponse, ApiConnectionActionConfiguration> ListTimeOffReasons(Expression<Func<string>> teamId, Expression<Func<int>> top = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<GetTimeOffReasonsResponse>(() =>
+            return new DeferredBodyAction<GetTimeOffReasonsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timeOffReasons", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -511,15 +511,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<GetTimeOffReasonsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListSchedulingGroupsResponse> ListSchedulingGroups(Expression<Func<string>> teamId, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListSchedulingGroupsResponse, ApiConnectionActionConfiguration> ListSchedulingGroups(Expression<Func<string>> teamId, Expression<Func<int>> top = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListSchedulingGroupsResponse>(() =>
+            return new DeferredBodyAction<ListSchedulingGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/schedulinggroups", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -527,30 +527,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListSchedulingGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<SchedulingGroupResponse> GetSchedulingGroup(Expression<Func<string>> teamId, Expression<Func<string>> schedulingGroupId)
+        public IBodyWorkflowAction<SchedulingGroupResponse, ApiConnectionActionConfiguration> GetSchedulingGroup(Expression<Func<string>> teamId, Expression<Func<string>> schedulingGroupId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_schedulingGroupId = WorkflowExpression.Compile(schedulingGroupId, nameof(schedulingGroupId), required: true);
-            return new DeferredBodyAction<SchedulingGroupResponse>(() =>
+            return new DeferredBodyAction<SchedulingGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/schedulinggroups/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_schedulingGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SchedulingGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListTimeOffRequestsResponse> ListTimeOffRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<ListTimeOffRequestsResponse, ApiConnectionActionConfiguration> ListTimeOffRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<ListTimeOffRequestsResponse>(() =>
+            return new DeferredBodyAction<ListTimeOffRequestsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -560,30 +560,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<ListTimeOffRequestsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<TimeOffRequestResponse> GetTimeOffShiftRequest(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId)
+        public IBodyWorkflowAction<TimeOffRequestResponse, ApiConnectionActionConfiguration> GetTimeOffShiftRequest(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_timeOffRequestId = WorkflowExpression.Compile(timeOffRequestId, nameof(timeOffRequestId), required: true);
-            return new DeferredBodyAction<TimeOffRequestResponse>(() =>
+            return new DeferredBodyAction<TimeOffRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_timeOffRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TimeOffRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction TimeOffRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId, Expression<Func<string>> requestmessageFromManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TimeOffRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_timeOffRequestId = WorkflowExpression.Compile(timeOffRequestId, nameof(timeOffRequestId), required: true);
             var __workflow_requestmessageFromManager = WorkflowExpression.Compile(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/approve", __workflow_teamId.WithUrlEncoding(1), __workflow_timeOffRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -602,16 +602,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction TimeOffRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId, Expression<Func<string>> requestmessageFromManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TimeOffRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> timeOffRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_timeOffRequestId = WorkflowExpression.Compile(timeOffRequestId, nameof(timeOffRequestId), required: true);
             var __workflow_requestmessageFromManager = WorkflowExpression.Compile(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/timeOffRequests/{1}/decline", __workflow_teamId.WithUrlEncoding(1), __workflow_timeOffRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -630,16 +630,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListOfferShiftRequestsResponse> ListOfferShiftRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<ListOfferShiftRequestsResponse, ApiConnectionActionConfiguration> ListOfferShiftRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<ListOfferShiftRequestsResponse>(() =>
+            return new DeferredBodyAction<ListOfferShiftRequestsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -649,30 +649,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<ListOfferShiftRequestsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OfferShiftRequestResponse> GetOfferShiftRequest(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId)
+        public IBodyWorkflowAction<OfferShiftRequestResponse, ApiConnectionActionConfiguration> GetOfferShiftRequest(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_offerShiftRequestId = WorkflowExpression.Compile(offerShiftRequestId, nameof(offerShiftRequestId), required: true);
-            return new DeferredBodyAction<OfferShiftRequestResponse>(() =>
+            return new DeferredBodyAction<OfferShiftRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_offerShiftRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfferShiftRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction OfferShiftRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> OfferShiftRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_offerShiftRequestId = WorkflowExpression.Compile(offerShiftRequestId, nameof(offerShiftRequestId), required: true);
             var __workflow_requestmessageFromRecipientManager = WorkflowExpression.Compile(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/approve", __workflow_teamId.WithUrlEncoding(1), __workflow_offerShiftRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -691,16 +691,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction OfferShiftRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> OfferShiftRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> offerShiftRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_offerShiftRequestId = WorkflowExpression.Compile(offerShiftRequestId, nameof(offerShiftRequestId), required: true);
             var __workflow_requestmessageFromRecipientManager = WorkflowExpression.Compile(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/offerShiftRequests/{1}/decline", __workflow_teamId.WithUrlEncoding(1), __workflow_offerShiftRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -719,16 +719,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListSwapShiftsChangeRequestsResponse> ListSwapShiftsChangeRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<ListSwapShiftsChangeRequestsResponse, ApiConnectionActionConfiguration> ListSwapShiftsChangeRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<ListSwapShiftsChangeRequestsResponse>(() =>
+            return new DeferredBodyAction<ListSwapShiftsChangeRequestsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -738,30 +738,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<ListSwapShiftsChangeRequestsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<SwapShiftsChangeRequestResponse> GetSwapShiftsChangeRequest(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId)
+        public IBodyWorkflowAction<SwapShiftsChangeRequestResponse, ApiConnectionActionConfiguration> GetSwapShiftsChangeRequest(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_swapShiftsChangeRequestId = WorkflowExpression.Compile(swapShiftsChangeRequestId, nameof(swapShiftsChangeRequestId), required: true);
-            return new DeferredBodyAction<SwapShiftsChangeRequestResponse>(() =>
+            return new DeferredBodyAction<SwapShiftsChangeRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_swapShiftsChangeRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SwapShiftsChangeRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction SwapShiftsChangeRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SwapShiftsChangeRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_swapShiftsChangeRequestId = WorkflowExpression.Compile(swapShiftsChangeRequestId, nameof(swapShiftsChangeRequestId), required: true);
             var __workflow_requestmessageFromRecipientManager = WorkflowExpression.Compile(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/approve", __workflow_teamId.WithUrlEncoding(1), __workflow_swapShiftsChangeRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -780,16 +780,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction SwapShiftsChangeRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SwapShiftsChangeRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> swapShiftsChangeRequestId, Expression<Func<string>> requestmessageFromRecipientManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_swapShiftsChangeRequestId = WorkflowExpression.Compile(swapShiftsChangeRequestId, nameof(swapShiftsChangeRequestId), required: true);
             var __workflow_requestmessageFromRecipientManager = WorkflowExpression.Compile(requestmessageFromRecipientManager, nameof(requestmessageFromRecipientManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/swapShiftsChangeRequests/{1}/decline", __workflow_teamId.WithUrlEncoding(1), __workflow_swapShiftsChangeRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -808,16 +808,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListOpenShiftChangeRequestsResponse> ListOpenShiftChangeRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<ListOpenShiftChangeRequestsResponse, ApiConnectionActionConfiguration> ListOpenShiftChangeRequests(Expression<Func<string>> teamId, Expression<Func<int>> top = null, Expression<Func<stateInput>> state = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
-            return new DeferredBodyAction<ListOpenShiftChangeRequestsResponse>(() =>
+            return new DeferredBodyAction<ListOpenShiftChangeRequestsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -827,30 +827,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_state != null)
                     callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<ListOpenShiftChangeRequestsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftChangeRequestResponse> GetOpenShiftChangeRequest(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId)
+        public IBodyWorkflowAction<OpenShiftChangeRequestResponse, ApiConnectionActionConfiguration> GetOpenShiftChangeRequest(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftChangeRequestId = WorkflowExpression.Compile(openShiftChangeRequestId, nameof(openShiftChangeRequestId), required: true);
-            return new DeferredBodyAction<OpenShiftChangeRequestResponse>(() =>
+            return new DeferredBodyAction<OpenShiftChangeRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}", __workflow_teamId.WithUrlEncoding(1), __workflow_openShiftChangeRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OpenShiftChangeRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction OpenShiftChangeRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId, Expression<Func<string>> requestmessageFromManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> OpenShiftChangeRequestApprove(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftChangeRequestId = WorkflowExpression.Compile(openShiftChangeRequestId, nameof(openShiftChangeRequestId), required: true);
             var __workflow_requestmessageFromManager = WorkflowExpression.Compile(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/approve", __workflow_teamId.WithUrlEncoding(1), __workflow_openShiftChangeRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -869,16 +869,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IWorkflowAction OpenShiftChangeRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId, Expression<Func<string>> requestmessageFromManager = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> OpenShiftChangeRequestDecline(Expression<Func<string>> teamId, Expression<Func<string>> openShiftChangeRequestId, Expression<Func<string>> requestmessageFromManager = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftChangeRequestId = WorkflowExpression.Compile(openShiftChangeRequestId, nameof(openShiftChangeRequestId), required: true);
             var __workflow_requestmessageFromManager = WorkflowExpression.Compile(requestmessageFromManager, nameof(requestmessageFromManager), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/schedule/openShiftChangeRequests/{1}/decline", __workflow_teamId.WithUrlEncoding(1), __workflow_openShiftChangeRequestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -897,16 +897,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListOpenShiftsCrossTeamResponse> ListOpenShiftsCrossTeam(Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListOpenShiftsCrossTeamResponse, ApiConnectionActionConfiguration> ListOpenShiftsCrossTeam(Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> top = null)
         {
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListOpenShiftsCrossTeamResponse>(() =>
+            return new DeferredBodyAction<ListOpenShiftsCrossTeamResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/me/joinedTeams/getOpenShifts";
                 var apiCallHttpMethod = "get";
@@ -918,17 +918,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListOpenShiftsCrossTeamResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListShiftsCrossTeamResponse> ListShiftsCrossTeam(Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> assignedToUserName = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListShiftsCrossTeamResponse, ApiConnectionActionConfiguration> ListShiftsCrossTeam(Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> assignedToUserName = null, Expression<Func<int>> top = null)
         {
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
             var __workflow_assignedToUserName = WorkflowExpression.Compile(assignedToUserName, nameof(assignedToUserName), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListShiftsCrossTeamResponse>(() =>
+            return new DeferredBodyAction<ListShiftsCrossTeamResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/me/joinedTeams/getShifts";
                 var apiCallHttpMethod = "get";
@@ -942,17 +942,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListShiftsCrossTeamResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ListTimesOffCrossTeamResponse> ListTimesOffCrossTeam(Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> assignedToUserName = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListTimesOffCrossTeamResponse, ApiConnectionActionConfiguration> ListTimesOffCrossTeam(Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> assignedToUserName = null, Expression<Func<int>> top = null)
         {
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
             var __workflow_assignedToUserName = WorkflowExpression.Compile(assignedToUserName, nameof(assignedToUserName), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListTimesOffCrossTeamResponse>(() =>
+            return new DeferredBodyAction<ListTimesOffCrossTeamResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/me/joinedTeams/getTimesOff";
                 var apiCallHttpMethod = "get";
@@ -966,16 +966,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ListTimesOffCrossTeamResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class ShiftsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerForOpenShiftChangeRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerForOpenShiftChangeRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/teams/{0}/openshiftchangerequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -990,13 +990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger TriggerForSwapShiftsChangeRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerForSwapShiftsChangeRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/teams/{0}/swapshiftschangerequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1011,13 +1011,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger TriggerForOfferShiftRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerForOfferShiftRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/teams/{0}/offershiftrequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1032,13 +1032,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger TriggerForTimeOffRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerForTimeOffRequests(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/teams/{0}/timeoffrequests", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1053,13 +1053,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger TriggerForShifts(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerForShifts(Expression<Func<string>> teamId, FlowRecurrence recurrence = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/teams/{0}/shifts", __workflow_teamId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1074,7 +1074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

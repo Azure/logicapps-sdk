@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
     public class AzuremonitorlogsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<Table> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<Table, ApiConnectionActionConfiguration> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<string>> query = null)
         {
             var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
             var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: true);
             var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
-            return new DeferredBodyAction<Table>(() =>
+            return new DeferredBodyAction<Table, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/queryData";
                 var apiCallHttpMethod = "post";
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
                 callPayload.Queries["timerange"] = ExpressionConverter.Convert(__workflow_timerange);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<Table>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<visTypeInput>> visType, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<VisualizeResults, ApiConnectionActionConfiguration> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<visTypeInput>> visType, Expression<Func<string>> query = null)
         {
             var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
             var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
             var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: true);
             var __workflow_visType = WorkflowExpression.Compile(visType, nameof(visType), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
-            return new DeferredBodyAction<VisualizeResults>(() =>
+            return new DeferredBodyAction<VisualizeResults, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/visualizeQuery";
                 var apiCallHttpMethod = "post";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
                 callPayload.Queries["visType"] = ExpressionConverter.Convert(__workflow_visType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<VisualizeResults>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

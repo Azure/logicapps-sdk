@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
     public class AiornotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        public IBodyWorkflowAction<IsLiveResponse> IsLive()
+        public IBodyWorkflowAction<IsLiveResponse, ApiConnectionActionConfiguration> IsLive()
         {
             var apiCallPath = "/v1/system/live";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyObject)
+        public IBodyWorkflowAction<ImageReportResponse, ApiConnectionActionConfiguration> ImageReport(Expression<Func<string>> bodyObject)
         {
             var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
-            return new DeferredBodyAction<ImageReportResponse>(() =>
+            return new DeferredBodyAction<ImageReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/reports/image";
                 var apiCallHttpMethod = "post";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
                 }
 
                 return new ApiConnectionAction<ImageReportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

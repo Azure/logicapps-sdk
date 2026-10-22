@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
     public class DynamicsdocsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
-        public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
+        public IBodyWorkflowAction<CompileTemplateResponse, ApiConnectionActionConfiguration> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
         {
             var __workflow_templateToken = WorkflowExpression.Compile(templateToken, nameof(templateToken), required: true);
             var __workflow_docDeliveryType = WorkflowExpression.Compile(docDeliveryType, nameof(docDeliveryType), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
             var __workflow_mainFileName = WorkflowExpression.Compile(mainFileName, nameof(mainFileName), required: false);
             var __workflow_docFileName = WorkflowExpression.Compile(docFileName, nameof(docFileName), required: false);
             var __workflow_encryptType = WorkflowExpression.Compile(encryptType, nameof(encryptType), required: false);
-            return new DeferredBodyAction<CompileTemplateResponse>(() =>
+            return new DeferredBodyAction<CompileTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}/compile", __workflow_templateToken.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
                 }
 
                 return new ApiConnectionAction<CompileTemplateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

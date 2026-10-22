@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
     public class YelpipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
-        public IBodyWorkflowAction<BusinessSearchResponse> BusinessSearch(Expression<Func<string>> term, Expression<Func<string>> location, Expression<Func<double>> latitude = null, Expression<Func<double>> longtitude = null, Expression<Func<int>> radius = null, Expression<Func<string>> categories = null, Expression<Func<string>> locale = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> openNow = null)
+        public IBodyWorkflowAction<BusinessSearchResponse, ApiConnectionActionConfiguration> BusinessSearch(Expression<Func<string>> term, Expression<Func<string>> location, Expression<Func<double>> latitude = null, Expression<Func<double>> longtitude = null, Expression<Func<int>> radius = null, Expression<Func<string>> categories = null, Expression<Func<string>> locale = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> openNow = null)
         {
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_openNow = WorkflowExpression.Compile(openNow, nameof(openNow), required: false);
-            return new DeferredBodyAction<BusinessSearchResponse>(() =>
+            return new DeferredBodyAction<BusinessSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/businesses/search";
                 var apiCallHttpMethod = "get";
@@ -51,15 +51,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_openNow != null)
                     callPayload.Queries["open_now"] = ExpressionConverter.Convert(__workflow_openNow);
                 return new ApiConnectionAction<BusinessSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
-        public IBodyWorkflowAction<PhoneSearchResponse> PhoneSearch(Expression<Func<string>> phone, Expression<Func<string>> locale = null)
+        public IBodyWorkflowAction<PhoneSearchResponse, ApiConnectionActionConfiguration> PhoneSearch(Expression<Func<string>> phone, Expression<Func<string>> locale = null)
         {
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
-            return new DeferredBodyAction<PhoneSearchResponse>(() =>
+            return new DeferredBodyAction<PhoneSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/businesses/search/phone";
                 var apiCallHttpMethod = "get";
@@ -68,15 +68,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<PhoneSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
-        public IBodyWorkflowAction<BusinessDetailsResponse> BusinessDetails(Expression<Func<string>> id, Expression<Func<string>> locale = null)
+        public IBodyWorkflowAction<BusinessDetailsResponse, ApiConnectionActionConfiguration> BusinessDetails(Expression<Func<string>> id, Expression<Func<string>> locale = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
-            return new DeferredBodyAction<BusinessDetailsResponse>(() =>
+            return new DeferredBodyAction<BusinessDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/businesses/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<BusinessDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
-        public IBodyWorkflowAction<BusinessMatchResponseItem[]> BusinessMatch(Expression<Func<string>> name, Expression<Func<string>> address1, Expression<Func<string>> city, Expression<Func<string>> state, Expression<Func<string>> country, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<string>> phone = null, Expression<Func<string>> zipCode = null, Expression<Func<string>> yelpBusinessId = null, Expression<Func<int>> limit = null, Expression<Func<matchThresholdInput>> matchThreshold = null)
+        public IBodyWorkflowAction<BusinessMatchResponseItem[], ApiConnectionActionConfiguration> BusinessMatch(Expression<Func<string>> name, Expression<Func<string>> address1, Expression<Func<string>> city, Expression<Func<string>> state, Expression<Func<string>> country, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<string>> phone = null, Expression<Func<string>> zipCode = null, Expression<Func<string>> yelpBusinessId = null, Expression<Func<int>> limit = null, Expression<Func<matchThresholdInput>> matchThreshold = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
             var __workflow_yelpBusinessId = WorkflowExpression.Compile(yelpBusinessId, nameof(yelpBusinessId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_matchThreshold = WorkflowExpression.Compile(matchThreshold, nameof(matchThreshold), required: false);
-            return new DeferredBodyAction<BusinessMatchResponseItem[]>(() =>
+            return new DeferredBodyAction<BusinessMatchResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/businesses/matches";
                 var apiCallHttpMethod = "get";
@@ -133,15 +133,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_matchThreshold != null)
                     callPayload.Queries["match_threshold"] = ExpressionConverter.Convert(__workflow_matchThreshold);
                 return new ApiConnectionAction<BusinessMatchResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
-        public IBodyWorkflowAction<ReviewsResponse> Reviews(Expression<Func<string>> id, Expression<Func<string>> locale = null)
+        public IBodyWorkflowAction<ReviewsResponse, ApiConnectionActionConfiguration> Reviews(Expression<Func<string>> id, Expression<Func<string>> locale = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
-            return new DeferredBodyAction<ReviewsResponse>(() =>
+            return new DeferredBodyAction<ReviewsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/businesses/{0}/reviews", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -149,17 +149,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<ReviewsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
-        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete(Expression<Func<string>> text, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> locale = null)
+        public IBodyWorkflowAction<AutocompleteResponse, ApiConnectionActionConfiguration> Autocomplete(Expression<Func<string>> text, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> locale = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
-            return new DeferredBodyAction<AutocompleteResponse>(() =>
+            return new DeferredBodyAction<AutocompleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/autocomplete";
                 var apiCallHttpMethod = "get";
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
                 if (__workflow_locale != null)
                     callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<AutocompleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

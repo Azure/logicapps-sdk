@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
     public class OpentriviadbipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<GetCategoriesResponse> GetCategories()
+        public IBodyWorkflowAction<GetCategoriesResponse, ApiConnectionActionConfiguration> GetCategories()
         {
             var apiCallPath = "/api_category.php";
             var apiCallHttpMethod = "get";
@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<GetQuestionResponse, ApiConnectionActionConfiguration> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
         {
             var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
             var __workflow_difficulty = WorkflowExpression.Compile(difficulty, nameof(difficulty), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<GetQuestionResponse>(() =>
+            return new DeferredBodyAction<GetQuestionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.php";
                 var apiCallHttpMethod = "get";
@@ -40,25 +40,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<GetQuestionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup(Expression<Func<int>> category)
+        public IBodyWorkflowAction<QuestionCountLookupResponse, ApiConnectionActionConfiguration> QuestionCountLookup(Expression<Func<int>> category)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
-            return new DeferredBodyAction<QuestionCountLookupResponse>(() =>
+            return new DeferredBodyAction<QuestionCountLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api_count.php";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<GlobalCountLookupResponse> GlobalCountLookup()
+        public IBodyWorkflowAction<GlobalCountLookupResponse, ApiConnectionActionConfiguration> GlobalCountLookup()
         {
             var apiCallPath = "/api_count_global.php";
             var apiCallHttpMethod = "get";

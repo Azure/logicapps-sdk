@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<string>> bodycontent)
         {
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploads";
                 var apiCallHttpMethod = "post";
@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
                 }
 
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
+        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
         {
             var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
             var __workflow_bodyfileUrls = WorkflowExpression.Compile(bodyfileUrls, nameof(bodyfileUrls), required: true);
-            return new DeferredBodyAction<SendPostcardResponse>(() =>
+            return new DeferredBodyAction<SendPostcardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/post/postcards/send";
                 var apiCallHttpMethod = "post";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
                 }
 
                 return new ApiConnectionAction<SendPostcardResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

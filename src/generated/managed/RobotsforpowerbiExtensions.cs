@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
     public class RobotsforpowerbiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistEnableResponse, ApiConnectionActionConfiguration> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            return new DeferredBodyAction<PlaylistEnableResponse>(() =>
+            return new DeferredBodyAction<PlaylistEnableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.enable";
                 var apiCallHttpMethod = "post";
@@ -32,15 +32,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
                 }
 
                 return new ApiConnectionAction<PlaylistEnableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistDisableResponse, ApiConnectionActionConfiguration> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            return new DeferredBodyAction<PlaylistDisableResponse>(() =>
+            return new DeferredBodyAction<PlaylistDisableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.disable";
                 var apiCallHttpMethod = "post";
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
                 }
 
                 return new ApiConnectionAction<PlaylistDisableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistExecuteResponse, ApiConnectionActionConfiguration> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            return new DeferredBodyAction<PlaylistExecuteResponse>(() =>
+            return new DeferredBodyAction<PlaylistExecuteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.execute";
                 var apiCallHttpMethod = "post";
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
                 }
 
                 return new ApiConnectionAction<PlaylistExecuteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

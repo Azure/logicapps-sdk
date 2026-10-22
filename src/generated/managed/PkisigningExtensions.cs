@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     public class PkisigningActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsList(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<bool>> hasActed = null)
+        public IBodyWorkflowAction<ExtendedSignerModel[], ApiConnectionActionConfiguration> ActorsList(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<bool>> hasActed = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_hasActed = WorkflowExpression.Compile(hasActed, nameof(hasActed), required: false);
-            return new DeferredBodyAction<ExtendedSignerModel[]>(() =>
+            return new DeferredBodyAction<ExtendedSignerModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}/Actors", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 if (__workflow_hasActed != null)
                     callPayload.Queries["hasActed"] = ExpressionConverter.Convert(__workflow_hasActed);
                 return new ApiConnectionAction<ExtendedSignerModel[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel> ActorsCreate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<actorModelactionInput>> actorModelaction, Expression<Func<string>> actorModelfirstname, Expression<Func<string>> actorModellastname, Expression<Func<string>> actorModelemail, Expression<Func<string>> actorModelmobile, Expression<Func<string>> actorModeldeadline, Expression<Func<actorModellanguageInput>> actorModellanguage, Expression<Func<bool>> actorModelvalidateRealIdentity, Expression<Func<string>> actorModelprefix = null, Expression<Func<int>> actorModeldossierPersonId = null, Expression<Func<string>> actorModelmessage = null, Expression<Func<string>> actorModelfieldName = null, Expression<Func<string>> actorModelplaceholder = null)
+        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsCreate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<actorModelactionInput>> actorModelaction, Expression<Func<string>> actorModelfirstname, Expression<Func<string>> actorModellastname, Expression<Func<string>> actorModelemail, Expression<Func<string>> actorModelmobile, Expression<Func<string>> actorModeldeadline, Expression<Func<actorModellanguageInput>> actorModellanguage, Expression<Func<bool>> actorModelvalidateRealIdentity, Expression<Func<string>> actorModelprefix = null, Expression<Func<int>> actorModeldossierPersonId = null, Expression<Func<string>> actorModelmessage = null, Expression<Func<string>> actorModelfieldName = null, Expression<Func<string>> actorModelplaceholder = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             var __workflow_actorModelmessage = WorkflowExpression.Compile(actorModelmessage, nameof(actorModelmessage), required: false);
             var __workflow_actorModelfieldName = WorkflowExpression.Compile(actorModelfieldName, nameof(actorModelfieldName), required: false);
             var __workflow_actorModelplaceholder = WorkflowExpression.Compile(actorModelplaceholder, nameof(actorModelplaceholder), required: false);
-            return new DeferredBodyAction<ExtendedSignerModel>(() =>
+            return new DeferredBodyAction<ExtendedSignerModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}/Actors", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionAction<ExtendedSignerModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel> ActorsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId, Expression<Func<actorModelModelactionInput>> actorModelModelaction, Expression<Func<string>> actorModelModelfirstname, Expression<Func<string>> actorModelModellastname, Expression<Func<string>> actorModelModelemail, Expression<Func<string>> actorModelModelmobile, Expression<Func<string>> actorModelModeldeadline, Expression<Func<actorModelModellanguageInput>> actorModelModellanguage, Expression<Func<bool>> actorModelModelvalidateRealIdentity, Expression<Func<string>> actorModelModelprefix = null, Expression<Func<int>> actorModelModeldossierPersonId = null, Expression<Func<string>> actorModelModelmessage = null)
+        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId, Expression<Func<actorModelModelactionInput>> actorModelModelaction, Expression<Func<string>> actorModelModelfirstname, Expression<Func<string>> actorModelModellastname, Expression<Func<string>> actorModelModelemail, Expression<Func<string>> actorModelModelmobile, Expression<Func<string>> actorModelModeldeadline, Expression<Func<actorModelModellanguageInput>> actorModelModellanguage, Expression<Func<bool>> actorModelModelvalidateRealIdentity, Expression<Func<string>> actorModelModelprefix = null, Expression<Func<int>> actorModelModeldossierPersonId = null, Expression<Func<string>> actorModelModelmessage = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             var __workflow_actorModelModelprefix = WorkflowExpression.Compile(actorModelModelprefix, nameof(actorModelModelprefix), required: false);
             var __workflow_actorModelModeldossierPersonId = WorkflowExpression.Compile(actorModelModeldossierPersonId, nameof(actorModelModeldossierPersonId), required: false);
             var __workflow_actorModelModelmessage = WorkflowExpression.Compile(actorModelModelmessage, nameof(actorModelModelmessage), required: false);
-            return new DeferredBodyAction<ExtendedSignerModel>(() =>
+            return new DeferredBodyAction<ExtendedSignerModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1), __workflow_actorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -180,45 +180,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionAction<ExtendedSignerModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel> ActorsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
+        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
-            return new DeferredBodyAction<ExtendedSignerModel>(() =>
+            return new DeferredBodyAction<ExtendedSignerModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1), __workflow_actorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExtendedSignerModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IWorkflowAction ActorsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActorsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1), __workflow_actorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsRequestActors(Expression<Func<string>> requestId, Expression<Func<bool>> hasActed = null)
+        public IBodyWorkflowAction<ExtendedSignerModel[], ApiConnectionActionConfiguration> ActorsRequestActors(Expression<Func<string>> requestId, Expression<Func<bool>> hasActed = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_hasActed = WorkflowExpression.Compile(hasActed, nameof(hasActed), required: false);
-            return new DeferredBodyAction<ExtendedSignerModel[]>(() =>
+            return new DeferredBodyAction<ExtendedSignerModel[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/Actors", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -226,58 +226,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 if (__workflow_hasActed != null)
                     callPayload.Queries["hasActed"] = ExpressionConverter.Convert(__workflow_hasActed);
                 return new ApiConnectionAction<ExtendedSignerModel[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IWorkflowAction ActorsResendCurrentInvite(Expression<Func<string>> requestId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActorsResendCurrentInvite(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/Actors/ResendCurrentInvite", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IWorkflowAction ActorsWithdrawCurrentInvite(Expression<Func<string>> requestId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActorsWithdrawCurrentInvite(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/Actors/WithdrawCurrentInvite", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DocumentMetaDataModel, ApiConnectionActionConfiguration> DocumentsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<DocumentMetaDataModel>(() =>
+            return new DeferredBodyAction<DocumentMetaDataModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DocumentMetaDataModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<metadatadocumentTypeInput>> metadatadocumentType, Expression<Func<string>> metadataname = null, Expression<Func<string>> metadatafilename = null)
+        public IBodyWorkflowAction<DocumentMetaDataModel, ApiConnectionActionConfiguration> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<metadatadocumentTypeInput>> metadatadocumentType, Expression<Func<string>> metadataname = null, Expression<Func<string>> metadatafilename = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_metadatadocumentType = WorkflowExpression.Compile(metadatadocumentType, nameof(metadatadocumentType), required: true);
             var __workflow_metadataname = WorkflowExpression.Compile(metadataname, nameof(metadataname), required: false);
             var __workflow_metadatafilename = WorkflowExpression.Compile(metadatafilename, nameof(metadatafilename), required: false);
-            return new DeferredBodyAction<DocumentMetaDataModel>(() =>
+            return new DeferredBodyAction<DocumentMetaDataModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -304,42 +304,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionAction<DocumentMetaDataModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IWorkflowAction DocumentsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DocumentsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/documents/{1}", __workflow_requestId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroups(Expression<Func<string>> organisationId)
+        public IBodyWorkflowAction<OrganisationWorkgroup[], ApiConnectionActionConfiguration> OrganisationsGetWorkgroups(Expression<Func<string>> organisationId)
         {
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
-            return new DeferredBodyAction<OrganisationWorkgroup[]>(() =>
+            return new DeferredBodyAction<OrganisationWorkgroup[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Organisations/{0}/workgroups", __workflow_organisationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OrganisationWorkgroup[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroupsByUser(Expression<Func<string>> organisationId, Expression<Func<string>> modelusername)
+        public IBodyWorkflowAction<OrganisationWorkgroup[], ApiConnectionActionConfiguration> OrganisationsGetWorkgroupsByUser(Expression<Func<string>> organisationId, Expression<Func<string>> modelusername)
         {
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             var __workflow_modelusername = WorkflowExpression.Compile(modelusername, nameof(modelusername), required: true);
-            return new DeferredBodyAction<OrganisationWorkgroup[]>(() =>
+            return new DeferredBodyAction<OrganisationWorkgroup[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Organisations/{0}/workgroups", __workflow_organisationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -354,17 +354,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionAction<OrganisationWorkgroup[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<RequestModel> RequestsCreate(Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
+        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsCreate(Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
         {
             var __workflow_modelname = WorkflowExpression.Compile(modelname, nameof(modelname), required: true);
             var __workflow_modelclearancelevel = WorkflowExpression.Compile(modelclearancelevel, nameof(modelclearancelevel), required: true);
             var __workflow_modelworkgroupId = WorkflowExpression.Compile(modelworkgroupId, nameof(modelworkgroupId), required: false);
             var __workflow_modelowner = WorkflowExpression.Compile(modelowner, nameof(modelowner), required: false);
-            return new DeferredBodyAction<RequestModel>(() =>
+            return new DeferredBodyAction<RequestModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/requests";
                 var apiCallHttpMethod = "post";
@@ -393,15 +393,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionAction<RequestModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<RequestModel> RequestsGet(Expression<Func<string>> requestId, Expression<Func<string>> callbackAuthenticationKey = null)
+        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsGet(Expression<Func<string>> requestId, Expression<Func<string>> callbackAuthenticationKey = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_callbackAuthenticationKey = WorkflowExpression.Compile(callbackAuthenticationKey, nameof(callbackAuthenticationKey), required: false);
-            return new DeferredBodyAction<RequestModel>(() =>
+            return new DeferredBodyAction<RequestModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -409,18 +409,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 if (__workflow_callbackAuthenticationKey != null)
                     callPayload.Queries["callbackAuthenticationKey"] = ExpressionConverter.Convert(__workflow_callbackAuthenticationKey);
                 return new ApiConnectionAction<RequestModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<RequestModel> RequestsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
+        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_modelname = WorkflowExpression.Compile(modelname, nameof(modelname), required: true);
             var __workflow_modelclearancelevel = WorkflowExpression.Compile(modelclearancelevel, nameof(modelclearancelevel), required: true);
             var __workflow_modelworkgroupId = WorkflowExpression.Compile(modelworkgroupId, nameof(modelworkgroupId), required: false);
             var __workflow_modelowner = WorkflowExpression.Compile(modelowner, nameof(modelowner), required: false);
-            return new DeferredBodyAction<RequestModel>(() =>
+            return new DeferredBodyAction<RequestModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -449,56 +449,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionAction<RequestModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IWorkflowAction RequestsDelete(Expression<Func<string>> requestId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RequestsDelete(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<object> RequestsDownload(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> RequestsDownload(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/Download", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IWorkflowAction RequestsSend(Expression<Func<string>> requestId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RequestsSend(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/Send", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class PkisigningTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponseModel> WebhooksCreateWebhook(Expression<Func<string[]>> modelevents, Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponseModel, ApiConnectionTriggerConfiguration> WebhooksCreateWebhook(Expression<Func<string[]>> modelevents, Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
             var __workflow_modelevents = WorkflowExpression.Compile(modelevents, nameof(modelevents), required: true);
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
-            return new DeferredBodyTrigger<WebhookResponseModel>(() =>
+            return new DeferredBodyTrigger<WebhookResponseModel, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organisations/{0}/webhooks", __workflow_organisationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
                 }
 
                 return new ApiConnectionTrigger<WebhookResponseModel>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

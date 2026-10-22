@@ -12,107 +12,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
     public class AbortionpolicyapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse, ApiConnectionActionConfiguration> GetGestationalLimitsbyState(Expression<Func<stateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
-            return new DeferredBodyAction<GetGestationalLimitsbyStateResponse>(() =>
+            return new DeferredBodyAction<GetGestationalLimitsbyStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/gestational_limits/states/{0}", __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGestationalLimitsbyStateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse, ApiConnectionActionConfiguration> GetGestationalLimitsbyStatebyZip(Expression<Func<string>> zipCode)
         {
             var __workflow_zipCode = WorkflowExpression.Compile(zipCode, nameof(zipCode), required: true);
-            return new DeferredBodyAction<GetGestationalLimitsbyStatebyZipResponse>(() =>
+            return new DeferredBodyAction<GetGestationalLimitsbyStatebyZipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/gestational_limits/zips/{0}", __workflow_zipCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGestationalLimitsbyStatebyZipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse, ApiConnectionActionConfiguration> GetInsuranceCoveragebyState(Expression<Func<stateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
-            return new DeferredBodyAction<GetInsuranceCoveragebyStateResponse>(() =>
+            return new DeferredBodyAction<GetInsuranceCoveragebyStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/insurance_coverage/states/{0}", __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetInsuranceCoveragebyStateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse, ApiConnectionActionConfiguration> GetInsuranceCoveragebyZip(Expression<Func<string>> zipCode)
         {
             var __workflow_zipCode = WorkflowExpression.Compile(zipCode, nameof(zipCode), required: true);
-            return new DeferredBodyAction<GetInsuranceCoveragebyZipResponse>(() =>
+            return new DeferredBodyAction<GetInsuranceCoveragebyZipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/insurance_coverage/zips/{0}", __workflow_zipCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetInsuranceCoveragebyZipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetMinorsInfobyStateResponse, ApiConnectionActionConfiguration> GetMinorsInfobyState(Expression<Func<stateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
-            return new DeferredBodyAction<GetMinorsInfobyStateResponse>(() =>
+            return new DeferredBodyAction<GetMinorsInfobyStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/minors/states/{0}", __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMinorsInfobyStateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetMinorsInfobyZipResponse, ApiConnectionActionConfiguration> GetMinorsInfobyZip(Expression<Func<string>> zipCode)
         {
             var __workflow_zipCode = WorkflowExpression.Compile(zipCode, nameof(zipCode), required: true);
-            return new DeferredBodyAction<GetMinorsInfobyZipResponse>(() =>
+            return new DeferredBodyAction<GetMinorsInfobyZipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/minors/zips/{0}", __workflow_zipCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMinorsInfobyZipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse, ApiConnectionActionConfiguration> GetWaitingPeriodsInfobyState(Expression<Func<stateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
-            return new DeferredBodyAction<GetWaitingPeriodsInfobyStateResponse>(() =>
+            return new DeferredBodyAction<GetWaitingPeriodsInfobyStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/waiting_periods/states/{0}", __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWaitingPeriodsInfobyStateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse, ApiConnectionActionConfiguration> GetWaitingPeriodsInfobyZip(Expression<Func<string>> zipCode)
         {
             var __workflow_zipCode = WorkflowExpression.Compile(zipCode, nameof(zipCode), required: true);
-            return new DeferredBodyAction<GetWaitingPeriodsInfobyZipResponse>(() =>
+            return new DeferredBodyAction<GetWaitingPeriodsInfobyZipResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/waiting_periods/zips/{0}", __workflow_zipCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWaitingPeriodsInfobyZipResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

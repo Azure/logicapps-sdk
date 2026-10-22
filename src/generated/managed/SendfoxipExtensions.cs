@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
     public class SendfoxipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<MeGetResponse> MeGet()
+        public IBodyWorkflowAction<MeGetResponse, ApiConnectionActionConfiguration> MeGet()
         {
             var apiCallPath = "/me";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListsGetResponse> ListsGet()
+        public IBodyWorkflowAction<ListsGetResponse, ApiConnectionActionConfiguration> ListsGet()
         {
             var apiCallPath = "/lists";
             var apiCallHttpMethod = "get";
@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListPostResponse> List(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<ListPostResponse, ApiConnectionActionConfiguration> List(Expression<Func<string>> bodyname)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<ListPostResponse>(() =>
+            return new DeferredBodyAction<ListPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
@@ -48,38 +48,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
                 }
 
                 return new ApiConnectionAction<ListPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
+        public IBodyWorkflowAction<ListGetResponse, ApiConnectionActionConfiguration> ListGet(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyAction<ListGetResponse>(() =>
+            return new DeferredBodyAction<ListGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete(Expression<Func<string>> listId, Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<ListContactDeleteResponse, ApiConnectionActionConfiguration> ListContactDelete(Expression<Func<string>> listId, Expression<Func<string>> contactId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            return new DeferredBodyAction<ListContactDeleteResponse>(() =>
+            return new DeferredBodyAction<ListContactDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/contacts/{1}", __workflow_listId.WithUrlEncoding(1), __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListContactDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactsGetResponse> ContactsGet()
+        public IBodyWorkflowAction<ContactsGetResponse, ApiConnectionActionConfiguration> ContactsGet()
         {
             var apiCallPath = "/contacts";
             var apiCallHttpMethod = "get";
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
+        public IBodyWorkflowAction<ContactPostResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             var __workflow_bodylists = WorkflowExpression.Compile(bodylists, nameof(bodylists), required: false);
-            return new DeferredBodyAction<ContactPostResponse>(() =>
+            return new DeferredBodyAction<ContactPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
@@ -131,27 +131,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
                 }
 
                 return new ApiConnectionAction<ContactPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<ContactGetResponse, ApiConnectionActionConfiguration> ContactGet(Expression<Func<string>> contactId)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            return new DeferredBodyAction<ContactGetResponse>(() =>
+            return new DeferredBodyAction<ContactGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<UnsubscribePatchResponse> UnsubscribePatch(Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<UnsubscribePatchResponse, ApiConnectionActionConfiguration> UnsubscribePatch(Expression<Func<string>> bodyemail)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            return new DeferredBodyAction<UnsubscribePatchResponse>(() =>
+            return new DeferredBodyAction<UnsubscribePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/unsubscribe";
                 var apiCallHttpMethod = "patch";
@@ -166,11 +166,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
                 }
 
                 return new ApiConnectionAction<UnsubscribePatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<CampaignsGetResponse> CampaignsGet()
+        public IBodyWorkflowAction<CampaignsGetResponse, ApiConnectionActionConfiguration> CampaignsGet()
         {
             var apiCallPath = "/campaigns";
             var apiCallHttpMethod = "get";
@@ -179,16 +179,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> campaignId)
+        public IBodyWorkflowAction<CampaignGetResponse, ApiConnectionActionConfiguration> CampaignGet(Expression<Func<string>> campaignId)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
-            return new DeferredBodyAction<CampaignGetResponse>(() =>
+            return new DeferredBodyAction<CampaignGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}", __workflow_campaignId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CampaignGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

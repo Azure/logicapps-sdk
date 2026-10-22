@@ -12,49 +12,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     public class SeismicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp> GetGenerationResultAsync(Expression<Func<string>> generatedLivedocId)
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp, ApiConnectionActionConfiguration> GetGenerationResultAsync(Expression<Func<string>> generatedLivedocId)
         {
             var __workflow_generatedLivedocId = WorkflowExpression.Compile(generatedLivedocId, nameof(generatedLivedocId), required: true);
-            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(() =>
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/generatedLivedocs/{0}", __workflow_generatedLivedocId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2CommonModelsDownloadLocationResp> GetGeneratedLiveDocContent(Expression<Func<string>> generatedLivedocId, Expression<Func<string>> outputId)
+        public IBodyWorkflowAction<V2CommonModelsDownloadLocationResp, ApiConnectionActionConfiguration> GetGeneratedLiveDocContent(Expression<Func<string>> generatedLivedocId, Expression<Func<string>> outputId)
         {
             var __workflow_generatedLivedocId = WorkflowExpression.Compile(generatedLivedocId, nameof(generatedLivedocId), required: true);
             var __workflow_outputId = WorkflowExpression.Compile(outputId, nameof(outputId), required: true);
-            return new DeferredBodyAction<V2CommonModelsDownloadLocationResp>(() =>
+            return new DeferredBodyAction<V2CommonModelsDownloadLocationResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", __workflow_generatedLivedocId.WithUrlEncoding(1), __workflow_outputId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(false);
                 return new ApiConnectionAction<V2CommonModelsDownloadLocationResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2PredictiveContentModelsPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
+        public IBodyWorkflowAction<V2PredictiveContentModelsPredictiveContentResponse[], ApiConnectionActionConfiguration> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
         {
             var __workflow_predictiveContentId = WorkflowExpression.Compile(predictiveContentId, nameof(predictiveContentId), required: true);
             var __workflow_contextId = WorkflowExpression.Compile(contextId, nameof(contextId), required: true);
-            return new DeferredBodyAction<V2PredictiveContentModelsPredictiveContentResponse[]>(() =>
+            return new DeferredBodyAction<V2PredictiveContentModelsPredictiveContentResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/predictiveContent/{0}/{1}", __workflow_predictiveContentId.WithUrlEncoding(1), __workflow_contextId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2PredictiveContentModelsPredictiveContentResponse[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2TeamsitesTeamsiteResponse[]> GetTeamsitesAsync()
+        public IBodyWorkflowAction<V2TeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration> GetTeamsitesAsync()
         {
             var apiCallPath = "/teamsites";
             var apiCallHttpMethod = "get";
@@ -63,41 +63,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> metadata, Expression<Func<object>> content)
+        public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse, ApiConnectionActionConfiguration> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> metadata, Expression<Func<object>> content)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
-            return new DeferredBodyAction<V2LibraryContentManagementModelsFileResponse>(() =>
+            return new DeferredBodyAction<V2LibraryContentManagementModelsFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse> GetItemInformation(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse, ApiConnectionActionConfiguration> GetItemInformation(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
-            return new DeferredBodyAction<V2LibraryContentManagementModelsItemResponse>(() =>
+            return new DeferredBodyAction<V2LibraryContentManagementModelsItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LibraryContentManagementModelsItemResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IWorkflowAction SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> commentcomments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> commentcomments = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
             var __workflow_commentcomments = WorkflowExpression.Compile(commentcomments, nameof(commentcomments), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/submit", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -116,31 +116,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp> GetLiveDocInputParams(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId)
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp, ApiConnectionActionConfiguration> GetLiveDocInputParams(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
-            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(() =>
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<genInputReqoutputsInputItem[]>> genInputReqoutputs, Expression<Func<V2AdHocInputs[]>> genInputReqadHocInputs = null)
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<genInputReqoutputsInputItem[]>> genInputReqoutputs, Expression<Func<V2AdHocInputs[]>> genInputReqadHocInputs = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
             var __workflow_genInputReqoutputs = WorkflowExpression.Compile(genInputReqoutputs, nameof(genInputReqoutputs), required: true);
             var __workflow_genInputReqadHocInputs = WorkflowExpression.Compile(genInputReqadHocInputs, nameof(genInputReqadHocInputs), required: false);
-            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(() =>
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -161,17 +161,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> publishRequestcomment = null, Expression<Func<V2LibraryPublishingPublishContentItem[]>> publishRequestcontent = null, Expression<Func<string>> publishRequestpublishAt = null)
+        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> publishRequestcomment = null, Expression<Func<V2LibraryPublishingPublishContentItem[]>> publishRequestcontent = null, Expression<Func<string>> publishRequestpublishAt = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_publishRequestcomment = WorkflowExpression.Compile(publishRequestcomment, nameof(publishRequestcomment), required: false);
             var __workflow_publishRequestcontent = WorkflowExpression.Compile(publishRequestcontent, nameof(publishRequestcontent), required: false);
             var __workflow_publishRequestpublishAt = WorkflowExpression.Compile(publishRequestpublishAt, nameof(publishRequestpublishAt), required: false);
-            return new DeferredBodyAction<V2LibraryPublishingPublishResponse>(() =>
+            return new DeferredBodyAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/publish", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -202,42 +202,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2UsersUserResponse> GetUserDetails(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<V2UsersUserResponse, ApiConnectionActionConfiguration> GetUserDetails(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<V2UsersUserResponse>(() =>
+            return new DeferredBodyAction<V2UsersUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2UsersUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp> CreateFile(Expression<Func<string>> metadata, Expression<Func<object>> content)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> metadata, Expression<Func<object>> content)
         {
             var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
-            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFileResp>(() =>
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFileResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspace/files";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceFolder(Expression<Func<string>> foldername = null, Expression<Func<string>> folderparentFolderId = null)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<string>> foldername = null, Expression<Func<string>> folderparentFolderId = null)
         {
             var __workflow_foldername = WorkflowExpression.Compile(foldername, nameof(foldername), required: false);
             var __workflow_folderparentFolderId = WorkflowExpression.Compile(folderparentFolderId, nameof(folderparentFolderId), required: false);
-            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp>(() =>
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspace/folders";
                 var apiCallHttpMethod = "post";
@@ -262,18 +262,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceContextualFolder(Expression<Func<string>> foldercontextId = null, Expression<Func<string>> foldercontextType = null, Expression<Func<string>> foldercontextTypePlural = null, Expression<Func<string>> foldername = null, Expression<Func<string>> foldersystemType = null)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<string>> foldercontextId = null, Expression<Func<string>> foldercontextType = null, Expression<Func<string>> foldercontextTypePlural = null, Expression<Func<string>> foldername = null, Expression<Func<string>> foldersystemType = null)
         {
             var __workflow_foldercontextId = WorkflowExpression.Compile(foldercontextId, nameof(foldercontextId), required: false);
             var __workflow_foldercontextType = WorkflowExpression.Compile(foldercontextType, nameof(foldercontextType), required: false);
             var __workflow_foldercontextTypePlural = WorkflowExpression.Compile(foldercontextTypePlural, nameof(foldercontextTypePlural), required: false);
             var __workflow_foldername = WorkflowExpression.Compile(foldername, nameof(foldername), required: false);
             var __workflow_foldersystemType = WorkflowExpression.Compile(foldersystemType, nameof(foldersystemType), required: false);
-            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp>(() =>
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspace/folders/createContextualFolder";
                 var apiCallHttpMethod = "post";
@@ -316,33 +316,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
                 }
 
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp> GetWorkspaceFolderItems(Expression<Func<string>> workspaceFolderId)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp, ApiConnectionActionConfiguration> GetWorkspaceFolderItems(Expression<Func<string>> workspaceFolderId)
         {
             var __workflow_workspaceFolderId = WorkflowExpression.Compile(workspaceFolderId, nameof(workspaceFolderId), required: true);
-            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(() =>
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspace/folders/{0}/items", __workflow_workspaceFolderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsItemResp> GetItem(Expression<Func<string>> workspaceContentId)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsItemResp, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> workspaceContentId)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
-            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsItemResp>(() =>
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspace/items/{0}", __workflow_workspaceContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

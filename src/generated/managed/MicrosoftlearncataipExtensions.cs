@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
     public class MicrosoftlearncataipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
-        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
+        public IBodyWorkflowAction<GetLearningContentResponse, ApiConnectionActionConfiguration> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
         {
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: false);
             var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: false);
             var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
-            return new DeferredBodyAction<GetLearningContentResponse>(() =>
+            return new DeferredBodyAction<GetLearningContentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
                 if (__workflow_subject != null)
                     callPayload.Queries["subject"] = ExpressionConverter.Convert(__workflow_subject);
                 return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

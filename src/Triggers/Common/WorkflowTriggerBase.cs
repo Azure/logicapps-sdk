@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -32,19 +32,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a workflow trigger without optional settings.
         /// </summary>
-        protected WorkflowTriggerBase()
-            : this(WorkflowTriggerSettings.None)
+        internal WorkflowTriggerBase()
+            : this(new EmptyWorkflowOperationConfiguration())
         {
         }
 
         /// <summary>
         /// Initializes a new workflow trigger.
         /// </summary>
-        /// <param name="settingsProfile">The settings supported by the trigger.</param>
-        internal WorkflowTriggerBase(
-            WorkflowTriggerSettings settingsProfile = WorkflowTriggerSettings.None)
+        /// <param name="configuration">The trigger configuration.</param>
+        internal WorkflowTriggerBase(IWorkflowOperationConfiguration configuration)
         {
-            this.Configuration = new WorkflowTriggerConfiguration(settingsProfile);
+            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         /// <summary>
@@ -57,8 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
-        /// <inheritdoc/>
-        public WorkflowTriggerConfiguration Configuration { get; }
+        private IWorkflowOperationConfiguration Configuration { get; }
 
         /// <summary>
         /// Gets the trigger definition for the workflow.
@@ -69,14 +67,18 @@ namespace Microsoft.Azure.Workflows.Sdk
             var definition = this.BuildTriggerDefinition(flowKind)
                 ?? throw new InvalidOperationException($"Trigger '{this.Name}' returned a null definition.");
 
-            if (this.Configuration.RetryPolicy != null)
+            if (this.Configuration is IRetryPolicyConfigurationHolder retry &&
+                retry.RetryPolicy != null)
             {
-                WorkflowOperationConfiguration.ValidateRetryPolicy(this.Configuration.RetryPolicy, flowKind);
-                WorkflowOperationConfiguration.AddRetryPolicy(definition, this.Configuration.RetryPolicy);
+                WorkflowOperationConfiguration.ValidateRetryPolicy(retry.RetryPolicy, flowKind);
+                WorkflowOperationConfiguration.AddRetryPolicy(definition, retry.RetryPolicy);
             }
 
-            var secureProperties = WorkflowOperationConfiguration.SecureProperties(this.Configuration.SecureInputs, this.Configuration.SecureOutputs);
-            if (secureProperties.Length > 0 || this.Configuration.ConcurrentRuns.HasValue)
+            var secureInputs = this.Configuration is ISecureInputsConfigurationHolder inputs && inputs.SecureInputs;
+            var secureOutputs = this.Configuration is ISecureOutputsConfigurationHolder outputs && outputs.SecureOutputs;
+            var secureProperties = WorkflowOperationConfiguration.SecureProperties(secureInputs, secureOutputs);
+            var concurrency = this.Configuration as ITriggerConcurrencyConfigurationHolder;
+            if (secureProperties.Length > 0 || concurrency?.ConcurrentRuns.HasValue == true)
             {
                 definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
             }
@@ -87,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     new FlowSecureDataConfiguration { Properties = secureProperties };
             }
 
-            if (this.Configuration.ConcurrentRuns.HasValue)
+            if (concurrency?.ConcurrentRuns.HasValue == true)
             {
                 if (flowKind == FlowKind.Stateless)
                 {
@@ -95,21 +97,23 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
                 definition.RuntimeConfiguration.Concurrency = new FlowConcurrencyConfiguration
                 {
-                    Runs = this.Configuration.ConcurrentRuns,
-                    MaximumWaitingRuns = this.Configuration.MaximumWaitingRuns,
+                    Runs = concurrency.ConcurrentRuns,
+                    MaximumWaitingRuns = concurrency.MaximumWaitingRuns,
                 };
             }
 
-            if (this.Configuration.ClientTrackingId != null)
+            if (this.Configuration is IClientTrackingIdConfigurationHolder correlation &&
+                correlation.ClientTrackingId != null)
             {
                 definition.Correlation =
-                    new FlowTemplateCorrelation { ClientTrackingId = this.Configuration.ClientTrackingId };
+                    new FlowTemplateCorrelation { ClientTrackingId = correlation.ClientTrackingId };
             }
 
-            if (this.Configuration.SchemaValidationEnabled)
+            if (this.Configuration is IRequestSchemaValidationConfigurationHolder schemaValidation &&
+                schemaValidation.SchemaValidationEnabled)
             {
-                var inputs = WorkflowOperationConfiguration.ToObject(definition.Inputs);
-                if (inputs["schema"] == null || inputs["schema"].Type == JTokenType.Null)
+                var inputObject = WorkflowOperationConfiguration.ToObject(definition.Inputs);
+                if (inputObject["schema"] == null || inputObject["schema"].Type == JTokenType.Null)
                 {
                     throw new InvalidOperationException("Schema validation requires a request body JSON schema.");
                 }
@@ -125,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Builds the operation-specific trigger definition.
         /// </summary>
         /// <param name="flowKind">The kind of workflow containing the trigger.</param>
-        protected internal abstract FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null);
+        internal abstract FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null);
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)

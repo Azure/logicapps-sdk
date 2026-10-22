@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
     public class SeektableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<string>> filename = null)
         {
             var __workflow_cubeId = WorkflowExpression.Compile(cubeId, nameof(cubeId), required: true);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/cube/import/csv";
                 var apiCallHttpMethod = "post";
@@ -32,17 +32,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> ReportExport(Expression<Func<string>> reportId, Expression<Func<formatInput>> format, Expression<Func<bool>> htmlInlineStyle = null, Expression<Func<bool>> chartOnly = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReportExport(Expression<Func<string>> reportId, Expression<Func<formatInput>> format, Expression<Func<bool>> htmlInlineStyle = null, Expression<Func<bool>> chartOnly = null)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_htmlInlineStyle = WorkflowExpression.Compile(htmlInlineStyle, nameof(htmlInlineStyle), required: false);
             var __workflow_chartOnly = WorkflowExpression.Compile(chartOnly, nameof(chartOnly), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/report/{0}/export", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
                 if (__workflow_chartOnly != null)
                     callPayload.Queries["chart_only"] = ExpressionConverter.Convert(__workflow_chartOnly);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> ReportShareByEmail(Expression<Func<string>> reportId, Expression<Func<string>> to, Expression<Func<string>> subject, Expression<Func<string>> message = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReportShareByEmail(Expression<Func<string>> reportId, Expression<Func<string>> to, Expression<Func<string>> subject, Expression<Func<string>> message = null)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
             var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/report/{0}/share/email", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
                 if (__workflow_message != null)
                     callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
         {
             var __workflow_bodyuserIdentityToken = WorkflowExpression.Compile(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
             var __workflow_bodyapplicationID = WorkflowExpression.Compile(bodyapplicationID, nameof(bodyapplicationID), required: true);
-            return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(() =>
+            return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
                 var apiCallHttpMethod = "post";
@@ -33,16 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                 }
 
                 return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IWorkflowAction SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
         {
             var __workflow_bodymethod = WorkflowExpression.Compile(bodymethod, nameof(bodymethod), required: true);
             var __workflow_bodyrelativePath = WorkflowExpression.Compile(bodyrelativePath, nameof(bodyrelativePath), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virtual/httprequest";
                 var apiCallHttpMethod = "post";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

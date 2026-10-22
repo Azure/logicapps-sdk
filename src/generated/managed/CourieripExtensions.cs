@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
     public class CourieripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<MessageSendPostResponse> MessageSend(Expression<Func<string>> idempotency, Expression<Func<string>> bodymessagecontenttitle = null, Expression<Func<string>> bodymessagecontentbody = null, Expression<Func<string>> bodymessagetouserId = null, Expression<Func<string>> bodymessagetolistId = null, Expression<Func<string>> bodymessagetoaudienceId = null, Expression<Func<string>> bodymessagetoemail = null, Expression<Func<string>> bodymessagetophoneNumber = null, Expression<Func<string>> bodymessagetolocale = null)
+        public IBodyWorkflowAction<MessageSendPostResponse, ApiConnectionActionConfiguration> MessageSend(Expression<Func<string>> idempotency, Expression<Func<string>> bodymessagecontenttitle = null, Expression<Func<string>> bodymessagecontentbody = null, Expression<Func<string>> bodymessagetouserId = null, Expression<Func<string>> bodymessagetolistId = null, Expression<Func<string>> bodymessagetoaudienceId = null, Expression<Func<string>> bodymessagetoemail = null, Expression<Func<string>> bodymessagetophoneNumber = null, Expression<Func<string>> bodymessagetolocale = null)
         {
             var __workflow_idempotency = WorkflowExpression.Compile(idempotency, nameof(idempotency), required: true);
             var __workflow_bodymessagecontenttitle = WorkflowExpression.Compile(bodymessagecontenttitle, nameof(bodymessagecontenttitle), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodymessagetoemail = WorkflowExpression.Compile(bodymessagetoemail, nameof(bodymessagetoemail), required: false);
             var __workflow_bodymessagetophoneNumber = WorkflowExpression.Compile(bodymessagetophoneNumber, nameof(bodymessagetophoneNumber), required: false);
             var __workflow_bodymessagetolocale = WorkflowExpression.Compile(bodymessagetolocale, nameof(bodymessagetolocale), required: false);
-            return new DeferredBodyAction<MessageSendPostResponse>(() =>
+            return new DeferredBodyAction<MessageSendPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/send";
                 var apiCallHttpMethod = "post";
@@ -125,37 +125,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<MessageSendPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AudienceGetResponse> AudienceGet(Expression<Func<string>> audienceId)
+        public IBodyWorkflowAction<AudienceGetResponse, ApiConnectionActionConfiguration> AudienceGet(Expression<Func<string>> audienceId)
         {
             var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
-            return new DeferredBodyAction<AudienceGetResponse>(() =>
+            return new DeferredBodyAction<AudienceGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audiences/{0}", __workflow_audienceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AudienceGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> AudienceDelete(Expression<Func<string>> audienceId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AudienceDelete(Expression<Func<string>> audienceId)
         {
             var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audiences/{0}", __workflow_audienceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AudiencePutResponse> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfilterpath = null, Expression<Func<string>> bodyfilterOperator = null, Expression<Func<string>> bodyfiltervalue = null, Expression<Func<bodyfilterfiltersInputItem[]>> bodyfilterfilters = null)
+        public IBodyWorkflowAction<AudiencePutResponse, ApiConnectionActionConfiguration> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfilterpath = null, Expression<Func<string>> bodyfilterOperator = null, Expression<Func<string>> bodyfiltervalue = null, Expression<Func<bodyfilterfiltersInputItem[]>> bodyfilterfilters = null)
         {
             var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodyfilterOperator = WorkflowExpression.Compile(bodyfilterOperator, nameof(bodyfilterOperator), required: false);
             var __workflow_bodyfiltervalue = WorkflowExpression.Compile(bodyfiltervalue, nameof(bodyfiltervalue), required: false);
             var __workflow_bodyfilterfilters = WorkflowExpression.Compile(bodyfilterfilters, nameof(bodyfilterfilters), required: false);
-            return new DeferredBodyAction<AudiencePutResponse>(() =>
+            return new DeferredBodyAction<AudiencePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audiences/{0}", __workflow_audienceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -214,15 +214,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<AudiencePutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AudienceMembersGetResponse> AudienceMembersGet(Expression<Func<string>> audienceId, Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<AudienceMembersGetResponse, ApiConnectionActionConfiguration> AudienceMembersGet(Expression<Func<string>> audienceId, Expression<Func<string>> cursor = null)
         {
             var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
-            return new DeferredBodyAction<AudienceMembersGetResponse>(() =>
+            return new DeferredBodyAction<AudienceMembersGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audiences/{0}/members", __workflow_audienceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -230,14 +230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_cursor != null)
                     callPayload.Queries["cursor"] = ExpressionConverter.Convert(__workflow_cursor);
                 return new ApiConnectionAction<AudienceMembersGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AudiencesGetResponse> AudiencesGet(Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<AudiencesGetResponse, ApiConnectionActionConfiguration> AudiencesGet(Expression<Func<string>> cursor = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
-            return new DeferredBodyAction<AudiencesGetResponse>(() =>
+            return new DeferredBodyAction<AudiencesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/audiences";
                 var apiCallHttpMethod = "get";
@@ -245,14 +245,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_cursor != null)
                     callPayload.Queries["cursor"] = ExpressionConverter.Convert(__workflow_cursor);
                 return new ApiConnectionAction<AudiencesGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AuditEventsGetResponse> AuditEventsGet(Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<AuditEventsGetResponse, ApiConnectionActionConfiguration> AuditEventsGet(Expression<Func<string>> cursor = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
-            return new DeferredBodyAction<AuditEventsGetResponse>(() =>
+            return new DeferredBodyAction<AuditEventsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/audit-events";
                 var apiCallHttpMethod = "get";
@@ -260,30 +260,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_cursor != null)
                     callPayload.Queries["cursor"] = ExpressionConverter.Convert(__workflow_cursor);
                 return new ApiConnectionAction<AuditEventsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AuditEventGetResponse> AuditEventGet(Expression<Func<string>> auditEventId)
+        public IBodyWorkflowAction<AuditEventGetResponse, ApiConnectionActionConfiguration> AuditEventGet(Expression<Func<string>> auditEventId)
         {
             var __workflow_auditEventId = WorkflowExpression.Compile(auditEventId, nameof(auditEventId), required: true);
-            return new DeferredBodyAction<AuditEventGetResponse>(() =>
+            return new DeferredBodyAction<AuditEventGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audit-events/{0}", __workflow_auditEventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AuditEventGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AutomationTemplatedPostResponse> AutomationTemplated(Expression<Func<string>> templateId, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
+        public IBodyWorkflowAction<AutomationTemplatedPostResponse, ApiConnectionActionConfiguration> AutomationTemplated(Expression<Func<string>> templateId, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_bodybrand = WorkflowExpression.Compile(bodybrand, nameof(bodybrand), required: false);
             var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
             var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: false);
-            return new DeferredBodyAction<AutomationTemplatedPostResponse>(() =>
+            return new DeferredBodyAction<AutomationTemplatedPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/automations/{0}/invoke", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -330,18 +330,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<AutomationTemplatedPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AutomationAdHocPostResponse> AutomationAdHoc(Expression<Func<JToken[]>> bodyautomationsteps = null, Expression<Func<string>> bodyautomationcancelationToken = null, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
+        public IBodyWorkflowAction<AutomationAdHocPostResponse, ApiConnectionActionConfiguration> AutomationAdHoc(Expression<Func<JToken[]>> bodyautomationsteps = null, Expression<Func<string>> bodyautomationcancelationToken = null, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
         {
             var __workflow_bodyautomationsteps = WorkflowExpression.Compile(bodyautomationsteps, nameof(bodyautomationsteps), required: false);
             var __workflow_bodyautomationcancelationToken = WorkflowExpression.Compile(bodyautomationcancelationToken, nameof(bodyautomationcancelationToken), required: false);
             var __workflow_bodybrand = WorkflowExpression.Compile(bodybrand, nameof(bodybrand), required: false);
             var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
             var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: false);
-            return new DeferredBodyAction<AutomationAdHocPostResponse>(() =>
+            return new DeferredBodyAction<AutomationAdHocPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/automations/invoke";
                 var apiCallHttpMethod = "post";
@@ -408,14 +408,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<AutomationAdHocPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BrandsGetResponse> BrandsGet(Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<BrandsGetResponse, ApiConnectionActionConfiguration> BrandsGet(Expression<Func<string>> cursor = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
-            return new DeferredBodyAction<BrandsGetResponse>(() =>
+            return new DeferredBodyAction<BrandsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/brands";
                 var apiCallHttpMethod = "get";
@@ -423,11 +423,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_cursor != null)
                     callPayload.Queries["cursor"] = ExpressionConverter.Convert(__workflow_cursor);
                 return new ApiConnectionAction<BrandsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> Brand(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodysettingscolorsprimary = null, Expression<Func<string>> bodysettingscolorssecondary = null, Expression<Func<string>> bodysettingscolorstertiary = null, Expression<Func<string>> bodysettingsemailheaderbarColor = null, Expression<Func<string>> bodysettingsemailheaderlogohref = null, Expression<Func<string>> bodysettingsemailheaderlogoimage = null, Expression<Func<string>> bodysettingsemailfootermarkdown = null, Expression<Func<string>> bodysettingsemailfootersocialfacebookurl = null, Expression<Func<string>> bodysettingsemailfootersocialinstagramurl = null, Expression<Func<string>> bodysettingsemailfootersociallinkedinurl = null, Expression<Func<string>> bodysettingsemailfootersocialmediumurl = null, Expression<Func<string>> bodysettingsemailfootersocialtwitterurl = null, Expression<Func<bool>> bodysettingsinappdisableMessageIcon = null, Expression<Func<string>> bodysettingsinappplacement = null, Expression<Func<string[]>> bodysnippetsitems = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Brand(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodysettingscolorsprimary = null, Expression<Func<string>> bodysettingscolorssecondary = null, Expression<Func<string>> bodysettingscolorstertiary = null, Expression<Func<string>> bodysettingsemailheaderbarColor = null, Expression<Func<string>> bodysettingsemailheaderlogohref = null, Expression<Func<string>> bodysettingsemailheaderlogoimage = null, Expression<Func<string>> bodysettingsemailfootermarkdown = null, Expression<Func<string>> bodysettingsemailfootersocialfacebookurl = null, Expression<Func<string>> bodysettingsemailfootersocialinstagramurl = null, Expression<Func<string>> bodysettingsemailfootersociallinkedinurl = null, Expression<Func<string>> bodysettingsemailfootersocialmediumurl = null, Expression<Func<string>> bodysettingsemailfootersocialtwitterurl = null, Expression<Func<bool>> bodysettingsinappdisableMessageIcon = null, Expression<Func<string>> bodysettingsinappplacement = null, Expression<Func<string[]>> bodysnippetsitems = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodysettingsinappdisableMessageIcon = WorkflowExpression.Compile(bodysettingsinappdisableMessageIcon, nameof(bodysettingsinappdisableMessageIcon), required: false);
             var __workflow_bodysettingsinappplacement = WorkflowExpression.Compile(bodysettingsinappplacement, nameof(bodysettingsinappplacement), required: false);
             var __workflow_bodysnippetsitems = WorkflowExpression.Compile(bodysnippetsitems, nameof(bodysnippetsitems), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/brands";
                 var apiCallHttpMethod = "post";
@@ -677,24 +677,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BrandGetResponse> BrandGet(Expression<Func<string>> brandId)
+        public IBodyWorkflowAction<BrandGetResponse, ApiConnectionActionConfiguration> BrandGet(Expression<Func<string>> brandId)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
-            return new DeferredBodyAction<BrandGetResponse>(() =>
+            return new DeferredBodyAction<BrandGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/brands/{0}", __workflow_brandId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BrandGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BulkJobPostResponse> BulkJob(Expression<Func<string>> bodymessageEvent = null, Expression<Func<string>> bodymessagebrand = null, Expression<Func<string>> bodymessagetemplate = null, Expression<Func<string>> bodymessagebrandId = null, Expression<Func<string>> bodymessageroutingmethod = null, Expression<Func<string[]>> bodymessageroutingchannels = null, Expression<Func<string>> bodymessagemetadataEvent = null, Expression<Func<string[]>> bodymessagemetadatatags = null, Expression<Func<string>> bodymessagemetadatatraceId = null, Expression<Func<string>> bodymessagemetadatautmcampaign = null, Expression<Func<string>> bodymessagemetadatautmcontent = null, Expression<Func<string>> bodymessagemetadatautmmedium = null, Expression<Func<string>> bodymessagemetadatautmsource = null, Expression<Func<string>> bodymessagemetadatautmterm = null)
+        public IBodyWorkflowAction<BulkJobPostResponse, ApiConnectionActionConfiguration> BulkJob(Expression<Func<string>> bodymessageEvent = null, Expression<Func<string>> bodymessagebrand = null, Expression<Func<string>> bodymessagetemplate = null, Expression<Func<string>> bodymessagebrandId = null, Expression<Func<string>> bodymessageroutingmethod = null, Expression<Func<string[]>> bodymessageroutingchannels = null, Expression<Func<string>> bodymessagemetadataEvent = null, Expression<Func<string[]>> bodymessagemetadatatags = null, Expression<Func<string>> bodymessagemetadatatraceId = null, Expression<Func<string>> bodymessagemetadatautmcampaign = null, Expression<Func<string>> bodymessagemetadatautmcontent = null, Expression<Func<string>> bodymessagemetadatautmmedium = null, Expression<Func<string>> bodymessagemetadatautmsource = null, Expression<Func<string>> bodymessagemetadatautmterm = null)
         {
             var __workflow_bodymessageEvent = WorkflowExpression.Compile(bodymessageEvent, nameof(bodymessageEvent), required: false);
             var __workflow_bodymessagebrand = WorkflowExpression.Compile(bodymessagebrand, nameof(bodymessagebrand), required: false);
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodymessagemetadatautmmedium = WorkflowExpression.Compile(bodymessagemetadatautmmedium, nameof(bodymessagemetadatautmmedium), required: false);
             var __workflow_bodymessagemetadatautmsource = WorkflowExpression.Compile(bodymessagemetadatautmsource, nameof(bodymessagemetadatautmsource), required: false);
             var __workflow_bodymessagemetadatautmterm = WorkflowExpression.Compile(bodymessagemetadatautmterm, nameof(bodymessagemetadatautmterm), required: false);
-            return new DeferredBodyAction<BulkJobPostResponse>(() =>
+            return new DeferredBodyAction<BulkJobPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bulk";
                 var apiCallHttpMethod = "post";
@@ -871,28 +871,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<BulkJobPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BulkJobGetResponse> BulkJobGet(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<BulkJobGetResponse, ApiConnectionActionConfiguration> BulkJobGet(Expression<Func<string>> jobId)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            return new DeferredBodyAction<BulkJobGetResponse>(() =>
+            return new DeferredBodyAction<BulkJobGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bulk/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BulkJobGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> BulkJobUsers(Expression<Func<string>> jobId, Expression<Func<bodyusersInputItem[]>> bodyusers = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BulkJobUsers(Expression<Func<string>> jobId, Expression<Func<bodyusersInputItem[]>> bodyusers = null)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bulk/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -911,37 +911,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<JToken> BulkJobRun(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BulkJobRun(Expression<Func<string>> jobId)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bulk/{0}/run", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BulkJobUsersGetResponse> BulkJobUsersGet(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<BulkJobUsersGetResponse, ApiConnectionActionConfiguration> BulkJobUsersGet(Expression<Func<string>> jobId)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            return new DeferredBodyAction<BulkJobUsersGetResponse>(() =>
+            return new DeferredBodyAction<BulkJobUsersGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bulk/{0}/users", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BulkJobUsersGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ListsGetResponse> ListsGet()
+        public IBodyWorkflowAction<ListsGetResponse, ApiConnectionActionConfiguration> ListsGet()
         {
             var apiCallPath = "/lists";
             var apiCallHttpMethod = "get";
@@ -950,37 +950,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
+        public IBodyWorkflowAction<ListGetResponse, ApiConnectionActionConfiguration> ListGet(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyAction<ListGetResponse>(() =>
+            return new DeferredBodyAction<ListGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> ListDelete(Expression<Func<string>> listId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListDelete(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> ListPut(Expression<Func<string>> listId, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListPut(Expression<Func<string>> listId, Expression<Func<string>> bodyname = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1023,28 +1023,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> ListRestorePut(Expression<Func<string>> listId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListRestorePut(Expression<Func<string>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/restore", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ListSubscriptionsGetResponse> ListSubscriptionsGet(Expression<Func<string>> listId, Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<ListSubscriptionsGetResponse, ApiConnectionActionConfiguration> ListSubscriptionsGet(Expression<Func<string>> listId, Expression<Func<string>> cursor = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
-            return new DeferredBodyAction<ListSubscriptionsGetResponse>(() =>
+            return new DeferredBodyAction<ListSubscriptionsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/subscriptions", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1052,15 +1052,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_cursor != null)
                     callPayload.Queries["cursor"] = ExpressionConverter.Convert(__workflow_cursor);
                 return new ApiConnectionAction<ListSubscriptionsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> ListSubscribers(Expression<Func<string>> listId, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListSubscribers(Expression<Func<string>> listId, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/subscriptions", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1079,25 +1079,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> ListSubscribeDelete(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListSubscribeDelete(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/subscriptions/{1}", __workflow_listId.WithUrlEncoding(1), __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<MessagesGetResponse> MessagesGet(Expression<Func<bool>> archived = null, Expression<Func<string>> cursor = null, Expression<Func<string>> @event = null, Expression<Func<string>> list = null, Expression<Func<string>> messageId = null, Expression<Func<string>> notification = null, Expression<Func<string>> recipient = null, Expression<Func<string>> status = null, Expression<Func<string>> tags = null)
+        public IBodyWorkflowAction<MessagesGetResponse, ApiConnectionActionConfiguration> MessagesGet(Expression<Func<bool>> archived = null, Expression<Func<string>> cursor = null, Expression<Func<string>> @event = null, Expression<Func<string>> list = null, Expression<Func<string>> messageId = null, Expression<Func<string>> notification = null, Expression<Func<string>> recipient = null, Expression<Func<string>> status = null, Expression<Func<string>> tags = null)
         {
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
@@ -1108,7 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
-            return new DeferredBodyAction<MessagesGetResponse>(() =>
+            return new DeferredBodyAction<MessagesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "get";
@@ -1132,28 +1132,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_tags != null)
                     callPayload.Queries["tags"] = ExpressionConverter.Convert(__workflow_tags);
                 return new ApiConnectionAction<MessagesGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<MessageGetResponse> MessageGet(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageGetResponse, ApiConnectionActionConfiguration> MessageGet(Expression<Func<string>> messageId)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<MessageGetResponse>(() =>
+            return new DeferredBodyAction<MessageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/messages/{0}", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<MessageHistoryGetResponse> MessageHistoryGet(Expression<Func<string>> messageId, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<MessageHistoryGetResponse, ApiConnectionActionConfiguration> MessageHistoryGet(Expression<Func<string>> messageId, Expression<Func<string>> type = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<MessageHistoryGetResponse>(() =>
+            return new DeferredBodyAction<MessageHistoryGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/messages/{0}/history", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1161,40 +1161,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<MessageHistoryGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<MessageContentGetResponse> MessageContentGet(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageContentGetResponse, ApiConnectionActionConfiguration> MessageContentGet(Expression<Func<string>> messageId)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<MessageContentGetResponse>(() =>
+            return new DeferredBodyAction<MessageContentGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/messages/{0}/output", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageContentGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> MessagePut(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MessagePut(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/requests/{0}/archive", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<NotificationsGetResponse> NotificationsGet(Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<NotificationsGetResponse, ApiConnectionActionConfiguration> NotificationsGet(Expression<Func<string>> cursor = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
-            return new DeferredBodyAction<NotificationsGetResponse>(() =>
+            return new DeferredBodyAction<NotificationsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "get";
@@ -1202,37 +1202,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 if (__workflow_cursor != null)
                     callPayload.Queries["cursor"] = ExpressionConverter.Convert(__workflow_cursor);
                 return new ApiConnectionAction<NotificationsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ProfileGetResponse> ProfileGet(Expression<Func<string>> recipientId)
+        public IBodyWorkflowAction<ProfileGetResponse, ApiConnectionActionConfiguration> ProfileGet(Expression<Func<string>> recipientId)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
-            return new DeferredBodyAction<ProfileGetResponse>(() =>
+            return new DeferredBodyAction<ProfileGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProfileGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ProfileDeleteResponse> ProfileDelete(Expression<Func<string>> recipientId)
+        public IBodyWorkflowAction<ProfileDeleteResponse, ApiConnectionActionConfiguration> ProfileDelete(Expression<Func<string>> recipientId)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
-            return new DeferredBodyAction<ProfileDeleteResponse>(() =>
+            return new DeferredBodyAction<ProfileDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProfileDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string> Profile(Expression<Func<string>> recipientId, Expression<Func<string>> bodyprofileemail = null, Expression<Func<string>> bodyprofilephoneNumber = null, Expression<Func<string>> bodyprofileaddressformatted = null, Expression<Func<string>> bodyprofileaddressstreetAddress = null, Expression<Func<string>> bodyprofileaddresslocality = null, Expression<Func<string>> bodyprofileaddressregion = null, Expression<Func<string>> bodyprofileaddresspostalCode = null, Expression<Func<string>> bodyprofileaddresscountry = null, Expression<Func<string>> bodyprofilebirthdate = null, Expression<Func<bool>> bodyprofileemailVerified = null, Expression<Func<bool>> bodyprofilephoneNumberVerified = null, Expression<Func<string>> bodyprofilegivenName = null, Expression<Func<string>> bodyprofilemiddleName = null, Expression<Func<string>> bodyprofilefamilyName = null, Expression<Func<string>> bodyprofilepreferredName = null, Expression<Func<string>> bodyprofilegender = null, Expression<Func<string>> bodyprofilelocale = null, Expression<Func<string>> bodyprofilepicture = null, Expression<Func<string>> bodyprofileprofile = null, Expression<Func<string>> bodyprofilesub = null, Expression<Func<string>> bodyprofileupdatedAt = null, Expression<Func<string>> bodyprofilewebsite = null, Expression<Func<string>> bodyprofilezoneinfo = null, Expression<Func<string>> bodyprofileairshipaudiencenamedUser = null, Expression<Func<string[]>> bodyprofileairshipdeviceTypes = null, Expression<Func<string>> bodyprofileairshipapn = null, Expression<Func<string>> bodyprofileairshiptargetArn = null, Expression<Func<string>> bodyprofileairshipdiscordchannelId = null, Expression<Func<string>> bodyprofileairshipdiscorduserId = null, Expression<Func<string>> bodyprofileairshipexpotoken = null, Expression<Func<string[]>> bodyprofileairshipexpotokens = null, Expression<Func<string>> bodyprofileairshipfacebookPSID = null, Expression<Func<string>> bodyprofileairshipfirebaseToken = null, Expression<Func<string>> bodyprofileairshipintercomfrom = null, Expression<Func<string>> bodyprofileairshipintercomtoid = null, Expression<Func<string>> bodyprofileairshipmsTeamsuserId = null, Expression<Func<string>> bodyprofileairshipmsTeamsconversationId = null, Expression<Func<string>> bodyprofileairshipmsTeamstenantId = null, Expression<Func<string>> bodyprofileairshipmsTeamsserviceUrl = null, Expression<Func<string>> bodyprofileairshiponeSignalPlayerID = null, Expression<Func<string>> bodyprofileairshipslackaccessToken = null, Expression<Func<string>> bodyprofileairshipslackchannel = null, Expression<Func<string>> bodyprofileairshipslackemail = null, Expression<Func<string>> bodyprofileairshipslackuserId = null, Expression<Func<string>> bodyprofileairshipslackincomingWebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookmethod = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationmode = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationusername = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationpassword = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationtoken = null, Expression<Func<string>> bodyprofileairshipwebhookprofile = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Profile(Expression<Func<string>> recipientId, Expression<Func<string>> bodyprofileemail = null, Expression<Func<string>> bodyprofilephoneNumber = null, Expression<Func<string>> bodyprofileaddressformatted = null, Expression<Func<string>> bodyprofileaddressstreetAddress = null, Expression<Func<string>> bodyprofileaddresslocality = null, Expression<Func<string>> bodyprofileaddressregion = null, Expression<Func<string>> bodyprofileaddresspostalCode = null, Expression<Func<string>> bodyprofileaddresscountry = null, Expression<Func<string>> bodyprofilebirthdate = null, Expression<Func<bool>> bodyprofileemailVerified = null, Expression<Func<bool>> bodyprofilephoneNumberVerified = null, Expression<Func<string>> bodyprofilegivenName = null, Expression<Func<string>> bodyprofilemiddleName = null, Expression<Func<string>> bodyprofilefamilyName = null, Expression<Func<string>> bodyprofilepreferredName = null, Expression<Func<string>> bodyprofilegender = null, Expression<Func<string>> bodyprofilelocale = null, Expression<Func<string>> bodyprofilepicture = null, Expression<Func<string>> bodyprofileprofile = null, Expression<Func<string>> bodyprofilesub = null, Expression<Func<string>> bodyprofileupdatedAt = null, Expression<Func<string>> bodyprofilewebsite = null, Expression<Func<string>> bodyprofilezoneinfo = null, Expression<Func<string>> bodyprofileairshipaudiencenamedUser = null, Expression<Func<string[]>> bodyprofileairshipdeviceTypes = null, Expression<Func<string>> bodyprofileairshipapn = null, Expression<Func<string>> bodyprofileairshiptargetArn = null, Expression<Func<string>> bodyprofileairshipdiscordchannelId = null, Expression<Func<string>> bodyprofileairshipdiscorduserId = null, Expression<Func<string>> bodyprofileairshipexpotoken = null, Expression<Func<string[]>> bodyprofileairshipexpotokens = null, Expression<Func<string>> bodyprofileairshipfacebookPSID = null, Expression<Func<string>> bodyprofileairshipfirebaseToken = null, Expression<Func<string>> bodyprofileairshipintercomfrom = null, Expression<Func<string>> bodyprofileairshipintercomtoid = null, Expression<Func<string>> bodyprofileairshipmsTeamsuserId = null, Expression<Func<string>> bodyprofileairshipmsTeamsconversationId = null, Expression<Func<string>> bodyprofileairshipmsTeamstenantId = null, Expression<Func<string>> bodyprofileairshipmsTeamsserviceUrl = null, Expression<Func<string>> bodyprofileairshiponeSignalPlayerID = null, Expression<Func<string>> bodyprofileairshipslackaccessToken = null, Expression<Func<string>> bodyprofileairshipslackchannel = null, Expression<Func<string>> bodyprofileairshipslackemail = null, Expression<Func<string>> bodyprofileairshipslackuserId = null, Expression<Func<string>> bodyprofileairshipslackincomingWebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookmethod = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationmode = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationusername = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationpassword = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationtoken = null, Expression<Func<string>> bodyprofileairshipwebhookprofile = null)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_bodyprofileemail = WorkflowExpression.Compile(bodyprofileemail, nameof(bodyprofileemail), required: false);
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodyprofileairshipwebhookauthenticationpassword = WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationpassword, nameof(bodyprofileairshipwebhookauthenticationpassword), required: false);
             var __workflow_bodyprofileairshipwebhookauthenticationtoken = WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationtoken, nameof(bodyprofileairshipwebhookauthenticationtoken), required: false);
             var __workflow_bodyprofileairshipwebhookprofile = WorkflowExpression.Compile(bodyprofileairshipwebhookprofile, nameof(bodyprofileairshipwebhookprofile), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1732,22 +1732,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ProfilePatchResponse> ProfilePatch(Expression<Func<string>> recipientId, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<ProfilePatchResponse, ApiConnectionActionConfiguration> ProfilePatch(Expression<Func<string>> recipientId, Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ProfilePatchResponse>(() =>
+            return new DeferredBodyAction<ProfilePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProfilePatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

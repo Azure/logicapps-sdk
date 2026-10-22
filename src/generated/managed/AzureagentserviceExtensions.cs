@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class AzureagentserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<ListAgentsResponse> ListAgents(Expression<Func<apiVersionInput>> apiVersion)
+        public IBodyWorkflowAction<ListAgentsResponse, ApiConnectionActionConfiguration> ListAgents(Expression<Func<apiVersionInput>> apiVersion)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
-            return new DeferredBodyAction<ListAgentsResponse>(() =>
+            return new DeferredBodyAction<ListAgentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/assistants";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ListAgentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<CreateThreadResponse> CreateThread(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<Messages[]>> requestBodymessages = null)
+        public IBodyWorkflowAction<CreateThreadResponse, ApiConnectionActionConfiguration> CreateThread(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<Messages[]>> requestBodymessages = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_requestBodymessages = WorkflowExpression.Compile(requestBodymessages, nameof(requestBodymessages), required: false);
-            return new DeferredBodyAction<CreateThreadResponse>(() =>
+            return new DeferredBodyAction<CreateThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads";
                 var apiCallHttpMethod = "post";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 }
 
                 return new ApiConnectionAction<CreateThreadResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> requestBodyassistantId, Expression<Func<string>> requestBodymodel = null, Expression<Func<string>> requestBodyinstructions = null, Expression<Func<string>> requestBodyadditionalInstructions = null, Expression<Func<Messages[]>> requestBodyadditionalMessages = null, Expression<Func<Tools[]>> requestBodytools = null, Expression<Func<double>> requestBodytemperature = null, Expression<Func<double>> requestBodytopP = null, Expression<Func<bool>> requestBodystream = null, Expression<Func<int>> requestBodymaxPromptTokens = null, Expression<Func<int>> requestBodymaxCompletionTokens = null)
+        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> requestBodyassistantId, Expression<Func<string>> requestBodymodel = null, Expression<Func<string>> requestBodyinstructions = null, Expression<Func<string>> requestBodyadditionalInstructions = null, Expression<Func<Messages[]>> requestBodyadditionalMessages = null, Expression<Func<Tools[]>> requestBodytools = null, Expression<Func<double>> requestBodytemperature = null, Expression<Func<double>> requestBodytopP = null, Expression<Func<bool>> requestBodystream = null, Expression<Func<int>> requestBodymaxPromptTokens = null, Expression<Func<int>> requestBodymaxCompletionTokens = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_requestBodystream = WorkflowExpression.Compile(requestBodystream, nameof(requestBodystream), required: false);
             var __workflow_requestBodymaxPromptTokens = WorkflowExpression.Compile(requestBodymaxPromptTokens, nameof(requestBodymaxPromptTokens), required: false);
             var __workflow_requestBodymaxCompletionTokens = WorkflowExpression.Compile(requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
-            return new DeferredBodyAction<CreateRunResponse>(() =>
+            return new DeferredBodyAction<CreateRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/runs", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -213,42 +213,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 }
 
                 return new ApiConnectionAction<CreateRunResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<GetRunResponse> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<GetRunResponse, ApiConnectionActionConfiguration> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
-            return new DeferredBodyAction<GetRunResponse>(() =>
+            return new DeferredBodyAction<GetRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/runs/{1}", __workflow_threadId.WithUrlEncoding(1), __workflow_runId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<GetRunResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<ListMessageResponse> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ListMessageResponse, ApiConnectionActionConfiguration> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
-            return new DeferredBodyAction<ListMessageResponse>(() =>
+            return new DeferredBodyAction<ListMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/threads/{0}/messages", __workflow_threadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ListMessageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> bodypromptid, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null)
+        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> bodypromptid, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_bodypromptid = WorkflowExpression.Compile(bodypromptid, nameof(bodypromptid), required: true);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
             var __workflow_bodyparallelToolCalls = WorkflowExpression.Compile(bodyparallelToolCalls, nameof(bodyparallelToolCalls), required: false);
             var __workflow_bodystore = WorkflowExpression.Compile(bodystore, nameof(bodystore), required: false);
             var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
-            return new DeferredBodyAction<OpenAIResponse>(() =>
+            return new DeferredBodyAction<OpenAIResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/openai/responses";
                 var apiCallHttpMethod = "post";
@@ -477,14 +477,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 }
 
                 return new ApiConnectionAction<OpenAIResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<JToken> SendActivity(Expression<Func<string>> agentId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendActivity(Expression<Func<string>> agentId)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/protocols/activityprotocol", __workflow_agentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -498,14 +498,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<JToken> SendActivityApplication(Expression<Func<string>> myApplication)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendActivityApplication(Expression<Func<string>> myApplication)
         {
             var __workflow_myApplication = WorkflowExpression.Compile(myApplication, nameof(myApplication), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/applications/{0}/protocols/activityprotocol", __workflow_myApplication.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

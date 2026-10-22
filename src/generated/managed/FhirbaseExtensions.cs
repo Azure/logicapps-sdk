@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     public class FhirbaseActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponse> GETAppointment(Expression<Func<string>> patient = null, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GETAppointmentResponse, ApiConnectionActionConfiguration> GETAppointment(Expression<Func<string>> patient = null, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
         {
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETAppointmentResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Appointment";
                 var apiCallHttpMethod = "get";
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_Sort != null)
                     callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
                 return new ApiConnectionAction<GETAppointmentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTAppointmentResponse> POSTAppointment(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyserviceCategoryInputItem[]>> bodyserviceCategory = null, Expression<Func<bodyserviceTypeInputItem[]>> bodyserviceType = null, Expression<Func<bodyspecialtyInputItem[]>> bodyspecialty = null, Expression<Func<bodyappointmentTypecodingInputItem[]>> bodyappointmentTypecoding = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<POSTAppointmentResponse, ApiConnectionActionConfiguration> POSTAppointment(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyserviceCategoryInputItem[]>> bodyserviceCategory = null, Expression<Func<bodyserviceTypeInputItem[]>> bodyserviceType = null, Expression<Func<bodyspecialtyInputItem[]>> bodyspecialty = null, Expression<Func<bodyappointmentTypecodingInputItem[]>> bodyappointmentTypecoding = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             var __workflow_bodybasedOn = WorkflowExpression.Compile(bodybasedOn, nameof(bodybasedOn), required: false);
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
-            return new DeferredBodyAction<POSTAppointmentResponse>(() =>
+            return new DeferredBodyAction<POSTAppointmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Appointment";
                 var apiCallHttpMethod = "post";
@@ -190,24 +190,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTAppointmentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDResponse> GETAppointmentID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentIDResponse, ApiConnectionActionConfiguration> GETAppointmentID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentIDResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentIDResponse> DELETEAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<DELETEAppointmentIDResponse, ApiConnectionActionConfiguration> DELETEAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
-            return new DeferredBodyAction<DELETEAppointmentIDResponse>(() =>
+            return new DeferredBodyAction<DELETEAppointmentIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -295,11 +295,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEAppointmentIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentIDResponse> PUTAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<PUTAppointmentIDResponse, ApiConnectionActionConfiguration> PUTAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
-            return new DeferredBodyAction<PUTAppointmentIDResponse>(() =>
+            return new DeferredBodyAction<PUTAppointmentIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -387,41 +387,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTAppointmentIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDVERSIONResponse> GETAppointmentIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETAppointmentIDVERSIONResponse, ApiConnectionActionConfiguration> GETAppointmentIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETAppointmentIDVERSIONResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentIDVERSIONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDVERSIONResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDHistoryResponse> GETAppointmentIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentIDHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentHistoryResponse> GETAppointmentHistory(Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETAppointmentHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentHistory(Expression<Func<string>> patient = null)
         {
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETAppointmentHistoryResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Appointment/_history";
                 var apiCallHttpMethod = "get";
@@ -429,16 +429,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETAppointmentHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseResponse> GETAppointmentResponse(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETAppointmentResponseResponse, ApiConnectionActionConfiguration> GETAppointmentResponse(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETAppointmentResponseResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AppointmentResponse";
                 var apiCallHttpMethod = "get";
@@ -450,11 +450,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETAppointmentResponseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTAppointmentResponseResponse> POSTAppointmentResponse(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<POSTAppointmentResponseResponse, ApiConnectionActionConfiguration> POSTAppointmentResponse(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyactorreference = WorkflowExpression.Compile(bodyactorreference, nameof(bodyactorreference), required: false);
             var __workflow_bodyactordisplay = WorkflowExpression.Compile(bodyactordisplay, nameof(bodyactordisplay), required: false);
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
-            return new DeferredBodyAction<POSTAppointmentResponseResponse>(() =>
+            return new DeferredBodyAction<POSTAppointmentResponseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AppointmentResponse";
                 var apiCallHttpMethod = "post";
@@ -556,24 +556,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTAppointmentResponseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDResponse> GETAppointmentResponseID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentResponseIDResponse, ApiConnectionActionConfiguration> GETAppointmentResponseID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentResponseIDResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentResponseIDResponse> DELETEAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<DELETEAppointmentResponseIDResponse, ApiConnectionActionConfiguration> DELETEAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyactorreference = WorkflowExpression.Compile(bodyactorreference, nameof(bodyactorreference), required: false);
             var __workflow_bodyactordisplay = WorkflowExpression.Compile(bodyactordisplay, nameof(bodyactordisplay), required: false);
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
-            return new DeferredBodyAction<DELETEAppointmentResponseIDResponse>(() =>
+            return new DeferredBodyAction<DELETEAppointmentResponseIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -698,11 +698,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEAppointmentResponseIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentResponseIDResponse> PUTAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<PUTAppointmentResponseIDResponse, ApiConnectionActionConfiguration> PUTAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyactorreference = WorkflowExpression.Compile(bodyactorreference, nameof(bodyactorreference), required: false);
             var __workflow_bodyactordisplay = WorkflowExpression.Compile(bodyactordisplay, nameof(bodyactordisplay), required: false);
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
-            return new DeferredBodyAction<PUTAppointmentResponseIDResponse>(() =>
+            return new DeferredBodyAction<PUTAppointmentResponseIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -827,38 +827,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTAppointmentResponseIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDVersionResponse> GETAppointmentResponseIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETAppointmentResponseIDVersionResponse, ApiConnectionActionConfiguration> GETAppointmentResponseIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETAppointmentResponseIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDHistoryResponse> GETAppointmentResponseIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentResponseIDHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentResponseIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentResponseIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETAppointmentResponseIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseHistoryResponse> GETAppointmentResponseHistory()
+        public IBodyWorkflowAction<GETAppointmentResponseHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentResponseHistory()
         {
             var apiCallPath = "/AppointmentResponse/_history";
             var apiCallHttpMethod = "get";
@@ -867,12 +867,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceResponse> GETDevice(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETDeviceResponse, ApiConnectionActionConfiguration> GETDevice(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETDeviceResponse>(() =>
+            return new DeferredBodyAction<GETDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Device";
                 var apiCallHttpMethod = "get";
@@ -884,11 +884,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETDeviceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTDeviceResponse> POSTDevice(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyudiCarrierInputItem[]>> bodyudiCarrier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodydistinctIdentifier = null, Expression<Func<string>> bodymanufactureDate = null, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodylotNumber = null, Expression<Func<string>> bodyserialNumber = null, Expression<Func<bodydeviceNameInputItem[]>> bodydeviceName = null, Expression<Func<bodytypecodingInputItem[]>> bodytypecoding = null, Expression<Func<string>> bodytypetext = null, Expression<Func<string>> bodypatientreference = null)
+        public IBodyWorkflowAction<POSTDeviceResponse, ApiConnectionActionConfiguration> POSTDevice(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyudiCarrierInputItem[]>> bodyudiCarrier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodydistinctIdentifier = null, Expression<Func<string>> bodymanufactureDate = null, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodylotNumber = null, Expression<Func<string>> bodyserialNumber = null, Expression<Func<bodydeviceNameInputItem[]>> bodydeviceName = null, Expression<Func<bodytypecodingInputItem[]>> bodytypecoding = null, Expression<Func<string>> bodytypetext = null, Expression<Func<string>> bodypatientreference = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytypecoding = WorkflowExpression.Compile(bodytypecoding, nameof(bodytypecoding), required: false);
             var __workflow_bodytypetext = WorkflowExpression.Compile(bodytypetext, nameof(bodytypetext), required: false);
             var __workflow_bodypatientreference = WorkflowExpression.Compile(bodypatientreference, nameof(bodypatientreference), required: false);
-            return new DeferredBodyAction<POSTDeviceResponse>(() =>
+            return new DeferredBodyAction<POSTDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Device";
                 var apiCallHttpMethod = "post";
@@ -1032,24 +1032,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTDeviceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDResponse> GETDeviceID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETDeviceIDResponse, ApiConnectionActionConfiguration> GETDeviceID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETDeviceIDResponse>(() =>
+            return new DeferredBodyAction<GETDeviceIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEDeviceIDResponse> DELETEDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
+        public IBodyWorkflowAction<DELETEDeviceIDResponse, ApiConnectionActionConfiguration> DELETEDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1059,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            return new DeferredBodyAction<DELETEDeviceIDResponse>(() =>
+            return new DeferredBodyAction<DELETEDeviceIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1130,11 +1130,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEDeviceIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTDeviceIDResponse> PUTDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
+        public IBodyWorkflowAction<PUTDeviceIDResponse, ApiConnectionActionConfiguration> PUTDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1144,7 +1144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            return new DeferredBodyAction<PUTDeviceIDResponse>(() =>
+            return new DeferredBodyAction<PUTDeviceIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1215,38 +1215,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTDeviceIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDVERSIONResponse> GETDeviceIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETDeviceIDVERSIONResponse, ApiConnectionActionConfiguration> GETDeviceIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETDeviceIDVERSIONResponse>(() =>
+            return new DeferredBodyAction<GETDeviceIDVERSIONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDVERSIONResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDHISTORYResponse> GETDeviceIDHISTORY(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETDeviceIDHISTORYResponse, ApiConnectionActionConfiguration> GETDeviceIDHISTORY(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETDeviceIDHISTORYResponse>(() =>
+            return new DeferredBodyAction<GETDeviceIDHISTORYResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETDeviceIDHISTORYResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceHISTORYResponse> GETDeviceHISTORY()
+        public IBodyWorkflowAction<GETDeviceHISTORYResponse, ApiConnectionActionConfiguration> GETDeviceHISTORY()
         {
             var apiCallPath = "/Device/_history";
             var apiCallHttpMethod = "get";
@@ -1255,12 +1255,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterResponse> GETEncounter(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETEncounterResponse, ApiConnectionActionConfiguration> GETEncounter(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETEncounterResponse>(() =>
+            return new DeferredBodyAction<GETEncounterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Encounter";
                 var apiCallHttpMethod = "get";
@@ -1272,11 +1272,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETEncounterResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTEncounterResponse> POSTEncounter(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<POSTEncounterResponse, ApiConnectionActionConfiguration> POSTEncounter(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyserviceProviderreference = WorkflowExpression.Compile(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
-            return new DeferredBodyAction<POSTEncounterResponse>(() =>
+            return new DeferredBodyAction<POSTEncounterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Encounter";
                 var apiCallHttpMethod = "post";
@@ -1436,24 +1436,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTEncounterResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDResponse> GETEncounterID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETEncounterIDResponse, ApiConnectionActionConfiguration> GETEncounterID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETEncounterIDResponse>(() =>
+            return new DeferredBodyAction<GETEncounterIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEEncounterIDResponse> DELETEEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<DELETEEncounterIDResponse, ApiConnectionActionConfiguration> DELETEEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyserviceProviderreference = WorkflowExpression.Compile(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
-            return new DeferredBodyAction<DELETEEncounterIDResponse>(() =>
+            return new DeferredBodyAction<DELETEEncounterIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1614,11 +1614,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEEncounterIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTEncounterIDResponse> PUTEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<PUTEncounterIDResponse, ApiConnectionActionConfiguration> PUTEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyserviceProviderreference = WorkflowExpression.Compile(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
-            return new DeferredBodyAction<PUTEncounterIDResponse>(() =>
+            return new DeferredBodyAction<PUTEncounterIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1779,38 +1779,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTEncounterIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDVersionResponse> GETEncounterIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETEncounterIDVersionResponse, ApiConnectionActionConfiguration> GETEncounterIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETEncounterIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETEncounterIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDHISTORYResponse> GETEncounterIDHISTORY(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETEncounterIDHISTORYResponse, ApiConnectionActionConfiguration> GETEncounterIDHISTORY(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETEncounterIDHISTORYResponse>(() =>
+            return new DeferredBodyAction<GETEncounterIDHISTORYResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETEncounterIDHISTORYResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterHISTORYResponse> GETEncounterHISTORY()
+        public IBodyWorkflowAction<GETEncounterHISTORYResponse, ApiConnectionActionConfiguration> GETEncounterHISTORY()
         {
             var apiCallPath = "/Encounter/_history";
             var apiCallHttpMethod = "get";
@@ -1819,12 +1819,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagResponse> GETFlag(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETFlagResponse, ApiConnectionActionConfiguration> GETFlag(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETFlagResponse>(() =>
+            return new DeferredBodyAction<GETFlagResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Flag";
                 var apiCallHttpMethod = "get";
@@ -1836,11 +1836,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETFlagResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTFLAGResponse> POSTFLAG(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<POSTFLAGResponse, ApiConnectionActionConfiguration> POSTFLAG(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -1857,7 +1857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyauthorreference = WorkflowExpression.Compile(bodyauthorreference, nameof(bodyauthorreference), required: false);
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
-            return new DeferredBodyAction<POSTFLAGResponse>(() =>
+            return new DeferredBodyAction<POSTFLAGResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Flag";
                 var apiCallHttpMethod = "post";
@@ -2000,24 +2000,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTFLAGResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDResponse> GETFlagID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETFlagIDResponse, ApiConnectionActionConfiguration> GETFlagID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETFlagIDResponse>(() =>
+            return new DeferredBodyAction<GETFlagIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEFlagIDResponse> DELETEFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<DELETEFlagIDResponse, ApiConnectionActionConfiguration> DELETEFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2035,7 +2035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyauthorreference = WorkflowExpression.Compile(bodyauthorreference, nameof(bodyauthorreference), required: false);
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
-            return new DeferredBodyAction<DELETEFlagIDResponse>(() =>
+            return new DeferredBodyAction<DELETEFlagIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2178,11 +2178,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEFlagIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTFlagIDResponse> PUTFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<PUTFlagIDResponse, ApiConnectionActionConfiguration> PUTFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2200,7 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyauthorreference = WorkflowExpression.Compile(bodyauthorreference, nameof(bodyauthorreference), required: false);
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
-            return new DeferredBodyAction<PUTFlagIDResponse>(() =>
+            return new DeferredBodyAction<PUTFlagIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -2343,38 +2343,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTFlagIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDVersionResponse> GETFlagIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETFlagIDVersionResponse, ApiConnectionActionConfiguration> GETFlagIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETFlagIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETFlagIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDHistoryResponse> GETFlagIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETFlagIDHistoryResponse, ApiConnectionActionConfiguration> GETFlagIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETFlagIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETFlagIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETFlagIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagHISTORYResponse> GETFlagHISTORY()
+        public IBodyWorkflowAction<GETFlagHISTORYResponse, ApiConnectionActionConfiguration> GETFlagHISTORY()
         {
             var apiCallPath = "/Flag/_history";
             var apiCallHttpMethod = "get";
@@ -2383,12 +2383,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationResponse> GETLocation(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETLocationResponse, ApiConnectionActionConfiguration> GETLocation(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETLocationResponse>(() =>
+            return new DeferredBodyAction<GETLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Location";
                 var apiCallHttpMethod = "get";
@@ -2400,11 +2400,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETLocationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTLocationResponse> POSTLocation(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<POSTLocationResponse, ApiConnectionActionConfiguration> POSTLocation(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -2415,7 +2415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodypartOfreference = WorkflowExpression.Compile(bodypartOfreference, nameof(bodypartOfreference), required: false);
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
-            return new DeferredBodyAction<POSTLocationResponse>(() =>
+            return new DeferredBodyAction<POSTLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Location";
                 var apiCallHttpMethod = "post";
@@ -2498,24 +2498,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTLocationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDResponse> GETLocationID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETLocationIDResponse, ApiConnectionActionConfiguration> GETLocationID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETLocationIDResponse>(() =>
+            return new DeferredBodyAction<GETLocationIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETELocationIDResponse> DELETELocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<DELETELocationIDResponse, ApiConnectionActionConfiguration> DELETELocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2527,7 +2527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodypartOfreference = WorkflowExpression.Compile(bodypartOfreference, nameof(bodypartOfreference), required: false);
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
-            return new DeferredBodyAction<DELETELocationIDResponse>(() =>
+            return new DeferredBodyAction<DELETELocationIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2610,11 +2610,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETELocationIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTLocationIDResponse> PUTLocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<PUTLocationIDResponse, ApiConnectionActionConfiguration> PUTLocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2626,7 +2626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodypartOfreference = WorkflowExpression.Compile(bodypartOfreference, nameof(bodypartOfreference), required: false);
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
-            return new DeferredBodyAction<PUTLocationIDResponse>(() =>
+            return new DeferredBodyAction<PUTLocationIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -2709,38 +2709,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTLocationIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDVersionResponse> GETLocationIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETLocationIDVersionResponse, ApiConnectionActionConfiguration> GETLocationIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETLocationIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETLocationIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDHistoryResponse> GETLocationIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETLocationIDHistoryResponse, ApiConnectionActionConfiguration> GETLocationIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETLocationIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETLocationIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETLocationIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationHistoryResponse> GETLocationHistory()
+        public IBodyWorkflowAction<GETLocationHistoryResponse, ApiConnectionActionConfiguration> GETLocationHistory()
         {
             var apiCallPath = "/Location/_history";
             var apiCallHttpMethod = "get";
@@ -2749,12 +2749,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientResponse> GETPatient(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETPatientResponse, ApiConnectionActionConfiguration> GETPatient(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETPatientResponse>(() =>
+            return new DeferredBodyAction<GETPatientResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Patient";
                 var apiCallHttpMethod = "get";
@@ -2766,11 +2766,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETPatientResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPatientResponse> POSTPatient(Expression<Func<string>> bodyresourceType = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<POSTPatientResponse, ApiConnectionActionConfiguration> POSTPatient(Expression<Func<string>> bodyresourceType = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
@@ -2780,7 +2780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodybirthDate = WorkflowExpression.Compile(bodybirthDate, nameof(bodybirthDate), required: false);
             var __workflow_bodydeceasedBoolean = WorkflowExpression.Compile(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
-            return new DeferredBodyAction<POSTPatientResponse>(() =>
+            return new DeferredBodyAction<POSTPatientResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Patient";
                 var apiCallHttpMethod = "post";
@@ -2841,24 +2841,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTPatientResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDResponse> GETPatientID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPatientIDResponse, ApiConnectionActionConfiguration> GETPatientID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPatientIDResponse>(() =>
+            return new DeferredBodyAction<GETPatientIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPatientIDResponse> DELETEPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<DELETEPatientIDResponse, ApiConnectionActionConfiguration> DELETEPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2870,7 +2870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodybirthDate = WorkflowExpression.Compile(bodybirthDate, nameof(bodybirthDate), required: false);
             var __workflow_bodydeceasedBoolean = WorkflowExpression.Compile(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
-            return new DeferredBodyAction<DELETEPatientIDResponse>(() =>
+            return new DeferredBodyAction<DELETEPatientIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2937,11 +2937,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEPatientIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPatientIDResponse> PUTPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<PUTPatientIDResponse, ApiConnectionActionConfiguration> PUTPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2953,7 +2953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodybirthDate = WorkflowExpression.Compile(bodybirthDate, nameof(bodybirthDate), required: false);
             var __workflow_bodydeceasedBoolean = WorkflowExpression.Compile(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
-            return new DeferredBodyAction<PUTPatientIDResponse>(() =>
+            return new DeferredBodyAction<PUTPatientIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -3020,38 +3020,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTPatientIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDVersionResponse> GETPatientIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPatientIDVersionResponse, ApiConnectionActionConfiguration> GETPatientIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETPatientIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETPatientIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDHistoryResponse> GETPatientIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPatientIDHistoryResponse, ApiConnectionActionConfiguration> GETPatientIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPatientIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETPatientIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPatientIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientHistoryResponse> GETPatientHistory()
+        public IBodyWorkflowAction<GETPatientHistoryResponse, ApiConnectionActionConfiguration> GETPatientHistory()
         {
             var apiCallPath = "/Patient/_history";
             var apiCallHttpMethod = "get";
@@ -3060,12 +3060,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonResponse> GETPerson(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETPersonResponse, ApiConnectionActionConfiguration> GETPerson(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETPersonResponse>(() =>
+            return new DeferredBodyAction<GETPersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Person";
                 var apiCallHttpMethod = "get";
@@ -3077,11 +3077,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETPersonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPersonResponse> POSTPerson(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<POSTPersonResponse, ApiConnectionActionConfiguration> POSTPerson(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -3094,7 +3094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymanagingOrganizationdisplay = WorkflowExpression.Compile(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            return new DeferredBodyAction<POSTPersonResponse>(() =>
+            return new DeferredBodyAction<POSTPersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Person";
                 var apiCallHttpMethod = "post";
@@ -3181,24 +3181,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTPersonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDResponse> GETPersonID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPersonIDResponse, ApiConnectionActionConfiguration> GETPersonID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPersonIDResponse>(() =>
+            return new DeferredBodyAction<GETPersonIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPersonIDResponse> DELETEPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<DELETEPersonIDResponse, ApiConnectionActionConfiguration> DELETEPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3212,7 +3212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymanagingOrganizationdisplay = WorkflowExpression.Compile(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            return new DeferredBodyAction<DELETEPersonIDResponse>(() =>
+            return new DeferredBodyAction<DELETEPersonIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -3299,11 +3299,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEPersonIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPersonIDResponse> PUTPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<PUTPersonIDResponse, ApiConnectionActionConfiguration> PUTPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3317,7 +3317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymanagingOrganizationdisplay = WorkflowExpression.Compile(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            return new DeferredBodyAction<PUTPersonIDResponse>(() =>
+            return new DeferredBodyAction<PUTPersonIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -3404,38 +3404,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTPersonIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDVersionResponse> GETPersonIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPersonIDVersionResponse, ApiConnectionActionConfiguration> GETPersonIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETPersonIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETPersonIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDHistoryResponse> GETPersonIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPersonIDHistoryResponse, ApiConnectionActionConfiguration> GETPersonIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPersonIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETPersonIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPersonIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonHistoryResponse> GETPersonHistory()
+        public IBodyWorkflowAction<GETPersonHistoryResponse, ApiConnectionActionConfiguration> GETPersonHistory()
         {
             var apiCallPath = "/Person/_history";
             var apiCallHttpMethod = "get";
@@ -3444,12 +3444,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerResponse> GETPractitioner(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETPractitionerResponse, ApiConnectionActionConfiguration> GETPractitioner(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
         {
             var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETPractitionerResponse>(() =>
+            return new DeferredBodyAction<GETPractitionerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Practitioner";
                 var apiCallHttpMethod = "get";
@@ -3461,11 +3461,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 return new ApiConnectionAction<GETPractitionerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPractitionerResponse> POSTPractitioner(Expression<Func<string>> bodyresourceType = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodyaddressInputItem22[]>> bodyaddress = null, Expression<Func<bodyqualificationInputItem[]>> bodyqualification = null)
+        public IBodyWorkflowAction<POSTPractitionerResponse, ApiConnectionActionConfiguration> POSTPractitioner(Expression<Func<string>> bodyresourceType = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodyaddressInputItem22[]>> bodyaddress = null, Expression<Func<bodyqualificationInputItem[]>> bodyqualification = null)
         {
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
@@ -3473,7 +3473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             var __workflow_bodyqualification = WorkflowExpression.Compile(bodyqualification, nameof(bodyqualification), required: false);
-            return new DeferredBodyAction<POSTPractitionerResponse>(() =>
+            return new DeferredBodyAction<POSTPractitionerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Practitioner";
                 var apiCallHttpMethod = "post";
@@ -3522,24 +3522,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<POSTPractitionerResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDResponse> GETPractitionerID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPractitionerIDResponse, ApiConnectionActionConfiguration> GETPractitionerID(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPractitionerIDResponse>(() =>
+            return new DeferredBodyAction<GETPractitionerIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPractitionerIDResponse> DELETEPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<DELETEPractitionerIDResponse, ApiConnectionActionConfiguration> DELETEPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3552,7 +3552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytelecom = WorkflowExpression.Compile(bodytelecom, nameof(bodytelecom), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            return new DeferredBodyAction<DELETEPractitionerIDResponse>(() =>
+            return new DeferredBodyAction<DELETEPractitionerIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -3633,11 +3633,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<DELETEPractitionerIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPractitionerIDResponse> PUTPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<PUTPractitionerIDResponse, ApiConnectionActionConfiguration> PUTPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3650,7 +3650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytelecom = WorkflowExpression.Compile(bodytelecom, nameof(bodytelecom), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            return new DeferredBodyAction<PUTPractitionerIDResponse>(() =>
+            return new DeferredBodyAction<PUTPractitionerIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -3731,38 +3731,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                 }
 
                 return new ApiConnectionAction<PUTPractitionerIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDVersionResponse> GETPractitionerIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPractitionerIDVersionResponse, ApiConnectionActionConfiguration> GETPractitionerIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETPractitionerIDVersionResponse>(() =>
+            return new DeferredBodyAction<GETPractitionerIDVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDHistoryResponse> GETPractitionerIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPractitionerIDHistoryResponse, ApiConnectionActionConfiguration> GETPractitionerIDHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPractitionerIDHistoryResponse>(() =>
+            return new DeferredBodyAction<GETPractitionerIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GETPractitionerIDHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerHistoryResponse> GETPractitionerHistory()
+        public IBodyWorkflowAction<GETPractitionerHistoryResponse, ApiConnectionActionConfiguration> GETPractitionerHistory()
         {
             var apiCallPath = "/Practitioner/_history";
             var apiCallHttpMethod = "get";

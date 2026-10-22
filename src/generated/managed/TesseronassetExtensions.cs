@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class TesseronassetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<AddAssetResponse> AddAsset(Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<string>> bodyliveCycleName = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<AddAssetResponse, ApiConnectionActionConfiguration> AddAsset(Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<string>> bodyliveCycleName = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
             var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
             var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var __workflow_bodydocumentationName = WorkflowExpression.Compile(bodydocumentationName, nameof(bodydocumentationName), required: false);
             var __workflow_bodyliveCycleName = WorkflowExpression.Compile(bodyliveCycleName, nameof(bodyliveCycleName), required: false);
             var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
-            return new DeferredBodyAction<AddAssetResponse>(() =>
+            return new DeferredBodyAction<AddAssetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddAsset";
                 var apiCallHttpMethod = "post";
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
                 }
 
                 return new ApiConnectionAction<AddAssetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
             var __workflow_bodyassetId = WorkflowExpression.Compile(bodyassetId, nameof(bodyassetId), required: true);
             var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyliveCycleState = WorkflowExpression.Compile(bodyliveCycleState, nameof(bodyliveCycleState), required: false);
             var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
-            return new DeferredBodyAction<UpdateAssetResponse>(() =>
+            return new DeferredBodyAction<UpdateAssetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UpdateAsset";
                 var apiCallHttpMethod = "post";
@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
                 }
 
                 return new ApiConnectionAction<UpdateAssetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch(Expression<Func<int>> bodyskip, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyassetTemplateId, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<int>> bodyassetStatus = null, Expression<Func<bool>> bodyisDeprecated = null, Expression<Func<string>> bodylastUpdateDateStart = null, Expression<Func<string>> bodylastUpdateDateEnd = null, Expression<Func<int>> bodyresponseType = null, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null)
+        public IBodyWorkflowAction<GetAssetSearchResponse, ApiConnectionActionConfiguration> GetAssetSearch(Expression<Func<int>> bodyskip, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyassetTemplateId, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<int>> bodyassetStatus = null, Expression<Func<bool>> bodyisDeprecated = null, Expression<Func<string>> bodylastUpdateDateStart = null, Expression<Func<string>> bodylastUpdateDateEnd = null, Expression<Func<int>> bodyresponseType = null, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null)
         {
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
             var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
             var __workflow_bodylastUpdateDateEnd = WorkflowExpression.Compile(bodylastUpdateDateEnd, nameof(bodylastUpdateDateEnd), required: false);
             var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
             var __workflow_bodyincludeAccessAuditedFieldValues = WorkflowExpression.Compile(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
-            return new DeferredBodyAction<GetAssetSearchResponse>(() =>
+            return new DeferredBodyAction<GetAssetSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetAssetSearch";
                 var apiCallHttpMethod = "post";
@@ -250,16 +250,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
                 }
 
                 return new ApiConnectionAction<GetAssetSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo(Expression<Func<int>> bodyassetId, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null, Expression<Func<int>> bodyresponseType = null)
+        public IBodyWorkflowAction<GetAssetInfoResponse, ApiConnectionActionConfiguration> GetAssetInfo(Expression<Func<int>> bodyassetId, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null, Expression<Func<int>> bodyresponseType = null)
         {
             var __workflow_bodyassetId = WorkflowExpression.Compile(bodyassetId, nameof(bodyassetId), required: true);
             var __workflow_bodyincludeAccessAuditedFieldValues = WorkflowExpression.Compile(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
             var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
-            return new DeferredBodyAction<GetAssetInfoResponse>(() =>
+            return new DeferredBodyAction<GetAssetInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetAssetInfo";
                 var apiCallHttpMethod = "post";
@@ -286,15 +286,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
                 }
 
                 return new ApiConnectionAction<GetAssetInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetConfigResponse> GetConfig(Expression<Func<int>> bodyassetTemplateId, Expression<Func<int>> bodyenterpriseId = null)
+        public IBodyWorkflowAction<GetConfigResponse, ApiConnectionActionConfiguration> GetConfig(Expression<Func<int>> bodyassetTemplateId, Expression<Func<int>> bodyenterpriseId = null)
         {
             var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
             var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            return new DeferredBodyAction<GetConfigResponse>(() =>
+            return new DeferredBodyAction<GetConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetConfig";
                 var apiCallHttpMethod = "post";
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
                 }
 
                 return new ApiConnectionAction<GetConfigResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

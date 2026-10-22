@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
     public class BlackbaudaltruconstiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAddress> CreateConstituentAddress(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodycountry, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyhistoricalStartDate = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodystateHouseDistrict = null, Expression<Func<string>> bodystateSenateDistrict = null, Expression<Func<string>> bodylocalPrecinct = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodyrecentlyMoved = null, Expression<Func<string>> bodyoldAddress = null, Expression<Func<bool>> bodyomitFromValidation = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAddress, ApiConnectionActionConfiguration> CreateConstituentAddress(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodycountry, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyhistoricalStartDate = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodystateHouseDistrict = null, Expression<Func<string>> bodystateSenateDistrict = null, Expression<Func<string>> bodylocalPrecinct = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodyrecentlyMoved = null, Expression<Func<string>> bodyoldAddress = null, Expression<Func<bool>> bodyomitFromValidation = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyomitFromValidation = WorkflowExpression.Compile(bodyomitFromValidation, nameof(bodyomitFromValidation), required: false);
             var __workflow_bodycopyToSpouse = WorkflowExpression.Compile(bodycopyToSpouse, nameof(bodycopyToSpouse), required: false);
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentAddress>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentAddress, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/addresses";
                 var apiCallHttpMethod = "post";
@@ -266,24 +266,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAddress>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentAddress(Expression<Func<string>> constituentAddressId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentAddress(Expression<Func<string>> constituentAddressId)
         {
             var __workflow_constituentAddressId = WorkflowExpression.Compile(constituentAddressId, nameof(constituentAddressId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/addresses/{0}", __workflow_constituentAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentAddress(Expression<Func<string>> constituentAddressId, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyhistoricalStartDate = null, Expression<Func<string>> bodyhistoricalEndDate = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodystateHouseDistrict = null, Expression<Func<string>> bodystateSenateDistrict = null, Expression<Func<string>> bodylocalPrecinct = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodyomitFromValidation = null, Expression<Func<bool>> bodyupdateContacts = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAddress(Expression<Func<string>> constituentAddressId, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyhistoricalStartDate = null, Expression<Func<string>> bodyhistoricalEndDate = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodystateHouseDistrict = null, Expression<Func<string>> bodystateSenateDistrict = null, Expression<Func<string>> bodylocalPrecinct = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodyomitFromValidation = null, Expression<Func<bool>> bodyupdateContacts = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
             var __workflow_constituentAddressId = WorkflowExpression.Compile(constituentAddressId, nameof(constituentAddressId), required: true);
             var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyomitFromValidation = WorkflowExpression.Compile(bodyomitFromValidation, nameof(bodyomitFromValidation), required: false);
             var __workflow_bodyupdateContacts = WorkflowExpression.Compile(bodyupdateContacts, nameof(bodyupdateContacts), required: false);
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/addresses/{0}", __workflow_constituentAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -525,16 +525,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAlternateLookupID> CreateConstituentAlternateLookupID(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodytype, Expression<Func<string>> bodyalternateLookupID)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAlternateLookupID, ApiConnectionActionConfiguration> CreateConstituentAlternateLookupID(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodytype, Expression<Func<string>> bodyalternateLookupID)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodyalternateLookupID = WorkflowExpression.Compile(bodyalternateLookupID, nameof(bodyalternateLookupID), required: true);
-            return new DeferredBodyAction<ConmgCreatedConstituentAlternateLookupID>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentAlternateLookupID, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/alternatelookupids";
                 var apiCallHttpMethod = "post";
@@ -553,29 +553,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAlternateLookupID>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentAlternateLookupID(Expression<Func<string>> alternateLookupId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentAlternateLookupID(Expression<Func<string>> alternateLookupId)
         {
             var __workflow_alternateLookupId = WorkflowExpression.Compile(alternateLookupId, nameof(alternateLookupId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/alternatelookupids/{0}", __workflow_alternateLookupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentAlternateLookupID(Expression<Func<string>> alternateLookupId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyalternateLookupID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAlternateLookupID(Expression<Func<string>> alternateLookupId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyalternateLookupID = null)
         {
             var __workflow_alternateLookupId = WorkflowExpression.Compile(alternateLookupId, nameof(alternateLookupId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodyalternateLookupID = WorkflowExpression.Compile(bodyalternateLookupID, nameof(bodyalternateLookupID), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/alternatelookupids/{0}", __workflow_alternateLookupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -600,17 +600,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAppealResponse> CreateConstituentAppealResponse(Expression<Func<string>> bodyconstituentAppealID, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyresponse, Expression<Func<string>> bodydate = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAppealResponse, ApiConnectionActionConfiguration> CreateConstituentAppealResponse(Expression<Func<string>> bodyconstituentAppealID, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyresponse, Expression<Func<string>> bodydate = null)
         {
             var __workflow_bodyconstituentAppealID = WorkflowExpression.Compile(bodyconstituentAppealID, nameof(bodyconstituentAppealID), required: true);
             var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
             var __workflow_bodyresponse = WorkflowExpression.Compile(bodyresponse, nameof(bodyresponse), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentAppealResponse>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentAppealResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/constituentappealresponses";
                 var apiCallHttpMethod = "post";
@@ -635,11 +635,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAppealResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAppeal> CreateConstituentAppeal(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyappealID, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyappealID, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodyappealID = WorkflowExpression.Compile(bodyappealID, nameof(bodyappealID), required: true);
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodypackage = WorkflowExpression.Compile(bodypackage, nameof(bodypackage), required: false);
             var __workflow_bodysourceCode = WorkflowExpression.Compile(bodysourceCode, nameof(bodysourceCode), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentAppeal>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentAppeal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/constituentappeals";
                 var apiCallHttpMethod = "post";
@@ -695,24 +695,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentAppeal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentAppeal(Expression<Func<string>> constituentAppealId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentAppeal(Expression<Func<string>> constituentAppealId)
         {
             var __workflow_constituentAppealId = WorkflowExpression.Compile(constituentAppealId, nameof(constituentAppealId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituentappeals/{0}", __workflow_constituentAppealId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentAppeal(Expression<Func<string>> constituentAppealId, Expression<Func<string>> bodyappealID = null, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAppeal(Expression<Func<string>> constituentAppealId, Expression<Func<string>> bodyappealID = null, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_constituentAppealId = WorkflowExpression.Compile(constituentAppealId, nameof(constituentAppealId), required: true);
             var __workflow_bodyappealID = WorkflowExpression.Compile(bodyappealID, nameof(bodyappealID), required: false);
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodypackage = WorkflowExpression.Compile(bodypackage, nameof(bodypackage), required: false);
             var __workflow_bodysourceCode = WorkflowExpression.Compile(bodysourceCode, nameof(bodysourceCode), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituentappeals/{0}", __workflow_constituentAppealId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -770,37 +770,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgConstituentAppealCollection> ListConstituentAppeals(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgConstituentAppealCollection, ApiConnectionActionConfiguration> ListConstituentAppeals(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgConstituentAppealCollection>(() =>
+            return new DeferredBodyAction<ConmgConstituentAppealCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituentappeals/{0}/appeals", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentAppealCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentAttribute(Expression<Func<string>> constituentAttributeId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentAttribute(Expression<Func<string>> constituentAttributeId)
         {
             var __workflow_constituentAttributeId = WorkflowExpression.Compile(constituentAttributeId, nameof(constituentAttributeId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituentattributes/{0}", __workflow_constituentAttributeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentNote> CreateConstituentNote(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorID = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentNote, ApiConnectionActionConfiguration> CreateConstituentNote(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorID = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyauthorID = WorkflowExpression.Compile(bodyauthorID, nameof(bodyauthorID), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             var __workflow_bodyhTML = WorkflowExpression.Compile(bodyhTML, nameof(bodyhTML), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentNote>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentNote, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/constituentnotes";
                 var apiCallHttpMethod = "post";
@@ -852,24 +852,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentNote>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentNote(Expression<Func<string>> constituentNoteId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentNote(Expression<Func<string>> constituentNoteId)
         {
             var __workflow_constituentNoteId = WorkflowExpression.Compile(constituentNoteId, nameof(constituentNoteId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituentnotes/{0}", __workflow_constituentNoteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentNote(Expression<Func<string>> constituentNoteId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorID = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentNote(Expression<Func<string>> constituentNoteId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorID = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
         {
             var __workflow_constituentNoteId = WorkflowExpression.Compile(constituentNoteId, nameof(constituentNoteId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyauthorID = WorkflowExpression.Compile(bodyauthorID, nameof(bodyauthorID), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             var __workflow_bodyhTML = WorkflowExpression.Compile(bodyhTML, nameof(bodyhTML), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituentnotes/{0}", __workflow_constituentNoteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -927,11 +927,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgConstituentSearchResultCollection> SearchConstituent(Expression<Func<string>> keyName = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lookupId = null, Expression<Func<string>> emailAddress = null, Expression<Func<string>> phoneNumber = null, Expression<Func<string>> country = null, Expression<Func<string>> addressBlock = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postCode = null, Expression<Func<int>> classof = null, Expression<Func<bool>> exactMatchOnly = null, Expression<Func<string>> middleName = null, Expression<Func<string>> constituency = null, Expression<Func<string>> sourcecode = null, Expression<Func<bool>> includeIndividuals = null, Expression<Func<bool>> includeOrganizations = null, Expression<Func<bool>> includeGroups = null, Expression<Func<bool>> excludeHouseholds = null, Expression<Func<bool>> checkNickname = null, Expression<Func<bool>> checkAliases = null, Expression<Func<bool>> checkAlternateLookupIds = null, Expression<Func<bool>> onlyPrimaryAddress = null, Expression<Func<bool>> includeDeceased = null, Expression<Func<bool>> includeInactive = null, Expression<Func<bool>> fuzzySearchOnName = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<ConmgConstituentSearchResultCollection, ApiConnectionActionConfiguration> SearchConstituent(Expression<Func<string>> keyName = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lookupId = null, Expression<Func<string>> emailAddress = null, Expression<Func<string>> phoneNumber = null, Expression<Func<string>> country = null, Expression<Func<string>> addressBlock = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postCode = null, Expression<Func<int>> classof = null, Expression<Func<bool>> exactMatchOnly = null, Expression<Func<string>> middleName = null, Expression<Func<string>> constituency = null, Expression<Func<string>> sourcecode = null, Expression<Func<bool>> includeIndividuals = null, Expression<Func<bool>> includeOrganizations = null, Expression<Func<bool>> includeGroups = null, Expression<Func<bool>> excludeHouseholds = null, Expression<Func<bool>> checkNickname = null, Expression<Func<bool>> checkAliases = null, Expression<Func<bool>> checkAlternateLookupIds = null, Expression<Func<bool>> onlyPrimaryAddress = null, Expression<Func<bool>> includeDeceased = null, Expression<Func<bool>> includeInactive = null, Expression<Func<bool>> fuzzySearchOnName = null, Expression<Func<int>> limit = null)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: false);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_includeInactive = WorkflowExpression.Compile(includeInactive, nameof(includeInactive), required: false);
             var __workflow_fuzzySearchOnName = WorkflowExpression.Compile(fuzzySearchOnName, nameof(fuzzySearchOnName), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<ConmgConstituentSearchResultCollection>(() =>
+            return new DeferredBodyAction<ConmgConstituentSearchResultCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/constituents/search";
                 var apiCallHttpMethod = "get";
@@ -1020,28 +1020,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<ConmgConstituentSearchResultCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituent(Expression<Func<string>> constituentId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituent(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgAddressCollection> ListConstituentAddresses(Expression<Func<string>> constituentId, Expression<Func<bool>> includeFormer = null)
+        public IBodyWorkflowAction<ConmgAddressCollection, ApiConnectionActionConfiguration> ListConstituentAddresses(Expression<Func<string>> constituentId, Expression<Func<bool>> includeFormer = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_includeFormer = WorkflowExpression.Compile(includeFormer, nameof(includeFormer), required: false);
-            return new DeferredBodyAction<ConmgAddressCollection>(() =>
+            return new DeferredBodyAction<ConmgAddressCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/addresses", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1049,106 +1049,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_includeFormer != null)
                     callPayload.Queries["include_former"] = ExpressionConverter.Convert(__workflow_includeFormer);
                 return new ApiConnectionAction<ConmgAddressCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgAlternateLookupIDCollection> ListConstituentAlternateLookupIDs(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgAlternateLookupIDCollection, ApiConnectionActionConfiguration> ListConstituentAlternateLookupIDs(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgAlternateLookupIDCollection>(() =>
+            return new DeferredBodyAction<ConmgAlternateLookupIDCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/alternatelookupids", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgAlternateLookupIDCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgAttributeCollection> ListConstituentAttributes(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgAttributeCollection, ApiConnectionActionConfiguration> ListConstituentAttributes(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgAttributeCollection>(() =>
+            return new DeferredBodyAction<ConmgAttributeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/constituentattributelist", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgAttributeCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgConstituentPrimaryContactInfo> GetConstituentPrimaryContactInfo(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgConstituentPrimaryContactInfo, ApiConnectionActionConfiguration> GetConstituentPrimaryContactInfo(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgConstituentPrimaryContactInfo>(() =>
+            return new DeferredBodyAction<ConmgConstituentPrimaryContactInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/contactview", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentPrimaryContactInfo>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgEducationCollection> ListConstituentEducations(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgEducationCollection, ApiConnectionActionConfiguration> ListConstituentEducations(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgEducationCollection>(() =>
+            return new DeferredBodyAction<ConmgEducationCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/educationalhistories", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgEducationCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgEmailAddressCollection> ListConstituentEmailAddresses(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgEmailAddressCollection, ApiConnectionActionConfiguration> ListConstituentEmailAddresses(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgEmailAddressCollection>(() =>
+            return new DeferredBodyAction<ConmgEmailAddressCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/emailaddresses", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgEmailAddressCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgPhoneCollection> ListConstituentPhones(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgPhoneCollection, ApiConnectionActionConfiguration> ListConstituentPhones(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgPhoneCollection>(() =>
+            return new DeferredBodyAction<ConmgPhoneCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/phones", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgPhoneCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgConstituentProfilePicture> GetConstituentProfilePicture(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgConstituentProfilePicture, ApiConnectionActionConfiguration> GetConstituentProfilePicture(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgConstituentProfilePicture>(() =>
+            return new DeferredBodyAction<ConmgConstituentProfilePicture, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/profilepicture", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentProfilePicture>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgEmploymentHistoryCollection> ListConstituentEmploymentHistory(Expression<Func<string>> constituentId, Expression<Func<bool>> includeInactive = null)
+        public IBodyWorkflowAction<ConmgEmploymentHistoryCollection, ApiConnectionActionConfiguration> ListConstituentEmploymentHistory(Expression<Func<string>> constituentId, Expression<Func<bool>> includeInactive = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_includeInactive = WorkflowExpression.Compile(includeInactive, nameof(includeInactive), required: false);
-            return new DeferredBodyAction<ConmgEmploymentHistoryCollection>(() =>
+            return new DeferredBodyAction<ConmgEmploymentHistoryCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/relationshipjobsinfo", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1156,16 +1156,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_includeInactive != null)
                     callPayload.Queries["include_inactive"] = ExpressionConverter.Convert(__workflow_includeInactive);
                 return new ApiConnectionAction<ConmgEmploymentHistoryCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgSolicitCodeCollection> ListConstituentSolicitCodes(Expression<Func<string>> constituentId, Expression<Func<bool>> showExpired = null, Expression<Func<dateRangeInput>> dateRange = null)
+        public IBodyWorkflowAction<ConmgSolicitCodeCollection, ApiConnectionActionConfiguration> ListConstituentSolicitCodes(Expression<Func<string>> constituentId, Expression<Func<bool>> showExpired = null, Expression<Func<dateRangeInput>> dateRange = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_showExpired = WorkflowExpression.Compile(showExpired, nameof(showExpired), required: false);
             var __workflow_dateRange = WorkflowExpression.Compile(dateRange, nameof(dateRange), required: false);
-            return new DeferredBodyAction<ConmgSolicitCodeCollection>(() =>
+            return new DeferredBodyAction<ConmgSolicitCodeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/solicitcodes", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1175,37 +1175,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 if (__workflow_dateRange != null)
                     callPayload.Queries["date_range"] = ExpressionConverter.Convert(__workflow_dateRange);
                 return new ApiConnectionAction<ConmgSolicitCodeCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgTributeCollection> ListConstituentTributes(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgTributeCollection, ApiConnectionActionConfiguration> ListConstituentTributes(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgTributeCollection>(() =>
+            return new DeferredBodyAction<ConmgTributeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/tributes", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgTributeCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgConstituentSummaryProfile> GetConstituentSummaryProfile(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgConstituentSummaryProfile, ApiConnectionActionConfiguration> GetConstituentSummaryProfile(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgConstituentSummaryProfile>(() =>
+            return new DeferredBodyAction<ConmgConstituentSummaryProfile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/constituents/{0}/view", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentSummaryProfile>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEducation> CreateConstituentEducation(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyeducationalInstitution, Expression<Func<string>> bodystatus, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyprogram = null, Expression<Func<string>> bodydegree = null, Expression<Func<string>> bodyhonorAwarded = null, Expression<Func<string>> bodysource = null, Expression<Func<int>> bodysourceDateyear = null, Expression<Func<int>> bodysourceDatemonth = null, Expression<Func<int>> bodysourceDateday = null, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodyclassOf = null, Expression<Func<int>> bodypreferredClassOf = null, Expression<Func<bool>> bodyaffiliated = null, Expression<Func<int>> bodyfromyear = null, Expression<Func<int>> bodyfrommonth = null, Expression<Func<int>> bodyfromday = null, Expression<Func<int>> bodytoyear = null, Expression<Func<int>> bodytomonth = null, Expression<Func<int>> bodytoday = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylevel = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEducation, ApiConnectionActionConfiguration> CreateConstituentEducation(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyeducationalInstitution, Expression<Func<string>> bodystatus, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyprogram = null, Expression<Func<string>> bodydegree = null, Expression<Func<string>> bodyhonorAwarded = null, Expression<Func<string>> bodysource = null, Expression<Func<int>> bodysourceDateyear = null, Expression<Func<int>> bodysourceDatemonth = null, Expression<Func<int>> bodysourceDateday = null, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodyclassOf = null, Expression<Func<int>> bodypreferredClassOf = null, Expression<Func<bool>> bodyaffiliated = null, Expression<Func<int>> bodyfromyear = null, Expression<Func<int>> bodyfrommonth = null, Expression<Func<int>> bodyfromday = null, Expression<Func<int>> bodytoyear = null, Expression<Func<int>> bodytomonth = null, Expression<Func<int>> bodytoday = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylevel = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodyeducationalInstitution = WorkflowExpression.Compile(bodyeducationalInstitution, nameof(bodyeducationalInstitution), required: true);
@@ -1233,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodytoday = WorkflowExpression.Compile(bodytoday, nameof(bodytoday), required: false);
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentEducation>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentEducation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/educationalhistories";
                 var apiCallHttpMethod = "post";
@@ -1422,24 +1422,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentEducation>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentEducation(Expression<Func<string>> educationalHistoryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentEducation(Expression<Func<string>> educationalHistoryId)
         {
             var __workflow_educationalHistoryId = WorkflowExpression.Compile(educationalHistoryId, nameof(educationalHistoryId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/educationalhistories/{0}", __workflow_educationalHistoryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentEducation(Expression<Func<string>> educationalHistoryId, Expression<Func<string>> bodyeducationalInstitution = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyprogram = null, Expression<Func<string>> bodydegree = null, Expression<Func<string>> bodyhonorAwarded = null, Expression<Func<string>> bodysource = null, Expression<Func<int>> bodysourceDateyear = null, Expression<Func<int>> bodysourceDatemonth = null, Expression<Func<int>> bodysourceDateday = null, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodyclassOf = null, Expression<Func<int>> bodypreferredClassOf = null, Expression<Func<bool>> bodyaffiliated = null, Expression<Func<int>> bodyfromyear = null, Expression<Func<int>> bodyfrommonth = null, Expression<Func<int>> bodyfromday = null, Expression<Func<int>> bodytoyear = null, Expression<Func<int>> bodytomonth = null, Expression<Func<int>> bodytoday = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylevel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEducation(Expression<Func<string>> educationalHistoryId, Expression<Func<string>> bodyeducationalInstitution = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyprogram = null, Expression<Func<string>> bodydegree = null, Expression<Func<string>> bodyhonorAwarded = null, Expression<Func<string>> bodysource = null, Expression<Func<int>> bodysourceDateyear = null, Expression<Func<int>> bodysourceDatemonth = null, Expression<Func<int>> bodysourceDateday = null, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodyclassOf = null, Expression<Func<int>> bodypreferredClassOf = null, Expression<Func<bool>> bodyaffiliated = null, Expression<Func<int>> bodyfromyear = null, Expression<Func<int>> bodyfrommonth = null, Expression<Func<int>> bodyfromday = null, Expression<Func<int>> bodytoyear = null, Expression<Func<int>> bodytomonth = null, Expression<Func<int>> bodytoday = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylevel = null)
         {
             var __workflow_educationalHistoryId = WorkflowExpression.Compile(educationalHistoryId, nameof(educationalHistoryId), required: true);
             var __workflow_bodyeducationalInstitution = WorkflowExpression.Compile(bodyeducationalInstitution, nameof(bodyeducationalInstitution), required: false);
@@ -1467,7 +1467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodytoday = WorkflowExpression.Compile(bodytoday, nameof(bodytoday), required: false);
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/educationalhistories/{0}", __workflow_educationalHistoryId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1662,11 +1662,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEmailAddress> CreateConstituentEmailAddress(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEmailAddress, ApiConnectionActionConfiguration> CreateConstituentEmailAddress(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: true);
@@ -1679,7 +1679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyinfoSourceComments = WorkflowExpression.Compile(bodyinfoSourceComments, nameof(bodyinfoSourceComments), required: false);
             var __workflow_bodycopyToSpouse = WorkflowExpression.Compile(bodycopyToSpouse, nameof(bodycopyToSpouse), required: false);
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentEmailAddress>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentEmailAddress, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/emailaddresses";
                 var apiCallHttpMethod = "post";
@@ -1750,24 +1750,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentEmailAddress>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentEmailAddress(Expression<Func<string>> emailAddressId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentEmailAddress(Expression<Func<string>> emailAddressId)
         {
             var __workflow_emailAddressId = WorkflowExpression.Compile(emailAddressId, nameof(emailAddressId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/emailaddresses/{0}", __workflow_emailAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentEmailAddress(Expression<Func<string>> emailAddressId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEmailAddress(Expression<Func<string>> emailAddressId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
             var __workflow_emailAddressId = WorkflowExpression.Compile(emailAddressId, nameof(emailAddressId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
@@ -1780,7 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyinfoSourceComments = WorkflowExpression.Compile(bodyinfoSourceComments, nameof(bodyinfoSourceComments), required: false);
             var __workflow_bodycopyToSpouse = WorkflowExpression.Compile(bodycopyToSpouse, nameof(bodycopyToSpouse), required: false);
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/emailaddresses/{0}", __workflow_emailAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1853,16 +1853,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedFundraiserConstituency> CreateFundraiserConstituency(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodydateFrom = null, Expression<Func<string>> bodydateTo = null)
+        public IBodyWorkflowAction<ConmgCreatedFundraiserConstituency, ApiConnectionActionConfiguration> CreateFundraiserConstituency(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodydateFrom = null, Expression<Func<string>> bodydateTo = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodydateFrom = WorkflowExpression.Compile(bodydateFrom, nameof(bodydateFrom), required: false);
             var __workflow_bodydateTo = WorkflowExpression.Compile(bodydateTo, nameof(bodydateTo), required: false);
-            return new DeferredBodyAction<ConmgCreatedFundraiserConstituency>(() =>
+            return new DeferredBodyAction<ConmgCreatedFundraiserConstituency, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/fundraisers";
                 var apiCallHttpMethod = "post";
@@ -1889,29 +1889,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedFundraiserConstituency>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteFundraiserConstituency(Expression<Func<string>> fundraiserConstituencyId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFundraiserConstituency(Expression<Func<string>> fundraiserConstituencyId)
         {
             var __workflow_fundraiserConstituencyId = WorkflowExpression.Compile(fundraiserConstituencyId, nameof(fundraiserConstituencyId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/fundraisers/{0}", __workflow_fundraiserConstituencyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditFundraiserConstituency(Expression<Func<string>> fundraiserConstituencyId, Expression<Func<string>> bodydateFrom = null, Expression<Func<string>> bodydateTo = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundraiserConstituency(Expression<Func<string>> fundraiserConstituencyId, Expression<Func<string>> bodydateFrom = null, Expression<Func<string>> bodydateTo = null)
         {
             var __workflow_fundraiserConstituencyId = WorkflowExpression.Compile(fundraiserConstituencyId, nameof(fundraiserConstituencyId), required: true);
             var __workflow_bodydateFrom = WorkflowExpression.Compile(bodydateFrom, nameof(bodydateFrom), required: false);
             var __workflow_bodydateTo = WorkflowExpression.Compile(bodydateTo, nameof(bodydateTo), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/fundraisers/{0}", __workflow_fundraiserConstituencyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1936,11 +1936,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedIndividualConstituent> CreateIndividualConstituent(Expression<Func<string>> bodylastName, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodysuffix = null, Expression<Func<string>> bodyaddressType = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodydoNotSendMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodyphoneType = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemailType = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodytitle2 = null, Expression<Func<string>> bodysuffix2 = null, Expression<Func<string>> bodynickname = null, Expression<Func<string>> bodymaidenName = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<int>> bodybirthdateyear = null, Expression<Func<int>> bodybirthdatemonth = null, Expression<Func<int>> bodybirthdateday = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<ConmgCreatedIndividualConstituent, ApiConnectionActionConfiguration> CreateIndividualConstituent(Expression<Func<string>> bodylastName, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodysuffix = null, Expression<Func<string>> bodyaddressType = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodydoNotSendMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodyphoneType = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemailType = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodytitle2 = null, Expression<Func<string>> bodysuffix2 = null, Expression<Func<string>> bodynickname = null, Expression<Func<string>> bodymaidenName = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<int>> bodybirthdateyear = null, Expression<Func<int>> bodybirthdatemonth = null, Expression<Func<int>> bodybirthdateday = null, Expression<Func<string>> bodygender = null)
         {
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
@@ -1973,7 +1973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodybirthdatemonth = WorkflowExpression.Compile(bodybirthdatemonth, nameof(bodybirthdatemonth), required: false);
             var __workflow_bodybirthdateday = WorkflowExpression.Compile(bodybirthdateday, nameof(bodybirthdateday), required: false);
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            return new DeferredBodyAction<ConmgCreatedIndividualConstituent>(() =>
+            return new DeferredBodyAction<ConmgCreatedIndividualConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/individuals";
                 var apiCallHttpMethod = "post";
@@ -2176,11 +2176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedIndividualConstituent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditIndividualConstituent(Expression<Func<string>> constituentId, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodysuffix = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodytitle2 = null, Expression<Func<string>> bodysuffix2 = null, Expression<Func<string>> bodynickname = null, Expression<Func<string>> bodymaidenName = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<int>> bodybirthdateyear = null, Expression<Func<int>> bodybirthdatemonth = null, Expression<Func<int>> bodybirthdateday = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodygivesAnonymously = null, Expression<Func<bool>> bodydeceased = null, Expression<Func<string>> bodyprofilePicture = null, Expression<Func<string>> bodyprofileThumbnail = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditIndividualConstituent(Expression<Func<string>> constituentId, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodysuffix = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodytitle2 = null, Expression<Func<string>> bodysuffix2 = null, Expression<Func<string>> bodynickname = null, Expression<Func<string>> bodymaidenName = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<int>> bodybirthdateyear = null, Expression<Func<int>> bodybirthdatemonth = null, Expression<Func<int>> bodybirthdateday = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodygivesAnonymously = null, Expression<Func<bool>> bodydeceased = null, Expression<Func<string>> bodyprofilePicture = null, Expression<Func<string>> bodyprofileThumbnail = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
@@ -2202,7 +2202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodydeceased = WorkflowExpression.Compile(bodydeceased, nameof(bodydeceased), required: false);
             var __workflow_bodyprofilePicture = WorkflowExpression.Compile(bodyprofilePicture, nameof(bodyprofilePicture), required: false);
             var __workflow_bodyprofileThumbnail = WorkflowExpression.Compile(bodyprofileThumbnail, nameof(bodyprofileThumbnail), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/individuals/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2337,24 +2337,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgIndividualConstituent> GetIndividualConstituent(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgIndividualConstituent, ApiConnectionActionConfiguration> GetIndividualConstituent(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgIndividualConstituent>(() =>
+            return new DeferredBodyAction<ConmgIndividualConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/individuals/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgIndividualConstituent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentInteraction> CreateConstituentInteraction(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodysummary, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodyexpectedDate, Expression<Func<string>> bodycontactMethod, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerID = null, Expression<Func<string>> bodyeventID = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgNewConstituentInteractionParticipant[]>> bodyparticipants = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentInteraction, ApiConnectionActionConfiguration> CreateConstituentInteraction(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodysummary, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodyexpectedDate, Expression<Func<string>> bodycontactMethod, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerID = null, Expression<Func<string>> bodyeventID = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgNewConstituentInteractionParticipant[]>> bodyparticipants = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: true);
@@ -2378,7 +2378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentInteraction>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentInteraction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/interactions";
                 var apiCallHttpMethod = "post";
@@ -2535,24 +2535,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentInteraction>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentInteraction(Expression<Func<string>> constituentInteractionId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentInteraction(Expression<Func<string>> constituentInteractionId)
         {
             var __workflow_constituentInteractionId = WorkflowExpression.Compile(constituentInteractionId, nameof(constituentInteractionId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/interactions/{0}", __workflow_constituentInteractionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentInteraction(Expression<Func<string>> constituentInteractionId, Expression<Func<string>> bodysummary = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodyexpectedDate = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerID = null, Expression<Func<string>> bodycontactMethod = null, Expression<Func<string>> bodyeventID = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgUpdateConstituentInteractionParticipant[]>> bodyparticipants = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentInteraction(Expression<Func<string>> constituentInteractionId, Expression<Func<string>> bodysummary = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodyexpectedDate = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerID = null, Expression<Func<string>> bodycontactMethod = null, Expression<Func<string>> bodyeventID = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgUpdateConstituentInteractionParticipant[]>> bodyparticipants = null)
         {
             var __workflow_constituentInteractionId = WorkflowExpression.Compile(constituentInteractionId, nameof(constituentInteractionId), required: true);
             var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
@@ -2576,7 +2576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/interactions/{0}", __workflow_constituentInteractionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2747,24 +2747,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgConstituentInteraction> GetConstituentInteraction(Expression<Func<string>> constituentInteractionId)
+        public IBodyWorkflowAction<ConmgConstituentInteraction, ApiConnectionActionConfiguration> GetConstituentInteraction(Expression<Func<string>> constituentInteractionId)
         {
             var __workflow_constituentInteractionId = WorkflowExpression.Compile(constituentInteractionId, nameof(constituentInteractionId), required: true);
-            return new DeferredBodyAction<ConmgConstituentInteraction>(() =>
+            return new DeferredBodyAction<ConmgConstituentInteraction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/interactions/{0}", __workflow_constituentInteractionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgConstituentInteraction>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgMergedConstituent> MergeTwoConstituents(Expression<Func<string>> bodysourceConstituentID, Expression<Func<string>> bodytargetConstituentID, Expression<Func<string>> bodyconfiguration, Expression<Func<bool>> bodydeleteSource, Expression<Func<bodydeleteActionInput>> bodydeleteAction, Expression<Func<string>> bodyinactiveReason = null, Expression<Func<string>> bodyinactivityDetails = null)
+        public IBodyWorkflowAction<ConmgMergedConstituent, ApiConnectionActionConfiguration> MergeTwoConstituents(Expression<Func<string>> bodysourceConstituentID, Expression<Func<string>> bodytargetConstituentID, Expression<Func<string>> bodyconfiguration, Expression<Func<bool>> bodydeleteSource, Expression<Func<bodydeleteActionInput>> bodydeleteAction, Expression<Func<string>> bodyinactiveReason = null, Expression<Func<string>> bodyinactivityDetails = null)
         {
             var __workflow_bodysourceConstituentID = WorkflowExpression.Compile(bodysourceConstituentID, nameof(bodysourceConstituentID), required: true);
             var __workflow_bodytargetConstituentID = WorkflowExpression.Compile(bodytargetConstituentID, nameof(bodytargetConstituentID), required: true);
@@ -2773,7 +2773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodydeleteAction = WorkflowExpression.Compile(bodydeleteAction, nameof(bodydeleteAction), required: true);
             var __workflow_bodyinactiveReason = WorkflowExpression.Compile(bodyinactiveReason, nameof(bodyinactiveReason), required: false);
             var __workflow_bodyinactivityDetails = WorkflowExpression.Compile(bodyinactivityDetails, nameof(bodyinactivityDetails), required: false);
-            return new DeferredBodyAction<ConmgMergedConstituent>(() =>
+            return new DeferredBodyAction<ConmgMergedConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/mergetwoconstituents";
                 var apiCallHttpMethod = "post";
@@ -2808,11 +2808,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgMergedConstituent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedOrganizationConstituent> CreateOrganizationConstituent(Expression<Func<string>> bodyname, Expression<Func<string>> bodyindustry = null, Expression<Func<int>> bodynoOfEmployees = null, Expression<Func<int>> bodynoOfSubsidiaryOrgs = null, Expression<Func<string>> bodyparentOrg = null, Expression<Func<string>> bodyaddressType = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodydoNotSendMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodyphoneType = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemailType = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodywebAddress = null, Expression<Func<bool>> bodyisPrimaryOrganization = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyprofilePicture = null, Expression<Func<string>> bodyprofileThumbnail = null)
+        public IBodyWorkflowAction<ConmgCreatedOrganizationConstituent, ApiConnectionActionConfiguration> CreateOrganizationConstituent(Expression<Func<string>> bodyname, Expression<Func<string>> bodyindustry = null, Expression<Func<int>> bodynoOfEmployees = null, Expression<Func<int>> bodynoOfSubsidiaryOrgs = null, Expression<Func<string>> bodyparentOrg = null, Expression<Func<string>> bodyaddressType = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodydoNotSendMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodyphoneType = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemailType = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodywebAddress = null, Expression<Func<bool>> bodyisPrimaryOrganization = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyprofilePicture = null, Expression<Func<string>> bodyprofileThumbnail = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyindustry = WorkflowExpression.Compile(bodyindustry, nameof(bodyindustry), required: false);
@@ -2841,7 +2841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyinformationSource = WorkflowExpression.Compile(bodyinformationSource, nameof(bodyinformationSource), required: false);
             var __workflow_bodyprofilePicture = WorkflowExpression.Compile(bodyprofilePicture, nameof(bodyprofilePicture), required: false);
             var __workflow_bodyprofileThumbnail = WorkflowExpression.Compile(bodyprofileThumbnail, nameof(bodyprofileThumbnail), required: false);
-            return new DeferredBodyAction<ConmgCreatedOrganizationConstituent>(() =>
+            return new DeferredBodyAction<ConmgCreatedOrganizationConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/organizations";
                 var apiCallHttpMethod = "post";
@@ -3012,11 +3012,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedOrganizationConstituent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditOrganizationConstituent(Expression<Func<string>> constituentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyindustry = null, Expression<Func<int>> bodynoOfEmployees = null, Expression<Func<int>> bodynoOfSubsidiaryOrgs = null, Expression<Func<string>> bodyparentOrg = null, Expression<Func<string>> bodywebAddress = null, Expression<Func<bool>> bodyisPrimaryOrganization = null, Expression<Func<string>> bodyprofilePicture = null, Expression<Func<string>> bodyprofileThumbnail = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOrganizationConstituent(Expression<Func<string>> constituentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyindustry = null, Expression<Func<int>> bodynoOfEmployees = null, Expression<Func<int>> bodynoOfSubsidiaryOrgs = null, Expression<Func<string>> bodyparentOrg = null, Expression<Func<string>> bodywebAddress = null, Expression<Func<bool>> bodyisPrimaryOrganization = null, Expression<Func<string>> bodyprofilePicture = null, Expression<Func<string>> bodyprofileThumbnail = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -3028,7 +3028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyisPrimaryOrganization = WorkflowExpression.Compile(bodyisPrimaryOrganization, nameof(bodyisPrimaryOrganization), required: false);
             var __workflow_bodyprofilePicture = WorkflowExpression.Compile(bodyprofilePicture, nameof(bodyprofilePicture), required: false);
             var __workflow_bodyprofileThumbnail = WorkflowExpression.Compile(bodyprofileThumbnail, nameof(bodyprofileThumbnail), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/organizations/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -3095,24 +3095,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgOrganizationConstituent> GetOrganizationConstituent(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgOrganizationConstituent, ApiConnectionActionConfiguration> GetOrganizationConstituent(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgOrganizationConstituent>(() =>
+            return new DeferredBodyAction<ConmgOrganizationConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/organizations/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConmgOrganizationConstituent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentPhone> CreateConstituentPhone(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodynumber, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodycallAfterhour = null, Expression<Func<int>> bodycallAfterminute = null, Expression<Func<int>> bodycallBeforehour = null, Expression<Func<int>> bodycallBeforeminute = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<string>> bodydoNotCallReason = null, Expression<Func<bool>> bodydoNotText = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentPhone, ApiConnectionActionConfiguration> CreateConstituentPhone(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodynumber, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodycallAfterhour = null, Expression<Func<int>> bodycallAfterminute = null, Expression<Func<int>> bodycallBeforehour = null, Expression<Func<int>> bodycallBeforeminute = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<string>> bodydoNotCallReason = null, Expression<Func<bool>> bodydoNotText = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
@@ -3137,7 +3137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyinfoSourceComments = WorkflowExpression.Compile(bodyinfoSourceComments, nameof(bodyinfoSourceComments), required: false);
             var __workflow_bodycopyToSpouse = WorkflowExpression.Compile(bodycopyToSpouse, nameof(bodycopyToSpouse), required: false);
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentPhone>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentPhone, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/phones";
                 var apiCallHttpMethod = "post";
@@ -3312,24 +3312,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentPhone>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentPhone(Expression<Func<string>> constituentPhoneId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentPhone(Expression<Func<string>> constituentPhoneId)
         {
             var __workflow_constituentPhoneId = WorkflowExpression.Compile(constituentPhoneId, nameof(constituentPhoneId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/phones/{0}", __workflow_constituentPhoneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentPhone(Expression<Func<string>> constituentPhoneId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodycallAfterhour = null, Expression<Func<int>> bodycallAfterminute = null, Expression<Func<int>> bodycallBeforehour = null, Expression<Func<int>> bodycallBeforeminute = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<string>> bodydoNotCallReason = null, Expression<Func<bool>> bodydoNotText = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentPhone(Expression<Func<string>> constituentPhoneId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodycallAfterhour = null, Expression<Func<int>> bodycallAfterminute = null, Expression<Func<int>> bodycallBeforehour = null, Expression<Func<int>> bodycallBeforeminute = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<string>> bodydoNotCallReason = null, Expression<Func<bool>> bodydoNotText = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
             var __workflow_constituentPhoneId = WorkflowExpression.Compile(constituentPhoneId, nameof(constituentPhoneId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
@@ -3354,7 +3354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodyinfoSourceComments = WorkflowExpression.Compile(bodyinfoSourceComments, nameof(bodyinfoSourceComments), required: false);
             var __workflow_bodycopyToSpouse = WorkflowExpression.Compile(bodycopyToSpouse, nameof(bodycopyToSpouse), required: false);
             var __workflow_bodycopyToHousehold = WorkflowExpression.Compile(bodycopyToHousehold, nameof(bodycopyToHousehold), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/phones/{0}", __workflow_constituentPhoneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -3531,11 +3531,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory> CreateConstituentEmploymentHistory(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory, ApiConnectionActionConfiguration> CreateConstituentEmploymentHistory(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: true);
@@ -3549,7 +3549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodycareerLevel2 = WorkflowExpression.Compile(bodycareerLevel2, nameof(bodycareerLevel2), required: false);
             var __workflow_bodyresponsibilities = WorkflowExpression.Compile(bodyresponsibilities, nameof(bodyresponsibilities), required: false);
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentEmploymentHistory>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentEmploymentHistory, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/relationshipjobsinfo";
                 var apiCallHttpMethod = "post";
@@ -3626,24 +3626,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentEmploymentHistory>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentEmploymentHistory(Expression<Func<string>> relationshipJobInfoId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentEmploymentHistory(Expression<Func<string>> relationshipJobInfoId)
         {
             var __workflow_relationshipJobInfoId = WorkflowExpression.Compile(relationshipJobInfoId, nameof(relationshipJobInfoId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/relationshipjobsinfo/{0}", __workflow_relationshipJobInfoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentEmploymentHistory(Expression<Func<string>> relationshipJobInfoId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEmploymentHistory(Expression<Func<string>> relationshipJobInfoId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
         {
             var __workflow_relationshipJobInfoId = WorkflowExpression.Compile(relationshipJobInfoId, nameof(relationshipJobInfoId), required: true);
             var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
@@ -3656,7 +3656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
             var __workflow_bodycareerLevel2 = WorkflowExpression.Compile(bodycareerLevel2, nameof(bodycareerLevel2), required: false);
             var __workflow_bodyresponsibilities = WorkflowExpression.Compile(bodyresponsibilities, nameof(bodyresponsibilities), required: false);
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/relationshipjobsinfo/{0}", __workflow_relationshipJobInfoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -3729,18 +3729,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentSolicitCode> CreateConstituentSolicitCode(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodysolicitCode, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentSolicitCode, ApiConnectionActionConfiguration> CreateConstituentSolicitCode(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodysolicitCode, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
             var __workflow_bodysolicitCode = WorkflowExpression.Compile(bodysolicitCode, nameof(bodysolicitCode), required: true);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredBodyAction<ConmgCreatedConstituentSolicitCode>(() =>
+            return new DeferredBodyAction<ConmgCreatedConstituentSolicitCode, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alt-conmg/solicitcodes";
                 var apiCallHttpMethod = "post";
@@ -3775,31 +3775,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction<ConmgCreatedConstituentSolicitCode>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction DeleteConstituentSolicitCode(Expression<Func<string>> constituentSolicitCodeId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentSolicitCode(Expression<Func<string>> constituentSolicitCodeId)
         {
             var __workflow_constituentSolicitCodeId = WorkflowExpression.Compile(constituentSolicitCodeId, nameof(constituentSolicitCodeId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/solicitcodes/{0}", __workflow_constituentSolicitCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudaltruconsti")]
-        public IWorkflowAction EditConstituentSolicitCode(Expression<Func<string>> constituentSolicitCodeId, Expression<Func<string>> bodysolicitCode = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodycomments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentSolicitCode(Expression<Func<string>> constituentSolicitCodeId, Expression<Func<string>> bodysolicitCode = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_constituentSolicitCodeId = WorkflowExpression.Compile(constituentSolicitCodeId, nameof(constituentSolicitCodeId), required: true);
             var __workflow_bodysolicitCode = WorkflowExpression.Compile(bodysolicitCode, nameof(bodysolicitCode), required: false);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/alt-conmg/solicitcodes/{0}", __workflow_constituentSolicitCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -3836,7 +3836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

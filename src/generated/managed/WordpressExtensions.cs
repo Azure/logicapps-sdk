@@ -12,42 +12,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
     public class WordpressActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<SiteStatsModel> SiteStats(Expression<Func<string>> siteId)
+        public IBodyWorkflowAction<SiteStatsModel, ApiConnectionActionConfiguration> SiteStats(Expression<Func<string>> siteId)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
-            return new DeferredBodyAction<SiteStatsModel>(() =>
+            return new DeferredBodyAction<SiteStatsModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/stats", __workflow_siteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("stats");
                 return new ApiConnectionAction<SiteStatsModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<PostModel, ApiConnectionActionConfiguration> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
-            return new DeferredBodyAction<PostModel>(() =>
+            return new DeferredBodyAction<PostModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/posts/{1}", __workflow_siteId.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
+        public IBodyWorkflowAction<PostModel, ApiConnectionActionConfiguration> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: false);
             var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: false);
             var __workflow_poststatus = WorkflowExpression.Compile(poststatus, nameof(poststatus), required: false);
             var __workflow_posttags = WorkflowExpression.Compile(posttags, nameof(posttags), required: false);
-            return new DeferredBodyAction<PostModel>(() =>
+            return new DeferredBodyAction<PostModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/posts/new", __workflow_siteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
                 }
 
                 return new ApiConnectionAction<PostModel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class WordpressTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsResponse, ApiConnectionTriggerConfiguration> OnTriggerNewPost(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/me/posts";
             var apiCallHttpMethod = "get";

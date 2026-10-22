@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
 
     public class TalkdeskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ContactCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ContactCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/contactCreated";
             var apiCallHttpMethod = "post";
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger ContactUpdated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ContactUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/contactUpdated";
             var apiCallHttpMethod = "post";
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NoteCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NoteCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/noteCreated";
             var apiCallHttpMethod = "post";
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger AgentLogIn(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AgentLogIn(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/agentLogIn";
             var apiCallHttpMethod = "post";
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger AgentLogOut(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AgentLogOut(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/agentLogOut";
             var apiCallHttpMethod = "post";
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OutboundCallEnds(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundCallEnds(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/outboundCallEnds";
             var apiCallHttpMethod = "post";
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InboundCallReachesContactCenter(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallReachesContactCenter(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallReachesContactCenter";
             var apiCallHttpMethod = "post";
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InboundCallEnds(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallEnds(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallEnds";
             var apiCallHttpMethod = "post";
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InboundCallStarts(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallStarts(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallStarts";
             var apiCallHttpMethod = "post";

@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
     public class MintlifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
+        public IBodyWorkflowAction<DocGenResponse, ApiConnectionActionConfiguration> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
         {
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
             var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
             var __workflow_bodycommented = WorkflowExpression.Compile(bodycommented, nameof(bodycommented), required: false);
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
-            return new DeferredBodyAction<DocGenResponse>(() =>
+            return new DeferredBodyAction<DocGenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/document";
                 var apiCallHttpMethod = "post";
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
                 }
 
                 return new ApiConnectionAction<DocGenResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<LanguageListResponse> LanguageList()
+        public IBodyWorkflowAction<LanguageListResponse, ApiConnectionActionConfiguration> LanguageList()
         {
             var apiCallPath = "/v1/list/languages";
             var apiCallHttpMethod = "get";
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<DocListResponse> DocList()
+        public IBodyWorkflowAction<DocListResponse, ApiConnectionActionConfiguration> DocList()
         {
             var apiCallPath = "/v1/list/formats";
             var apiCallHttpMethod = "get";

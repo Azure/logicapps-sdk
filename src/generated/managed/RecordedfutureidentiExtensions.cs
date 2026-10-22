@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
     public class RecordedfutureidentiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
-        public IBodyWorkflowAction<LookupResponse> CredentialLookup(Expression<Func<string[]>> bodyfilterauthorizationProtocols = null, Expression<Func<string[]>> bodyfilterauthorizationTechnologies = null, Expression<Func<string>> bodyfilterbreachPropertiesdate = null, Expression<Func<string>> bodyfilterbreachPropertiesname = null, Expression<Func<string>> bodyfilterdumpPropertiesdate = null, Expression<Func<string>> bodyfilterdumpPropertiesname = null, Expression<Func<string>> bodyfilterexfiltrationDateGte = null, Expression<Func<string>> bodyfilterfirstDownloadedGte = null, Expression<Func<string>> bodyfilterlatestDownloadedGte = null, Expression<Func<string[]>> bodyfiltermalwareFamilies = null, Expression<Func<bodyfilterpropertiesInputItem[]>> bodyfilterproperties = null, Expression<Func<bodyfilterusernamePropertiesInputItem[]>> bodyfilterusernameProperties = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string[]>> bodysubjects = null, Expression<Func<DomainLogin[]>> bodysubjectsLogin = null, Expression<Func<string[]>> bodysubjectsSha1 = null)
+        public IBodyWorkflowAction<LookupResponse, ApiConnectionActionConfiguration> CredentialLookup(Expression<Func<string[]>> bodyfilterauthorizationProtocols = null, Expression<Func<string[]>> bodyfilterauthorizationTechnologies = null, Expression<Func<string>> bodyfilterbreachPropertiesdate = null, Expression<Func<string>> bodyfilterbreachPropertiesname = null, Expression<Func<string>> bodyfilterdumpPropertiesdate = null, Expression<Func<string>> bodyfilterdumpPropertiesname = null, Expression<Func<string>> bodyfilterexfiltrationDateGte = null, Expression<Func<string>> bodyfilterfirstDownloadedGte = null, Expression<Func<string>> bodyfilterlatestDownloadedGte = null, Expression<Func<string[]>> bodyfiltermalwareFamilies = null, Expression<Func<bodyfilterpropertiesInputItem[]>> bodyfilterproperties = null, Expression<Func<bodyfilterusernamePropertiesInputItem[]>> bodyfilterusernameProperties = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string[]>> bodysubjects = null, Expression<Func<DomainLogin[]>> bodysubjectsLogin = null, Expression<Func<string[]>> bodysubjectsSha1 = null)
         {
             var __workflow_bodyfilterauthorizationProtocols = WorkflowExpression.Compile(bodyfilterauthorizationProtocols, nameof(bodyfilterauthorizationProtocols), required: false);
             var __workflow_bodyfilterauthorizationTechnologies = WorkflowExpression.Compile(bodyfilterauthorizationTechnologies, nameof(bodyfilterauthorizationTechnologies), required: false);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
             var __workflow_bodysubjects = WorkflowExpression.Compile(bodysubjects, nameof(bodysubjects), required: false);
             var __workflow_bodysubjectsLogin = WorkflowExpression.Compile(bodysubjectsLogin, nameof(bodysubjectsLogin), required: false);
             var __workflow_bodysubjectsSha1 = WorkflowExpression.Compile(bodysubjectsSha1, nameof(bodysubjectsSha1), required: false);
-            return new DeferredBodyAction<LookupResponse>(() =>
+            return new DeferredBodyAction<LookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/credentials/lookup";
                 var apiCallHttpMethod = "post";
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
                 }
 
                 return new ApiConnectionAction<LookupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

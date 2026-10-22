@@ -12,22 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
     public class MavimimproveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IChart[]> GetTopicCharts(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IChart[], ApiConnectionActionConfiguration> GetTopicCharts(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<IChart[]>(() =>
+            return new DeferredBodyAction<IChart[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/charts", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IChart[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytype, Expression<Func<string>> bodyicon)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytype, Expression<Func<string>> bodyicon)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodyicon = WorkflowExpression.Compile(bodyicon, nameof(bodyicon), required: true);
-            return new DeferredBodyAction<ITopic>(() =>
+            return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -54,47 +54,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<ITopic>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> DeleteTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> DeleteTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<ITopic>(() =>
+            return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> GetTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> GetTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<ITopic>(() =>
+            return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> UpdateTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            return new DeferredBodyAction<ITopic>(() =>
+            return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<ITopic>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytype, Expression<Func<string>> bodyicon)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytype, Expression<Func<string>> bodyicon)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodyicon = WorkflowExpression.Compile(bodyicon, nameof(bodyicon), required: true);
-            return new DeferredBodyAction<ITopic>(() =>
+            return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/children", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -144,58 +144,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<ITopic>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[]> GetTopicChildren(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetTopicChildren(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<ITopic[]>(() =>
+            return new DeferredBodyAction<ITopic[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/children", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField[]> GetTopicFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IField[], ApiConnectionActionConfiguration> GetTopicFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<IField[]>(() =>
+            return new DeferredBodyAction<IField[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IField[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> GetFieldByDcvAndFieldsetId(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> GetFieldByDcvAndFieldsetId(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_fieldsetId = WorkflowExpression.Compile(fieldsetId, nameof(fieldsetId), required: true);
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<bool>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<bool>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/bool/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -364,11 +364,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/text/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -537,11 +537,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multitext/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -710,11 +710,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/number/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -883,11 +883,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multinumber/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1056,11 +1056,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1086,7 +1086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/decimal/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1229,11 +1229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1259,7 +1259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidecimal/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1402,11 +1402,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1432,7 +1432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/date/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1575,11 +1575,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1605,7 +1605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidate/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1748,11 +1748,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodycharacteristicname = WorkflowExpression.Compile(bodycharacteristicname, nameof(bodycharacteristicname), required: false);
             var __workflow_bodycharacteristicicon = WorkflowExpression.Compile(bodycharacteristicicon, nameof(bodycharacteristicicon), required: false);
             var __workflow_bodyopenLocation = WorkflowExpression.Compile(bodyopenLocation, nameof(bodyopenLocation), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/list/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1930,11 +1930,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateRelationshipSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodydatadcv = null, Expression<Func<string>> bodydataname = null, Expression<Func<string>> bodydataicon = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodydatadcv = null, Expression<Func<string>> bodydataname = null, Expression<Func<string>> bodydataicon = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1946,7 +1946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodydatadcv = WorkflowExpression.Compile(bodydatadcv, nameof(bodydatadcv), required: false);
             var __workflow_bodydataname = WorkflowExpression.Compile(bodydataname, nameof(bodydataname), required: false);
             var __workflow_bodydataicon = WorkflowExpression.Compile(bodydataicon, nameof(bodydataicon), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationship/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1997,11 +1997,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateRelationshipMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<RelationshipElement[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<RelationshipElement[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -2011,7 +2011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: false);
             var __workflow_bodyfieldsetId = WorkflowExpression.Compile(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multirelationship/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2042,11 +2042,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateRelationshipListField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipListField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -2055,7 +2055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: false);
             var __workflow_bodyfieldsetId = WorkflowExpression.Compile(bodyfieldsetId, nameof(bodyfieldsetId), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationshiplist/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2088,11 +2088,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<SingleTextField[]>> bodysingleTextFields = null, Expression<Func<MultiTextField[]>> bodymultiTextFields = null, Expression<Func<SingleNumberField[]>> bodysingleNumberFields = null, Expression<Func<MultiNumberField[]>> bodymultiNumberFields = null, Expression<Func<SingleBooleanField[]>> bodysingleBooleanFields = null, Expression<Func<SingleDecimalField[]>> bodysingleDecimalFields = null, Expression<Func<MultiDecimalField[]>> bodymultiDecimalFields = null, Expression<Func<SingleDateField[]>> bodysingleDateFields = null, Expression<Func<MultiDateField[]>> bodymultiDateFields = null, Expression<Func<SingleListField[]>> bodysingleListFields = null, Expression<Func<RelationshipField[]>> bodysingleRelationshipFields = null, Expression<Func<MultiRelationshipField[]>> bodymultiRelationshipFields = null, Expression<Func<RelationshipListField[]>> bodysingleRelationshipListFields = null, Expression<Func<SingleHyperlinkField[]>> bodysingleHyperlinkFields = null, Expression<Func<MultiHyperlinkField[]>> bodymultiHyperlinkFields = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<SingleTextField[]>> bodysingleTextFields = null, Expression<Func<MultiTextField[]>> bodymultiTextFields = null, Expression<Func<SingleNumberField[]>> bodysingleNumberFields = null, Expression<Func<MultiNumberField[]>> bodymultiNumberFields = null, Expression<Func<SingleBooleanField[]>> bodysingleBooleanFields = null, Expression<Func<SingleDecimalField[]>> bodysingleDecimalFields = null, Expression<Func<MultiDecimalField[]>> bodymultiDecimalFields = null, Expression<Func<SingleDateField[]>> bodysingleDateFields = null, Expression<Func<MultiDateField[]>> bodymultiDateFields = null, Expression<Func<SingleListField[]>> bodysingleListFields = null, Expression<Func<RelationshipField[]>> bodysingleRelationshipFields = null, Expression<Func<MultiRelationshipField[]>> bodymultiRelationshipFields = null, Expression<Func<RelationshipListField[]>> bodysingleRelationshipListFields = null, Expression<Func<SingleHyperlinkField[]>> bodysingleHyperlinkFields = null, Expression<Func<MultiHyperlinkField[]>> bodymultiHyperlinkFields = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -2112,7 +2112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysingleRelationshipListFields = WorkflowExpression.Compile(bodysingleRelationshipListFields, nameof(bodysingleRelationshipListFields), required: false);
             var __workflow_bodysingleHyperlinkFields = WorkflowExpression.Compile(bodysingleHyperlinkFields, nameof(bodysingleHyperlinkFields), required: false);
             var __workflow_bodymultiHyperlinkFields = WorkflowExpression.Compile(bodymultiHyperlinkFields, nameof(bodymultiHyperlinkFields), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fields", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2215,11 +2215,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateSingleHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateSingleHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -2227,7 +2227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_fieldsetId = WorkflowExpression.Compile(fieldsetId, nameof(fieldsetId), required: true);
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/hyperlink/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2246,11 +2246,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateMultiHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateMultiHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -2258,7 +2258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_fieldsetId = WorkflowExpression.Compile(fieldsetId, nameof(fieldsetId), required: true);
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            return new DeferredBodyAction<IField>(() =>
+            return new DeferredBodyAction<IField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multihyperlink/{4}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_fieldsetId.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -2277,123 +2277,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IField>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicToTop(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicToTop(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movetotop", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicToBottom(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicToBottom(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movetobottom", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/moveup", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movedown", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicLevelUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicLevelUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/movelevelup", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicLevelDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicLevelDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/moveleveldown", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IRelationship[]> GetTopicRelations(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IRelationship[], ApiConnectionActionConfiguration> GetTopicRelations(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<IRelationship[]>(() =>
+            return new DeferredBodyAction<IRelationship[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/relations", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IRelationship[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IRelationship> SaveRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> bodyfromElementDcv = null, Expression<Func<string>> bodytoElementDcv = null, Expression<Func<bodyrelationshipTypeInput>> bodyrelationshipType = null)
+        public IBodyWorkflowAction<IRelationship, ApiConnectionActionConfiguration> SaveRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> bodyfromElementDcv = null, Expression<Func<string>> bodytoElementDcv = null, Expression<Func<bodyrelationshipTypeInput>> bodyrelationshipType = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_bodyfromElementDcv = WorkflowExpression.Compile(bodyfromElementDcv, nameof(bodyfromElementDcv), required: false);
             var __workflow_bodytoElementDcv = WorkflowExpression.Compile(bodytoElementDcv, nameof(bodytoElementDcv), required: false);
             var __workflow_bodyrelationshipType = WorkflowExpression.Compile(bodyrelationshipType, nameof(bodyrelationshipType), required: false);
-            return new DeferredBodyAction<IRelationship>(() =>
+            return new DeferredBodyAction<IRelationship, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/relation", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -2424,115 +2424,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                 }
 
                 return new ApiConnectionAction<IRelationship>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction DeleteRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> relationId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> relationId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_relationId = WorkflowExpression.Compile(relationId, nameof(relationId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/relation/{3}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1), __workflow_relationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> GetTopicRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> GetTopicRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
-            return new DeferredBodyAction<ITopic>(() =>
+            return new DeferredBodyAction<ITopic, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/root", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopicPath> GetPathToRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopicPath, ApiConnectionActionConfiguration> GetPathToRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<ITopicPath>(() =>
+            return new DeferredBodyAction<ITopicPath, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/path/{2}", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopicPath>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[]> GetTopicSiblings(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetTopicSiblings(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<ITopic[]>(() =>
+            return new DeferredBodyAction<ITopic[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/siblings", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[]> GetRelationCategories(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
+        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetRelationCategories(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
-            return new DeferredBodyAction<ITopic[]>(() =>
+            return new DeferredBodyAction<ITopic[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/categories", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ITopic[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<JToken> GetTopicTypes(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetTopicTypes(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/topic/{2}/types", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<JToken> GetTopicIcons(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicType)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetTopicIcons(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicType)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
             var __workflow_topicType = WorkflowExpression.Compile(topicType, nameof(topicType), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/{1}/types/{2}/icons", __workflow_dbId.WithUrlEncoding(1), __workflow_dataLanguage.WithUrlEncoding(1), __workflow_topicType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<string> Version()
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Version()
         {
             var apiCallPath = "/v1/version";
             var apiCallHttpMethod = "get";

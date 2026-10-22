@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
     public class ImanageinsightplusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> GetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest)
+        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse, ApiConnectionActionConfiguration> GetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: true);
-            return new DeferredBodyAction<GetCurationPropertiesForDocumentResponse>(() =>
+            return new DeferredBodyAction<GetCurationPropertiesForDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCurationPropertiesForDocument";
                 var apiCallHttpMethod = "post";
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 }
 
                 return new ApiConnectionAction<GetCurationPropertiesForDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> SetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyapprover = null, Expression<Func<string>> bodydraftingNotes = null, Expression<Func<bool>> bodyisMaintained = null, Expression<Func<string>> bodyknowledgeOwner = null, Expression<Func<string>> bodyknowledgeType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodylastReviewDate = null, Expression<Func<string>> bodyminiSummary = null, Expression<Func<string>> bodynextReviewDate = null, Expression<Func<string>> bodyotherNoteworthy = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodysubmitDate = null, Expression<Func<string>> bodytaxonomy1 = null, Expression<Func<string>> bodytaxonomy2 = null, Expression<Func<string>> bodytaxonomy3 = null, Expression<Func<string>> bodytaxonomy4 = null, Expression<Func<string>> bodytaxonomy5 = null, Expression<Func<string>> bodysubmitter = null, Expression<Func<string>> bodysubmittedDocId = null)
+        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody, ApiConnectionActionConfiguration> SetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyapprover = null, Expression<Func<string>> bodydraftingNotes = null, Expression<Func<bool>> bodyisMaintained = null, Expression<Func<string>> bodyknowledgeOwner = null, Expression<Func<string>> bodyknowledgeType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodylastReviewDate = null, Expression<Func<string>> bodyminiSummary = null, Expression<Func<string>> bodynextReviewDate = null, Expression<Func<string>> bodyotherNoteworthy = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodysubmitDate = null, Expression<Func<string>> bodytaxonomy1 = null, Expression<Func<string>> bodytaxonomy2 = null, Expression<Func<string>> bodytaxonomy3 = null, Expression<Func<string>> bodytaxonomy4 = null, Expression<Func<string>> bodytaxonomy5 = null, Expression<Func<string>> bodysubmitter = null, Expression<Func<string>> bodysubmittedDocId = null)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodyapprover = WorkflowExpression.Compile(bodyapprover, nameof(bodyapprover), required: false);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var __workflow_bodytaxonomy5 = WorkflowExpression.Compile(bodytaxonomy5, nameof(bodytaxonomy5), required: false);
             var __workflow_bodysubmitter = WorkflowExpression.Compile(bodysubmitter, nameof(bodysubmitter), required: false);
             var __workflow_bodysubmittedDocId = WorkflowExpression.Compile(bodysubmittedDocId, nameof(bodysubmittedDocId), required: false);
-            return new DeferredBodyAction<SetCurationPropertiesForDocumentResponseBody>(() =>
+            return new DeferredBodyAction<SetCurationPropertiesForDocumentResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/setCurationPropertiesForDocument";
                 var apiCallHttpMethod = "post";
@@ -188,39 +188,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 }
 
                 return new ApiConnectionAction<SetCurationPropertiesForDocumentResponseBody>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<GetKnowledgeTypesResponse> GetKnowledgeTypes(Expression<Func<string>> libraryId)
+        public IBodyWorkflowAction<GetKnowledgeTypesResponse, ApiConnectionActionConfiguration> GetKnowledgeTypes(Expression<Func<string>> libraryId)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
-            return new DeferredBodyAction<GetKnowledgeTypesResponse>(() =>
+            return new DeferredBodyAction<GetKnowledgeTypesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getKnowledgeTypes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
                 return new ApiConnectionAction<GetKnowledgeTypesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<GetCurationConfigurationResponse> GetCurationConfiguration(Expression<Func<string>> libraryId)
+        public IBodyWorkflowAction<GetCurationConfigurationResponse, ApiConnectionActionConfiguration> GetCurationConfiguration(Expression<Func<string>> libraryId)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
-            return new DeferredBodyAction<GetCurationConfigurationResponse>(() =>
+            return new DeferredBodyAction<GetCurationConfigurationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getCurationConfiguration";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
                 return new ApiConnectionAction<GetCurationConfigurationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> SearchCurationTaxonomyNodeValues(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodytaxonomyProperty, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyquery = null, Expression<Func<bodyenabledStateInput>> bodyenabledState = null, Expression<Func<bool>> bodyincludePath = null, Expression<Func<string>> bodychildrenOfSsid = null, Expression<Func<bool>> bodyimmediateChildrenOnly = null)
+        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration> SearchCurationTaxonomyNodeValues(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodytaxonomyProperty, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyquery = null, Expression<Func<bodyenabledStateInput>> bodyenabledState = null, Expression<Func<bool>> bodyincludePath = null, Expression<Func<string>> bodychildrenOfSsid = null, Expression<Func<bool>> bodyimmediateChildrenOnly = null)
         {
             var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
             var __workflow_bodytaxonomyProperty = WorkflowExpression.Compile(bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
             var __workflow_bodyincludePath = WorkflowExpression.Compile(bodyincludePath, nameof(bodyincludePath), required: false);
             var __workflow_bodychildrenOfSsid = WorkflowExpression.Compile(bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
             var __workflow_bodyimmediateChildrenOnly = WorkflowExpression.Compile(bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
-            return new DeferredBodyAction<SearchCurationTaxonomyNodeValuesResponse>(() =>
+            return new DeferredBodyAction<SearchCurationTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/searchCurationTaxonomyNodeValues";
                 var apiCallHttpMethod = "post";
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 }
 
                 return new ApiConnectionAction<SearchCurationTaxonomyNodeValuesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

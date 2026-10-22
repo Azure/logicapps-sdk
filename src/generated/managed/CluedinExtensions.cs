@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
     public class CluedinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
-        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
+        public IBodyWorkflowAction<ApprovalResponseResponse, ApiConnectionActionConfiguration> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
         {
             var __workflow_bodyresultapproval = WorkflowExpression.Compile(bodyresultapproval, nameof(bodyresultapproval), required: false);
             var __workflow_bodyresultreason = WorkflowExpression.Compile(bodyresultreason, nameof(bodyresultreason), required: false);
             var __workflow_bodyresultreviewedBy = WorkflowExpression.Compile(bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
-            return new DeferredBodyAction<ApprovalResponseResponse>(() =>
+            return new DeferredBodyAction<ApprovalResponseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/callback";
                 var apiCallHttpMethod = "post";
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
                 }
 
                 return new ApiConnectionAction<ApprovalResponseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class CluedinTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RequestRACIRuleApproval(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RequestRACIRuleApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/419f013d-61fe-4f3b-b52e-8069811e6c94";
             var apiCallHttpMethod = "post";
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger RequestBatchedCluesApproval(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RequestBatchedCluesApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/227C247E-7495-49DB-B1AD-486B99B43E2D";
             var apiCallHttpMethod = "post";
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger RequestRACIVocabularyApproval(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RequestRACIVocabularyApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/641f26b6-1285-4fbc-8990-10da9010700b";
             var apiCallHttpMethod = "post";
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger RequestRACIVocabularyKeyApproval(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RequestRACIVocabularyKeyApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/26b92c0c-fc04-4db5-beda-31f8435a6445";
             var apiCallHttpMethod = "post";
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger RequestRACIEntityTypeApproval(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RequestRACIEntityTypeApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/6fb298be-bfc5-4d97-ba6a-66e4651578e5";
             var apiCallHttpMethod = "post";
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger RequestRACIUserInviteApproval(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RequestRACIUserInviteApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/a021ce72-c00c-43f3-9a6a-c856e6f5b005";
             var apiCallHttpMethod = "post";
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger Notification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Notification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/af67f6ab-5ce6-4d04-8a16-6f90ecf9a502";
             var apiCallHttpMethod = "post";
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger StreamIdleEvent(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> StreamIdleEvent(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/4a1ff455-ce3e-47f3-a3cc-07dbdd3b2bdd";
             var apiCallHttpMethod = "post";

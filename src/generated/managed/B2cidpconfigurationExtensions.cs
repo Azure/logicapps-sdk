@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
     public class B2cidpconfigurationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<ApplicationCollection> GetApplications()
+        public IBodyWorkflowAction<ApplicationCollection, ApiConnectionActionConfiguration> GetApplications()
         {
             var apiCallPath = "/v1.0/applications";
             var apiCallHttpMethod = "get";
@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<Application> PostApplication(Expression<Func<string>> bodydisplayName = null, Expression<Func<bool>> bodyisFallbackPublicClient = null, Expression<Func<string[]>> bodywebredirectUris = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
+        public IBodyWorkflowAction<Application, ApiConnectionActionConfiguration> PostApplication(Expression<Func<string>> bodydisplayName = null, Expression<Func<bool>> bodyisFallbackPublicClient = null, Expression<Func<string[]>> bodywebredirectUris = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
         {
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             var __workflow_bodyisFallbackPublicClient = WorkflowExpression.Compile(bodyisFallbackPublicClient, nameof(bodyisFallbackPublicClient), required: false);
             var __workflow_bodywebredirectUris = WorkflowExpression.Compile(bodywebredirectUris, nameof(bodywebredirectUris), required: false);
             var __workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance = WorkflowExpression.Compile(bodywebimplicitGrantSettingsenableIdTokenIssuance, nameof(bodywebimplicitGrantSettingsenableIdTokenIssuance), required: false);
             var __workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance = WorkflowExpression.Compile(bodywebimplicitGrantSettingsenableAccessTokenIssuance, nameof(bodywebimplicitGrantSettingsenableAccessTokenIssuance), required: false);
-            return new DeferredBodyAction<Application>(() =>
+            return new DeferredBodyAction<Application, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/applications";
                 var apiCallHttpMethod = "post";
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 }
 
                 return new ApiConnectionAction<Application>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IWorkflowAction PatchApplication(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchApplication(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/applications/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -107,11 +107,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IWorkflowAction Me()
+        public IWorkflowAction<ApiConnectionActionConfiguration> Me()
         {
             var apiCallPath = "/v1.0/me";
             var apiCallHttpMethod = "get";
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<PermissionGrantCollection> GetPermissionGrants()
+        public IBodyWorkflowAction<PermissionGrantCollection, ApiConnectionActionConfiguration> GetPermissionGrants()
         {
             var apiCallPath = "/v1.0/oauth2PermissionGrants";
             var apiCallHttpMethod = "get";
@@ -129,14 +129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<PermissionGrant> PostPermissionGrant(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodyconsentType = null, Expression<Func<string>> bodyprincipalId = null, Expression<Func<string>> bodyresourceId = null, Expression<Func<string>> bodyscope = null)
+        public IBodyWorkflowAction<PermissionGrant, ApiConnectionActionConfiguration> PostPermissionGrant(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodyconsentType = null, Expression<Func<string>> bodyprincipalId = null, Expression<Func<string>> bodyresourceId = null, Expression<Func<string>> bodyscope = null)
         {
             var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
             var __workflow_bodyconsentType = WorkflowExpression.Compile(bodyconsentType, nameof(bodyconsentType), required: false);
             var __workflow_bodyprincipalId = WorkflowExpression.Compile(bodyprincipalId, nameof(bodyprincipalId), required: false);
             var __workflow_bodyresourceId = WorkflowExpression.Compile(bodyresourceId, nameof(bodyresourceId), required: false);
             var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
-            return new DeferredBodyAction<PermissionGrant>(() =>
+            return new DeferredBodyAction<PermissionGrant, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/oauth2PermissionGrants";
                 var apiCallHttpMethod = "post";
@@ -179,11 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 }
 
                 return new ApiConnectionAction<PermissionGrant>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<UserFlowCollection> GetUserflows()
+        public IBodyWorkflowAction<UserFlowCollection, ApiConnectionActionConfiguration> GetUserflows()
         {
             var apiCallPath = "/beta/identity/userFlows";
             var apiCallHttpMethod = "get";
@@ -192,12 +192,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<UserFlow> PostUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null)
+        public IBodyWorkflowAction<UserFlow, ApiConnectionActionConfiguration> PostUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodyuserFlowType = WorkflowExpression.Compile(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
             var __workflow_bodyuserFlowTypeVersion = WorkflowExpression.Compile(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
-            return new DeferredBodyAction<UserFlow>(() =>
+            return new DeferredBodyAction<UserFlow, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/identity/userFlows";
                 var apiCallHttpMethod = "post";
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 }
 
                 return new ApiConnectionAction<UserFlow>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<UserFlowCollection> GetB2cuserflows()
+        public IBodyWorkflowAction<UserFlowCollection, ApiConnectionActionConfiguration> GetB2cuserflows()
         {
             var apiCallPath = "/beta/identity/b2cUserflows";
             var apiCallHttpMethod = "get";
@@ -241,13 +241,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<UserFlow> PostB2cUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null, Expression<Func<bool>> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
+        public IBodyWorkflowAction<UserFlow, ApiConnectionActionConfiguration> PostB2cUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null, Expression<Func<bool>> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodyuserFlowType = WorkflowExpression.Compile(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
             var __workflow_bodyuserFlowTypeVersion = WorkflowExpression.Compile(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
             var __workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow = WorkflowExpression.Compile(bodytokenClaimsConfigurationisIssuerEntityUserFlow, nameof(bodytokenClaimsConfigurationisIssuerEntityUserFlow), required: false);
-            return new DeferredBodyAction<UserFlow>(() =>
+            return new DeferredBodyAction<UserFlow, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/identity/b2cUserflows";
                 var apiCallHttpMethod = "post";
@@ -312,11 +312,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 }
 
                 return new ApiConnectionAction<UserFlow>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<ServicePrincipleCollection> GetServicePrinciple()
+        public IBodyWorkflowAction<ServicePrincipleCollection, ApiConnectionActionConfiguration> GetServicePrinciple()
         {
             var apiCallPath = "/v1.0/serviceprincipals";
             var apiCallHttpMethod = "get";
@@ -325,13 +325,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<ServicePrinciple> PostServicePrinciple(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodyappId = null, Expression<Func<bool>> bodyappRoleAssignmentRequired = null, Expression<Func<string[]>> bodyreplyUrls = null)
+        public IBodyWorkflowAction<ServicePrinciple, ApiConnectionActionConfiguration> PostServicePrinciple(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodyappId = null, Expression<Func<bool>> bodyappRoleAssignmentRequired = null, Expression<Func<string[]>> bodyreplyUrls = null)
         {
             var __workflow_bodyaccountEnabled = WorkflowExpression.Compile(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
             var __workflow_bodyappId = WorkflowExpression.Compile(bodyappId, nameof(bodyappId), required: false);
             var __workflow_bodyappRoleAssignmentRequired = WorkflowExpression.Compile(bodyappRoleAssignmentRequired, nameof(bodyappRoleAssignmentRequired), required: false);
             var __workflow_bodyreplyUrls = WorkflowExpression.Compile(bodyreplyUrls, nameof(bodyreplyUrls), required: false);
-            return new DeferredBodyAction<ServicePrinciple>(() =>
+            return new DeferredBodyAction<ServicePrinciple, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/serviceprincipals";
                 var apiCallHttpMethod = "post";
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 }
 
                 return new ApiConnectionAction<ServicePrinciple>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

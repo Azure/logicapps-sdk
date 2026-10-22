@@ -12,39 +12,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
     public class PipelinercrmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsDeleteResponse> AccountsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<AccountsDeleteResponse, ApiConnectionActionConfiguration> AccountsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<AccountsDeleteResponse>(() =>
+            return new DeferredBodyAction<AccountsDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<AccountsDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsGetResponse> AccountsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<AccountsGetResponse, ApiConnectionActionConfiguration> AccountsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<AccountsGetResponse>(() =>
+            return new DeferredBodyAction<AccountsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<AccountsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsUpdateResponse> AccountsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodyaccountClassInput>> bodyaccountClass = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyhomePage = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<AccountsUpdateResponse, ApiConnectionActionConfiguration> AccountsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodyaccountClassInput>> bodyaccountClass = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyhomePage = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodystateProvince = WorkflowExpression.Compile(bodystateProvince, nameof(bodystateProvince), required: false);
             var __workflow_bodyzipCode = WorkflowExpression.Compile(bodyzipCode, nameof(bodyzipCode), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredBodyAction<AccountsUpdateResponse>(() =>
+            return new DeferredBodyAction<AccountsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -161,11 +161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<AccountsUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsCreateResponse> AccountsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyaccountTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodyaccountClassInput>> bodyaccountClass = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyhomePage = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<AccountsCreateResponse, ApiConnectionActionConfiguration> AccountsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyaccountTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodyaccountClassInput>> bodyaccountClass = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyhomePage = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodystateProvince = WorkflowExpression.Compile(bodystateProvince, nameof(bodystateProvince), required: false);
             var __workflow_bodyzipCode = WorkflowExpression.Compile(bodyzipCode, nameof(bodyzipCode), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredBodyAction<AccountsCreateResponse>(() =>
+            return new DeferredBodyAction<AccountsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -273,11 +273,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<AccountsCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsCreateResponse> ContactsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<bodygenderInput>> bodygender = null, Expression<Func<string>> bodycontactTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ContactsCreateResponse, ApiConnectionActionConfiguration> ContactsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<bodygenderInput>> bodygender = null, Expression<Func<string>> bodycontactTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
             var __workflow_bodyaccountRelations = WorkflowExpression.Compile(bodyaccountRelations, nameof(bodyaccountRelations), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredBodyAction<ContactsCreateResponse>(() =>
+            return new DeferredBodyAction<ContactsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -406,43 +406,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<ContactsCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsDeleteResponse> ContactsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactsDeleteResponse, ApiConnectionActionConfiguration> ContactsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ContactsDeleteResponse>(() =>
+            return new DeferredBodyAction<ContactsDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<ContactsDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsGetResponse> ContactsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactsGetResponse, ApiConnectionActionConfiguration> ContactsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ContactsGetResponse>(() =>
+            return new DeferredBodyAction<ContactsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<ContactsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsUpdateResponse> ContactsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bodygenderInput>> bodygender = null, Expression<Func<string>> bodycontactTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ContactsUpdateResponse, ApiConnectionActionConfiguration> ContactsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bodygenderInput>> bodygender = null, Expression<Func<string>> bodycontactTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodyzipCode = WorkflowExpression.Compile(bodyzipCode, nameof(bodyzipCode), required: false);
             var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
-            return new DeferredBodyAction<ContactsUpdateResponse>(() =>
+            return new DeferredBodyAction<ContactsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -573,11 +573,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<ContactsUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsCreateResponse> LeadsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyunitId, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyleadTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations = null)
+        public IBodyWorkflowAction<LeadsCreateResponse, ApiConnectionActionConfiguration> LeadsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyunitId, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyleadTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
             var __workflow_bodycontactRelations = WorkflowExpression.Compile(bodycontactRelations, nameof(bodycontactRelations), required: false);
             var __workflow_bodyaccountRelations = WorkflowExpression.Compile(bodyaccountRelations, nameof(bodyaccountRelations), required: false);
-            return new DeferredBodyAction<LeadsCreateResponse>(() =>
+            return new DeferredBodyAction<LeadsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -653,43 +653,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<LeadsCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsDeleteResponse> LeadsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<LeadsDeleteResponse, ApiConnectionActionConfiguration> LeadsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<LeadsDeleteResponse>(() =>
+            return new DeferredBodyAction<LeadsDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<LeadsDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsGetResponse> LeadsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<LeadsGetResponse, ApiConnectionActionConfiguration> LeadsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<LeadsGetResponse>(() =>
+            return new DeferredBodyAction<LeadsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<LeadsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsUpdateResponse> LeadsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyleadTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null)
+        public IBodyWorkflowAction<LeadsUpdateResponse, ApiConnectionActionConfiguration> LeadsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyleadTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
             var __workflow_bodyunitId = WorkflowExpression.Compile(bodyunitId, nameof(bodyunitId), required: false);
             var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
-            return new DeferredBodyAction<LeadsUpdateResponse>(() =>
+            return new DeferredBodyAction<LeadsUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -764,11 +764,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<LeadsUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksCreateResponse> TasksCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyunitId, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyactivityTypeId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyaccountRelationsInputItem2[]>> bodyaccountRelations = null, Expression<Func<bodycontactRelationsInputItem2[]>> bodycontactRelations = null, Expression<Func<bodyleadRelationsInputItem[]>> bodyleadRelations = null, Expression<Func<bodyopportunityRelationsInputItem[]>> bodyopportunityRelations = null)
+        public IBodyWorkflowAction<TasksCreateResponse, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyunitId, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyactivityTypeId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyaccountRelationsInputItem2[]>> bodyaccountRelations = null, Expression<Func<bodycontactRelationsInputItem2[]>> bodycontactRelations = null, Expression<Func<bodyleadRelationsInputItem[]>> bodyleadRelations = null, Expression<Func<bodyopportunityRelationsInputItem[]>> bodyopportunityRelations = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodycontactRelations = WorkflowExpression.Compile(bodycontactRelations, nameof(bodycontactRelations), required: false);
             var __workflow_bodyleadRelations = WorkflowExpression.Compile(bodyleadRelations, nameof(bodyleadRelations), required: false);
             var __workflow_bodyopportunityRelations = WorkflowExpression.Compile(bodyopportunityRelations, nameof(bodyopportunityRelations), required: false);
-            return new DeferredBodyAction<TasksCreateResponse>(() =>
+            return new DeferredBodyAction<TasksCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -858,43 +858,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<TasksCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksDeleteResponse> TasksDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<TasksDeleteResponse, ApiConnectionActionConfiguration> TasksDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TasksDeleteResponse>(() =>
+            return new DeferredBodyAction<TasksDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<TasksDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksGetResponse> TasksGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<TasksGetResponse, ApiConnectionActionConfiguration> TasksGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TasksGetResponse>(() =>
+            return new DeferredBodyAction<TasksGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<TasksGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksUpdateResponse> TasksUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyactivityTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodystatusInput>> bodystatus = null)
+        public IBodyWorkflowAction<TasksUpdateResponse, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyactivityTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodystatusInput>> bodystatus = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<TasksUpdateResponse>(() =>
+            return new DeferredBodyAction<TasksUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -969,11 +969,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<TasksUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesCreateResponse> OpportunitiesCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyclosingDate, Expression<Func<string>> bodyopptyTypeId, Expression<Func<string>> bodystepId, Expression<Func<string>> bodyownerId, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations, Expression<Func<string>> bodycreated = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null)
+        public IBodyWorkflowAction<OpportunitiesCreateResponse, ApiConnectionActionConfiguration> OpportunitiesCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyclosingDate, Expression<Func<string>> bodyopptyTypeId, Expression<Func<string>> bodystepId, Expression<Func<string>> bodyownerId, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations, Expression<Func<string>> bodycreated = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -991,7 +991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodyranking = WorkflowExpression.Compile(bodyranking, nameof(bodyranking), required: false);
             var __workflow_bodyunitId = WorkflowExpression.Compile(bodyunitId, nameof(bodyunitId), required: false);
             var __workflow_bodycontactRelations = WorkflowExpression.Compile(bodycontactRelations, nameof(bodycontactRelations), required: false);
-            return new DeferredBodyAction<OpportunitiesCreateResponse>(() =>
+            return new DeferredBodyAction<OpportunitiesCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities", __workflow_spaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1073,43 +1073,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<OpportunitiesCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesDeleteResponse> OpportunitiesDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<OpportunitiesDeleteResponse, ApiConnectionActionConfiguration> OpportunitiesDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<OpportunitiesDeleteResponse>(() =>
+            return new DeferredBodyAction<OpportunitiesDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<OpportunitiesDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesGetResponse> OpportunitiesGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<OpportunitiesGetResponse, ApiConnectionActionConfiguration> OpportunitiesGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<OpportunitiesGetResponse>(() =>
+            return new DeferredBodyAction<OpportunitiesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["service_url"] = ExpressionConverter.Convert(__workflow_serviceUrl);
                 return new ApiConnectionAction<OpportunitiesGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesUpdateResponse> OpportunitiesUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodyclosingDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyopptyTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null)
+        public IBodyWorkflowAction<OpportunitiesUpdateResponse, ApiConnectionActionConfiguration> OpportunitiesUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodyclosingDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyopptyTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -1126,7 +1126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
             var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
             var __workflow_bodyunitId = WorkflowExpression.Compile(bodyunitId, nameof(bodyunitId), required: false);
             var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
-            return new DeferredBodyAction<OpportunitiesUpdateResponse>(() =>
+            return new DeferredBodyAction<OpportunitiesUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", __workflow_spaceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
                 }
 
                 return new ApiConnectionAction<OpportunitiesUpdateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

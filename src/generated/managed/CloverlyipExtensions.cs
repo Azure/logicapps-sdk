@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
     public class CloverlyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<DirectCarbonResponse> DirectCarbon(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<bodyweightunitsInput>> bodyweightunits = null, Expression<Func<string[]>> bodyprojectMatchlocationlatlng = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<DirectCarbonResponse, ApiConnectionActionConfiguration> DirectCarbon(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<bodyweightunitsInput>> bodyweightunits = null, Expression<Func<string[]>> bodyprojectMatchlocationlatlng = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodyweightvalue = WorkflowExpression.Compile(bodyweightvalue, nameof(bodyweightvalue), required: false);
             var __workflow_bodyweightunits = WorkflowExpression.Compile(bodyweightunits, nameof(bodyweightunits), required: false);
             var __workflow_bodyprojectMatchlocationlatlng = WorkflowExpression.Compile(bodyprojectMatchlocationlatlng, nameof(bodyprojectMatchlocationlatlng), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<DirectCarbonResponse>(() =>
+            return new DeferredBodyAction<DirectCarbonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/carbon", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<DirectCarbonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<DirectTransactionResponse> DirectTransaction(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyunitCostUsdCents = null)
+        public IBodyWorkflowAction<DirectTransactionResponse, ApiConnectionActionConfiguration> DirectTransaction(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyunitCostUsdCents = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodycurrencyvalue = WorkflowExpression.Compile(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             var __workflow_bodyunitCostUsdCents = WorkflowExpression.Compile(bodyunitCostUsdCents, nameof(bodyunitCostUsdCents), required: false);
-            return new DeferredBodyAction<DirectTransactionResponse>(() =>
+            return new DeferredBodyAction<DirectTransactionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/currency", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -151,11 +151,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<DirectTransactionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculatePackageResponse> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<string>> bodyweightunits = null, Expression<Func<string>> bodymode = null, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyfrompostalCode = null, Expression<Func<string>> bodyfromcountry = null, Expression<Func<string>> bodytopostalCode = null, Expression<Func<string>> bodytocountry = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<CalculatePackageResponse, ApiConnectionActionConfiguration> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<string>> bodyweightunits = null, Expression<Func<string>> bodymode = null, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyfrompostalCode = null, Expression<Func<string>> bodyfromcountry = null, Expression<Func<string>> bodytopostalCode = null, Expression<Func<string>> bodytocountry = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodyweightvalue = WorkflowExpression.Compile(bodyweightvalue, nameof(bodyweightvalue), required: false);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
             var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<CalculatePackageResponse>(() =>
+            return new DeferredBodyAction<CalculatePackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/shipping", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -317,11 +317,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<CalculatePackageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateMCCResponse> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<int>> bodymccCode = null, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<CalculateMCCResponse, ApiConnectionActionConfiguration> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<int>> bodymccCode = null, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodymccCode = WorkflowExpression.Compile(bodymccCode, nameof(bodymccCode), required: false);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
             var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<CalculateMCCResponse>(() =>
+            return new DeferredBodyAction<CalculateMCCResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/mcc", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -417,11 +417,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<CalculateMCCResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateFreightResponse> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue, Expression<Func<string>> bodyweightunits, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<CalculateFreightResponse, ApiConnectionActionConfiguration> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue, Expression<Func<string>> bodyweightunits, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodyweightvalue = WorkflowExpression.Compile(bodyweightvalue, nameof(bodyweightvalue), required: true);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
             var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<CalculateFreightResponse>(() =>
+            return new DeferredBodyAction<CalculateFreightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/freight", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -538,11 +538,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<CalculateFreightResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateFlightResponse> CalculateFlight(Expression<Func<transactionInput>> transaction, Expression<Func<string[]>> bodyairports, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<CalculateFlightResponse, ApiConnectionActionConfiguration> CalculateFlight(Expression<Func<transactionInput>> transaction, Expression<Func<string[]>> bodyairports, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodyairports = WorkflowExpression.Compile(bodyairports, nameof(bodyairports), required: true);
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
             var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<CalculateFlightResponse>(() =>
+            return new DeferredBodyAction<CalculateFlightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/flight", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -612,11 +612,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<CalculateFlightResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateVehicleResponse> CalculateVehicle(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<double>> bodyfuelEfficiencyvalue = null, Expression<Func<string>> bodyfuelEfficiencyunits = null, Expression<Func<string>> bodyfuelEfficiencyof = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<CalculateVehicleResponse, ApiConnectionActionConfiguration> CalculateVehicle(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<double>> bodyfuelEfficiencyvalue = null, Expression<Func<string>> bodyfuelEfficiencyunits = null, Expression<Func<string>> bodyfuelEfficiencyof = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodydistancevalue = WorkflowExpression.Compile(bodydistancevalue, nameof(bodydistancevalue), required: false);
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
             var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<CalculateVehicleResponse>(() =>
+            return new DeferredBodyAction<CalculateVehicleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/vehicle", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -734,11 +734,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<CalculateVehicleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateElectricityResponse> CalculateElectricity(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyenergyvalue = null, Expression<Func<bodyenergyunitsInput>> bodyenergyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<CalculateElectricityResponse, ApiConnectionActionConfiguration> CalculateElectricity(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyenergyvalue = null, Expression<Func<bodyenergyunitsInput>> bodyenergyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_bodyenergyvalue = WorkflowExpression.Compile(bodyenergyvalue, nameof(bodyenergyvalue), required: false);
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
             var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
             var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            return new DeferredBodyAction<CalculateElectricityResponse>(() =>
+            return new DeferredBodyAction<CalculateElectricityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/electricity", __workflow_transaction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -827,37 +827,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<CalculateElectricityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<ProjectDetailsResponse, ApiConnectionActionConfiguration> ProjectDetails(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<ProjectDetailsResponse>(() =>
+            return new DeferredBodyAction<ProjectDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/project/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<PortfolioDetailsResponse> PortfolioDetails(Expression<Func<string>> portfolioId)
+        public IBodyWorkflowAction<PortfolioDetailsResponse, ApiConnectionActionConfiguration> PortfolioDetails(Expression<Func<string>> portfolioId)
         {
             var __workflow_portfolioId = WorkflowExpression.Compile(portfolioId, nameof(portfolioId), required: true);
-            return new DeferredBodyAction<PortfolioDetailsResponse>(() =>
+            return new DeferredBodyAction<PortfolioDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portfolio/{0}", __workflow_portfolioId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PortfolioDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<ProjectTypesResponseItem[]> ProjectTypes()
+        public IBodyWorkflowAction<ProjectTypesResponseItem[], ApiConnectionActionConfiguration> ProjectTypes()
         {
             var apiCallPath = "/project-types";
             var apiCallHttpMethod = "get";
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<AccountResponse> Account()
+        public IBodyWorkflowAction<AccountResponse, ApiConnectionActionConfiguration> Account()
         {
             var apiCallPath = "/account";
             var apiCallHttpMethod = "get";
@@ -875,10 +875,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate(Expression<Func<string>> bodytransactionID)
+        public IBodyWorkflowAction<ConvertEstimateResponse, ApiConnectionActionConfiguration> ConvertEstimate(Expression<Func<string>> bodytransactionID)
         {
             var __workflow_bodytransactionID = WorkflowExpression.Compile(bodytransactionID, nameof(bodytransactionID), required: true);
-            return new DeferredBodyAction<ConvertEstimateResponse>(() =>
+            return new DeferredBodyAction<ConvertEstimateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/purchases";
                 var apiCallHttpMethod = "post";
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 }
 
                 return new ApiConnectionAction<ConvertEstimateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

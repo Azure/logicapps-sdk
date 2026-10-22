@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
     public class VatcheckapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
-        public IBodyWorkflowAction<StatusResponse> Status()
+        public IBodyWorkflowAction<StatusResponse, ApiConnectionActionConfiguration> Status()
         {
             var apiCallPath = "/v2/status";
             var apiCallHttpMethod = "get";
@@ -21,11 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<ValidateResponse, ApiConnectionActionConfiguration> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
         {
             var __workflow_vatNumber = WorkflowExpression.Compile(vatNumber, nameof(vatNumber), required: false);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
-            return new DeferredBodyAction<ValidateResponse>(() =>
+            return new DeferredBodyAction<ValidateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/check";
                 var apiCallHttpMethod = "get";
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
                 if (__workflow_countryCode != null)
                     callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

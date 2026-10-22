@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
     public class GooglephotosipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction ListAlbums()
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListAlbums()
         {
             var apiCallPath = "/v1/albums";
             var apiCallHttpMethod = "get";
@@ -21,21 +21,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction CreateAlbum(Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAlbum(Expression<Func<string>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/albums";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction ListItems()
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListItems()
         {
             var apiCallPath = "/v1/mediaItems";
             var apiCallHttpMethod = "get";
@@ -44,21 +44,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction CreateItems(Expression<Func<string>> mediaItemIds)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateItems(Expression<Func<string>> mediaItemIds)
         {
             var __workflow_mediaItemIds = WorkflowExpression.Compile(mediaItemIds, nameof(mediaItemIds), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/mediaItems:batchGet";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mediaItemIds"] = ExpressionConverter.Convert(__workflow_mediaItemIds);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction ListSharedAlbums()
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListSharedAlbums()
         {
             var apiCallPath = "/v1/sharedAlbums";
             var apiCallHttpMethod = "get";

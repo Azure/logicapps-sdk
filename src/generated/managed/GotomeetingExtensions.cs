@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     public class GotomeetingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<MeetingArrayItem[]> GetUpcomingMeetings()
+        public IBodyWorkflowAction<MeetingArrayItem[], ApiConnectionActionConfiguration> GetUpcomingMeetings()
         {
             var apiCallPath = "/upcomingMeetings";
             var apiCallHttpMethod = "get";
@@ -21,20 +21,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<Meeting> GetMeeting(Expression<Func<string>> meetingId)
+        public IBodyWorkflowAction<Meeting, ApiConnectionActionConfiguration> GetMeeting(Expression<Func<string>> meetingId)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
-            return new DeferredBodyAction<Meeting>(() =>
+            return new DeferredBodyAction<Meeting, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Meeting>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IWorkflowAction UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> meetingsubject, Expression<Func<string>> meetingstartTime, Expression<Func<string>> meetingendTime, Expression<Func<bool>> meetingrequiresPassword, Expression<Func<meetingconferenceCallInfoInput>> meetingconferenceCallInfo, Expression<Func<meetingmeetingTypeInput>> meetingmeetingType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> meetingsubject, Expression<Func<string>> meetingstartTime, Expression<Func<string>> meetingendTime, Expression<Func<bool>> meetingrequiresPassword, Expression<Func<meetingconferenceCallInfoInput>> meetingconferenceCallInfo, Expression<Func<meetingmeetingTypeInput>> meetingmeetingType = null)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             var __workflow_meetingsubject = WorkflowExpression.Compile(meetingsubject, nameof(meetingsubject), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var __workflow_meetingrequiresPassword = WorkflowExpression.Compile(meetingrequiresPassword, nameof(meetingrequiresPassword), required: true);
             var __workflow_meetingconferenceCallInfo = WorkflowExpression.Compile(meetingconferenceCallInfo, nameof(meetingconferenceCallInfo), required: true);
             var __workflow_meetingmeetingType = WorkflowExpression.Compile(meetingmeetingType, nameof(meetingmeetingType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -72,24 +72,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<Attendee[]> GetMeetingAttendees(Expression<Func<string>> meetingId)
+        public IBodyWorkflowAction<Attendee[], ApiConnectionActionConfiguration> GetMeetingAttendees(Expression<Func<string>> meetingId)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
-            return new DeferredBodyAction<Attendee[]>(() =>
+            return new DeferredBodyAction<Attendee[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}/attendees", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Attendee[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<NewMeetingResponse> CreateMeeting(Expression<Func<string>> newMeetingsubject, Expression<Func<string>> newMeetingstartTime, Expression<Func<string>> newMeetingendTime, Expression<Func<bool>> newMeetingrequiresPassword, Expression<Func<newMeetingconferenceCallInfoInput>> newMeetingconferenceCallInfo, Expression<Func<newMeetingmeetingTypeInput>> newMeetingmeetingType)
+        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> CreateMeeting(Expression<Func<string>> newMeetingsubject, Expression<Func<string>> newMeetingstartTime, Expression<Func<string>> newMeetingendTime, Expression<Func<bool>> newMeetingrequiresPassword, Expression<Func<newMeetingconferenceCallInfoInput>> newMeetingconferenceCallInfo, Expression<Func<newMeetingmeetingTypeInput>> newMeetingmeetingType)
         {
             var __workflow_newMeetingsubject = WorkflowExpression.Compile(newMeetingsubject, nameof(newMeetingsubject), required: true);
             var __workflow_newMeetingstartTime = WorkflowExpression.Compile(newMeetingstartTime, nameof(newMeetingstartTime), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             var __workflow_newMeetingrequiresPassword = WorkflowExpression.Compile(newMeetingrequiresPassword, nameof(newMeetingrequiresPassword), required: true);
             var __workflow_newMeetingconferenceCallInfo = WorkflowExpression.Compile(newMeetingconferenceCallInfo, nameof(newMeetingconferenceCallInfo), required: true);
             var __workflow_newMeetingmeetingType = WorkflowExpression.Compile(newMeetingmeetingType, nameof(newMeetingmeetingType), required: true);
-            return new DeferredBodyAction<NewMeetingResponse>(() =>
+            return new DeferredBodyAction<NewMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/meetings";
                 var apiCallHttpMethod = "post";
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
                 }
 
                 return new ApiConnectionAction<NewMeetingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class GotomeetingTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MeetingArrayItem[]> OnNewMeeting(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration> OnNewMeeting(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
             var apiCallHttpMethod = "get";
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
             return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MeetingArrayItem[]> OnMeetingComplete(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration> OnMeetingComplete(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
             var apiCallHttpMethod = "get";

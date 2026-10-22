@@ -12,21 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
     public class NozbeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskResponse, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<GetTaskResponse>(() =>
+            return new DeferredBodyAction<GetTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["resolve_ids"] = Convert.ToString(1);
                 return new ApiConnectionAction<GetTaskResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodydueAt = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisFollowed = null, Expression<Func<string>> bodyresponsibleId = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodydueAt = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisFollowed = null, Expression<Func<string>> bodyresponsibleId = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
             var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
             var __workflow_bodyisFollowed = WorkflowExpression.Compile(bodyisFollowed, nameof(bodyisFollowed), required: false);
             var __workflow_bodyresponsibleId = WorkflowExpression.Compile(bodyresponsibleId, nameof(bodyresponsibleId), required: false);
-            return new DeferredBodyAction<CreateTaskResponse>(() =>
+            return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
                 var apiCallHttpMethod = "post";
@@ -87,16 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 }
 
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateCommentResponse> CreateComment(Expression<Func<string>> bodytaskId, Expression<Func<string>> bodybody = null, Expression<Func<bool>> bodyisPinned = null)
+        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> bodytaskId, Expression<Func<string>> bodybody = null, Expression<Func<bool>> bodyisPinned = null)
         {
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
             var __workflow_bodyisPinned = WorkflowExpression.Compile(bodyisPinned, nameof(bodyisPinned), required: false);
-            return new DeferredBodyAction<CreateCommentResponse>(() =>
+            return new DeferredBodyAction<CreateCommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/comments";
                 var apiCallHttpMethod = "post";
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 }
 
                 return new ApiConnectionAction<CreateCommentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<GetTeamMembersResponseItem[]> GetTeamMembers()
+        public IBodyWorkflowAction<GetTeamMembersResponseItem[], ApiConnectionActionConfiguration> GetTeamMembers()
         {
             var apiCallPath = "/team_members";
             var apiCallHttpMethod = "get";
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects(Expression<Func<string>> sortBy = null)
+        public IBodyWorkflowAction<GetProjectsResponseItem[], ApiConnectionActionConfiguration> GetProjects(Expression<Func<string>> sortBy = null)
         {
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
-            return new DeferredBodyAction<GetProjectsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetProjectsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/projects";
                 var apiCallHttpMethod = "get";
@@ -150,17 +150,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 if (__workflow_sortBy != null)
                     callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
                 return new ApiConnectionAction<GetProjectsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateReminderResponse> CreateReminder(Expression<Func<string>> bodytaskId, Expression<Func<int>> bodyremindAt, Expression<Func<bool>> bodyisRelative, Expression<Func<bool>> bodyisAllDay)
+        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<string>> bodytaskId, Expression<Func<int>> bodyremindAt, Expression<Func<bool>> bodyisRelative, Expression<Func<bool>> bodyisAllDay)
         {
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
             var __workflow_bodyremindAt = WorkflowExpression.Compile(bodyremindAt, nameof(bodyremindAt), required: true);
             var __workflow_bodyisRelative = WorkflowExpression.Compile(bodyisRelative, nameof(bodyisRelative), required: true);
             var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: true);
-            return new DeferredBodyAction<CreateReminderResponse>(() =>
+            return new DeferredBodyAction<CreateReminderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reminders";
                 var apiCallHttpMethod = "post";
@@ -181,17 +181,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 }
 
                 return new ApiConnectionAction<CreateReminderResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class NozbeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollNewTasksResponseItem[], ApiConnectionTriggerConfiguration> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_responsibleId = WorkflowExpression.Compile(responsibleId, nameof(responsibleId), required: false);
-            return new DeferredBodyTrigger<PollNewTasksResponseItem[]>(() =>
+            return new DeferredBodyTrigger<PollNewTasksResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/poll/tasks/new";
                 var apiCallHttpMethod = "get";
@@ -202,14 +202,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 if (__workflow_responsibleId != null)
                     callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(__workflow_responsibleId);
                 return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[], ApiConnectionTriggerConfiguration> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
             var __workflow_responsibleId = WorkflowExpression.Compile(responsibleId, nameof(responsibleId), required: false);
-            return new DeferredBodyTrigger<PollUpdatedTasksResponseItem[]>(() =>
+            return new DeferredBodyTrigger<PollUpdatedTasksResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/poll/tasks/updated";
                 var apiCallHttpMethod = "get";
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 if (__workflow_responsibleId != null)
                     callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(__workflow_responsibleId);
                 return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

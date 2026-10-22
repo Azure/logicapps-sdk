@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class JasperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<CommandPostResponse> Command(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
+        public IBodyWorkflowAction<CommandPostResponse, ApiConnectionActionConfiguration> Command(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
         {
             var __workflow_bodyinputscommand = WorkflowExpression.Compile(bodyinputscommand, nameof(bodyinputscommand), required: false);
             var __workflow_bodyinputscontext = WorkflowExpression.Compile(bodyinputscontext, nameof(bodyinputscontext), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
             var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
             var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
             var __workflow_bodyoptionscompletionType = WorkflowExpression.Compile(bodyoptionscompletionType, nameof(bodyoptionscompletionType), required: false);
-            return new DeferredBodyAction<CommandPostResponse>(() =>
+            return new DeferredBodyAction<CommandPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/command";
                 var apiCallHttpMethod = "post";
@@ -142,18 +142,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<CommandPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
+        public IBodyWorkflowAction<KeepWritingPostResponse, ApiConnectionActionConfiguration> KeepWriting(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
             var __workflow_bodyinputstype = WorkflowExpression.Compile(bodyinputstype, nameof(bodyinputstype), required: false);
             var __workflow_bodyinputsvalue = WorkflowExpression.Compile(bodyinputsvalue, nameof(bodyinputsvalue), required: false);
             var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
             var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
             var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
-            return new DeferredBodyAction<KeepWritingPostResponse>(() =>
+            return new DeferredBodyAction<KeepWritingPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/keep-writing";
                 var apiCallHttpMethod = "post";
@@ -252,11 +252,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplatesGetResponse> TemplatesGet()
+        public IBodyWorkflowAction<TemplatesGetResponse, ApiConnectionActionConfiguration> TemplatesGet()
         {
             var apiCallPath = "/v1/templates";
             var apiCallHttpMethod = "get";
@@ -265,27 +265,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<TemplateGetResponse, ApiConnectionActionConfiguration> TemplateGet(Expression<Func<string>> templateId)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            return new DeferredBodyAction<TemplateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/templates/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
+        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_bodyoptionsoutputCount = WorkflowExpression.Compile(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
             var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
             var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
             var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
-            return new DeferredBodyAction<TemplatePostResponse>(() =>
+            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/templates/{0}/run", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -368,15 +368,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<TemplatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgesGetResponse> KnowledgesGet(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<KnowledgesGetResponse, ApiConnectionActionConfiguration> KnowledgesGet(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<KnowledgesGetResponse>(() =>
+            return new DeferredBodyAction<KnowledgesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/knowledge";
                 var apiCallHttpMethod = "get";
@@ -386,16 +386,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<KnowledgesGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePostResponse> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<KnowledgePostResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
             var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
-            return new DeferredBodyAction<KnowledgePostResponse>(() =>
+            return new DeferredBodyAction<KnowledgePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/knowledge";
                 var apiCallHttpMethod = "post";
@@ -444,43 +444,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<KnowledgePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet(Expression<Func<string>> knowledgeId)
+        public IBodyWorkflowAction<KnowledgeGetResponse, ApiConnectionActionConfiguration> KnowledgeGet(Expression<Func<string>> knowledgeId)
         {
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
-            return new DeferredBodyAction<KnowledgeGetResponse>(() =>
+            return new DeferredBodyAction<KnowledgeGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete(Expression<Func<string>> knowledgeId)
+        public IBodyWorkflowAction<KnowledgeDeleteResponse, ApiConnectionActionConfiguration> KnowledgeDelete(Expression<Func<string>> knowledgeId)
         {
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
-            return new DeferredBodyAction<KnowledgeDeleteResponse>(() =>
+            return new DeferredBodyAction<KnowledgeDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
+        public IBodyWorkflowAction<KnowledgePatchResponse, ApiConnectionActionConfiguration> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
         {
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
-            return new DeferredBodyAction<KnowledgePatchResponse>(() =>
+            return new DeferredBodyAction<KnowledgePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -527,11 +527,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<KnowledgePatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonesGetResponseItem[]> TonesGet()
+        public IBodyWorkflowAction<TonesGetResponseItem[], ApiConnectionActionConfiguration> TonesGet()
         {
             var apiCallPath = "/v1/tones";
             var apiCallHttpMethod = "get";
@@ -540,12 +540,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePostResponse> Tone(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<TonePostResponse, ApiConnectionActionConfiguration> Tone(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
-            return new DeferredBodyAction<TonePostResponse>(() =>
+            return new DeferredBodyAction<TonePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/tones";
                 var apiCallHttpMethod = "post";
@@ -594,30 +594,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<TonePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<ToneGetResponse> ToneGet(Expression<Func<string>> toneId)
+        public IBodyWorkflowAction<ToneGetResponse, ApiConnectionActionConfiguration> ToneGet(Expression<Func<string>> toneId)
         {
             var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
-            return new DeferredBodyAction<ToneGetResponse>(() =>
+            return new DeferredBodyAction<ToneGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tones/{0}", __workflow_toneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ToneGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePatchResponse> TonePatch(Expression<Func<string>> toneId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<TonePatchResponse, ApiConnectionActionConfiguration> TonePatch(Expression<Func<string>> toneId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
             var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredBodyAction<TonePatchResponse>(() =>
+            return new DeferredBodyAction<TonePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tones/{0}", __workflow_toneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -664,20 +664,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 }
 
                 return new ApiConnectionAction<TonePatchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete(Expression<Func<string>> toneId)
+        public IBodyWorkflowAction<ToneDeleteResponse, ApiConnectionActionConfiguration> ToneDelete(Expression<Func<string>> toneId)
         {
             var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
-            return new DeferredBodyAction<ToneDeleteResponse>(() =>
+            return new DeferredBodyAction<ToneDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/tones/{0}", __workflow_toneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ToneDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

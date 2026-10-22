@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
     public class NationalizeioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalizeioip")]
-        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality(Expression<Func<string>> name)
+        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[], ApiConnectionActionConfiguration> CheckNamesNationality(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<CheckNamesNationalityResponseItem[]>(() =>
+            return new DeferredBodyAction<CheckNamesNationalityResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
                 callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

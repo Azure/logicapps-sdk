@@ -15,11 +15,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyhookName = WorkflowExpression.Compile(bodyhookName, nameof(bodyhookName), required: false);
             var __workflow_bodydispatchId = WorkflowExpression.Compile(bodydispatchId, nameof(bodydispatchId), required: false);
-            return new DeferredBodyTrigger<ReceiveDataFromTrackersResponseItem[]>(() =>
+            return new DeferredBodyTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/zapier/subscribe";
                 var apiCallHttpMethod = "post";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
                 }
 
                 return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

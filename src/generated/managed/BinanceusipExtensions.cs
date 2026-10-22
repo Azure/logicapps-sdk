@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
     public class BinanceusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
+        public IBodyWorkflowAction<GetLiveTickerPriceResponse, ApiConnectionActionConfiguration> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
         {
             var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: false);
-            return new DeferredBodyAction<GetLiveTickerPriceResponse>(() =>
+            return new DeferredBodyAction<GetLiveTickerPriceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ticker/price";
                 var apiCallHttpMethod = "get";
@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
                 if (__workflow_symbol != null)
                     callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
                 return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation(Expression<Func<string>> symbol = null)
+        public IBodyWorkflowAction<GetExchangeInfoResponse, ApiConnectionActionConfiguration> GetExchangeInformation(Expression<Func<string>> symbol = null)
         {
             var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: false);
-            return new DeferredBodyAction<GetExchangeInfoResponse>(() =>
+            return new DeferredBodyAction<GetExchangeInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/exchangeInfo";
                 var apiCallHttpMethod = "get";
@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
                 if (__workflow_symbol != null)
                     callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
                 return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetRecentTradesResponse, ApiConnectionActionConfiguration> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
         {
             var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<GetRecentTradesResponse>(() =>
+            return new DeferredBodyAction<GetRecentTradesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/trades";
                 var apiCallHttpMethod = "get";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

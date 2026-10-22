@@ -12,20 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
     public class ExpensyaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<string> GetExpenseImage(Expression<Func<string>> expenseId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetExpenseImage(Expression<Func<string>> expenseId)
         {
             var __workflow_expenseId = WorkflowExpression.Compile(expenseId, nameof(expenseId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/expense/{0}/image", __workflow_expenseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultExportResponse> ExportExpenses(Expression<Func<string>> exportId, Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> expenseStates = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMail = null, Expression<Func<string>> reportIds = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> reportName = null, Expression<Func<string>> reportIdShort = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> payId = null, Expression<Func<string>> payId2 = null, Expression<Func<string>> payId3 = null, Expression<Func<string>> accountingPeriod = null, Expression<Func<bool>> includeReceipts = null, Expression<Func<int>> expenseUseTypes = null, Expression<Func<string>> archiveExpenses = null)
+        public IBodyWorkflowAction<BaseResultExportResponse, ApiConnectionActionConfiguration> ExportExpenses(Expression<Func<string>> exportId, Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> expenseStates = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMail = null, Expression<Func<string>> reportIds = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> reportName = null, Expression<Func<string>> reportIdShort = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> payId = null, Expression<Func<string>> payId2 = null, Expression<Func<string>> payId3 = null, Expression<Func<string>> accountingPeriod = null, Expression<Func<bool>> includeReceipts = null, Expression<Func<int>> expenseUseTypes = null, Expression<Func<string>> archiveExpenses = null)
         {
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_includeReceipts = WorkflowExpression.Compile(includeReceipts, nameof(includeReceipts), required: false);
             var __workflow_expenseUseTypes = WorkflowExpression.Compile(expenseUseTypes, nameof(expenseUseTypes), required: false);
             var __workflow_archiveExpenses = WorkflowExpression.Compile(archiveExpenses, nameof(archiveExpenses), required: false);
-            return new DeferredBodyAction<BaseResultExportResponse>(() =>
+            return new DeferredBodyAction<BaseResultExportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/expenses/{0}/", __workflow_exportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -97,28 +97,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_archiveExpenses != null)
                     callPayload.Queries["archiveExpenses"] = ExpressionConverter.Convert(__workflow_archiveExpenses);
                 return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultExportResponse> PrintMission(Expression<Func<string>> reportId)
+        public IBodyWorkflowAction<BaseResultExportResponse, ApiConnectionActionConfiguration> PrintMission(Expression<Func<string>> reportId)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
-            return new DeferredBodyAction<BaseResultExportResponse>(() =>
+            return new DeferredBodyAction<BaseResultExportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/export/report/{0}/pdf/", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListExportFormatResponse> ExportFormats(Expression<Func<bool>> isForExpenses = null, Expression<Func<int>> exportType = null)
+        public IBodyWorkflowAction<BaseResultListExportFormatResponse, ApiConnectionActionConfiguration> ExportFormats(Expression<Func<bool>> isForExpenses = null, Expression<Func<int>> exportType = null)
         {
             var __workflow_isForExpenses = WorkflowExpression.Compile(isForExpenses, nameof(isForExpenses), required: false);
             var __workflow_exportType = WorkflowExpression.Compile(exportType, nameof(exportType), required: false);
-            return new DeferredBodyAction<BaseResultListExportFormatResponse>(() =>
+            return new DeferredBodyAction<BaseResultListExportFormatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/exports/";
                 var apiCallHttpMethod = "get";
@@ -128,44 +128,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_exportType != null)
                     callPayload.Queries["exportType"] = ExpressionConverter.Convert(__workflow_exportType);
                 return new ApiConnectionAction<BaseResultListExportFormatResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> AddProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> AddProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
         {
             var __workflow_addOrUpdateProjectInputArray = WorkflowExpression.Compile(addOrUpdateProjectInputArray, nameof(addOrUpdateProjectInputArray), required: false);
-            return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult>(() =>
+            return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/projects/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdateProjectInputArray);
                 return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> UpdateProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
         {
             var __workflow_addOrUpdateProjectInputArray = WorkflowExpression.Compile(addOrUpdateProjectInputArray, nameof(addOrUpdateProjectInputArray), required: false);
-            return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult>(() =>
+            return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/projects/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdateProjectInputArray);
                 return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> AddReciept(Expression<Func<string>> addReceiptInputuserId, Expression<Func<string>> addReceiptInputreceiptContent, Expression<Func<string>> addReceiptInputreceiptName)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddReciept(Expression<Func<string>> addReceiptInputuserId, Expression<Func<string>> addReceiptInputreceiptContent, Expression<Func<string>> addReceiptInputreceiptName)
         {
             var __workflow_addReceiptInputuserId = WorkflowExpression.Compile(addReceiptInputuserId, nameof(addReceiptInputuserId), required: true);
             var __workflow_addReceiptInputreceiptContent = WorkflowExpression.Compile(addReceiptInputreceiptContent, nameof(addReceiptInputreceiptContent), required: true);
             var __workflow_addReceiptInputreceiptName = WorkflowExpression.Compile(addReceiptInputreceiptName, nameof(addReceiptInputreceiptName), required: true);
-            return new DeferredBodyAction<BaseResult>(() =>
+            return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/receipt/";
                 var apiCallHttpMethod = "post";
@@ -184,11 +184,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 }
 
                 return new ApiConnectionAction<BaseResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> RevokeUserToken()
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> RevokeUserToken()
         {
             var apiCallPath = "/api/revokeUserToken/";
             var apiCallHttpMethod = "get";
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> ValidatorReports(Expression<Func<string>> validatorMail, Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse, ApiConnectionActionConfiguration> ValidatorReports(Expression<Func<string>> validatorMail, Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
             var __workflow_validatorMail = WorkflowExpression.Compile(validatorMail, nameof(validatorMail), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: false);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
-            return new DeferredBodyAction<ListAndPagesCountResultReportResponse>(() =>
+            return new DeferredBodyAction<ListAndPagesCountResultReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/{0}/reports/", __workflow_validatorMail.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -245,18 +245,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_isDesc != null)
                     callPayload.Queries["isDesc"] = ExpressionConverter.Convert(__workflow_isDesc);
                 return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputoperationInput>> reportUpdateStatusInputoperation, Expression<Func<string>> reportUpdateStatusInputmessage, Expression<Func<string[]>> reportUpdateStatusInputinvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputaccountingPeriod = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputoperationInput>> reportUpdateStatusInputoperation, Expression<Func<string>> reportUpdateStatusInputmessage, Expression<Func<string[]>> reportUpdateStatusInputinvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputaccountingPeriod = null)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             var __workflow_reportUpdateStatusInputoperation = WorkflowExpression.Compile(reportUpdateStatusInputoperation, nameof(reportUpdateStatusInputoperation), required: true);
             var __workflow_reportUpdateStatusInputmessage = WorkflowExpression.Compile(reportUpdateStatusInputmessage, nameof(reportUpdateStatusInputmessage), required: true);
             var __workflow_reportUpdateStatusInputinvoiceIdsToReject = WorkflowExpression.Compile(reportUpdateStatusInputinvoiceIdsToReject, nameof(reportUpdateStatusInputinvoiceIdsToReject), required: false);
             var __workflow_reportUpdateStatusInputaccountingPeriod = WorkflowExpression.Compile(reportUpdateStatusInputaccountingPeriod, nameof(reportUpdateStatusInputaccountingPeriod), required: false);
-            return new DeferredBodyAction<BaseResult>(() =>
+            return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/report/{0}/updateStatus/", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -285,11 +285,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 }
 
                 return new ApiConnectionAction<BaseResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> CompanyReports(Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse, ApiConnectionActionConfiguration> CompanyReports(Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: false);
             var __workflow_reportStartDate = WorkflowExpression.Compile(reportStartDate, nameof(reportStartDate), required: false);
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
-            return new DeferredBodyAction<ListAndPagesCountResultReportResponse>(() =>
+            return new DeferredBodyAction<ListAndPagesCountResultReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/reports/";
                 var apiCallHttpMethod = "get";
@@ -339,11 +339,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_isDesc != null)
                     callPayload.Queries["isDesc"] = ExpressionConverter.Convert(__workflow_isDesc);
                 return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultUserResponse> CompanyUsers(Expression<Func<string>> id = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> mail = null, Expression<Func<string>> payId = null, Expression<Func<string>> mailOrNameOrPayId = null, Expression<Func<int>> type = null, Expression<Func<int>> state = null, Expression<Func<string>> reviewerId = null, Expression<Func<string>> reviewerName = null, Expression<Func<string>> managerId = null, Expression<Func<string>> managerName = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMails = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> simpleTagsNames = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultUserResponse, ApiConnectionActionConfiguration> CompanyUsers(Expression<Func<string>> id = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> mail = null, Expression<Func<string>> payId = null, Expression<Func<string>> mailOrNameOrPayId = null, Expression<Func<int>> type = null, Expression<Func<int>> state = null, Expression<Func<string>> reviewerId = null, Expression<Func<string>> reviewerName = null, Expression<Func<string>> managerId = null, Expression<Func<string>> managerName = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMails = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> simpleTagsNames = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
-            return new DeferredBodyAction<ListAndPagesCountResultUserResponse>(() =>
+            return new DeferredBodyAction<ListAndPagesCountResultUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/users/";
                 var apiCallHttpMethod = "get";
@@ -411,11 +411,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_isDesc != null)
                     callPayload.Queries["isDesc"] = ExpressionConverter.Convert(__workflow_isDesc);
                 return new ApiConnectionAction<ListAndPagesCountResultUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputfileToSend, Expression<Func<string>> quickExpenseInputtitle = null, Expression<Func<double>> quickExpenseInputtransactionAmount = null, Expression<Func<string>> quickExpenseInputvatRates = null, Expression<Func<string>> quickExpenseInputvatAmounts = null, Expression<Func<string>> quickExpenseInputcurrencyCode = null, Expression<Func<string>> quickExpenseInputtransactionDate = null, Expression<Func<string>> quickExpenseInputmerchantName = null, Expression<Func<string>> quickExpenseInputlocationCountry = null, Expression<Func<string>> quickExpenseInputlocationCity = null, Expression<Func<string>> quickExpenseInputcomment = null, Expression<Func<string>> quickExpenseInputmerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputisEncrypted = null, Expression<Func<quickExpenseInputexpenseUseTypeInput>> quickExpenseInputexpenseUseType = null, Expression<Func<string>> quickExpenseInputpaymentTypeCode = null, Expression<Func<string>> quickExpenseInputexpenseTypeCode = null, Expression<Func<string>> quickExpenseInputfileType = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputfileToSend, Expression<Func<string>> quickExpenseInputtitle = null, Expression<Func<double>> quickExpenseInputtransactionAmount = null, Expression<Func<string>> quickExpenseInputvatRates = null, Expression<Func<string>> quickExpenseInputvatAmounts = null, Expression<Func<string>> quickExpenseInputcurrencyCode = null, Expression<Func<string>> quickExpenseInputtransactionDate = null, Expression<Func<string>> quickExpenseInputmerchantName = null, Expression<Func<string>> quickExpenseInputlocationCountry = null, Expression<Func<string>> quickExpenseInputlocationCity = null, Expression<Func<string>> quickExpenseInputcomment = null, Expression<Func<string>> quickExpenseInputmerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputisEncrypted = null, Expression<Func<quickExpenseInputexpenseUseTypeInput>> quickExpenseInputexpenseUseType = null, Expression<Func<string>> quickExpenseInputpaymentTypeCode = null, Expression<Func<string>> quickExpenseInputexpenseTypeCode = null, Expression<Func<string>> quickExpenseInputfileType = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_quickExpenseInputfileToSend = WorkflowExpression.Compile(quickExpenseInputfileToSend, nameof(quickExpenseInputfileToSend), required: true);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_quickExpenseInputpaymentTypeCode = WorkflowExpression.Compile(quickExpenseInputpaymentTypeCode, nameof(quickExpenseInputpaymentTypeCode), required: false);
             var __workflow_quickExpenseInputexpenseTypeCode = WorkflowExpression.Compile(quickExpenseInputexpenseTypeCode, nameof(quickExpenseInputexpenseTypeCode), required: false);
             var __workflow_quickExpenseInputfileType = WorkflowExpression.Compile(quickExpenseInputfileType, nameof(quickExpenseInputfileType), required: false);
-            return new DeferredBodyAction<BaseResult>(() =>
+            return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/quickexpense/{0}/", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -546,11 +546,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 }
 
                 return new ApiConnectionAction<BaseResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultCategoryResponse> GetCategories(Expression<Func<string>> id = null, Expression<Func<string>> categoryName = null, Expression<Func<string>> costAccount = null, Expression<Func<string>> vatAccount = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultCategoryResponse, ApiConnectionActionConfiguration> GetCategories(Expression<Func<string>> id = null, Expression<Func<string>> categoryName = null, Expression<Func<string>> costAccount = null, Expression<Func<string>> vatAccount = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: false);
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
-            return new DeferredBodyAction<ListAndPagesCountResultCategoryResponse>(() =>
+            return new DeferredBodyAction<ListAndPagesCountResultCategoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/categories/";
                 var apiCallHttpMethod = "get";
@@ -588,11 +588,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_isDesc != null)
                     callPayload.Queries["isDesc"] = ExpressionConverter.Convert(__workflow_isDesc);
                 return new ApiConnectionAction<ListAndPagesCountResultCategoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultExpenseResponse> GetExpensesWithPaging(Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> reportState = null, Expression<Func<string>> expenseStates = null, Expression<Func<bool>> isReimbusable = null, Expression<Func<double>> valueInCurrency = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerMail = null, Expression<Func<string>> ownerPayId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> ownerPayId3 = null, Expression<Func<string>> ownerPayId4 = null, Expression<Func<string>> ownerPayId5 = null, Expression<Func<string>> ownerPayId6 = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> isBillable = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> merchantCountries = null, Expression<Func<string>> currencies = null, Expression<Func<string>> fileType = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> expenseUseTypes = null, Expression<Func<string>> supplierId = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> merchantName = null, Expression<Func<string>> vatCode = null, Expression<Func<double>> valueHTInExpenseCurrency = null, Expression<Func<double>> vatRate = null, Expression<Func<double>> vatValue = null, Expression<Func<string>> reportsIds = null, Expression<Func<int>> dateTimeOffset = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultExpenseResponse, ApiConnectionActionConfiguration> GetExpensesWithPaging(Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> reportState = null, Expression<Func<string>> expenseStates = null, Expression<Func<bool>> isReimbusable = null, Expression<Func<double>> valueInCurrency = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerMail = null, Expression<Func<string>> ownerPayId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> ownerPayId3 = null, Expression<Func<string>> ownerPayId4 = null, Expression<Func<string>> ownerPayId5 = null, Expression<Func<string>> ownerPayId6 = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> isBillable = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> merchantCountries = null, Expression<Func<string>> currencies = null, Expression<Func<string>> fileType = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> expenseUseTypes = null, Expression<Func<string>> supplierId = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> merchantName = null, Expression<Func<string>> vatCode = null, Expression<Func<double>> valueHTInExpenseCurrency = null, Expression<Func<double>> vatRate = null, Expression<Func<double>> vatValue = null, Expression<Func<string>> reportsIds = null, Expression<Func<int>> dateTimeOffset = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: false);
             var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: false);
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
-            return new DeferredBodyAction<ListAndPagesCountResultExpenseResponse>(() =>
+            return new DeferredBodyAction<ListAndPagesCountResultExpenseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/expenses/";
                 var apiCallHttpMethod = "get";
@@ -717,24 +717,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_isDesc != null)
                     callPayload.Queries["isDesc"] = ExpressionConverter.Convert(__workflow_isDesc);
                 return new ApiConnectionAction<ListAndPagesCountResultExpenseResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultProjectResponse> GetProjectDetails(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<BaseResultProjectResponse, ApiConnectionActionConfiguration> GetProjectDetails(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<BaseResultProjectResponse>(() =>
+            return new DeferredBodyAction<BaseResultProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/project/{0}/", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BaseResultProjectResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultProjectResponse> GetProjects(Expression<Func<string>> projectName = null, Expression<Func<string>> projectIds = null, Expression<Func<string>> validatorName = null, Expression<Func<string>> projectReferenceOrExternalId = null, Expression<Func<bool>> bringAllProjects = null, Expression<Func<int>> projectUseType = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> customFieldsIds = null, Expression<Func<string>> expenseDate = null, Expression<Func<string>> userId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultProjectResponse, ApiConnectionActionConfiguration> GetProjects(Expression<Func<string>> projectName = null, Expression<Func<string>> projectIds = null, Expression<Func<string>> validatorName = null, Expression<Func<string>> projectReferenceOrExternalId = null, Expression<Func<bool>> bringAllProjects = null, Expression<Func<int>> projectUseType = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> customFieldsIds = null, Expression<Func<string>> expenseDate = null, Expression<Func<string>> userId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
         {
             var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
             var __workflow_projectIds = WorkflowExpression.Compile(projectIds, nameof(projectIds), required: false);
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
-            return new DeferredBodyAction<ListAndPagesCountResultProjectResponse>(() =>
+            return new DeferredBodyAction<ListAndPagesCountResultProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/projects/";
                 var apiCallHttpMethod = "get";
@@ -787,25 +787,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 if (__workflow_isDesc != null)
                     callPayload.Queries["isDesc"] = ExpressionConverter.Convert(__workflow_isDesc);
                 return new ApiConnectionAction<ListAndPagesCountResultProjectResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListEventResponse> GetReportHistory(Expression<Func<string>> reportId)
+        public IBodyWorkflowAction<BaseResultListEventResponse, ApiConnectionActionConfiguration> GetReportHistory(Expression<Func<string>> reportId)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
-            return new DeferredBodyAction<BaseResultListEventResponse>(() =>
+            return new DeferredBodyAction<BaseResultListEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/report/history/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["reportId"] = ExpressionConverter.Convert(__workflow_reportId);
                 return new ApiConnectionAction<BaseResultListEventResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> InviteUser(Expression<Func<string>> userInviteInputlastName, Expression<Func<string>> userInviteInputfirstName, Expression<Func<string>> userInviteInputmail, Expression<Func<string>> userInviteInputlanguage, Expression<Func<userInviteInputuserTypeInput>> userInviteInputuserType, Expression<Func<userInviteInputuserRoleInput>> userInviteInputuserRole, Expression<Func<string>> userInviteInputmailAlias = null, Expression<Func<string>> userInviteInputpayId = null, Expression<Func<string>> userInviteInputpayId2 = null, Expression<Func<string>> userInviteInputpayId3 = null, Expression<Func<string>> userInviteInputpayId4 = null, Expression<Func<string>> userInviteInputpayId5 = null, Expression<Func<string>> userInviteInputpayId6 = null, Expression<Func<string>> userInviteInputlocalCurrency = null, Expression<Func<string>> userInviteInputlocalCountry = null, Expression<Func<string>> userInviteInputmanagerId = null, Expression<Func<string>> userInviteInputreviewerId = null, Expression<Func<string>> userInviteInputvendor = null, Expression<Func<string>> userInviteInputdefaultProjectId = null, Expression<Func<string>> userInviteInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userInviteInputadditionalValidators = null, Expression<Func<string[]>> userInviteInputtagsToAssign = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> InviteUser(Expression<Func<string>> userInviteInputlastName, Expression<Func<string>> userInviteInputfirstName, Expression<Func<string>> userInviteInputmail, Expression<Func<string>> userInviteInputlanguage, Expression<Func<userInviteInputuserTypeInput>> userInviteInputuserType, Expression<Func<userInviteInputuserRoleInput>> userInviteInputuserRole, Expression<Func<string>> userInviteInputmailAlias = null, Expression<Func<string>> userInviteInputpayId = null, Expression<Func<string>> userInviteInputpayId2 = null, Expression<Func<string>> userInviteInputpayId3 = null, Expression<Func<string>> userInviteInputpayId4 = null, Expression<Func<string>> userInviteInputpayId5 = null, Expression<Func<string>> userInviteInputpayId6 = null, Expression<Func<string>> userInviteInputlocalCurrency = null, Expression<Func<string>> userInviteInputlocalCountry = null, Expression<Func<string>> userInviteInputmanagerId = null, Expression<Func<string>> userInviteInputreviewerId = null, Expression<Func<string>> userInviteInputvendor = null, Expression<Func<string>> userInviteInputdefaultProjectId = null, Expression<Func<string>> userInviteInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userInviteInputadditionalValidators = null, Expression<Func<string[]>> userInviteInputtagsToAssign = null)
         {
             var __workflow_userInviteInputlastName = WorkflowExpression.Compile(userInviteInputlastName, nameof(userInviteInputlastName), required: true);
             var __workflow_userInviteInputfirstName = WorkflowExpression.Compile(userInviteInputfirstName, nameof(userInviteInputfirstName), required: true);
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_userInviteInputiKRatesId = WorkflowExpression.Compile(userInviteInputiKRatesId, nameof(userInviteInputiKRatesId), required: false);
             var __workflow_userInviteInputadditionalValidators = WorkflowExpression.Compile(userInviteInputadditionalValidators, nameof(userInviteInputadditionalValidators), required: false);
             var __workflow_userInviteInputtagsToAssign = WorkflowExpression.Compile(userInviteInputtagsToAssign, nameof(userInviteInputtagsToAssign), required: false);
-            return new DeferredBodyAction<BaseResult>(() =>
+            return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/user/";
                 var apiCallHttpMethod = "post";
@@ -950,11 +950,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 }
 
                 return new ApiConnectionAction<BaseResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<LoginResponse> RefreshUserToken()
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> RefreshUserToken()
         {
             var apiCallPath = "/api/v2/refreshUserToken/";
             var apiCallHttpMethod = "get";
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputlastName = null, Expression<Func<string>> userUpdateInputfirstName = null, Expression<Func<string>> userUpdateInputmail = null, Expression<Func<string>> userUpdateInputmailAlias = null, Expression<Func<string>> userUpdateInputpayId = null, Expression<Func<string>> userUpdateInputpayId2 = null, Expression<Func<string>> userUpdateInputpayId3 = null, Expression<Func<string>> userUpdateInputpayId4 = null, Expression<Func<string>> userUpdateInputpayId5 = null, Expression<Func<string>> userUpdateInputpayId6 = null, Expression<Func<string>> userUpdateInputlanguage = null, Expression<Func<string>> userUpdateInputlocalCurrency = null, Expression<Func<string>> userUpdateInputlocalCountry = null, Expression<Func<string>> userUpdateInputmanagerId = null, Expression<Func<string>> userUpdateInputreviewerId = null, Expression<Func<userUpdateInputuserTypeInput>> userUpdateInputuserType = null, Expression<Func<string>> userUpdateInputvendor = null, Expression<Func<userUpdateInputuserRoleInput>> userUpdateInputuserRole = null, Expression<Func<string>> userUpdateInputjobTitle = null, Expression<Func<bool>> userUpdateInputcanAddPurchase = null, Expression<Func<string>> userUpdateInputdefaultProjectId = null, Expression<Func<string>> userUpdateInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputadditionalValidators = null, Expression<Func<string[]>> userUpdateInputtagsToAssign = null, Expression<Func<string[]>> userUpdateInputtagsToUnassign = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputlastName = null, Expression<Func<string>> userUpdateInputfirstName = null, Expression<Func<string>> userUpdateInputmail = null, Expression<Func<string>> userUpdateInputmailAlias = null, Expression<Func<string>> userUpdateInputpayId = null, Expression<Func<string>> userUpdateInputpayId2 = null, Expression<Func<string>> userUpdateInputpayId3 = null, Expression<Func<string>> userUpdateInputpayId4 = null, Expression<Func<string>> userUpdateInputpayId5 = null, Expression<Func<string>> userUpdateInputpayId6 = null, Expression<Func<string>> userUpdateInputlanguage = null, Expression<Func<string>> userUpdateInputlocalCurrency = null, Expression<Func<string>> userUpdateInputlocalCountry = null, Expression<Func<string>> userUpdateInputmanagerId = null, Expression<Func<string>> userUpdateInputreviewerId = null, Expression<Func<userUpdateInputuserTypeInput>> userUpdateInputuserType = null, Expression<Func<string>> userUpdateInputvendor = null, Expression<Func<userUpdateInputuserRoleInput>> userUpdateInputuserRole = null, Expression<Func<string>> userUpdateInputjobTitle = null, Expression<Func<bool>> userUpdateInputcanAddPurchase = null, Expression<Func<string>> userUpdateInputdefaultProjectId = null, Expression<Func<string>> userUpdateInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputadditionalValidators = null, Expression<Func<string[]>> userUpdateInputtagsToAssign = null, Expression<Func<string[]>> userUpdateInputtagsToUnassign = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_shouldUpdateValidators = WorkflowExpression.Compile(shouldUpdateValidators, nameof(shouldUpdateValidators), required: true);
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
             var __workflow_userUpdateInputadditionalValidators = WorkflowExpression.Compile(userUpdateInputadditionalValidators, nameof(userUpdateInputadditionalValidators), required: false);
             var __workflow_userUpdateInputtagsToAssign = WorkflowExpression.Compile(userUpdateInputtagsToAssign, nameof(userUpdateInputtagsToAssign), required: false);
             var __workflow_userUpdateInputtagsToUnassign = WorkflowExpression.Compile(userUpdateInputtagsToUnassign, nameof(userUpdateInputtagsToUnassign), required: false);
-            return new DeferredBodyAction<BaseResult>(() =>
+            return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/user/{0}/", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1156,15 +1156,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 }
 
                 return new ApiConnectionAction<BaseResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjectState(Expression<Func<string[]>> updateProjectStateInputitemIds, Expression<Func<bool>> updateProjectStateInputprojectState)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> UpdateProjectState(Expression<Func<string[]>> updateProjectStateInputitemIds, Expression<Func<bool>> updateProjectStateInputprojectState)
         {
             var __workflow_updateProjectStateInputitemIds = WorkflowExpression.Compile(updateProjectStateInputitemIds, nameof(updateProjectStateInputitemIds), required: true);
             var __workflow_updateProjectStateInputprojectState = WorkflowExpression.Compile(updateProjectStateInputprojectState, nameof(updateProjectStateInputprojectState), required: true);
-            return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult>(() =>
+            return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/projects/states/";
                 var apiCallHttpMethod = "put";
@@ -1181,21 +1181,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
                 }
 
                 return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListUpdateUserResult> UpdateUsersState(Expression<Func<UpdateUserStateInput[]>> updateUserStateInputArray = null)
+        public IBodyWorkflowAction<BaseResultListUpdateUserResult, ApiConnectionActionConfiguration> UpdateUsersState(Expression<Func<UpdateUserStateInput[]>> updateUserStateInputArray = null)
         {
             var __workflow_updateUserStateInputArray = WorkflowExpression.Compile(updateUserStateInputArray, nameof(updateUserStateInputArray), required: false);
-            return new DeferredBodyAction<BaseResultListUpdateUserResult>(() =>
+            return new DeferredBodyAction<BaseResultListUpdateUserResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/users/state/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateUserStateInputArray);
                 return new ApiConnectionAction<BaseResultListUpdateUserResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

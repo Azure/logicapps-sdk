@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
     public class MailformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
-        public IBodyWorkflowAction<CreateOrderResponse> CreateOrder(Expression<Func<serviceInput>> service, Expression<Func<string>> toName, Expression<Func<string>> toAddress1, Expression<Func<string>> toCity, Expression<Func<string>> toState, Expression<Func<string>> toPostcode, Expression<Func<string>> fromName, Expression<Func<string>> fromAddress1, Expression<Func<string>> fromCity, Expression<Func<string>> fromState, Expression<Func<string>> fromPostcode, Expression<Func<object>> file = null, Expression<Func<string>> url = null, Expression<Func<string>> customerReference = null, Expression<Func<string>> webhook = null, Expression<Func<bool>> simplex = null, Expression<Func<bool>> color = null, Expression<Func<bool>> flat = null, Expression<Func<bool>> returnEnvelope = null, Expression<Func<bool>> stamp = null, Expression<Func<string>> message = null, Expression<Func<string>> toOrganization = null, Expression<Func<string>> toAddress2 = null, Expression<Func<string>> toCountry = null, Expression<Func<string>> fromOrganization = null, Expression<Func<string>> fromAddress2 = null, Expression<Func<string>> fromCountry = null)
+        public IBodyWorkflowAction<CreateOrderResponse, ApiConnectionActionConfiguration> CreateOrder(Expression<Func<serviceInput>> service, Expression<Func<string>> toName, Expression<Func<string>> toAddress1, Expression<Func<string>> toCity, Expression<Func<string>> toState, Expression<Func<string>> toPostcode, Expression<Func<string>> fromName, Expression<Func<string>> fromAddress1, Expression<Func<string>> fromCity, Expression<Func<string>> fromState, Expression<Func<string>> fromPostcode, Expression<Func<object>> file = null, Expression<Func<string>> url = null, Expression<Func<string>> customerReference = null, Expression<Func<string>> webhook = null, Expression<Func<bool>> simplex = null, Expression<Func<bool>> color = null, Expression<Func<bool>> flat = null, Expression<Func<bool>> returnEnvelope = null, Expression<Func<bool>> stamp = null, Expression<Func<string>> message = null, Expression<Func<string>> toOrganization = null, Expression<Func<string>> toAddress2 = null, Expression<Func<string>> toCountry = null, Expression<Func<string>> fromOrganization = null, Expression<Func<string>> fromAddress2 = null, Expression<Func<string>> fromCountry = null)
         {
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
             var __workflow_toName = WorkflowExpression.Compile(toName, nameof(toName), required: true);
@@ -41,30 +41,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
             var __workflow_fromOrganization = WorkflowExpression.Compile(fromOrganization, nameof(fromOrganization), required: false);
             var __workflow_fromAddress2 = WorkflowExpression.Compile(fromAddress2, nameof(fromAddress2), required: false);
             var __workflow_fromCountry = WorkflowExpression.Compile(fromCountry, nameof(fromCountry), required: false);
-            return new DeferredBodyAction<CreateOrderResponse>(() =>
+            return new DeferredBodyAction<CreateOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/orders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CreateOrderResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
-        public IBodyWorkflowAction<GetOrderResponse> GetOrder(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetOrderResponse, ApiConnectionActionConfiguration> GetOrder(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetOrderResponse>(() =>
+            return new DeferredBodyAction<GetOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/orders/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOrderResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser()
+        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> GetUser()
         {
             var apiCallPath = "/v1/users/me";
             var apiCallHttpMethod = "get";

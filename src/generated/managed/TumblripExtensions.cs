@@ -12,38 +12,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
     public class TumblripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogGetResponse> BlogGet(Expression<Func<string>> blogIdentifier)
+        public IBodyWorkflowAction<BlogGetResponse, ApiConnectionActionConfiguration> BlogGet(Expression<Func<string>> blogIdentifier)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            return new DeferredBodyAction<BlogGetResponse>(() =>
+            return new DeferredBodyAction<BlogGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/info", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlogGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlocksGetResponse> BlocksGet(Expression<Func<string>> blogIdentifier)
+        public IBodyWorkflowAction<BlocksGetResponse, ApiConnectionActionConfiguration> BlocksGet(Expression<Func<string>> blogIdentifier)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            return new DeferredBodyAction<BlocksGetResponse>(() =>
+            return new DeferredBodyAction<BlocksGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlocksGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<bool>> bodyanonymousOnly = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<bool>> bodyanonymousOnly = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_bodyblockedTumblelog = WorkflowExpression.Compile(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
             var __workflow_bodyanonymousOnly = WorkflowExpression.Compile(bodyanonymousOnly, nameof(bodyanonymousOnly), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -68,16 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<string>> bodypostId = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<string>> bodypostId = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_bodyblockedTumblelog = WorkflowExpression.Compile(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
             var __workflow_bodypostId = WorkflowExpression.Compile(bodypostId, nameof(bodypostId), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -102,16 +102,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelogs = null, Expression<Func<bool>> bodyforce = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelogs = null, Expression<Func<bool>> bodyforce = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_bodyblockedTumblelogs = WorkflowExpression.Compile(bodyblockedTumblelogs, nameof(bodyblockedTumblelogs), required: false);
             var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks/bulk", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -136,18 +136,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogLikesGetResponse> BlogLikesGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null)
+        public IBodyWorkflowAction<BlogLikesGetResponse, ApiConnectionActionConfiguration> BlogLikesGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
-            return new DeferredBodyAction<BlogLikesGetResponse>(() =>
+            return new DeferredBodyAction<BlogLikesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/likes", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -161,16 +161,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_after != null)
                     callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
                 return new ApiConnectionAction<BlogLikesGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowingGetResponse> BlogFollowingGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<BlogFollowingGetResponse, ApiConnectionActionConfiguration> BlogFollowingGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<BlogFollowingGetResponse>(() =>
+            return new DeferredBodyAction<BlogFollowingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/following", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -180,16 +180,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<BlogFollowingGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowersGetResponse> BlogFollowersGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<BlogFollowersGetResponse, ApiConnectionActionConfiguration> BlogFollowersGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<BlogFollowersGetResponse>(() =>
+            return new DeferredBodyAction<BlogFollowersGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/followers", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -199,32 +199,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<BlogFollowersGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowCheckGetResponse> BlogFollowCheckGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> query)
+        public IBodyWorkflowAction<BlogFollowCheckGetResponse, ApiConnectionActionConfiguration> BlogFollowCheckGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> query)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<BlogFollowCheckGetResponse>(() =>
+            return new DeferredBodyAction<BlogFollowCheckGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/followed_by", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<BlogFollowCheckGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostsQueuedGetResponse> PostsQueuedGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> filter = null, Expression<Func<string>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<PostsQueuedGetResponse, ApiConnectionActionConfiguration> PostsQueuedGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> filter = null, Expression<Func<string>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<PostsQueuedGetResponse>(() =>
+            return new DeferredBodyAction<PostsQueuedGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -236,16 +236,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<PostsQueuedGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodypostId = null, Expression<Func<string>> bodyinsertAfter = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodypostId = null, Expression<Func<string>> bodyinsertAfter = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_bodypostId = WorkflowExpression.Compile(bodypostId, nameof(bodypostId), required: false);
             var __workflow_bodyinsertAfter = WorkflowExpression.Compile(bodyinsertAfter, nameof(bodyinsertAfter), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue/reorder", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -270,29 +270,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostQueuedShuffle(Expression<Func<string>> blogIdentifier)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostQueuedShuffle(Expression<Func<string>> blogIdentifier)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue/shuffle", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostDraftsGetResponse> PostDraftsGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> beforeId = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<PostDraftsGetResponse, ApiConnectionActionConfiguration> PostDraftsGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> beforeId = null, Expression<Func<string>> filter = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_beforeId = WorkflowExpression.Compile(beforeId, nameof(beforeId), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<PostDraftsGetResponse>(() =>
+            return new DeferredBodyAction<PostDraftsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/draft", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -302,16 +302,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<PostDraftsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostSubmissionGetResponse> PostSubmissionGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> offset = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<PostSubmissionGetResponse, ApiConnectionActionConfiguration> PostSubmissionGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> offset = null, Expression<Func<string>> filter = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<PostSubmissionGetResponse>(() =>
+            return new DeferredBodyAction<PostSubmissionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/submission", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -321,17 +321,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<PostSubmissionGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<ActivityFeedGetResponse> ActivityFeedGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> types = null, Expression<Func<int>> before = null, Expression<Func<bool>> rollups = null)
+        public IBodyWorkflowAction<ActivityFeedGetResponse, ApiConnectionActionConfiguration> ActivityFeedGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> types = null, Expression<Func<int>> before = null, Expression<Func<bool>> rollups = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_types = WorkflowExpression.Compile(types, nameof(types), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             var __workflow_rollups = WorkflowExpression.Compile(rollups, nameof(rollups), required: false);
-            return new DeferredBodyAction<ActivityFeedGetResponse>(() =>
+            return new DeferredBodyAction<ActivityFeedGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/notifications", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -343,11 +343,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_rollups != null)
                     callPayload.Queries["rollups"] = ExpressionConverter.Convert(__workflow_rollups);
                 return new ApiConnectionAction<ActivityFeedGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostCreatePostResponse> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostCreatePostResponse, ApiConnectionActionConfiguration> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyparentPostId = WorkflowExpression.Compile(bodyparentPostId, nameof(bodyparentPostId), required: false);
             var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: false);
             var __workflow_bodyhideTrail = WorkflowExpression.Compile(bodyhideTrail, nameof(bodyhideTrail), required: false);
-            return new DeferredBodyAction<PostCreatePostResponse>(() =>
+            return new DeferredBodyAction<PostCreatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -468,16 +468,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<PostCreatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostRetrieveGetResponse> PostRetrieveGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<postFormatInput>> postFormat = null)
+        public IBodyWorkflowAction<PostRetrieveGetResponse, ApiConnectionActionConfiguration> PostRetrieveGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<postFormatInput>> postFormat = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: false);
-            return new DeferredBodyAction<PostRetrieveGetResponse>(() =>
+            return new DeferredBodyAction<PostRetrieveGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/{1}", __workflow_blogIdentifier.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -486,11 +486,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_postFormat != null)
                     callPayload.Queries["post_format"] = ExpressionConverter.Convert(__workflow_postFormat);
                 return new ApiConnectionAction<PostRetrieveGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostEditPutResponse> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostEditPutResponse, ApiConnectionActionConfiguration> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
             var __workflow_bodyparentPostId = WorkflowExpression.Compile(bodyparentPostId, nameof(bodyparentPostId), required: false);
             var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: false);
             var __workflow_bodyhideTrail = WorkflowExpression.Compile(bodyhideTrail, nameof(bodyhideTrail), required: false);
-            return new DeferredBodyAction<PostEditPutResponse>(() =>
+            return new DeferredBodyAction<PostEditPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/{1}", __workflow_blogIdentifier.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -612,15 +612,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<PostEditPutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostDeleteResponse> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PostDeleteResponse, ApiConnectionActionConfiguration> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyid)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            return new DeferredBodyAction<PostDeleteResponse>(() =>
+            return new DeferredBodyAction<PostDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/post/delete", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -635,17 +635,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<PostDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostNotesGetResponse> PostNotesGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> id, Expression<Func<double>> beforeTimestamp = null, Expression<Func<modeInput>> mode = null)
+        public IBodyWorkflowAction<PostNotesGetResponse, ApiConnectionActionConfiguration> PostNotesGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> id, Expression<Func<double>> beforeTimestamp = null, Expression<Func<modeInput>> mode = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_beforeTimestamp = WorkflowExpression.Compile(beforeTimestamp, nameof(beforeTimestamp), required: false);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
-            return new DeferredBodyAction<PostNotesGetResponse>(() =>
+            return new DeferredBodyAction<PostNotesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/notes", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -657,11 +657,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_mode != null)
                     callPayload.Queries["mode"] = ExpressionConverter.Convert(__workflow_mode);
                 return new ApiConnectionAction<PostNotesGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<UserInfoGetResponse> UserInfoGet()
+        public IBodyWorkflowAction<UserInfoGetResponse, ApiConnectionActionConfiguration> UserInfoGet()
         {
             var apiCallPath = "/v2/user/info";
             var apiCallHttpMethod = "get";
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<UserLimitGetResponse> UserLimitGet()
+        public IBodyWorkflowAction<UserLimitGetResponse, ApiConnectionActionConfiguration> UserLimitGet()
         {
             var apiCallPath = "/v2/user/limits";
             var apiCallHttpMethod = "get";
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<UserDashboardGetResponse> UserDashboardGet()
+        public IBodyWorkflowAction<UserDashboardGetResponse, ApiConnectionActionConfiguration> UserDashboardGet()
         {
             var apiCallPath = "/v2/user/dashboard";
             var apiCallHttpMethod = "get";
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<UserLikesGetResponse> UserLikesGet()
+        public IBodyWorkflowAction<UserLikesGetResponse, ApiConnectionActionConfiguration> UserLikesGet()
         {
             var apiCallPath = "/v2/user/likes";
             var apiCallHttpMethod = "get";
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<UserFollowingGetResponse> UserFollowingGet()
+        public IBodyWorkflowAction<UserFollowingGetResponse, ApiConnectionActionConfiguration> UserFollowingGet()
         {
             var apiCallPath = "/v2/user/following";
             var apiCallHttpMethod = "get";
@@ -706,11 +706,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowPostResponse> BlogFollow(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<BlogFollowPostResponse, ApiConnectionActionConfiguration> BlogFollow(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyemail = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            return new DeferredBodyAction<BlogFollowPostResponse>(() =>
+            return new DeferredBodyAction<BlogFollowPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/follow";
                 var apiCallHttpMethod = "post";
@@ -735,14 +735,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<BlogFollowPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogUnfollowPostResponse> BlogUnfollow(Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration> BlogUnfollow(Expression<Func<string>> bodyurl = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            return new DeferredBodyAction<BlogUnfollowPostResponse>(() =>
+            return new DeferredBodyAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/unfollow";
                 var apiCallHttpMethod = "post";
@@ -761,15 +761,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<BlogUnfollowPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostLike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostLike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/like";
                 var apiCallHttpMethod = "post";
@@ -786,15 +786,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string> PostUnlike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnlike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/unlike";
                 var apiCallHttpMethod = "post";
@@ -811,17 +811,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostTagGetResponseItem[]> PostTagGet(Expression<Func<string>> tag, Expression<Func<int>> before = null, Expression<Func<double>> limit = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<PostTagGetResponseItem[], ApiConnectionActionConfiguration> PostTagGet(Expression<Func<string>> tag, Expression<Func<int>> before = null, Expression<Func<double>> limit = null, Expression<Func<string>> filter = null)
         {
             var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<PostTagGetResponseItem[]>(() =>
+            return new DeferredBodyAction<PostTagGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tagged";
                 var apiCallHttpMethod = "get";
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 if (__workflow_filter != null)
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<PostTagGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

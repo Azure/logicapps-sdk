@@ -12,29 +12,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
     public class SessionizeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<GetSessionsResponseItem[], ApiConnectionActionConfiguration> GetSessions(Expression<Func<string>> iD)
         {
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
-            return new DeferredBodyAction<GetSessionsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetSessionsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Sessions", __workflow_iD.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSessionsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<GetSpeakersResponseItem[], ApiConnectionActionConfiguration> GetSpeakers(Expression<Func<string>> iD)
         {
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
-            return new DeferredBodyAction<GetSpeakersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetSpeakersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Speakers", __workflow_iD.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpeakersResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

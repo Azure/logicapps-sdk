@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
     public class MistralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
         {
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
             var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
             var __workflow_bodystream = WorkflowExpression.Compile(bodystream, nameof(bodystream), required: false);
             var __workflow_bodysafePrompt = WorkflowExpression.Compile(bodysafePrompt, nameof(bodysafePrompt), required: false);
             var __workflow_bodyrandomSeed = WorkflowExpression.Compile(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
-            return new DeferredBodyAction<ChatCompletionResponse>(() =>
+            return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";
@@ -115,16 +115,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                 }
 
                 return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
+        public IBodyWorkflowAction<EmbeddingResponse, ApiConnectionActionConfiguration> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
         {
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
             var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: false);
             var __workflow_bodyencodingFormat = WorkflowExpression.Compile(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
-            return new DeferredBodyAction<EmbeddingResponse>(() =>
+            return new DeferredBodyAction<EmbeddingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/embeddings";
                 var apiCallHttpMethod = "post";
@@ -165,11 +165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                 }
 
                 return new ApiConnectionAction<EmbeddingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<ModelList> ListModels()
+        public IBodyWorkflowAction<ModelList, ApiConnectionActionConfiguration> ListModels()
         {
             var apiCallPath = "/models";
             var apiCallHttpMethod = "get";

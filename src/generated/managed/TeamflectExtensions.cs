@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
     public class TeamflectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Feedback> SendFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyfeedbackProvider, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate)
+        public IBodyWorkflowAction<Feedback, ApiConnectionActionConfiguration> SendFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyfeedbackProvider, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate)
         {
             var __workflow_bodyfeedbackSubject = WorkflowExpression.Compile(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
             var __workflow_bodyfeedbackProvider = WorkflowExpression.Compile(bodyfeedbackProvider, nameof(bodyfeedbackProvider), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_bodytemplateTitle = WorkflowExpression.Compile(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
             var __workflow_bodydueDays = WorkflowExpression.Compile(bodydueDays, nameof(bodydueDays), required: true);
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            return new DeferredBodyAction<Feedback>(() =>
+            return new DeferredBodyAction<Feedback, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/feedback/sendFeedbackRequest";
                 var apiCallHttpMethod = "post";
@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<Feedback>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Feedback> SendExternalFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyexternalEmail, Expression<Func<string>> bodyproviderName, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate, Expression<Func<bool>> bodyisAnonymous)
+        public IBodyWorkflowAction<Feedback, ApiConnectionActionConfiguration> SendExternalFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyexternalEmail, Expression<Func<string>> bodyproviderName, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate, Expression<Func<bool>> bodyisAnonymous)
         {
             var __workflow_bodyfeedbackSubject = WorkflowExpression.Compile(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
             var __workflow_bodyexternalEmail = WorkflowExpression.Compile(bodyexternalEmail, nameof(bodyexternalEmail), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_bodydueDays = WorkflowExpression.Compile(bodydueDays, nameof(bodydueDays), required: true);
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: true);
             var __workflow_bodyisAnonymous = WorkflowExpression.Compile(bodyisAnonymous, nameof(bodyisAnonymous), required: true);
-            return new DeferredBodyAction<Feedback>(() =>
+            return new DeferredBodyAction<Feedback, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/feedback/sendExternalFeedbackRequest";
                 var apiCallHttpMethod = "post";
@@ -88,25 +88,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<Feedback>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> GetGoal(Expression<Func<string>> goalId)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> GetGoal(Expression<Func<string>> goalId)
         {
             var __workflow_goalId = WorkflowExpression.Compile(goalId, nameof(goalId), required: true);
-            return new DeferredBodyAction<Goal>(() =>
+            return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goal/getGoal";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["goalId"] = ExpressionConverter.Convert(__workflow_goalId);
                 return new ApiConnectionAction<Goal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal[]> GetGoals(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<string>> selectedLabels = null, Expression<Func<string>> limit = null, Expression<Func<string>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<Goal[], ApiConnectionActionConfiguration> GetGoals(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<string>> selectedLabels = null, Expression<Func<string>> limit = null, Expression<Func<string>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_userOID = WorkflowExpression.Compile(userOID, nameof(userOID), required: false);
             var __workflow_userUPN = WorkflowExpression.Compile(userUPN, nameof(userUPN), required: false);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<Goal[]>(() =>
+            return new DeferredBodyAction<Goal[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goal/getGoals";
                 var apiCallHttpMethod = "get";
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<Goal[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> UpdateGoal(Expression<Func<string>> bodygoalID, Expression<Func<string>> bodynewProgressValue, Expression<Func<bodyupdaterTypeInput>> bodyupdaterType, Expression<Func<string>> bodysystemName, Expression<Func<string>> bodyupdateComment = null, Expression<Func<string>> bodynewStatus = null)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> bodygoalID, Expression<Func<string>> bodynewProgressValue, Expression<Func<bodyupdaterTypeInput>> bodyupdaterType, Expression<Func<string>> bodysystemName, Expression<Func<string>> bodyupdateComment = null, Expression<Func<string>> bodynewStatus = null)
         {
             var __workflow_bodygoalID = WorkflowExpression.Compile(bodygoalID, nameof(bodygoalID), required: true);
             var __workflow_bodynewProgressValue = WorkflowExpression.Compile(bodynewProgressValue, nameof(bodynewProgressValue), required: true);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_bodysystemName = WorkflowExpression.Compile(bodysystemName, nameof(bodysystemName), required: true);
             var __workflow_bodyupdateComment = WorkflowExpression.Compile(bodyupdateComment, nameof(bodyupdateComment), required: false);
             var __workflow_bodynewStatus = WorkflowExpression.Compile(bodynewStatus, nameof(bodynewStatus), required: false);
-            return new DeferredBodyAction<Goal>(() =>
+            return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goal/updateProgress";
                 var apiCallHttpMethod = "post";
@@ -183,11 +183,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<Goal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> CreateGoal(Expression<Func<string>> bodygoalTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydueDate, Expression<Func<string>> bodygoalType, Expression<Func<object>> bodygoalOwner, Expression<Func<string>> bodygoalCreator, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyprogressFormat, Expression<Func<string>> bodycurrencyCode, Expression<Func<double>> bodyinitialValue, Expression<Func<double>> bodytargetValue, Expression<Func<string>> bodyparentGoalID, Expression<Func<bool>> bodynotifyOwner)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> bodygoalTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydueDate, Expression<Func<string>> bodygoalType, Expression<Func<object>> bodygoalOwner, Expression<Func<string>> bodygoalCreator, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyprogressFormat, Expression<Func<string>> bodycurrencyCode, Expression<Func<double>> bodyinitialValue, Expression<Func<double>> bodytargetValue, Expression<Func<string>> bodyparentGoalID, Expression<Func<bool>> bodynotifyOwner)
         {
             var __workflow_bodygoalTitle = WorkflowExpression.Compile(bodygoalTitle, nameof(bodygoalTitle), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_bodytargetValue = WorkflowExpression.Compile(bodytargetValue, nameof(bodytargetValue), required: true);
             var __workflow_bodyparentGoalID = WorkflowExpression.Compile(bodyparentGoalID, nameof(bodyparentGoalID), required: true);
             var __workflow_bodynotifyOwner = WorkflowExpression.Compile(bodynotifyOwner, nameof(bodynotifyOwner), required: true);
-            return new DeferredBodyAction<Goal>(() =>
+            return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goal/createNewGoal";
                 var apiCallHttpMethod = "post";
@@ -244,16 +244,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<Goal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> AddCommentGoal(Expression<Func<string>> commentidOfTheGoal, Expression<Func<string>> commentobjectIdOrUserPrincipalNameOfTheCommenter, Expression<Func<string>> commentcommentItself)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> AddCommentGoal(Expression<Func<string>> commentidOfTheGoal, Expression<Func<string>> commentobjectIdOrUserPrincipalNameOfTheCommenter, Expression<Func<string>> commentcommentItself)
         {
             var __workflow_commentidOfTheGoal = WorkflowExpression.Compile(commentidOfTheGoal, nameof(commentidOfTheGoal), required: true);
             var __workflow_commentobjectIdOrUserPrincipalNameOfTheCommenter = WorkflowExpression.Compile(commentobjectIdOrUserPrincipalNameOfTheCommenter, nameof(commentobjectIdOrUserPrincipalNameOfTheCommenter), required: true);
             var __workflow_commentcommentItself = WorkflowExpression.Compile(commentcommentItself, nameof(commentcommentItself), required: true);
-            return new DeferredBodyAction<Goal>(() =>
+            return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goal/commentGoal";
                 var apiCallHttpMethod = "post";
@@ -272,30 +272,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<Goal>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionResponse> GetRecognition(Expression<Func<string>> recognitionId)
+        public IBodyWorkflowAction<RecognitionResponse, ApiConnectionActionConfiguration> GetRecognition(Expression<Func<string>> recognitionId)
         {
             var __workflow_recognitionId = WorkflowExpression.Compile(recognitionId, nameof(recognitionId), required: true);
-            return new DeferredBodyAction<RecognitionResponse>(() =>
+            return new DeferredBodyAction<RecognitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/recognition/{0}", __workflow_recognitionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RecognitionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionResponse[]> GetRecognitions(Expression<Func<string[]>> bodyrecipientsToSearch, Expression<Func<string>> bodyrecognitionTitle, Expression<Func<string>> bodyupdateDate, Expression<Func<string>> bodycreationDate)
+        public IBodyWorkflowAction<RecognitionResponse[], ApiConnectionActionConfiguration> GetRecognitions(Expression<Func<string[]>> bodyrecipientsToSearch, Expression<Func<string>> bodyrecognitionTitle, Expression<Func<string>> bodyupdateDate, Expression<Func<string>> bodycreationDate)
         {
             var __workflow_bodyrecipientsToSearch = WorkflowExpression.Compile(bodyrecipientsToSearch, nameof(bodyrecipientsToSearch), required: true);
             var __workflow_bodyrecognitionTitle = WorkflowExpression.Compile(bodyrecognitionTitle, nameof(bodyrecognitionTitle), required: true);
             var __workflow_bodyupdateDate = WorkflowExpression.Compile(bodyupdateDate, nameof(bodyupdateDate), required: true);
             var __workflow_bodycreationDate = WorkflowExpression.Compile(bodycreationDate, nameof(bodycreationDate), required: true);
-            return new DeferredBodyAction<RecognitionResponse[]>(() =>
+            return new DeferredBodyAction<RecognitionResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/recognition";
                 var apiCallHttpMethod = "post";
@@ -316,18 +316,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<RecognitionResponse[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionCreateResponse> CreateRecognition(Expression<Func<string>> bodyrecognitionSender, Expression<Func<string[]>> bodyrecognitionRecipients, Expression<Func<string>> bodybadgeTitle, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyrecognitionMessage)
+        public IBodyWorkflowAction<RecognitionCreateResponse, ApiConnectionActionConfiguration> CreateRecognition(Expression<Func<string>> bodyrecognitionSender, Expression<Func<string[]>> bodyrecognitionRecipients, Expression<Func<string>> bodybadgeTitle, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyrecognitionMessage)
         {
             var __workflow_bodyrecognitionSender = WorkflowExpression.Compile(bodyrecognitionSender, nameof(bodyrecognitionSender), required: true);
             var __workflow_bodyrecognitionRecipients = WorkflowExpression.Compile(bodyrecognitionRecipients, nameof(bodyrecognitionRecipients), required: true);
             var __workflow_bodybadgeTitle = WorkflowExpression.Compile(bodybadgeTitle, nameof(bodybadgeTitle), required: true);
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: true);
             var __workflow_bodyrecognitionMessage = WorkflowExpression.Compile(bodyrecognitionMessage, nameof(bodyrecognitionMessage), required: true);
-            return new DeferredBodyAction<RecognitionCreateResponse>(() =>
+            return new DeferredBodyAction<RecognitionCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/recognition/createNewRecognitions";
                 var apiCallHttpMethod = "post";
@@ -350,24 +350,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction<RecognitionCreateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<TaskObject> GetTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<TaskObject>(() =>
+            return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/task/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<TaskObject[]> GetTasks(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<double>> limit = null, Expression<Func<double>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<TaskObject[], ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<double>> limit = null, Expression<Func<double>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_userOID = WorkflowExpression.Compile(userOID, nameof(userOID), required: false);
             var __workflow_userUPN = WorkflowExpression.Compile(userUPN, nameof(userUPN), required: false);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<TaskObject[]>(() =>
+            return new DeferredBodyAction<TaskObject[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/task";
                 var apiCallHttpMethod = "get";
@@ -396,29 +396,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<TaskObject[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userMail)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> userMail)
         {
             var __workflow_userMail = WorkflowExpression.Compile(userMail, nameof(userMail), required: true);
-            return new DeferredBodyAction<User>(() =>
+            return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/getUser";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["userMail"] = ExpressionConverter.Convert(__workflow_userMail);
                 return new ApiConnectionAction<User>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IWorkflowAction UpdateUser(Expression<Func<string>> bodyuserEmail = null, Expression<Func<bodyuserAttributesInputItem[]>> bodyuserAttributes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> bodyuserEmail = null, Expression<Func<bodyuserAttributesInputItem[]>> bodyuserAttributes = null)
         {
             var __workflow_bodyuserEmail = WorkflowExpression.Compile(bodyuserEmail, nameof(bodyuserEmail), required: false);
             var __workflow_bodyuserAttributes = WorkflowExpression.Compile(bodyuserAttributes, nameof(bodyuserAttributes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/updateUser";
                 var apiCallHttpMethod = "post";
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

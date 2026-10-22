@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
     public class ApitemplateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessPDFFile> PDF(Expression<Func<string>> templateId, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
+        public IBodyWorkflowAction<ResponseSuccessPDFFile, ApiConnectionActionConfiguration> PDF(Expression<Func<string>> templateId, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_exportType = WorkflowExpression.Compile(exportType, nameof(exportType), required: false);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
             var __workflow_async = WorkflowExpression.Compile(async, nameof(async), required: false);
             var __workflow_webhookUrl = WorkflowExpression.Compile(webhookUrl, nameof(webhookUrl), required: false);
-            return new DeferredBodyAction<ResponseSuccessPDFFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessPDFFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/create-pdf";
                 var apiCallHttpMethod = "post";
@@ -62,18 +62,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessPDFFile>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessImageFile> Image(Expression<Func<string>> templateId, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
+        public IBodyWorkflowAction<ResponseSuccessImageFile, ApiConnectionActionConfiguration> Image(Expression<Func<string>> templateId, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_expiration = WorkflowExpression.Compile(expiration, nameof(expiration), required: false);
             var __workflow_cloudStorage = WorkflowExpression.Compile(cloudStorage, nameof(cloudStorage), required: false);
             var __workflow_outputImageType = WorkflowExpression.Compile(outputImageType, nameof(outputImageType), required: false);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
-            return new DeferredBodyAction<ResponseSuccessImageFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessImageFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/create-image";
                 var apiCallHttpMethod = "post";
@@ -95,17 +95,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessImageFile>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessListObjects> ObjectsGet(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null, Expression<Func<string>> templateId = null, Expression<Func<string>> transactionType = null)
+        public IBodyWorkflowAction<ResponseSuccessListObjects, ApiConnectionActionConfiguration> ObjectsGet(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null, Expression<Func<string>> templateId = null, Expression<Func<string>> transactionType = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: false);
             var __workflow_transactionType = WorkflowExpression.Compile(transactionType, nameof(transactionType), required: false);
-            return new DeferredBodyAction<ResponseSuccessListObjects>(() =>
+            return new DeferredBodyAction<ResponseSuccessListObjects, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/list-objects";
                 var apiCallHttpMethod = "get";
@@ -119,25 +119,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_transactionType != null)
                     callPayload.Queries["transaction_type"] = ExpressionConverter.Convert(__workflow_transactionType);
                 return new ApiConnectionAction<ResponseSuccessListObjects>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessDeleteObject> ObjectDelete(Expression<Func<string>> transactionRef)
+        public IBodyWorkflowAction<ResponseSuccessDeleteObject, ApiConnectionActionConfiguration> ObjectDelete(Expression<Func<string>> transactionRef)
         {
             var __workflow_transactionRef = WorkflowExpression.Compile(transactionRef, nameof(transactionRef), required: true);
-            return new DeferredBodyAction<ResponseSuccessDeleteObject>(() =>
+            return new DeferredBodyAction<ResponseSuccessDeleteObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/delete-object";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["transaction_ref"] = ExpressionConverter.Convert(__workflow_transactionRef);
                 return new ApiConnectionAction<ResponseSuccessDeleteObject>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessListTemplates> TemplatesGet(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null, Expression<Func<string>> format = null, Expression<Func<string>> templateId = null, Expression<Func<string>> groupName = null, Expression<Func<string>> withLayerInfo = null)
+        public IBodyWorkflowAction<ResponseSuccessListTemplates, ApiConnectionActionConfiguration> TemplatesGet(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null, Expression<Func<string>> format = null, Expression<Func<string>> templateId = null, Expression<Func<string>> groupName = null, Expression<Func<string>> withLayerInfo = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: false);
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: false);
             var __workflow_withLayerInfo = WorkflowExpression.Compile(withLayerInfo, nameof(withLayerInfo), required: false);
-            return new DeferredBodyAction<ResponseSuccessListTemplates>(() =>
+            return new DeferredBodyAction<ResponseSuccessListTemplates, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/list-templates";
                 var apiCallHttpMethod = "get";
@@ -163,14 +163,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_withLayerInfo != null)
                     callPayload.Queries["with_layer_info"] = ExpressionConverter.Convert(__workflow_withLayerInfo);
                 return new ApiConnectionAction<ResponseSuccessListTemplates>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessTemplate> TemplateGet(Expression<Func<string>> templateId = null)
+        public IBodyWorkflowAction<ResponseSuccessTemplate, ApiConnectionActionConfiguration> TemplateGet(Expression<Func<string>> templateId = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: false);
-            return new DeferredBodyAction<ResponseSuccessTemplate>(() =>
+            return new DeferredBodyAction<ResponseSuccessTemplate, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/get-template";
                 var apiCallHttpMethod = "get";
@@ -178,16 +178,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_templateId != null)
                     callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
                 return new ApiConnectionAction<ResponseSuccessTemplate>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccess> TemplateUpdate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodycss = null)
+        public IBodyWorkflowAction<ResponseSuccess, ApiConnectionActionConfiguration> TemplateUpdate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodycss = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
             var __workflow_bodycss = WorkflowExpression.Compile(bodycss, nameof(bodycss), required: false);
-            return new DeferredBodyAction<ResponseSuccess>(() =>
+            return new DeferredBodyAction<ResponseSuccess, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/update-template";
                 var apiCallHttpMethod = "post";
@@ -214,18 +214,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccess>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> PDFMerge(Expression<Func<string[]>> bodyurls, Expression<Func<string>> meta = null, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<int>> bodycloudStorage = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<string[]>> bodyurls, Expression<Func<string>> meta = null, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<int>> bodycloudStorage = null)
         {
             var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
             var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
             var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
             var __workflow_bodycloudStorage = WorkflowExpression.Compile(bodycloudStorage, nameof(bodycloudStorage), required: false);
-            return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
+            return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/merge-pdfs";
                 var apiCallHttpMethod = "post";
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 }
 
                 return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

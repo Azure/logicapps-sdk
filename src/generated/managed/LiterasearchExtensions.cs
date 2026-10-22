@@ -12,45 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
     public class LiterasearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        public IWorkflowAction GetMatterList(Expression<Func<string>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetMatterList(Expression<Func<string>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetMatterList";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["request"] = ExpressionConverter.Convert(__workflow_request);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        public IWorkflowAction GetMatterNarrative(Expression<Func<string>> matterId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetMatterNarrative(Expression<Func<string>> matterId)
         {
             var __workflow_matterId = WorkflowExpression.Compile(matterId, nameof(matterId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetMatterNarrative";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["matterId"] = ExpressionConverter.Convert(__workflow_matterId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        public IWorkflowAction GetMatterDetail(Expression<Func<string>> matterId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetMatterDetail(Expression<Func<string>> matterId)
         {
             var __workflow_matterId = WorkflowExpression.Compile(matterId, nameof(matterId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetMatterDetail";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["matterId"] = ExpressionConverter.Convert(__workflow_matterId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
     public class Microsoftd365cev9ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertContactResponse> UpsertContact(Expression<Func<string>> contactGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodybirthdate = null, Expression<Func<string>> bodycustomertypecode = null, Expression<Func<string>> bodyemailaddress1 = null, Expression<Func<string>> bodyemailaddress2 = null, Expression<Func<string>> bodytelephone1 = null, Expression<Func<string>> bodytelephone2 = null, Expression<Func<string>> bodytelephone3 = null, Expression<Func<string>> bodymobilephone = null, Expression<Func<string>> bodyaddress1Line1 = null, Expression<Func<string>> bodyaddress1Line2 = null, Expression<Func<string>> bodyaddress1City = null, Expression<Func<string>> bodyaddress1Stateorprovince = null, Expression<Func<string>> bodyaddress1Postalcode = null, Expression<Func<string>> bodyaddress1County = null)
+        public IBodyWorkflowAction<UpsertContactResponse, ApiConnectionActionConfiguration> UpsertContact(Expression<Func<string>> contactGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodybirthdate = null, Expression<Func<string>> bodycustomertypecode = null, Expression<Func<string>> bodyemailaddress1 = null, Expression<Func<string>> bodyemailaddress2 = null, Expression<Func<string>> bodytelephone1 = null, Expression<Func<string>> bodytelephone2 = null, Expression<Func<string>> bodytelephone3 = null, Expression<Func<string>> bodymobilephone = null, Expression<Func<string>> bodyaddress1Line1 = null, Expression<Func<string>> bodyaddress1Line2 = null, Expression<Func<string>> bodyaddress1City = null, Expression<Func<string>> bodyaddress1Stateorprovince = null, Expression<Func<string>> bodyaddress1Postalcode = null, Expression<Func<string>> bodyaddress1County = null)
         {
             var __workflow_contactGUID = WorkflowExpression.Compile(contactGUID, nameof(contactGUID), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_bodyaddress1Stateorprovince = WorkflowExpression.Compile(bodyaddress1Stateorprovince, nameof(bodyaddress1Stateorprovince), required: false);
             var __workflow_bodyaddress1Postalcode = WorkflowExpression.Compile(bodyaddress1Postalcode, nameof(bodyaddress1Postalcode), required: false);
             var __workflow_bodyaddress1County = WorkflowExpression.Compile(bodyaddress1County, nameof(bodyaddress1County), required: false);
-            return new DeferredBodyAction<UpsertContactResponse>(() =>
+            return new DeferredBodyAction<UpsertContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts({0})", __workflow_contactGUID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
                 }
 
                 return new ApiConnectionAction<UpsertContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertAccountResponse> UpsertAccount(Expression<Func<string>> accountGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress1Line1 = null, Expression<Func<string>> bodyaddress1Line2 = null, Expression<Func<string>> bodyaddress1City = null, Expression<Func<string>> bodyaddress1Stateorprovince = null, Expression<Func<string>> bodyaddress1Postalcode = null, Expression<Func<string>> bodyaddress1County = null)
+        public IBodyWorkflowAction<UpsertAccountResponse, ApiConnectionActionConfiguration> UpsertAccount(Expression<Func<string>> accountGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress1Line1 = null, Expression<Func<string>> bodyaddress1Line2 = null, Expression<Func<string>> bodyaddress1City = null, Expression<Func<string>> bodyaddress1Stateorprovince = null, Expression<Func<string>> bodyaddress1Postalcode = null, Expression<Func<string>> bodyaddress1County = null)
         {
             var __workflow_accountGUID = WorkflowExpression.Compile(accountGUID, nameof(accountGUID), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_bodyaddress1Stateorprovince = WorkflowExpression.Compile(bodyaddress1Stateorprovince, nameof(bodyaddress1Stateorprovince), required: false);
             var __workflow_bodyaddress1Postalcode = WorkflowExpression.Compile(bodyaddress1Postalcode, nameof(bodyaddress1Postalcode), required: false);
             var __workflow_bodyaddress1County = WorkflowExpression.Compile(bodyaddress1County, nameof(bodyaddress1County), required: false);
-            return new DeferredBodyAction<UpsertAccountResponse>(() =>
+            return new DeferredBodyAction<UpsertAccountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts({0})", __workflow_accountGUID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -232,11 +232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
                 }
 
                 return new ApiConnectionAction<UpsertAccountResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertLeadResponse> UpsertLead(Expression<Func<string>> leadGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyfullname = null, Expression<Func<string>> bodyemailaddress1 = null, Expression<Func<string>> bodytelephone1 = null)
+        public IBodyWorkflowAction<UpsertLeadResponse, ApiConnectionActionConfiguration> UpsertLead(Expression<Func<string>> leadGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyfullname = null, Expression<Func<string>> bodyemailaddress1 = null, Expression<Func<string>> bodytelephone1 = null)
         {
             var __workflow_leadGUID = WorkflowExpression.Compile(leadGUID, nameof(leadGUID), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_bodyfullname = WorkflowExpression.Compile(bodyfullname, nameof(bodyfullname), required: false);
             var __workflow_bodyemailaddress1 = WorkflowExpression.Compile(bodyemailaddress1, nameof(bodyemailaddress1), required: false);
             var __workflow_bodytelephone1 = WorkflowExpression.Compile(bodytelephone1, nameof(bodytelephone1), required: false);
-            return new DeferredBodyAction<UpsertLeadResponse>(() =>
+            return new DeferredBodyAction<UpsertLeadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leads({0})", __workflow_leadGUID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
                 }
 
                 return new ApiConnectionAction<UpsertLeadResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

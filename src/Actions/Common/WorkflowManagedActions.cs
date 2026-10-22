@@ -1,9 +1,11 @@
-﻿// -----------------------------------------------------------
+// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json.Linq;
+
     /// <summary>
     /// Provides access to managed API connector actions. Managed connector actions are auto-generated
     /// from Azure connector definitions and are available as extension methods on this class.
@@ -15,4 +17,21 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </remarks>
     /// <seealso cref="WorkflowActions"/>
     public partial class WorkflowManagedActions { }
+
+    #region Action Configurations
+
+    public sealed class ApiConnectionActionConfiguration :
+        IWorkflowOperationConfiguration,
+        IRetryPolicyConfigurationHolder,
+        ITrackedPropertiesConfigurationHolder,
+        ISecureInputsConfigurationHolder,
+        ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    #endregion
 }

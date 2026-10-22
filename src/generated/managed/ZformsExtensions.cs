@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
     public class ZformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zforms")]
-        public IBodyWorkflowAction<GetAvailableFormsResponse> GetAvailableForms()
+        public IBodyWorkflowAction<GetAvailableFormsResponse, ApiConnectionActionConfiguration> GetAvailableForms()
         {
             var apiCallPath = "/api/zforms";
             var apiCallHttpMethod = "get";
@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
 
     public class ZformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted(Expression<Func<string>> formlinkname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormSubmittedResponse, ApiConnectionTriggerConfiguration> FormSubmitted(Expression<Func<string>> formlinkname, FlowRecurrence recurrence = null)
         {
             var __workflow_formlinkname = WorkflowExpression.Compile(formlinkname, nameof(formlinkname), required: true);
-            return new DeferredBodyTrigger<FormSubmittedResponse>(() =>
+            return new DeferredBodyTrigger<FormSubmittedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/resthooks";
                 var apiCallHttpMethod = "post";
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
                 callPayload.Headers["zf_version"] = Convert.ToString(2);
                 callPayload.Headers["webhooks_url"] = Convert.ToString("#{listCallbackUrl()}");
                 return new ApiConnectionTrigger<FormSubmittedResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
     public class HvivehicleinspectionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
+        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
         {
             var __workflow_sv = WorkflowExpression.Compile(sv, nameof(sv), required: true);
             var __workflow_bodymasterEmail = WorkflowExpression.Compile(bodymasterEmail, nameof(bodymasterEmail), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
             var __workflow_bodyvehicleNumber = WorkflowExpression.Compile(bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
-            return new DeferredBodyAction<InspectionPerVehicleResponseItem[]>(() =>
+            return new DeferredBodyAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";
                 var apiCallHttpMethod = "post";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
                 }
 
                 return new ApiConnectionAction<InspectionPerVehicleResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

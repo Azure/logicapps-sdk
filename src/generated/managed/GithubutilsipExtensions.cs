@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     public class GithubutilsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string> PostMarkdown(Expression<Func<string>> bodytext, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<string>> bodycontext = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<string>> bodytext, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<string>> bodycontext = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/markdown";
                 var apiCallHttpMethod = "post";
@@ -59,16 +59,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string> PostMarkdownRaw(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdownRaw(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<string>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/markdown/raw";
                 var apiCallHttpMethod = "post";
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string[]> GetVersions()
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetVersions()
         {
             var apiCallPath = "/versions";
             var apiCallHttpMethod = "get";
@@ -94,10 +94,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string> GetZen(Expression<Func<string>> xGitHubApiVersion = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetZen(Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/zen";
                 var apiCallHttpMethod = "get";
@@ -107,17 +107,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<License[]> GetLicenses(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bool>> featured = null, Expression<Func<string>> xGitHubApiVersion = null)
+        public IBodyWorkflowAction<License[], ApiConnectionActionConfiguration> GetLicenses(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bool>> featured = null, Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_featured = WorkflowExpression.Compile(featured, nameof(featured), required: false);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            return new DeferredBodyAction<License[]>(() =>
+            return new DeferredBodyAction<License[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/licenses";
                 var apiCallHttpMethod = "get";
@@ -135,15 +135,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<License[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<LicenseAdvanced> GetLicense(Expression<Func<string>> license, Expression<Func<string>> xGitHubApiVersion = null)
+        public IBodyWorkflowAction<LicenseAdvanced, ApiConnectionActionConfiguration> GetLicense(Expression<Func<string>> license, Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            return new DeferredBodyAction<LicenseAdvanced>(() =>
+            return new DeferredBodyAction<LicenseAdvanced, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licenses/{0}", __workflow_license.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -153,14 +153,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<LicenseAdvanced>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<CodeOfConduct[]> GetCodesOfConduct(Expression<Func<string>> xGitHubApiVersion = null)
+        public IBodyWorkflowAction<CodeOfConduct[], ApiConnectionActionConfiguration> GetCodesOfConduct(Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            return new DeferredBodyAction<CodeOfConduct[]>(() =>
+            return new DeferredBodyAction<CodeOfConduct[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codes_of_conduct";
                 var apiCallHttpMethod = "get";
@@ -170,15 +170,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<CodeOfConduct[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<CodeOfConduct> GetCodeOfConduct(Expression<Func<string>> codeOfConduct, Expression<Func<string>> xGitHubApiVersion = null)
+        public IBodyWorkflowAction<CodeOfConduct, ApiConnectionActionConfiguration> GetCodeOfConduct(Expression<Func<string>> codeOfConduct, Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_codeOfConduct = WorkflowExpression.Compile(codeOfConduct, nameof(codeOfConduct), required: true);
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            return new DeferredBodyAction<CodeOfConduct>(() =>
+            return new DeferredBodyAction<CodeOfConduct, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codes_of_conduct/{0}", __workflow_codeOfConduct.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
                 if (__workflow_xGitHubApiVersion != null)
                     callPayload.Headers["X-GitHub-Api-Version"] = ExpressionConverter.Convert(__workflow_xGitHubApiVersion);
                 return new ApiConnectionAction<CodeOfConduct>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

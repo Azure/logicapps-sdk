@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
     public class FdicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<InstitutionsResponse> SearchInstitutions(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<InstitutionsResponse, ApiConnectionActionConfiguration> SearchInstitutions(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<InstitutionsResponse>(() =>
+            return new DeferredBodyAction<InstitutionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/institutions";
                 var apiCallHttpMethod = "get";
@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<InstitutionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<LocationsResponse> SearchLocations(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<LocationsResponse, ApiConnectionActionConfiguration> SearchLocations(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<LocationsResponse>(() =>
+            return new DeferredBodyAction<LocationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/locations";
                 var apiCallHttpMethod = "get";
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<LocationsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<HistoryResponse> GetHistory(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<HistoryResponse, ApiConnectionActionConfiguration> GetHistory(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<HistoryResponse>(() =>
+            return new DeferredBodyAction<HistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/history";
                 var apiCallHttpMethod = "get";
@@ -153,11 +153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<HistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<FinancialsResponse> GetFinancials(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<FinancialsResponse, ApiConnectionActionConfiguration> GetFinancials(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<FinancialsResponse>(() =>
+            return new DeferredBodyAction<FinancialsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/financials";
                 var apiCallHttpMethod = "get";
@@ -208,11 +208,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<FinancialsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<SummaryResponse> GetHistorical(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<string>> maxValue = null, Expression<Func<string>> maxValueBy = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<SummaryResponse, ApiConnectionActionConfiguration> GetHistorical(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<string>> maxValue = null, Expression<Func<string>> maxValueBy = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<SummaryResponse>(() =>
+            return new DeferredBodyAction<SummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/summary";
                 var apiCallHttpMethod = "get";
@@ -269,11 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<SummaryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<FailuresResponse> GetFailures(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> totalFields = null, Expression<Func<string>> subtotalBy = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<FailuresResponse, ApiConnectionActionConfiguration> GetFailures(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> totalFields = null, Expression<Func<string>> subtotalBy = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<FailuresResponse>(() =>
+            return new DeferredBodyAction<FailuresResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/failures";
                 var apiCallHttpMethod = "get";
@@ -331,11 +331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<FailuresResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<SodResponse> GetSod(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<SodResponse, ApiConnectionActionConfiguration> GetSod(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<SodResponse>(() =>
+            return new DeferredBodyAction<SodResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sod";
                 var apiCallHttpMethod = "get";
@@ -386,17 +386,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<SodResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<DemographicsResponse> GetDemographics(Expression<Func<string>> filters = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<DemographicsResponse, ApiConnectionActionConfiguration> GetDemographics(Expression<Func<string>> filters = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredBodyAction<DemographicsResponse>(() =>
+            return new DeferredBodyAction<DemographicsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/demographics";
                 var apiCallHttpMethod = "get";
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<DemographicsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

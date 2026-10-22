@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     public class CloudpkimanagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCertificatesResponseItem[]> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<timevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
+        public IBodyWorkflowAction<QueryCertificatesResponseItem[], ApiConnectionActionConfiguration> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<timevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_keytype = WorkflowExpression.Compile(keytype, nameof(keytype), required: false);
             var __workflow_keylength = WorkflowExpression.Compile(keylength, nameof(keylength), required: false);
             var __workflow_owneremail = WorkflowExpression.Compile(owneremail, nameof(owneremail), required: false);
-            return new DeferredBodyAction<QueryCertificatesResponseItem[]>(() =>
+            return new DeferredBodyAction<QueryCertificatesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/certificates", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -58,26 +58,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 if (__workflow_owneremail != null)
                     callPayload.Queries["owneremail"] = ExpressionConverter.Convert(__workflow_owneremail);
                 return new ApiConnectionAction<QueryCertificatesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetCertificateResponse> GetCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint)
+        public IBodyWorkflowAction<GetCertificateResponse, ApiConnectionActionConfiguration> GetCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_thumbprint = WorkflowExpression.Compile(thumbprint, nameof(thumbprint), required: true);
-            return new DeferredBodyAction<GetCertificateResponse>(() =>
+            return new DeferredBodyAction<GetCertificateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/certificates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_thumbprint.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCertificateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateCertificateResponse> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodyowneremail = null)
+        public IBodyWorkflowAction<UpdateCertificateResponse, ApiConnectionActionConfiguration> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodyowneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
             var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
-            return new DeferredBodyAction<UpdateCertificateResponse>(() =>
+            return new DeferredBodyAction<UpdateCertificateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/certificates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_thumbprint.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -140,26 +140,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionAction<UpdateCertificateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetTemplateResponse> GetTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid)
+        public IBodyWorkflowAction<GetTemplateResponse, ApiConnectionActionConfiguration> GetTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_templateid = WorkflowExpression.Compile(templateid, nameof(templateid), required: true);
-            return new DeferredBodyAction<GetTemplateResponse>(() =>
+            return new DeferredBodyAction<GetTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/templates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_templateid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTemplateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateTemplateResponse> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<bodyhiddenInput>> bodyhidden = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyautoapproveid = null)
+        public IBodyWorkflowAction<UpdateTemplateResponse, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<bodyhiddenInput>> bodyhidden = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyautoapproveid = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_bodyhidden = WorkflowExpression.Compile(bodyhidden, nameof(bodyhidden), required: false);
             var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
             var __workflow_bodyautoapproveid = WorkflowExpression.Compile(bodyautoapproveid, nameof(bodyautoapproveid), required: false);
-            return new DeferredBodyAction<UpdateTemplateResponse>(() =>
+            return new DeferredBodyAction<UpdateTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/templates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_templateid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -215,11 +215,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionAction<UpdateTemplateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryTemplatesResponseItem[]> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<keytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
+        public IBodyWorkflowAction<QueryTemplatesResponseItem[], ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<keytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_maxMinkeylength = WorkflowExpression.Compile(maxMinkeylength, nameof(maxMinkeylength), required: false);
             var __workflow_minValidity = WorkflowExpression.Compile(minValidity, nameof(minValidity), required: false);
             var __workflow_maxValidity = WorkflowExpression.Compile(maxValidity, nameof(maxValidity), required: false);
-            return new DeferredBodyAction<QueryTemplatesResponseItem[]>(() =>
+            return new DeferredBodyAction<QueryTemplatesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/templates", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -256,26 +256,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 if (__workflow_maxValidity != null)
                     callPayload.Queries["max-validity"] = ExpressionConverter.Convert(__workflow_maxValidity);
                 return new ApiConnectionAction<QueryTemplatesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetCRLResponse> GetCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid)
+        public IBodyWorkflowAction<GetCRLResponse, ApiConnectionActionConfiguration> GetCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_crlid = WorkflowExpression.Compile(crlid, nameof(crlid), required: true);
-            return new DeferredBodyAction<GetCRLResponse>(() =>
+            return new DeferredBodyAction<GetCRLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/crls/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_crlid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCRLResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCRLsResponseItem[]> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
+        public IBodyWorkflowAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_crlnumberdecimal = WorkflowExpression.Compile(crlnumberdecimal, nameof(crlnumberdecimal), required: false);
             var __workflow_aki = WorkflowExpression.Compile(aki, nameof(aki), required: false);
             var __workflow_serialnumber = WorkflowExpression.Compile(serialnumber, nameof(serialnumber), required: false);
-            return new DeferredBodyAction<QueryCRLsResponseItem[]>(() =>
+            return new DeferredBodyAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/crls", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -309,11 +309,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 if (__workflow_serialnumber != null)
                     callPayload.Queries["serialnumber"] = ExpressionConverter.Convert(__workflow_serialnumber);
                 return new ApiConnectionAction<QueryCRLsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryRequestsResponseItem[]> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
+        public IBodyWorkflowAction<QueryRequestsResponseItem[], ApiConnectionActionConfiguration> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_submitterid = WorkflowExpression.Compile(submitterid, nameof(submitterid), required: false);
             var __workflow_submitteremail = WorkflowExpression.Compile(submitteremail, nameof(submitteremail), required: false);
             var __workflow_owneremail = WorkflowExpression.Compile(owneremail, nameof(owneremail), required: false);
-            return new DeferredBodyAction<QueryRequestsResponseItem[]>(() =>
+            return new DeferredBodyAction<QueryRequestsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -344,11 +344,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 if (__workflow_owneremail != null)
                     callPayload.Queries["owneremail"] = ExpressionConverter.Convert(__workflow_owneremail);
                 return new ApiConnectionAction<QueryRequestsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewRequestResponse> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<string>> bodycsr, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalInput>> bodyrenewal = null, Expression<Func<string>> bodypreviouscertificate = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null)
+        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<string>> bodycsr, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalInput>> bodyrenewal = null, Expression<Func<string>> bodypreviouscertificate = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_bodyrenewal = WorkflowExpression.Compile(bodyrenewal, nameof(bodyrenewal), required: false);
             var __workflow_bodypreviouscertificate = WorkflowExpression.Compile(bodypreviouscertificate, nameof(bodypreviouscertificate), required: false);
             var __workflow_bodyrenewalstatus = WorkflowExpression.Compile(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            return new DeferredBodyAction<NewRequestResponse>(() =>
+            return new DeferredBodyAction<NewRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -483,26 +483,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionAction<NewRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetRequestResponse> GetRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid)
+        public IBodyWorkflowAction<GetRequestResponse, ApiConnectionActionConfiguration> GetRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_requestid = WorkflowExpression.Compile(requestid, nameof(requestid), required: true);
-            return new DeferredBodyAction<GetRequestResponse>(() =>
+            return new DeferredBodyAction<GetRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_requestid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null)
+        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_bodyrenewalstatus = WorkflowExpression.Compile(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
             var __workflow_bodytemplateid = WorkflowExpression.Compile(bodytemplateid, nameof(bodytemplateid), required: false);
             var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
-            return new DeferredBodyAction<UpdateRequestResponse>(() =>
+            return new DeferredBodyAction<UpdateRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_requestid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -575,18 +575,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionAction<UpdateRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryHooksResponseItem[]> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<@eventInput>> @event = null)
+        public IBodyWorkflowAction<QueryHooksResponseItem[], ApiConnectionActionConfiguration> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<@eventInput>> @event = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: false);
-            return new DeferredBodyAction<QueryHooksResponseItem[]>(() =>
+            return new DeferredBodyAction<QueryHooksResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -598,11 +598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 if (__workflow_event != null)
                     callPayload.Queries["event"] = ExpressionConverter.Convert(__workflow_event);
                 return new ApiConnectionAction<QueryHooksResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewHookResponse> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyeventsInputItem[]>> bodyevents, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodycallbackurl = null)
+        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyeventsInputItem[]>> bodyevents, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodycallbackurl = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodycallbackurl = WorkflowExpression.Compile(bodycallbackurl, nameof(bodycallbackurl), required: false);
-            return new DeferredBodyAction<NewHookResponse>(() =>
+            return new DeferredBodyAction<NewHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -641,99 +641,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionAction<NewHookResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetHookResponse> GetHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> hookid)
+        public IBodyWorkflowAction<GetHookResponse, ApiConnectionActionConfiguration> GetHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> hookid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_hookid = WorkflowExpression.Compile(hookid, nameof(hookid), required: true);
-            return new DeferredBodyAction<GetHookResponse>(() =>
+            return new DeferredBodyAction<GetHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_hookid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetHookResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<string> DeleteHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> hookid)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> hookid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_hookid = WorkflowExpression.Compile(hookid, nameof(hookid), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_hookid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<string> GetPublishedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetPublishedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_thumbprint = WorkflowExpression.Compile(thumbprint, nameof(thumbprint), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/published/certificates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_thumbprint.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetPublishedTemplatesResponseItem[]> GetPublishedTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IBodyWorkflowAction<GetPublishedTemplatesResponseItem[], ApiConnectionActionConfiguration> GetPublishedTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyAction<GetPublishedTemplatesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetPublishedTemplatesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/published/templates", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPublishedTemplatesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetConnectorActionResponse> GetConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> connectoractionid)
+        public IBodyWorkflowAction<GetConnectorActionResponse, ApiConnectionActionConfiguration> GetConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> connectoractionid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_connectoractionid = WorkflowExpression.Compile(connectoractionid, nameof(connectoractionid), required: true);
-            return new DeferredBodyAction<GetConnectorActionResponse>(() =>
+            return new DeferredBodyAction<GetConnectorActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/connectoractions/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_connectoractionid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetConnectorActionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<GetActionsResponseItem[]> GetActions(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
+        public IBodyWorkflowAction<GetActionsResponseItem[], ApiConnectionActionConfiguration> GetActions(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyAction<GetActionsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetActionsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/actions", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetActionsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<string> GetAuthentication()
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetAuthentication()
         {
             var apiCallPath = "/.auth/me";
             var apiCallHttpMethod = "get";
@@ -744,11 +744,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
     public class CloudpkimanagementTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddedHookResponse> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<AddedHookResponse>(() =>
+            return new DeferredBodyTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/added-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -767,14 +767,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<AddedHookResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<RemovedHookResponse> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RemovedHookResponse>(() =>
+            return new DeferredBodyTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/removed-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -793,14 +793,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<RemovedHookResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCertificateResponse>(() =>
+            return new DeferredBodyTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -819,14 +819,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RevokedCertificateResponse>(() =>
+            return new DeferredBodyTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/revoked-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -845,14 +845,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedCertificateResponse>(() =>
+            return new DeferredBodyTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -871,14 +871,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ExpiringCertificateResponse>(() =>
+            return new DeferredBodyTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expiring-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -897,14 +897,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ExpiredCertificateResponse>(() =>
+            return new DeferredBodyTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expired-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -923,14 +923,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RenewingCertificateResponse>(() =>
+            return new DeferredBodyTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/renewing-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -949,14 +949,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<PendingRequestResponse> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<PendingRequestResponse>(() =>
+            return new DeferredBodyTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/pending-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -975,14 +975,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<PendingRequestResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ApprovedRequestResponse>(() =>
+            return new DeferredBodyTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/approved-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1001,14 +1001,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<DeniedRequestResponse> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<DeniedRequestResponse>(() =>
+            return new DeferredBodyTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/denied-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1027,14 +1027,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedRequestResponse>(() =>
+            return new DeferredBodyTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1053,14 +1053,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<FailedRequestResponse> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<FailedRequestResponse>(() =>
+            return new DeferredBodyTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1079,14 +1079,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<FailedRequestResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<PublishedTemplateResponse>(() =>
+            return new DeferredBodyTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/published-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1105,14 +1105,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UnpublishedTemplateResponse>(() =>
+            return new DeferredBodyTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/unpublished-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1131,14 +1131,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedTemplateResponse>(() =>
+            return new DeferredBodyTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1157,14 +1157,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<IssuedCRLResponse> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCRLResponse>(() =>
+            return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1183,14 +1183,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<NewConnectorActionResponse>(() =>
+            return new DeferredBodyTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/new-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1209,14 +1209,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<CompletedConnectorActionResponse>(() =>
+            return new DeferredBodyTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/completed-action", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1235,14 +1235,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<FailedConnectorActionResponse>(() =>
+            return new DeferredBodyTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1261,14 +1261,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<StalledConnectorActionResponse>(() =>
+            return new DeferredBodyTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/stalled-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 }
 
                 return new ApiConnectionTrigger<StalledConnectorActionResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

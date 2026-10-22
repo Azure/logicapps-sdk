@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
     public class InstatusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PagesGetResponseItem[]> PagesGet(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<PagesGetResponseItem[], ApiConnectionActionConfiguration> PagesGet(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<PagesGetResponseItem[]>(() =>
+            return new DeferredBodyAction<PagesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/pages";
                 var apiCallHttpMethod = "get";
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<PagesGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null)
+        public IBodyWorkflowAction<PagePostResponse, ApiConnectionActionConfiguration> Page(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodydateFormat = WorkflowExpression.Compile(bodydateFormat, nameof(bodydateFormat), required: false);
             var __workflow_bodydateFormatShort = WorkflowExpression.Compile(bodydateFormatShort, nameof(bodydateFormatShort), required: false);
             var __workflow_bodytimeFormat = WorkflowExpression.Compile(bodytimeFormat, nameof(bodytimeFormat), required: false);
-            return new DeferredBodyAction<PagePostResponse>(() =>
+            return new DeferredBodyAction<PagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pages";
                 var apiCallHttpMethod = "post";
@@ -276,24 +276,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<PagePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PageDeleteResponse> PageDelete(Expression<Func<string>> pageId)
+        public IBodyWorkflowAction<PageDeleteResponse, ApiConnectionActionConfiguration> PageDelete(Expression<Func<string>> pageId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
-            return new DeferredBodyAction<PageDeleteResponse>(() =>
+            return new DeferredBodyAction<PageDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PagePutResponse> PagePut(Expression<Func<string>> pageId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypublicEmail = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null, Expression<Func<bool>> bodyprivate = null, Expression<Func<bool>> bodyuseAllowList = null)
+        public IBodyWorkflowAction<PagePutResponse, ApiConnectionActionConfiguration> PagePut(Expression<Func<string>> pageId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypublicEmail = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null, Expression<Func<bool>> bodyprivate = null, Expression<Func<bool>> bodyuseAllowList = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodytimeFormat = WorkflowExpression.Compile(bodytimeFormat, nameof(bodytimeFormat), required: false);
             var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
             var __workflow_bodyuseAllowList = WorkflowExpression.Compile(bodyuseAllowList, nameof(bodyuseAllowList), required: false);
-            return new DeferredBodyAction<PagePutResponse>(() =>
+            return new DeferredBodyAction<PagePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -561,16 +561,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<PagePutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentsGetResponseItem[]> ComponentsGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ComponentsGetResponseItem[], ApiConnectionActionConfiguration> ComponentsGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<ComponentsGetResponseItem[]>(() =>
+            return new DeferredBodyAction<ComponentsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/components", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -580,11 +580,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<ComponentsGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentPostResponse> Component(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
+        public IBodyWorkflowAction<ComponentPostResponse, ApiConnectionActionConfiguration> Component(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
             var __workflow_bodyshowUptime = WorkflowExpression.Compile(bodyshowUptime, nameof(bodyshowUptime), required: false);
             var __workflow_bodygrouped = WorkflowExpression.Compile(bodygrouped, nameof(bodygrouped), required: false);
-            return new DeferredBodyAction<ComponentPostResponse>(() =>
+            return new DeferredBodyAction<ComponentPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/components", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -642,39 +642,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<ComponentPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentGetResponse> ComponentGet(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
+        public IBodyWorkflowAction<ComponentGetResponse, ApiConnectionActionConfiguration> ComponentGet(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
-            return new DeferredBodyAction<ComponentGetResponse>(() =>
+            return new DeferredBodyAction<ComponentGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/components/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_componentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ComponentGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentDeleteResponse> ComponentDelete(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
+        public IBodyWorkflowAction<ComponentDeleteResponse, ApiConnectionActionConfiguration> ComponentDelete(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
-            return new DeferredBodyAction<ComponentDeleteResponse>(() =>
+            return new DeferredBodyAction<ComponentDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/components/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_componentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ComponentDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentPutResponse> ComponentPut(Expression<Func<string>> pageId, Expression<Func<string>> componentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
+        public IBodyWorkflowAction<ComponentPutResponse, ApiConnectionActionConfiguration> ComponentPut(Expression<Func<string>> pageId, Expression<Func<string>> componentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
             var __workflow_bodyshowUptime = WorkflowExpression.Compile(bodyshowUptime, nameof(bodyshowUptime), required: false);
             var __workflow_bodygrouped = WorkflowExpression.Compile(bodygrouped, nameof(bodygrouped), required: false);
-            return new DeferredBodyAction<ComponentPutResponse>(() =>
+            return new DeferredBodyAction<ComponentPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/components/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_componentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -733,17 +733,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<ComponentPutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentsGetResponseItem[]> IncidentsGet(Expression<Func<string>> pageId, Expression<Func<string>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<IncidentsGetResponseItem[], ApiConnectionActionConfiguration> IncidentsGet(Expression<Func<string>> pageId, Expression<Func<string>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<IncidentsGetResponseItem[]>(() =>
+            return new DeferredBodyAction<IncidentsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -755,11 +755,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<IncidentsGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentPostResponse> Incident(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<IncidentPostResponse, ApiConnectionActionConfiguration> Incident(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<IncidentPostResponse>(() =>
+            return new DeferredBodyAction<IncidentPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -824,39 +824,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentGetResponse> IncidentGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
+        public IBodyWorkflowAction<IncidentGetResponse, ApiConnectionActionConfiguration> IncidentGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            return new DeferredBodyAction<IncidentGetResponse>(() =>
+            return new DeferredBodyAction<IncidentGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentDeleteResponse> IncidentDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
+        public IBodyWorkflowAction<IncidentDeleteResponse, ApiConnectionActionConfiguration> IncidentDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            return new DeferredBodyAction<IncidentDeleteResponse>(() =>
+            return new DeferredBodyAction<IncidentDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentPutResponse> IncidentPut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<IncidentPutResponse, ApiConnectionActionConfiguration> IncidentPut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<IncidentPutResponse>(() =>
+            return new DeferredBodyAction<IncidentPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -915,55 +915,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentPutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentTemplatePostResponse> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
+        public IBodyWorkflowAction<IncidentTemplatePostResponse, ApiConnectionActionConfiguration> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            return new DeferredBodyAction<IncidentTemplatePostResponse>(() =>
+            return new DeferredBodyAction<IncidentTemplatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}/incidents/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_template.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentTemplatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdateGetResponse> IncidentUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
+        public IBodyWorkflowAction<IncidentUpdateGetResponse, ApiConnectionActionConfiguration> IncidentUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_incidentUpdateId = WorkflowExpression.Compile(incidentUpdateId, nameof(incidentUpdateId), required: true);
-            return new DeferredBodyAction<IncidentUpdateGetResponse>(() =>
+            return new DeferredBodyAction<IncidentUpdateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1), __workflow_incidentUpdateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentUpdateGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdateDeleteResponse> IncidentUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
+        public IBodyWorkflowAction<IncidentUpdateDeleteResponse, ApiConnectionActionConfiguration> IncidentUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_incidentUpdateId = WorkflowExpression.Compile(incidentUpdateId, nameof(incidentUpdateId), required: true);
-            return new DeferredBodyAction<IncidentUpdateDeleteResponse>(() =>
+            return new DeferredBodyAction<IncidentUpdateDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1), __workflow_incidentUpdateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentUpdateDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdatePutResponse> IncidentUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<IncidentUpdatePutResponse, ApiConnectionActionConfiguration> IncidentUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<IncidentUpdatePutResponse>(() =>
+            return new DeferredBodyAction<IncidentUpdatePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1), __workflow_incidentUpdateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1023,11 +1023,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentUpdatePutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdatePostResponse> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<IncidentUpdatePostResponse, ApiConnectionActionConfiguration> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<IncidentUpdatePostResponse>(() =>
+            return new DeferredBodyAction<IncidentUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}/incident-updates", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1086,31 +1086,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<IncidentUpdatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
+        public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse, ApiConnectionActionConfiguration> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            return new DeferredBodyAction<IncidentUpdateTemplatePostResponse>(() =>
+            return new DeferredBodyAction<IncidentUpdateTemplatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}/incidents/{1}/incident-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1), __workflow_template.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IncidentUpdateTemplatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenancesGetResponseItem[]> MaintenancesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<MaintenancesGetResponseItem[], ApiConnectionActionConfiguration> MaintenancesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<MaintenancesGetResponseItem[]>(() =>
+            return new DeferredBodyAction<MaintenancesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1120,11 +1120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<MaintenancesGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenancePostResponse> Maintenance(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodynotifyStart = null, Expression<Func<bool>> bodynotifyEnd = null, Expression<Func<bool>> bodynotifyEarly = null, Expression<Func<int>> bodynotifyMinutes = null, Expression<Func<bool>> bodyautoStart = null, Expression<Func<bool>> bodyautoEnd = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<MaintenancePostResponse, ApiConnectionActionConfiguration> Maintenance(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodynotifyStart = null, Expression<Func<bool>> bodynotifyEnd = null, Expression<Func<bool>> bodynotifyEarly = null, Expression<Func<int>> bodynotifyMinutes = null, Expression<Func<bool>> bodyautoStart = null, Expression<Func<bool>> bodyautoEnd = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -1142,7 +1142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodyautoStart = WorkflowExpression.Compile(bodyautoStart, nameof(bodyautoStart), required: false);
             var __workflow_bodyautoEnd = WorkflowExpression.Compile(bodyautoEnd, nameof(bodyautoEnd), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<MaintenancePostResponse>(() =>
+            return new DeferredBodyAction<MaintenancePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1245,39 +1245,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenancePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceGetResponse> MaintenanceGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
+        public IBodyWorkflowAction<MaintenanceGetResponse, ApiConnectionActionConfiguration> MaintenanceGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
-            return new DeferredBodyAction<MaintenanceGetResponse>(() =>
+            return new DeferredBodyAction<MaintenanceGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceDeleteResponse> MaintenanceDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
+        public IBodyWorkflowAction<MaintenanceDeleteResponse, ApiConnectionActionConfiguration> MaintenanceDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
-            return new DeferredBodyAction<MaintenanceDeleteResponse>(() =>
+            return new DeferredBodyAction<MaintenanceDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenancePutResponse> MaintenancePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<MaintenancePutResponse, ApiConnectionActionConfiguration> MaintenancePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<MaintenancePutResponse>(() =>
+            return new DeferredBodyAction<MaintenancePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1350,41 +1350,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenancePutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdateGetResponse> MaintenanceUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
+        public IBodyWorkflowAction<MaintenanceUpdateGetResponse, ApiConnectionActionConfiguration> MaintenanceUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
             var __workflow_maintenanceUpdateId = WorkflowExpression.Compile(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
-            return new DeferredBodyAction<MaintenanceUpdateGetResponse>(() =>
+            return new DeferredBodyAction<MaintenanceUpdateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1), __workflow_maintenanceUpdateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceUpdateGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdateDeleteResponse> MaintenanceUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
+        public IBodyWorkflowAction<MaintenanceUpdateDeleteResponse, ApiConnectionActionConfiguration> MaintenanceUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
             var __workflow_maintenanceUpdateId = WorkflowExpression.Compile(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
-            return new DeferredBodyAction<MaintenanceUpdateDeleteResponse>(() =>
+            return new DeferredBodyAction<MaintenanceUpdateDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1), __workflow_maintenanceUpdateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MaintenanceUpdateDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdatePutResponse> MaintenanceUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<MaintenanceUpdatePutResponse, ApiConnectionActionConfiguration> MaintenanceUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
@@ -1396,7 +1396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<MaintenanceUpdatePutResponse>(() =>
+            return new DeferredBodyAction<MaintenanceUpdatePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1), __workflow_maintenanceUpdateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1451,11 +1451,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenanceUpdatePutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdatePostResponse> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<MaintenanceUpdatePostResponse, ApiConnectionActionConfiguration> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
-            return new DeferredBodyAction<MaintenanceUpdatePostResponse>(() =>
+            return new DeferredBodyAction<MaintenanceUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1521,16 +1521,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<MaintenanceUpdatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PageTemplatesGetResponseItem[]> PageTemplatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<PageTemplatesGetResponseItem[], ApiConnectionActionConfiguration> PageTemplatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<PageTemplatesGetResponseItem[]>(() =>
+            return new DeferredBodyAction<PageTemplatesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/templates", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1540,11 +1540,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<PageTemplatesGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> pageId, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
+        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> pageId, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodysubdomain = WorkflowExpression.Compile(bodysubdomain, nameof(bodysubdomain), required: false);
@@ -1554,7 +1554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
-            return new DeferredBodyAction<TemplatePostResponse>(() =>
+            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/templates", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1609,39 +1609,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<TemplatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<TemplateGetResponse, ApiConnectionActionConfiguration> TemplateGet(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            return new DeferredBodyAction<TemplateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/templates/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplateDeleteResponse> TemplateDelete(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<TemplateDeleteResponse, ApiConnectionActionConfiguration> TemplateDelete(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            return new DeferredBodyAction<TemplateDeleteResponse>(() =>
+            return new DeferredBodyAction<TemplateDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/templates/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplatePutResponse> TemplatePut(Expression<Func<string>> pageId, Expression<Func<string>> templateId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
+        public IBodyWorkflowAction<TemplatePutResponse, ApiConnectionActionConfiguration> TemplatePut(Expression<Func<string>> pageId, Expression<Func<string>> templateId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
@@ -1651,7 +1651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
-            return new DeferredBodyAction<TemplatePutResponse>(() =>
+            return new DeferredBodyAction<TemplatePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/templates/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1700,16 +1700,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<TemplatePutResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TeammatesGetResponseItem[]> TeammatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<TeammatesGetResponseItem[], ApiConnectionActionConfiguration> TeammatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<TeammatesGetResponseItem[]>(() =>
+            return new DeferredBodyAction<TeammatesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/team", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1719,15 +1719,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<TeammatesGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<string> TeamMember(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TeamMember(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/team", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1746,30 +1746,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<string> TeamMemberDelete(Expression<Func<string>> pageId, Expression<Func<string>> memberId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TeamMemberDelete(Expression<Func<string>> pageId, Expression<Func<string>> memberId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/team/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<SubscribersGetResponseItem[]> SubscribersGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SubscribersGetResponseItem[], ApiConnectionActionConfiguration> SubscribersGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<SubscribersGetResponseItem[]>(() =>
+            return new DeferredBodyAction<SubscribersGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/subscribers", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1779,17 +1779,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<SubscribersGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyall = null, Expression<Func<bool>> bodyautoConfirm = null)
+        public IBodyWorkflowAction<SubscriberPostResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyall = null, Expression<Func<bool>> bodyautoConfirm = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodyall = WorkflowExpression.Compile(bodyall, nameof(bodyall), required: false);
             var __workflow_bodyautoConfirm = WorkflowExpression.Compile(bodyautoConfirm, nameof(bodyautoConfirm), required: false);
-            return new DeferredBodyAction<SubscriberPostResponse>(() =>
+            return new DeferredBodyAction<SubscriberPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/subscribers", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1820,21 +1820,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
                 }
 
                 return new ApiConnectionAction<SubscriberPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<string> SubscriberDelete(Expression<Func<string>> pageId, Expression<Func<string>> subscriberId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SubscriberDelete(Expression<Func<string>> pageId, Expression<Func<string>> subscriberId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/subscribers/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_subscriberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

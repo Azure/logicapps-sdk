@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,12 +16,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     public class EventHubActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IOutputWorkflowAction<JToken> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
+        public IWorkflowAction<SendEventActionConfiguration> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_eventData = WorkflowExpression.Compile(eventData, nameof(eventData), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<SendEventActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -35,17 +36,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IOutputWorkflowAction<JToken> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
+        public IWorkflowAction<SendEventsActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_eventDatas = WorkflowExpression.Compile(eventDatas, nameof(eventDatas), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<SendEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -60,16 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IOutputWorkflowAction<JToken> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
+        public IWorkflowAction<ReplicateEventsActionConfiguration> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_skipAlreadyReplicated = WorkflowExpression.Compile(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<ReplicateEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -79,18 +80,42 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
+    }
+
+    public sealed class SendEventActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SendEventsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ReplicateEventsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class EventHubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
+        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[], ReceiveEventsTriggerConfiguration> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
-            return new DeferredBodyTrigger<ReceiveEventsOutputItem[]>(() =>
+            return new DeferredBodyTrigger<ReceiveEventsOutputItem[], ReceiveEventsTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -105,14 +130,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs | WorkflowTriggerSettings.Concurrency);
+            });
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
+        public IWorkflowTrigger<ReceiveEventsForReplicationTriggerConfiguration> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
-            return new DeferredOutputTrigger<JToken>(() =>
+            return new DeferredWorkflowTrigger<ReceiveEventsForReplicationTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -126,9 +151,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs | WorkflowTriggerSettings.Concurrency);
+                return new ServiceProviderTrigger(serviceProviderInput);
+            });
         }
+    }
+
+    public sealed class ReceiveEventsTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+        public int? ConcurrentRuns { get; set; }
+        public int? MaximumWaitingRuns { get; set; }
+    }
+
+    public sealed class ReceiveEventsForReplicationTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder, ITriggerConcurrencyConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+        public int? ConcurrentRuns { get; set; }
+        public int? MaximumWaitingRuns { get; set; }
     }
 
     public class ReceiveEventsOutputItem

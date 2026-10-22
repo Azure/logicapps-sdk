@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
     public class DocumentIntelligenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
+        public IBodyWorkflowAction<AnalyzeDocumentOutput, AnalyzeDocumentActionConfiguration> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_modelIdInputs = WorkflowExpression.Compile(modelIdInputs, nameof(modelIdInputs), required: false);
-            return new DeferredBodyAction<AnalyzeDocumentOutput>(() =>
+            return new DeferredBodyAction<AnalyzeDocumentOutput, AnalyzeDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(__workflow_modelId);
@@ -34,8 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class AnalyzeDocumentActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class AnalyzeDocumentOutput

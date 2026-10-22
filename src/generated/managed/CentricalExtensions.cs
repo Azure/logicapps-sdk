@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
     public class CentricalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction PostLearning(Expression<Func<string>> learningType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodycourseName, Expression<Func<double>> bodyscore, Expression<Func<string>> bodycontentCategory = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostLearning(Expression<Func<string>> learningType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodycourseName, Expression<Func<double>> bodyscore, Expression<Func<string>> bodycontentCategory = null)
         {
             var __workflow_learningType = WorkflowExpression.Compile(learningType, nameof(learningType), required: true);
             var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
             var __workflow_bodycourseName = WorkflowExpression.Compile(bodycourseName, nameof(bodycourseName), required: true);
             var __workflow_bodyscore = WorkflowExpression.Compile(bodyscore, nameof(bodyscore), required: true);
             var __workflow_bodycontentCategory = WorkflowExpression.Compile(bodycontentCategory, nameof(bodycontentCategory), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/push/lms_{0}", __workflow_learningType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction PostPerformance(Expression<Func<string>> performanceType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodykpiName, Expression<Func<double>> bodykpiValue, Expression<Func<string>> bodyadditionalData = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostPerformance(Expression<Func<string>> performanceType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodykpiName, Expression<Func<double>> bodykpiValue, Expression<Func<string>> bodyadditionalData = null)
         {
             var __workflow_performanceType = WorkflowExpression.Compile(performanceType, nameof(performanceType), required: true);
             var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
             var __workflow_bodykpiName = WorkflowExpression.Compile(bodykpiName, nameof(bodykpiName), required: true);
             var __workflow_bodykpiValue = WorkflowExpression.Compile(bodykpiValue, nameof(bodykpiValue), required: true);
             var __workflow_bodyadditionalData = WorkflowExpression.Compile(bodyadditionalData, nameof(bodyadditionalData), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/push/kpi_{0}", __workflow_performanceType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

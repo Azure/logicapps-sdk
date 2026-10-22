@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
     public class InfoshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonResponse> Logon(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodytenantname = null)
+        public IBodyWorkflowAction<LogonResponse, ApiConnectionActionConfiguration> Logon(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodytenantname = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
             var __workflow_bodytenantname = WorkflowExpression.Compile(bodytenantname, nameof(bodytenantname), required: false);
-            return new DeferredBodyAction<LogonResponse>(() =>
+            return new DeferredBodyAction<LogonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Logon";
                 var apiCallHttpMethod = "post";
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<LogonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyassignUserLoginNames, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse, ApiConnectionActionConfiguration> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyassignUserLoginNames, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodycomment = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyassignUserLoginNames = WorkflowExpression.Compile(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: true);
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            return new DeferredBodyAction<CloseTaskAndAssignToUsersResponse>(() =>
+            return new DeferredBodyAction<CloseTaskAndAssignToUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CloseTaskAndAssignToUsers";
                 var apiCallHttpMethod = "post";
@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<CloseTaskAndAssignToUsersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
+        public IBodyWorkflowAction<LogoffResponse, ApiConnectionActionConfiguration> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
-            return new DeferredBodyAction<LogoffResponse>(() =>
+            return new DeferredBodyAction<LogoffResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Logoff";
                 var apiCallHttpMethod = "post";
@@ -113,17 +113,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<LogoffResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyculture = null)
+        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[], ApiConnectionActionConfiguration> GetDocumentProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyculture = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
-            return new DeferredBodyAction<GetDocumentPropertiesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDocumentPropertiesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GetDocumentProperties";
                 var apiCallHttpMethod = "post";
@@ -148,17 +148,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<GetDocumentPropertiesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyculture = null)
+        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[], ApiConnectionActionConfiguration> GetProcessProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyculture = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
-            return new DeferredBodyAction<GetProcessPropertiesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetProcessPropertiesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GetProcessProperties";
                 var apiCallHttpMethod = "post";
@@ -183,11 +183,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<GetProcessPropertiesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyignoreHashValidation = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyignoreHashValidation = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodydocumentDataId = WorkflowExpression.Compile(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
             var __workflow_bodyrenditionId = WorkflowExpression.Compile(bodyrenditionId, nameof(bodyrenditionId), required: false);
             var __workflow_bodyignoreHashValidation = WorkflowExpression.Compile(bodyignoreHashValidation, nameof(bodyignoreHashValidation), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GetFileContent";
                 var apiCallHttpMethod = "post";
@@ -249,17 +249,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseProcessResponse> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<CloseProcessResponse, ApiConnectionActionConfiguration> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodycomment = null)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            return new DeferredBodyAction<CloseProcessResponse>(() =>
+            return new DeferredBodyAction<CloseProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Process/CloseProcess";
                 var apiCallHttpMethod = "post";
@@ -283,17 +283,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<CloseProcessResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyuserName, Expression<Func<string>> bodypasswordHashed, Expression<Func<string>> bodytenantName = null)
+        public IBodyWorkflowAction<LogonWithHashedPasswordResponse, ApiConnectionActionConfiguration> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyuserName, Expression<Func<string>> bodypasswordHashed, Expression<Func<string>> bodytenantName = null)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_bodyuserName = WorkflowExpression.Compile(bodyuserName, nameof(bodyuserName), required: true);
             var __workflow_bodypasswordHashed = WorkflowExpression.Compile(bodypasswordHashed, nameof(bodypasswordHashed), required: true);
             var __workflow_bodytenantName = WorkflowExpression.Compile(bodytenantName, nameof(bodytenantName), required: false);
-            return new DeferredBodyAction<LogonWithHashedPasswordResponse>(() =>
+            return new DeferredBodyAction<LogonWithHashedPasswordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Authentication/Logon";
                 var apiCallHttpMethod = "post";
@@ -317,11 +317,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<LogonWithHashedPasswordResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskResponse> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<bool>> bodyassignUsers, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodytaskId = null)
+        public IBodyWorkflowAction<CloseTaskResponse, ApiConnectionActionConfiguration> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<bool>> bodyassignUsers, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodytaskId = null)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyassignUsers = WorkflowExpression.Compile(bodyassignUsers, nameof(bodyassignUsers), required: true);
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
-            return new DeferredBodyAction<CloseTaskResponse>(() =>
+            return new DeferredBodyAction<CloseTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Process/CloseTask";
                 var apiCallHttpMethod = "post";
@@ -361,16 +361,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<CloseTaskResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId)
+        public IBodyWorkflowAction<GetDocumentResponse, ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
-            return new DeferredBodyAction<GetDocumentResponse>(() =>
+            return new DeferredBodyAction<GetDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Document/GetDocument";
                 var apiCallHttpMethod = "post";
@@ -388,16 +388,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<GetDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessResponse> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId)
+        public IBodyWorkflowAction<GetProcessResponse, ApiConnectionActionConfiguration> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
-            return new DeferredBodyAction<GetProcessResponse>(() =>
+            return new DeferredBodyAction<GetProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Process/GetProcess";
                 var apiCallHttpMethod = "post";
@@ -415,11 +415,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<GetProcessResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContentConverted(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodytargetFormat, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyaddAnnotatins = null, Expression<Func<bool>> bodyaddOverlay = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFileContentConverted(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodytargetFormat, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyaddAnnotatins = null, Expression<Func<bool>> bodyaddOverlay = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyrenditionId = WorkflowExpression.Compile(bodyrenditionId, nameof(bodyrenditionId), required: false);
             var __workflow_bodyaddAnnotatins = WorkflowExpression.Compile(bodyaddAnnotatins, nameof(bodyaddAnnotatins), required: false);
             var __workflow_bodyaddOverlay = WorkflowExpression.Compile(bodyaddOverlay, nameof(bodyaddOverlay), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GetFileContentConverted";
                 var apiCallHttpMethod = "post";
@@ -501,11 +501,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessTemplateName, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodydocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyculture = null)
+        public IBodyWorkflowAction<CreateProcessResponse, ApiConnectionActionConfiguration> CreateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessTemplateName, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodydocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyculture = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
-            return new DeferredBodyAction<CreateProcessResponse>(() =>
+            return new DeferredBodyAction<CreateProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateProcess";
                 var apiCallHttpMethod = "post";
@@ -578,11 +578,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<CreateProcessResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null, Expression<Func<string>> bodyorderByClause = null, Expression<Func<bool>> bodyaddColumnHeaders = null)
+        public IBodyWorkflowAction<UserTableGetRecordsResponse, ApiConnectionActionConfiguration> UserTableGetRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null, Expression<Func<string>> bodyorderByClause = null, Expression<Func<bool>> bodyaddColumnHeaders = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodywhereClause = WorkflowExpression.Compile(bodywhereClause, nameof(bodywhereClause), required: false);
             var __workflow_bodyorderByClause = WorkflowExpression.Compile(bodyorderByClause, nameof(bodyorderByClause), required: false);
             var __workflow_bodyaddColumnHeaders = WorkflowExpression.Compile(bodyaddColumnHeaders, nameof(bodyaddColumnHeaders), required: false);
-            return new DeferredBodyAction<UserTableGetRecordsResponse>(() =>
+            return new DeferredBodyAction<UserTableGetRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UserTableGetRecords";
                 var apiCallHttpMethod = "post";
@@ -627,11 +627,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UserTableGetRecordsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyvalues, Expression<Func<bool>> bodydeleteAllValues = null, Expression<Func<bool>> bodyfirstRowContainsColumnHeaders = null)
+        public IBodyWorkflowAction<UserTableImportDataResponse, ApiConnectionActionConfiguration> UserTableImportData(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyvalues, Expression<Func<bool>> bodydeleteAllValues = null, Expression<Func<bool>> bodyfirstRowContainsColumnHeaders = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyvalues = WorkflowExpression.Compile(bodyvalues, nameof(bodyvalues), required: true);
             var __workflow_bodydeleteAllValues = WorkflowExpression.Compile(bodydeleteAllValues, nameof(bodydeleteAllValues), required: false);
             var __workflow_bodyfirstRowContainsColumnHeaders = WorkflowExpression.Compile(bodyfirstRowContainsColumnHeaders, nameof(bodyfirstRowContainsColumnHeaders), required: false);
-            return new DeferredBodyAction<UserTableImportDataResponse>(() =>
+            return new DeferredBodyAction<UserTableImportDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UserTableImportData";
                 var apiCallHttpMethod = "post";
@@ -692,17 +692,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UserTableImportDataResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodycolumnHeaders)
+        public IBodyWorkflowAction<UserTableCreateTableResponse, ApiConnectionActionConfiguration> UserTableCreateTable(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodycolumnHeaders)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
             var __workflow_bodycolumnHeaders = WorkflowExpression.Compile(bodycolumnHeaders, nameof(bodycolumnHeaders), required: true);
-            return new DeferredBodyAction<UserTableCreateTableResponse>(() =>
+            return new DeferredBodyAction<UserTableCreateTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UserTableCreateTable";
                 var apiCallHttpMethod = "post";
@@ -723,17 +723,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UserTableCreateTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null)
+        public IBodyWorkflowAction<UserTableDeleteRecordsResponse, ApiConnectionActionConfiguration> UserTableDeleteRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
             var __workflow_bodywhereClause = WorkflowExpression.Compile(bodywhereClause, nameof(bodywhereClause), required: false);
-            return new DeferredBodyAction<UserTableDeleteRecordsResponse>(() =>
+            return new DeferredBodyAction<UserTableDeleteRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UserTableDeleteRecords";
                 var apiCallHttpMethod = "post";
@@ -758,18 +758,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UserTableDeleteRecordsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
+        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodydocumentIdToAppend = WorkflowExpression.Compile(bodydocumentIdToAppend, nameof(bodydocumentIdToAppend), required: true);
             var __workflow_bodyforceUndoCheckout = WorkflowExpression.Compile(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
-            return new DeferredBodyAction<MergePDFDocumentsToVersionResponse>(() =>
+            return new DeferredBodyAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/MergePDFDocumentsToVersion";
                 var apiCallHttpMethod = "post";
@@ -796,11 +796,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyculture = null)
+        public IBodyWorkflowAction<ProcessSearchResponse, ApiConnectionActionConfiguration> ProcessSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyculture = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyresultProperties = WorkflowExpression.Compile(bodyresultProperties, nameof(bodyresultProperties), required: false);
             var __workflow_bodymaxSerchResults = WorkflowExpression.Compile(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
             var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
-            return new DeferredBodyAction<ProcessSearchResponse>(() =>
+            return new DeferredBodyAction<ProcessSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ProcessSearch";
                 var apiCallHttpMethod = "post";
@@ -859,17 +859,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<ProcessSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
+        public IBodyWorkflowAction<UserTableUpdateRowResponse, ApiConnectionActionConfiguration> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
             var __workflow_bodyrowData = WorkflowExpression.Compile(bodyrowData, nameof(bodyrowData), required: true);
-            return new DeferredBodyAction<UserTableUpdateRowResponse>(() =>
+            return new DeferredBodyAction<UserTableUpdateRowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UserTableUpdateRow";
                 var apiCallHttpMethod = "post";
@@ -890,16 +890,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UserTableUpdateRowResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
+        public IBodyWorkflowAction<GetSelectionResponse, ApiConnectionActionConfiguration> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             var __workflow_bodyselectionId = WorkflowExpression.Compile(bodyselectionId, nameof(bodyselectionId), required: true);
-            return new DeferredBodyAction<GetSelectionResponse>(() =>
+            return new DeferredBodyAction<GetSelectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/GetSelection";
                 var apiCallHttpMethod = "post";
@@ -918,11 +918,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<GetSelectionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
+        public IBodyWorkflowAction<CreateDocumentV2Response, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -938,7 +938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyuploadMethod = WorkflowExpression.Compile(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
             var __workflow_bodyoriginalFileFormat = WorkflowExpression.Compile(bodyoriginalFileFormat, nameof(bodyoriginalFileFormat), required: false);
             var __workflow_bodychunkSize = WorkflowExpression.Compile(bodychunkSize, nameof(bodychunkSize), required: false);
-            return new DeferredBodyAction<CreateDocumentV2Response>(() =>
+            return new DeferredBodyAction<CreateDocumentV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateDocumentV2";
                 var apiCallHttpMethod = "post";
@@ -1049,11 +1049,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
+        public IBodyWorkflowAction<DocumentSearchV2Response, ApiConnectionActionConfiguration> DocumentSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyresultProperties = WorkflowExpression.Compile(bodyresultProperties, nameof(bodyresultProperties), required: false);
             var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
             var __workflow_bodystores = WorkflowExpression.Compile(bodystores, nameof(bodystores), required: false);
-            return new DeferredBodyAction<DocumentSearchV2Response>(() =>
+            return new DeferredBodyAction<DocumentSearchV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/DocumentSearchV2";
                 var apiCallHttpMethod = "post";
@@ -1119,11 +1119,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
+        public IBodyWorkflowAction<UpdateDocumentV2Response, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -1138,7 +1138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
             var __workflow_bodyforceUndoCheckout = WorkflowExpression.Compile(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
             var __workflow_bodychunkSize = WorkflowExpression.Compile(bodychunkSize, nameof(bodychunkSize), required: false);
-            return new DeferredBodyAction<UpdateDocumentV2Response>(() =>
+            return new DeferredBodyAction<UpdateDocumentV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateDocumentV2";
                 var apiCallHttpMethod = "post";
@@ -1247,11 +1247,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
+        public IBodyWorkflowAction<UpdateProcessV2Response, ApiConnectionActionConfiguration> UpdateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
         {
             var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
             var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
             var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
             var __workflow_bodyforceUndoCheckout = WorkflowExpression.Compile(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
             var __workflow_bodyprotectionDomain = WorkflowExpression.Compile(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
-            return new DeferredBodyAction<UpdateProcessV2Response>(() =>
+            return new DeferredBodyAction<UpdateProcessV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateProcessV2";
                 var apiCallHttpMethod = "post";
@@ -1389,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
                 }
 
                 return new ApiConnectionAction<UpdateProcessV2Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

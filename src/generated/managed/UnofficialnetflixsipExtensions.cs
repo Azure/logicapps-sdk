@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
     public class UnofficialnetflixsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleSearchResponse> TitleSearch(Expression<Func<int>> query = null, Expression<Func<int>> type = null, Expression<Func<int>> genrelist = null, Expression<Func<string>> countrylist = null, Expression<Func<int>> startYear = null, Expression<Func<int>> endYear = null, Expression<Func<string>> audio = null, Expression<Func<string>> audiosubtitleAndor = null, Expression<Func<string>> subtitle = null, Expression<Func<string>> countryAndorunique = null, Expression<Func<string>> orderby = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleSearchResponse, ApiConnectionActionConfiguration> TitleSearch(Expression<Func<int>> query = null, Expression<Func<int>> type = null, Expression<Func<int>> genrelist = null, Expression<Func<string>> countrylist = null, Expression<Func<int>> startYear = null, Expression<Func<int>> endYear = null, Expression<Func<string>> audio = null, Expression<Func<string>> audiosubtitleAndor = null, Expression<Func<string>> subtitle = null, Expression<Func<string>> countryAndorunique = null, Expression<Func<string>> orderby = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TitleSearchResponse>(() =>
+            return new DeferredBodyAction<TitleSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -59,17 +59,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TitleSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<PeopleSearchResponse> PeopleSearch(Expression<Func<string>> name = null, Expression<Func<int>> netflixId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<PeopleSearchResponse, ApiConnectionActionConfiguration> PeopleSearch(Expression<Func<string>> name = null, Expression<Func<int>> netflixId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_netflixId = WorkflowExpression.Compile(netflixId, nameof(netflixId), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<PeopleSearchResponse>(() =>
+            return new DeferredBodyAction<PeopleSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/people";
                 var apiCallHttpMethod = "get";
@@ -83,18 +83,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<PeopleSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<DeletedSearchResponse> DeletedSearch(Expression<Func<int>> netflixId = null, Expression<Func<string>> countryList = null, Expression<Func<string>> date = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeletedSearchResponse, ApiConnectionActionConfiguration> DeletedSearch(Expression<Func<int>> netflixId = null, Expression<Func<string>> countryList = null, Expression<Func<string>> date = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_netflixId = WorkflowExpression.Compile(netflixId, nameof(netflixId), required: false);
             var __workflow_countryList = WorkflowExpression.Compile(countryList, nameof(countryList), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<DeletedSearchResponse>(() =>
+            return new DeferredBodyAction<DeletedSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/titlesdel";
                 var apiCallHttpMethod = "get";
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<DeletedSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<GenresResponse> Genres()
+        public IBodyWorkflowAction<GenresResponse, ApiConnectionActionConfiguration> Genres()
         {
             var apiCallPath = "/genres";
             var apiCallHttpMethod = "get";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<CountriesResponse> Countries()
+        public IBodyWorkflowAction<CountriesResponse, ApiConnectionActionConfiguration> Countries()
         {
             var apiCallPath = "/countries";
             var apiCallHttpMethod = "get";
@@ -132,11 +132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleDetailResponse> TitleDetail(Expression<Func<int>> netflixid, Expression<Func<int>> imdbid)
+        public IBodyWorkflowAction<TitleDetailResponse, ApiConnectionActionConfiguration> TitleDetail(Expression<Func<int>> netflixid, Expression<Func<int>> imdbid)
         {
             var __workflow_netflixid = WorkflowExpression.Compile(netflixid, nameof(netflixid), required: true);
             var __workflow_imdbid = WorkflowExpression.Compile(imdbid, nameof(imdbid), required: true);
-            return new DeferredBodyAction<TitleDetailResponse>(() =>
+            return new DeferredBodyAction<TitleDetailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/title";
                 var apiCallHttpMethod = "get";
@@ -144,44 +144,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 callPayload.Queries["netflixid"] = ExpressionConverter.Convert(__workflow_netflixid);
                 callPayload.Queries["imdbid"] = ExpressionConverter.Convert(__workflow_imdbid);
                 return new ApiConnectionAction<TitleDetailResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleCountryResponse> TitleCountry(Expression<Func<int>> netflixid)
+        public IBodyWorkflowAction<TitleCountryResponse, ApiConnectionActionConfiguration> TitleCountry(Expression<Func<int>> netflixid)
         {
             var __workflow_netflixid = WorkflowExpression.Compile(netflixid, nameof(netflixid), required: true);
-            return new DeferredBodyAction<TitleCountryResponse>(() =>
+            return new DeferredBodyAction<TitleCountryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/titlecountries";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["netflixid"] = ExpressionConverter.Convert(__workflow_netflixid);
                 return new ApiConnectionAction<TitleCountryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleGenreResponse> TitleGenre(Expression<Func<int>> netflixid)
+        public IBodyWorkflowAction<TitleGenreResponse, ApiConnectionActionConfiguration> TitleGenre(Expression<Func<int>> netflixid)
         {
             var __workflow_netflixid = WorkflowExpression.Compile(netflixid, nameof(netflixid), required: true);
-            return new DeferredBodyAction<TitleGenreResponse>(() =>
+            return new DeferredBodyAction<TitleGenreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/titlegenres";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["netflixid"] = ExpressionConverter.Convert(__workflow_netflixid);
                 return new ApiConnectionAction<TitleGenreResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleEpisodeResponse> TitleEpisode(Expression<Func<int>> netflixid, Expression<Func<int>> seasonid, Expression<Func<int>> episodeid = null)
+        public IBodyWorkflowAction<TitleEpisodeResponse, ApiConnectionActionConfiguration> TitleEpisode(Expression<Func<int>> netflixid, Expression<Func<int>> seasonid, Expression<Func<int>> episodeid = null)
         {
             var __workflow_netflixid = WorkflowExpression.Compile(netflixid, nameof(netflixid), required: true);
             var __workflow_seasonid = WorkflowExpression.Compile(seasonid, nameof(seasonid), required: true);
             var __workflow_episodeid = WorkflowExpression.Compile(episodeid, nameof(episodeid), required: false);
-            return new DeferredBodyAction<TitleEpisodeResponse>(() =>
+            return new DeferredBodyAction<TitleEpisodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/episodes";
                 var apiCallHttpMethod = "get";
@@ -191,16 +191,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 if (__workflow_episodeid != null)
                     callPayload.Queries["episodeid"] = ExpressionConverter.Convert(__workflow_episodeid);
                 return new ApiConnectionAction<TitleEpisodeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleImageResponse> TitleImage(Expression<Func<int>> netflixid, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleImageResponse, ApiConnectionActionConfiguration> TitleImage(Expression<Func<int>> netflixid, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_netflixid = WorkflowExpression.Compile(netflixid, nameof(netflixid), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TitleImageResponse>(() =>
+            return new DeferredBodyAction<TitleImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/images";
                 var apiCallHttpMethod = "get";
@@ -211,16 +211,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TitleImageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleExpiringResponse> TitleExpiring(Expression<Func<int>> countrylist, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleExpiringResponse, ApiConnectionActionConfiguration> TitleExpiring(Expression<Func<int>> countrylist, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_countrylist = WorkflowExpression.Compile(countrylist, nameof(countrylist), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TitleExpiringResponse>(() =>
+            return new DeferredBodyAction<TitleExpiringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/expiring";
                 var apiCallHttpMethod = "get";
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TitleExpiringResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

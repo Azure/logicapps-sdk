@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
     public class NimflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction(Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandreference, Expression<Func<string>> commandaction, Expression<Func<string>> commandsubject = null)
+        public IBodyWorkflowAction<DispatchContextActionResult, ApiConnectionActionConfiguration> ContextsDispatchAction(Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandreference, Expression<Func<string>> commandaction, Expression<Func<string>> commandsubject = null)
         {
             var __workflow_commandcontextTypeName = WorkflowExpression.Compile(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
             var __workflow_commandreference = WorkflowExpression.Compile(commandreference, nameof(commandreference), required: true);
             var __workflow_commandaction = WorkflowExpression.Compile(commandaction, nameof(commandaction), required: true);
             var __workflow_commandsubject = WorkflowExpression.Compile(commandsubject, nameof(commandsubject), required: false);
-            return new DeferredBodyAction<DispatchContextActionResult>(() =>
+            return new DeferredBodyAction<DispatchContextActionResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Contexts/DispatchAction";
                 var apiCallHttpMethod = "post";
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionAction<DispatchContextActionResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse(Expression<Func<string>> commandcontextReference, Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandtaskTypeName, Expression<Func<string>> commandresponseTypeName, Expression<Func<string>> commandsentBy = null, Expression<Func<string>> commandstartedOn = null, Expression<Func<string>> commandsentOn = null, Expression<Func<string>> commandsubject = null, Expression<Func<string>> commanditemKey = null)
+        public IBodyWorkflowAction<AddTaskResponseResult, ApiConnectionActionConfiguration> TasksAddResponse(Expression<Func<string>> commandcontextReference, Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandtaskTypeName, Expression<Func<string>> commandresponseTypeName, Expression<Func<string>> commandsentBy = null, Expression<Func<string>> commandstartedOn = null, Expression<Func<string>> commandsentOn = null, Expression<Func<string>> commandsubject = null, Expression<Func<string>> commanditemKey = null)
         {
             var __workflow_commandcontextReference = WorkflowExpression.Compile(commandcontextReference, nameof(commandcontextReference), required: true);
             var __workflow_commandcontextTypeName = WorkflowExpression.Compile(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             var __workflow_commandsentOn = WorkflowExpression.Compile(commandsentOn, nameof(commandsentOn), required: false);
             var __workflow_commandsubject = WorkflowExpression.Compile(commandsubject, nameof(commandsubject), required: false);
             var __workflow_commanditemKey = WorkflowExpression.Compile(commanditemKey, nameof(commanditemKey), required: false);
-            return new DeferredBodyAction<AddTaskResponseResult>(() =>
+            return new DeferredBodyAction<AddTaskResponseResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Tasks/AddResponse";
                 var apiCallHttpMethod = "post";
@@ -125,17 +125,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionAction<AddTaskResponseResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class NimflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             var __workflow_requesttaskTypeName = WorkflowExpression.Compile(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WhenTaskCreated";
                 var apiCallHttpMethod = "post";
@@ -162,14 +162,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             var __workflow_requesttaskTypeName = WorkflowExpression.Compile(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WhenTaskUpdated";
                 var apiCallHttpMethod = "post";
@@ -196,14 +196,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             var __workflow_requesttaskTypeName = WorkflowExpression.Compile(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WhenTaskArchived";
                 var apiCallHttpMethod = "post";
@@ -230,14 +230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             var __workflow_requestmilestoneName = WorkflowExpression.Compile(requestmilestoneName, nameof(requestmilestoneName), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WhenMilestoneReached";
                 var apiCallHttpMethod = "post";
@@ -264,14 +264,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             var __workflow_requestmilestoneName = WorkflowExpression.Compile(requestmilestoneName, nameof(requestmilestoneName), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/WhenMilestoneCleared";
                 var apiCallHttpMethod = "post";
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

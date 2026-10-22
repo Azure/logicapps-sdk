@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
     public class EventbriteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
-        public IBodyWorkflowAction<CreateEventResponse> CreateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> eventNameHtml, Expression<Func<string>> eventDescriptionHtml, Expression<Func<string>> eventStartUtc, Expression<Func<string>> eventEndUtc, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
+        public IBodyWorkflowAction<CreateEventResponse, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> eventNameHtml, Expression<Func<string>> eventDescriptionHtml, Expression<Func<string>> eventStartUtc, Expression<Func<string>> eventEndUtc, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_eventNameHtml = WorkflowExpression.Compile(eventNameHtml, nameof(eventNameHtml), required: true);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             var __workflow_eventHideStartDate = WorkflowExpression.Compile(eventHideStartDate, nameof(eventHideStartDate), required: false);
             var __workflow_eventHideEndDate = WorkflowExpression.Compile(eventHideEndDate, nameof(eventHideEndDate), required: false);
             var __workflow_eventShowRemaining = WorkflowExpression.Compile(eventShowRemaining, nameof(eventShowRemaining), required: false);
-            return new DeferredBodyAction<CreateEventResponse>(() =>
+            return new DeferredBodyAction<CreateEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/organizations/{0}/events/", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -71,11 +71,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 if (__workflow_eventShowRemaining != null)
                     callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(__workflow_eventShowRemaining);
                 return new ApiConnectionAction<CreateEventResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
-        public IBodyWorkflowAction<CreateEventResponse> UpdateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> id, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventNameHtml = null, Expression<Func<string>> eventDescriptionHtml = null, Expression<Func<string>> eventStartUtc = null, Expression<Func<string>> eventEndUtc = null, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
+        public IBodyWorkflowAction<CreateEventResponse, ApiConnectionActionConfiguration> UpdateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> id, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventNameHtml = null, Expression<Func<string>> eventDescriptionHtml = null, Expression<Func<string>> eventStartUtc = null, Expression<Func<string>> eventEndUtc = null, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             var __workflow_eventHideStartDate = WorkflowExpression.Compile(eventHideStartDate, nameof(eventHideStartDate), required: false);
             var __workflow_eventHideEndDate = WorkflowExpression.Compile(eventHideEndDate, nameof(eventHideEndDate), required: false);
             var __workflow_eventShowRemaining = WorkflowExpression.Compile(eventShowRemaining, nameof(eventShowRemaining), required: false);
-            return new DeferredBodyAction<CreateEventResponse>(() =>
+            return new DeferredBodyAction<CreateEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v3/events/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -140,17 +140,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 if (__workflow_eventShowRemaining != null)
                     callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(__workflow_eventShowRemaining);
                 return new ApiConnectionAction<CreateEventResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class EventbriteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[], ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, FlowRecurrence recurrence = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_organizerFilter = WorkflowExpression.Compile(organizerFilter, nameof(organizerFilter), required: true);
-            return new DeferredBodyTrigger<GetEventsForOrganizationResponseItem[]>(() =>
+            return new DeferredBodyTrigger<GetEventsForOrganizationResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/v3/organizations/{0}/events/", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -158,21 +158,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(__workflow_organizerFilter);
                 callPayload.Queries["order_by"] = Convert.ToString("created_desc");
                 return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetOrdersResponseItem[], ApiConnectionTriggerConfiguration> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<GetOrdersResponseItem[]>(() =>
+            return new DeferredBodyTrigger<GetOrdersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/trigger/v3/events/{0}/orders/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);
                 return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

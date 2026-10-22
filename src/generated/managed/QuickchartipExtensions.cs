@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     public class QuickchartipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartPostResponse> Chart(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
+        public IBodyWorkflowAction<ChartPostResponse, ApiConnectionActionConfiguration> Chart(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
         {
             var __workflow_bodychart = WorkflowExpression.Compile(bodychart, nameof(bodychart), required: true);
             var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
             var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            return new DeferredBodyAction<ChartPostResponse>(() =>
+            return new DeferredBodyAction<ChartPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chart";
                 var apiCallHttpMethod = "post";
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
                 }
 
                 return new ApiConnectionAction<ChartPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartURLResponse> ChartURL(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
+        public IBodyWorkflowAction<ChartURLResponse, ApiConnectionActionConfiguration> ChartURL(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
         {
             var __workflow_bodychart = WorkflowExpression.Compile(bodychart, nameof(bodychart), required: true);
             var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
             var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            return new DeferredBodyAction<ChartURLResponse>(() =>
+            return new DeferredBodyAction<ChartURLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chart/create";
                 var apiCallHttpMethod = "post";
@@ -190,18 +190,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
                 }
 
                 return new ApiConnectionAction<ChartURLResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartTemplateResponse> ChartTemplate(Expression<Func<string>> chartId, Expression<Func<string>> title = null, Expression<Func<string>> labels = null, Expression<Func<string>> data1 = null, Expression<Func<string>> data2 = null)
+        public IBodyWorkflowAction<ChartTemplateResponse, ApiConnectionActionConfiguration> ChartTemplate(Expression<Func<string>> chartId, Expression<Func<string>> title = null, Expression<Func<string>> labels = null, Expression<Func<string>> data1 = null, Expression<Func<string>> data2 = null)
         {
             var __workflow_chartId = WorkflowExpression.Compile(chartId, nameof(chartId), required: true);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_labels = WorkflowExpression.Compile(labels, nameof(labels), required: false);
             var __workflow_data1 = WorkflowExpression.Compile(data1, nameof(data1), required: false);
             var __workflow_data2 = WorkflowExpression.Compile(data2, nameof(data2), required: false);
-            return new DeferredBodyAction<ChartTemplateResponse>(() =>
+            return new DeferredBodyAction<ChartTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chart/render/{0}", __workflow_chartId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -215,11 +215,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
                 if (__workflow_data2 != null)
                     callPayload.Queries["data2"] = ExpressionConverter.Convert(__workflow_data2);
                 return new ApiConnectionAction<ChartTemplateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<QRCodeResponse> QRCode(Expression<Func<string>> text = null, Expression<Func<int>> margin = null, Expression<Func<int>> size = null, Expression<Func<string>> dark = null, Expression<Func<string>> light = null, Expression<Func<ecLevelInput>> ecLevel = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> centerImageUrl = null, Expression<Func<double>> centerImageSizeRatio = null, Expression<Func<int>> centerImageWidth = null, Expression<Func<int>> centerImageHeight = null)
+        public IBodyWorkflowAction<QRCodeResponse, ApiConnectionActionConfiguration> QRCode(Expression<Func<string>> text = null, Expression<Func<int>> margin = null, Expression<Func<int>> size = null, Expression<Func<string>> dark = null, Expression<Func<string>> light = null, Expression<Func<ecLevelInput>> ecLevel = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> centerImageUrl = null, Expression<Func<double>> centerImageSizeRatio = null, Expression<Func<int>> centerImageWidth = null, Expression<Func<int>> centerImageHeight = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_margin = WorkflowExpression.Compile(margin, nameof(margin), required: false);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var __workflow_centerImageSizeRatio = WorkflowExpression.Compile(centerImageSizeRatio, nameof(centerImageSizeRatio), required: false);
             var __workflow_centerImageWidth = WorkflowExpression.Compile(centerImageWidth, nameof(centerImageWidth), required: false);
             var __workflow_centerImageHeight = WorkflowExpression.Compile(centerImageHeight, nameof(centerImageHeight), required: false);
-            return new DeferredBodyAction<QRCodeResponse>(() =>
+            return new DeferredBodyAction<QRCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qr";
                 var apiCallHttpMethod = "get";
@@ -266,18 +266,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
                 if (__workflow_centerImageHeight != null)
                     callPayload.Queries["centerImageHeight"] = ExpressionConverter.Convert(__workflow_centerImageHeight);
                 return new ApiConnectionAction<QRCodeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<GraphVizResponse> GraphViz(Expression<Func<string>> bodygraph, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<string>> bodygraph, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
             var __workflow_bodygraph = WorkflowExpression.Compile(bodygraph, nameof(bodygraph), required: true);
             var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
             var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            return new DeferredBodyAction<GraphVizResponse>(() =>
+            return new DeferredBodyAction<GraphVizResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphviz";
                 var apiCallHttpMethod = "post";
@@ -336,11 +336,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
                 }
 
                 return new ApiConnectionAction<GraphVizResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<WordCloudResponse> WordCloud(Expression<Func<string>> text = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> backgroundColor = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> fontFamily = null, Expression<Func<string>> loadGoogleFonts = null, Expression<Func<int>> fontScale = null, Expression<Func<scaleInput>> scale = null, Expression<Func<int>> padding = null, Expression<Func<int>> rotation = null, Expression<Func<int>> maxNumWords = null, Expression<Func<int>> minWordLength = null, Expression<Func<@caseInput>> @case = null, Expression<Func<string>> colors = null, Expression<Func<bool>> removeStopwords = null, Expression<Func<string>> language = null, Expression<Func<bool>> useWordList = null)
+        public IBodyWorkflowAction<WordCloudResponse, ApiConnectionActionConfiguration> WordCloud(Expression<Func<string>> text = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> backgroundColor = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> fontFamily = null, Expression<Func<string>> loadGoogleFonts = null, Expression<Func<int>> fontScale = null, Expression<Func<scaleInput>> scale = null, Expression<Func<int>> padding = null, Expression<Func<int>> rotation = null, Expression<Func<int>> maxNumWords = null, Expression<Func<int>> minWordLength = null, Expression<Func<@caseInput>> @case = null, Expression<Func<string>> colors = null, Expression<Func<bool>> removeStopwords = null, Expression<Func<string>> language = null, Expression<Func<bool>> useWordList = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
             var __workflow_removeStopwords = WorkflowExpression.Compile(removeStopwords, nameof(removeStopwords), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_useWordList = WorkflowExpression.Compile(useWordList, nameof(useWordList), required: false);
-            return new DeferredBodyAction<WordCloudResponse>(() =>
+            return new DeferredBodyAction<WordCloudResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wordcloud";
                 var apiCallHttpMethod = "get";
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
                 if (__workflow_useWordList != null)
                     callPayload.Queries["useWordList"] = ExpressionConverter.Convert(__workflow_useWordList);
                 return new ApiConnectionAction<WordCloudResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

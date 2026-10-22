@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
     public class KortoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<QueryTagsResponse> GetTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
+        public IBodyWorkflowAction<QueryTagsResponse, ApiConnectionActionConfiguration> GetTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
         {
             var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: false);
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
-            return new DeferredBodyAction<QueryTagsResponse>(() =>
+            return new DeferredBodyAction<QueryTagsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Tag/v2";
                 var apiCallHttpMethod = "get";
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagName != null)
                     callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction<QueryTagsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IWorkflowAction DeleteTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
         {
             var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: false);
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Tag/v2";
                 var apiCallHttpMethod = "delete";
@@ -44,16 +44,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagName != null)
                     callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<QueryTagResponseItem> CreateTag(Expression<Func<string>> tagName = null, Expression<Func<int>> tagType = null, Expression<Func<int>> tagValueType = null)
+        public IBodyWorkflowAction<QueryTagResponseItem, ApiConnectionActionConfiguration> CreateTag(Expression<Func<string>> tagName = null, Expression<Func<int>> tagType = null, Expression<Func<int>> tagValueType = null)
         {
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
             var __workflow_tagType = WorkflowExpression.Compile(tagType, nameof(tagType), required: false);
             var __workflow_tagValueType = WorkflowExpression.Compile(tagValueType, nameof(tagValueType), required: false);
-            return new DeferredBodyAction<QueryTagResponseItem>(() =>
+            return new DeferredBodyAction<QueryTagResponseItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Tag/v2";
                 var apiCallHttpMethod = "post";
@@ -66,15 +66,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagValueType != null)
                     callPayload.Queries["tagValueType"] = ExpressionConverter.Convert(__workflow_tagValueType);
                 return new ApiConnectionAction<QueryTagResponseItem>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem, ApiConnectionActionConfiguration> GetRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
             var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
-            return new DeferredBodyAction<RecordQueryResponseItem>(() =>
+            return new DeferredBodyAction<RecordQueryResponseItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Record/v2";
                 var apiCallHttpMethod = "get";
@@ -84,15 +84,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_externalRecordID != null)
                     callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IWorkflowAction DeleteRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
             var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Record/v2";
                 var apiCallHttpMethod = "delete";
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_externalRecordID != null)
                     callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> CreateRecord(Expression<Func<object>> file, Expression<Func<string>> name = null, Expression<Func<string>> actor = null, Expression<Func<string>> externalid = null, Expression<Func<string>> externalurl = null, Expression<Func<string>> createdAt = null, Expression<Func<string>> createdBy = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<object>> file, Expression<Func<string>> name = null, Expression<Func<string>> actor = null, Expression<Func<string>> externalid = null, Expression<Func<string>> externalurl = null, Expression<Func<string>> createdAt = null, Expression<Func<string>> createdBy = null)
         {
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
             var __workflow_externalurl = WorkflowExpression.Compile(externalurl, nameof(externalurl), required: false);
             var __workflow_createdAt = WorkflowExpression.Compile(createdAt, nameof(createdAt), required: false);
             var __workflow_createdBy = WorkflowExpression.Compile(createdBy, nameof(createdBy), required: false);
-            return new DeferredBodyAction<RecordQueryResponseItem>(() =>
+            return new DeferredBodyAction<RecordQueryResponseItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Record/v2";
                 var apiCallHttpMethod = "post";
@@ -133,15 +133,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_createdBy != null)
                     callPayload.Queries["createdBy"] = ExpressionConverter.Convert(__workflow_createdBy);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
+        public IBodyWorkflowAction<DownloadUrlMessage, ApiConnectionActionConfiguration> DownloadRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
             var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
-            return new DeferredBodyAction<DownloadUrlMessage>(() =>
+            return new DeferredBodyAction<DownloadUrlMessage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Record/v2/download";
                 var apiCallHttpMethod = "get";
@@ -151,16 +151,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_externalRecordID != null)
                     callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction<DownloadUrlMessage>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IWorkflowAction DeleteTagFromRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTagFromRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null)
         {
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
             var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
                 var apiCallHttpMethod = "delete";
@@ -172,17 +172,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagName != null)
                     callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem, ApiConnectionActionConfiguration> AddTagToRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
         {
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
             var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
             var __workflow_tagValue = WorkflowExpression.Compile(tagValue, nameof(tagValue), required: false);
-            return new DeferredBodyAction<RecordQueryResponseItem>(() =>
+            return new DeferredBodyAction<RecordQueryResponseItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
                 var apiCallHttpMethod = "post";
@@ -196,17 +196,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagValue != null)
                     callPayload.Queries["tagValue"] = ExpressionConverter.Convert(__workflow_tagValue);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem, ApiConnectionActionConfiguration> UpdateTagOnRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
         {
             var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
             var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
             var __workflow_tagValue = WorkflowExpression.Compile(tagValue, nameof(tagValue), required: false);
-            return new DeferredBodyAction<RecordQueryResponseItem>(() =>
+            return new DeferredBodyAction<RecordQueryResponseItem, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
                 var apiCallHttpMethod = "put";
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
                 if (__workflow_tagValue != null)
                     callPayload.Queries["tagValue"] = ExpressionConverter.Convert(__workflow_tagValue);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

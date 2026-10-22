@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
     public class BingmapsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetLocationResponse> GetLocationByPoint(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> includeEntityTypes = null, Expression<Func<bool>> includeNeighborhood = null, Expression<Func<bool>> include = null)
+        public IBodyWorkflowAction<GetLocationResponse, ApiConnectionActionConfiguration> GetLocationByPoint(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> includeEntityTypes = null, Expression<Func<bool>> includeNeighborhood = null, Expression<Func<bool>> include = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
             var __workflow_includeEntityTypes = WorkflowExpression.Compile(includeEntityTypes, nameof(includeEntityTypes), required: false);
             var __workflow_includeNeighborhood = WorkflowExpression.Compile(includeNeighborhood, nameof(includeNeighborhood), required: false);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: false);
-            return new DeferredBodyAction<GetLocationResponse>(() =>
+            return new DeferredBodyAction<GetLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/REST/v1/Locations/pointPlaceHolder";
                 var apiCallHttpMethod = "get";
@@ -35,18 +35,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_include != null)
                     callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<GetLocationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetLocationResponse> GetLocationByAddress(Expression<Func<string>> addressLine = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminDistrict = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> countryRegion = null)
+        public IBodyWorkflowAction<GetLocationResponse, ApiConnectionActionConfiguration> GetLocationByAddress(Expression<Func<string>> addressLine = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminDistrict = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> countryRegion = null)
         {
             var __workflow_addressLine = WorkflowExpression.Compile(addressLine, nameof(addressLine), required: false);
             var __workflow_locality = WorkflowExpression.Compile(locality, nameof(locality), required: false);
             var __workflow_adminDistrict = WorkflowExpression.Compile(adminDistrict, nameof(adminDistrict), required: false);
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
             var __workflow_countryRegion = WorkflowExpression.Compile(countryRegion, nameof(countryRegion), required: false);
-            return new DeferredBodyAction<GetLocationResponse>(() =>
+            return new DeferredBodyAction<GetLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/REST/v1/Locations";
                 var apiCallHttpMethod = "get";
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_countryRegion != null)
                     callPayload.Queries["countryRegion"] = ExpressionConverter.Convert(__workflow_countryRegion);
                 return new ApiConnectionAction<GetLocationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<string> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<formatInput>> format = null, Expression<Func<string>> mapSize = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<int>> pushpinIconStyle = null, Expression<Func<string>> pushpinLabel = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<formatInput>> format = null, Expression<Func<string>> mapSize = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<int>> pushpinIconStyle = null, Expression<Func<string>> pushpinLabel = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             var __workflow_pushpinLongitude = WorkflowExpression.Compile(pushpinLongitude, nameof(pushpinLongitude), required: false);
             var __workflow_pushpinIconStyle = WorkflowExpression.Compile(pushpinIconStyle, nameof(pushpinIconStyle), required: false);
             var __workflow_pushpinLabel = WorkflowExpression.Compile(pushpinLabel, nameof(pushpinLabel), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", __workflow_imagerySet.WithUrlEncoding(1), __workflow_zoomLevel.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_pushpinLabel != null)
                     callPayload.Queries["pushpinLabel"] = ExpressionConverter.Convert(__workflow_pushpinLabel);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetRouteResponse> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidMinimizeHighways = null, Expression<Func<bool>> avoidMinimizeTolls = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null, Expression<Func<distanceUnitInput>> distanceUnit = null, Expression<Func<string>> dateTime = null, Expression<Func<timeTypeInput>> timeType = null)
+        public IBodyWorkflowAction<GetRouteResponse, ApiConnectionActionConfiguration> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidMinimizeHighways = null, Expression<Func<bool>> avoidMinimizeTolls = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null, Expression<Func<distanceUnitInput>> distanceUnit = null, Expression<Func<string>> dateTime = null, Expression<Func<timeTypeInput>> timeType = null)
         {
             var __workflow_wp0 = WorkflowExpression.Compile(wp0, nameof(wp0), required: true);
             var __workflow_wp1 = WorkflowExpression.Compile(wp1, nameof(wp1), required: true);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
             var __workflow_distanceUnit = WorkflowExpression.Compile(distanceUnit, nameof(distanceUnit), required: false);
             var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
             var __workflow_timeType = WorkflowExpression.Compile(timeType, nameof(timeType), required: false);
-            return new DeferredBodyAction<GetRouteResponse>(() =>
+            return new DeferredBodyAction<GetRouteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/V3/REST/V1/Routes/{0}", __workflow_travelMode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
                 if (__workflow_timeType != null)
                     callPayload.Queries["timeType"] = ExpressionConverter.Convert(__workflow_timeType);
                 return new ApiConnectionAction<GetRouteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

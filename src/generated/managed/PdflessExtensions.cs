@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
     public class PdflessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
+        public IBodyWorkflowAction<PDFDtoApiResult, ApiConnectionActionConfiguration> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_commandtemplateId = WorkflowExpression.Compile(commandtemplateId, nameof(commandtemplateId), required: true);
             var __workflow_commandpayload = WorkflowExpression.Compile(commandpayload, nameof(commandpayload), required: true);
             var __workflow_commandreferenceId = WorkflowExpression.Compile(commandreferenceId, nameof(commandreferenceId), required: false);
-            return new DeferredBodyAction<PDFDtoApiResult>(() =>
+            return new DeferredBodyAction<PDFDtoApiResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/pdfs", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
                 }
 
                 return new ApiConnectionAction<PDFDtoApiResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

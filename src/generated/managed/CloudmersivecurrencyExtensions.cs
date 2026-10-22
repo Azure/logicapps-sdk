@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
     public class CloudmersivecurrencyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<AvailableCurrencyResponse> CurrencyExchangeGetAvailableCurrencies()
+        public IBodyWorkflowAction<AvailableCurrencyResponse, ApiConnectionActionConfiguration> CurrencyExchangeGetAvailableCurrencies()
         {
             var apiCallPath = "/currency/exchange-rates/list-available";
             var apiCallHttpMethod = "post";
@@ -21,33 +21,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
+        public IBodyWorkflowAction<ConvertedCurrencyResult, ApiConnectionActionConfiguration> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_sourcePrice = WorkflowExpression.Compile(sourcePrice, nameof(sourcePrice), required: false);
-            return new DeferredBodyAction<ConvertedCurrencyResult>(() =>
+            return new DeferredBodyAction<ConvertedCurrencyResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", __workflow_source.WithUrlEncoding(1), __workflow_destination.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_sourcePrice);
                 return new ApiConnectionAction<ConvertedCurrencyResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
+        public IBodyWorkflowAction<ExchangeRateResult, ApiConnectionActionConfiguration> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
-            return new DeferredBodyAction<ExchangeRateResult>(() =>
+            return new DeferredBodyAction<ExchangeRateResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", __workflow_source.WithUrlEncoding(1), __workflow_destination.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExchangeRateResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

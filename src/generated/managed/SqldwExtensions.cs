@@ -12,28 +12,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
     public class SqldwActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<JToken> ExecuteProcedure(Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteProcedure(Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
         {
             var __workflow_procedure = WorkflowExpression.Compile(procedure, nameof(procedure), required: true);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/procedures/{0}", __workflow_procedure.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> queryquery = null, Expression<Func<object>> queryactualParameters = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> queryquery = null, Expression<Func<object>> queryactualParameters = null)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
             var __workflow_queryquery = WorkflowExpression.Compile(queryquery, nameof(queryquery), required: false);
             var __workflow_queryactualParameters = WorkflowExpression.Compile(queryactualParameters, nameof(queryactualParameters), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0},{1}/query/sql", __workflow_server.WithUrlEncoding(2), __workflow_database.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<ItemsListV2> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<ItemsListV2, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<ItemsListV2>(() =>
+            return new DeferredBodyAction<ItemsListV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0},{1}/tables/{2}/items", __workflow_server.WithUrlEncoding(2), __workflow_database.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -96,21 +96,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
                 if (__workflow_select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<ItemsListV2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> server, Expression<Func<string>> database)
+        public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> server, Expression<Func<string>> database)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
-            return new DeferredBodyAction<TablesList>(() =>
+            return new DeferredBodyAction<TablesList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0},{1}/tables", __workflow_server.WithUrlEncoding(2), __workflow_database.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

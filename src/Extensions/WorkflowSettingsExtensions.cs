@@ -6,212 +6,338 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
+    using Newtonsoft.Json.Linq;
 
-    /// <summary>
-    /// Fluent methods for configuring workflow action and trigger settings.
-    /// </summary>
     public static class WorkflowSettingsExtensions
     {
-        /// <summary>
-        /// Adds a tracked property to an action.
-        /// </summary>
-        public static TAction WithTrackedProperty<TAction, TValue>(
-            this TAction action,
-            string name,
-            Expression<Func<TValue>> value)
-            where TAction : IWorkflowAction
+        public static IWorkflowAction<TConfiguration> WithTrackedProperty<TConfiguration, TValue>(
+            this IWorkflowAction<TConfiguration> action, string name, Expression<Func<TValue>> value)
+            where TConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder
         {
-            if (action == null) throw new ArgumentNullException(nameof(action));
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("A tracked property name is required.", nameof(name));
-            var descriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
-            action.Configuration.Require(WorkflowActionSettings.TrackedProperties, action.Name);
-
-            if (action.Configuration.MutableTrackedProperties.ContainsKey(name))
-            {
-                throw new InvalidOperationException($"Tracked property '{name}' is already configured on action '{action.Name}'.");
-            }
-
-            if (action.Configuration.MutableTrackedProperties.Count == 16)
-            {
-                throw new InvalidOperationException("Logic Apps supports at most 16 tracked properties per action.");
-            }
-
-            action.Configuration.MutableTrackedProperties.Add(name, ExpressionConverter.ConvertO(descriptor));
+            AddTrackedProperty(action, action.Configuration, name, value);
             return action;
         }
 
-        /// <summary>
-        /// Configures an action retry policy.
-        /// </summary>
-        public static TOperation WithRetryPolicy<TOperation>(this TOperation operation, RetryPolicy retryPolicy)
-            where TOperation : IWorkflowOperation
+        public static IBodyWorkflowAction<TBody, TConfiguration> WithTrackedProperty<TBody, TConfiguration, TValue>(
+            this IBodyWorkflowAction<TBody, TConfiguration> action, string name, Expression<Func<TValue>> value)
+            where TConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder
         {
-            if (operation == null) throw new ArgumentNullException(nameof(operation));
-            if (retryPolicy == null) throw new ArgumentNullException(nameof(retryPolicy));
-            switch (operation)
-            {
-                case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettings.RetryPolicy, action.Name);
-                    action.Configuration.RetryPolicy = retryPolicy;
-                    break;
-                case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettings.RetryPolicy, trigger.Name);
-                    trigger.Configuration.RetryPolicy = retryPolicy;
-                    break;
-                default:
-                    throw new NotSupportedException($"Operation '{operation.Name}' does not support retry policies.");
-            }
-            return operation;
+            AddTrackedProperty(action, action.Configuration, name, value);
+            return action;
         }
 
-        /// <summary>
-        /// Secures action inputs in run history.
-        /// </summary>
-        public static TOperation WithSecureInputs<TOperation>(this TOperation operation)
-            where TOperation : IWorkflowOperation
+        public static IOutputWorkflowAction<TOutput, TConfiguration> WithTrackedProperty<TOutput, TConfiguration, TValue>(
+            this IOutputWorkflowAction<TOutput, TConfiguration> action, string name, Expression<Func<TValue>> value)
+            where TConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder
         {
-            if (operation == null) throw new ArgumentNullException(nameof(operation));
-            switch (operation)
-            {
-                case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettings.SecureInputs, action.Name);
-                    action.Configuration.SecureInputs = true;
-                    if (action.Configuration.SecureOutputsLinkedToInputs)
-                    {
-                        action.Configuration.SecureOutputs = true;
-                    }
-                    break;
-                case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureInputs, trigger.Name);
-                    trigger.Configuration.SecureInputs = true;
-                    break;
-                default:
-                    throw new NotSupportedException($"Operation '{operation.Name}' does not support secure inputs.");
-            }
-            return operation;
+            AddTrackedProperty(action, action.Configuration, name, value);
+            return action;
         }
 
-        /// <summary>
-        /// Secures action outputs in run history.
-        /// </summary>
-        public static TOperation WithSecureOutputs<TOperation>(this TOperation operation)
-            where TOperation : IWorkflowOperation
+        public static IVariableWorkflowAction<TConfiguration> WithTrackedProperty<TConfiguration, TValue>(
+            this IVariableWorkflowAction<TConfiguration> action, string name, Expression<Func<TValue>> value)
+            where TConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder
         {
-            if (operation == null) throw new ArgumentNullException(nameof(operation));
-            switch (operation)
-            {
-                case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettings.SecureOutputs, action.Name);
-                    action.Configuration.SecureOutputs = true;
-                    break;
-                case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureOutputs, trigger.Name);
-                    trigger.Configuration.SecureOutputs = true;
-                    break;
-                default:
-                    throw new NotSupportedException($"Operation '{operation.Name}' does not support secure outputs.");
-            }
-            return operation;
+            AddTrackedProperty(action, action.Configuration, name, value);
+            return action;
         }
 
-        /// <summary>
-        /// Secures operation inputs and outputs in run history.
-        /// </summary>
-        public static TOperation WithSecureInputsAndOutputs<TOperation>(this TOperation operation)
-            where TOperation : IWorkflowOperation
+        public static IAgentWorkflowAction<TConfiguration> WithTrackedProperty<TConfiguration, TValue>(
+            this IAgentWorkflowAction<TConfiguration> action, string name, Expression<Func<TValue>> value)
+            where TConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder
         {
-            if (operation == null) throw new ArgumentNullException(nameof(operation));
-            switch (operation)
-            {
-                case IWorkflowAction action:
-                    action.Configuration.Require(WorkflowActionSettings.SecureInputs, action.Name);
-                    if (!action.Configuration.SecureOutputsLinkedToInputs)
-                    {
-                        action.Configuration.Require(WorkflowActionSettings.SecureOutputs, action.Name);
-                    }
-                    action.Configuration.SecureInputs = true;
-                    action.Configuration.SecureOutputs = true;
-                    break;
-                case IWorkflowTrigger trigger:
-                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureInputs, trigger.Name);
-                    trigger.Configuration.Require(WorkflowTriggerSettings.SecureOutputs, trigger.Name);
-                    trigger.Configuration.SecureInputs = true;
-                    trigger.Configuration.SecureOutputs = true;
-                    break;
-                default:
-                    throw new NotSupportedException($"Operation '{operation.Name}' does not support secure data.");
-            }
-            return operation;
+            AddTrackedProperty(action, action.Configuration, name, value);
+            return action;
         }
 
-        /// <summary>
-        /// Configures the maximum number of parallel For Each iterations.
-        /// </summary>
-        public static TAction WithIterationConcurrency<TAction>(this TAction action, int repetitions)
-            where TAction : IWorkflowAction
+        public static IWorkflowAction<TConfiguration> WithRetryPolicy<TConfiguration>(
+            this IWorkflowAction<TConfiguration> action, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
         {
-            if (action == null) throw new ArgumentNullException(nameof(action));
-            action.Configuration.Require(WorkflowActionSettings.IterationConcurrency, action.Name);
+            SetRetryPolicy(action.Configuration, retryPolicy);
+            return action;
+        }
+
+        public static IBodyWorkflowAction<TBody, TConfiguration> WithRetryPolicy<TBody, TConfiguration>(
+            this IBodyWorkflowAction<TBody, TConfiguration> action, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
+        {
+            SetRetryPolicy(action.Configuration, retryPolicy);
+            return action;
+        }
+
+        public static IOutputWorkflowAction<TOutput, TConfiguration> WithRetryPolicy<TOutput, TConfiguration>(
+            this IOutputWorkflowAction<TOutput, TConfiguration> action, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
+        {
+            SetRetryPolicy(action.Configuration, retryPolicy);
+            return action;
+        }
+
+        public static IAgentWorkflowAction<TConfiguration> WithRetryPolicy<TConfiguration>(
+            this IAgentWorkflowAction<TConfiguration> action, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
+        {
+            SetRetryPolicy(action.Configuration, retryPolicy);
+            return action;
+        }
+
+        public static IWorkflowTrigger<TConfiguration> WithRetryPolicy<TConfiguration>(
+            this IWorkflowTrigger<TConfiguration> trigger, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
+        {
+            SetRetryPolicy(trigger.Configuration, retryPolicy);
+            return trigger;
+        }
+
+        public static IBodyWorkflowTrigger<TBody, TConfiguration> WithRetryPolicy<TBody, TConfiguration>(
+            this IBodyWorkflowTrigger<TBody, TConfiguration> trigger, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
+        {
+            SetRetryPolicy(trigger.Configuration, retryPolicy);
+            return trigger;
+        }
+
+        public static IOutputWorkflowTrigger<TOutput, TConfiguration> WithRetryPolicy<TOutput, TConfiguration>(
+            this IOutputWorkflowTrigger<TOutput, TConfiguration> trigger, RetryPolicy retryPolicy)
+            where TConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder
+        {
+            SetRetryPolicy(trigger.Configuration, retryPolicy);
+            return trigger;
+        }
+
+        public static IWorkflowAction<TConfiguration> WithSecureInputs<TConfiguration>(
+            this IWorkflowAction<TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(action.Configuration);
+            return action;
+        }
+
+        public static IBodyWorkflowAction<TBody, TConfiguration> WithSecureInputs<TBody, TConfiguration>(
+            this IBodyWorkflowAction<TBody, TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(action.Configuration);
+            return action;
+        }
+
+        public static IOutputWorkflowAction<TOutput, TConfiguration> WithSecureInputs<TOutput, TConfiguration>(
+            this IOutputWorkflowAction<TOutput, TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(action.Configuration);
+            return action;
+        }
+
+        public static IAgentWorkflowAction<TConfiguration> WithSecureInputs<TConfiguration>(
+            this IAgentWorkflowAction<TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(action.Configuration);
+            return action;
+        }
+
+        public static IWorkflowTrigger<TConfiguration> WithSecureInputs<TConfiguration>(
+            this IWorkflowTrigger<TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(trigger.Configuration);
+            return trigger;
+        }
+
+        public static IBodyWorkflowTrigger<TBody, TConfiguration> WithSecureInputs<TBody, TConfiguration>(
+            this IBodyWorkflowTrigger<TBody, TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(trigger.Configuration);
+            return trigger;
+        }
+
+        public static IOutputWorkflowTrigger<TOutput, TConfiguration> WithSecureInputs<TOutput, TConfiguration>(
+            this IOutputWorkflowTrigger<TOutput, TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder
+        {
+            SetSecureInputs(trigger.Configuration);
+            return trigger;
+        }
+
+        public static IWorkflowAction<TConfiguration> WithSecureOutputs<TConfiguration>(
+            this IWorkflowAction<TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            action.Configuration.SecureOutputs = true;
+            return action;
+        }
+
+        public static IBodyWorkflowAction<TBody, TConfiguration> WithSecureOutputs<TBody, TConfiguration>(
+            this IBodyWorkflowAction<TBody, TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            action.Configuration.SecureOutputs = true;
+            return action;
+        }
+
+        public static IOutputWorkflowAction<TOutput, TConfiguration> WithSecureOutputs<TOutput, TConfiguration>(
+            this IOutputWorkflowAction<TOutput, TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            action.Configuration.SecureOutputs = true;
+            return action;
+        }
+
+        public static IAgentWorkflowAction<TConfiguration> WithSecureOutputs<TConfiguration>(
+            this IAgentWorkflowAction<TConfiguration> action)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            action.Configuration.SecureOutputs = true;
+            return action;
+        }
+
+        public static IWorkflowTrigger<TConfiguration> WithSecureOutputs<TConfiguration>(
+            this IWorkflowTrigger<TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            trigger.Configuration.SecureOutputs = true;
+            return trigger;
+        }
+
+        public static IBodyWorkflowTrigger<TBody, TConfiguration> WithSecureOutputs<TBody, TConfiguration>(
+            this IBodyWorkflowTrigger<TBody, TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            trigger.Configuration.SecureOutputs = true;
+            return trigger;
+        }
+
+        public static IOutputWorkflowTrigger<TOutput, TConfiguration> WithSecureOutputs<TOutput, TConfiguration>(
+            this IOutputWorkflowTrigger<TOutput, TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, ISecureOutputsConfigurationHolder
+        {
+            trigger.Configuration.SecureOutputs = true;
+            return trigger;
+        }
+
+        public static IWorkflowAction<TConfiguration> WithIterationConcurrency<TConfiguration>(
+            this IWorkflowAction<TConfiguration> action, int repetitions)
+            where TConfiguration : IWorkflowOperationConfiguration, IIterationConcurrencyConfigurationHolder
+        {
             if (repetitions < 1 || repetitions > 50)
-            {
                 throw new ArgumentOutOfRangeException(nameof(repetitions), "Iteration concurrency must be between 1 and 50.");
-            }
             action.Configuration.MaximumParallelIterations = repetitions;
             return action;
         }
 
-        /// <summary>
-        /// Configures concurrent workflow runs for a trigger.
-        /// </summary>
-        public static TTrigger WithConcurrency<TTrigger>(
-            this TTrigger trigger,
-            int runs,
-            int? maximumWaitingRuns = null)
-            where TTrigger : IWorkflowTrigger
+        public static IWorkflowTrigger<TConfiguration> WithConcurrency<TConfiguration>(
+            this IWorkflowTrigger<TConfiguration> trigger, int runs, int? maximumWaitingRuns = null)
+            where TConfiguration : IWorkflowOperationConfiguration, ITriggerConcurrencyConfigurationHolder
         {
-            if (trigger == null) throw new ArgumentNullException(nameof(trigger));
-            trigger.Configuration.Require(WorkflowTriggerSettings.Concurrency, trigger.Name);
-            if (runs < 1 || runs > 100)
-            {
-                throw new ArgumentOutOfRangeException(nameof(runs), "Trigger concurrency must be between 1 and 100.");
-            }
-            if (maximumWaitingRuns is < 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(maximumWaitingRuns), "Maximum waiting runs must be positive.");
-            }
-            trigger.Configuration.ConcurrentRuns = runs;
-            trigger.Configuration.MaximumWaitingRuns = maximumWaitingRuns;
+            SetConcurrency(trigger.Configuration, runs, maximumWaitingRuns);
             return trigger;
         }
 
-        /// <summary>
-        /// Configures the workflow run client tracking identifier.
-        /// </summary>
-        public static TTrigger WithClientTrackingId<TTrigger>(
-            this TTrigger trigger,
-            Expression<Func<string>> clientTrackingId)
-            where TTrigger : IWorkflowTrigger
+        public static IBodyWorkflowTrigger<TBody, TConfiguration> WithConcurrency<TBody, TConfiguration>(
+            this IBodyWorkflowTrigger<TBody, TConfiguration> trigger, int runs, int? maximumWaitingRuns = null)
+            where TConfiguration : IWorkflowOperationConfiguration, ITriggerConcurrencyConfigurationHolder
         {
-            if (trigger == null) throw new ArgumentNullException(nameof(trigger));
-            var descriptor = WorkflowExpression.Compile(
-                clientTrackingId,
-                nameof(clientTrackingId),
-                required: true);
-            trigger.Configuration.Require(WorkflowTriggerSettings.Correlation, trigger.Name);
-            trigger.Configuration.ClientTrackingId = ExpressionConverter.Convert(descriptor);
+            SetConcurrency(trigger.Configuration, runs, maximumWaitingRuns);
             return trigger;
         }
 
-        /// <summary>
-        /// Enables request-body schema validation for a trigger.
-        /// </summary>
-        public static TTrigger WithSchemaValidation<TTrigger>(this TTrigger trigger)
-            where TTrigger : IWorkflowTrigger
+        public static IOutputWorkflowTrigger<TOutput, TConfiguration> WithConcurrency<TOutput, TConfiguration>(
+            this IOutputWorkflowTrigger<TOutput, TConfiguration> trigger, int runs, int? maximumWaitingRuns = null)
+            where TConfiguration : IWorkflowOperationConfiguration, ITriggerConcurrencyConfigurationHolder
         {
-            if (trigger == null) throw new ArgumentNullException(nameof(trigger));
-            trigger.Configuration.Require(WorkflowTriggerSettings.SchemaValidation, trigger.Name);
+            SetConcurrency(trigger.Configuration, runs, maximumWaitingRuns);
+            return trigger;
+        }
+
+        public static IWorkflowTrigger<TConfiguration> WithClientTrackingId<TConfiguration>(
+            this IWorkflowTrigger<TConfiguration> trigger, Expression<Func<string>> clientTrackingId)
+            where TConfiguration : IWorkflowOperationConfiguration, IClientTrackingIdConfigurationHolder
+        {
+            SetClientTrackingId(trigger.Configuration, clientTrackingId);
+            return trigger;
+        }
+
+        public static IBodyWorkflowTrigger<TBody, TConfiguration> WithClientTrackingId<TBody, TConfiguration>(
+            this IBodyWorkflowTrigger<TBody, TConfiguration> trigger, Expression<Func<string>> clientTrackingId)
+            where TConfiguration : IWorkflowOperationConfiguration, IClientTrackingIdConfigurationHolder
+        {
+            SetClientTrackingId(trigger.Configuration, clientTrackingId);
+            return trigger;
+        }
+
+        public static IOutputWorkflowTrigger<TOutput, TConfiguration> WithClientTrackingId<TOutput, TConfiguration>(
+            this IOutputWorkflowTrigger<TOutput, TConfiguration> trigger, Expression<Func<string>> clientTrackingId)
+            where TConfiguration : IWorkflowOperationConfiguration, IClientTrackingIdConfigurationHolder
+        {
+            SetClientTrackingId(trigger.Configuration, clientTrackingId);
+            return trigger;
+        }
+
+        public static IWorkflowTrigger<TConfiguration> WithSchemaValidation<TConfiguration>(
+            this IWorkflowTrigger<TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, IRequestSchemaValidationConfigurationHolder
+        {
             trigger.Configuration.SchemaValidationEnabled = true;
             return trigger;
+        }
+
+        public static IOutputWorkflowTrigger<TOutput, TConfiguration> WithSchemaValidation<TOutput, TConfiguration>(
+            this IOutputWorkflowTrigger<TOutput, TConfiguration> trigger)
+            where TConfiguration : IWorkflowOperationConfiguration, IRequestSchemaValidationConfigurationHolder
+        {
+            trigger.Configuration.SchemaValidationEnabled = true;
+            return trigger;
+        }
+
+        private static void AddTrackedProperty<TValue>(
+            IWorkflowOperation operation,
+            ITrackedPropertiesConfigurationHolder configuration,
+            string name,
+            Expression<Func<TValue>> value)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("A tracked property name is required.", nameof(name));
+            var descriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
+            if (configuration.TrackedProperties.ContainsKey(name))
+                throw new InvalidOperationException($"Tracked property '{name}' is already configured on operation '{operation.Name}'.");
+            if (configuration.TrackedProperties.Count == 16)
+                throw new InvalidOperationException("Logic Apps supports at most 16 tracked properties per action.");
+            configuration.TrackedProperties.Add(name, ExpressionConverter.ConvertO(descriptor));
+        }
+
+        private static void SetRetryPolicy(
+            IRetryPolicyConfigurationHolder configuration,
+            RetryPolicy retryPolicy) =>
+            configuration.RetryPolicy = retryPolicy ?? throw new ArgumentNullException(nameof(retryPolicy));
+
+        private static void SetSecureInputs<TConfiguration>(TConfiguration configuration)
+            where TConfiguration : ISecureInputsConfigurationHolder
+        {
+            configuration.SecureInputs = true;
+        }
+
+        private static void SetConcurrency(
+            ITriggerConcurrencyConfigurationHolder configuration,
+            int runs,
+            int? maximumWaitingRuns)
+        {
+            if (runs < 1 || runs > 100)
+                throw new ArgumentOutOfRangeException(nameof(runs), "Trigger concurrency must be between 1 and 100.");
+            if (maximumWaitingRuns is < 1)
+                throw new ArgumentOutOfRangeException(nameof(maximumWaitingRuns), "Maximum waiting runs must be positive.");
+            configuration.ConcurrentRuns = runs;
+            configuration.MaximumWaitingRuns = maximumWaitingRuns;
+        }
+
+        private static void SetClientTrackingId(
+            IClientTrackingIdConfigurationHolder configuration,
+            Expression<Func<string>> clientTrackingId)
+        {
+            var descriptor = WorkflowExpression.Compile(clientTrackingId, nameof(clientTrackingId), required: true);
+            configuration.ClientTrackingId = ExpressionConverter.Convert(descriptor);
         }
     }
 }

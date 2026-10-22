@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
     public class StabilityaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<EnginesListGetResponseItem[]> EnginesListGet(Expression<Func<string>> organization = null)
+        public IBodyWorkflowAction<EnginesListGetResponseItem[], ApiConnectionActionConfiguration> EnginesListGet(Expression<Func<string>> organization = null)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            return new DeferredBodyAction<EnginesListGetResponseItem[]>(() =>
+            return new DeferredBodyAction<EnginesListGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/engines/list";
                 var apiCallHttpMethod = "get";
@@ -23,11 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
                 return new ApiConnectionAction<EnginesListGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<UserAccountGetResponse> UserAccountGet()
+        public IBodyWorkflowAction<UserAccountGetResponse, ApiConnectionActionConfiguration> UserAccountGet()
         {
             var apiCallPath = "/v1/user/account";
             var apiCallHttpMethod = "get";
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<UserBalanceGetResponse> UserBalanceGet()
+        public IBodyWorkflowAction<UserBalanceGetResponse, ApiConnectionActionConfiguration> UserBalanceGet()
         {
             var apiCallPath = "/v1/user/balance";
             var apiCallHttpMethod = "get";
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationTextImagePostResponse> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
+        public IBodyWorkflowAction<GenerationTextImagePostResponse, ApiConnectionActionConfiguration> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
             var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
             var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            return new DeferredBodyAction<GenerationTextImagePostResponse>(() =>
+            return new DeferredBodyAction<GenerationTextImagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/text-to-image", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -129,11 +129,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 }
 
                 return new ApiConnectionAction<GenerationTextImagePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationImageImagePostResponse> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<bodyinitImageModeInput>> bodyinitImageMode = null, Expression<Func<double>> bodyimageStrength = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
+        public IBodyWorkflowAction<GenerationImageImagePostResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<bodyinitImageModeInput>> bodyinitImageMode = null, Expression<Func<double>> bodyimageStrength = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_bodyinitImage = WorkflowExpression.Compile(bodyinitImage, nameof(bodyinitImage), required: true);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
             var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
             var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            return new DeferredBodyAction<GenerationImageImagePostResponse>(() =>
+            return new DeferredBodyAction<GenerationImageImagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -234,18 +234,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 }
 
                 return new ApiConnectionAction<GenerationImageImagePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationUpscalePostResponse> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> bodyimage, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null)
+        public IBodyWorkflowAction<GenerationUpscalePostResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> bodyimage, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
             var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            return new DeferredBodyAction<GenerationUpscalePostResponse>(() =>
+            return new DeferredBodyAction<GenerationUpscalePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/upscale", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -276,11 +276,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 }
 
                 return new ApiConnectionAction<GenerationUpscalePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationMaskPostResponse> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<bodymaskSourceInput>> bodymaskSource, Expression<Func<string>> bodymaskImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
+        public IBodyWorkflowAction<GenerationMaskPostResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<bodymaskSourceInput>> bodymaskSource, Expression<Func<string>> bodymaskImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_bodyinitImage = WorkflowExpression.Compile(bodyinitImage, nameof(bodyinitImage), required: true);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
             var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
             var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            return new DeferredBodyAction<GenerationMaskPostResponse>(() =>
+            return new DeferredBodyAction<GenerationMaskPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/masking", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -373,18 +373,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 }
 
                 return new ApiConnectionAction<GenerationMaskPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableImageCorePostResponse> StableImageCore(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
+        public IBodyWorkflowAction<StableImageCorePostResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
         {
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
             var __workflow_bodyaspectRatio = WorkflowExpression.Compile(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
             var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
             var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
             var __workflow_bodystylePreset = WorkflowExpression.Compile(bodystylePreset, nameof(bodystylePreset), required: false);
-            return new DeferredBodyAction<StableImageCorePostResponse>(() =>
+            return new DeferredBodyAction<StableImageCorePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/core";
                 var apiCallHttpMethod = "post";
@@ -433,11 +433,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 }
 
                 return new ApiConnectionAction<StableImageCorePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableDiffusionPostResponse> StableDiffusion(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
+        public IBodyWorkflowAction<StableDiffusionPostResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
         {
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
             var __workflow_bodyaspectRatio = WorkflowExpression.Compile(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
             var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
             var __workflow_bodystylePreset = WorkflowExpression.Compile(bodystylePreset, nameof(bodystylePreset), required: false);
-            return new DeferredBodyAction<StableDiffusionPostResponse>(() =>
+            return new DeferredBodyAction<StableDiffusionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/sd3";
                 var apiCallHttpMethod = "post";
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 }
 
                 return new ApiConnectionAction<StableDiffusionPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

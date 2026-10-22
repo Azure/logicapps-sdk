@@ -58,14 +58,16 @@ var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger(requestBodyJsonSchema: 
     .WithSchemaValidation()
     .WithClientTrackingId(() => "orders")
     .WithConcurrency(runs: 1)
-    .WithSecureInputsAndOutputs();
+    .WithSecureInputs()
+    .WithSecureOutputs();
 
 var call = WorkflowActions.BuiltIn.HttpAction(
         uri: () => new Uri("https://api.example.com/orders"),
         method: () => HttpMethod.Post)
     .WithRetryPolicy(RetryPolicy.Fixed(count: 3, interval: TimeSpan.FromSeconds(30)))
     .WithTrackedProperty("OrderId", () => trigger.TriggerOutput.Body["orderId"])
-    .WithSecureInputsAndOutputs();
+    .WithSecureInputs()
+    .WithSecureOutputs();
 ```
 
 Available settings depend on the operation. They include tracked properties, retry policies, secure inputs and outputs, trigger correlation and concurrency, HTTP request schema validation, and For Each iteration concurrency.

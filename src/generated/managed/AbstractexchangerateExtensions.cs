@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
     public class AbstractexchangerateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
-        public IBodyWorkflowAction<LiveRatesResponse> LiveRates(Expression<Func<string>> @base, Expression<Func<string>> target = null)
+        public IBodyWorkflowAction<LiveRatesResponse, ApiConnectionActionConfiguration> LiveRates(Expression<Func<string>> @base, Expression<Func<string>> target = null)
         {
             var __workflow_base = WorkflowExpression.Compile(@base, nameof(@base), required: true);
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: false);
-            return new DeferredBodyAction<LiveRatesResponse>(() =>
+            return new DeferredBodyAction<LiveRatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/live/";
                 var apiCallHttpMethod = "get";
@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
                 if (__workflow_target != null)
                     callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
                 return new ApiConnectionAction<LiveRatesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
-        public IBodyWorkflowAction<ConvertResponse> Convert(Expression<Func<string>> @base, Expression<Func<string>> target, Expression<Func<string>> date = null, Expression<Func<double>> baseAmount = null)
+        public IBodyWorkflowAction<ConvertResponse, ApiConnectionActionConfiguration> Convert(Expression<Func<string>> @base, Expression<Func<string>> target, Expression<Func<string>> date = null, Expression<Func<double>> baseAmount = null)
         {
             var __workflow_base = WorkflowExpression.Compile(@base, nameof(@base), required: true);
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_baseAmount = WorkflowExpression.Compile(baseAmount, nameof(baseAmount), required: false);
-            return new DeferredBodyAction<ConvertResponse>(() =>
+            return new DeferredBodyAction<ConvertResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/convert/";
                 var apiCallHttpMethod = "get";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
                 if (__workflow_baseAmount != null)
                     callPayload.Queries["base_amount"] = ExpressionConverter.Convert(__workflow_baseAmount);
                 return new ApiConnectionAction<ConvertResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

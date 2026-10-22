@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     public class BywordActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlePostResponse> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
+        public IBodyWorkflowAction<ArticlePostResponse, ApiConnectionActionConfiguration> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
         {
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
             var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
             var __workflow_bodyundetectable = WorkflowExpression.Compile(bodyundetectable, nameof(bodyundetectable), required: false);
             var __workflow_bodytone = WorkflowExpression.Compile(bodytone, nameof(bodytone), required: false);
             var __workflow_bodylength = WorkflowExpression.Compile(bodylength, nameof(bodylength), required: false);
-            return new DeferredBodyAction<ArticlePostResponse>(() =>
+            return new DeferredBodyAction<ArticlePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create_article";
                 var apiCallHttpMethod = "post";
@@ -68,14 +68,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
                 }
 
                 return new ApiConnectionAction<ArticlePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet(Expression<Func<string>> bodyarticleID = null)
+        public IBodyWorkflowAction<ArticleGetPostResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<string>> bodyarticleID = null)
         {
             var __workflow_bodyarticleID = WorkflowExpression.Compile(bodyarticleID, nameof(bodyarticleID), required: false);
-            return new DeferredBodyAction<ArticleGetPostResponse>(() =>
+            return new DeferredBodyAction<ArticleGetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/get_article";
                 var apiCallHttpMethod = "post";
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
                 }
 
                 return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles(Expression<Func<int>> bodycursor = null)
+        public IBodyWorkflowAction<ArticlesPostResponseItem[], ApiConnectionActionConfiguration> Articles(Expression<Func<int>> bodycursor = null)
         {
             var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
-            return new DeferredBodyAction<ArticlesPostResponseItem[]>(() =>
+            return new DeferredBodyAction<ArticlesPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list_articles";
                 var apiCallHttpMethod = "post";
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
                 }
 
                 return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

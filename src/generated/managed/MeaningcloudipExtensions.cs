@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
     public class MeaningcloudipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
@@ -22,17 +22,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
             var __workflow_uw = WorkflowExpression.Compile(uw, nameof(uw), required: false);
-            return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
+            return new DeferredBodyAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sentiment-2.1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClassificationResponse> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
+        public IBodyWorkflowAction<TextClassificationResponse, ApiConnectionActionConfiguration> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
@@ -41,50 +41,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             var __workflow_debug = WorkflowExpression.Compile(debug, nameof(debug), required: false);
             var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
             var __workflow_expandHierarchy = WorkflowExpression.Compile(expandHierarchy, nameof(expandHierarchy), required: false);
-            return new DeferredBodyAction<TextClassificationResponse>(() =>
+            return new DeferredBodyAction<TextClassificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/class-2.0";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TextClassificationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
+        public IBodyWorkflowAction<CorporateReputationResponse, ApiConnectionActionConfiguration> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
-            return new DeferredBodyAction<CorporateReputationResponse>(() =>
+            return new DeferredBodyAction<CorporateReputationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reputation-2.0";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
+        public IBodyWorkflowAction<SummarizationResponse, ApiConnectionActionConfiguration> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
             var __workflow_sentences = WorkflowExpression.Compile(sentences, nameof(sentences), required: false);
             var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
-            return new DeferredBodyAction<SummarizationResponse>(() =>
+            return new DeferredBodyAction<SummarizationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/summarization-1.0";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SummarizationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
+        public IBodyWorkflowAction<DeepCategorizationResponse, ApiConnectionActionConfiguration> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
@@ -94,31 +94,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             var __workflow_debug = WorkflowExpression.Compile(debug, nameof(debug), required: false);
             var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
             var __workflow_polarity = WorkflowExpression.Compile(polarity, nameof(polarity), required: false);
-            return new DeferredBodyAction<DeepCategorizationResponse>(() =>
+            return new DeferredBodyAction<DeepCategorizationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deepcategorization-1.0";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
+        public IBodyWorkflowAction<LanguageIdentificationResponse, ApiConnectionActionConfiguration> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
-            return new DeferredBodyAction<LanguageIdentificationResponse>(() =>
+            return new DeferredBodyAction<LanguageIdentificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lang-4.0/identification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClusteringResponse> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
+        public IBodyWorkflowAction<TextClusteringResponse, ApiConnectionActionConfiguration> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
@@ -126,28 +126,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
             var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             var __workflow_sw = WorkflowExpression.Compile(sw, nameof(sw), required: false);
-            return new DeferredBodyAction<TextClusteringResponse>(() =>
+            return new DeferredBodyAction<TextClusteringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/clustering-1.1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TextClusteringResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
+        public IBodyWorkflowAction<DocumentStructureResponse, ApiConnectionActionConfiguration> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
             var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
-            return new DeferredBodyAction<DocumentStructureResponse>(() =>
+            return new DeferredBodyAction<DocumentStructureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documentstructure-1.0";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

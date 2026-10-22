@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
     public class VentipixassetandinventoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IBodyWorkflowAction<JToken> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
         {
             var __workflow_listIDDynamic = WorkflowExpression.Compile(listIDDynamic, nameof(listIDDynamic), required: true);
             var __workflow_barcodeValue = WorkflowExpression.Compile(barcodeValue, nameof(barcodeValue), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIDDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -26,22 +26,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
                 if (__workflow_location != null)
                     callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IWorkflowAction CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
         {
             var __workflow_listIDDynamic = WorkflowExpression.Compile(listIDDynamic, nameof(listIDDynamic), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIDDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

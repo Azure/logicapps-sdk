@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
     public class FaanotamActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
-        public IBodyWorkflowAction<GetNotamResponse> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
+        public IBodyWorkflowAction<GetNotamResponse, ApiConnectionActionConfiguration> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
             var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
             var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
-            return new DeferredBodyAction<GetNotamResponse>(() =>
+            return new DeferredBodyAction<GetNotamResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notamapi/v1/notams";
                 var apiCallHttpMethod = "get";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
                 callPayload.Headers["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
                 callPayload.Headers["client_secret"] = ExpressionConverter.Convert(__workflow_clientSecret);
                 return new ApiConnectionAction<GetNotamResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

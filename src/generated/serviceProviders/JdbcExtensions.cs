@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,24 +16,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
     public class JdbcActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<string[]> GetTables()
+        public IBodyWorkflowAction<string[], GetTablesActionConfiguration> GetTables()
         {
-            return new DeferredBodyAction<string[]>(() =>
+            return new DeferredBodyAction<string[], GetTablesActionConfiguration>(() =>
             {
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
                 };
                 return new ServiceProviderAction<string[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
+        public IBodyWorkflowAction<JToken[], RawQueryActionConfiguration> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], RawQueryActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
@@ -47,14 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
+        public IBodyWorkflowAction<GetSchemaOutputItem[], GetSchemaActionConfiguration> GetSchema(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredBodyAction<GetSchemaOutputItem[]>(() =>
+            return new DeferredBodyAction<GetSchemaOutputItem[], GetSchemaActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -64,8 +65,32 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class GetTablesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class RawQueryActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSchemaActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class GetSchemaOutputItem

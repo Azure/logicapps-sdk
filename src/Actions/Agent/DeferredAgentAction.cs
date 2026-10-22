@@ -8,18 +8,21 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Defers agent input rendering while retaining the agent tool authoring surface.
     /// </summary>
-    internal sealed class DeferredAgentAction : DeferredWorkflowAction, IAgentWorkflowAction
+    internal sealed class DeferredAgentAction<TConfiguration> :
+        DeferredWorkflowAction<TConfiguration>,
+        IAgentWorkflowAction<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         private readonly Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>> tools =
             new Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>>();
 
         internal DeferredAgentAction(Func<WorkflowActionBase> factory)
-            : base(factory, WorkflowActionSettingProfiles.RetryTracked)
+            : base(factory)
         {
         }
 
         /// <inheritdoc />
-        public IAgentWorkflowAction AddTool<T>(
+        public IAgentWorkflowAction<TConfiguration> AddTool<T>(
             Func<IAgentToolContext<T>, IWorkflowAction> tool,
             string description,
             T parameters)
@@ -38,8 +41,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             return this;
         }
 
+        IAgentWorkflowAction IAgentWorkflowAction.AddTool<T>(
+            Func<IAgentToolContext<T>, IWorkflowAction> tool,
+            string description,
+            T parameters) =>
+            this.AddTool(tool, description, parameters);
+
         /// <inheritdoc />
-        public IAgentWorkflowAction AddTool<T>(
+        public IAgentWorkflowAction<TConfiguration> AddTool<T>(
             Func<IAgentToolContext<T>, OperationChain> tool,
             string description,
             T parameters)
@@ -60,8 +69,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             return this;
         }
 
+        IAgentWorkflowAction IAgentWorkflowAction.AddTool<T>(
+            Func<IAgentToolContext<T>, OperationChain> tool,
+            string description,
+            T parameters) =>
+            this.AddTool(tool, description, parameters);
+
         /// <inheritdoc />
-        protected internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var definition = base.BuildActionDefinition(flowName, flowKind);
             definition.Tools = this.tools.ToDictionary(pair => pair.Key, pair => pair.Value(flowName, flowKind));

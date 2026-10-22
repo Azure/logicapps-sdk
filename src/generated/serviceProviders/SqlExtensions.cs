@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
     public class SqlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
+        public IBodyWorkflowAction<JToken[], ExecuteQueryActionConfiguration> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ExecuteQueryActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
@@ -34,15 +35,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
+        public IWorkflowAction<InsertRowActionConfiguration> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_setColumns = WorkflowExpression.Compile(setColumns, nameof(setColumns), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredWorkflowAction<InsertRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -56,17 +57,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken[]> DeleteRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
+        public IBodyWorkflowAction<JToken[], DeleteRowsActionConfiguration> DeleteRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_columnValuesForWhereCondition = WorkflowExpression.Compile(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
             var __workflow_primaryKey = WorkflowExpression.Compile(primaryKey, nameof(primaryKey), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], DeleteRowsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -86,17 +87,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null, Expression<Func<object>> queries = null)
+        public IBodyWorkflowAction<JToken[], GetRowsActionConfiguration> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null, Expression<Func<object>> queries = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_columnValuesForWhereCondition = WorkflowExpression.Compile(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
             var __workflow_primaryKey = WorkflowExpression.Compile(primaryKey, nameof(primaryKey), required: false);
             var __workflow_queries = WorkflowExpression.Compile(queries, nameof(queries), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], GetRowsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -121,15 +122,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<GetRowsV2Output> GetRowsV2(Expression<Func<string>> tableName, Expression<Func<object>> queries = null)
+        public IBodyWorkflowAction<GetRowsV2Output, GetRowsV2ActionConfiguration> GetRowsV2(Expression<Func<string>> tableName, Expression<Func<object>> queries = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_queries = WorkflowExpression.Compile(queries, nameof(queries), required: false);
-            return new DeferredBodyAction<GetRowsV2Output>(() =>
+            return new DeferredBodyAction<GetRowsV2Output, GetRowsV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -144,17 +145,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<GetRowsV2Output>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken[]> UpdateRows(Expression<Func<string>> tableName, Expression<Func<object>> setColumns, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
+        public IBodyWorkflowAction<JToken[], UpdateRowsActionConfiguration> UpdateRows(Expression<Func<string>> tableName, Expression<Func<object>> setColumns, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_setColumns = WorkflowExpression.Compile(setColumns, nameof(setColumns), required: true);
             var __workflow_columnValuesForWhereCondition = WorkflowExpression.Compile(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
             var __workflow_primaryKey = WorkflowExpression.Compile(primaryKey, nameof(primaryKey), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], UpdateRowsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -175,29 +176,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<JToken[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables()
+        public IBodyWorkflowAction<GetTablesOutputItem[], GetTablesActionConfiguration> GetTables()
         {
-            return new DeferredBodyAction<GetTablesOutputItem[]>(() =>
+            return new DeferredBodyAction<GetTablesOutputItem[], GetTablesActionConfiguration>(() =>
             {
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "getTables", connectionName: connectionId)
                 };
                 return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedureName, Expression<Func<object>> storedProcedureParameters = null, Expression<Func<bool>> includeEmptyResultSets = null)
+        public IBodyWorkflowAction<ExecuteStoredProcedureOutput, ExecuteStoredProcedureActionConfiguration> ExecuteStoredProcedure(Expression<Func<string>> storedProcedureName, Expression<Func<object>> storedProcedureParameters = null, Expression<Func<bool>> includeEmptyResultSets = null)
         {
             var __workflow_storedProcedureName = WorkflowExpression.Compile(storedProcedureName, nameof(storedProcedureName), required: true);
             var __workflow_storedProcedureParameters = WorkflowExpression.Compile(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
             var __workflow_includeEmptyResultSets = WorkflowExpression.Compile(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
-            return new DeferredBodyAction<ExecuteStoredProcedureOutput>(() =>
+            return new DeferredBodyAction<ExecuteStoredProcedureOutput, ExecuteStoredProcedureActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["storedProcedureName"] = ExpressionConverter.ConvertO(__workflow_storedProcedureName);
@@ -221,16 +222,64 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ExecuteStoredProcedureOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties);
+            });
         }
+    }
+
+    public sealed class ExecuteQueryActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class InsertRowActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class DeleteRowsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class GetRowsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class GetRowsV2ActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class UpdateRowsActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class GetTablesActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class ExecuteStoredProcedureActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
     }
 
     public class SqlTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsUpdated(Expression<Func<string>> tableName)
+        public IBodyWorkflowTrigger<JToken[], WhenARowIsUpdatedTriggerConfiguration> WhenARowIsUpdated(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredBodyTrigger<JToken[]>(() =>
+            return new DeferredBodyTrigger<JToken[], WhenARowIsUpdatedTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -240,13 +289,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsDeleted(Expression<Func<string>> tableName)
+        public IBodyWorkflowTrigger<JToken[], WhenARowIsDeletedTriggerConfiguration> WhenARowIsDeleted(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredBodyTrigger<JToken[]>(() =>
+            return new DeferredBodyTrigger<JToken[], WhenARowIsDeletedTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -256,13 +305,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsInserted(Expression<Func<string>> tableName)
+        public IBodyWorkflowTrigger<JToken[], WhenARowIsInsertedTriggerConfiguration> WhenARowIsInserted(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredBodyTrigger<JToken[]>(() =>
+            return new DeferredBodyTrigger<JToken[], WhenARowIsInsertedTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -272,13 +321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsModified(Expression<Func<string>> tableName)
+        public IBodyWorkflowTrigger<JToken[], WhenARowIsModifiedTriggerConfiguration> WhenARowIsModified(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredBodyTrigger<JToken[]>(() =>
+            return new DeferredBodyTrigger<JToken[], WhenARowIsModifiedTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -288,8 +337,32 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class WhenARowIsUpdatedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class WhenARowIsDeletedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class WhenARowIsInsertedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class WhenARowIsModifiedTriggerConfiguration : IWorkflowOperationConfiguration, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class GetRowsV2Output

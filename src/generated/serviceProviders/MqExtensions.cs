@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,12 +16,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
     public class MqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<BrowseMessageOutput, BrowseMessageActionConfiguration> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
             var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
-            return new DeferredBodyAction<BrowseMessageOutput>(() =>
+            return new DeferredBodyAction<BrowseMessageOutput, BrowseMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -36,16 +37,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<BrowseBatchOutput, BrowseBatchActionConfiguration> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
             var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
-            return new DeferredBodyAction<BrowseBatchOutput>(() =>
+            return new DeferredBodyAction<BrowseBatchOutput, BrowseBatchActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -61,16 +62,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<ReceiveMessageOutput, ReceiveMessageActionConfiguration> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
             var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
-            return new DeferredBodyAction<ReceiveMessageOutput>(() =>
+            return new DeferredBodyAction<ReceiveMessageOutput, ReceiveMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -86,16 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<ReceiveBatchOutput, ReceiveBatchActionConfiguration> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
             var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
-            return new DeferredBodyAction<ReceiveBatchOutput>(() =>
+            return new DeferredBodyAction<ReceiveBatchOutput, ReceiveBatchActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -111,16 +112,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
+        public IBodyWorkflowAction<SendMessageOutput, SendMessageActionConfiguration> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
-            return new DeferredBodyAction<SendMessageOutput>(() =>
+            return new DeferredBodyAction<SendMessageOutput, SendMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -136,16 +137,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
+        public IBodyWorkflowAction<SendBatchOutput, SendBatchActionConfiguration> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_messageList = WorkflowExpression.Compile(messageList, nameof(messageList), required: true);
             var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
-            return new DeferredBodyAction<SendBatchOutput>(() =>
+            return new DeferredBodyAction<SendBatchOutput, SendBatchActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -161,18 +162,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
+        public IBodyWorkflowAction<CompleteMessageOutput, CompleteMessageActionConfiguration> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
         {
             var __workflow_operationConnectionId = WorkflowExpression.Compile(operationConnectionId, nameof(operationConnectionId), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_uniqueId = WorkflowExpression.Compile(uniqueId, nameof(uniqueId), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_completeAction = WorkflowExpression.Compile(completeAction, nameof(completeAction), required: true);
-            return new DeferredBodyAction<CompleteMessageOutput>(() =>
+            return new DeferredBodyAction<CompleteMessageOutput, CompleteMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(__workflow_operationConnectionId);
@@ -186,16 +187,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
+        public IBodyWorkflowAction<CompleteBatchOutput, CompleteBatchActionConfiguration> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
         {
             var __workflow_operationConnectionId = WorkflowExpression.Compile(operationConnectionId, nameof(operationConnectionId), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_completeAction = WorkflowExpression.Compile(completeAction, nameof(completeAction), required: true);
-            return new DeferredBodyAction<CompleteBatchOutput>(() =>
+            return new DeferredBodyAction<CompleteBatchOutput, CompleteBatchActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(__workflow_operationConnectionId);
@@ -207,17 +208,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
+        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput, MoveMessageToDeadLetterQueueActionConfiguration> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
         {
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_reasonCode = WorkflowExpression.Compile(reasonCode, nameof(reasonCode), required: true);
             var __workflow_deadLetterQueueName = WorkflowExpression.Compile(deadLetterQueueName, nameof(deadLetterQueueName), required: false);
             var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
-            return new DeferredBodyAction<MoveMessageToDeadLetterQueueOutput>(() =>
+            return new DeferredBodyAction<MoveMessageToDeadLetterQueueOutput, MoveMessageToDeadLetterQueueActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
@@ -238,17 +239,89 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
-            }, WorkflowActionSettings.RetryPolicy | WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class BrowseMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class BrowseBatchActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ReceiveMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class ReceiveBatchActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SendMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class SendBatchActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CompleteMessageActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class CompleteBatchActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class MoveMessageToDeadLetterQueueActionConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class MqTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_waitIntervalInSeconds = WorkflowExpression.Compile(waitIntervalInSeconds, nameof(waitIntervalInSeconds), required: false);
-            return new DeferredBodyTrigger<PollAvailableOutput>(() =>
+            return new DeferredBodyTrigger<PollAvailableOutput, PollAvailableTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -263,15 +336,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
 
-        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowTrigger<PollBrowseMessagesOutput, PollBrowseMessagesTriggerConfiguration> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
             var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
-            return new DeferredBodyTrigger<PollBrowseMessagesOutput>(() =>
+            return new DeferredBodyTrigger<PollBrowseMessagesOutput, PollBrowseMessagesTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -287,15 +360,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
-            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
 
-        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
             var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
-            return new DeferredBodyTrigger<PollMessagesOutput>(() =>
+            return new DeferredBodyTrigger<PollMessagesOutput, PollMessagesTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -311,8 +384,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, WorkflowTriggerSettings.RetryPolicy | WorkflowTriggerSettings.SecureInputs | WorkflowTriggerSettings.SecureOutputs);
+            });
         }
+    }
+
+    public sealed class PollAvailableTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class PollBrowseMessagesTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
+    }
+
+    public sealed class PollMessagesTriggerConfiguration : IWorkflowOperationConfiguration, IRetryPolicyConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public RetryPolicy RetryPolicy { get; set; }
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class PollAvailableOutput

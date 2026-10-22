@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
     public class ServiceobjectsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AVIGetAddressInfoResponse> AVIGetAddressInfo(Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> outputLanguage = null)
+        public IBodyWorkflowAction<AVIGetAddressInfoResponse, ApiConnectionActionConfiguration> AVIGetAddressInfo(Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> outputLanguage = null)
         {
             var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: false);
             var __workflow_address2 = WorkflowExpression.Compile(address2, nameof(address2), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_outputLanguage = WorkflowExpression.Compile(outputLanguage, nameof(outputLanguage), required: false);
-            return new DeferredBodyAction<AVIGetAddressInfoResponse>(() =>
+            return new DeferredBodyAction<AVIGetAddressInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AVI/api.svc/json/GetAddressInfo";
                 var apiCallHttpMethod = "get";
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_outputLanguage != null)
                     callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(__workflow_outputLanguage);
                 return new ApiConnectionAction<AVIGetAddressInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AGIPlaceSearchResponse> AGIPlaceSearch(Expression<Func<string>> singleLine = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> boundaries = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null, Expression<Func<string>> extras = null)
+        public IBodyWorkflowAction<AGIPlaceSearchResponse, ApiConnectionActionConfiguration> AGIPlaceSearch(Expression<Func<string>> singleLine = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> boundaries = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null, Expression<Func<string>> extras = null)
         {
             var __workflow_singleLine = WorkflowExpression.Compile(singleLine, nameof(singleLine), required: false);
             var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: false);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             var __workflow_searchType = WorkflowExpression.Compile(searchType, nameof(searchType), required: false);
             var __workflow_extras = WorkflowExpression.Compile(extras, nameof(extras), required: false);
-            return new DeferredBodyAction<AGIPlaceSearchResponse>(() =>
+            return new DeferredBodyAction<AGIPlaceSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AGI/api.svc/json/PlaceSearch";
                 var apiCallHttpMethod = "get";
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_extras != null)
                     callPayload.Queries["Extras"] = ExpressionConverter.Convert(__workflow_extras);
                 return new ApiConnectionAction<AGIPlaceSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AGIReverseSearchResponse> AGIReverseSearch(Expression<Func<string>> latitude = null, Expression<Func<string>> longitude = null, Expression<Func<string>> searchRadius = null, Expression<Func<string>> country = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null)
+        public IBodyWorkflowAction<AGIReverseSearchResponse, ApiConnectionActionConfiguration> AGIReverseSearch(Expression<Func<string>> latitude = null, Expression<Func<string>> longitude = null, Expression<Func<string>> searchRadius = null, Expression<Func<string>> country = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: false);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             var __workflow_searchType = WorkflowExpression.Compile(searchType, nameof(searchType), required: false);
-            return new DeferredBodyAction<AGIReverseSearchResponse>(() =>
+            return new DeferredBodyAction<AGIReverseSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AGI/api.svc/json/ReverseSearch";
                 var apiCallHttpMethod = "get";
@@ -134,15 +134,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_searchType != null)
                     callPayload.Queries["SearchType"] = ExpressionConverter.Convert(__workflow_searchType);
                 return new ApiConnectionAction<AGIReverseSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> PE2IGetInternationalExchangeInfo(Expression<Func<string>> phoneNumber = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse, ApiConnectionActionConfiguration> PE2IGetInternationalExchangeInfo(Expression<Func<string>> phoneNumber = null, Expression<Func<string>> country = null)
         {
             var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<PE2IGetInternationalExchangeInfoResponse>(() =>
+            return new DeferredBodyAction<PE2IGetInternationalExchangeInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PE2/web.svc/json/GetInternationalExchangeInfo";
                 var apiCallHttpMethod = "get";
@@ -152,11 +152,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_country != null)
                     callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<PE2IGetInternationalExchangeInfoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> LVIValidateLeadInternational(Expression<Func<string>> fullName = null, Expression<Func<string>> salutation = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> businessName = null, Expression<Func<string>> businessDomain = null, Expression<Func<string>> businessEIN = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> phone1 = null, Expression<Func<string>> phone2 = null, Expression<Func<string>> email = null, Expression<Func<string>> iPAddress = null, Expression<Func<string>> gender = null, Expression<Func<string>> dateOfBirth = null, Expression<Func<string>> uTCCaptureTime = null, Expression<Func<string>> outputLanguage = null, Expression<Func<string>> testType = null)
+        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse, ApiConnectionActionConfiguration> LVIValidateLeadInternational(Expression<Func<string>> fullName = null, Expression<Func<string>> salutation = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> businessName = null, Expression<Func<string>> businessDomain = null, Expression<Func<string>> businessEIN = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> phone1 = null, Expression<Func<string>> phone2 = null, Expression<Func<string>> email = null, Expression<Func<string>> iPAddress = null, Expression<Func<string>> gender = null, Expression<Func<string>> dateOfBirth = null, Expression<Func<string>> uTCCaptureTime = null, Expression<Func<string>> outputLanguage = null, Expression<Func<string>> testType = null)
         {
             var __workflow_fullName = WorkflowExpression.Compile(fullName, nameof(fullName), required: false);
             var __workflow_salutation = WorkflowExpression.Compile(salutation, nameof(salutation), required: false);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_uTCCaptureTime = WorkflowExpression.Compile(uTCCaptureTime, nameof(uTCCaptureTime), required: false);
             var __workflow_outputLanguage = WorkflowExpression.Compile(outputLanguage, nameof(outputLanguage), required: false);
             var __workflow_testType = WorkflowExpression.Compile(testType, nameof(testType), required: false);
-            return new DeferredBodyAction<LVIValidateLeadInternationalResponse>(() =>
+            return new DeferredBodyAction<LVIValidateLeadInternationalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/LVI/api.svc/json/ValidateLeadInternational";
                 var apiCallHttpMethod = "get";
@@ -239,11 +239,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_testType != null)
                     callPayload.Queries["TestType"] = ExpressionConverter.Convert(__workflow_testType);
                 return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches(Expression<Func<string>> businessName = null, Expression<Func<string>> address = null, Expression<Func<string>> address2 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null)
+        public IBodyWorkflowAction<AV3GetBestMatchesResponse, ApiConnectionActionConfiguration> AV3GetBestMatches(Expression<Func<string>> businessName = null, Expression<Func<string>> address = null, Expression<Func<string>> address2 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null)
         {
             var __workflow_businessName = WorkflowExpression.Compile(businessName, nameof(businessName), required: false);
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
-            return new DeferredBodyAction<AV3GetBestMatchesResponse>(() =>
+            return new DeferredBodyAction<AV3GetBestMatchesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AV3/api.svc/GetBestMatchesJson";
                 var apiCallHttpMethod = "get";
@@ -269,14 +269,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_postalCode != null)
                     callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
                 return new ApiConnectionAction<AV3GetBestMatchesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
+        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response, ApiConnectionActionConfiguration> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
         {
             var __workflow_iPAddress = WorkflowExpression.Compile(iPAddress, nameof(iPAddress), required: false);
-            return new DeferredBodyAction<IPAVGetLocationByIPV4Response>(() =>
+            return new DeferredBodyAction<IPAVGetLocationByIPV4Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
                 var apiCallHttpMethod = "get";
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                 if (__workflow_iPAddress != null)
                     callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
                 return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

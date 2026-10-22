@@ -12,16 +12,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip
     public class OwlbotipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "owlbotip")]
-        public IBodyWorkflowAction<DefResponse> Def(Expression<Func<string>> word)
+        public IBodyWorkflowAction<DefResponse, ApiConnectionActionConfiguration> Def(Expression<Func<string>> word)
         {
             var __workflow_word = WorkflowExpression.Compile(word, nameof(word), required: true);
-            return new DeferredBodyAction<DefResponse>(() =>
+            return new DeferredBodyAction<DefResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_word.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DefResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

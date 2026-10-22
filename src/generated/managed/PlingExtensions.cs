@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
     public class PlingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
             var __workflow_bodyaudienceUsers = WorkflowExpression.Compile(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/messages", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IBodyWorkflowAction<GetProfilesResponseItem[]> GetProfiles()
+        public IBodyWorkflowAction<GetProfilesResponseItem[], ApiConnectionActionConfiguration> GetProfiles()
         {
             var apiCallPath = "/profiles";
             var apiCallHttpMethod = "get";
@@ -61,16 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
+        public IBodyWorkflowAction<GetTemplatesResponseItem[], ApiConnectionActionConfiguration> GetTemplates(Expression<Func<string>> profileId)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
-            return new DeferredBodyAction<GetTemplatesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetTemplatesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/templates", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

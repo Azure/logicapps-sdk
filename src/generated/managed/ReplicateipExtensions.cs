@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
     public class ReplicateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<PredictionListResponse> PredictionList()
+        public IBodyWorkflowAction<PredictionListResponse, ApiConnectionActionConfiguration> PredictionList()
         {
             var apiCallPath = "/predictions";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<PredictionPostResponse> Prediction(Expression<Func<string>> bodyversion, Expression<Func<string>> bodyinputtext = null, Expression<Func<string>> bodyinputprompt = null, Expression<Func<string>> bodyinputpromptStrength = null, Expression<Func<int>> bodyinputwidth = null, Expression<Func<int>> bodyinputheight = null, Expression<Func<string>> bodyinputscale = null, Expression<Func<int>> bodyinputnumOutputs = null, Expression<Func<int>> bodyinputnumInferenceSteps = null, Expression<Func<string>> bodyinputguidanceScale = null, Expression<Func<int>> bodyinputseed = null, Expression<Func<string>> bodywebhookCompleted = null)
+        public IBodyWorkflowAction<PredictionPostResponse, ApiConnectionActionConfiguration> Prediction(Expression<Func<string>> bodyversion, Expression<Func<string>> bodyinputtext = null, Expression<Func<string>> bodyinputprompt = null, Expression<Func<string>> bodyinputpromptStrength = null, Expression<Func<int>> bodyinputwidth = null, Expression<Func<int>> bodyinputheight = null, Expression<Func<string>> bodyinputscale = null, Expression<Func<int>> bodyinputnumOutputs = null, Expression<Func<int>> bodyinputnumInferenceSteps = null, Expression<Func<string>> bodyinputguidanceScale = null, Expression<Func<int>> bodyinputseed = null, Expression<Func<string>> bodywebhookCompleted = null)
         {
             var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: true);
             var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
             var __workflow_bodyinputguidanceScale = WorkflowExpression.Compile(bodyinputguidanceScale, nameof(bodyinputguidanceScale), required: false);
             var __workflow_bodyinputseed = WorkflowExpression.Compile(bodyinputseed, nameof(bodyinputseed), required: false);
             var __workflow_bodywebhookCompleted = WorkflowExpression.Compile(bodywebhookCompleted, nameof(bodywebhookCompleted), required: false);
-            return new DeferredBodyAction<PredictionPostResponse>(() =>
+            return new DeferredBodyAction<PredictionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/predictions";
                 var apiCallHttpMethod = "post";
@@ -124,60 +124,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
                 }
 
                 return new ApiConnectionAction<PredictionPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<PredictionGetResponse> PredictionGet(Expression<Func<string>> predictionId)
+        public IBodyWorkflowAction<PredictionGetResponse, ApiConnectionActionConfiguration> PredictionGet(Expression<Func<string>> predictionId)
         {
             var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
-            return new DeferredBodyAction<PredictionGetResponse>(() =>
+            return new DeferredBodyAction<PredictionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/predictions/{0}", __workflow_predictionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PredictionGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<PredictionCancelResponse> PredictionCancel(Expression<Func<string>> predictionId)
+        public IBodyWorkflowAction<PredictionCancelResponse, ApiConnectionActionConfiguration> PredictionCancel(Expression<Func<string>> predictionId)
         {
             var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
-            return new DeferredBodyAction<PredictionCancelResponse>(() =>
+            return new DeferredBodyAction<PredictionCancelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/predictions/{0}/cancel", __workflow_predictionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PredictionCancelResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<string>> modelOwner, Expression<Func<string>> modelName)
+        public IBodyWorkflowAction<ModelGetResponse, ApiConnectionActionConfiguration> ModelGet(Expression<Func<string>> modelOwner, Expression<Func<string>> modelName)
         {
             var __workflow_modelOwner = WorkflowExpression.Compile(modelOwner, nameof(modelOwner), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
-            return new DeferredBodyAction<ModelGetResponse>(() =>
+            return new DeferredBodyAction<ModelGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/models/{0}/{1}", __workflow_modelOwner.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<ModelListResponse> ModelList(Expression<Func<string>> collectionSlug)
+        public IBodyWorkflowAction<ModelListResponse, ApiConnectionActionConfiguration> ModelList(Expression<Func<string>> collectionSlug)
         {
             var __workflow_collectionSlug = WorkflowExpression.Compile(collectionSlug, nameof(collectionSlug), required: true);
-            return new DeferredBodyAction<ModelListResponse>(() =>
+            return new DeferredBodyAction<ModelListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collectionSlug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelListResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

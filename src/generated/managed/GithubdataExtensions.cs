@@ -12,18 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubdata
     public class GithubdataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubdata")]
-        public IBodyWorkflowAction<string> RetrieveData(Expression<Func<string>> githubname, Expression<Func<string>> reponame, Expression<Func<string>> filewithpath)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RetrieveData(Expression<Func<string>> githubname, Expression<Func<string>> reponame, Expression<Func<string>> filewithpath)
         {
             var __workflow_githubname = WorkflowExpression.Compile(githubname, nameof(githubname), required: true);
             var __workflow_reponame = WorkflowExpression.Compile(reponame, nameof(reponame), required: true);
             var __workflow_filewithpath = WorkflowExpression.Compile(filewithpath, nameof(filewithpath), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}", __workflow_githubname.WithUrlEncoding(1), __workflow_reponame.WithUrlEncoding(1), __workflow_filewithpath.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

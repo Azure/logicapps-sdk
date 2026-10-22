@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
     public class CarbonintensityipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
-        public IBodyWorkflowAction<GetIntensityResponse> GetIntensity()
+        public IBodyWorkflowAction<GetIntensityResponse, ApiConnectionActionConfiguration> GetIntensity()
         {
             var apiCallPath = "/intensity";
             var apiCallHttpMethod = "get";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
-        public IBodyWorkflowAction<GetIntensityFactorsResponse> GetIntensityFactors()
+        public IBodyWorkflowAction<GetIntensityFactorsResponse, ApiConnectionActionConfiguration> GetIntensityFactors()
         {
             var apiCallPath = "/intensity/factors";
             var apiCallHttpMethod = "get";
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
-        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration()
+        public IBodyWorkflowAction<GetGenerationResponse, ApiConnectionActionConfiguration> GetGeneration()
         {
             var apiCallPath = "/generation";
             var apiCallHttpMethod = "get";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
-        public IBodyWorkflowAction<GetIntensityEnglandResponse> GetIntensityEngland()
+        public IBodyWorkflowAction<GetIntensityEnglandResponse, ApiConnectionActionConfiguration> GetIntensityEngland()
         {
             var apiCallPath = "/regional/england";
             var apiCallHttpMethod = "get";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
-        public IBodyWorkflowAction<GetIntensityScotlandResponse> GetIntensityScotland()
+        public IBodyWorkflowAction<GetIntensityScotlandResponse, ApiConnectionActionConfiguration> GetIntensityScotland()
         {
             var apiCallPath = "/regional/scotland";
             var apiCallHttpMethod = "get";
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
-        public IBodyWorkflowAction<GetIntensityWalesResponse> GetIntensityWales()
+        public IBodyWorkflowAction<GetIntensityWalesResponse, ApiConnectionActionConfiguration> GetIntensityWales()
         {
             var apiCallPath = "/regional/wales";
             var apiCallHttpMethod = "get";

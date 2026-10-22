@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
     public class LetterdropActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> bodyemail, Expression<Func<bool>> bodywelcomeEmail = null, Expression<Func<string>> bodyadditionalDataname = null, Expression<Func<string>> bodyadditionalDatalocation = null, Expression<Func<string>> bodyadditionalDatatitle = null, Expression<Func<string>> bodyadditionalDatacompany = null, Expression<Func<int>> bodyadditionalDatacompanySize = null, Expression<Func<string>> bodyadditionalDataindustry = null, Expression<Func<string>> bodyadditionalDatatwitter = null, Expression<Func<int>> bodyadditionalDatatwitterFollowers = null, Expression<Func<string>> bodyadditionalDatalinkedin = null, Expression<Func<string>> bodyadditionalDatagithub = null, Expression<Func<string>> bodyadditionalDatafacebook = null)
+        public IBodyWorkflowAction<SubscriberPostResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<string>> bodyemail, Expression<Func<bool>> bodywelcomeEmail = null, Expression<Func<string>> bodyadditionalDataname = null, Expression<Func<string>> bodyadditionalDatalocation = null, Expression<Func<string>> bodyadditionalDatatitle = null, Expression<Func<string>> bodyadditionalDatacompany = null, Expression<Func<int>> bodyadditionalDatacompanySize = null, Expression<Func<string>> bodyadditionalDataindustry = null, Expression<Func<string>> bodyadditionalDatatwitter = null, Expression<Func<int>> bodyadditionalDatatwitterFollowers = null, Expression<Func<string>> bodyadditionalDatalinkedin = null, Expression<Func<string>> bodyadditionalDatagithub = null, Expression<Func<string>> bodyadditionalDatafacebook = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodywelcomeEmail = WorkflowExpression.Compile(bodywelcomeEmail, nameof(bodywelcomeEmail), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
             var __workflow_bodyadditionalDatalinkedin = WorkflowExpression.Compile(bodyadditionalDatalinkedin, nameof(bodyadditionalDatalinkedin), required: false);
             var __workflow_bodyadditionalDatagithub = WorkflowExpression.Compile(bodyadditionalDatagithub, nameof(bodyadditionalDatagithub), required: false);
             var __workflow_bodyadditionalDatafacebook = WorkflowExpression.Compile(bodyadditionalDatafacebook, nameof(bodyadditionalDatafacebook), required: false);
-            return new DeferredBodyAction<SubscriberPostResponse>(() =>
+            return new DeferredBodyAction<SubscriberPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscriber/add";
                 var apiCallHttpMethod = "post";
@@ -122,30 +122,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 }
 
                 return new ApiConnectionAction<SubscriberPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<SubscriberRemovePostResponse> SubscriberRemove(Expression<Func<string>> email)
+        public IBodyWorkflowAction<SubscriberRemovePostResponse, ApiConnectionActionConfiguration> SubscriberRemove(Expression<Func<string>> email)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredBodyAction<SubscriberRemovePostResponse>(() =>
+            return new DeferredBodyAction<SubscriberRemovePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscriber/remove";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<SubscriberRemovePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostsGetPostResponse> PostsGet(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<PostsGetPostResponse, ApiConnectionActionConfiguration> PostsGet(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
             var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            return new DeferredBodyAction<PostsGetPostResponse>(() =>
+            return new DeferredBodyAction<PostsGetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/posts";
                 var apiCallHttpMethod = "post";
@@ -182,29 +182,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 }
 
                 return new ApiConnectionAction<PostsGetPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostGetPostResponse> PostGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PostGetPostResponse, ApiConnectionActionConfiguration> PostGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PostGetPostResponse>(() =>
+            return new DeferredBodyAction<PostGetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/post/get/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostGetPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostDraftPostResponse> PostDraft(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyhtml, Expression<Func<string>> bodysubtitle = null)
+        public IBodyWorkflowAction<PostDraftPostResponse, ApiConnectionActionConfiguration> PostDraft(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyhtml, Expression<Func<string>> bodysubtitle = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
             var __workflow_bodysubtitle = WorkflowExpression.Compile(bodysubtitle, nameof(bodysubtitle), required: false);
-            return new DeferredBodyAction<PostDraftPostResponse>(() =>
+            return new DeferredBodyAction<PostDraftPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/post/draft";
                 var apiCallHttpMethod = "post";
@@ -227,31 +227,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 }
 
                 return new ApiConnectionAction<PostDraftPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ProjectGetPostResponse, ApiConnectionActionConfiguration> ProjectGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ProjectGetPostResponse>(() =>
+            return new DeferredBodyAction<ProjectGetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/project/get/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectGetPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaCreatePostResponse> IdeaCreate(Expression<Func<string>> bodytitle, Expression<Func<string>> bodysuggestedBy, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodykeyword = null, Expression<Func<string[]>> bodylabels = null)
+        public IBodyWorkflowAction<IdeaCreatePostResponse, ApiConnectionActionConfiguration> IdeaCreate(Expression<Func<string>> bodytitle, Expression<Func<string>> bodysuggestedBy, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodykeyword = null, Expression<Func<string[]>> bodylabels = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodysuggestedBy = WorkflowExpression.Compile(bodysuggestedBy, nameof(bodysuggestedBy), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodykeyword = WorkflowExpression.Compile(bodykeyword, nameof(bodykeyword), required: false);
             var __workflow_bodylabels = WorkflowExpression.Compile(bodylabels, nameof(bodylabels), required: false);
-            return new DeferredBodyAction<IdeaCreatePostResponse>(() =>
+            return new DeferredBodyAction<IdeaCreatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/idea/new";
                 var apiCallHttpMethod = "post";
@@ -286,17 +286,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 }
 
                 return new ApiConnectionAction<IdeaCreatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaAssignPostResponse> IdeaAssign(Expression<Func<string>> bodyid, Expression<Func<string>> bodyassignTo, Expression<Func<string>> bodypublishOn, Expression<Func<string[]>> bodyapprovers = null)
+        public IBodyWorkflowAction<IdeaAssignPostResponse, ApiConnectionActionConfiguration> IdeaAssign(Expression<Func<string>> bodyid, Expression<Func<string>> bodyassignTo, Expression<Func<string>> bodypublishOn, Expression<Func<string[]>> bodyapprovers = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyassignTo = WorkflowExpression.Compile(bodyassignTo, nameof(bodyassignTo), required: true);
             var __workflow_bodypublishOn = WorkflowExpression.Compile(bodypublishOn, nameof(bodypublishOn), required: true);
             var __workflow_bodyapprovers = WorkflowExpression.Compile(bodyapprovers, nameof(bodyapprovers), required: false);
-            return new DeferredBodyAction<IdeaAssignPostResponse>(() =>
+            return new DeferredBodyAction<IdeaAssignPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/idea/assign";
                 var apiCallHttpMethod = "post";
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 }
 
                 return new ApiConnectionAction<IdeaAssignPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
     public class WeatherforecastipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weatherforecastip")]
-        public IBodyWorkflowAction<CityResponse> City(Expression<Func<string>> q = null, Expression<Func<string>> appid = null)
+        public IBodyWorkflowAction<CityResponse, ApiConnectionActionConfiguration> City(Expression<Func<string>> q = null, Expression<Func<string>> appid = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_appid = WorkflowExpression.Compile(appid, nameof(appid), required: false);
-            return new DeferredBodyAction<CityResponse>(() =>
+            return new DeferredBodyAction<CityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/data/2.5/weather";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
                 if (__workflow_appid != null)
                     callPayload.Queries["appid"] = ExpressionConverter.Convert(__workflow_appid);
                 return new ApiConnectionAction<CityResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

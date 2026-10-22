@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class AikidocsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectGoodService(Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<ValidateConnectionResponse, ApiConnectionActionConfiguration> ValidateConnectGoodService(Expression<Func<string>> bodymessage = null)
         {
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            return new DeferredBodyAction<ValidateConnectionResponse>(() =>
+            return new DeferredBodyAction<ValidateConnectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/good";
                 var apiCallHttpMethod = "post";
@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<ValidateConnectionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectBadService(Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<ValidateConnectionResponse, ApiConnectionActionConfiguration> ValidateConnectBadService(Expression<Func<string>> bodymessage = null)
         {
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            return new DeferredBodyAction<ValidateConnectionResponse>(() =>
+            return new DeferredBodyAction<ValidateConnectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bad";
                 var apiCallHttpMethod = "post";
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<ValidateConnectionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<AppendDocumentResponse> WordAppendDocuments(Expression<Func<string[]>> bodyappendDocumentList = null)
+        public IBodyWorkflowAction<AppendDocumentResponse, ApiConnectionActionConfiguration> WordAppendDocuments(Expression<Func<string[]>> bodyappendDocumentList = null)
         {
             var __workflow_bodyappendDocumentList = WorkflowExpression.Compile(bodyappendDocumentList, nameof(bodyappendDocumentList), required: false);
-            return new DeferredBodyAction<AppendDocumentResponse>(() =>
+            return new DeferredBodyAction<AppendDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordAppendDocuments";
                 var apiCallHttpMethod = "post";
@@ -86,16 +86,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<AppendDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByHeadingResponse> WordExtractContentByHeading(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingStyleName = null)
+        public IBodyWorkflowAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration> WordExtractContentByHeading(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingStyleName = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
             var __workflow_bodyheadingStyleName = WorkflowExpression.Compile(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
-            return new DeferredBodyAction<ExtractContentByHeadingResponse>(() =>
+            return new DeferredBodyAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordExtractContent/ByHeading";
                 var apiCallHttpMethod = "post";
@@ -134,18 +134,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<ExtractContentByHeadingResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractSectionByTitleResponse> WordExtractContentByTitle(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingText = null, Expression<Func<string>> bodyheadingStyleName = null, Expression<Func<string[]>> bodyheadingEscapeStyleNames = null)
+        public IBodyWorkflowAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration> WordExtractContentByTitle(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingText = null, Expression<Func<string>> bodyheadingStyleName = null, Expression<Func<string[]>> bodyheadingEscapeStyleNames = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
             var __workflow_bodyheadingText = WorkflowExpression.Compile(bodyheadingText, nameof(bodyheadingText), required: false);
             var __workflow_bodyheadingStyleName = WorkflowExpression.Compile(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
             var __workflow_bodyheadingEscapeStyleNames = WorkflowExpression.Compile(bodyheadingEscapeStyleNames, nameof(bodyheadingEscapeStyleNames), required: false);
-            return new DeferredBodyAction<ExtractSectionByTitleResponse>(() =>
+            return new DeferredBodyAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordExtractContent/ByTitle";
                 var apiCallHttpMethod = "post";
@@ -196,17 +196,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<ExtractSectionByTitleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> WordExtractContentByBookmarks(Expression<Func<string>> bodystartBookMark = null, Expression<Func<string>> bodyendBookMark = null, Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null)
+        public IBodyWorkflowAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration> WordExtractContentByBookmarks(Expression<Func<string>> bodystartBookMark = null, Expression<Func<string>> bodyendBookMark = null, Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null)
         {
             var __workflow_bodystartBookMark = WorkflowExpression.Compile(bodystartBookMark, nameof(bodystartBookMark), required: false);
             var __workflow_bodyendBookMark = WorkflowExpression.Compile(bodyendBookMark, nameof(bodyendBookMark), required: false);
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            return new DeferredBodyAction<ExtractContentByBookMarksResponse>(() =>
+            return new DeferredBodyAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordExtractContent/ByBookMarks";
                 var apiCallHttpMethod = "post";
@@ -251,18 +251,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<ExtractContentByBookMarksResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<InsertDocumentResponse> WordInsertDocuments(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string[]>> bodyinsertDocumentList = null, Expression<Func<string>> bodybookmarkName = null, Expression<Func<bool>> bodydeleteBookmark = null)
+        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> WordInsertDocuments(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string[]>> bodyinsertDocumentList = null, Expression<Func<string>> bodybookmarkName = null, Expression<Func<bool>> bodydeleteBookmark = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
             var __workflow_bodyinsertDocumentList = WorkflowExpression.Compile(bodyinsertDocumentList, nameof(bodyinsertDocumentList), required: false);
             var __workflow_bodybookmarkName = WorkflowExpression.Compile(bodybookmarkName, nameof(bodybookmarkName), required: false);
             var __workflow_bodydeleteBookmark = WorkflowExpression.Compile(bodydeleteBookmark, nameof(bodydeleteBookmark), required: false);
-            return new DeferredBodyAction<InsertDocumentResponse>(() =>
+            return new DeferredBodyAction<InsertDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordInsertDocuments";
                 var apiCallHttpMethod = "post";
@@ -313,17 +313,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ApplyStylesResponse> WordApplyStyleToDocument(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodydestinationDocumentdocumentContent = null, Expression<Func<string>> bodydestinationDocumentdocumentName = null)
+        public IBodyWorkflowAction<ApplyStylesResponse, ApiConnectionActionConfiguration> WordApplyStyleToDocument(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodydestinationDocumentdocumentContent = null, Expression<Func<string>> bodydestinationDocumentdocumentName = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
             var __workflow_bodydestinationDocumentdocumentContent = WorkflowExpression.Compile(bodydestinationDocumentdocumentContent, nameof(bodydestinationDocumentdocumentContent), required: false);
             var __workflow_bodydestinationDocumentdocumentName = WorkflowExpression.Compile(bodydestinationDocumentdocumentName, nameof(bodydestinationDocumentdocumentName), required: false);
-            return new DeferredBodyAction<ApplyStylesResponse>(() =>
+            return new DeferredBodyAction<ApplyStylesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordStyles/ApplyStyleToDocument";
                 var apiCallHttpMethod = "post";
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 }
 
                 return new ApiConnectionAction<ApplyStylesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

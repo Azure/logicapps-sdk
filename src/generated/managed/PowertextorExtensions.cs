@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
     public class PowertextorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse> SendTextMessageToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse, ApiConnectionActionConfiguration> SendTextMessageToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageToMultipleContactsResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageToMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/send";
                 var apiCallHttpMethod = "post";
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageToMultipleContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse> ScheduleReviewTextMessageForContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageForContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleReviewTextMessageForContactsResponse>(() =>
+            return new DeferredBodyAction<ScheduleReviewTextMessageForContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/schedulereviewcontacts";
                 var apiCallHttpMethod = "post";
@@ -81,16 +81,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleReviewTextMessageForContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse> SendTextMessageToMultipleGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse, ApiConnectionActionConfiguration> SendTextMessageToMultipleGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageToMultipleGroupsResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageToMultipleGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendgroup";
                 var apiCallHttpMethod = "post";
@@ -113,17 +113,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageToMultipleGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextGroupsResponse> SendReviewTextGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendReviewTextGroupsResponse, ApiConnectionActionConfiguration> SendReviewTextGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyplaceId = WorkflowExpression.Compile(bodyplaceId, nameof(bodyplaceId), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendReviewTextGroupsResponse>(() =>
+            return new DeferredBodyAction<SendReviewTextGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendreview";
                 var apiCallHttpMethod = "post";
@@ -148,18 +148,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendReviewTextGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleMessageForAContactResponse> ScheduleMessageForAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleMessageForAContactResponse, ApiConnectionActionConfiguration> ScheduleMessageForAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleMessageForAContactResponse>(() =>
+            return new DeferredBodyAction<ScheduleMessageForAContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduletext";
                 var apiCallHttpMethod = "post";
@@ -186,18 +186,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleMessageForAContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse> ScheduleMessageForGroups(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse, ApiConnectionActionConfiguration> ScheduleMessageForGroups(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleMessageForGroupsResponse>(() =>
+            return new DeferredBodyAction<ScheduleMessageForGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduletextbulk";
                 var apiCallHttpMethod = "post";
@@ -224,11 +224,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleMessageForGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse> ScheduleReviewMessageForAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse, ApiConnectionActionConfiguration> ScheduleReviewMessageForAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleReviewMessageForAContactResponse>(() =>
+            return new DeferredBodyAction<ScheduleReviewMessageForAContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/schedulereviewtext";
                 var apiCallHttpMethod = "post";
@@ -265,11 +265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleReviewMessageForAContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewGroupsResponse> ScheduleReviewGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleReviewGroupsResponse, ApiConnectionActionConfiguration> ScheduleReviewGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleReviewGroupsResponse>(() =>
+            return new DeferredBodyAction<ScheduleReviewGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduledbulkreview";
                 var apiCallHttpMethod = "post";
@@ -306,16 +306,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleReviewGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextToAContactResponse> SendTextToAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextToAContactResponse, ApiConnectionActionConfiguration> SendTextToAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextToAContactResponse>(() =>
+            return new DeferredBodyAction<SendTextToAContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendmessagesinglecontact";
                 var apiCallHttpMethod = "post";
@@ -338,18 +338,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextToAContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse> ScheduleTextToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse, ApiConnectionActionConfiguration> ScheduleTextToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleTextToMultipleContactsResponse>(() =>
+            return new DeferredBodyAction<ScheduleTextToMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduletextmulticontacts";
                 var apiCallHttpMethod = "post";
@@ -376,17 +376,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleTextToMultipleContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewSingleContactResponse> SendReviewSingleContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendReviewSingleContactResponse, ApiConnectionActionConfiguration> SendReviewSingleContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodygooglePlaceId = WorkflowExpression.Compile(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendReviewSingleContactResponse>(() =>
+            return new DeferredBodyAction<SendReviewSingleContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendereviewsinglecontact";
                 var apiCallHttpMethod = "post";
@@ -411,17 +411,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendReviewSingleContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse> SendReviewTextMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse, ApiConnectionActionConfiguration> SendReviewTextMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodygooglePlaceId = WorkflowExpression.Compile(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendReviewTextMultipleContactsResponse>(() =>
+            return new DeferredBodyAction<SendReviewTextMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendereviewmulticontact";
                 var apiCallHttpMethod = "post";
@@ -446,11 +446,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendReviewTextMultipleContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse> SendTextMessageEventReminderToAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyreminderText = WorkflowExpression.Compile(bodyreminderText, nameof(bodyreminderText), required: true);
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyday = WorkflowExpression.Compile(bodyday, nameof(bodyday), required: true);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageEventReminderToAContactResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageEventReminderToAContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendreminderssinglecontact";
                 var apiCallHttpMethod = "post";
@@ -487,11 +487,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageEventReminderToAContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse> SendTextMessageEventReminderToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyreminderText = WorkflowExpression.Compile(bodyreminderText, nameof(bodyreminderText), required: true);
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyday = WorkflowExpression.Compile(bodyday, nameof(bodyday), required: true);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageEventReminderToMultipleContactsResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageEventReminderToMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendremindersmulticontact";
                 var apiCallHttpMethod = "post";
@@ -528,11 +528,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageEventReminderToMultipleContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse> SendTextMessageEventReminderToGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodyreminderText = WorkflowExpression.Compile(bodyreminderText, nameof(bodyreminderText), required: true);
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyday = WorkflowExpression.Compile(bodyday, nameof(bodyday), required: true);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageEventReminderToGroupsResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageEventReminderToGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendremindertogroups";
                 var apiCallHttpMethod = "post";
@@ -569,16 +569,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageEventReminderToGroupsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToANumberResponse> SendTextMessageToANumber(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageToANumberResponse, ApiConnectionActionConfiguration> SendTextMessageToANumber(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageToANumberResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageToANumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendsimple";
                 var apiCallHttpMethod = "post";
@@ -601,11 +601,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageToANumberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse> ScheduleReviewTextMessageForAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageForAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleReviewTextMessageForAGroupResponse>(() =>
+            return new DeferredBodyAction<ScheduleReviewTextMessageForAGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduledsingleGroupreview";
                 var apiCallHttpMethod = "post";
@@ -642,18 +642,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleReviewTextMessageForAGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse> ScheduleTextMessagesForAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse, ApiConnectionActionConfiguration> ScheduleTextMessagesForAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleTextMessagesForAGroupResponse>(() =>
+            return new DeferredBodyAction<ScheduleTextMessagesForAGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduletextsingleGroup";
                 var apiCallHttpMethod = "post";
@@ -680,11 +680,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleTextMessagesForAGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse> SendTextEventReminderToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse, ApiConnectionActionConfiguration> SendTextEventReminderToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyreminderText = WorkflowExpression.Compile(bodyreminderText, nameof(bodyreminderText), required: true);
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyday = WorkflowExpression.Compile(bodyday, nameof(bodyday), required: true);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextEventReminderToAGroupResponse>(() =>
+            return new DeferredBodyAction<SendTextEventReminderToAGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendremindertosinglegroup";
                 var apiCallHttpMethod = "post";
@@ -721,17 +721,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextEventReminderToAGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse> SendReviewTextMessageToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse, ApiConnectionActionConfiguration> SendReviewTextMessageToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyplaceId = WorkflowExpression.Compile(bodyplaceId, nameof(bodyplaceId), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendReviewTextMessageToAGroupResponse>(() =>
+            return new DeferredBodyAction<SendReviewTextMessageToAGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendreviewtosinglegroup";
                 var apiCallHttpMethod = "post";
@@ -756,16 +756,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendReviewTextMessageToAGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToAGroupResponse> SendTextMessageToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageToAGroupResponse, ApiConnectionActionConfiguration> SendTextMessageToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageToAGroupResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageToAGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendsinglegroup";
                 var apiCallHttpMethod = "post";
@@ -788,17 +788,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageToAGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextToANewGroupResponse> SendTextToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygroupName, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextToANewGroupResponse, ApiConnectionActionConfiguration> SendTextToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygroupName, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextToANewGroupResponse>(() =>
+            return new DeferredBodyAction<SendTextToANewGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/creategroupsend";
                 var apiCallHttpMethod = "post";
@@ -823,11 +823,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextToANewGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse> ScheduleTextForANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse, ApiConnectionActionConfiguration> ScheduleTextForANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleTextForANewGroupResponse>(() =>
+            return new DeferredBodyAction<ScheduleTextForANewGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduledcreategroupsend";
                 var apiCallHttpMethod = "post";
@@ -864,11 +864,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleTextForANewGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse> SendTextEventReminderToNewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse, ApiConnectionActionConfiguration> SendTextEventReminderToNewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyreminderText = WorkflowExpression.Compile(bodyreminderText, nameof(bodyreminderText), required: true);
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyday = WorkflowExpression.Compile(bodyday, nameof(bodyday), required: true);
             var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextEventReminderToNewGroupResponse>(() =>
+            return new DeferredBodyAction<SendTextEventReminderToNewGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/creategroupremindersend";
                 var apiCallHttpMethod = "post";
@@ -908,18 +908,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextEventReminderToNewGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageToANewContactResponse> SendMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendMessageToANewContactResponse, ApiConnectionActionConfiguration> SendMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodycontactNumber = WorkflowExpression.Compile(bodycontactNumber, nameof(bodycontactNumber), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: false);
             var __workflow_bodycontactLastName = WorkflowExpression.Compile(bodycontactLastName, nameof(bodycontactLastName), required: false);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMessageToANewContactResponse>(() =>
+            return new DeferredBodyAction<SendMessageToANewContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendsimplewithName";
                 var apiCallHttpMethod = "post";
@@ -954,11 +954,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendMessageToANewContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse> ScheduleReviewTextMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodycontactNumber = WorkflowExpression.Compile(bodycontactNumber, nameof(bodycontactNumber), required: true);
             var __workflow_bodyreviewText = WorkflowExpression.Compile(bodyreviewText, nameof(bodyreviewText), required: true);
@@ -968,7 +968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: false);
             var __workflow_bodycontactLastName = WorkflowExpression.Compile(bodycontactLastName, nameof(bodycontactLastName), required: false);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleReviewTextMessageToANewContactResponse>(() =>
+            return new DeferredBodyAction<ScheduleReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/schedulereviewtextwithcontact";
                 var apiCallHttpMethod = "post";
@@ -1009,11 +1009,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleReviewTextMessageToANewContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse> SendReviewTextMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration> SendReviewTextMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodycontactNumber = WorkflowExpression.Compile(bodycontactNumber, nameof(bodycontactNumber), required: true);
             var __workflow_bodyreviewText = WorkflowExpression.Compile(bodyreviewText, nameof(bodyreviewText), required: true);
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: false);
             var __workflow_bodycontactLastName = WorkflowExpression.Compile(bodycontactLastName, nameof(bodycontactLastName), required: false);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendReviewTextMessageToANewContactResponse>(() =>
+            return new DeferredBodyAction<SendReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/createcontactreviewsend";
                 var apiCallHttpMethod = "post";
@@ -1058,11 +1058,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendReviewTextMessageToANewContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse> ScheduleReviewToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse, ApiConnectionActionConfiguration> ScheduleReviewToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyreviewText = WorkflowExpression.Compile(bodyreviewText, nameof(bodyreviewText), required: true);
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
             var __workflow_bodyscheduledTime = WorkflowExpression.Compile(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleReviewToANewGroupResponse>(() =>
+            return new DeferredBodyAction<ScheduleReviewToANewGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/creategroupschedulereview";
                 var apiCallHttpMethod = "post";
@@ -1102,18 +1102,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleReviewToANewGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewToANewGroupResponse> SendReviewToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendReviewToANewGroupResponse, ApiConnectionActionConfiguration> SendReviewToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyreviewText = WorkflowExpression.Compile(bodyreviewText, nameof(bodyreviewText), required: true);
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodyplaceId = WorkflowExpression.Compile(bodyplaceId, nameof(bodyplaceId), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendReviewToANewGroupResponse>(() =>
+            return new DeferredBodyAction<SendReviewToANewGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/creategroupreviewsend";
                 var apiCallHttpMethod = "post";
@@ -1140,11 +1140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendReviewToANewGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextForANewContactResponse> ScheduleTextForANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodymessage, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<ScheduleTextForANewContactResponse, ApiConnectionActionConfiguration> ScheduleTextForANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodymessage, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodycontactNumber = WorkflowExpression.Compile(bodycontactNumber, nameof(bodycontactNumber), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
@@ -1153,7 +1153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: false);
             var __workflow_bodycontactLastName = WorkflowExpression.Compile(bodycontactLastName, nameof(bodycontactLastName), required: false);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<ScheduleTextForANewContactResponse>(() =>
+            return new DeferredBodyAction<ScheduleTextForANewContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/scheduletextwithname";
                 var apiCallHttpMethod = "post";
@@ -1192,16 +1192,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<ScheduleTextForANewContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<CreateAContactResponse> CreateAContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodylastName = null)
+        public IBodyWorkflowAction<CreateAContactResponse, ApiConnectionActionConfiguration> CreateAContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodylastName = null)
         {
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            return new DeferredBodyAction<CreateAContactResponse>(() =>
+            return new DeferredBodyAction<CreateAContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/contacts/contactnew";
                 var apiCallHttpMethod = "post";
@@ -1228,11 +1228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<CreateAContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse> SendMessageEventReminderToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse, ApiConnectionActionConfiguration> SendMessageEventReminderToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodycontactNumber = WorkflowExpression.Compile(bodycontactNumber, nameof(bodycontactNumber), required: true);
             var __workflow_bodyreminderText = WorkflowExpression.Compile(bodyreminderText, nameof(bodyreminderText), required: true);
@@ -1242,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: false);
             var __workflow_bodycontactLastName = WorkflowExpression.Compile(bodycontactLastName, nameof(bodycontactLastName), required: false);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMessageEventReminderToANewContactResponse>(() =>
+            return new DeferredBodyAction<SendMessageEventReminderToANewContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendreminderwithcontact";
                 var apiCallHttpMethod = "post";
@@ -1283,17 +1283,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendMessageEventReminderToANewContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse> UpdateAPowerTextorContact(Expression<Func<string>> bodycontact, Expression<Func<string>> bodyupdatedContactName = null, Expression<Func<string>> bodyupdatedContactLastName = null, Expression<Func<string>> bodyupdatedContactNumber = null)
+        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse, ApiConnectionActionConfiguration> UpdateAPowerTextorContact(Expression<Func<string>> bodycontact, Expression<Func<string>> bodyupdatedContactName = null, Expression<Func<string>> bodyupdatedContactLastName = null, Expression<Func<string>> bodyupdatedContactNumber = null)
         {
             var __workflow_bodycontact = WorkflowExpression.Compile(bodycontact, nameof(bodycontact), required: true);
             var __workflow_bodyupdatedContactName = WorkflowExpression.Compile(bodyupdatedContactName, nameof(bodyupdatedContactName), required: false);
             var __workflow_bodyupdatedContactLastName = WorkflowExpression.Compile(bodyupdatedContactLastName, nameof(bodyupdatedContactLastName), required: false);
             var __workflow_bodyupdatedContactNumber = WorkflowExpression.Compile(bodyupdatedContactNumber, nameof(bodyupdatedContactNumber), required: false);
-            return new DeferredBodyAction<UpdateAPowerTextorContactResponse>(() =>
+            return new DeferredBodyAction<UpdateAPowerTextorContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/contacts/contactupdate";
                 var apiCallHttpMethod = "post";
@@ -1326,16 +1326,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<UpdateAPowerTextorContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse> SendMessageToMultipleNumbers(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse, ApiConnectionActionConfiguration> SendMessageToMultipleNumbers(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodycontactNumber = WorkflowExpression.Compile(bodycontactNumber, nameof(bodycontactNumber), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMessageToMultipleNumbersResponse>(() =>
+            return new DeferredBodyAction<SendMessageToMultipleNumbersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendtomulticontact";
                 var apiCallHttpMethod = "post";
@@ -1358,16 +1358,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendMessageToMultipleNumbersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageResponse> SendTextMessage(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendTextMessageResponse, ApiConnectionActionConfiguration> SendTextMessage(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyreplySTOPToOptOut = WorkflowExpression.Compile(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendTextMessageResponse>(() =>
+            return new DeferredBodyAction<SendTextMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendsimpletext";
                 var apiCallHttpMethod = "post";
@@ -1390,27 +1390,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 }
 
                 return new ApiConnectionAction<SendTextMessageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSGroupResponse> SendMMSGroup(Expression<Func<string>> groupName, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendMMSGroupResponse, ApiConnectionActionConfiguration> SendMMSGroup(Expression<Func<string>> groupName, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
         {
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: true);
             var __workflow_replySTOPToOptOut = WorkflowExpression.Compile(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMMSGroupResponse>(() =>
+            return new DeferredBodyAction<SendMMSGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendmmsgroup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SendMMSGroupResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSNewContactResponse> SendMMSNewContact(Expression<Func<string>> contactNumber, Expression<Func<object>> attachment, Expression<Func<string>> message, Expression<Func<string>> contactName = null, Expression<Func<string>> contactLastName = null, Expression<Func<bool>> replySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendMMSNewContactResponse, ApiConnectionActionConfiguration> SendMMSNewContact(Expression<Func<string>> contactNumber, Expression<Func<object>> attachment, Expression<Func<string>> message, Expression<Func<string>> contactName = null, Expression<Func<string>> contactLastName = null, Expression<Func<bool>> replySTOPToOptOut = null)
         {
             var __workflow_contactNumber = WorkflowExpression.Compile(contactNumber, nameof(contactNumber), required: true);
             var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: true);
@@ -1418,35 +1418,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             var __workflow_contactName = WorkflowExpression.Compile(contactName, nameof(contactName), required: false);
             var __workflow_contactLastName = WorkflowExpression.Compile(contactLastName, nameof(contactLastName), required: false);
             var __workflow_replySTOPToOptOut = WorkflowExpression.Compile(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMMSNewContactResponse>(() =>
+            return new DeferredBodyAction<SendMMSNewContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendmmsnewcontact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SendMMSNewContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSContactsResponse> SendMMSContacts(Expression<Func<string>> to, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
+        public IBodyWorkflowAction<SendMMSContactsResponse, ApiConnectionActionConfiguration> SendMMSContacts(Expression<Func<string>> to, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
         {
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: true);
             var __workflow_replySTOPToOptOut = WorkflowExpression.Compile(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
-            return new DeferredBodyAction<SendMMSContactsResponse>(() =>
+            return new DeferredBodyAction<SendMMSContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/messages/sendmmscontacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SendMMSContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class PowertextorTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductionWebhook(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductionWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/twilio/registration";
             var apiCallHttpMethod = "post";
@@ -1463,7 +1463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger MMSWebhook(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MMSWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/twilio/MMSregistration";
             var apiCallHttpMethod = "post";

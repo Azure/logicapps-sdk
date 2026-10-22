@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class Csvconverterbypower2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A000AV01CV01ConvertAllFormats> T01A000AV01CV01ConvertAllFormats(Expression<Func<string>> dtoRequestT01A000AV01CV01ConvertAllFormatsinputData, Expression<Func<string>> dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat = null, Expression<Func<string>> dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats = null)
+        public IBodyWorkflowAction<DtoResponseT01A000AV01CV01ConvertAllFormats, ApiConnectionActionConfiguration> T01A000AV01CV01ConvertAllFormats(Expression<Func<string>> dtoRequestT01A000AV01CV01ConvertAllFormatsinputData, Expression<Func<string>> dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat = null, Expression<Func<string>> dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats = null)
         {
             var __workflow_dtoRequestT01A000AV01CV01ConvertAllFormatsinputData = WorkflowExpression.Compile(dtoRequestT01A000AV01CV01ConvertAllFormatsinputData, nameof(dtoRequestT01A000AV01CV01ConvertAllFormatsinputData), required: true);
             var __workflow_dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat = WorkflowExpression.Compile(dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat, nameof(dtoRequestT01A000AV01CV01ConvertAllFormatsinputFormat), required: false);
             var __workflow_dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats = WorkflowExpression.Compile(dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats, nameof(dtoRequestT01A000AV01CV01ConvertAllFormatsoutputFormats), required: false);
-            return new DeferredBodyAction<DtoResponseT01A000AV01CV01ConvertAllFormats>(() =>
+            return new DeferredBodyAction<DtoResponseT01A000AV01CV01ConvertAllFormats, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A000_AV01_CV01_ConvertAllFormats";
                 var apiCallHttpMethod = "post";
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A000AV01CV01ConvertAllFormats>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A001AV01CV01ConvertCsvToJson> T01A001AV01CV01ConvertCsvToJson(Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A001AV01CV01ConvertCsvToJsonheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsondetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonnullValue = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonrowsToSkip = null, Expression<Func<int>> dtoRequestT01A001AV01CV01ConvertCsvToJsonstopAtRow = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonquoteCharacter = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns = null)
+        public IBodyWorkflowAction<DtoResponseT01A001AV01CV01ConvertCsvToJson, ApiConnectionActionConfiguration> T01A001AV01CV01ConvertCsvToJson(Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsoncSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A001AV01CV01ConvertCsvToJsonheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsondetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonnullValue = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonrowsToSkip = null, Expression<Func<int>> dtoRequestT01A001AV01CV01ConvertCsvToJsonstopAtRow = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonquoteCharacter = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns = null, Expression<Func<string>> dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns = null)
         {
             var __workflow_dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV = WorkflowExpression.Compile(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsoncSV), required: true);
             var __workflow_dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator = WorkflowExpression.Compile(dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonseparator), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             var __workflow_dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines = WorkflowExpression.Compile(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonautoDetectWrappedLines), required: false);
             var __workflow_dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns = WorkflowExpression.Compile(dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonrenameColumns), required: false);
             var __workflow_dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns = WorkflowExpression.Compile(dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJsonincludeColumns), required: false);
-            return new DeferredBodyAction<DtoResponseT01A001AV01CV01ConvertCsvToJson>(() =>
+            return new DeferredBodyAction<DtoResponseT01A001AV01CV01ConvertCsvToJson, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A001_AV01_CV01_ConvertCsvToJson";
                 var apiCallHttpMethod = "post";
@@ -218,14 +218,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A001AV01CV01ConvertCsvToJson>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv> T01A002AV01CV01ConvertJsonToCsv(Expression<Func<string>> dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON)
+        public IBodyWorkflowAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv, ApiConnectionActionConfiguration> T01A002AV01CV01ConvertJsonToCsv(Expression<Func<string>> dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON)
         {
             var __workflow_dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON = WorkflowExpression.Compile(dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON, nameof(dtoRequestT01A002AV01CV01ConvertJsonToCsvjSON), required: true);
-            return new DeferredBodyAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv>(() =>
+            return new DeferredBodyAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A002_AV01_CV01_ConvertJsonToCsv";
                 var apiCallHttpMethod = "post";
@@ -240,11 +240,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel> T01A003AV01CV01ConvertCsvToExcel(Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A003AV01CV01ConvertCsvToExcelheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExceldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelnullValue = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelrowsToSkip = null, Expression<Func<int>> dtoRequestT01A003AV01CV01ConvertCsvToExcelstopAtRow = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelquoteCharacter = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelrenameColumns = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelincludeColumns = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText = null, Expression<Func<int>> dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth = null)
+        public IBodyWorkflowAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel, ApiConnectionActionConfiguration> T01A003AV01CV01ConvertCsvToExcel(Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A003AV01CV01ConvertCsvToExcelheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExceldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelnullValue = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelrowsToSkip = null, Expression<Func<int>> dtoRequestT01A003AV01CV01ConvertCsvToExcelstopAtRow = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelquoteCharacter = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelrenameColumns = null, Expression<Func<string>> dtoRequestT01A003AV01CV01ConvertCsvToExcelincludeColumns = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent = null, Expression<Func<bool>> dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText = null, Expression<Func<int>> dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth = null)
         {
             var __workflow_dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV = WorkflowExpression.Compile(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelcSV), required: true);
             var __workflow_dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator = WorkflowExpression.Compile(dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelseparator), required: false);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             var __workflow_dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent = WorkflowExpression.Compile(dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExceladjustExcelColumnToContent), required: false);
             var __workflow_dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText = WorkflowExpression.Compile(dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelwrapExcelColumnText), required: false);
             var __workflow_dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth = WorkflowExpression.Compile(dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcelmaxExcelColumnWidth), required: false);
-            return new DeferredBodyAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel>(() =>
+            return new DeferredBodyAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A003_AV01_CV01_ConvertCsvToExcel";
                 var apiCallHttpMethod = "post";
@@ -455,14 +455,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv> T01A004AV01CV01ConvertExcelToCsv(Expression<Func<string>> dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile)
+        public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration> T01A004AV01CV01ConvertExcelToCsv(Expression<Func<string>> dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile)
         {
             var __workflow_dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile = WorkflowExpression.Compile(dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile, nameof(dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile), required: true);
-            return new DeferredBodyAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv>(() =>
+            return new DeferredBodyAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A004_AV01_CV01_ConvertExcelToCsv";
                 var apiCallHttpMethod = "post";
@@ -477,11 +477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml> T01A005AV01CV01ConvertCsvToHtml(Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlnullValue = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrowsToSkip = null, Expression<Func<int>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlstopAtRow = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlquoteCharacter = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns = null)
+        public IBodyWorkflowAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml, ApiConnectionActionConfiguration> T01A005AV01CV01ConvertCsvToHtml(Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlnullValue = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrowsToSkip = null, Expression<Func<int>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlstopAtRow = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlquoteCharacter = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns = null, Expression<Func<string>> dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns = null)
         {
             var __workflow_dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV = WorkflowExpression.Compile(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlcSV), required: true);
             var __workflow_dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator = WorkflowExpression.Compile(dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlseparator), required: false);
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             var __workflow_dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines = WorkflowExpression.Compile(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlautoDetectWrappedLines), required: false);
             var __workflow_dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns = WorkflowExpression.Compile(dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlrenameColumns), required: false);
             var __workflow_dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns = WorkflowExpression.Compile(dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtmlincludeColumns), required: false);
-            return new DeferredBodyAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml>(() =>
+            return new DeferredBodyAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A005_AV01_CV01_ConvertCsvToHtml";
                 var apiCallHttpMethod = "post";
@@ -651,14 +651,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv> T01A006AV01CV01ConvertHtmlToCsv(Expression<Func<string>> dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable)
+        public IBodyWorkflowAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv, ApiConnectionActionConfiguration> T01A006AV01CV01ConvertHtmlToCsv(Expression<Func<string>> dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable)
         {
             var __workflow_dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable = WorkflowExpression.Compile(dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable, nameof(dtoRequestT01A006AV01CV01ConvertHtmlToCsvhTMLTable), required: true);
-            return new DeferredBodyAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv>(() =>
+            return new DeferredBodyAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A006_AV01_CV01_ConvertHtmlToCsv";
                 var apiCallHttpMethod = "post";
@@ -673,11 +673,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A007AV01CV01ConvertCsvToXml> T01A007AV01CV01ConvertCsvToXml(Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A007AV01CV01ConvertCsvToXmlheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlnullValue = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlrowsToSkip = null, Expression<Func<int>> dtoRequestT01A007AV01CV01ConvertCsvToXmlstopAtRow = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlquoteCharacter = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns = null)
+        public IBodyWorkflowAction<DtoResponseT01A007AV01CV01ConvertCsvToXml, ApiConnectionActionConfiguration> T01A007AV01CV01ConvertCsvToXml(Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A007AV01CV01ConvertCsvToXmlheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlnullValue = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlrowsToSkip = null, Expression<Func<int>> dtoRequestT01A007AV01CV01ConvertCsvToXmlstopAtRow = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlquoteCharacter = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns = null, Expression<Func<string>> dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns = null)
         {
             var __workflow_dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV = WorkflowExpression.Compile(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlcSV), required: true);
             var __workflow_dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator = WorkflowExpression.Compile(dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlseparator), required: false);
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             var __workflow_dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines = WorkflowExpression.Compile(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlautoDetectWrappedLines), required: false);
             var __workflow_dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns = WorkflowExpression.Compile(dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlrenameColumns), required: false);
             var __workflow_dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns = WorkflowExpression.Compile(dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXmlincludeColumns), required: false);
-            return new DeferredBodyAction<DtoResponseT01A007AV01CV01ConvertCsvToXml>(() =>
+            return new DeferredBodyAction<DtoResponseT01A007AV01CV01ConvertCsvToXml, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A007_AV01_CV01_ConvertCsvToXml";
                 var apiCallHttpMethod = "post";
@@ -847,14 +847,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A007AV01CV01ConvertCsvToXml>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv> T01A008AV01CV01ConvertXmlToCsv(Expression<Func<string>> dtoRequestT01A008AV01CV01ConvertXmlToCsvxML)
+        public IBodyWorkflowAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv, ApiConnectionActionConfiguration> T01A008AV01CV01ConvertXmlToCsv(Expression<Func<string>> dtoRequestT01A008AV01CV01ConvertXmlToCsvxML)
         {
             var __workflow_dtoRequestT01A008AV01CV01ConvertXmlToCsvxML = WorkflowExpression.Compile(dtoRequestT01A008AV01CV01ConvertXmlToCsvxML, nameof(dtoRequestT01A008AV01CV01ConvertXmlToCsvxML), required: true);
-            return new DeferredBodyAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv>(() =>
+            return new DeferredBodyAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A008_AV01_CV01_ConvertXmlToCsv";
                 var apiCallHttpMethod = "post";
@@ -869,11 +869,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml> T01A009AV01CV01ConvertCsvToYaml(Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A009AV01CV01ConvertCsvToYamlheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlnullValue = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlrowsToSkip = null, Expression<Func<int>> dtoRequestT01A009AV01CV01ConvertCsvToYamlstopAtRow = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlquoteCharacter = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns = null)
+        public IBodyWorkflowAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml, ApiConnectionActionConfiguration> T01A009AV01CV01ConvertCsvToYaml(Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlcSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A009AV01CV01ConvertCsvToYamlheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamldetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlnullValue = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlrowsToSkip = null, Expression<Func<int>> dtoRequestT01A009AV01CV01ConvertCsvToYamlstopAtRow = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlquoteCharacter = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns = null, Expression<Func<string>> dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns = null)
         {
             var __workflow_dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV = WorkflowExpression.Compile(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlcSV), required: true);
             var __workflow_dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator = WorkflowExpression.Compile(dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlseparator), required: false);
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             var __workflow_dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines = WorkflowExpression.Compile(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlautoDetectWrappedLines), required: false);
             var __workflow_dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns = WorkflowExpression.Compile(dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlrenameColumns), required: false);
             var __workflow_dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns = WorkflowExpression.Compile(dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYamlincludeColumns), required: false);
-            return new DeferredBodyAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml>(() =>
+            return new DeferredBodyAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A009_AV01_CV01_ConvertCsvToYaml";
                 var apiCallHttpMethod = "post";
@@ -1043,14 +1043,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv> T01A010AV01CV01ConvertYamlToCsv(Expression<Func<string>> dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML)
+        public IBodyWorkflowAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv, ApiConnectionActionConfiguration> T01A010AV01CV01ConvertYamlToCsv(Expression<Func<string>> dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML)
         {
             var __workflow_dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML = WorkflowExpression.Compile(dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML, nameof(dtoRequestT01A010AV01CV01ConvertYamlToCsvyAML), required: true);
-            return new DeferredBodyAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv>(() =>
+            return new DeferredBodyAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A010_AV01_CV01_ConvertYamlToCsv";
                 var apiCallHttpMethod = "post";
@@ -1065,11 +1065,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable> T01A011AV01CV01ConvertCsvToTextTable(Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTabledetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablenullValue = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerowsToSkip = null, Expression<Func<int>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablestopAtRow = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablequoteCharacter = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns = null)
+        public IBodyWorkflowAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable, ApiConnectionActionConfiguration> T01A011AV01CV01ConvertCsvToTextTable(Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSVHasHeaders = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectHeader = null, Expression<Func<int>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableheaderRowIndex = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectFieldTypes = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTabledetectionAccuracy = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablenullValue = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerowsToSkip = null, Expression<Func<int>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablestopAtRow = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableremoveEmptyRows = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablequoteCharacter = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableescapeCharacter = null, Expression<Func<bool>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns = null, Expression<Func<string>> dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns = null)
         {
             var __workflow_dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV = WorkflowExpression.Compile(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablecSV), required: true);
             var __workflow_dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator = WorkflowExpression.Compile(dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableseparator), required: false);
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
             var __workflow_dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines = WorkflowExpression.Compile(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableautoDetectWrappedLines), required: false);
             var __workflow_dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns = WorkflowExpression.Compile(dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTablerenameColumns), required: false);
             var __workflow_dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns = WorkflowExpression.Compile(dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTableincludeColumns), required: false);
-            return new DeferredBodyAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable>(() =>
+            return new DeferredBodyAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/T01_Csv/V01/T01_A011_AV01_CV01_ConvertCsvToTextTable";
                 var apiCallHttpMethod = "post";
@@ -1239,7 +1239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
                 }
 
                 return new ApiConnectionAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

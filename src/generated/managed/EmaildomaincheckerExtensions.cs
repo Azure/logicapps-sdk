@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
     public class EmaildomaincheckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
-        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
+        public IBodyWorkflowAction<CheckDomainResponse, ApiConnectionActionConfiguration> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
-            return new DeferredBodyAction<CheckDomainResponse>(() =>
+            return new DeferredBodyAction<CheckDomainResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/checkDomain/";
                 var apiCallHttpMethod = "get";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
                 callPayload.Queries["endpoint"] = ExpressionConverter.Convert(__workflow_endpoint);
                 callPayload.Headers["cf"] = Convert.ToString("sk");
                 return new ApiConnectionAction<CheckDomainResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

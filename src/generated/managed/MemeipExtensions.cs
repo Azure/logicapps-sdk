@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
     public class MemeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
-        public IBodyWorkflowAction<MemeRandomResponse> MemeRandom()
+        public IBodyWorkflowAction<MemeRandomResponse, ApiConnectionActionConfiguration> MemeRandom()
         {
             var apiCallPath = "/gimme";
             var apiCallHttpMethod = "get";
@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
-        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit(Expression<Func<string>> subreddit)
+        public IBodyWorkflowAction<MemeSubredditResponse, ApiConnectionActionConfiguration> MemeSubreddit(Expression<Func<string>> subreddit)
         {
             var __workflow_subreddit = WorkflowExpression.Compile(subreddit, nameof(subreddit), required: true);
-            return new DeferredBodyAction<MemeSubredditResponse>(() =>
+            return new DeferredBodyAction<MemeSubredditResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gimme/{0}", __workflow_subreddit.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemeSubredditResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

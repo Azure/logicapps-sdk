@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
     public class LeapaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_onlyFinished = WorkflowExpression.Compile(onlyFinished, nameof(onlyFinished), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
-            return new DeferredBodyAction<ImagesGetResponseItem[]>(() =>
+            return new DeferredBodyAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
                 if (__workflow_pageSize != null)
                     callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
+        public IBodyWorkflowAction<ImagePostResponse, ApiConnectionActionConfiguration> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
             var __workflow_bodypromptStrength = WorkflowExpression.Compile(bodypromptStrength, nameof(bodypromptStrength), required: false);
             var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
             var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
-            return new DeferredBodyAction<ImagePostResponse>(() =>
+            return new DeferredBodyAction<ImagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -109,46 +109,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
                 }
 
                 return new ApiConnectionAction<ImagePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
-            return new DeferredBodyAction<ImageGetResponse>(() =>
+            return new DeferredBodyAction<ImageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences/{1}", __workflow_modelId.WithUrlEncoding(1), __workflow_inferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ImageGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<string> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences/{1}", __workflow_modelId.WithUrlEncoding(1), __workflow_inferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelPostResponse> Model(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
+        public IBodyWorkflowAction<ModelPostResponse, ApiConnectionActionConfiguration> Model(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodysubjectKeyword = WorkflowExpression.Compile(bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
             var __workflow_bodysubjectType = WorkflowExpression.Compile(bodysubjectType, nameof(bodysubjectType), required: false);
             var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             var __workflow_bodyimageSampleUrls = WorkflowExpression.Compile(bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
-            return new DeferredBodyAction<ModelPostResponse>(() =>
+            return new DeferredBodyAction<ModelPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/images/models/new";
                 var apiCallHttpMethod = "post";
@@ -191,11 +191,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
                 }
 
                 return new ApiConnectionAction<ModelPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelsGetResponse> ModelsGet()
+        public IBodyWorkflowAction<ModelsGetResponse, ApiConnectionActionConfiguration> ModelsGet()
         {
             var apiCallPath = "/v2/images/models";
             var apiCallHttpMethod = "get";
@@ -204,33 +204,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<modelIdInput>> modelId)
+        public IBodyWorkflowAction<ModelGetResponse, ApiConnectionActionConfiguration> ModelGet(Expression<Func<modelIdInput>> modelId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
-            return new DeferredBodyAction<ModelGetResponse>(() =>
+            return new DeferredBodyAction<ModelGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/images/models/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete(Expression<Func<modelIdInput>> modelId)
+        public IBodyWorkflowAction<ModelDeleteResponse, ApiConnectionActionConfiguration> ModelDelete(Expression<Func<modelIdInput>> modelId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
-            return new DeferredBodyAction<ModelDeleteResponse>(() =>
+            return new DeferredBodyAction<ModelDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/images/models/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelDeleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<MusicsGetResponseItem[]> MusicsGet()
+        public IBodyWorkflowAction<MusicsGetResponseItem[], ApiConnectionActionConfiguration> MusicsGet()
         {
             var apiCallPath = "/v1/music";
             var apiCallHttpMethod = "get";
@@ -239,12 +239,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<MusicPostResponse> Music(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
+        public IBodyWorkflowAction<MusicPostResponse, ApiConnectionActionConfiguration> Music(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
         {
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
-            return new DeferredBodyAction<MusicPostResponse>(() =>
+            return new DeferredBodyAction<MusicPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/music";
                 var apiCallHttpMethod = "post";
@@ -263,20 +263,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
                 }
 
                 return new ApiConnectionAction<MusicPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<MusicGetResponse> MusicGet(Expression<Func<string>> inferenceId)
+        public IBodyWorkflowAction<MusicGetResponse, ApiConnectionActionConfiguration> MusicGet(Expression<Func<string>> inferenceId)
         {
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
-            return new DeferredBodyAction<MusicGetResponse>(() =>
+            return new DeferredBodyAction<MusicGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/music/{0}", __workflow_inferenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MusicGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

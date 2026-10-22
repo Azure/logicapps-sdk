@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
     public class ExperlogixcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> GetConfigurationXml(Expression<Func<string>> type, Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration> GetConfigurationXml(Expression<Func<string>> type, Expression<Func<string>> id)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
+            return new DeferredBodyAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ConfigurationXml";
                 var apiCallHttpMethod = "get";
@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfigurationFromCopy(Expression<Func<string>> reqtargetId, Expression<Func<string>> reqsourceId, Expression<Func<string>> reqtype, Expression<Func<int[]>> reqlineItemIds = null)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration> CreateConfigurationFromCopy(Expression<Func<string>> reqtargetId, Expression<Func<string>> reqsourceId, Expression<Func<string>> reqtype, Expression<Func<int[]>> reqlineItemIds = null)
         {
             var __workflow_reqtargetId = WorkflowExpression.Compile(reqtargetId, nameof(reqtargetId), required: true);
             var __workflow_reqsourceId = WorkflowExpression.Compile(reqsourceId, nameof(reqsourceId), required: true);
             var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
             var __workflow_reqlineItemIds = WorkflowExpression.Compile(reqlineItemIds, nameof(reqlineItemIds), required: false);
-            return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
+            return new DeferredBodyAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateConfigurationFromCopy";
                 var apiCallHttpMethod = "post";
@@ -59,16 +59,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 }
 
                 return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> UpdateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration> UpdateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
         {
             var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
             var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
             var __workflow_reqconfigurationXml = WorkflowExpression.Compile(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
-            return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
+            return new DeferredBodyAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateConfiguration";
                 var apiCallHttpMethod = "post";
@@ -87,16 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 }
 
                 return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration> CreateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
         {
             var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
             var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
             var __workflow_reqconfigurationXml = WorkflowExpression.Compile(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
-            return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
+            return new DeferredBodyAction<GetConfigurationXmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateConfiguration";
                 var apiCallHttpMethod = "post";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 }
 
                 return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

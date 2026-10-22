@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     public class ImanageworkforadminsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles(Expression<Func<string>> libraryId, Expression<Func<bool>> isExternal = null)
+        public IBodyWorkflowAction<GetLibraryRolesResponse, ApiConnectionActionConfiguration> GetLibraryRoles(Expression<Func<string>> libraryId, Expression<Func<bool>> isExternal = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_isExternal = WorkflowExpression.Compile(isExternal, nameof(isExternal), required: false);
-            return new DeferredBodyAction<GetLibraryRolesResponse>(() =>
+            return new DeferredBodyAction<GetLibraryRolesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getLibraryRoles";
                 var apiCallHttpMethod = "get";
@@ -26,16 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                     callPayload.Queries["is_external"] = ExpressionConverter.Convert(__workflow_isExternal);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<GetLibraryRolesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null)
+        public IBodyWorkflowAction<GetLookupAliasesResponse, ApiConnectionActionConfiguration> GetLookupAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_lookupFieldId = WorkflowExpression.Compile(lookupFieldId, nameof(lookupFieldId), required: true);
             var __workflow_parentAlias = WorkflowExpression.Compile(parentAlias, nameof(parentAlias), required: false);
-            return new DeferredBodyAction<GetLookupAliasesResponse>(() =>
+            return new DeferredBodyAction<GetLookupAliasesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getLookupAliases";
                 var apiCallHttpMethod = "get";
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 callPayload.Queries["getParentAliases"] = Convert.ToString(false);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<GetLookupAliasesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<enabledStateInput>> enabledState = null)
+        public IBodyWorkflowAction<SearchCustomPropertyResponseBody, ApiConnectionActionConfiguration> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<enabledStateInput>> enabledState = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_lookupFieldId = WorkflowExpression.Compile(lookupFieldId, nameof(lookupFieldId), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
             var __workflow_hipaa = WorkflowExpression.Compile(hipaa, nameof(hipaa), required: false);
             var __workflow_enabledState = WorkflowExpression.Compile(enabledState, nameof(enabledState), required: false);
-            return new DeferredBodyAction<SearchCustomPropertyResponseBody>(() =>
+            return new DeferredBodyAction<SearchCustomPropertyResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/searchCustomPropertyAliases";
                 var apiCallHttpMethod = "get";
@@ -81,16 +81,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                     callPayload.Queries["enabled_state"] = ExpressionConverter.Convert(__workflow_enabledState);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<SearchCustomPropertyResponseBody>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCustomOrPropertyLookup(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
         {
             var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
             var __workflow_bodylookupFieldId = WorkflowExpression.Compile(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
             var __workflow_bodyaliasInfo = WorkflowExpression.Compile(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createCustomOrPropertyLookup";
                 var apiCallHttpMethod = "post";
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyisExternal, Expression<Func<string>> bodypreferredLibrary, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyignoreIfUserAlreadyExists, Expression<Func<bodypasswordCreateMethodInput>> bodypasswordCreateMethod, Expression<Func<object>> bodycreatePassword)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyisExternal, Expression<Func<string>> bodypreferredLibrary, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyignoreIfUserAlreadyExists, Expression<Func<bodypasswordCreateMethodInput>> bodypasswordCreateMethod, Expression<Func<object>> bodycreatePassword)
         {
             var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var __workflow_bodyignoreIfUserAlreadyExists = WorkflowExpression.Compile(bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
             var __workflow_bodypasswordCreateMethod = WorkflowExpression.Compile(bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
             var __workflow_bodycreatePassword = WorkflowExpression.Compile(bodycreatePassword, nameof(bodycreatePassword), required: true);
-            return new DeferredBodyAction<CreateUserResponse>(() =>
+            return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createUser";
                 var apiCallHttpMethod = "post";
@@ -157,17 +157,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyisPreferredLibrary)
+        public IBodyWorkflowAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration> AssignUserToLibrary(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyisPreferredLibrary)
         {
             var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             var __workflow_bodyisPreferredLibrary = WorkflowExpression.Compile(bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
-            return new DeferredBodyAction<AssignUserToLibraryResponse>(() =>
+            return new DeferredBodyAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/assignUserToLibrary";
                 var apiCallHttpMethod = "post";
@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<AssignUserToLibraryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodyparentTypeInput>> bodyparentType, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<bodyinheritProfileFromWorkspaceInput>> bodyinheritProfileFromWorkspace, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofileProperties = null)
+        public IBodyWorkflowAction<CreateFolderResponseBody, ApiConnectionActionConfiguration> AddFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodyparentTypeInput>> bodyparentType, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<bodyinheritProfileFromWorkspaceInput>> bodyinheritProfileFromWorkspace, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofileProperties = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
             var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
             var __workflow_bodyprofileProperties = WorkflowExpression.Compile(bodyprofileProperties, nameof(bodyprofileProperties), required: false);
-            return new DeferredBodyAction<CreateFolderResponseBody>(() =>
+            return new DeferredBodyAction<CreateFolderResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addFolder";
                 var apiCallHttpMethod = "post";
@@ -283,18 +283,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<CreateFolderResponseBody>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateTabResponseBody> AddTab(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyowner = null)
+        public IBodyWorkflowAction<CreateTabResponseBody, ApiConnectionActionConfiguration> AddTab(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyowner = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
             var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
-            return new DeferredBodyAction<CreateTabResponseBody>(() =>
+            return new DeferredBodyAction<CreateTabResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addTab";
                 var apiCallHttpMethod = "post";
@@ -326,14 +326,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<CreateTabResponseBody>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetMyMattersCategoriesResponse, ApiConnectionActionConfiguration> GetMyMattersCategories(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<GetMyMattersCategoriesResponse>(() =>
+            return new DeferredBodyAction<GetMyMattersCategoriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getMyMattersCategories";
                 var apiCallHttpMethod = "get";
@@ -341,16 +341,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 callPayload.Queries["user_id"] = ExpressionConverter.Convert(__workflow_userId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<GetMyMattersCategoriesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycategoryId = null)
+        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration> AddShortcutsToMyMattersAdmin(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycategoryId = null)
         {
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
-            return new DeferredBodyAction<AddShortcutsToMyMattersAdminResponse>(() =>
+            return new DeferredBodyAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addShortcutsToMyMattersAdmin";
                 var apiCallHttpMethod = "post";
@@ -374,16 +374,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<AddShortcutsToMyMattersAdminResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken> UpdateCustomField(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
         {
             var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
             var __workflow_bodylookupFieldId = WorkflowExpression.Compile(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
             var __workflow_bodyaliasInfo = WorkflowExpression.Compile(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateCustomField";
                 var apiCallHttpMethod = "post";
@@ -403,16 +403,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodycolumnNames, Expression<Func<bool>> bodylatest = null)
+        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCSVDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodycolumnNames, Expression<Func<bool>> bodylatest = null)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodycolumnNames = WorkflowExpression.Compile(bodycolumnNames, nameof(bodycolumnNames), required: true);
             var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: false);
-            return new DeferredBodyAction<GetRowsFromCSVDocumentResponse>(() =>
+            return new DeferredBodyAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getRowsFromCSVDocument";
                 var apiCallHttpMethod = "post";
@@ -446,15 +446,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<GetRowsFromCSVDocumentResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydestinationId)
+        public IBodyWorkflowAction<MoveFolderResponseBody, ApiConnectionActionConfiguration> MoveFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydestinationId)
         {
             var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
             var __workflow_bodydestinationId = WorkflowExpression.Compile(bodydestinationId, nameof(bodydestinationId), required: true);
-            return new DeferredBodyAction<MoveFolderResponseBody>(() =>
+            return new DeferredBodyAction<MoveFolderResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/moveFolder";
                 var apiCallHttpMethod = "post";
@@ -472,11 +472,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<MoveFolderResponseBody>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
+        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
         {
             var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
             var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
             var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
             var __workflow_bodyprofile = WorkflowExpression.Compile(bodyprofile, nameof(bodyprofile), required: false);
-            return new DeferredBodyAction<UpdateFolderPropertiesResponseBody>(() =>
+            return new DeferredBodyAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateFolder";
                 var apiCallHttpMethod = "post";
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 return new ApiConnectionAction<UpdateFolderPropertiesResponseBody>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

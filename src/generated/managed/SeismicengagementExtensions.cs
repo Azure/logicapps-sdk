@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     public class SeismicengagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions(Expression<Func<bool>> enabled = null)
+        public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[], ApiConnectionActionConfiguration> GetListOfDeliveryOptions(Expression<Func<bool>> enabled = null)
         {
             var __workflow_enabled = WorkflowExpression.Compile(enabled, nameof(enabled), required: false);
-            return new DeferredBodyAction<SeismicDeliveryDeliveryOption[]>(() =>
+            return new DeferredBodyAction<SeismicDeliveryDeliveryOption[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/delivery";
                 var apiCallHttpMethod = "get";
@@ -23,30 +23,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 if (__workflow_enabled != null)
                     callPayload.Queries["Enabled"] = ExpressionConverter.Convert(__workflow_enabled);
                 return new ApiConnectionAction<SeismicDeliveryDeliveryOption[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs(Expression<Func<string>> deliveryOptionId)
+        public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs, ApiConnectionActionConfiguration> GetDeliveryOptionFormInputs(Expression<Func<string>> deliveryOptionId)
         {
             var __workflow_deliveryOptionId = WorkflowExpression.Compile(deliveryOptionId, nameof(deliveryOptionId), required: true);
-            return new DeferredBodyAction<SeismicDeliveryDeliveryFormInputs>(() =>
+            return new DeferredBodyAction<SeismicDeliveryDeliveryFormInputs, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/customDelivery/{0}", __workflow_deliveryOptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicDeliveryDeliveryFormInputs>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IWorkflowAction DeliverViaCustomDelivery(Expression<Func<string>> bodydeliveryOption = null, Expression<Func<string>> bodydeliveryOptionId = null, Expression<Func<SeismicDeliveryCustomDeliveryAdHocInput[]>> bodyadHocInput = null, Expression<Func<SeismicDeliveryCustomDeliveryContent[]>> bodycontent = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeliverViaCustomDelivery(Expression<Func<string>> bodydeliveryOption = null, Expression<Func<string>> bodydeliveryOptionId = null, Expression<Func<SeismicDeliveryCustomDeliveryAdHocInput[]>> bodyadHocInput = null, Expression<Func<SeismicDeliveryCustomDeliveryContent[]>> bodycontent = null)
         {
             var __workflow_bodydeliveryOption = WorkflowExpression.Compile(bodydeliveryOption, nameof(bodydeliveryOption), required: false);
             var __workflow_bodydeliveryOptionId = WorkflowExpression.Compile(bodydeliveryOptionId, nameof(bodydeliveryOptionId), required: false);
             var __workflow_bodyadHocInput = WorkflowExpression.Compile(bodyadHocInput, nameof(bodyadHocInput), required: false);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/customDelivery";
                 var apiCallHttpMethod = "post";
@@ -83,15 +83,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace(Expression<Func<string>> bodyworkspaceOptionsworkspaceFolderId = null, Expression<Func<SeismicDeliveryCustomDelContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> SaveToWorkspace(Expression<Func<string>> bodyworkspaceOptionsworkspaceFolderId = null, Expression<Func<SeismicDeliveryCustomDelContent[]>> bodycontent = null)
         {
             var __workflow_bodyworkspaceOptionsworkspaceFolderId = WorkflowExpression.Compile(bodyworkspaceOptionsworkspaceFolderId, nameof(bodyworkspaceOptionsworkspaceFolderId), required: false);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp>(() =>
+            return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/saveToWorkspace";
                 var apiCallHttpMethod = "post";
@@ -124,11 +124,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 }
 
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink(Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodysettingsexpiresAt = null, Expression<Func<string>> bodysettingspassword = null, Expression<Func<bool>> bodysettingsallowDownload = null, Expression<Func<string>> bodysettingsnotificationType = null, Expression<Func<bool>> bodysettingssingleView = null, Expression<Func<SeismicLiveSendLiveSendLinkContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration> CreateLiveSendLink(Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodysettingsexpiresAt = null, Expression<Func<string>> bodysettingspassword = null, Expression<Func<bool>> bodysettingsallowDownload = null, Expression<Func<string>> bodysettingsnotificationType = null, Expression<Func<bool>> bodysettingssingleView = null, Expression<Func<SeismicLiveSendLiveSendLinkContent[]>> bodycontent = null)
         {
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             var __workflow_bodysettingsexpiresAt = WorkflowExpression.Compile(bodysettingsexpiresAt, nameof(bodysettingsexpiresAt), required: false);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
             var __workflow_bodysettingsnotificationType = WorkflowExpression.Compile(bodysettingsnotificationType, nameof(bodysettingsnotificationType), required: false);
             var __workflow_bodysettingssingleView = WorkflowExpression.Compile(bodysettingssingleView, nameof(bodysettingssingleView), required: false);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            return new DeferredBodyAction<SeismicLiveSendLiveSendLinkResponse>(() =>
+            return new DeferredBodyAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/liveSend/links";
                 var apiCallHttpMethod = "post";
@@ -200,11 +200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
                 }
 
                 return new ApiConnectionAction<SeismicLiveSendLiveSendLinkResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicLiveSendLiveSendSettingsResponse> GetLiveSendSettings()
+        public IBodyWorkflowAction<SeismicLiveSendLiveSendSettingsResponse, ApiConnectionActionConfiguration> GetLiveSendSettings()
         {
             var apiCallPath = "/liveSend/settings";
             var apiCallHttpMethod = "get";

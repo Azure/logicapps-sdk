@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
     public class AbstractipgeolocatioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractipgeolocatio")]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> ipAddress, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> Analyze(Expression<Func<string>> ipAddress, Expression<Func<string>> fields = null)
         {
             var __workflow_ipAddress = WorkflowExpression.Compile(ipAddress, nameof(ipAddress), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            return new DeferredBodyAction<AnalyzeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

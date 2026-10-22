@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class SociabbleActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction SendAlertRequest(Expression<Func<string>> bodyalertText, Expression<Func<string>> bodyalertTitle, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodyusername = null, Expression<Func<bool>> bodyisMandatory = null, Expression<Func<bool>> bodysendSMS = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendAlertRequest(Expression<Func<string>> bodyalertText, Expression<Func<string>> bodyalertTitle, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodyusername = null, Expression<Func<bool>> bodyisMandatory = null, Expression<Func<bool>> bodysendSMS = null)
         {
             var __workflow_bodyalertText = WorkflowExpression.Compile(bodyalertText, nameof(bodyalertText), required: true);
             var __workflow_bodyalertTitle = WorkflowExpression.Compile(bodyalertTitle, nameof(bodyalertTitle), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
             var __workflow_bodyisMandatory = WorkflowExpression.Compile(bodyisMandatory, nameof(bodyisMandatory), required: false);
             var __workflow_bodysendSMS = WorkflowExpression.Compile(bodysendSMS, nameof(bodysendSMS), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alerts/";
                 var apiCallHttpMethod = "post";
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetAudiencesResponseItem[]> GetAudiences()
+        public IBodyWorkflowAction<GetAudiencesResponseItem[], ApiConnectionActionConfiguration> GetAudiences()
         {
             var apiCallPath = "/companies/audiences";
             var apiCallHttpMethod = "get";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetChannelsResponseItem[]> GetChannels()
+        public IBodyWorkflowAction<GetChannelsResponseItem[], ApiConnectionActionConfiguration> GetChannels()
         {
             var apiCallPath = "/channels";
             var apiCallHttpMethod = "get";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetCategoriesResponseItem[]> GetCategories()
+        public IBodyWorkflowAction<GetCategoriesResponseItem[], ApiConnectionActionConfiguration> GetCategories()
         {
             var apiCallPath = "/categories";
             var apiCallHttpMethod = "get";
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<InternalContent> CreateInternalNews(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedInternalContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
+        public IBodyWorkflowAction<InternalContent, ApiConnectionActionConfiguration> CreateInternalNews(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedInternalContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
         {
             var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyareCommentsAuthorized = WorkflowExpression.Compile(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
             var __workflow_bodyshouldNotifyUsers = WorkflowExpression.Compile(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
             var __workflow_bodyisMustReadContent = WorkflowExpression.Compile(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
-            return new DeferredBodyAction<InternalContent>(() =>
+            return new DeferredBodyAction<InternalContent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/content/internalnews";
                 var apiCallHttpMethod = "post";
@@ -225,11 +225,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction<InternalContent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<ExternalContent> CreateExternalContent(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedExternalContentCreation[]>> bodycontents, Expression<Func<string>> bodycontentUrl, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyisShareable = null, Expression<Func<bool>> bodyisOfficialContent = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
+        public IBodyWorkflowAction<ExternalContent, ApiConnectionActionConfiguration> CreateExternalContent(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedExternalContentCreation[]>> bodycontents, Expression<Func<string>> bodycontentUrl, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyisShareable = null, Expression<Func<bool>> bodyisOfficialContent = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
         {
             var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyareCommentsAuthorized = WorkflowExpression.Compile(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
             var __workflow_bodyshouldNotifyUsers = WorkflowExpression.Compile(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
             var __workflow_bodyisMustReadContent = WorkflowExpression.Compile(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
-            return new DeferredBodyAction<ExternalContent>(() =>
+            return new DeferredBodyAction<ExternalContent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/content/external";
                 var apiCallHttpMethod = "post";
@@ -365,11 +365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction<ExternalContent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaSuggestContent> CtaSuggestContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        public IBodyWorkflowAction<CtaSuggestContent, ApiConnectionActionConfiguration> CtaSuggestContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
             var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
             var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
             var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            return new DeferredBodyAction<CtaSuggestContent>(() =>
+            return new DeferredBodyAction<CtaSuggestContent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/content/Cta/Suggest";
                 var apiCallHttpMethod = "post";
@@ -471,11 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction<CtaSuggestContent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaInvitationContent> CtaInvitationContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        public IBodyWorkflowAction<CtaInvitationContent, ApiConnectionActionConfiguration> CtaInvitationContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
             var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
             var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
             var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            return new DeferredBodyAction<CtaInvitationContent>(() =>
+            return new DeferredBodyAction<CtaInvitationContent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/content/Cta/Invitation";
                 var apiCallHttpMethod = "post";
@@ -577,11 +577,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction<CtaInvitationContent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaMobileContent> CtaMobileContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        public IBodyWorkflowAction<CtaMobileContent, ApiConnectionActionConfiguration> CtaMobileContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
             var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
             var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
             var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            return new DeferredBodyAction<CtaMobileContent>(() =>
+            return new DeferredBodyAction<CtaMobileContent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/content/Cta/Mobile";
                 var apiCallHttpMethod = "post";
@@ -683,11 +683,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction<CtaMobileContent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaEventContent> CtaEventCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedCtaEventContentCreation[]>> bodycontents, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodylink = null, Expression<Func<int>> bodyawardedBonus = null, Expression<Func<bool>> bodyshouldDisplayTitle = null, Expression<Func<bool>> bodyshouldDisplayButton = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
+        public IBodyWorkflowAction<CtaEventContent, ApiConnectionActionConfiguration> CtaEventCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedCtaEventContentCreation[]>> bodycontents, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodylink = null, Expression<Func<int>> bodyawardedBonus = null, Expression<Func<bool>> bodyshouldDisplayTitle = null, Expression<Func<bool>> bodyshouldDisplayButton = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
             var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
             var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
             var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
             var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            return new DeferredBodyAction<CtaEventContent>(() =>
+            return new DeferredBodyAction<CtaEventContent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/content/Cta/Event";
                 var apiCallHttpMethod = "post";
@@ -817,16 +817,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction<CtaEventContent>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<string>> bodybadgeId, Expression<Func<int>> bodylevel)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<string>> bodybadgeId, Expression<Func<int>> bodylevel)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_bodybadgeId = WorkflowExpression.Compile(bodybadgeId, nameof(bodybadgeId), required: true);
             var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/badges/", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -843,18 +843,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<bodycontentsInputItem[]>> bodycontents, Expression<Func<bool>> bodyisEngaging = null, Expression<Func<bool>> bodyisInternal = null, Expression<Func<int>> bodypoints = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<bodycontentsInputItem[]>> bodycontents, Expression<Func<bool>> bodyisEngaging = null, Expression<Func<bool>> bodyisInternal = null, Expression<Func<int>> bodypoints = null)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
             var __workflow_bodyisEngaging = WorkflowExpression.Compile(bodyisEngaging, nameof(bodyisEngaging), required: false);
             var __workflow_bodyisInternal = WorkflowExpression.Compile(bodyisInternal, nameof(bodyisInternal), required: false);
             var __workflow_bodypoints = WorkflowExpression.Compile(bodypoints, nameof(bodypoints), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/customactions/", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -887,11 +887,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetAllBadgesResponseItem[]> GetAllBadges()
+        public IBodyWorkflowAction<GetAllBadgesResponseItem[], ApiConnectionActionConfiguration> GetAllBadges()
         {
             var apiCallPath = "/badges";
             var apiCallHttpMethod = "get";
@@ -900,81 +900,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> GetBadgeLevels(Expression<Func<string>> badgeId)
+        public IBodyWorkflowAction<GetBadgeLevelsResponseItem[], ApiConnectionActionConfiguration> GetBadgeLevels(Expression<Func<string>> badgeId)
         {
             var __workflow_badgeId = WorkflowExpression.Compile(badgeId, nameof(badgeId), required: true);
-            return new DeferredBodyAction<GetBadgeLevelsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetBadgeLevelsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/badges/{0}/levels", __workflow_badgeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBadgeLevelsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStream(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<object>> media)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByStream(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<object>> media)
         {
             var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
             var __workflow_media = WorkflowExpression.Compile(media, nameof(media), required: true);
-            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/medias/ByStream";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrl(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> mediaUrl)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByUrl(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> mediaUrl)
         {
             var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
             var __workflow_mediaUrl = WorkflowExpression.Compile(mediaUrl, nameof(mediaUrl), required: true);
-            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/medias/ByUrl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStreamByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<object>> media)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByStreamByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<object>> media)
         {
             var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_media = WorkflowExpression.Compile(media, nameof(media), required: true);
-            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/medias/ByStreamByFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrlByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<string>> mediaUrl)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByUrlByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<string>> mediaUrl)
         {
             var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_mediaUrl = WorkflowExpression.Compile(mediaUrl, nameof(mediaUrl), required: true);
-            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/medias/ByUrlByFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<GetFoldersResponse> GetMediaDriveFolders(Expression<Func<string>> culture = null)
+        public IBodyWorkflowAction<GetFoldersResponse, ApiConnectionActionConfiguration> GetMediaDriveFolders(Expression<Func<string>> culture = null)
         {
             var __workflow_culture = WorkflowExpression.Compile(culture, nameof(culture), required: false);
-            return new DeferredBodyAction<GetFoldersResponse>(() =>
+            return new DeferredBodyAction<GetFoldersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mediadrive";
                 var apiCallHttpMethod = "get";
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 if (__workflow_culture != null)
                     callPayload.Queries["culture"] = ExpressionConverter.Convert(__workflow_culture);
                 return new ApiConnectionAction<GetFoldersResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

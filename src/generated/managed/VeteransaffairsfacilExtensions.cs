@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
     public class VeteransaffairsfacilActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        public IBodyWorkflowAction<FacilitiesResponse> GetFacilities(Expression<Func<string>> facilityIds = null, Expression<Func<string>> zip = null, Expression<Func<string>> state = null, Expression<Func<double>> lat = null, Expression<Func<double>> @long = null, Expression<Func<double>> radius = null, Expression<Func<string>> bbox = null, Expression<Func<double>> visn = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> services = null, Expression<Func<bool>> mobile = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<FacilitiesResponse, ApiConnectionActionConfiguration> GetFacilities(Expression<Func<string>> facilityIds = null, Expression<Func<string>> zip = null, Expression<Func<string>> state = null, Expression<Func<double>> lat = null, Expression<Func<double>> @long = null, Expression<Func<double>> radius = null, Expression<Func<string>> bbox = null, Expression<Func<double>> visn = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> services = null, Expression<Func<bool>> mobile = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_facilityIds = WorkflowExpression.Compile(facilityIds, nameof(facilityIds), required: false);
             var __workflow_zip = WorkflowExpression.Compile(zip, nameof(zip), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var __workflow_mobile = WorkflowExpression.Compile(mobile, nameof(mobile), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<FacilitiesResponse>(() =>
+            return new DeferredBodyAction<FacilitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facilities";
                 var apiCallHttpMethod = "get";
@@ -59,29 +59,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<FacilitiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        public IBodyWorkflowAction<FacilityReadResponse> GetFacilityById(Expression<Func<string>> facilityId)
+        public IBodyWorkflowAction<FacilityReadResponse, ApiConnectionActionConfiguration> GetFacilityById(Expression<Func<string>> facilityId)
         {
             var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
-            return new DeferredBodyAction<FacilityReadResponse>(() =>
+            return new DeferredBodyAction<FacilityReadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/facilities/{0}", __workflow_facilityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FacilityReadResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        public IBodyWorkflowAction<DetailedServicesResponse> GetFacilityServicesById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceIds = null, Expression<Func<string>> serviceType = null)
+        public IBodyWorkflowAction<DetailedServicesResponse, ApiConnectionActionConfiguration> GetFacilityServicesById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceIds = null, Expression<Func<string>> serviceType = null)
         {
             var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
             var __workflow_serviceIds = WorkflowExpression.Compile(serviceIds, nameof(serviceIds), required: false);
             var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: false);
-            return new DeferredBodyAction<DetailedServicesResponse>(() =>
+            return new DeferredBodyAction<DetailedServicesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/facilities/{0}/services", __workflow_facilityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -91,28 +91,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
                 if (__workflow_serviceType != null)
                     callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
                 return new ApiConnectionAction<DetailedServicesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        public IBodyWorkflowAction<DetailedServiceResponse> GetFacilityServiceById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceId)
+        public IBodyWorkflowAction<DetailedServiceResponse, ApiConnectionActionConfiguration> GetFacilityServiceById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceId)
         {
             var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
-            return new DeferredBodyAction<DetailedServiceResponse>(() =>
+            return new DeferredBodyAction<DetailedServiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/facilities/{0}/services/{1}", __workflow_facilityId.WithUrlEncoding(1), __workflow_serviceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DetailedServiceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        public IBodyWorkflowAction<FacilitiesIdsResponse> GetFacilityIds(Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<FacilitiesIdsResponse, ApiConnectionActionConfiguration> GetFacilityIds(Expression<Func<typeInput>> type = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<FacilitiesIdsResponse>(() =>
+            return new DeferredBodyAction<FacilitiesIdsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ids";
                 var apiCallHttpMethod = "get";
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
                 if (__workflow_type != null)
                     callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<FacilitiesIdsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        public IBodyWorkflowAction<NearbyResponse> GetNearbyFacilities(Expression<Func<double>> lat, Expression<Func<double>> @long, Expression<Func<int>> driveTime = null, Expression<Func<string>> services = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<NearbyResponse, ApiConnectionActionConfiguration> GetNearbyFacilities(Expression<Func<double>> lat, Expression<Func<double>> @long, Expression<Func<int>> driveTime = null, Expression<Func<string>> services = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
             var __workflow_services = WorkflowExpression.Compile(services, nameof(services), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<NearbyResponse>(() =>
+            return new DeferredBodyAction<NearbyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nearby";
                 var apiCallHttpMethod = "get";
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<NearbyResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

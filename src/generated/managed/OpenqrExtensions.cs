@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
     public class OpenqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderUpdatePostResponse> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<FolderUpdatePostResponse, ApiConnectionActionConfiguration> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<FolderUpdatePostResponse>(() =>
+            return new DeferredBodyAction<FolderUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/folders/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
                 }
 
                 return new ApiConnectionAction<FolderUpdatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FoldersGetResponse> FoldersGet()
+        public IBodyWorkflowAction<FoldersGetResponse, ApiConnectionActionConfiguration> FoldersGet()
         {
             var apiCallPath = "/folders";
             var apiCallHttpMethod = "get";
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderPostResponse> Folder(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<FolderPostResponse, ApiConnectionActionConfiguration> Folder(Expression<Func<string>> bodyname)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<FolderPostResponse>(() =>
+            return new DeferredBodyAction<FolderPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/folders";
                 var apiCallHttpMethod = "post";
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
                 }
 
                 return new ApiConnectionAction<FolderPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRsGetResponse> QRsGet()
+        public IBodyWorkflowAction<QRsGetResponse, ApiConnectionActionConfiguration> QRsGet()
         {
             var apiCallPath = "/qr-codes";
             var apiCallHttpMethod = "get";
@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRPostResponse> QR(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydataurl = null)
+        public IBodyWorkflowAction<QRPostResponse, ApiConnectionActionConfiguration> QR(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydataurl = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodydataurl = WorkflowExpression.Compile(bodydataurl, nameof(bodydataurl), required: false);
-            return new DeferredBodyAction<QRPostResponse>(() =>
+            return new DeferredBodyAction<QRPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qr-codes";
                 var apiCallHttpMethod = "post";
@@ -111,30 +111,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
                 }
 
                 return new ApiConnectionAction<QRPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRGetResponse> QRGet(Expression<Func<string>> qrCodeId)
+        public IBodyWorkflowAction<QRGetResponse, ApiConnectionActionConfiguration> QRGet(Expression<Func<string>> qrCodeId)
         {
             var __workflow_qrCodeId = WorkflowExpression.Compile(qrCodeId, nameof(qrCodeId), required: true);
-            return new DeferredBodyAction<QRGetResponse>(() =>
+            return new DeferredBodyAction<QRGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qr-codes/{0}", __workflow_qrCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<QRGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRUpdatePostResponse> QRUpdate(Expression<Func<string>> qrCodeId, Expression<Func<string>> bodyname = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydataurl = null)
+        public IBodyWorkflowAction<QRUpdatePostResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> qrCodeId, Expression<Func<string>> bodyname = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydataurl = null)
         {
             var __workflow_qrCodeId = WorkflowExpression.Compile(qrCodeId, nameof(qrCodeId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodydataurl = WorkflowExpression.Compile(bodydataurl, nameof(bodydataurl), required: false);
-            return new DeferredBodyAction<QRUpdatePostResponse>(() =>
+            return new DeferredBodyAction<QRUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qr-codes/{0}", __workflow_qrCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -183,11 +183,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
                 }
 
                 return new ApiConnectionAction<QRUpdatePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FilesGetResponse> FilesGet()
+        public IBodyWorkflowAction<FilesGetResponse, ApiConnectionActionConfiguration> FilesGet()
         {
             var apiCallPath = "/files";
             var apiCallHttpMethod = "get";
@@ -196,16 +196,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> file)
+        public IBodyWorkflowAction<FilePostResponse, ApiConnectionActionConfiguration> File(Expression<Func<object>> file)
         {
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<FilePostResponse>(() =>
+            return new DeferredBodyAction<FilePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/files";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

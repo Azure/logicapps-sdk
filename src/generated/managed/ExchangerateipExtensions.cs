@@ -12,34 +12,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
     public class ExchangerateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
-        public IBodyWorkflowAction<GetExchangeRatesResponse> GetExchangeRates(Expression<Func<string>> basecurrency)
+        public IBodyWorkflowAction<GetExchangeRatesResponse, ApiConnectionActionConfiguration> GetExchangeRates(Expression<Func<string>> basecurrency)
         {
             var __workflow_basecurrency = WorkflowExpression.Compile(basecurrency, nameof(basecurrency), required: true);
-            return new DeferredBodyAction<GetExchangeRatesResponse>(() =>
+            return new DeferredBodyAction<GetExchangeRatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/latest/{0}", __workflow_basecurrency.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetExchangeRatesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
-        public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> baseCurrency, Expression<Func<string>> targetCurrency)
+        public IBodyWorkflowAction<GetExchangeRateResponse, ApiConnectionActionConfiguration> GetExchangeRate(Expression<Func<string>> baseCurrency, Expression<Func<string>> targetCurrency)
         {
             var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
             var __workflow_targetCurrency = WorkflowExpression.Compile(targetCurrency, nameof(targetCurrency), required: true);
-            return new DeferredBodyAction<GetExchangeRateResponse>(() =>
+            return new DeferredBodyAction<GetExchangeRateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pair/{0}/{1}", __workflow_baseCurrency.WithUrlEncoding(1), __workflow_targetCurrency.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
-        public IBodyWorkflowAction<ListCurrenciesResponse> ListCurrencies()
+        public IBodyWorkflowAction<ListCurrenciesResponse, ApiConnectionActionConfiguration> ListCurrencies()
         {
             var apiCallPath = "/codes";
             var apiCallHttpMethod = "get";
@@ -48,36 +48,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
-        public IBodyWorkflowAction<GetHistoricalRatesResponse> GetHistoricalRates(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<GetHistoricalRatesResponse, ApiConnectionActionConfiguration> GetHistoricalRates(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
             var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
-            return new DeferredBodyAction<GetHistoricalRatesResponse>(() =>
+            return new DeferredBodyAction<GetHistoricalRatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/history/{0}/{1}/{2}/{3}", __workflow_baseCurrency.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetHistoricalRatesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
-        public IBodyWorkflowAction<GetHistoricalConversionsResponse> GetHistoricalConversions(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day, Expression<Func<string>> amount)
+        public IBodyWorkflowAction<GetHistoricalConversionsResponse, ApiConnectionActionConfiguration> GetHistoricalConversions(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day, Expression<Func<string>> amount)
         {
             var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
             var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
-            return new DeferredBodyAction<GetHistoricalConversionsResponse>(() =>
+            return new DeferredBodyAction<GetHistoricalConversionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", __workflow_baseCurrency.WithUrlEncoding(1), __workflow_year.WithUrlEncoding(1), __workflow_month.WithUrlEncoding(1), __workflow_day.WithUrlEncoding(1), __workflow_amount.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetHistoricalConversionsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

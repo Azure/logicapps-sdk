@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     public class FulcrumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<AttachmentsResponse> GetAllAttachments(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<string>> ownerType = null, Expression<Func<sortInput>> sort = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<AttachmentsResponse, ApiConnectionActionConfiguration> GetAllAttachments(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<string>> ownerType = null, Expression<Func<sortInput>> sort = null, Expression<Func<sortDirectionInput>> sortDirection = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             var __workflow_ownerType = WorkflowExpression.Compile(ownerType, nameof(ownerType), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
-            return new DeferredBodyAction<AttachmentsResponse>(() =>
+            return new DeferredBodyAction<AttachmentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/attachments";
                 var apiCallHttpMethod = "get";
@@ -37,24 +37,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_sortDirection != null)
                     callPayload.Queries["sort_direction"] = ExpressionConverter.Convert(__workflow_sortDirection);
                 return new ApiConnectionAction<AttachmentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<Attachment> GetSingleAttachment(Expression<Func<string>> attachmentId)
+        public IBodyWorkflowAction<Attachment, ApiConnectionActionConfiguration> GetSingleAttachment(Expression<Func<string>> attachmentId)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            return new DeferredBodyAction<Attachment>(() =>
+            return new DeferredBodyAction<Attachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Attachment>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<AudiosResponse> AudioGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<AudiosResponse, ApiConnectionActionConfiguration> AudioGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<AudiosResponse>(() =>
+            return new DeferredBodyAction<AudiosResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/audio.json";
                 var apiCallHttpMethod = "get";
@@ -88,24 +88,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<AudiosResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> AudioGetOriginalFile(Expression<Func<string>> audioId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AudioGetOriginalFile(Expression<Func<string>> audioId)
         {
             var __workflow_audioId = WorkflowExpression.Compile(audioId, nameof(audioId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/audio/{0}.mp4", __workflow_audioId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<PhotosResponse> PhotosGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<PhotosResponse, ApiConnectionActionConfiguration> PhotosGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<PhotosResponse>(() =>
+            return new DeferredBodyAction<PhotosResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/photos.json";
                 var apiCallHttpMethod = "get";
@@ -139,44 +139,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<PhotosResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> PhotosGetSingleFile(Expression<Func<string>> photoId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PhotosGetSingleFile(Expression<Func<string>> photoId)
         {
             var __workflow_photoId = WorkflowExpression.Compile(photoId, nameof(photoId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/photos/{0}.jpg", __workflow_photoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SinglePhotoResponse> PhotosGetSingleMetadata(Expression<Func<string>> photoId)
+        public IBodyWorkflowAction<SinglePhotoResponse, ApiConnectionActionConfiguration> PhotosGetSingleMetadata(Expression<Func<string>> photoId)
         {
             var __workflow_photoId = WorkflowExpression.Compile(photoId, nameof(photoId), required: true);
-            return new DeferredBodyAction<SinglePhotoResponse>(() =>
+            return new DeferredBodyAction<SinglePhotoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/photos/{0}.json", __workflow_photoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SinglePhotoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction Query(Expression<Func<string>> bodyq, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodytableName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Query(Expression<Func<string>> bodyq, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodytableName = null)
         {
             var __workflow_bodyq = WorkflowExpression.Compile(bodyq, nameof(bodyq), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             var __workflow_bodytableName = WorkflowExpression.Compile(bodytableName, nameof(bodytableName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/query";
                 var apiCallHttpMethod = "post";
@@ -209,11 +209,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<RecordsResponse> RecordsGetAll(Expression<Func<bool>> newestFirst = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> changesetId = null, Expression<Func<string>> formId = null, Expression<Func<string>> projectId = null, Expression<Func<string>> clientCreatedBefore = null, Expression<Func<string>> clientCreatedSince = null, Expression<Func<string>> clientUpdatedBefore = null, Expression<Func<string>> clientUpdatedSince = null, Expression<Func<string>> createdBefore = null, Expression<Func<string>> createdSince = null, Expression<Func<string>> updatedBefore = null, Expression<Func<string>> updatedSince = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<RecordsResponse, ApiConnectionActionConfiguration> RecordsGetAll(Expression<Func<bool>> newestFirst = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> changesetId = null, Expression<Func<string>> formId = null, Expression<Func<string>> projectId = null, Expression<Func<string>> clientCreatedBefore = null, Expression<Func<string>> clientCreatedSince = null, Expression<Func<string>> clientUpdatedBefore = null, Expression<Func<string>> clientUpdatedSince = null, Expression<Func<string>> createdBefore = null, Expression<Func<string>> createdSince = null, Expression<Func<string>> updatedBefore = null, Expression<Func<string>> updatedSince = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
             var __workflow_boundingBox = WorkflowExpression.Compile(boundingBox, nameof(boundingBox), required: false);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_updatedSince = WorkflowExpression.Compile(updatedSince, nameof(updatedSince), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<RecordsResponse>(() =>
+            return new DeferredBodyAction<RecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/records.json";
                 var apiCallHttpMethod = "get";
@@ -268,11 +268,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<RecordsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsCreate(Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsCreate(Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
         {
             var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
             var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
             var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
             var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/records.json";
                 var apiCallHttpMethod = "post";
@@ -371,16 +371,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 }
 
                 return new ApiConnectionAction<SingleRecordResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsDelete(Expression<Func<string>> recordId, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsDelete(Expression<Func<string>> recordId, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
             var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -392,24 +392,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_xSkipWebhooks != null)
                     callPayload.Headers["X-SkipWebhooks"] = ExpressionConverter.Convert(__workflow_xSkipWebhooks);
                 return new ApiConnectionAction<SingleRecordResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsGetSingle(Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsGetSingle(Expression<Func<string>> recordId)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleRecordResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
             var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
             var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -502,11 +502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 }
 
                 return new ApiConnectionAction<SingleRecordResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
             var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
             var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -606,28 +606,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<RecordHistoryResponse> RecordsGetHistory(Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<RecordHistoryResponse, ApiConnectionActionConfiguration> RecordsGetHistory(Expression<Func<string>> recordId)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            return new DeferredBodyAction<RecordHistoryResponse>(() =>
+            return new DeferredBodyAction<RecordHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}/history.json", __workflow_recordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RecordHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<ReportResponse> ReportsCreate(Expression<Func<string>> bodyreportrecordId = null, Expression<Func<string>> bodyreporttemplateId = null)
+        public IBodyWorkflowAction<ReportResponse, ApiConnectionActionConfiguration> ReportsCreate(Expression<Func<string>> bodyreportrecordId = null, Expression<Func<string>> bodyreporttemplateId = null)
         {
             var __workflow_bodyreportrecordId = WorkflowExpression.Compile(bodyreportrecordId, nameof(bodyreportrecordId), required: false);
             var __workflow_bodyreporttemplateId = WorkflowExpression.Compile(bodyreporttemplateId, nameof(bodyreporttemplateId), required: false);
-            return new DeferredBodyAction<ReportResponse>(() =>
+            return new DeferredBodyAction<ReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/reports.json";
                 var apiCallHttpMethod = "post";
@@ -660,24 +660,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 }
 
                 return new ApiConnectionAction<ReportResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> ReportsFile(Expression<Func<string>> reportId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReportsFile(Expression<Func<string>> reportId)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/reports/{0}.pdf", __workflow_reportId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SignaturesResponse> SignaturesGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SignaturesResponse, ApiConnectionActionConfiguration> SignaturesGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<SignaturesResponse>(() =>
+            return new DeferredBodyAction<SignaturesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/signatures.json";
                 var apiCallHttpMethod = "get";
@@ -711,37 +711,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<SignaturesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleSignatureResponse> SignaturesGetSingleMetadata(Expression<Func<string>> signatureId)
+        public IBodyWorkflowAction<SingleSignatureResponse, ApiConnectionActionConfiguration> SignaturesGetSingleMetadata(Expression<Func<string>> signatureId)
         {
             var __workflow_signatureId = WorkflowExpression.Compile(signatureId, nameof(signatureId), required: true);
-            return new DeferredBodyAction<SingleSignatureResponse>(() =>
+            return new DeferredBodyAction<SingleSignatureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/signatures/{0}.json", __workflow_signatureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleSignatureResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> SignaturesGetSingleFile(Expression<Func<string>> signatureId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SignaturesGetSingleFile(Expression<Func<string>> signatureId)
         {
             var __workflow_signatureId = WorkflowExpression.Compile(signatureId, nameof(signatureId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/signatures/{0}.png", __workflow_signatureId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SketchesResponse> SketchesGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SketchesResponse, ApiConnectionActionConfiguration> SketchesGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<SketchesResponse>(() =>
+            return new DeferredBodyAction<SketchesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/sketches.json";
                 var apiCallHttpMethod = "get";
@@ -775,37 +775,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<SketchesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> SketchesGetSingleFile(Expression<Func<string>> sketchId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SketchesGetSingleFile(Expression<Func<string>> sketchId)
         {
             var __workflow_sketchId = WorkflowExpression.Compile(sketchId, nameof(sketchId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/sketches/{0}.jpg", __workflow_sketchId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleSketchResponse> SketchesGetSingleMetadata(Expression<Func<string>> sketchId)
+        public IBodyWorkflowAction<SingleSketchResponse, ApiConnectionActionConfiguration> SketchesGetSingleMetadata(Expression<Func<string>> sketchId)
         {
             var __workflow_sketchId = WorkflowExpression.Compile(sketchId, nameof(sketchId), required: true);
-            return new DeferredBodyAction<SingleSketchResponse>(() =>
+            return new DeferredBodyAction<SingleSketchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/sketches/{0}.json", __workflow_sketchId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleSketchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<VideosResponse> VideosGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<VideosResponse, ApiConnectionActionConfiguration> VideosGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
             var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<VideosResponse>(() =>
+            return new DeferredBodyAction<VideosResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/videos.json";
                 var apiCallHttpMethod = "get";
@@ -839,32 +839,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<VideosResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> VideosGetOriginalFile(Expression<Func<string>> videoId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VideosGetOriginalFile(Expression<Func<string>> videoId)
         {
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/videos/{0}.mp4", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class FulcrumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent(Expression<Func<string>> contentType = null, Expression<Func<bool>> bodywebhookactive = null, Expression<Func<string>> bodywebhookwebhookName = null, Expression<Func<bool>> bodywebhookrunForBulkActions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnFulcrumEventResponse, ApiConnectionTriggerConfiguration> OnFulcrumEvent(Expression<Func<string>> contentType = null, Expression<Func<bool>> bodywebhookactive = null, Expression<Func<string>> bodywebhookwebhookName = null, Expression<Func<bool>> bodywebhookrunForBulkActions = null, FlowRecurrence recurrence = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_bodywebhookactive = WorkflowExpression.Compile(bodywebhookactive, nameof(bodywebhookactive), required: false);
             var __workflow_bodywebhookwebhookName = WorkflowExpression.Compile(bodywebhookwebhookName, nameof(bodywebhookwebhookName), required: false);
             var __workflow_bodywebhookrunForBulkActions = WorkflowExpression.Compile(bodywebhookrunForBulkActions, nameof(bodywebhookrunForBulkActions), required: false);
-            return new DeferredBodyTrigger<OnFulcrumEventResponse>(() =>
+            return new DeferredBodyTrigger<OnFulcrumEventResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks.json";
                 var apiCallHttpMethod = "post";
@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                 }
 
                 return new ApiConnectionTrigger<OnFulcrumEventResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

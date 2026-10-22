@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration> BttnWebhook(Expression<Func<string>> bodyactionConfigId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyactionConfigId = WorkflowExpression.Compile(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
-            return new DeferredBodyTrigger<BttnWebhookResponse>(() =>
+            return new DeferredBodyTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
                 var apiCallHttpMethod = "post";
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
                 }
 
                 return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

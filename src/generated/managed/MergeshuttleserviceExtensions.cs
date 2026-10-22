@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
     public class MergeshuttleserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mergeshuttleservice")]
-        public IBodyWorkflowAction<GetFixedRouteResponseItem[]> GetFixedRoute()
+        public IBodyWorkflowAction<GetFixedRouteResponseItem[], ApiConnectionActionConfiguration> GetFixedRoute()
         {
             var apiCallPath = "/api/shuttle/fixedroute";
             var apiCallHttpMethod = "get";
@@ -21,17 +21,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mergeshuttleservice")]
-        public IWorkflowAction PostFixedRoute(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostFixedRoute(Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/shuttle/fixedrouteschedule";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

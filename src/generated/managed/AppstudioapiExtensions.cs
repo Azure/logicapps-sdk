@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ApiHooksSubscribePost(Expression<Func<string>> solutionId, FlowRecurrence recurrence = null)
         {
             var __workflow_solutionId = WorkflowExpression.Compile(solutionId, nameof(solutionId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Hooks/subscribe";
                 var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 }

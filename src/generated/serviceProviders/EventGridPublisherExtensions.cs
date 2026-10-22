@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -15,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public class EventGridPublisherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventGridPublisher")]
-        public IOutputWorkflowAction<JToken> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
+        public IWorkflowAction<PublishEventsActionConfiguration> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<PublishEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["events"] = ExpressionConverter.ConvertO(__workflow_events);
@@ -27,9 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-            }, WorkflowActionSettings.TrackedProperties | WorkflowActionSettings.SecureInputs | WorkflowActionSettings.SecureOutputs);
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
+    }
+
+    public sealed class PublishEventsActionConfiguration : IWorkflowOperationConfiguration, ITrackedPropertiesConfigurationHolder, ISecureInputsConfigurationHolder, ISecureOutputsConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public bool SecureInputs { get; set; }
+        public bool SecureOutputs { get; set; }
     }
 
     public class PublishEventsInputEventsTypeItem

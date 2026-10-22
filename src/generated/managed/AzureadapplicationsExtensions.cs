@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
     public class AzureadapplicationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationListDefinition> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<countInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ApplicationListDefinition, ApiConnectionActionConfiguration> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<countInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
         {
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ApplicationListDefinition>(() =>
+            return new DeferredBodyAction<ApplicationListDefinition, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/applications";
                 var apiCallHttpMethod = "get";
@@ -40,33 +40,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<ApplicationListDefinition>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationDefinition> GetApplication(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ApplicationDefinition, ApiConnectionActionConfiguration> GetApplication(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ApplicationDefinition>(() =>
+            return new DeferredBodyAction<ApplicationDefinition, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/applications/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ApplicationDefinition>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ApplicationOwnersDefinition, ApiConnectionActionConfiguration> GetAppOwners(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ApplicationOwnersDefinition>(() =>
+            return new DeferredBodyAction<ApplicationOwnersDefinition, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/applications/{0}/owners", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ApplicationOwnersDefinition>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

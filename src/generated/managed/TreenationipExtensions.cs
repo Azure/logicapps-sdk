@@ -12,107 +12,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
     public class TreenationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList(Expression<Func<string>> status)
+        public IBodyWorkflowAction<ProjectListResponseItem[], ApiConnectionActionConfiguration> ProjectList(Expression<Func<string>> status)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
-            return new DeferredBodyAction<ProjectListResponseItem[]>(() =>
+            return new DeferredBodyAction<ProjectListResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ProjectListResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<ProjectDetailsResponse, ApiConnectionActionConfiguration> ProjectDetails(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<ProjectDetailsResponse>(() =>
+            return new DeferredBodyAction<ProjectDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<SitesListResponseItem[]> SitesList(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<SitesListResponseItem[], ApiConnectionActionConfiguration> SitesList(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<SitesListResponseItem[]>(() =>
+            return new DeferredBodyAction<SitesListResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/projects/{0}/planting-sites", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SitesListResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<SpeciesListResponseItem[], ApiConnectionActionConfiguration> SpeciesList(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<SpeciesListResponseItem[]>(() =>
+            return new DeferredBodyAction<SpeciesListResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/projects/{0}/species", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SpeciesListResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails(Expression<Func<string>> speciesId)
+        public IBodyWorkflowAction<SpeciesDetailsResponse, ApiConnectionActionConfiguration> SpeciesDetails(Expression<Func<string>> speciesId)
         {
             var __workflow_speciesId = WorkflowExpression.Compile(speciesId, nameof(speciesId), required: true);
-            return new DeferredBodyAction<SpeciesDetailsResponse>(() =>
+            return new DeferredBodyAction<SpeciesDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/species/{0}", __workflow_speciesId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SpeciesDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<ForestDetailsResponse, ApiConnectionActionConfiguration> ForestDetails(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<ForestDetailsResponse>(() =>
+            return new DeferredBodyAction<ForestDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/forests/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ForestDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount(Expression<Func<string>> userSlug, Expression<Func<string>> period)
+        public IBodyWorkflowAction<ForestTreeCountResponse, ApiConnectionActionConfiguration> ForestTreeCount(Expression<Func<string>> userSlug, Expression<Func<string>> period)
         {
             var __workflow_userSlug = WorkflowExpression.Compile(userSlug, nameof(userSlug), required: true);
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
-            return new DeferredBodyAction<ForestTreeCountResponse>(() =>
+            return new DeferredBodyAction<ForestTreeCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/forests/{0}/tree_counter/{1}", __workflow_userSlug.WithUrlEncoding(1), __workflow_period.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ForestTreeCountResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<PlantResponse> Plant(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null, Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyspeciesId = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<PlantResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null, Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyspeciesId = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodymessage = null)
         {
             var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
             var __workflow_bodyplanterId = WorkflowExpression.Compile(bodyplanterId, nameof(bodyplanterId), required: false);
             var __workflow_bodyspeciesId = WorkflowExpression.Compile(bodyspeciesId, nameof(bodyspeciesId), required: false);
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            return new DeferredBodyAction<PlantResponse>(() =>
+            return new DeferredBodyAction<PlantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/plant";
                 var apiCallHttpMethod = "post";
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 }
 
                 return new ApiConnectionAction<PlantResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyresponsibleName = null, Expression<Func<string>> bodyorganizationWebsite = null)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyresponsibleName = null, Expression<Func<string>> bodyorganizationWebsite = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
             var __workflow_bodyresponsibleName = WorkflowExpression.Compile(bodyresponsibleName, nameof(bodyresponsibleName), required: false);
             var __workflow_bodyorganizationWebsite = WorkflowExpression.Compile(bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
-            return new DeferredBodyAction<CreateUserResponse>(() =>
+            return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/user/b2b";
                 var apiCallHttpMethod = "put";
@@ -216,28 +216,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 }
 
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails(Expression<Func<string>> planterId)
+        public IBodyWorkflowAction<TreeTemplateDetailsResponse, ApiConnectionActionConfiguration> TreeTemplateDetails(Expression<Func<string>> planterId)
         {
             var __workflow_planterId = WorkflowExpression.Compile(planterId, nameof(planterId), required: true);
-            return new DeferredBodyAction<TreeTemplateDetailsResponse>(() =>
+            return new DeferredBodyAction<TreeTemplateDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tree_templates/{0}", __workflow_planterId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TreeTemplateDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
         {
             var __workflow_planterId = WorkflowExpression.Compile(planterId, nameof(planterId), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            return new DeferredBodyAction<UpdateTreeTemplateResponse>(() =>
+            return new DeferredBodyAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tree_templates/{0}", __workflow_planterId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -256,15 +256,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 }
 
                 return new ApiConnectionAction<UpdateTreeTemplateResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<BuyCreditResponse> BuyCredit(Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyamount = null)
+        public IBodyWorkflowAction<BuyCreditResponse, ApiConnectionActionConfiguration> BuyCredit(Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyamount = null)
         {
             var __workflow_bodyplanterId = WorkflowExpression.Compile(bodyplanterId, nameof(bodyplanterId), required: false);
             var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
-            return new DeferredBodyAction<BuyCreditResponse>(() =>
+            return new DeferredBodyAction<BuyCreditResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/credit";
                 var apiCallHttpMethod = "post";
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 }
 
                 return new ApiConnectionAction<BuyCreditResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

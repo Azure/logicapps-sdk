@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
     public class TdoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction ProductImport(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProductImport(Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Products/Import/";
                 var apiCallHttpMethod = "post";
@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction CustomerImport(Expression<Func<bodyInputItem2[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomerImport(Expression<Func<bodyInputItem2[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Customers/Import/";
                 var apiCallHttpMethod = "post";
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction ListImport(Expression<Func<bodyInputItem22[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListImport(Expression<Func<bodyInputItem22[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ListItems/Import/";
                 var apiCallHttpMethod = "post";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

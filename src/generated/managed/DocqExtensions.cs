@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
     public class DocqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<ExtractInformationResponse> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
+        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
         {
             var __workflow_bodyimageFileContent = WorkflowExpression.Compile(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
-            return new DeferredBodyAction<ExtractInformationResponse>(() =>
+            return new DeferredBodyAction<ExtractInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Flow/ExtractInformation";
                 var apiCallHttpMethod = "post";
@@ -37,15 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
                 }
 
                 return new ApiConnectionAction<ExtractInformationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<string> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
         {
             var __workflow_bodydocumentInformation = WorkflowExpression.Compile(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
             var __workflow_bodydocumentTemplateContent = WorkflowExpression.Compile(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Flow/GenerateDocument";
                 var apiCallHttpMethod = "post";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
     public class LitipsumipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        public IBodyWorkflowAction<TextRandomResponse> TextRandom()
+        public IBodyWorkflowAction<TextRandomResponse, ApiConnectionActionConfiguration> TextRandom()
         {
             var apiCallPath = "/json";
             var apiCallHttpMethod = "get";
@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
+        public IBodyWorkflowAction<TextTitleResponse, ApiConnectionActionConfiguration> TextTitle(Expression<Func<titleInput>> title)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
-            return new DeferredBodyAction<TextTitleResponse>(() =>
+            return new DeferredBodyAction<TextTitleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/json", __workflow_title.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TextTitleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

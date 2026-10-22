@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     public class CorptaxsandboxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyqualifiedviewName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyqualifiedviewName = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_bodyqualifiedviewName = WorkflowExpression.Compile(bodyqualifiedviewName, nameof(bodyqualifiedviewName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/entityView";
                 var apiCallHttpMethod = "post";
@@ -38,18 +38,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<lookupTypeInput>> lookupType, Expression<Func<bool>> bodydetails, Expression<Func<string>> bodylookupName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<lookupTypeInput>> lookupType, Expression<Func<bool>> bodydetails, Expression<Func<string>> bodylookupName = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_lookupType = WorkflowExpression.Compile(lookupType, nameof(lookupType), required: true);
             var __workflow_bodydetails = WorkflowExpression.Compile(bodydetails, nameof(bodydetails), required: true);
             var __workflow_bodylookupName = WorkflowExpression.Compile(bodylookupName, nameof(bodylookupName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DataExchangeLookup";
                 var apiCallHttpMethod = "post";
@@ -73,18 +73,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodyperiodName = null, Expression<Func<string>> bodyviewName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodyperiodName = null, Expression<Func<string>> bodyviewName = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
             var __workflow_bodyperiodName = WorkflowExpression.Compile(bodyperiodName, nameof(bodyperiodName), required: false);
             var __workflow_bodyviewName = WorkflowExpression.Compile(bodyviewName, nameof(bodyviewName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EntityLists";
                 var apiCallHttpMethod = "post";
@@ -117,11 +117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
             var __workflow_bodyinternationalTaxName = WorkflowExpression.Compile(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
             var __workflow_bodyprovisionName = WorkflowExpression.Compile(bodyprovisionName, nameof(bodyprovisionName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dataExport";
                 var apiCallHttpMethod = "post";
@@ -192,11 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodydataSource, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodydataSource, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
             var __workflow_bodyinternationalTaxName = WorkflowExpression.Compile(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
             var __workflow_bodyprovisionName = WorkflowExpression.Compile(bodyprovisionName, nameof(bodyprovisionName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dataExportWithDataSource";
                 var apiCallHttpMethod = "post";
@@ -267,11 +267,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerCartResponse> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodycartName, Expression<Func<bodytypeOfActionInput>> bodytypeOfAction, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyledgerName = null, Expression<Func<string>> bodyisoCurrencyCode = null)
+        public IBodyWorkflowAction<TriggerCartResponse, ApiConnectionActionConfiguration> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodycartName, Expression<Func<bodytypeOfActionInput>> bodytypeOfAction, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyledgerName = null, Expression<Func<string>> bodyisoCurrencyCode = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
             var __workflow_bodyledgerName = WorkflowExpression.Compile(bodyledgerName, nameof(bodyledgerName), required: false);
             var __workflow_bodyisoCurrencyCode = WorkflowExpression.Compile(bodyisoCurrencyCode, nameof(bodyisoCurrencyCode), required: false);
-            return new DeferredBodyAction<TriggerCartResponse>(() =>
+            return new DeferredBodyAction<TriggerCartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/triggerCart";
                 var apiCallHttpMethod = "post";
@@ -345,17 +345,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction<TriggerCartResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName, Expression<Func<string>> bodytypeOfAction)
+        public IBodyWorkflowAction<TriggerReturnResponse, ApiConnectionActionConfiguration> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName, Expression<Func<string>> bodytypeOfAction)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_bodyreturnName = WorkflowExpression.Compile(bodyreturnName, nameof(bodyreturnName), required: true);
             var __workflow_bodytypeOfAction = WorkflowExpression.Compile(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
-            return new DeferredBodyAction<TriggerReturnResponse>(() =>
+            return new DeferredBodyAction<TriggerReturnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/triggerReturn";
                 var apiCallHttpMethod = "post";
@@ -374,17 +374,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction<TriggerReturnResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
+        public IBodyWorkflowAction<DownloadContentsResponseItem[], ApiConnectionActionConfiguration> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_typeOfAction = WorkflowExpression.Compile(typeOfAction, nameof(typeOfAction), required: true);
             var __workflow_bodyreturnOrCartName = WorkflowExpression.Compile(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
-            return new DeferredBodyAction<DownloadContentsResponseItem[]>(() =>
+            return new DeferredBodyAction<DownloadContentsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/downloadContents";
                 var apiCallHttpMethod = "post";
@@ -402,17 +402,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction<DownloadContentsResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
+        public IBodyWorkflowAction<CheckTriggerStatusResponse, ApiConnectionActionConfiguration> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_typeOfAction = WorkflowExpression.Compile(typeOfAction, nameof(typeOfAction), required: true);
             var __workflow_bodyreturnOrCartName = WorkflowExpression.Compile(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
-            return new DeferredBodyAction<CheckTriggerStatusResponse>(() =>
+            return new DeferredBodyAction<CheckTriggerStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/checkTriggerStatus";
                 var apiCallHttpMethod = "post";
@@ -430,11 +430,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction<CheckTriggerStatusResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<ImportDataResponse> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodyfileContents, Expression<Func<string>> bodyfileName, Expression<Func<bodyimportTransactionTypeInput>> bodyimportTransactionType, Expression<Func<string>> bodychartOfAccountsName, Expression<Func<bool>> bodyrecognizeFunctionalCurrency, Expression<Func<bool>> bodystopOnLookupErrors, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<bodyledgerAmountTypeInput>> bodyledgerAmountType = null, Expression<Func<string>> bodyfunctionalCurrencyValue = null)
+        public IBodyWorkflowAction<ImportDataResponse, ApiConnectionActionConfiguration> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodyfileContents, Expression<Func<string>> bodyfileName, Expression<Func<bodyimportTransactionTypeInput>> bodyimportTransactionType, Expression<Func<string>> bodychartOfAccountsName, Expression<Func<bool>> bodyrecognizeFunctionalCurrency, Expression<Func<bool>> bodystopOnLookupErrors, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<bodyledgerAmountTypeInput>> bodyledgerAmountType = null, Expression<Func<string>> bodyfunctionalCurrencyValue = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
             var __workflow_bodyledgerAmountType = WorkflowExpression.Compile(bodyledgerAmountType, nameof(bodyledgerAmountType), required: false);
             var __workflow_bodyfunctionalCurrencyValue = WorkflowExpression.Compile(bodyfunctionalCurrencyValue, nameof(bodyfunctionalCurrencyValue), required: false);
-            return new DeferredBodyAction<ImportDataResponse>(() =>
+            return new DeferredBodyAction<ImportDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/importData";
                 var apiCallHttpMethod = "post";
@@ -516,16 +516,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction<ImportDataResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEfileGroups(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEfileGroups(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_filingGroup = WorkflowExpression.Compile(filingGroup, nameof(filingGroup), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/efileGroups";
                 var apiCallHttpMethod = "post";
@@ -535,11 +535,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 if (__workflow_filingGroup != null)
                     callPayload.Headers["filingGroup"] = ExpressionConverter.Convert(__workflow_filingGroup);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<bool>> bodyefilePackageDetails, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodyform = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<bool>> bodyefilePackageDetails, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodyform = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
             var __workflow_bodyefilePackageDetails = WorkflowExpression.Compile(bodyefilePackageDetails, nameof(bodyefilePackageDetails), required: true);
             var __workflow_bodyentityCode = WorkflowExpression.Compile(bodyentityCode, nameof(bodyentityCode), required: false);
             var __workflow_bodyform = WorkflowExpression.Compile(bodyform, nameof(bodyform), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/efilePackage";
                 var apiCallHttpMethod = "post";
@@ -577,17 +577,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<string>> bodyjobToken, Expression<Func<bodyreportInput>> bodyreport = null, Expression<Func<bodyreportFormatInput>> bodyreportFormat = null)
+        public IBodyWorkflowAction<GetJobHistoryResponse, ApiConnectionActionConfiguration> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<string>> bodyjobToken, Expression<Func<bodyreportInput>> bodyreport = null, Expression<Func<bodyreportFormatInput>> bodyreportFormat = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_bodyjobToken = WorkflowExpression.Compile(bodyjobToken, nameof(bodyjobToken), required: true);
             var __workflow_bodyreport = WorkflowExpression.Compile(bodyreport, nameof(bodyreport), required: false);
             var __workflow_bodyreportFormat = WorkflowExpression.Compile(bodyreportFormat, nameof(bodyreportFormat), required: false);
-            return new DeferredBodyAction<GetJobHistoryResponse>(() =>
+            return new DeferredBodyAction<GetJobHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JobHistoryReports";
                 var apiCallHttpMethod = "post";
@@ -635,17 +635,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction<GetJobHistoryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodygmtSetting, Expression<Func<string>> bodygmtDiagnosticName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodygmtSetting, Expression<Func<string>> bodygmtDiagnosticName)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_bodygmtSetting = WorkflowExpression.Compile(bodygmtSetting, nameof(bodygmtSetting), required: true);
             var __workflow_bodygmtDiagnosticName = WorkflowExpression.Compile(bodygmtDiagnosticName, nameof(bodygmtDiagnosticName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gmtDiagnosticsData";
                 var apiCallHttpMethod = "post";
@@ -664,16 +664,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_bodyreturnName = WorkflowExpression.Compile(bodyreturnName, nameof(bodyreturnName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ReturnCalculationDetails";
                 var apiCallHttpMethod = "post";
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

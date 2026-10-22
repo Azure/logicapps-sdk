@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
     public class SmslinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
-        public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration> SMSLinkSendSMS(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            return new DeferredBodyAction<SMSLinkSendSMSResponse>(() =>
+            return new DeferredBodyAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/gateway/integration/powerautomate.php";
                 var apiCallHttpMethod = "post";
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
                 }
 
                 return new ApiConnectionAction<SMSLinkSendSMSResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

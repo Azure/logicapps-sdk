@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
     public class NumlookupapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
-        public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<NumberGetResponse, ApiConnectionActionConfiguration> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
         {
             var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
-            return new DeferredBodyAction<NumberGetResponse>(() =>
+            return new DeferredBodyAction<NumberGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/validate/{0}", __workflow_phoneNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
                 if (__workflow_countryCode != null)
                     callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<NumberGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
-        public IBodyWorkflowAction<StatusGetResponse> StatusGet()
+        public IBodyWorkflowAction<StatusGetResponse, ApiConnectionActionConfiguration> StatusGet()
         {
             var apiCallPath = "/status";
             var apiCallHttpMethod = "get";

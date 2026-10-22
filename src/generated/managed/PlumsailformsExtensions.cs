@@ -12,54 +12,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
     public class PlumsailformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IBodyWorkflowAction<string> DownloadAttachment(Expression<Func<string>> fileUrl)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadAttachment(Expression<Func<string>> fileUrl)
         {
             var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/attachments";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fileUrl"] = ExpressionConverter.Convert(__workflow_fileUrl);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> fileUrl = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAttachment(Expression<Func<string>> fileUrl = null)
         {
             var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/attachments";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileUrl);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_submissionId = WorkflowExpression.Compile(submissionId, nameof(submissionId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/forms/{0}/submissions/{1}", __workflow_formId.WithUrlEncoding(1), __workflow_submissionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormIsSubmitted(Expression<Func<string>> subscriberform, FlowRecurrence recurrence = null)
         {
             var __workflow_subscriberform = WorkflowExpression.Compile(subscriberform, nameof(subscriberform), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/submissions";
                 var apiCallHttpMethod = "post";
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
                 }
 
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 }

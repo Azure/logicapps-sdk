@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
     public class FestivoipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet(Expression<Func<string>> country, Expression<Func<int>> year, Expression<Func<int>> month = null, Expression<Func<int>> day = null, Expression<Func<string>> language = null, Expression<Func<bool>> before = null, Expression<Func<bool>> after = null, Expression<Func<bool>> @public = null, Expression<Func<string>> timezone = null)
+        public IBodyWorkflowAction<HolidaysGetResponse, ApiConnectionActionConfiguration> HolidaysGet(Expression<Func<string>> country, Expression<Func<int>> year, Expression<Func<int>> month = null, Expression<Func<int>> day = null, Expression<Func<string>> language = null, Expression<Func<bool>> before = null, Expression<Func<bool>> after = null, Expression<Func<bool>> @public = null, Expression<Func<string>> timezone = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
             var __workflow_public = WorkflowExpression.Compile(@public, nameof(@public), required: false);
             var __workflow_timezone = WorkflowExpression.Compile(timezone, nameof(timezone), required: false);
-            return new DeferredBodyAction<HolidaysGetResponse>(() =>
+            return new DeferredBodyAction<HolidaysGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/holidays";
                 var apiCallHttpMethod = "get";
@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
                 if (__workflow_timezone != null)
                     callPayload.Queries["timezone"] = ExpressionConverter.Convert(__workflow_timezone);
                 return new ApiConnectionAction<HolidaysGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet(Expression<Func<string>> code = null)
+        public IBodyWorkflowAction<CountriesGetResponseItem[], ApiConnectionActionConfiguration> CountriesGet(Expression<Func<string>> code = null)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
-            return new DeferredBodyAction<CountriesGetResponseItem[]>(() =>
+            return new DeferredBodyAction<CountriesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/countries";
                 var apiCallHttpMethod = "get";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
                 if (__workflow_code != null)
                     callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
                 return new ApiConnectionAction<CountriesGetResponseItem[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

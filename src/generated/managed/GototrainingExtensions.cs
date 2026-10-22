@@ -12,39 +12,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
     public class GototrainingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<Training> GetTraining(Expression<Func<string>> trainingid)
+        public IBodyWorkflowAction<Training, ApiConnectionActionConfiguration> GetTraining(Expression<Func<string>> trainingid)
         {
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
-            return new DeferredBodyAction<Training>(() =>
+            return new DeferredBodyAction<Training, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Training>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<Registrant[]> ListRegistrations(Expression<Func<string>> trainingid)
+        public IBodyWorkflowAction<Registrant[], ApiConnectionActionConfiguration> ListRegistrations(Expression<Func<string>> trainingid)
         {
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
-            return new DeferredBodyAction<Registrant[]>(() =>
+            return new DeferredBodyAction<Registrant[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> bodyregistrantEmail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName)
+        public IBodyWorkflowAction<AddRegistrantResponse, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> bodyregistrantEmail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName)
         {
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             var __workflow_bodyregistrantEmail = WorkflowExpression.Compile(bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
-            return new DeferredBodyAction<AddRegistrantResponse>(() =>
+            return new DeferredBodyAction<AddRegistrantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", __workflow_trainingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -63,21 +63,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
                 }
 
                 return new ApiConnectionAction<AddRegistrantResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<Registrant> GetRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> registrantKey)
+        public IBodyWorkflowAction<Registrant, ApiConnectionActionConfiguration> GetRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> registrantKey)
         {
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             var __workflow_registrantKey = WorkflowExpression.Compile(registrantKey, nameof(registrantKey), required: true);
-            return new DeferredBodyAction<Registrant>(() =>
+            return new DeferredBodyAction<Registrant, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", __workflow_trainingid.WithUrlEncoding(1), __workflow_registrantKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

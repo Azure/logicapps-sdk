@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
     public class DocumentmergeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
-        public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPDF = null, Expression<Func<bool>> saveAsPDFOnly = null, Expression<Func<bool>> saveAsPDFA = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
+        public IBodyWorkflowAction<ValuesDocumentMergeResponse, ApiConnectionActionConfiguration> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPDF = null, Expression<Func<bool>> saveAsPDFOnly = null, Expression<Func<bool>> saveAsPDFA = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
         {
             var __workflow_linkToItem = WorkflowExpression.Compile(linkToItem, nameof(linkToItem), required: true);
             var __workflow_preConfigTemplate = WorkflowExpression.Compile(preConfigTemplate, nameof(preConfigTemplate), required: false);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
             var __workflow_overWrite = WorkflowExpression.Compile(overWrite, nameof(overWrite), required: false);
             var __workflow_sendMail = WorkflowExpression.Compile(sendMail, nameof(sendMail), required: false);
             var __workflow_mailTemplate = WorkflowExpression.Compile(mailTemplate, nameof(mailTemplate), required: false);
-            return new DeferredBodyAction<ValuesDocumentMergeResponse>(() =>
+            return new DeferredBodyAction<ValuesDocumentMergeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Values";
                 var apiCallHttpMethod = "post";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
                 if (__workflow_mailTemplate != null)
                     callPayload.Queries["MailTemplate"] = ExpressionConverter.Convert(__workflow_mailTemplate);
                 return new ApiConnectionAction<ValuesDocumentMergeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

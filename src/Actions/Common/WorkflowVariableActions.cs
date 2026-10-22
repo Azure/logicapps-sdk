@@ -1,12 +1,14 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Provides factory methods for creating variable actions
@@ -21,13 +23,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name = "T">The type of the variable value.</typeparam>
         /// <param name = "name">An expression for the variable name.</param>
         /// <param name = "value">An expression for the initial value.</param>
-        public IVariableWorkflowAction InitializeVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
+        public IVariableWorkflowAction<VariableActionConfiguration> InitializeVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             var typeStr = InferVariableType(typeof(T));
-            return new DeferredVariableAction(nameStr, () => new InitializeVariableAction(nameStr, typeStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingProfiles.Tracked);
+            return new DeferredVariableAction<VariableActionConfiguration>(nameStr, () => new InitializeVariableAction(nameStr, typeStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
 
         /// <summary>
@@ -36,12 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name = "T">The type of the variable value.</typeparam>
         /// <param name = "name">An expression for the variable name.</param>
         /// <param name = "value">An expression for the new value.</param>
-        public IVariableWorkflowAction SetVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
+        public IVariableWorkflowAction<VariableActionConfiguration> SetVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new SetVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingProfiles.Tracked);
+            return new DeferredVariableAction<VariableActionConfiguration>(nameStr, () => new SetVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
 
         /// <summary>
@@ -50,12 +52,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name = "T">The numeric type of the increment value.</typeparam>
         /// <param name = "name">An expression for the variable name.</param>
         /// <param name = "value">An expression for the increment value.</param>
-        public IVariableWorkflowAction IncrementVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
+        public IVariableWorkflowAction<VariableActionConfiguration> IncrementVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new IncrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingProfiles.Tracked);
+            return new DeferredVariableAction<VariableActionConfiguration>(nameStr, () => new IncrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
 
         /// <summary>
@@ -64,12 +66,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name = "T">The numeric type of the decrement value.</typeparam>
         /// <param name = "name">An expression for the variable name.</param>
         /// <param name = "value">An expression for the decrement value.</param>
-        public IVariableWorkflowAction DecrementVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
+        public IVariableWorkflowAction<VariableActionConfiguration> DecrementVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new DecrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingProfiles.Tracked);
+            return new DeferredVariableAction<VariableActionConfiguration>(nameStr, () => new DecrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
 
         /// <summary>
@@ -77,12 +79,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name = "name">An expression for the variable name.</param>
         /// <param name = "value">An expression for the string to append.</param>
-        public IVariableWorkflowAction AppendToStringVariable(Expression<Func<string>> name, Expression<Func<string>> value)
+        public IVariableWorkflowAction<VariableActionConfiguration> AppendToStringVariable(Expression<Func<string>> name, Expression<Func<string>> value)
         {
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new AppendToStringVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingProfiles.Tracked);
+            return new DeferredVariableAction<VariableActionConfiguration>(nameStr, () => new AppendToStringVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
 
         /// <summary>
@@ -91,12 +93,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name = "T">The type of the value to append.</typeparam>
         /// <param name = "name">An expression for the variable name.</param>
         /// <param name = "value">An expression for the value to append.</param>
-        public IVariableWorkflowAction AppendToArrayVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
+        public IVariableWorkflowAction<VariableActionConfiguration> AppendToArrayVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
             var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
             var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
-            return new DeferredVariableAction(nameStr, () => new AppendToArrayVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)), WorkflowActionSettingProfiles.Tracked);
+            return new DeferredVariableAction<VariableActionConfiguration>(nameStr, () => new AppendToArrayVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
 
         /// <summary>
@@ -118,4 +120,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             return "Object";
         }
     }
+
+    #region Action Configurations
+
+    public sealed class VariableActionConfiguration :
+        IWorkflowOperationConfiguration,
+        ITrackedPropertiesConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    #endregion
 }

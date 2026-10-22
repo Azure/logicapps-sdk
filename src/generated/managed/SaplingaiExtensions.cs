@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
     public class SaplingaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
+        public IBodyWorkflowAction<SpellcheckResponse, ApiConnectionActionConfiguration> Spellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var __workflow_bodymultipleEdits = WorkflowExpression.Compile(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
             var __workflow_bodyneuralSpellcheck = WorkflowExpression.Compile(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
             var __workflow_bodylang = WorkflowExpression.Compile(bodylang, nameof(bodylang), required: false);
-            return new DeferredBodyAction<SpellcheckResponse>(() =>
+            return new DeferredBodyAction<SpellcheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/spellcheck";
                 var apiCallHttpMethod = "post";
@@ -57,11 +57,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 }
 
                 return new ApiConnectionAction<SpellcheckResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
+        public IBodyWorkflowAction<MedicalSpellcheckResponse, ApiConnectionActionConfiguration> MedicalSpellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
             var __workflow_bodymultipleEdits = WorkflowExpression.Compile(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
             var __workflow_bodyneuralSpellcheck = WorkflowExpression.Compile(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
             var __workflow_bodylang = WorkflowExpression.Compile(bodylang, nameof(bodylang), required: false);
-            return new DeferredBodyAction<MedicalSpellcheckResponse>(() =>
+            return new DeferredBodyAction<MedicalSpellcheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/medical-spellcheck";
                 var apiCallHttpMethod = "post";
@@ -106,15 +106,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 }
 
                 return new ApiConnectionAction<MedicalSpellcheckResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysessionId)
+        public IBodyWorkflowAction<AutocompleteResponse, ApiConnectionActionConfiguration> Autocomplete(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysessionId)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodysessionId = WorkflowExpression.Compile(bodysessionId, nameof(bodysessionId), required: true);
-            return new DeferredBodyAction<AutocompleteResponse>(() =>
+            return new DeferredBodyAction<AutocompleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/complete";
                 var apiCallHttpMethod = "post";
@@ -131,15 +131,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 }
 
                 return new ApiConnectionAction<AutocompleteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<StatisticsResponse> Statistics(Expression<Func<string>> bodytext, Expression<Func<string>> bodysessionId)
+        public IBodyWorkflowAction<StatisticsResponse, ApiConnectionActionConfiguration> Statistics(Expression<Func<string>> bodytext, Expression<Func<string>> bodysessionId)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodysessionId = WorkflowExpression.Compile(bodysessionId, nameof(bodysessionId), required: true);
-            return new DeferredBodyAction<StatisticsResponse>(() =>
+            return new DeferredBodyAction<StatisticsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/statistics";
                 var apiCallHttpMethod = "post";
@@ -156,15 +156,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 }
 
                 return new ApiConnectionAction<StatisticsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<DetectAiResponse> DetectAi(Expression<Func<string>> bodytext, Expression<Func<bool>> bodysentScores = null)
+        public IBodyWorkflowAction<DetectAiResponse, ApiConnectionActionConfiguration> DetectAi(Expression<Func<string>> bodytext, Expression<Func<bool>> bodysentScores = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodysentScores = WorkflowExpression.Compile(bodysentScores, nameof(bodysentScores), required: false);
-            return new DeferredBodyAction<DetectAiResponse>(() =>
+            return new DeferredBodyAction<DetectAiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/aidetect";
                 var apiCallHttpMethod = "post";
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 }
 
                 return new ApiConnectionAction<DetectAiResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

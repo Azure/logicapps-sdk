@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     public class SendansmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        public IWorkflowAction SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
         {
             var __workflow_xTopMessageKey = WorkflowExpression.Compile(xTopMessageKey, nameof(xTopMessageKey), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_bodydatafrom = WorkflowExpression.Compile(bodydatafrom, nameof(bodydatafrom), required: false);
             var __workflow_bodydatato = WorkflowExpression.Compile(bodydatato, nameof(bodydatato), required: false);
             var __workflow_bodydatatext = WorkflowExpression.Compile(bodydatatext, nameof(bodydatatext), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
                 }
 
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

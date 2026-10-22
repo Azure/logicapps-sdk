@@ -12,37 +12,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     public class HipchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserList> ListUsers(Expression<Func<string>> roomId)
+        public IBodyWorkflowAction<UserList, ApiConnectionActionConfiguration> ListUsers(Expression<Func<string>> roomId)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            return new DeferredBodyAction<UserList>(() =>
+            return new DeferredBodyAction<UserList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/participant", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserList>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserResponse> GetUserByID(Expression<Func<string>> userid)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> GetUserByID(Expression<Func<string>> userid)
         {
             var __workflow_userid = WorkflowExpression.Compile(userid, nameof(userid), required: true);
-            return new DeferredBodyAction<UserResponse>(() =>
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/{0}", __workflow_userid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<NewMessage> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<NewMessage, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            return new DeferredBodyAction<NewMessage>(() =>
+            return new DeferredBodyAction<NewMessage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/message", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -57,51 +57,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
                 }
 
                 return new ApiConnectionAction<NewMessage>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<string> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             var __workflow_memberid = WorkflowExpression.Compile(memberid, nameof(memberid), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/room/{0}/member/{1}", __workflow_roomId.WithUrlEncoding(1), __workflow_memberid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class HipchatTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse, ApiConnectionTriggerConfiguration> OnNewMessage(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            return new DeferredBodyTrigger<HistoryResponse>(() =>
+            return new DeferredBodyTrigger<HistoryResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/message_trigger/room/{0}/history", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse, ApiConnectionTriggerConfiguration> OnNewFile(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            return new DeferredBodyTrigger<HistoryResponse>(() =>
+            return new DeferredBodyTrigger<HistoryResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/file_trigger/room/{0}/history", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<RoomList> OnNewRoom(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RoomList, ApiConnectionTriggerConfiguration> OnNewRoom(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/room_trigger/room";
             var apiCallHttpMethod = "get";

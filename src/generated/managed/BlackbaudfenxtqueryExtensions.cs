@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
     public class BlackbaudfenxtqueryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus(Expression<Func<moduleInput>> module, Expression<Func<string>> jobId, Expression<Func<includeReadUrlInput>> includeReadUrl = null, Expression<Func<contentDispositionInput>> contentDisposition = null)
+        public IBodyWorkflowAction<QueryApiQueryExecutionJob, ApiConnectionActionConfiguration> GetQueryJobStatus(Expression<Func<moduleInput>> module, Expression<Func<string>> jobId, Expression<Func<includeReadUrlInput>> includeReadUrl = null, Expression<Func<contentDispositionInput>> contentDisposition = null)
         {
             var __workflow_module = WorkflowExpression.Compile(module, nameof(module), required: true);
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_includeReadUrl = WorkflowExpression.Compile(includeReadUrl, nameof(includeReadUrl), required: false);
             var __workflow_contentDisposition = WorkflowExpression.Compile(contentDisposition, nameof(contentDisposition), required: false);
-            return new DeferredBodyAction<QueryApiQueryExecutionJob>(() =>
+            return new DeferredBodyAction<QueryApiQueryExecutionJob, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/query/jobs/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 if (__workflow_contentDisposition != null)
                     callPayload.Queries["content_disposition"] = ExpressionConverter.Convert(__workflow_contentDisposition);
                 return new ApiConnectionAction<QueryApiQueryExecutionJob>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> ListQueries(Expression<Func<moduleInput>> module, Expression<Func<int>> queryTypeId = null, Expression<Func<int>> category = null, Expression<Func<queryFormatInput>> queryFormat = null, Expression<Func<string>> searchText = null, Expression<Func<bool>> myFavQueriesOnly = null, Expression<Func<bool>> myQueriesOnly = null, Expression<Func<bool>> mergedQueriesOnly = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> addedBy = null, Expression<Func<bool>> sortDescending = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<QueryApiQuerySummaryCollection, ApiConnectionActionConfiguration> ListQueries(Expression<Func<moduleInput>> module, Expression<Func<int>> queryTypeId = null, Expression<Func<int>> category = null, Expression<Func<queryFormatInput>> queryFormat = null, Expression<Func<string>> searchText = null, Expression<Func<bool>> myFavQueriesOnly = null, Expression<Func<bool>> myQueriesOnly = null, Expression<Func<bool>> mergedQueriesOnly = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> addedBy = null, Expression<Func<bool>> sortDescending = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_module = WorkflowExpression.Compile(module, nameof(module), required: true);
             var __workflow_queryTypeId = WorkflowExpression.Compile(queryTypeId, nameof(queryTypeId), required: false);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var __workflow_sortDescending = WorkflowExpression.Compile(sortDescending, nameof(sortDescending), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<QueryApiQuerySummaryCollection>(() =>
+            return new DeferredBodyAction<QueryApiQuerySummaryCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries";
                 var apiCallHttpMethod = "get";
@@ -86,17 +86,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<QueryApiQuerySummaryCollection>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<string>> bodyfilename = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartAdHocQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<string>> bodyfilename = null)
         {
             var __workflow_module = WorkflowExpression.Compile(module, nameof(module), required: true);
             var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             var __workflow_bodyformattingMode = WorkflowExpression.Compile(bodyformattingMode, nameof(bodyformattingMode), required: false);
             var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: false);
-            return new DeferredBodyAction<QueryApiExecuteQueryResponse>(() =>
+            return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries/execute";
                 var apiCallHttpMethod = "post";
@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 }
 
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<bodysQLGenerationModeInput>> bodysQLGenerationMode = null, Expression<Func<bool>> bodyuseStaticQuery = null, Expression<Func<string>> bodyfilename = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<bodysQLGenerationModeInput>> bodysQLGenerationMode = null, Expression<Func<bool>> bodyuseStaticQuery = null, Expression<Func<string>> bodyfilename = null)
         {
             var __workflow_module = WorkflowExpression.Compile(module, nameof(module), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             var __workflow_bodysQLGenerationMode = WorkflowExpression.Compile(bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
             var __workflow_bodyuseStaticQuery = WorkflowExpression.Compile(bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
             var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: false);
-            return new DeferredBodyAction<QueryApiExecuteQueryResponse>(() =>
+            return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries/executebyid";
                 var apiCallHttpMethod = "post";
@@ -254,16 +254,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 }
 
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartRefreshStaticQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery)
         {
             var __workflow_module = WorkflowExpression.Compile(module, nameof(module), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            return new DeferredBodyAction<QueryApiExecuteQueryResponse>(() =>
+            return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/queries/refreshstaticquery";
                 var apiCallHttpMethod = "post";
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 }
 
                 return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

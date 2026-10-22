@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
     public class SpotifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        public IBodyWorkflowAction<GetSavedAlbumsResponse> GetSavedAlbums()
+        public IBodyWorkflowAction<GetSavedAlbumsResponse, ApiConnectionActionConfiguration> GetSavedAlbums()
         {
             var apiCallPath = "/v1/me/albums";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        public IBodyWorkflowAction<PrivateUser> GetUserProfile()
+        public IBodyWorkflowAction<PrivateUser, ApiConnectionActionConfiguration> GetUserProfile()
         {
             var apiCallPath = "/v1/me";
             var apiCallHttpMethod = "get";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        public IBodyWorkflowAction<GetTopArtistsResponse> GetTopArtists()
+        public IBodyWorkflowAction<GetTopArtistsResponse, ApiConnectionActionConfiguration> GetTopArtists()
         {
             var apiCallPath = "/v1/me/top/artists";
             var apiCallHttpMethod = "get";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases(Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<GetNewReleasesResponse, ApiConnectionActionConfiguration> GetNewReleases(Expression<Func<string>> country = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<GetNewReleasesResponse>(() =>
+            return new DeferredBodyAction<GetNewReleasesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/browse/new-releases";
                 var apiCallHttpMethod = "get";
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
                 if (__workflow_country != null)
                     callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<GetNewReleasesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

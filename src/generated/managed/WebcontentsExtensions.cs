@@ -12,26 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
     public class WebcontentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> path)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetFileContent";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
         {
             var __workflow_requestmethod = WorkflowExpression.Compile(requestmethod, nameof(requestmethod), required: true);
             var __workflow_requesturlOfTheRequest = WorkflowExpression.Compile(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
             var __workflow_requestbodyOfTheRequest = WorkflowExpression.Compile(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/codeless/InvokeHttp";
                 var apiCallHttpMethod = "post";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

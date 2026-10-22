@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
     public class EnlyftforcopilotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enlyftforcopilot")]
-        public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft(Expression<Func<string>> personId = null, Expression<Func<string>> userEmail = null)
+        public IBodyWorkflowAction<ExportContactFromEnlyftResponse, ApiConnectionActionConfiguration> ExportContactFromEnlyft(Expression<Func<string>> personId = null, Expression<Func<string>> userEmail = null)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: false);
             var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: false);
-            return new DeferredBodyAction<ExportContactFromEnlyftResponse>(() =>
+            return new DeferredBodyAction<ExportContactFromEnlyftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/export-contact";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
                 if (__workflow_userEmail != null)
                     callPayload.Queries["userEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
                 return new ApiConnectionAction<ExportContactFromEnlyftResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

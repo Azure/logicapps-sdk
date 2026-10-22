@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
     public class ShieldsioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
-        public IBodyWorkflowAction<JToken> BadgeCreate(Expression<Func<string>> label = null, Expression<Func<string>> labelColor = null, Expression<Func<string>> message = null, Expression<Func<string>> color = null, Expression<Func<string>> style = null, Expression<Func<string>> logo = null, Expression<Func<string>> logoColor = null, Expression<Func<int>> logoWidth = null, Expression<Func<string>> link = null, Expression<Func<int>> cacheSeconds = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BadgeCreate(Expression<Func<string>> label = null, Expression<Func<string>> labelColor = null, Expression<Func<string>> message = null, Expression<Func<string>> color = null, Expression<Func<string>> style = null, Expression<Func<string>> logo = null, Expression<Func<string>> logoColor = null, Expression<Func<int>> logoWidth = null, Expression<Func<string>> link = null, Expression<Func<int>> cacheSeconds = null)
         {
             var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: false);
             var __workflow_labelColor = WorkflowExpression.Compile(labelColor, nameof(labelColor), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
             var __workflow_logoWidth = WorkflowExpression.Compile(logoWidth, nameof(logoWidth), required: false);
             var __workflow_link = WorkflowExpression.Compile(link, nameof(link), required: false);
             var __workflow_cacheSeconds = WorkflowExpression.Compile(cacheSeconds, nameof(cacheSeconds), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/static/v1";
                 var apiCallHttpMethod = "get";
@@ -51,20 +51,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
                 if (__workflow_cacheSeconds != null)
                     callPayload.Queries["cacheSeconds"] = ExpressionConverter.Convert(__workflow_cacheSeconds);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
-        public IBodyWorkflowAction<JToken> BadgeGet(Expression<Func<string>> parameters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> BadgeGet(Expression<Func<string>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_parameters.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

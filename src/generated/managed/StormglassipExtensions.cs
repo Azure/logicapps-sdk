@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
     public class StormglassipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<WeatherPointRequestResponse> WeatherPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<WeatherPointRequestResponse, ApiConnectionActionConfiguration> WeatherPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
-            return new DeferredBodyAction<WeatherPointRequestResponse>(() =>
+            return new DeferredBodyAction<WeatherPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/weather/point";
                 var apiCallHttpMethod = "get";
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_source != null)
                     callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<WeatherPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<BioPointRequestResponse> BioPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<BioPointRequestResponse, ApiConnectionActionConfiguration> BioPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
-            return new DeferredBodyAction<BioPointRequestResponse>(() =>
+            return new DeferredBodyAction<BioPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bio/point";
                 var apiCallHttpMethod = "get";
@@ -62,18 +62,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_source != null)
                     callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<BioPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<TimeExtremesPointRequestResponse> TimeExtremesPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
+        public IBodyWorkflowAction<TimeExtremesPointRequestResponse, ApiConnectionActionConfiguration> TimeExtremesPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             var __workflow_datum = WorkflowExpression.Compile(datum, nameof(datum), required: false);
-            return new DeferredBodyAction<TimeExtremesPointRequestResponse>(() =>
+            return new DeferredBodyAction<TimeExtremesPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tide/extremes/point";
                 var apiCallHttpMethod = "get";
@@ -87,18 +87,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_datum != null)
                     callPayload.Queries["datum"] = ExpressionConverter.Convert(__workflow_datum);
                 return new ApiConnectionAction<TimeExtremesPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<TimeSealLevelPointRequestResponse> TimeSealLevelPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
+        public IBodyWorkflowAction<TimeSealLevelPointRequestResponse, ApiConnectionActionConfiguration> TimeSealLevelPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             var __workflow_datum = WorkflowExpression.Compile(datum, nameof(datum), required: false);
-            return new DeferredBodyAction<TimeSealLevelPointRequestResponse>(() =>
+            return new DeferredBodyAction<TimeSealLevelPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tide/sea-level/point";
                 var apiCallHttpMethod = "get";
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_datum != null)
                     callPayload.Queries["datum"] = ExpressionConverter.Convert(__workflow_datum);
                 return new ApiConnectionAction<TimeSealLevelPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<GetTideStationsResponse> GetTideStations()
+        public IBodyWorkflowAction<GetTideStationsResponse, ApiConnectionActionConfiguration> GetTideStations()
         {
             var apiCallPath = "/tide/stations";
             var apiCallHttpMethod = "get";
@@ -125,27 +125,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<GetTideStationsAreaResponse> GetTideStationsArea(Expression<Func<string>> box)
+        public IBodyWorkflowAction<GetTideStationsAreaResponse, ApiConnectionActionConfiguration> GetTideStationsArea(Expression<Func<string>> box)
         {
             var __workflow_box = WorkflowExpression.Compile(box, nameof(box), required: true);
-            return new DeferredBodyAction<GetTideStationsAreaResponse>(() =>
+            return new DeferredBodyAction<GetTideStationsAreaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tide/stations/area";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["box"] = ExpressionConverter.Convert(__workflow_box);
                 return new ApiConnectionAction<GetTideStationsAreaResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<AstronomyPointRequestResponse> AstronomyPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> end = null, Expression<Func<string>> start = null)
+        public IBodyWorkflowAction<AstronomyPointRequestResponse, ApiConnectionActionConfiguration> AstronomyPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> end = null, Expression<Func<string>> start = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
-            return new DeferredBodyAction<AstronomyPointRequestResponse>(() =>
+            return new DeferredBodyAction<AstronomyPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/astronomy/point";
                 var apiCallHttpMethod = "get";
@@ -157,11 +157,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_start != null)
                     callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 return new ApiConnectionAction<AstronomyPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<SolarPointRequestResponse> SolarPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<SolarPointRequestResponse, ApiConnectionActionConfiguration> SolarPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
-            return new DeferredBodyAction<SolarPointRequestResponse>(() =>
+            return new DeferredBodyAction<SolarPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/solar/point";
                 var apiCallHttpMethod = "get";
@@ -184,15 +184,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 if (__workflow_source != null)
                     callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 return new ApiConnectionAction<SolarPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<ElevationPointRequestResponse> ElevationPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng)
+        public IBodyWorkflowAction<ElevationPointRequestResponse, ApiConnectionActionConfiguration> ElevationPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
-            return new DeferredBodyAction<ElevationPointRequestResponse>(() =>
+            return new DeferredBodyAction<ElevationPointRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/elevation/point";
                 var apiCallHttpMethod = "get";
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
                 callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<ElevationPointRequestResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
     public class OnenotepersonalipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookGetResponse> NotebookGet()
+        public IBodyWorkflowAction<NotebookGetResponse, ApiConnectionActionConfiguration> NotebookGet()
         {
             var apiCallPath = "/notebooks";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookPostResponse> Notebook(Expression<Func<string>> bodydisplayName)
+        public IBodyWorkflowAction<NotebookPostResponse, ApiConnectionActionConfiguration> Notebook(Expression<Func<string>> bodydisplayName)
         {
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            return new DeferredBodyAction<NotebookPostResponse>(() =>
+            return new DeferredBodyAction<NotebookPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notebooks";
                 var apiCallHttpMethod = "post";
@@ -39,24 +39,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
                 }
 
                 return new ApiConnectionAction<NotebookPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookGetAResponse> NotebookGetA(Expression<Func<string>> notebookId)
+        public IBodyWorkflowAction<NotebookGetAResponse, ApiConnectionActionConfiguration> NotebookGetA(Expression<Func<string>> notebookId)
         {
             var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
-            return new DeferredBodyAction<NotebookGetAResponse>(() =>
+            return new DeferredBodyAction<NotebookGetAResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NotebookGetAResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionGetResponse> SectionGet(Expression<Func<string>> notebookId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
+        public IBodyWorkflowAction<SectionGetResponse, ApiConnectionActionConfiguration> SectionGet(Expression<Func<string>> notebookId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
         {
             var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
-            return new DeferredBodyAction<SectionGetResponse>(() =>
+            return new DeferredBodyAction<SectionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}/sections", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -92,15 +92,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
                 if (__workflow_skiptoken != null)
                     callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(__workflow_skiptoken);
                 return new ApiConnectionAction<SectionGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionPostResponse> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
+        public IBodyWorkflowAction<SectionPostResponse, ApiConnectionActionConfiguration> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
         {
             var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            return new DeferredBodyAction<SectionPostResponse>(() =>
+            return new DeferredBodyAction<SectionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}/sections", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
                 }
 
                 return new ApiConnectionAction<SectionPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PageGetResponse> PageGet(Expression<Func<string>> sectionId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
+        public IBodyWorkflowAction<PageGetResponse, ApiConnectionActionConfiguration> PageGet(Expression<Func<string>> sectionId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
         {
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
-            return new DeferredBodyAction<PageGetResponse>(() =>
+            return new DeferredBodyAction<PageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sections/{0}/pages", __workflow_sectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -155,16 +155,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
                 if (__workflow_skiptoken != null)
                     callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(__workflow_skiptoken);
                 return new ApiConnectionAction<PageGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<PagePostResponse, ApiConnectionActionConfiguration> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PagePostResponse>(() =>
+            return new DeferredBodyAction<PagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sections/{0}/pages", __workflow_sectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PagePostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

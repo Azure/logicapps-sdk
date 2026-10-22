@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
     public class LnkbioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
-        public IBodyWorkflowAction<InlineResponse200> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
+        public IBodyWorkflowAction<InlineResponse200, ApiConnectionActionConfiguration> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: true);
             var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
-            return new DeferredBodyAction<InlineResponse200>(() =>
+            return new DeferredBodyAction<InlineResponse200, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lnk/add";
                 var apiCallHttpMethod = "post";
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
                 }
 
                 return new ApiConnectionAction<InlineResponse200>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

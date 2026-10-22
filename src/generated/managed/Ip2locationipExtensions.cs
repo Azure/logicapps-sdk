@@ -12,17 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
     public class Ip2locationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2locationip")]
-        public IBodyWorkflowAction<LookupIpResponse> LookupIp(Expression<Func<string>> ip)
+        public IBodyWorkflowAction<LookupIpResponse, ApiConnectionActionConfiguration> LookupIp(Expression<Func<string>> ip)
         {
             var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
-            return new DeferredBodyAction<LookupIpResponse>(() =>
+            return new DeferredBodyAction<LookupIpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ip"] = ExpressionConverter.Convert(__workflow_ip);
                 return new ApiConnectionAction<LookupIpResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

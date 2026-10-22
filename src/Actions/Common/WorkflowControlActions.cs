@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 namespace Microsoft.Azure.Workflows.Sdk
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Creates a Scope action that groups nested actions together.
         /// </summary>
         /// <param name = "actions">A factory that builds the nested action graph and returns any node in the chain.</param>
-        public IWorkflowAction Scope(Func<IChainableNode> actions)
+        public IWorkflowAction<ControlActionConfiguration> Scope(Func<IChainableNode> actions)
         {
             if (actions == null)
             {
@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var resolvedActions = actions.Invoke();
-            return new ScopeAction(resolvedActions?.GetRootOperation() as IWorkflowAction);
+            return new DeferredWorkflowAction<ControlActionConfiguration>(
+                () => new ScopeAction(resolvedActions?.GetRootOperation() as IWorkflowAction));
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "expression">The boolean expression to evaluate.</param>
         /// <param name = "trueBranch">A factory that builds the true branch action graph and returns any node in the chain.</param>
         /// <param name = "falseBranch">A factory that builds the false branch action graph and returns any node in the chain.</param>
-        public IWorkflowAction Condition(Expression<Func<bool>> expression, Func<IChainableNode> trueBranch, Func<IChainableNode> falseBranch)
+        public IWorkflowAction<ControlActionConfiguration> Condition(Expression<Func<bool>> expression, Func<IChainableNode> trueBranch, Func<IChainableNode> falseBranch)
         {
             var descriptor = WorkflowExpression.Compile(expression, nameof(expression), required: true);
 
@@ -46,9 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentException("Condition action requires at least one non-null branch.");
             }
 
-            return new DeferredWorkflowAction(
-                () => new ConditionAction(ExpressionConverter.ConvertCondition(descriptor), resolvedTrueBranch?.GetRootOperation() as IWorkflowAction, resolvedFalseBranch?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingProfiles.Tracked);
+            return new DeferredWorkflowAction<ControlActionConfiguration>(
+                () => new ConditionAction(ExpressionConverter.ConvertCondition(descriptor), resolvedTrueBranch?.GetRootOperation() as IWorkflowAction, resolvedFalseBranch?.GetRootOperation() as IWorkflowAction));
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name = "items">An expression for the collection to iterate over.</param>
         /// <param name = "actions">A factory that takes the current item token and builds the action graph, returning any node in the chain.</param>
-        public IWorkflowAction ForEach(Expression<Func<object>> items, Func<JToken, IChainableNode> actions)
+        public IWorkflowAction<ForEachActionConfiguration> ForEach(Expression<Func<object>> items, Func<JToken, IChainableNode> actions)
         {
             var descriptor = WorkflowExpression.Compile(items, nameof(items), required: true);
 
@@ -67,9 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             var currentItemPlaceholder = new ForEachItemToken();
             var resolvedActions = actions.Invoke(currentItemPlaceholder);
-            return new DeferredWorkflowAction(
-                () => new ForEachAction(ExpressionConverter.ConvertO(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingProfiles.ForEach);
+            return new DeferredWorkflowAction<ForEachActionConfiguration>(
+                () => new ForEachAction(ExpressionConverter.ConvertO(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction));
         }
 
         /// <summary>
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name = "expression">The boolean expression for the exit condition.</param>
         /// <param name = "actions">A factory that builds the action graph to repeat and returns any node in the chain.</param>
-        public IWorkflowAction Until(Expression<Func<bool>> expression, Func<IChainableNode> actions)
+        public IWorkflowAction<ControlActionConfiguration> Until(Expression<Func<bool>> expression, Func<IChainableNode> actions)
         {
             var descriptor = WorkflowExpression.Compile(expression, nameof(expression), required: true);
 
@@ -87,9 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var resolvedActions = actions.Invoke();
-            return new DeferredWorkflowAction(
-                () => new UntilAction(ExpressionConverter.ConvertCondition(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingProfiles.Tracked);
+            return new DeferredWorkflowAction<ControlActionConfiguration>(
+                () => new UntilAction(ExpressionConverter.ConvertCondition(descriptor), resolvedActions?.GetRootOperation() as IWorkflowAction));
         }
 
         /// <summary>
@@ -98,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "on">An expression for the value to switch on.</param>
         /// <param name = "cases">A factory that returns a dictionary mapping case labels to their SwitchCase entries.</param>
         /// <param name = "defaultCase">A factory that builds the default case action graph and returns any node in the chain (optional).</param>
-        public IWorkflowAction Switch(Expression<Func<JToken>> on, Func<Dictionary<string, SwitchCase>> cases, Func<IChainableNode> defaultCase = null)
+        public IWorkflowAction<ControlActionConfiguration> Switch(Expression<Func<JToken>> on, Func<Dictionary<string, SwitchCase>> cases, Func<IChainableNode> defaultCase = null)
         {
             var descriptor = WorkflowExpression.Compile(on, nameof(on), required: true);
 
@@ -109,9 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             var resolvedCasesDict = cases.Invoke();
             var resolvedDefaultCase = defaultCase?.Invoke();
-            return new DeferredWorkflowAction(
-                () => new SwitchAction(ExpressionConverter.ConvertO(descriptor), resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction),
-                WorkflowActionSettingProfiles.Tracked);
+            return new DeferredWorkflowAction<ControlActionConfiguration>(
+                () => new SwitchAction(ExpressionConverter.ConvertO(descriptor), resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction));
         }
 
         /// <summary>
@@ -119,14 +116,33 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name = "status">An expression for the termination status (e.g., FlowStatus.Failed).</param>
         /// <param name = "message">An expression for the termination message (optional).</param>
-        public IWorkflowAction Terminate(Expression<Func<FlowStatus>> status, Expression<Func<string>> message = null)
+        public IWorkflowAction<ControlActionConfiguration> Terminate(Expression<Func<FlowStatus>> status, Expression<Func<string>> message = null)
         {
             var statusDescriptor = WorkflowExpression.Compile(status, nameof(status), required: true);
             var messageDescriptor = WorkflowExpression.Compile(message, nameof(message), required: false);
 
-            return new DeferredWorkflowAction(
-                () => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)),
-                WorkflowActionSettingProfiles.Tracked);
+            return new DeferredWorkflowAction<ControlActionConfiguration>(
+                () => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)));
         }
     }
+
+    #region Action Configurations
+
+    public sealed class ControlActionConfiguration :
+        IWorkflowOperationConfiguration,
+        ITrackedPropertiesConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+    }
+
+    public sealed class ForEachActionConfiguration :
+        IWorkflowOperationConfiguration,
+        ITrackedPropertiesConfigurationHolder,
+        IIterationConcurrencyConfigurationHolder
+    {
+        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        public int? MaximumParallelIterations { get; set; }
+    }
+
+    #endregion
 }

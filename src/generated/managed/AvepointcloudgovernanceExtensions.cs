@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
     public class AvepointcloudgovernanceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IBodyWorkflowAction<JToken> FlowGetOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowGetOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
         {
             var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/office365/settings";
                 var apiCallHttpMethod = "post";
@@ -24,15 +24,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IWorkflowAction FlowUpdateOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowUpdateOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
         {
             var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/office365/settings";
                 var apiCallHttpMethod = "put";
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IBodyWorkflowAction<JToken> FlowGetRequestById(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowGetRequestById(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> requestId)
         {
             var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: true);
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flow/requests/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -57,17 +57,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
                 callPayload.Queries["serviceId"] = ExpressionConverter.Convert(__workflow_serviceId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IBodyWorkflowAction<string> FlowSubmitRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> delegateUserPrincipalName = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlowSubmitRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> delegateUserPrincipalName = null, Expression<Func<object>> body = null)
         {
             var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: true);
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
             var __workflow_delegateUserPrincipalName = WorkflowExpression.Compile(delegateUserPrincipalName, nameof(delegateUserPrincipalName), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/requests";
                 var apiCallHttpMethod = "post";
@@ -78,17 +78,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                     callPayload.Queries["DelegateUserPrincipalName"] = ExpressionConverter.Convert(__workflow_delegateUserPrincipalName);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IWorkflowAction FlowEditRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> id, Expression<Func<object>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowEditRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
             var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: true);
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/requests";
                 var apiCallHttpMethod = "put";
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IBodyWorkflowAction<JToken> FlowListWorkspace(Expression<Func<string>> workspaceType = null, Expression<Func<string>> primaryContact = null, Expression<Func<string>> status = null, Expression<Func<string>> urlorIdorEmail = null, Expression<Func<string>> secondaryContact = null, Expression<Func<int>> top = null, Expression<Func<string>> nextLink = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowListWorkspace(Expression<Func<string>> workspaceType = null, Expression<Func<string>> primaryContact = null, Expression<Func<string>> status = null, Expression<Func<string>> urlorIdorEmail = null, Expression<Func<string>> secondaryContact = null, Expression<Func<int>> top = null, Expression<Func<string>> nextLink = null)
         {
             var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: false);
             var __workflow_primaryContact = WorkflowExpression.Compile(primaryContact, nameof(primaryContact), required: false);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             var __workflow_secondaryContact = WorkflowExpression.Compile(secondaryContact, nameof(secondaryContact), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_nextLink = WorkflowExpression.Compile(nextLink, nameof(nextLink), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/workspace";
                 var apiCallHttpMethod = "get";
@@ -138,16 +138,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 if (__workflow_nextLink != null)
                     callPayload.Queries["nextLink"] = ExpressionConverter.Convert(__workflow_nextLink);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        public IBodyWorkflowAction<string> FlowWorkspaceActions(Expression<Func<string>> workspaceType, Expression<Func<string>> workspaceAction, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlowWorkspaceActions(Expression<Func<string>> workspaceType, Expression<Func<string>> workspaceAction, Expression<Func<object>> body = null)
         {
             var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
             var __workflow_workspaceAction = WorkflowExpression.Compile(workspaceAction, nameof(workspaceAction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/workspace/actions";
                 var apiCallHttpMethod = "post";
@@ -156,16 +156,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Queries["workspaceAction"] = ExpressionConverter.Convert(__workflow_workspaceAction);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class AvepointcloudgovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType, FlowRecurrence recurrence = null)
         {
             var __workflow_flowTriggerType = WorkflowExpression.Compile(flowTriggerType, nameof(flowTriggerType), required: true);
-            return new DeferredBodyTrigger<string>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/flow/hooks/common";
                 var apiCallHttpMethod = "post";
@@ -181,10 +181,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 }
 
                 return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForErrorTaskCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/errortask/created";
             var apiCallHttpMethod = "post";
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskRetried(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForErrorTaskRetried(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/errortask/retried";
             var apiCallHttpMethod = "post";
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestCancelled(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRequestCancelled(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/request/cancelled";
             var apiCallHttpMethod = "post";
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRequestCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/request/completed";
             var apiCallHttpMethod = "post";
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestSubmitted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRequestSubmitted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/request/submitted";
             var apiCallHttpMethod = "post";
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskApproved(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForTaskApproved(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/approved";
             var apiCallHttpMethod = "post";
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForFullyAutoImportCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForFullyAutoImportCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/autoimport";
             var apiCallHttpMethod = "post";
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForConfirmDetailCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForConfirmDetailCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/confirm";
             var apiCallHttpMethod = "post";
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForTaskCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/created";
             var apiCallHttpMethod = "post";
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskRejected(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForTaskRejected(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/rejected";
             var apiCallHttpMethod = "post";
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRenewalTaskCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/completed";
             var apiCallHttpMethod = "post";
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskException(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRenewalTaskException(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/exception";
             var apiCallHttpMethod = "post";
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskOverdue(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForRenewalTaskOverdue(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/overdue";
             var apiCallHttpMethod = "post";
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
             return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskSkipped(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> FlowCreateHookForErrorTaskSkipped(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/skipped";
             var apiCallHttpMethod = "post";

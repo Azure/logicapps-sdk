@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
     public class MicrosoftformsproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
-        public IBodyWorkflowAction<string> SendSurvey(Expression<Func<string>> to, Expression<Func<string>> projectId, Expression<Func<string>> formId, Expression<Func<string>> emailTemplateId, Expression<Func<string>> regarding = null, Expression<Func<string>> recipientInfo = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendSurvey(Expression<Func<string>> to, Expression<Func<string>> projectId, Expression<Func<string>> formId, Expression<Func<string>> emailTemplateId, Expression<Func<string>> regarding = null, Expression<Func<string>> recipientInfo = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<object>> item = null)
         {
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/sendmail/flow";
                 var apiCallHttpMethod = "post";
@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
                 callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
-        public IBodyWorkflowAction<CreateSurveyInviteResponse> CreateSurveyInvite(Expression<Func<string>> projectId, Expression<Func<string>> formId, Expression<Func<string>> email = null, Expression<Func<string>> subject = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> regarding = null, Expression<Func<string>> recipientInfo = null, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<CreateSurveyInviteResponse, ApiConnectionActionConfiguration> CreateSurveyInvite(Expression<Func<string>> projectId, Expression<Func<string>> formId, Expression<Func<string>> email = null, Expression<Func<string>> subject = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> regarding = null, Expression<Func<string>> recipientInfo = null, Expression<Func<object>> item = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
             var __workflow_regarding = WorkflowExpression.Compile(regarding, nameof(regarding), required: false);
             var __workflow_recipientInfo = WorkflowExpression.Compile(recipientInfo, nameof(recipientInfo), required: false);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
-            return new DeferredBodyAction<CreateSurveyInviteResponse>(() =>
+            return new DeferredBodyAction<CreateSurveyInviteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/createinvite";
                 var apiCallHttpMethod = "post";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
                 callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<CreateSurveyInviteResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
     public class TabscannerreceiptocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Process> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
+        public IBodyWorkflowAction<Process, ApiConnectionActionConfiguration> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
         {
             var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             var __workflow_bodydocumentType = WorkflowExpression.Compile(bodydocumentType, nameof(bodydocumentType), required: false);
             var __workflow_bodydefaultDateParsing = WorkflowExpression.Compile(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
             var __workflow_bodydecimalPlaces = WorkflowExpression.Compile(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
-            return new DeferredBodyAction<Process>(() =>
+            return new DeferredBodyAction<Process, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/2/processbase64";
                 var apiCallHttpMethod = "post";
@@ -62,20 +62,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
                 }
 
                 return new ApiConnectionAction<Process>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Result> Result(Expression<Func<string>> token)
+        public IBodyWorkflowAction<Result, ApiConnectionActionConfiguration> Result(Expression<Func<string>> token)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
-            return new DeferredBodyAction<Result>(() =>
+            return new DeferredBodyAction<Result, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/result/{0}", __workflow_token.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Result>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

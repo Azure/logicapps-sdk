@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
     public class WorkableipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<CandidatesResponse> Candidates()
+        public IBodyWorkflowAction<CandidatesResponse, ApiConnectionActionConfiguration> Candidates()
         {
             var apiCallPath = "/spi/v3/candidates";
             var apiCallHttpMethod = "get";
@@ -21,20 +21,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<CandidatesIdResponse> CandidatesId(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CandidatesIdResponse, ApiConnectionActionConfiguration> CandidatesId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CandidatesIdResponse>(() =>
+            return new DeferredBodyAction<CandidatesIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/spi/v3/candidates/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidatesIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<AccountsResponse> Accounts()
+        public IBodyWorkflowAction<AccountsResponse, ApiConnectionActionConfiguration> Accounts()
         {
             var apiCallPath = "/spi/v3/accounts";
             var apiCallHttpMethod = "get";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<JobsResponse> Jobs()
+        public IBodyWorkflowAction<JobsResponse, ApiConnectionActionConfiguration> Jobs()
         {
             var apiCallPath = "/spi/v3/jobs";
             var apiCallHttpMethod = "get";
@@ -52,20 +52,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<JobShortCodeResponse> JobShortCode(Expression<Func<string>> shortcode)
+        public IBodyWorkflowAction<JobShortCodeResponse, ApiConnectionActionConfiguration> JobShortCode(Expression<Func<string>> shortcode)
         {
             var __workflow_shortcode = WorkflowExpression.Compile(shortcode, nameof(shortcode), required: true);
-            return new DeferredBodyAction<JobShortCodeResponse>(() =>
+            return new DeferredBodyAction<JobShortCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/spi/v3/jobs/{0}", __workflow_shortcode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JobShortCodeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<MembersResponse> Members()
+        public IBodyWorkflowAction<MembersResponse, ApiConnectionActionConfiguration> Members()
         {
             var apiCallPath = "/spi/v3/members";
             var apiCallHttpMethod = "get";
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<StagesResponse> Stages()
+        public IBodyWorkflowAction<StagesResponse, ApiConnectionActionConfiguration> Stages()
         {
             var apiCallPath = "/spi/v3/stages";
             var apiCallHttpMethod = "get";
@@ -83,20 +83,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<JobActivitiesResponse> JobActivities(Expression<Func<string>> shortcode)
+        public IBodyWorkflowAction<JobActivitiesResponse, ApiConnectionActionConfiguration> JobActivities(Expression<Func<string>> shortcode)
         {
             var __workflow_shortcode = WorkflowExpression.Compile(shortcode, nameof(shortcode), required: true);
-            return new DeferredBodyAction<JobActivitiesResponse>(() =>
+            return new DeferredBodyAction<JobActivitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/spi/v3/jobs/{0}/activities", __workflow_shortcode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JobActivitiesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<EventsResponse> Events()
+        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events()
         {
             var apiCallPath = "/spi/v3/events";
             var apiCallHttpMethod = "get";
@@ -105,20 +105,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<EventsIdResponse> EventsId(Expression<Func<string>> id)
+        public IBodyWorkflowAction<EventsIdResponse, ApiConnectionActionConfiguration> EventsId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<EventsIdResponse>(() =>
+            return new DeferredBodyAction<EventsIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/spi/v3/events/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventsIdResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<SubscriptionsResponse> Subscriptions()
+        public IBodyWorkflowAction<SubscriptionsResponse, ApiConnectionActionConfiguration> Subscriptions()
         {
             var apiCallPath = "/spi/v3/subscriptions";
             var apiCallHttpMethod = "get";
@@ -127,13 +127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyEvent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
+        public IBodyWorkflowAction<PostSubscriptionResponse, ApiConnectionActionConfiguration> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyEvent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
         {
             var __workflow_bodytarget = WorkflowExpression.Compile(bodytarget, nameof(bodytarget), required: false);
             var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: false);
             var __workflow_bodyargsaccountId = WorkflowExpression.Compile(bodyargsaccountId, nameof(bodyargsaccountId), required: false);
             var __workflow_bodyargsstageSlug = WorkflowExpression.Compile(bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
-            return new DeferredBodyAction<PostSubscriptionResponse>(() =>
+            return new DeferredBodyAction<PostSubscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/spi/v3/subscriptions";
                 var apiCallHttpMethod = "post";
@@ -188,11 +188,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
                 }
 
                 return new ApiConnectionAction<PostSubscriptionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<CustomAttributesResponse> CustomAttributes()
+        public IBodyWorkflowAction<CustomAttributesResponse, ApiConnectionActionConfiguration> CustomAttributes()
         {
             var apiCallPath = "/spi/v3/custom_attributes";
             var apiCallHttpMethod = "get";
@@ -201,16 +201,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<OfferResponse> Offer(Expression<Func<string>> id)
+        public IBodyWorkflowAction<OfferResponse, ApiConnectionActionConfiguration> Offer(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<OfferResponse>(() =>
+            return new DeferredBodyAction<OfferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/spi/v3/candidates/{0}/offer", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfferResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

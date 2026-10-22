@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
     public class Dynamics365ratingsreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
-        public IBodyWorkflowAction<string> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyrating, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyproductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodysku = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyrating, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyproductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodysku = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
             var __workflow_bodysku = WorkflowExpression.Compile(bodysku, nameof(bodysku), required: false);
             var __workflow_bodylegalEntity = WorkflowExpression.Compile(bodylegalEntity, nameof(bodylegalEntity), required: false);
             var __workflow_bodysubmittedDateTime = WorkflowExpression.Compile(bodysubmittedDateTime, nameof(bodysubmittedDateTime), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/reviews/product/{0}/user", __workflow_productId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -81,21 +81,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
-        public IBodyWorkflowAction<ExportSuccessfulResponse> ExportReviews(Expression<Func<string>> tenantId)
+        public IBodyWorkflowAction<ExportSuccessfulResponse, ApiConnectionActionConfiguration> ExportReviews(Expression<Func<string>> tenantId)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
-            return new DeferredBodyAction<ExportSuccessfulResponse>(() =>
+            return new DeferredBodyAction<ExportSuccessfulResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/export/reviews/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tenantId"] = ExpressionConverter.Convert(__workflow_tenantId);
                 return new ApiConnectionAction<ExportSuccessfulResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

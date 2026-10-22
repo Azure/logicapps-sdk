@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     public class OptiapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CalculateAverageResponse> CalculateAverage(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
+        public IBodyWorkflowAction<CalculateAverageResponse, ApiConnectionActionConfiguration> CalculateAverage(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
-            return new DeferredBodyAction<CalculateAverageResponse>(() =>
+            return new DeferredBodyAction<CalculateAverageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/calculate-average";
                 var apiCallHttpMethod = "post";
@@ -35,15 +35,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<CalculateAverageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ChunkAnArrayResponse> ChunkAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodysize)
+        public IBodyWorkflowAction<ChunkAnArrayResponse, ApiConnectionActionConfiguration> ChunkAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodysize)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: true);
-            return new DeferredBodyAction<ChunkAnArrayResponse>(() =>
+            return new DeferredBodyAction<ChunkAnArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/chunk";
                 var apiCallHttpMethod = "post";
@@ -62,17 +62,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<ChunkAnArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CombineArrayResponse> CombineArray(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string[]>> bodykeys, Expression<Func<string[]>> bodyvalues)
+        public IBodyWorkflowAction<CombineArrayResponse, ApiConnectionActionConfiguration> CombineArray(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string[]>> bodykeys, Expression<Func<string[]>> bodyvalues)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_bodykeys = WorkflowExpression.Compile(bodykeys, nameof(bodykeys), required: true);
             var __workflow_bodyvalues = WorkflowExpression.Compile(bodyvalues, nameof(bodyvalues), required: true);
-            return new DeferredBodyAction<CombineArrayResponse>(() =>
+            return new DeferredBodyAction<CombineArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/combine";
                 var apiCallHttpMethod = "post";
@@ -91,16 +91,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<CombineArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> CheckIfArrayContainAValue(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodysearch)
+        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse, ApiConnectionActionConfiguration> CheckIfArrayContainAValue(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodysearch)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
             var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: true);
-            return new DeferredBodyAction<CheckIfArrayContainAValueResponse>(() =>
+            return new DeferredBodyAction<CheckIfArrayContainAValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/contains";
                 var apiCallHttpMethod = "post";
@@ -121,15 +121,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<CheckIfArrayContainAValueResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> FindDifferenceBetweenArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string[]>> bodycompare)
+        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse, ApiConnectionActionConfiguration> FindDifferenceBetweenArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string[]>> bodycompare)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodycompare = WorkflowExpression.Compile(bodycompare, nameof(bodycompare), required: true);
-            return new DeferredBodyAction<FindDifferenceBetweenArraysResponse>(() =>
+            return new DeferredBodyAction<FindDifferenceBetweenArraysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/difference";
                 var apiCallHttpMethod = "post";
@@ -148,15 +148,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<FindDifferenceBetweenArraysResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FindDuplicatesInArraysResponse> FindDuplicatesInArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
+        public IBodyWorkflowAction<FindDuplicatesInArraysResponse, ApiConnectionActionConfiguration> FindDuplicatesInArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            return new DeferredBodyAction<FindDuplicatesInArraysResponse>(() =>
+            return new DeferredBodyAction<FindDuplicatesInArraysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/duplicate";
                 var apiCallHttpMethod = "post";
@@ -179,15 +179,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<FindDuplicatesInArraysResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FilterAnArrayResponse> FilterAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bool>> bodypreserveKeys)
+        public IBodyWorkflowAction<FilterAnArrayResponse, ApiConnectionActionConfiguration> FilterAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bool>> bodypreserveKeys)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodypreserveKeys = WorkflowExpression.Compile(bodypreserveKeys, nameof(bodypreserveKeys), required: true);
-            return new DeferredBodyAction<FilterAnArrayResponse>(() =>
+            return new DeferredBodyAction<FilterAnArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/filter";
                 var apiCallHttpMethod = "post";
@@ -206,17 +206,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<FilterAnArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodyvalue, Expression<Func<bodyOperatorInput>> bodyOperator = null)
+        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse, ApiConnectionActionConfiguration> FirstWhereWithinAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodyvalue, Expression<Func<bodyOperatorInput>> bodyOperator = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodyOperator = WorkflowExpression.Compile(bodyOperator, nameof(bodyOperator), required: false);
-            return new DeferredBodyAction<FirstWhereWithinAnArrayResponse>(() =>
+            return new DeferredBodyAction<FirstWhereWithinAnArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/first-where";
                 var apiCallHttpMethod = "post";
@@ -243,15 +243,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<FirstWhereWithinAnArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FlattenAnArrayResponse> FlattenAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodydepth = null)
+        public IBodyWorkflowAction<FlattenAnArrayResponse, ApiConnectionActionConfiguration> FlattenAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodydepth = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodydepth = WorkflowExpression.Compile(bodydepth, nameof(bodydepth), required: false);
-            return new DeferredBodyAction<FlattenAnArrayResponse>(() =>
+            return new DeferredBodyAction<FlattenAnArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/flatten";
                 var apiCallHttpMethod = "post";
@@ -274,15 +274,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<FlattenAnArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<RemoveItemFromArrayResponse> RemoveItemFromArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
+        public IBodyWorkflowAction<RemoveItemFromArrayResponse, ApiConnectionActionConfiguration> RemoveItemFromArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
-            return new DeferredBodyAction<RemoveItemFromArrayResponse>(() =>
+            return new DeferredBodyAction<RemoveItemFromArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/forget";
                 var apiCallHttpMethod = "post";
@@ -301,15 +301,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<RemoveItemFromArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GroupByAnArrayKeyResponse> GroupByAnArrayKey(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
+        public IBodyWorkflowAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration> GroupByAnArrayKey(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
-            return new DeferredBodyAction<GroupByAnArrayKeyResponse>(() =>
+            return new DeferredBodyAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/group-by";
                 var apiCallHttpMethod = "post";
@@ -328,15 +328,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<GroupByAnArrayKeyResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<StandardArrayResponse> SortAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bodysortInput>> bodysort)
+        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> SortAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bodysortInput>> bodysort)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: true);
-            return new DeferredBodyAction<StandardArrayResponse>(() =>
+            return new DeferredBodyAction<StandardArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/sort";
                 var apiCallHttpMethod = "post";
@@ -355,15 +355,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<StandardArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> GetUniqueItemsInAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
+        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse, ApiConnectionActionConfiguration> GetUniqueItemsInAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            return new DeferredBodyAction<GetUniqueItemsInAnArrayResponse>(() =>
+            return new DeferredBodyAction<GetUniqueItemsInAnArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/array/unique";
                 var apiCallHttpMethod = "post";
@@ -386,18 +386,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<GetUniqueItemsInAnArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates(Expression<Func<bodyactionInput>> bodyaction, Expression<Func<string>> bodydatetime, Expression<Func<bodyOperatorInput>> bodyOperator, Expression<Func<int>> bodyvalue, Expression<Func<string>> bodyoutputFormat = null)
+        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse, ApiConnectionActionConfiguration> AddOrSubtractFromTimeOrDates(Expression<Func<bodyactionInput>> bodyaction, Expression<Func<string>> bodydatetime, Expression<Func<bodyOperatorInput>> bodyOperator, Expression<Func<int>> bodyvalue, Expression<Func<string>> bodyoutputFormat = null)
         {
             var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
             var __workflow_bodydatetime = WorkflowExpression.Compile(bodydatetime, nameof(bodydatetime), required: true);
             var __workflow_bodyOperator = WorkflowExpression.Compile(bodyOperator, nameof(bodyOperator), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            return new DeferredBodyAction<AddOrSubtractFromTimeOrDatesResponse>(() =>
+            return new DeferredBodyAction<AddOrSubtractFromTimeOrDatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datetime/add-or-subtract";
                 var apiCallHttpMethod = "post";
@@ -426,11 +426,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<AddOrSubtractFromTimeOrDatesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyinputFormat, Expression<Func<string>> bodyoutputFormat, Expression<Func<string>> bodystring, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyinputFormat, Expression<Func<string>> bodyoutputFormat, Expression<Func<string>> bodystring, Expression<Func<string>> bodytimezone = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
             var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            return new DeferredBodyAction<ConvertAStringToADatetimeObjectResponse>(() =>
+            return new DeferredBodyAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datetime/string-to-datetime";
                 var apiCallHttpMethod = "post";
@@ -465,11 +465,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<ConvertAStringToADatetimeObjectResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<string>> bodyfile, Expression<Func<bodyoemInput>> bodyoem, Expression<Func<bodypsmInput>> bodypsm, Expression<Func<bool>> bodytrim, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodylanguage = null)
+        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<string>> bodyfile, Expression<Func<bodyoemInput>> bodyoem, Expression<Func<bodypsmInput>> bodypsm, Expression<Func<bool>> bodytrim, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodylanguage = null)
         {
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
             var __workflow_bodyoem = WorkflowExpression.Compile(bodyoem, nameof(bodyoem), required: true);
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
             var __workflow_bodytrim = WorkflowExpression.Compile(bodytrim, nameof(bodytrim), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            return new DeferredBodyAction<PerformOcrOnAScannedPdfOrImageFileResponse>(() =>
+            return new DeferredBodyAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ocr/perform-ocr";
                 var apiCallHttpMethod = "post";
@@ -518,14 +518,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<PerformOcrOnAScannedPdfOrImageFileResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> CombineMultiplePdfFiles(Expression<Func<string[]>> bodypdfs)
+        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse, ApiConnectionActionConfiguration> CombineMultiplePdfFiles(Expression<Func<string[]>> bodypdfs)
         {
             var __workflow_bodypdfs = WorkflowExpression.Compile(bodypdfs, nameof(bodypdfs), required: true);
-            return new DeferredBodyAction<CombineMultiplePdfFilesResponse>(() =>
+            return new DeferredBodyAction<CombineMultiplePdfFilesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/combine-pdf";
                 var apiCallHttpMethod = "post";
@@ -542,14 +542,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<CombineMultiplePdfFilesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GetPdfMetadataInformationResponse> GetPdfMetadataInformation(Expression<Func<string>> bodypdf)
+        public IBodyWorkflowAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration> GetPdfMetadataInformation(Expression<Func<string>> bodypdf)
         {
             var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
-            return new DeferredBodyAction<GetPdfMetadataInformationResponse>(() =>
+            return new DeferredBodyAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/pdf-metadata";
                 var apiCallHttpMethod = "post";
@@ -566,17 +566,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<GetPdfMetadataInformationResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<StandardArrayResponse> ConvertAPdfFileToText(Expression<Func<bodylayoutInput>> bodylayout, Expression<Func<string>> bodypdf, Expression<Func<int>> bodyendPage = null, Expression<Func<int>> bodystartPage = null)
+        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> ConvertAPdfFileToText(Expression<Func<bodylayoutInput>> bodylayout, Expression<Func<string>> bodypdf, Expression<Func<int>> bodyendPage = null, Expression<Func<int>> bodystartPage = null)
         {
             var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: true);
             var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
             var __workflow_bodyendPage = WorkflowExpression.Compile(bodyendPage, nameof(bodyendPage), required: false);
             var __workflow_bodystartPage = WorkflowExpression.Compile(bodystartPage, nameof(bodystartPage), required: false);
-            return new DeferredBodyAction<StandardArrayResponse>(() =>
+            return new DeferredBodyAction<StandardArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/pdf-to-text";
                 var apiCallHttpMethod = "post";
@@ -607,17 +607,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<StandardArrayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypdf)
+        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse, ApiConnectionActionConfiguration> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypdf)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
             var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
-            return new DeferredBodyAction<SetPasswordOnAPdfFileResponse>(() =>
+            return new DeferredBodyAction<SetPasswordOnAPdfFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/set-password";
                 var apiCallHttpMethod = "post";
@@ -636,16 +636,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<SetPasswordOnAPdfFileResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> ReplaceTextInStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplacement, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration> ReplaceTextInStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplacement, Expression<Func<string>> bodytext)
         {
             var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
             var __workflow_bodyreplacement = WorkflowExpression.Compile(bodyreplacement, nameof(bodyreplacement), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<ReplaceTextInStringBasedOnARegularExpressionResponse>(() =>
+            return new DeferredBodyAction<ReplaceTextInStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/regex/regex-replace";
                 var apiCallHttpMethod = "post";
@@ -666,16 +666,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<ReplaceTextInStringBasedOnARegularExpressionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> FindValuesFromAStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodytext, Expression<Func<int>> bodygroup = null)
+        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration> FindValuesFromAStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodytext, Expression<Func<int>> bodygroup = null)
         {
             var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
-            return new DeferredBodyAction<FindValuesFromAStringBasedOnARegularExpressionResponse>(() =>
+            return new DeferredBodyAction<FindValuesFromAStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/regex/regex-search";
                 var apiCallHttpMethod = "post";
@@ -700,18 +700,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<FindValuesFromAStringBasedOnARegularExpressionResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ReplaceTextInStringResponse> ReplaceTextInString(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyreplace, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<ReplaceTextInStringResponse, ApiConnectionActionConfiguration> ReplaceTextInString(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyreplace, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytext)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_bodyreplace = WorkflowExpression.Compile(bodyreplace, nameof(bodyreplace), required: true);
             var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<ReplaceTextInStringResponse>(() =>
+            return new DeferredBodyAction<ReplaceTextInStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/text-replace";
                 var apiCallHttpMethod = "post";
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 return new ApiConnectionAction<ReplaceTextInStringResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

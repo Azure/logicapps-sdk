@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
     public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: true);
             var __workflow_bodyrelation = WorkflowExpression.Compile(bodyrelation, nameof(bodyrelation), required: true);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
             var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
             var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
             var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
-            return new DeferredBodyAction<CreateContactResponse>(() =>
+            return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/create-emergency-contact";
                 var apiCallHttpMethod = "post";
@@ -99,14 +99,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
                 }
 
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
+        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
         {
             var __workflow_bodyitemIds = WorkflowExpression.Compile(bodyitemIds, nameof(bodyitemIds), required: true);
-            return new DeferredBodyAction<DeleteContactsResponse>(() =>
+            return new DeferredBodyAction<DeleteContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/delete-emergency-contacts";
                 var apiCallHttpMethod = "post";
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
                 }
 
                 return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<GetContactsResponse> GetContacts()
+        public IBodyWorkflowAction<GetContactsResponse, ApiConnectionActionConfiguration> GetContacts()
         {
             var apiCallPath = "/api/get-emergency-contacts";
             var apiCallHttpMethod = "get";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<GetPayDistributionsResponse> GetPayDistributions()
+        public IBodyWorkflowAction<GetPayDistributionsResponse, ApiConnectionActionConfiguration> GetPayDistributions()
         {
             var apiCallPath = "/api/get-pay-distributions";
             var apiCallHttpMethod = "get";
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<GetPayStatementsResponse> GetPayStatements()
+        public IBodyWorkflowAction<GetPayStatementsResponse, ApiConnectionActionConfiguration> GetPayStatements()
         {
             var apiCallPath = "/api/get-pay-statements";
             var apiCallHttpMethod = "get";
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser()
+        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> GetUser()
         {
             var apiCallPath = "/api/get-worker";
             var apiCallHttpMethod = "get";
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateContactResponse> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
             var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
             var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: true);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
             var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
             var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
             var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
-            return new DeferredBodyAction<UpdateContactResponse>(() =>
+            return new DeferredBodyAction<UpdateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/update-emergency-contact";
                 var apiCallHttpMethod = "post";
@@ -251,18 +251,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
                 }
 
                 return new ApiConnectionAction<UpdateContactResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
+        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodymobileCountry = WorkflowExpression.Compile(bodymobileCountry, nameof(bodymobileCountry), required: false);
             var __workflow_bodymobileArea = WorkflowExpression.Compile(bodymobileArea, nameof(bodymobileArea), required: false);
             var __workflow_bodymobileNumber = WorkflowExpression.Compile(bodymobileNumber, nameof(bodymobileNumber), required: false);
-            return new DeferredBodyAction<UpdateUserResponse>(() =>
+            return new DeferredBodyAction<UpdateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/update-profile";
                 var apiCallHttpMethod = "post";
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
                 }
 
                 return new ApiConnectionAction<UpdateUserResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

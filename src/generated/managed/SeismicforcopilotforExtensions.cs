@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
     public class SeismicforcopilotforActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<ExternalRelatedRecordListResponseEnvelope> ScpGetRelatedRecords(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
+        public IBodyWorkflowAction<ExternalRelatedRecordListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetRelatedRecords(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
             var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
-            return new DeferredBodyAction<ExternalRelatedRecordListResponseEnvelope>(() =>
+            return new DeferredBodyAction<ExternalRelatedRecordListResponseEnvelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector/relatedRecords";
                 var apiCallHttpMethod = "get";
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_crmOrgUrl != null)
                     callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
                 return new ApiConnectionAction<ExternalRelatedRecordListResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<ActivityListResponseEnvelope> ScpGetRelatedActivities(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
+        public IBodyWorkflowAction<ActivityListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetRelatedActivities(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
             var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
-            return new DeferredBodyAction<ActivityListResponseEnvelope>(() =>
+            return new DeferredBodyAction<ActivityListResponseEnvelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector/relatedActivities";
                 var apiCallHttpMethod = "get";
@@ -71,11 +71,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_crmOrgUrl != null)
                     callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
                 return new ApiConnectionAction<ActivityListResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<SalesHighlightListResponseEnvelope> ScpGetSalesHighlights(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<SalesHighlightListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetSalesHighlights(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<SalesHighlightListResponseEnvelope>(() =>
+            return new DeferredBodyAction<SalesHighlightListResponseEnvelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector/salesHighlights";
                 var apiCallHttpMethod = "get";
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_skip != null)
                     callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionAction<SalesHighlightListResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<EmailSummeryResponseEnvelope> ScpGetEmailInsights(Expression<Func<string>> emailContacts, Expression<Func<string>> recordType = null, Expression<Func<string>> recordId = null, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<EmailSummeryResponseEnvelope, ApiConnectionActionConfiguration> ScpGetEmailInsights(Expression<Func<string>> emailContacts, Expression<Func<string>> recordType = null, Expression<Func<string>> recordId = null, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_emailContacts = WorkflowExpression.Compile(emailContacts, nameof(emailContacts), required: true);
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: false);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<EmailSummeryResponseEnvelope>(() =>
+            return new DeferredBodyAction<EmailSummeryResponseEnvelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector/emailInsights";
                 var apiCallHttpMethod = "get";
@@ -131,11 +131,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 if (__workflow_skip != null)
                     callPayload.Queries["Skip"] = ExpressionConverter.Convert(__workflow_skip);
                 return new ApiConnectionAction<EmailSummeryResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<EmailDraftResponseEnvelope> ScpGetContentSuggestions(Expression<Func<string>> requestBodyresourceType, Expression<Func<string>> xMsMessageId = null, Expression<Func<string>> xMsConversationId = null, Expression<Func<string>> requestBodyresourceDataplainTextBody = null, Expression<Func<string>> requestBodyresourceDatafullHTMLBody = null, Expression<Func<string>> requestBodyresourceDatasubject = null, Expression<Func<string>> requestBodyresourceDatafrom = null, Expression<Func<string[]>> requestBodyresourceDatato = null, Expression<Func<string[]>> requestBodyresourceDatacC = null, Expression<Func<string[]>> requestBodyresourceDatabCC = null, Expression<Func<string>> requestBodyresourceDatasentDateTime = null, Expression<Func<string>> requestBodyresourceDatatheGraphMessageId = null, Expression<Func<string>> requestBodyresourceDatatheGraphConversationID = null, Expression<Func<string>> requestBodyrecordType = null, Expression<Func<string>> requestBodyrecordID = null, Expression<Func<string>> requestBodycRMType = null, Expression<Func<string>> requestBodycRMOrgURL = null, Expression<Func<string>> requestBodyinputPrompt = null, Expression<Func<int>> requestBodytop = null, Expression<Func<int>> requestBodyskip = null)
+        public IBodyWorkflowAction<EmailDraftResponseEnvelope, ApiConnectionActionConfiguration> ScpGetContentSuggestions(Expression<Func<string>> requestBodyresourceType, Expression<Func<string>> xMsMessageId = null, Expression<Func<string>> xMsConversationId = null, Expression<Func<string>> requestBodyresourceDataplainTextBody = null, Expression<Func<string>> requestBodyresourceDatafullHTMLBody = null, Expression<Func<string>> requestBodyresourceDatasubject = null, Expression<Func<string>> requestBodyresourceDatafrom = null, Expression<Func<string[]>> requestBodyresourceDatato = null, Expression<Func<string[]>> requestBodyresourceDatacC = null, Expression<Func<string[]>> requestBodyresourceDatabCC = null, Expression<Func<string>> requestBodyresourceDatasentDateTime = null, Expression<Func<string>> requestBodyresourceDatatheGraphMessageId = null, Expression<Func<string>> requestBodyresourceDatatheGraphConversationID = null, Expression<Func<string>> requestBodyrecordType = null, Expression<Func<string>> requestBodyrecordID = null, Expression<Func<string>> requestBodycRMType = null, Expression<Func<string>> requestBodycRMOrgURL = null, Expression<Func<string>> requestBodyinputPrompt = null, Expression<Func<int>> requestBodytop = null, Expression<Func<int>> requestBodyskip = null)
         {
             var __workflow_requestBodyresourceType = WorkflowExpression.Compile(requestBodyresourceType, nameof(requestBodyresourceType), required: true);
             var __workflow_xMsMessageId = WorkflowExpression.Compile(xMsMessageId, nameof(xMsMessageId), required: false);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             var __workflow_requestBodyinputPrompt = WorkflowExpression.Compile(requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
             var __workflow_requestBodytop = WorkflowExpression.Compile(requestBodytop, nameof(requestBodytop), required: false);
             var __workflow_requestBodyskip = WorkflowExpression.Compile(requestBodyskip, nameof(requestBodyskip), required: false);
-            return new DeferredBodyAction<EmailDraftResponseEnvelope>(() =>
+            return new DeferredBodyAction<EmailDraftResponseEnvelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector/contentSuggestions";
                 var apiCallHttpMethod = "post";
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                 }
 
                 return new ApiConnectionAction<EmailDraftResponseEnvelope>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

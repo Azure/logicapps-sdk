@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
     public class AppfiguresActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appfigures")]
-        public IBodyWorkflowAction<MyProductsResponse> GetMyProducts()
+        public IBodyWorkflowAction<MyProductsResponse, ApiConnectionActionConfiguration> GetMyProducts()
         {
             var apiCallPath = "/products/mine";
             var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
     public class AppfiguresTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Event[]> OnNewEvent(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[], ApiConnectionTriggerConfiguration> OnNewEvent(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/event_trigger/events";
             var apiCallHttpMethod = "get";
@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
             return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReviewInfo[], ApiConnectionTriggerConfiguration> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
             var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
-            return new DeferredBodyTrigger<ReviewInfo[]>(() =>
+            return new DeferredBodyTrigger<ReviewInfo[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/reviews_trigger/reviews";
                 var apiCallHttpMethod = "get";
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
                 if (__workflow_products != null)
                     callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
                 return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
 
-        public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Rating[], ApiConnectionTriggerConfiguration> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
             var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
-            return new DeferredBodyTrigger<Rating[]>(() =>
+            return new DeferredBodyTrigger<Rating[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/ratings_trigger/ratings";
                 var apiCallHttpMethod = "get";
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
                 if (__workflow_products != null)
                     callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
                 return new ApiConnectionTrigger<Rating[]>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

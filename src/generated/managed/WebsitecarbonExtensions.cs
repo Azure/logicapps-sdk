@@ -12,25 +12,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
     public class WebsitecarbonActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis(Expression<Func<string>> url)
+        public IBodyWorkflowAction<SiteAnalysisResponse, ApiConnectionActionConfiguration> SiteAnalysis(Expression<Func<string>> url)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
-            return new DeferredBodyAction<SiteAnalysisResponse>(() =>
+            return new DeferredBodyAction<SiteAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/site";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
+        public IBodyWorkflowAction<DataAnalysisResponse, ApiConnectionActionConfiguration> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
         {
             var __workflow_bytes = WorkflowExpression.Compile(bytes, nameof(bytes), required: true);
             var __workflow_green = WorkflowExpression.Compile(green, nameof(green), required: true);
-            return new DeferredBodyAction<DataAnalysisResponse>(() =>
+            return new DeferredBodyAction<DataAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/data";
                 var apiCallHttpMethod = "get";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
                 callPayload.Queries["bytes"] = ExpressionConverter.Convert(__workflow_bytes);
                 callPayload.Queries["green"] = ExpressionConverter.Convert(__workflow_green);
                 return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

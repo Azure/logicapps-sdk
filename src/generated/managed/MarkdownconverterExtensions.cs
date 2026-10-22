@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
     public class MarkdownconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToHtmlResponse> MarkdownToHtml(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration> MarkdownToHtml(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToHtmlResponse>(() =>
+            return new DeferredBodyAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toHtml";
                 var apiCallHttpMethod = "post";
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToHtmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJsonResponse> MarkdownToJson(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration> MarkdownToJson(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToJsonResponse>(() =>
+            return new DeferredBodyAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toJson";
                 var apiCallHttpMethod = "post";
@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToJsonResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToXmlResponse> MarkdownToXml(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration> MarkdownToXml(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToXmlResponse>(() =>
+            return new DeferredBodyAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toXml";
                 var apiCallHttpMethod = "post";
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToXmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToPlainTextResponse> MarkdownToPlainText(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration> MarkdownToPlainText(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToPlainTextResponse>(() =>
+            return new DeferredBodyAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toPlainText";
                 var apiCallHttpMethod = "post";
@@ -96,14 +96,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToPlainTextResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToCsvResponse> MarkdownToCsv(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration> MarkdownToCsv(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToCsvResponse>(() =>
+            return new DeferredBodyAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toCsv";
                 var apiCallHttpMethod = "post";
@@ -118,14 +118,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToCsvResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToLaTeXResponse> MarkdownToLaTeX(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration> MarkdownToLaTeX(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToLaTeXResponse>(() =>
+            return new DeferredBodyAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toLaTeX";
                 var apiCallHttpMethod = "post";
@@ -140,14 +140,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToLaTeXResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> MarkdownToAdaptiveCard(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration> MarkdownToAdaptiveCard(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToAdaptiveCardResponse>(() =>
+            return new DeferredBodyAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toAdaptiveCard";
                 var apiCallHttpMethod = "post";
@@ -162,14 +162,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToAdaptiveCardResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToYamlResponse> MarkdownToYaml(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration> MarkdownToYaml(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToYamlResponse>(() =>
+            return new DeferredBodyAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toYaml";
                 var apiCallHttpMethod = "post";
@@ -184,14 +184,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToYamlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToEmailResponse> MarkdownToEmail(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration> MarkdownToEmail(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToEmailResponse>(() =>
+            return new DeferredBodyAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toEmail";
                 var apiCallHttpMethod = "post";
@@ -206,14 +206,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToEmailResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToSvgResponse> MarkdownToSvg(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration> MarkdownToSvg(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToSvgResponse>(() =>
+            return new DeferredBodyAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toSvg";
                 var apiCallHttpMethod = "post";
@@ -228,14 +228,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToSvgResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToRssResponse> MarkdownToRss(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToRssResponse, ApiConnectionActionConfiguration> MarkdownToRss(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToRssResponse>(() =>
+            return new DeferredBodyAction<MarkdownToRssResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toRss";
                 var apiCallHttpMethod = "post";
@@ -250,14 +250,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToRssResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToWikiResponse> MarkdownToWiki(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration> MarkdownToWiki(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToWikiResponse>(() =>
+            return new DeferredBodyAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toWiki";
                 var apiCallHttpMethod = "post";
@@ -272,14 +272,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToWikiResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToPngResponse> MarkdownToPng(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToPngResponse, ApiConnectionActionConfiguration> MarkdownToPng(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToPngResponse>(() =>
+            return new DeferredBodyAction<MarkdownToPngResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toPng";
                 var apiCallHttpMethod = "post";
@@ -294,14 +294,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToPngResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToChartResponse> MarkdownToChart(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToChartResponse, ApiConnectionActionConfiguration> MarkdownToChart(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToChartResponse>(() =>
+            return new DeferredBodyAction<MarkdownToChartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toChart";
                 var apiCallHttpMethod = "post";
@@ -316,14 +316,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToChartResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToDiagramResponse> MarkdownToDiagram(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration> MarkdownToDiagram(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToDiagramResponse>(() =>
+            return new DeferredBodyAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toDiagram";
                 var apiCallHttpMethod = "post";
@@ -338,14 +338,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToDiagramResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownStatsResponse> MarkdownStats(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownStatsResponse, ApiConnectionActionConfiguration> MarkdownStats(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownStatsResponse>(() =>
+            return new DeferredBodyAction<MarkdownStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/statistics";
                 var apiCallHttpMethod = "post";
@@ -360,14 +360,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownStatsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToQrResponse> MarkdownToQr(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToQrResponse, ApiConnectionActionConfiguration> MarkdownToQr(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToQrResponse>(() =>
+            return new DeferredBodyAction<MarkdownToQrResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toQr";
                 var apiCallHttpMethod = "post";
@@ -382,14 +382,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToQrResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJpegResponse> MarkdownToJpeg(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration> MarkdownToJpeg(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToJpegResponse>(() =>
+            return new DeferredBodyAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toJpeg";
                 var apiCallHttpMethod = "post";
@@ -404,14 +404,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToJpegResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToBadgeResponse> MarkdownToBadge(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration> MarkdownToBadge(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToBadgeResponse>(() =>
+            return new DeferredBodyAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toBadge";
                 var apiCallHttpMethod = "post";
@@ -426,14 +426,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToBadgeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToInfographicResponse> MarkdownToInfographic(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration> MarkdownToInfographic(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToInfographicResponse>(() =>
+            return new DeferredBodyAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toInfographic";
                 var apiCallHttpMethod = "post";
@@ -448,14 +448,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToInfographicResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToLogResponse> MarkdownToLog(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToLogResponse, ApiConnectionActionConfiguration> MarkdownToLog(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToLogResponse>(() =>
+            return new DeferredBodyAction<MarkdownToLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toLog";
                 var apiCallHttpMethod = "post";
@@ -470,14 +470,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToLogResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToMetricsResponse> MarkdownToMetrics(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration> MarkdownToMetrics(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToMetricsResponse>(() =>
+            return new DeferredBodyAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toMetrics";
                 var apiCallHttpMethod = "post";
@@ -492,14 +492,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToMetricsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToSyslogResponse> MarkdownToSyslog(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration> MarkdownToSyslog(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToSyslogResponse>(() =>
+            return new DeferredBodyAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toSyslog";
                 var apiCallHttpMethod = "post";
@@ -514,14 +514,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToSyslogResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJsDocResponse> MarkdownToJsDoc(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration> MarkdownToJsDoc(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToJsDocResponse>(() =>
+            return new DeferredBodyAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toJsDoc";
                 var apiCallHttpMethod = "post";
@@ -536,14 +536,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToJsDocResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToXmlDocResponse> MarkdownToXmlDoc(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration> MarkdownToXmlDoc(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToXmlDocResponse>(() =>
+            return new DeferredBodyAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toXmlDoc";
                 var apiCallHttpMethod = "post";
@@ -558,14 +558,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToXmlDocResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToReadmeResponse> MarkdownToReadme(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration> MarkdownToReadme(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToReadmeResponse>(() =>
+            return new DeferredBodyAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toReadme";
                 var apiCallHttpMethod = "post";
@@ -580,14 +580,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToReadmeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToChangelogResponse> MarkdownToChangelog(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration> MarkdownToChangelog(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToChangelogResponse>(() =>
+            return new DeferredBodyAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toChangelog";
                 var apiCallHttpMethod = "post";
@@ -602,14 +602,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToChangelogResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> MarkdownToTableOfContents(Expression<Func<string>> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration> MarkdownToTableOfContents(Expression<Func<string>> bodymarkdownContent)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            return new DeferredBodyAction<MarkdownToTableOfContentsResponse>(() =>
+            return new DeferredBodyAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toTableOfContents";
                 var apiCallHttpMethod = "post";
@@ -624,15 +624,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToTableOfContentsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> MarkdownToStyledHtml(Expression<Func<string>> bodymarkdownContent, Expression<Func<string>> bodytheme = null)
+        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration> MarkdownToStyledHtml(Expression<Func<string>> bodymarkdownContent, Expression<Func<string>> bodytheme = null)
         {
             var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             var __workflow_bodytheme = WorkflowExpression.Compile(bodytheme, nameof(bodytheme), required: false);
-            return new DeferredBodyAction<MarkdownToStyledHtmlResponse>(() =>
+            return new DeferredBodyAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/toStyledHtml";
                 var apiCallHttpMethod = "post";
@@ -653,11 +653,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 }
 
                 return new ApiConnectionAction<MarkdownToStyledHtmlResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownInfoResponse> MarkdownInfo()
+        public IBodyWorkflowAction<MarkdownInfoResponse, ApiConnectionActionConfiguration> MarkdownInfo()
         {
             var apiCallPath = "/info";
             var apiCallHttpMethod = "get";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
     public class PineconeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<IndexStatsPostResponse> IndexStats()
+        public IBodyWorkflowAction<IndexStatsPostResponse, ApiConnectionActionConfiguration> IndexStats()
         {
             var apiCallPath = "/describe_index_stats";
             var apiCallHttpMethod = "post";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodyNamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
+        public IBodyWorkflowAction<VectorQueryPostResponse, ApiConnectionActionConfiguration> VectorQuery(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodyNamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
         {
             var __workflow_bodyincludeValues = WorkflowExpression.Compile(bodyincludeValues, nameof(bodyincludeValues), required: false);
             var __workflow_bodyincludeMetadata = WorkflowExpression.Compile(bodyincludeMetadata, nameof(bodyincludeMetadata), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
             var __workflow_bodyvector = WorkflowExpression.Compile(bodyvector, nameof(bodyvector), required: false);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            return new DeferredBodyAction<VectorQueryPostResponse>(() =>
+            return new DeferredBodyAction<VectorQueryPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query";
                 var apiCallHttpMethod = "post";
@@ -100,16 +100,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<VectorQueryPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorDelete(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorDelete(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodyNamespace = null)
         {
             var __workflow_bodydeleteAll = WorkflowExpression.Compile(bodydeleteAll, nameof(bodydeleteAll), required: false);
             var __workflow_bodyids = WorkflowExpression.Compile(bodyids, nameof(bodyids), required: false);
             var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vectors/delete";
                 var apiCallHttpMethod = "post";
@@ -140,15 +140,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet(Expression<Func<string>> ids, Expression<Func<string>> @namespace = null)
+        public IBodyWorkflowAction<VectorsGetResponse, ApiConnectionActionConfiguration> VectorsGet(Expression<Func<string>> ids, Expression<Func<string>> @namespace = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
             var __workflow_namespace = WorkflowExpression.Compile(@namespace, nameof(@namespace), required: false);
-            return new DeferredBodyAction<VectorsGetResponse>(() =>
+            return new DeferredBodyAction<VectorsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fetch";
                 var apiCallHttpMethod = "get";
@@ -157,18 +157,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 if (__workflow_namespace != null)
                     callPayload.Queries["namespace"] = ExpressionConverter.Convert(__workflow_namespace);
                 return new ApiConnectionAction<VectorsGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodyNamespace = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyvalues = WorkflowExpression.Compile(bodyvalues, nameof(bodyvalues), required: false);
             var __workflow_bodysparseValuesindices = WorkflowExpression.Compile(bodysparseValuesindices, nameof(bodysparseValuesindices), required: false);
             var __workflow_bodysparseValuesvalues = WorkflowExpression.Compile(bodysparseValuesvalues, nameof(bodysparseValuesvalues), required: false);
             var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vectors/update";
                 var apiCallHttpMethod = "post";
@@ -215,15 +215,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<VectorUpsertPostResponse, ApiConnectionActionConfiguration> VectorUpsert(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodyNamespace = null)
         {
             var __workflow_bodyvectors = WorkflowExpression.Compile(bodyvectors, nameof(bodyvectors), required: false);
             var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: false);
-            return new DeferredBodyAction<VectorUpsertPostResponse>(() =>
+            return new DeferredBodyAction<VectorUpsertPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vectors/upsert";
                 var apiCallHttpMethod = "post";
@@ -248,11 +248,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<VectorUpsertPostResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string[]> CollectionsGet()
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> CollectionsGet()
         {
             var apiCallPath = "/collections";
             var apiCallHttpMethod = "get";
@@ -261,11 +261,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> CollectionCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysource)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysource)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/collections";
                 var apiCallHttpMethod = "post";
@@ -282,37 +282,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet(Expression<Func<string>> collectionName)
+        public IBodyWorkflowAction<CollectionGetResponse, ApiConnectionActionConfiguration> CollectionGet(Expression<Func<string>> collectionName)
         {
             var __workflow_collectionName = WorkflowExpression.Compile(collectionName, nameof(collectionName), required: true);
-            return new DeferredBodyAction<CollectionGetResponse>(() =>
+            return new DeferredBodyAction<CollectionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collectionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CollectionGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> CollectionDelete(Expression<Func<string>> collectionName)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CollectionDelete(Expression<Func<string>> collectionName)
         {
             var __workflow_collectionName = WorkflowExpression.Compile(collectionName, nameof(collectionName), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collectionName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string[]> IndexesGet()
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> IndexesGet()
         {
             var apiCallPath = "/databases";
             var apiCallHttpMethod = "get";
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> Index(Expression<Func<string>> bodyname, Expression<Func<int>> bodydimension, Expression<Func<string>> bodymetric = null, Expression<Func<int>> bodypods = null, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null, Expression<Func<string>> bodysourceCollection = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Index(Expression<Func<string>> bodyname, Expression<Func<int>> bodydimension, Expression<Func<string>> bodymetric = null, Expression<Func<int>> bodypods = null, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null, Expression<Func<string>> bodysourceCollection = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydimension = WorkflowExpression.Compile(bodydimension, nameof(bodydimension), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
             var __workflow_bodyreplicas = WorkflowExpression.Compile(bodyreplicas, nameof(bodyreplicas), required: false);
             var __workflow_bodypodType = WorkflowExpression.Compile(bodypodType, nameof(bodypodType), required: false);
             var __workflow_bodysourceCollection = WorkflowExpression.Compile(bodysourceCollection, nameof(bodysourceCollection), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/databases";
                 var apiCallHttpMethod = "post";
@@ -377,42 +377,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<IndexGetResponse> IndexGet(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<IndexGetResponse, ApiConnectionActionConfiguration> IndexGet(Expression<Func<string>> indexName)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
-            return new DeferredBodyAction<IndexGetResponse>(() =>
+            return new DeferredBodyAction<IndexGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndexGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> IndexDelete(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IndexDelete(Expression<Func<string>> indexName)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> IndexPatch(Expression<Func<string>> indexName, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IndexPatch(Expression<Func<string>> indexName, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_bodyreplicas = WorkflowExpression.Compile(bodyreplicas, nameof(bodyreplicas), required: false);
             var __workflow_bodypodType = WorkflowExpression.Compile(bodypodType, nameof(bodypodType), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}", __workflow_indexName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

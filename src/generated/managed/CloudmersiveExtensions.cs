@@ -12,23 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
+        public IBodyWorkflowAction<VirusScanResult, ApiConnectionActionConfiguration> ScanFile(Expression<Func<string>> inputFile)
         {
             var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<VirusScanResult>(() =>
+            return new DeferredBodyAction<VirusScanResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virus/scan/file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VirusScanResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
+        public IBodyWorkflowAction<WebsiteScanResult, ApiConnectionActionConfiguration> ScanWebsite(Expression<Func<string>> inputurl = null)
         {
             var __workflow_inputurl = WorkflowExpression.Compile(inputurl, nameof(inputurl), required: false);
-            return new DeferredBodyAction<WebsiteScanResult>(() =>
+            return new DeferredBodyAction<WebsiteScanResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virus/scan/website";
                 var apiCallHttpMethod = "post";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
                 }
 
                 return new ApiConnectionAction<WebsiteScanResult>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

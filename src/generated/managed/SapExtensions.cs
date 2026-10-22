@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class SapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> AddRfcToTransaction(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<RfcTransactionDetails, ApiConnectionActionConfiguration> AddRfcToTransaction(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: true);
             var __workflow_rfcGroupFilter = WorkflowExpression.Compile(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<RfcTransactionDetails>(() =>
+            return new DeferredBodyAction<RfcTransactionDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddRfcToTransaction";
                 var apiCallHttpMethod = "post";
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CallBapiResponse> CallBapi(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<CallBapiResponse, ApiConnectionActionConfiguration> CallBapi(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_businessObject = WorkflowExpression.Compile(businessObject, nameof(businessObject), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<CallBapiResponse>(() =>
+            return new DeferredBodyAction<CallBapiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CallBapi";
                 var apiCallHttpMethod = "post";
@@ -68,11 +68,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CallBapiResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CallRfcResponse> CallRfc(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<CallRfcResponse, ApiConnectionActionConfiguration> CallRfc(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: true);
             var __workflow_rfcGroupFilter = WorkflowExpression.Compile(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<CallRfcResponse>(() =>
+            return new DeferredBodyAction<CallRfcResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CallRfc";
                 var apiCallHttpMethod = "post";
@@ -103,11 +103,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CallRfcResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CallRfc3(Expression<Func<string>> rfcName, Expression<Func<object>> rfcInputs = null, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<inputFormatInput>> inputFormat = null, Expression<Func<returnFormatInput>> returnFormat = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRfc3(Expression<Func<string>> rfcName, Expression<Func<object>> rfcInputs = null, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<inputFormatInput>> inputFormat = null, Expression<Func<returnFormatInput>> returnFormat = null)
         {
             var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: true);
             var __workflow_rfcInputs = WorkflowExpression.Compile(rfcInputs, nameof(rfcInputs), required: false);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             var __workflow_inputFormat = WorkflowExpression.Compile(inputFormat, nameof(inputFormat), required: false);
             var __workflow_returnFormat = WorkflowExpression.Compile(returnFormat, nameof(returnFormat), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CallRfc3";
                 var apiCallHttpMethod = "post";
@@ -143,30 +143,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Queries["returnFormat"] = ExpressionConverter.Convert(__workflow_returnFormat);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_rfcInputs);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CloseSession(Expression<Func<string>> sessionId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CloseSession(Expression<Func<string>> sessionId)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CloseSession";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRet2> CommitBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> wait = null, Expression<Func<bool>> closeSession = null)
+        public IBodyWorkflowAction<BapiRet2, ApiConnectionActionConfiguration> CommitBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> wait = null, Expression<Func<bool>> closeSession = null)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: false);
             var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: false);
-            return new DeferredBodyAction<BapiRet2>(() =>
+            return new DeferredBodyAction<BapiRet2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CommitBapiTransaction";
                 var apiCallHttpMethod = "post";
@@ -179,15 +179,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 if (__workflow_closeSession != null)
                     callPayload.Queries["closeSession"] = ExpressionConverter.Convert(__workflow_closeSession);
                 return new ApiConnectionAction<BapiRet2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CommitRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CommitRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CommitRfcTransaction";
                 var apiCallHttpMethod = "post";
@@ -197,29 +197,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 if (__workflow_queueName != null)
                     callPayload.Queries["queueName"] = ExpressionConverter.Convert(__workflow_queueName);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> ConfirmTid(Expression<Func<string>> tid)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConfirmTid(Expression<Func<string>> tid)
         {
             var __workflow_tid = WorkflowExpression.Compile(tid, nameof(tid), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ConfirmTid";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["tid"] = ExpressionConverter.Convert(__workflow_tid);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> CreateRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<RfcTransactionDetails, ApiConnectionActionConfiguration> CreateRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
-            return new DeferredBodyAction<RfcTransactionDetails>(() =>
+            return new DeferredBodyAction<RfcTransactionDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CreateRfcTransaction";
                 var apiCallHttpMethod = "post";
@@ -229,11 +229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 if (__workflow_queueName != null)
                     callPayload.Queries["queueName"] = ExpressionConverter.Convert(__workflow_queueName);
                 return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CreateSessionResponse> CreateSession()
+        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession()
         {
             var apiCallPath = "/CreateSession";
             var apiCallHttpMethod = "post";
@@ -242,11 +242,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> GenerateSchemas(Expression<Func<string[]>> sapActionUris = null, Expression<Func<string>> fileNamePrefix = null)
+        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse, ApiConnectionActionConfiguration> GenerateSchemas(Expression<Func<string[]>> sapActionUris = null, Expression<Func<string>> fileNamePrefix = null)
         {
             var __workflow_sapActionUris = WorkflowExpression.Compile(sapActionUris, nameof(sapActionUris), required: false);
             var __workflow_fileNamePrefix = WorkflowExpression.Compile(fileNamePrefix, nameof(fileNamePrefix), required: false);
-            return new DeferredBodyAction<SapConnectorGenerateSchemasResponse>(() =>
+            return new DeferredBodyAction<SapConnectorGenerateSchemasResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GenerateSchemas";
                 var apiCallHttpMethod = "post";
@@ -256,29 +256,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Queries["fileNamePrefix"] = ExpressionConverter.Convert(__workflow_fileNamePrefix);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_sapActionUris);
                 return new ApiConnectionAction<SapConnectorGenerateSchemasResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocStatusResponse> GetIdocStatus(Expression<Func<int>> idocNumber)
+        public IBodyWorkflowAction<IdocStatusResponse, ApiConnectionActionConfiguration> GetIdocStatus(Expression<Func<int>> idocNumber)
         {
             var __workflow_idocNumber = WorkflowExpression.Compile(idocNumber, nameof(idocNumber), required: true);
-            return new DeferredBodyAction<IdocStatusResponse>(() =>
+            return new DeferredBodyAction<IdocStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetIdocStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["idocNumber"] = ExpressionConverter.Convert(__workflow_idocNumber);
                 return new ApiConnectionAction<IdocStatusResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> GetTransactionDetails(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<RfcTransactionDetails, ApiConnectionActionConfiguration> GetTransactionDetails(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
         {
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
-            return new DeferredBodyAction<RfcTransactionDetails>(() =>
+            return new DeferredBodyAction<RfcTransactionDetails, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTransactionDetails";
                 var apiCallHttpMethod = "post";
@@ -288,15 +288,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 if (__workflow_queueName != null)
                     callPayload.Queries["queueName"] = ExpressionConverter.Convert(__workflow_queueName);
                 return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocNumbersList> GetTransactionIdocs(Expression<Func<directionInput>> direction, Expression<Func<string>> tId)
+        public IBodyWorkflowAction<IdocNumbersList, ApiConnectionActionConfiguration> GetTransactionIdocs(Expression<Func<directionInput>> direction, Expression<Func<string>> tId)
         {
             var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
-            return new DeferredBodyAction<IdocNumbersList>(() =>
+            return new DeferredBodyAction<IdocNumbersList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetTransactionIdocs";
                 var apiCallHttpMethod = "post";
@@ -304,11 +304,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 callPayload.Queries["direction"] = ExpressionConverter.Convert(__workflow_direction);
                 callPayload.Queries["tId"] = ExpressionConverter.Convert(__workflow_tId);
                 return new ApiConnectionAction<IdocNumbersList>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<ReadTableResponse> ReadTableVersion2(Expression<Func<string>> inputParameterstableName, Expression<Func<string[]>> inputParametersfieldsToRead = null, Expression<Func<string[]>> inputParameterswhereFilters = null, Expression<Func<int>> inputParametersstartingRowIndex = null, Expression<Func<int>> inputParameterscountOfRowsToRead = null, Expression<Func<string>> inputParametersfieldDelimiter = null)
+        public IBodyWorkflowAction<ReadTableResponse, ApiConnectionActionConfiguration> ReadTableVersion2(Expression<Func<string>> inputParameterstableName, Expression<Func<string[]>> inputParametersfieldsToRead = null, Expression<Func<string[]>> inputParameterswhereFilters = null, Expression<Func<int>> inputParametersstartingRowIndex = null, Expression<Func<int>> inputParameterscountOfRowsToRead = null, Expression<Func<string>> inputParametersfieldDelimiter = null)
         {
             var __workflow_inputParameterstableName = WorkflowExpression.Compile(inputParameterstableName, nameof(inputParameterstableName), required: true);
             var __workflow_inputParametersfieldsToRead = WorkflowExpression.Compile(inputParametersfieldsToRead, nameof(inputParametersfieldsToRead), required: false);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_inputParametersstartingRowIndex = WorkflowExpression.Compile(inputParametersstartingRowIndex, nameof(inputParametersstartingRowIndex), required: false);
             var __workflow_inputParameterscountOfRowsToRead = WorkflowExpression.Compile(inputParameterscountOfRowsToRead, nameof(inputParameterscountOfRowsToRead), required: false);
             var __workflow_inputParametersfieldDelimiter = WorkflowExpression.Compile(inputParametersfieldDelimiter, nameof(inputParametersfieldDelimiter), required: false);
-            return new DeferredBodyAction<ReadTableResponse>(() =>
+            return new DeferredBodyAction<ReadTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ReadTableVersion2";
                 var apiCallHttpMethod = "post";
@@ -361,15 +361,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 }
 
                 return new ApiConnectionAction<ReadTableResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRet2> RollbackBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession = null)
+        public IBodyWorkflowAction<BapiRet2, ApiConnectionActionConfiguration> RollbackBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession = null)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: false);
-            return new DeferredBodyAction<BapiRet2>(() =>
+            return new DeferredBodyAction<BapiRet2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RollbackBapiTransaction";
                 var apiCallHttpMethod = "post";
@@ -379,16 +379,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 if (__workflow_closeSession != null)
                     callPayload.Queries["closeSession"] = ExpressionConverter.Convert(__workflow_closeSession);
                 return new ApiConnectionAction<BapiRet2>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> Send(Expression<Func<string>> sapAction, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Send(Expression<Func<string>> sapAction, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_sapAction = WorkflowExpression.Compile(sapAction, nameof(sapAction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Send";
                 var apiCallHttpMethod = "post";
@@ -398,11 +398,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse> SendIDoc(Expression<Func<string>> idocType, Expression<Func<string>> releaseVersion = null, Expression<Func<recordTypesVersionInput>> recordTypesVersion = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<SendIdocResponse, ApiConnectionActionConfiguration> SendIDoc(Expression<Func<string>> idocType, Expression<Func<string>> releaseVersion = null, Expression<Func<recordTypesVersionInput>> recordTypesVersion = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_idocType = WorkflowExpression.Compile(idocType, nameof(idocType), required: true);
             var __workflow_releaseVersion = WorkflowExpression.Compile(releaseVersion, nameof(releaseVersion), required: false);
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_tid = WorkflowExpression.Compile(tid, nameof(tid), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<SendIdocResponse>(() =>
+            return new DeferredBodyAction<SendIdocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SendIDoc";
                 var apiCallHttpMethod = "post";
@@ -432,17 +432,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendIdocResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse> SendIDocVersion2(Expression<Func<object>> dynamicParameters = null, Expression<Func<idocFormatInput>> idocFormat = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null)
+        public IBodyWorkflowAction<SendIdocResponse, ApiConnectionActionConfiguration> SendIDocVersion2(Expression<Func<object>> dynamicParameters = null, Expression<Func<idocFormatInput>> idocFormat = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null)
         {
             var __workflow_dynamicParameters = WorkflowExpression.Compile(dynamicParameters, nameof(dynamicParameters), required: false);
             var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: false);
             var __workflow_confirmTid = WorkflowExpression.Compile(confirmTid, nameof(confirmTid), required: false);
             var __workflow_tid = WorkflowExpression.Compile(tid, nameof(tid), required: false);
-            return new DeferredBodyAction<SendIdocResponse>(() =>
+            return new DeferredBodyAction<SendIdocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SendIDoc/v2";
                 var apiCallHttpMethod = "post";
@@ -457,11 +457,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Queries["tid"] = ExpressionConverter.Convert(__workflow_tid);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicParameters);
                 return new ApiConnectionAction<SendIdocResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc(Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCName, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, Expression<Func<bool>> callRfcSubscriptionrfcCallParametersautoCommit = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersqueueName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
+        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> StartLongRunningRfc(Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCName, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, Expression<Func<bool>> callRfcSubscriptionrfcCallParametersautoCommit = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersqueueName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
         {
             var __workflow_callRfcSubscriptionrfcCallParametersrFCName = WorkflowExpression.Compile(callRfcSubscriptionrfcCallParametersrFCName, nameof(callRfcSubscriptionrfcCallParametersrFCName), required: true);
             var __workflow_callRfcSubscriptionrfcCallParametersinputRFCParametersInline = WorkflowExpression.Compile(callRfcSubscriptionrfcCallParametersinputRFCParametersInline, nameof(callRfcSubscriptionrfcCallParametersinputRFCParametersInline), required: false);
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_callRfcSubscriptionrfcCallParametersqueueName = WorkflowExpression.Compile(callRfcSubscriptionrfcCallParametersqueueName, nameof(callRfcSubscriptionrfcCallParametersqueueName), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
-            return new DeferredBodyAction<SubscribeResponse>(() =>
+            return new DeferredBodyAction<SubscribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/StartLongRunningRfc";
                 var apiCallHttpMethod = "post";
@@ -530,13 +530,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 }
 
                 return new ApiConnectionAction<SubscribeResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
         {
             var __workflow_gatewayHost = WorkflowExpression.Compile(gatewayHost, nameof(gatewayHost), required: true);
             var __workflow_gatewayService = WorkflowExpression.Compile(gatewayService, nameof(gatewayService), required: true);
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
             var __workflow_subscriptionreceiveIDOCsWithUnreleasedSegments = WorkflowExpression.Compile(subscriptionreceiveIDOCsWithUnreleasedSegments, nameof(subscriptionreceiveIDOCsWithUnreleasedSegments), required: false);
             var __workflow_sncPartnerNames = WorkflowExpression.Compile(sncPartnerNames, nameof(sncPartnerNames), required: false);
             var __workflow_degreeOfParallelism = WorkflowExpression.Compile(degreeOfParallelism, nameof(degreeOfParallelism), required: false);
-            return new DeferredBodyTrigger<SubscribeResponse>(() =>
+            return new DeferredBodyTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhooktrigger/subscribe";
                 var apiCallHttpMethod = "post";
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                 }
 
                 return new ApiConnectionTrigger<SubscribeResponse>(callPayload, recurrence: recurrence);
-            }, WorkflowTriggerSettingProfiles.ManagedConnector);
+            });
         }
     }
 

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
     public class DexcomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dexcomip")]
-        public IBodyWorkflowAction<GetEGVsResponse> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<GetEGVsResponse, ApiConnectionActionConfiguration> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<GetEGVsResponse>(() =>
+            return new DeferredBodyAction<GetEGVsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/users/self/egvs";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<GetEGVsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

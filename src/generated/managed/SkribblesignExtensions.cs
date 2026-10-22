@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class SkribblesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
-        public IBodyWorkflowAction<ErrorResponse> CreateSeal(Expression<Func<string>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<string>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
+        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<string>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<string>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
         {
             var __workflow_requestcontent = WorkflowExpression.Compile(requestcontent, nameof(requestcontent), required: true);
             var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
             var __workflow_requestvisualSignatureimagecontent = WorkflowExpression.Compile(requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
             var __workflow_requestvisualSignatureimagecontentType = WorkflowExpression.Compile(requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
             var __workflow_requestvisualSignaturepositions = WorkflowExpression.Compile(requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
-            return new DeferredBodyAction<ErrorResponse>(() =>
+            return new DeferredBodyAction<ErrorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/seal";
                 var apiCallHttpMethod = "post";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
                 }
 
                 return new ApiConnectionAction<ErrorResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

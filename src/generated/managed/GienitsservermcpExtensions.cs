@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
     public class GienitsservermcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gienitsservermcp")]
-        public IBodyWorkflowAction<QueryResponse> GieniTSserver(Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> GieniTSserver(Expression<Func<string>> sessionId = null)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<QueryResponse>(() =>
+            return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sse";
                 var apiCallHttpMethod = "get";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
                 if (__workflow_sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<QueryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

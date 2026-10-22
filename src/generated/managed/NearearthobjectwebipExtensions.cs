@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
     public class NearearthobjectwebipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedResponse> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedResponse, ApiConnectionActionConfiguration> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
-            return new DeferredBodyAction<FeedResponse>(() =>
+            return new DeferredBodyAction<FeedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/feed";
                 var apiCallHttpMethod = "get";
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<FeedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedTodayResponse> FeedToday(Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedTodayResponse, ApiConnectionActionConfiguration> FeedToday(Expression<Func<bool>> detailed = null)
         {
             var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
-            return new DeferredBodyAction<FeedTodayResponse>(() =>
+            return new DeferredBodyAction<FeedTodayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/feed/today";
                 var apiCallHttpMethod = "get";
@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_detailed != null)
                     callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<FeedTodayResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoResponse> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<NeoResponse, ApiConnectionActionConfiguration> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<NeoResponse>(() =>
+            return new DeferredBodyAction<NeoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/neo/browse";
                 var apiCallHttpMethod = "get";
@@ -62,29 +62,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<NeoResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoIDResponse> NeoID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<NeoIDResponse, ApiConnectionActionConfiguration> NeoID(Expression<Func<string>> iD)
         {
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
-            return new DeferredBodyAction<NeoIDResponse>(() =>
+            return new DeferredBodyAction<NeoIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/neo/{0}", __workflow_iD.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NeoIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryResponse> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<SentryResponse, ApiConnectionActionConfiguration> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
             var __workflow_isActive = WorkflowExpression.Compile(isActive, nameof(isActive), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            return new DeferredBodyAction<SentryResponse>(() =>
+            return new DeferredBodyAction<SentryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/neo/sentry";
                 var apiCallHttpMethod = "get";
@@ -96,24 +96,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<SentryResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryIDResponse> SentryID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<SentryIDResponse, ApiConnectionActionConfiguration> SentryID(Expression<Func<string>> iD)
         {
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
-            return new DeferredBodyAction<SentryIDResponse>(() =>
+            return new DeferredBodyAction<SentryIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/neo/sentry/{0}", __workflow_iD.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SentryIDResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<StatsResponse> Stats()
+        public IBodyWorkflowAction<StatsResponse, ApiConnectionActionConfiguration> Stats()
         {
             var apiCallPath = "/stats";
             var apiCallHttpMethod = "get";

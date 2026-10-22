@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     public class WebexActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceMemberResponse> CreateSpaceMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyroomId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
+        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyroomId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
         {
             var __workflow_bodyisModerator = WorkflowExpression.Compile(bodyisModerator, nameof(bodyisModerator), required: true);
             var __workflow_bodyroomId = WorkflowExpression.Compile(bodyroomId, nameof(bodyroomId), required: true);
             var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
             var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
-            return new DeferredBodyAction<CreateSpaceMemberResponse>(() =>
+            return new DeferredBodyAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/memberships";
                 var apiCallHttpMethod = "post";
@@ -47,18 +47,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 }
 
                 return new ApiConnectionAction<CreateSpaceMemberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetMessagesResponse> GetMessages(Expression<Func<string>> roomId, Expression<Func<string>> mentionedPeople = null, Expression<Func<string>> beforeMessage = null, Expression<Func<string>> before = null, Expression<Func<int>> max = null)
+        public IBodyWorkflowAction<GetMessagesResponse, ApiConnectionActionConfiguration> GetMessages(Expression<Func<string>> roomId, Expression<Func<string>> mentionedPeople = null, Expression<Func<string>> beforeMessage = null, Expression<Func<string>> before = null, Expression<Func<int>> max = null)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             var __workflow_mentionedPeople = WorkflowExpression.Compile(mentionedPeople, nameof(mentionedPeople), required: false);
             var __workflow_beforeMessage = WorkflowExpression.Compile(beforeMessage, nameof(beforeMessage), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
-            return new DeferredBodyAction<GetMessagesResponse>(() =>
+            return new DeferredBodyAction<GetMessagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "get";
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 if (__workflow_max != null)
                     callPayload.Queries["max"] = ExpressionConverter.Convert(__workflow_max);
                 return new ApiConnectionAction<GetMessagesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodymarkdown = null, Expression<Func<string>> bodyroomId = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytoPersonEmail = null, Expression<Func<string>> bodytoPersonId = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodymarkdown = null, Expression<Func<string>> bodyroomId = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytoPersonEmail = null, Expression<Func<string>> bodytoPersonId = null)
         {
             var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
             var __workflow_bodymarkdown = WorkflowExpression.Compile(bodymarkdown, nameof(bodymarkdown), required: false);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodytoPersonEmail = WorkflowExpression.Compile(bodytoPersonEmail, nameof(bodytoPersonEmail), required: false);
             var __workflow_bodytoPersonId = WorkflowExpression.Compile(bodytoPersonId, nameof(bodytoPersonId), required: false);
-            return new DeferredBodyAction<SendMessageResponse>(() =>
+            return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
@@ -134,28 +134,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetMessageDetailsResponse> GetMessageDetails(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<GetMessageDetailsResponse, ApiConnectionActionConfiguration> GetMessageDetails(Expression<Func<string>> messageId)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<GetMessageDetailsResponse>(() =>
+            return new DeferredBodyAction<GetMessageDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/messages/{0}", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMessageDetailsResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetPeopleResponse> GetPeople(Expression<Func<string>> id = null, Expression<Func<string>> email = null)
+        public IBodyWorkflowAction<GetPeopleResponse, ApiConnectionActionConfiguration> GetPeople(Expression<Func<string>> id = null, Expression<Func<string>> email = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
-            return new DeferredBodyAction<GetPeopleResponse>(() =>
+            return new DeferredBodyAction<GetPeopleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/people";
                 var apiCallHttpMethod = "get";
@@ -165,11 +165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 if (__workflow_email != null)
                     callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<GetPeopleResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetMyOwnDetailsResponse> GetMyOwnDetails()
+        public IBodyWorkflowAction<GetMyOwnDetailsResponse, ApiConnectionActionConfiguration> GetMyOwnDetails()
         {
             var apiCallPath = "/v1/people/me";
             var apiCallHttpMethod = "get";
@@ -178,12 +178,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<int>> max = null, Expression<Func<typeInput>> type = null, Expression<Func<sortByInput>> sortBy = null)
+        public IBodyWorkflowAction<GetSpacesResponse, ApiConnectionActionConfiguration> GetSpaces(Expression<Func<int>> max = null, Expression<Func<typeInput>> type = null, Expression<Func<sortByInput>> sortBy = null)
         {
             var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
-            return new DeferredBodyAction<GetSpacesResponse>(() =>
+            return new DeferredBodyAction<GetSpacesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/rooms";
                 var apiCallHttpMethod = "get";
@@ -196,15 +196,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 if (__workflow_sortBy != null)
                     callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
                 return new ApiConnectionAction<GetSpacesResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyteamId = null)
+        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyteamId = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodyteamId = WorkflowExpression.Compile(bodyteamId, nameof(bodyteamId), required: false);
-            return new DeferredBodyAction<CreateSpaceResponse>(() =>
+            return new DeferredBodyAction<CreateSpaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/rooms";
                 var apiCallHttpMethod = "post";
@@ -225,30 +225,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 }
 
                 return new ApiConnectionAction<CreateSpaceResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetSpaceDetailResponse> GetSpaceDetail(Expression<Func<string>> roomId)
+        public IBodyWorkflowAction<GetSpaceDetailResponse, ApiConnectionActionConfiguration> GetSpaceDetail(Expression<Func<string>> roomId)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
-            return new DeferredBodyAction<GetSpaceDetailResponse>(() =>
+            return new DeferredBodyAction<GetSpaceDetailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/rooms/{0}", __workflow_roomId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpaceDetailResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateTeamMemberResponse> CreateTeamMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyteamId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
+        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyteamId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
         {
             var __workflow_bodyisModerator = WorkflowExpression.Compile(bodyisModerator, nameof(bodyisModerator), required: true);
             var __workflow_bodyteamId = WorkflowExpression.Compile(bodyteamId, nameof(bodyteamId), required: true);
             var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
             var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
-            return new DeferredBodyAction<CreateTeamMemberResponse>(() =>
+            return new DeferredBodyAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/team/memberships";
                 var apiCallHttpMethod = "post";
@@ -277,13 +277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 }
 
                 return new ApiConnectionAction<CreateTeamMemberResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 
     public class WebexTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MembershipsUpdatedResponse> MembershipsUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/1";
             var apiCallHttpMethod = "post";
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MembershipsDeletedResponse> MembershipsDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/2";
             var apiCallHttpMethod = "post";
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MembershipsCreatedResponse> MembershipsCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/3";
             var apiCallHttpMethod = "post";
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MessagesCreatedResponse> MessagesCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/4";
             var apiCallHttpMethod = "post";
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MessagesDeletedResponse> MessagesDeleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/5";
             var apiCallHttpMethod = "post";
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<SpaceCreatedResponse> SpaceCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/6";
             var apiCallHttpMethod = "post";
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
             return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<SpaceUpdatedResponse> SpaceUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/7";
             var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     public class ScrapingbeeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
-        public IBodyWorkflowAction<HTMLResponse> HTML(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<deviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
+        public IBodyWorkflowAction<HTMLResponse, ApiConnectionActionConfiguration> HTML(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<deviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_renderJs = WorkflowExpression.Compile(renderJs, nameof(renderJs), required: true);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
             var __workflow_cookies = WorkflowExpression.Compile(cookies, nameof(cookies), required: false);
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
             var __workflow_customGoogle = WorkflowExpression.Compile(customGoogle, nameof(customGoogle), required: false);
-            return new DeferredBodyAction<HTMLResponse>(() =>
+            return new DeferredBodyAction<HTMLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1";
                 var apiCallHttpMethod = "get";
@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
                 if (__workflow_customGoogle != null)
                     callPayload.Queries["custom_google"] = ExpressionConverter.Convert(__workflow_customGoogle);
                 return new ApiConnectionAction<HTMLResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
-        public IBodyWorkflowAction<UsageInformationResponse> UsageInformation()
+        public IBodyWorkflowAction<UsageInformationResponse, ApiConnectionActionConfiguration> UsageInformation()
         {
             var apiCallPath = "/v1/usage";
             var apiCallHttpMethod = "get";
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
-        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> search, Expression<Func<string>> countryCode = null, Expression<Func<int>> nbResults = null, Expression<Func<int>> page = null, Expression<Func<string>> language = null, Expression<Func<string>> extraParams = null)
+        public IBodyWorkflowAction<SimpleSearchResponse, ApiConnectionActionConfiguration> SimpleSearch(Expression<Func<string>> search, Expression<Func<string>> countryCode = null, Expression<Func<int>> nbResults = null, Expression<Func<int>> page = null, Expression<Func<string>> language = null, Expression<Func<string>> extraParams = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: true);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_extraParams = WorkflowExpression.Compile(extraParams, nameof(extraParams), required: false);
-            return new DeferredBodyAction<SimpleSearchResponse>(() =>
+            return new DeferredBodyAction<SimpleSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/store/google";
                 var apiCallHttpMethod = "get";
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
                 if (__workflow_extraParams != null)
                     callPayload.Queries["extra_params"] = ExpressionConverter.Convert(__workflow_extraParams);
                 return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

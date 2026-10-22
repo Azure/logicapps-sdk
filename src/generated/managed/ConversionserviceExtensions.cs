@@ -12,17 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
     public class ConversionserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
-        public IBodyWorkflowAction<string> HtmlToText(Expression<Func<string>> content = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HtmlToText(Expression<Func<string>> content = null)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/html2text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<string>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

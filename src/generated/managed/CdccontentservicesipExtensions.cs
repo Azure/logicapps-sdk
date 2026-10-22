@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
     public class CdccontentservicesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaSearchResponse> MediaSearch(Expression<Func<string>> q = null, Expression<Func<string>> mediatypes = null, Expression<Func<string>> name = null, Expression<Func<string>> topic = null, Expression<Func<int>> topicids = null, Expression<Func<string>> audience = null, Expression<Func<string>> languagename = null, Expression<Func<string>> languageisocode = null, Expression<Func<string>> sourcename = null, Expression<Func<string>> sourceacronym = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<MediaSearchResponse, ApiConnectionActionConfiguration> MediaSearch(Expression<Func<string>> q = null, Expression<Func<string>> mediatypes = null, Expression<Func<string>> name = null, Expression<Func<string>> topic = null, Expression<Func<int>> topicids = null, Expression<Func<string>> audience = null, Expression<Func<string>> languagename = null, Expression<Func<string>> languageisocode = null, Expression<Func<string>> sourcename = null, Expression<Func<string>> sourceacronym = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_mediatypes = WorkflowExpression.Compile(mediatypes, nameof(mediatypes), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
             var __workflow_pagenum = WorkflowExpression.Compile(pagenum, nameof(pagenum), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<MediaSearchResponse>(() =>
+            return new DeferredBodyAction<MediaSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/resources/media";
                 var apiCallHttpMethod = "get";
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<MediaSearchResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaGetResponse> MediaGet(Expression<Func<string>> mediaId, Expression<Func<string>> sort = null, Expression<Func<string>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<MediaGetResponse, ApiConnectionActionConfiguration> MediaGet(Expression<Func<string>> mediaId, Expression<Func<string>> sort = null, Expression<Func<string>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
         {
             var __workflow_mediaId = WorkflowExpression.Compile(mediaId, nameof(mediaId), required: true);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
             var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
             var __workflow_pagenum = WorkflowExpression.Compile(pagenum, nameof(pagenum), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<MediaGetResponse>(() =>
+            return new DeferredBodyAction<MediaGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/media/{0}", __workflow_mediaId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -93,11 +93,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<MediaGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaTypesResponse> MediaTypes()
+        public IBodyWorkflowAction<MediaTypesResponse, ApiConnectionActionConfiguration> MediaTypes()
         {
             var apiCallPath = "/resources/mediatypes";
             var apiCallHttpMethod = "get";
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TopicsResponse> Topics()
+        public IBodyWorkflowAction<TopicsResponse, ApiConnectionActionConfiguration> Topics()
         {
             var apiCallPath = "/resources/topics";
             var apiCallHttpMethod = "get";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<AudiencesResponse> Audiences()
+        public IBodyWorkflowAction<AudiencesResponse, ApiConnectionActionConfiguration> Audiences()
         {
             var apiCallPath = "/resources/audiences";
             var apiCallHttpMethod = "get";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagsResponse> Tags()
+        public IBodyWorkflowAction<TagsResponse, ApiConnectionActionConfiguration> Tags()
         {
             var apiCallPath = "/resources/tags";
             var apiCallHttpMethod = "get";
@@ -133,46 +133,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tAGID)
+        public IBodyWorkflowAction<TagGetResponse, ApiConnectionActionConfiguration> TagGet(Expression<Func<string>> tAGID)
         {
             var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
-            return new DeferredBodyAction<TagGetResponse>(() =>
+            return new DeferredBodyAction<TagGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}", __workflow_tAGID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagGetResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaTagResponse> MediaTag(Expression<Func<string>> tAGID)
+        public IBodyWorkflowAction<MediaTagResponse, ApiConnectionActionConfiguration> MediaTag(Expression<Func<string>> tAGID)
         {
             var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
-            return new DeferredBodyAction<MediaTagResponse>(() =>
+            return new DeferredBodyAction<MediaTagResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/media", __workflow_tAGID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MediaTagResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagRelatedResponse> TagRelated(Expression<Func<string>> tAGID)
+        public IBodyWorkflowAction<TagRelatedResponse, ApiConnectionActionConfiguration> TagRelated(Expression<Func<string>> tAGID)
         {
             var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
-            return new DeferredBodyAction<TagRelatedResponse>(() =>
+            return new DeferredBodyAction<TagRelatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/related", __workflow_tAGID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRelatedResponse>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagTypesResponse> TagTypes()
+        public IBodyWorkflowAction<TagTypesResponse, ApiConnectionActionConfiguration> TagTypes()
         {
             var apiCallPath = "/resources/tagtypes";
             var apiCallHttpMethod = "get";
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<LanguageResponse> Language()
+        public IBodyWorkflowAction<LanguageResponse, ApiConnectionActionConfiguration> Language()
         {
             var apiCallPath = "/resources/languages";
             var apiCallHttpMethod = "get";
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<OrganizationResponse> Organization()
+        public IBodyWorkflowAction<OrganizationResponse, ApiConnectionActionConfiguration> Organization()
         {
             var apiCallPath = "/resources/organizations";
             var apiCallHttpMethod = "get";
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<OrganizationTypeResponse> OrganizationType()
+        public IBodyWorkflowAction<OrganizationTypeResponse, ApiConnectionActionConfiguration> OrganizationType()
         {
             var apiCallPath = "/resources/organizationtypes";
             var apiCallHttpMethod = "get";
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<SourceResponse> Source()
+        public IBodyWorkflowAction<SourceResponse, ApiConnectionActionConfiguration> Source()
         {
             var apiCallPath = "/resources/sources";
             var apiCallHttpMethod = "get";

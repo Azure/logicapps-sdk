@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
     public class MavimintelligentxforActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
-        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
+        public IBodyWorkflowAction<AuditLog[], ApiConnectionActionConfiguration> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
         {
             var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_logId = WorkflowExpression.Compile(logId, nameof(logId), required: false);
             var __workflow_range = WorkflowExpression.Compile(range, nameof(range), required: false);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: false);
-            return new DeferredBodyAction<AuditLog[]>(() =>
+            return new DeferredBodyAction<AuditLog[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", __workflow_repositoryId.WithUrlEncoding(1), __workflow_topicId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
                 if (__workflow_dataLanguage != null)
                     callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(__workflow_dataLanguage);
                 return new ApiConnectionAction<AuditLog[]>(callPayload);
-            }, WorkflowActionSettingProfiles.RetrySecureTracked);
+            });
         }
     }
 

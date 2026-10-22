@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
 
     public class EventticketsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AttendeeTriggerResponse> AttendeeTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AttendeeTriggerResponse, ApiConnectionTriggerConfiguration> AttendeeTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/attendees/";
             var apiCallHttpMethod = "get";
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<AttendeeTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<UpdatedAttendeeTriggerResponse> UpdatedAttendeeTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedAttendeeTriggerResponse, ApiConnectionTriggerConfiguration> UpdatedAttendeeTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-attendees/";
             var apiCallHttpMethod = "get";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<UpdatedAttendeeTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<CheckinTriggerResponse> CheckinTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CheckinTriggerResponse, ApiConnectionTriggerConfiguration> CheckinTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/checkin/";
             var apiCallHttpMethod = "get";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<CheckinTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewOrderTriggerResponse> NewOrderTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewOrderTriggerResponse, ApiConnectionTriggerConfiguration> NewOrderTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/orders/";
             var apiCallHttpMethod = "get";
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
             return new ApiConnectionTrigger<NewOrderTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<RefundedOrderTriggerResponse> RefundedOrderTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefundedOrderTriggerResponse, ApiConnectionTriggerConfiguration> RefundedOrderTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/refunded-orders/";
             var apiCallHttpMethod = "get";
