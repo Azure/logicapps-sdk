@@ -7,12 +7,11 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Workflows.Sdk
 {
     public sealed class ApiConnectionTriggerConfiguration :
-        IWorkflowOperationConfiguration,
-        IRetryPolicyConfigurationHolder,
-        ISecureInputsConfigurationHolder,
-        ISecureOutputsConfigurationHolder,
-        ITriggerConcurrencyConfigurationHolder,
-        IClientTrackingIdConfigurationHolder
+        IRetryPolicyConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration,
+        ITriggerConcurrencyConfiguration,
+        IClientTrackingIdConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
         public bool SecureInputs { get; set; }

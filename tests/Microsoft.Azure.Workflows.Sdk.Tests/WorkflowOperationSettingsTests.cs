@@ -207,6 +207,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void SettingsPreserveSpecializedOperationShapes()
+        {
+            var bodyAction = WorkflowActions.BuiltIn.HttpAction(
+                uri: () => new Uri("https://example.com"),
+                method: () => System.Net.Http.HttpMethod.Get);
+            IBodyWorkflowAction<JToken, HttpActionConfiguration> configuredBodyAction =
+                bodyAction.WithRetryPolicy(RetryPolicy.None());
+
+            var outputAction = WorkflowActions.BuiltIn.Compose<string>(() => "value");
+            IOutputWorkflowAction<string, ComposeActionConfiguration> configuredOutputAction =
+                outputAction.WithTrackedProperty("Source", () => "test");
+
+            var outputTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            IOutputWorkflowTrigger<HttpRequestTriggerOutput, HttpRequestTriggerConfiguration> configuredOutputTrigger =
+                outputTrigger.WithConcurrency(2);
+
+            var agentAction = WorkflowActions.BuiltIn.Agent(
+                agentModelType: AgentModelType.AzureOpenAI,
+                deploymentId: "deployment",
+                agentModelSettings: new AgentModelSettings(),
+                connectionName: "connection",
+                messages: () => Array.Empty<AgentPromptMessage>());
+            IAgentWorkflowAction<AgentActionConfiguration> configuredAgentAction =
+                agentAction.WithRetryPolicy(RetryPolicy.None());
+
+            Assert.Same(bodyAction, configuredBodyAction);
+            Assert.Same(outputAction, configuredOutputAction);
+            Assert.Same(outputTrigger, configuredOutputTrigger);
+            Assert.Same(agentAction, configuredAgentAction);
+        }
+
+        [Fact]
         public void UnsupportedSettingsAreRejectedAtCompileTime()
         {
             const string Source = """

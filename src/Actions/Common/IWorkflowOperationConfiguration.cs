@@ -12,23 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     #region Shared Configurations
 
-    public interface IRetryPolicyConfigurationHolder
+    public interface IRetryPolicyConfiguration :
+        IWorkflowOperationConfiguration
     {
         RetryPolicy RetryPolicy { get; set; }
     }
 
-    public interface ISecureInputsConfigurationHolder
+    public interface ISecureInputsConfiguration :
+        IWorkflowOperationConfiguration
     {
         bool SecureInputs { get; set; }
     }
 
-    public interface ISecureOutputsConfigurationHolder
+    public interface ISecureOutputsConfiguration :
+        IWorkflowOperationConfiguration
     {
         bool SecureOutputs { get; set; }
     }
 
-    public interface ISecureInputsAndOutputsConfigurationHolder :
-        ISecureInputsConfigurationHolder
+    public interface ISecureInputsAndOutputsConfiguration :
+        ISecureInputsConfiguration
     {
     }
 
@@ -36,12 +39,14 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     #region Action configurations
 
-    public interface ITrackedPropertiesConfigurationHolder
+    public interface ITrackedPropertiesConfiguration :
+        IWorkflowOperationConfiguration
     {
         IDictionary<string, JToken> TrackedProperties { get; }
     }
 
-    public interface IIterationConcurrencyConfigurationHolder
+    public interface IIterationConcurrencyConfiguration :
+        IWorkflowOperationConfiguration
     {
         int? MaximumParallelIterations { get; set; }
     }
@@ -50,19 +55,22 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     #region Trigger configurations
 
-    public interface ITriggerConcurrencyConfigurationHolder
+    public interface ITriggerConcurrencyConfiguration :
+        IWorkflowOperationConfiguration
     {
         int? ConcurrentRuns { get; set; }
 
         int? MaximumWaitingRuns { get; set; }
     }
 
-    public interface IClientTrackingIdConfigurationHolder
+    public interface IClientTrackingIdConfiguration :
+        IWorkflowOperationConfiguration
     {
         string ClientTrackingId { get; set; }
     }
 
-    public interface IRequestSchemaValidationConfigurationHolder
+    public interface IRequestSchemaValidationConfiguration :
+        IWorkflowOperationConfiguration
     {
         bool SchemaValidationEnabled { get; set; }
     }

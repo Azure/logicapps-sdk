@@ -9,9 +9,8 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     public sealed class ForEachActionConfiguration :
-        IWorkflowOperationConfiguration,
-        ITrackedPropertiesConfigurationHolder,
-        IIterationConcurrencyConfigurationHolder
+        ITrackedPropertiesConfiguration,
+        IIterationConcurrencyConfiguration
     {
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
         public int? MaximumParallelIterations { get; set; }

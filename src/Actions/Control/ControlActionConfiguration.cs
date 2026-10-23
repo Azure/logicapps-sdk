@@ -6,8 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
     
     public sealed class ControlActionConfiguration :
-        IWorkflowOperationConfiguration,
-        ITrackedPropertiesConfigurationHolder
+        ITrackedPropertiesConfiguration
     {
         public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
     }
