@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         IClientTrackingIdConfiguration,
         IRequestSchemaValidationConfiguration
     {
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
-        public int? ConcurrentRuns { get; set; }
-        public int? MaximumWaitingRuns { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
-        public bool SchemaValidationEnabled { get; set; }
+        bool IRequestSchemaValidationConfiguration.SchemaValidationEnabled { get; set; }
     }
 
     /// <summary>

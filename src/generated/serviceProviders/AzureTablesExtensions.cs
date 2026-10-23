@@ -248,66 +248,66 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
 
     public sealed class CreateTableActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ListTablesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteTableActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class UpsertEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class UpdateEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class QueryEntitiesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class CreateTableOutput

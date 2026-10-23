@@ -104,10 +104,21 @@ namespace Microsoft.Azure.Workflows.Sdk
             int runs,
             int? maximumWaitingRuns)
         {
-            if (runs < 1 || runs > 100)
-                throw new ArgumentOutOfRangeException(nameof(runs), "Trigger concurrency must be between 1 and 100.");
-            if (maximumWaitingRuns is < 1)
-                throw new ArgumentOutOfRangeException(nameof(maximumWaitingRuns), "Maximum waiting runs must be positive.");
+            if (runs < WorkflowOperationConfiguration.MinimumTriggerConcurrentRuns ||
+                runs > WorkflowOperationConfiguration.MaximumTriggerConcurrentRuns)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(runs),
+                    $"Trigger concurrency must be between {WorkflowOperationConfiguration.MinimumTriggerConcurrentRuns} and {WorkflowOperationConfiguration.MaximumTriggerConcurrentRuns}.");
+            }
+
+            if (maximumWaitingRuns is < WorkflowOperationConfiguration.MinimumTriggerWaitingRuns or > WorkflowOperationConfiguration.MaximumTriggerWaitingRuns)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(maximumWaitingRuns),
+                    $"Maximum waiting runs must be between {WorkflowOperationConfiguration.MinimumTriggerWaitingRuns} and {WorkflowOperationConfiguration.MaximumTriggerWaitingRuns}.");
+            }
+
             configuration.ConcurrentRuns = runs;
             configuration.MaximumWaitingRuns = maximumWaitingRuns;
         }

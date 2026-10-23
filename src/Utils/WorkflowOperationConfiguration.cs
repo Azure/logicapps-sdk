@@ -11,6 +11,11 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     internal static class WorkflowOperationConfiguration
     {
+        internal const int MinimumTriggerConcurrentRuns = 1;
+        internal const int MaximumTriggerConcurrentRuns = 100;
+        internal const int MinimumTriggerWaitingRuns = 10;
+        internal const int MaximumTriggerWaitingRuns = 100;
+
         internal static void ApplyActionConfiguration(
             IWorkflowOperationConfiguration configuration,
             FlowTemplateAction definition,

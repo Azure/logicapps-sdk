@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IRetryPolicyConfiguration,
         ITrackedPropertiesConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 

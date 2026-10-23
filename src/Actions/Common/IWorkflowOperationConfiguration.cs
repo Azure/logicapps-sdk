@@ -15,19 +15,19 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IRetryPolicyConfiguration :
         IWorkflowOperationConfiguration
     {
-        RetryPolicy RetryPolicy { get; set; }
+        internal RetryPolicy RetryPolicy { get; set; }
     }
 
     public interface ISecureInputsConfiguration :
         IWorkflowOperationConfiguration
     {
-        bool SecureInputs { get; set; }
+        internal bool SecureInputs { get; set; }
     }
 
     public interface ISecureOutputsConfiguration :
         IWorkflowOperationConfiguration
     {
-        bool SecureOutputs { get; set; }
+        internal bool SecureOutputs { get; set; }
     }
 
     public interface ISecureInputsAndOutputsConfiguration :
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IIterationConcurrencyConfiguration :
         IWorkflowOperationConfiguration
     {
-        int? MaximumParallelIterations { get; set; }
+        internal int? MaximumParallelIterations { get; set; }
     }
 
     #endregion
@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface ITriggerConcurrencyConfiguration :
         IWorkflowOperationConfiguration
     {
-        int? ConcurrentRuns { get; set; }
+        internal int? ConcurrentRuns { get; set; }
 
-        int? MaximumWaitingRuns { get; set; }
+        internal int? MaximumWaitingRuns { get; set; }
     }
 
     public interface IClientTrackingIdConfiguration :
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IRequestSchemaValidationConfiguration :
         IWorkflowOperationConfiguration
     {
-        bool SchemaValidationEnabled { get; set; }
+        internal bool SchemaValidationEnabled { get; set; }
     }
 
     #endregion

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         IIterationConcurrencyConfiguration
     {
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public int? MaximumParallelIterations { get; set; }
+        int? IIterationConcurrencyConfiguration.MaximumParallelIterations { get; set; }
     }
 
     /// <summary>

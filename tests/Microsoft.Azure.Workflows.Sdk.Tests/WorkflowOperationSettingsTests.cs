@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger(requestBodyJsonSchema: schema)
                 .WithClientTrackingId(() => "client-123")
                 .WithSchemaValidation()
-                .WithConcurrency(runs: 2, maximumWaitingRuns: 5)
+                .WithConcurrency(runs: 2, maximumWaitingRuns: 10)
                 .WithSecureInputs()
                 .WithSecureOutputs()
                 .WithName("Request");
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Equal(OperationOptions.EnableSchemaValidation, request.OperationOptions);
             Assert.Equal("EnableSchemaValidation", request.ToJToken()["operationOptions"].Value<string>());
             Assert.Equal(2, request.RuntimeConfiguration.Concurrency.Runs);
-            Assert.Equal(5, request.RuntimeConfiguration.Concurrency.MaximumWaitingRuns);
+            Assert.Equal(10, request.RuntimeConfiguration.Concurrency.MaximumWaitingRuns);
             Assert.Equal(new[] { "inputs", "outputs" }, request.RuntimeConfiguration.SecureData.Properties);
             Assert.Equal("fixed", callInputs["retryPolicy"]["type"]);
             Assert.Equal(3, callInputs["retryPolicy"]["count"]);
@@ -164,6 +164,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .WithIterationConcurrency(1));
             Assert.Throws<InvalidOperationException>(
                 () => WorkflowFactory.CreateStatelessWorkflow("StatelessLoop", loopTrigger));
+
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => trigger.WithConcurrency(1, maximumWaitingRuns: 9));
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => trigger.WithConcurrency(1, maximumWaitingRuns: 101));
+
         }
 
         [Fact]
@@ -229,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.ServiceProviders.ServiceBus("service")
                 .ReceiveQueueMessages(queueName: () => "orders")
-                .WithConcurrency(2, maximumWaitingRuns: 4)
+                .WithConcurrency(2, maximumWaitingRuns: 10)
                 .WithClientTrackingId(() => "service-bus")
                 .WithName("ServiceBus");
             trigger.Then(WorkflowActions.BuiltIn.Compose(() => "received").WithName("Body"));
@@ -238,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var generated = definition.Definition.Triggers["ServiceBus"];
 
             Assert.Equal(2, generated.RuntimeConfiguration.Concurrency.Runs);
-            Assert.Equal(4, generated.RuntimeConfiguration.Concurrency.MaximumWaitingRuns);
+            Assert.Equal(10, generated.RuntimeConfiguration.Concurrency.MaximumWaitingRuns);
             Assert.Equal("service-bus", generated.Correlation.ClientTrackingId);
         }
 
@@ -325,6 +332,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             Assert.Equal(2, errors.Length);
             Assert.All(errors, error => Assert.Equal("CS0311", error.Id));
+        }
+
+        [Fact]
+        public void ConfigurationStateIsNotPubliclyMutable()
+        {
+            const string Source = """
+                using Microsoft.Azure.Workflows.Sdk;
+                public sealed class Workflow
+                {
+                    public void Build()
+                    {
+                        var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+                        trigger.Configuration.ConcurrentRuns = 1;
+                    }
+                }
+                """;
+            var compilation = CSharpCompilation.Create(
+                "ConfigurationState",
+                [CSharpSyntaxTree.ParseText(Source)],
+                ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES"))
+                    .Split(Path.PathSeparator)
+                    .Append(typeof(WorkflowActions).Assembly.Location)
+                    .Append(typeof(JToken).Assembly.Location)
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .Select(path => MetadataReference.CreateFromFile(path)),
+                new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+            var error = Assert.Single(
+                compilation.GetDiagnostics()
+                    .Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error));
+
+            Assert.Equal("CS1061", error.Id);
         }
     }
 }
