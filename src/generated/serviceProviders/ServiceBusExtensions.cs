@@ -1282,7 +1282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class ReceiveTopicMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1291,7 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class ReceiveQueueMessagesForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1300,7 +1300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class ReceiveTopicMessagesForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class PeekLockQueueMessagesV2TriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class PeekLockTopicMessagesV2TriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1327,7 +1327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class OnNewMessagesFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1337,7 +1337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class OnNewMessagesFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1347,7 +1347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class OnSingleNewMessageFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1357,7 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public sealed class OnSingleNewMessageFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
@@ -1367,7 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public class ReceiveQueueMessagesOutputItem

@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             Expression<Func<string>> clientTrackingId)
         {
             var descriptor = WorkflowExpression.Compile(clientTrackingId, nameof(clientTrackingId), required: true);
-            configuration.ClientTrackingId = ExpressionConverter.Convert(descriptor);
+            configuration.ClientTrackingId = () => ExpressionConverter.Convert(descriptor);
         }
     }
 }
