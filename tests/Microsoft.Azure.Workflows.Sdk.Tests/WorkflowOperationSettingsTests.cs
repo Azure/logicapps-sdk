@@ -96,20 +96,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
-        public void ClientTrackingIdExpressionsUseFinalOperationNames()
+        public void ClientTrackingIdExpressionsUseTriggerContext()
         {
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
-            var action = WorkflowActions.BuiltIn.Compose<string>(() => "value");
-
-            trigger.WithClientTrackingId(() => action.Output);
-            action.WithName("Source");
-            trigger.Then(action);
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger()
+                .WithName("Request");
+            trigger.WithClientTrackingId(
+                () => trigger.TriggerOutput.Headers["x-client-tracking-id"]);
 
             var definition = WorkflowFactory.CreateStatefulWorkflow("ClientTrackingBindings", trigger);
+            var clientTrackingId =
+                definition.Definition.Triggers["Request"].Correlation.ClientTrackingId;
 
-            Assert.Equal(
-                """#{(outputs("Source")).ToObject<string>()}""",
-                definition.Definition.Triggers[trigger.Name].Correlation.ClientTrackingId);
+            Assert.Contains("triggerOutputs()", clientTrackingId);
+            Assert.DoesNotContain("""outputs(""", clientTrackingId);
         }
 
         [Fact]
@@ -224,6 +223,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             Assert.Throws<InvalidOperationException>(
                 () => WorkflowFactory.CreateStatefulWorkflow("InvalidRetry", trigger));
+
+            var missingCountTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            missingCountTrigger.Then(WorkflowActions.BuiltIn.HttpAction(
+                    uri: () => new Uri("https://example.com"),
+                    method: () => System.Net.Http.HttpMethod.Get)
+                .WithRetryPolicy(new RetryPolicy
+                {
+                    Type = RetryType.Exponential,
+                    Interval = TimeSpan.FromSeconds(30),
+                }));
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("MissingRetryCount", missingCountTrigger));
 
             var intervalTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             intervalTrigger.Then(WorkflowActions.BuiltIn.HttpAction(

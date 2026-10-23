@@ -247,6 +247,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 return;
             }
 
+            if (!retryPolicy.Count.HasValue)
+            {
+                throw new InvalidOperationException("A retry count is required.");
+            }
+
             if (retryPolicy.Count is < 1 or > 90)
             {
                 throw new InvalidOperationException("Retry count must be between 1 and 90.");
