@@ -96,6 +96,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void ClientTrackingIdExpressionsUseFinalOperationNames()
+        {
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            var action = WorkflowActions.BuiltIn.Compose<string>(() => "value");
+
+            trigger.WithClientTrackingId(() => action.Output);
+            action.WithName("Source");
+            trigger.Then(action);
+
+            var definition = WorkflowFactory.CreateStatefulWorkflow("ClientTrackingBindings", trigger);
+
+            Assert.Equal(
+                """#{(outputs("Source")).ToObject<string>()}""",
+                definition.Definition.Triggers[trigger.Name].Correlation.ClientTrackingId);
+        }
+
+        [Fact]
         public void LinkedSecureOutputsAreEnabledWithInputs()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface IClientTrackingIdConfiguration :
         IWorkflowOperationConfiguration
     {
-        string ClientTrackingId { get; set; }
+        internal Func<string> ClientTrackingId { get; set; }
     }
 
     public interface IRequestSchemaValidationConfiguration :

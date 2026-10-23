@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public bool SecureOutputs { get; set; }
         public int? ConcurrentRuns { get; set; }
         public int? MaximumWaitingRuns { get; set; }
-        public string ClientTrackingId { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     /// <summary>

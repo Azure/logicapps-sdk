@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 correlation.ClientTrackingId != null)
             {
                 definition.Correlation =
-                    new FlowTemplateCorrelation { ClientTrackingId = correlation.ClientTrackingId };
+                    new FlowTemplateCorrelation { ClientTrackingId = correlation.ClientTrackingId() };
             }
 
             if (configuration is IRequestSchemaValidationConfiguration schemaValidation &&
