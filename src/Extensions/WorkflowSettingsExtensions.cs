@@ -89,7 +89,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new InvalidOperationException($"Tracked property '{name}' is already configured on operation '{operation.Name}'.");
             if (configuration.TrackedProperties.Count == 16)
                 throw new InvalidOperationException("Logic Apps supports at most 16 tracked properties per action.");
-            configuration.TrackedProperties.Add(name, ExpressionConverter.ConvertO(descriptor));
+            configuration.TrackedProperties.Add(
+                name,
+                () => ExpressionConverter.ConvertO(descriptor));
         }
 
         private static void SetRetryPolicy(

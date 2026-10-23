@@ -3,11 +3,12 @@
 // -----------------------------------------------------------
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
     using Newtonsoft.Json.Linq;
     
     public sealed class VariableActionConfiguration :
         ITrackedPropertiesConfiguration
     {
-        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 }

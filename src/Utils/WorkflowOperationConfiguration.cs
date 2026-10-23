@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 definition.TrackedProperties = new JObject(
                     tracked.TrackedProperties.Select(
-                        pair => new JProperty(pair.Key, pair.Value?.DeepClone())));
+                        pair => new JProperty(pair.Key, pair.Value())));
             }
 
             var secureInputs = configuration is ISecureInputsConfiguration inputs && inputs.SecureInputs;

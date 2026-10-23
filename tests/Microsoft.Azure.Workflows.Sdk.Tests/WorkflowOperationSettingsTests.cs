@@ -77,6 +77,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void TrackedPropertyExpressionsUseFinalOperationNames()
+        {
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            var action = WorkflowActions.BuiltIn.HttpAction(
+                uri: () => new Uri("https://example.com"),
+                method: () => System.Net.Http.HttpMethod.Get);
+
+            action.WithTrackedProperty("Body", () => action.Body);
+            action.WithName("Call");
+            trigger.Then(action);
+
+            var definition = WorkflowFactory.CreateStatefulWorkflow("TrackedPropertyBindings", trigger);
+
+            Assert.Equal(
+                """#{body("Call")}""",
+                definition.Definition.Actions["Call"].TrackedProperties["Body"].Value<string>());
+        }
+
+        [Fact]
         public void LinkedSecureOutputsAreEnabledWithInputs()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
