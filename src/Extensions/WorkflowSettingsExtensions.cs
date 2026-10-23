@@ -12,9 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         public static TOperation WithTrackedProperty<TOperation, TValue>(
             this TOperation action, string name, Expression<Func<TValue>> value)
-            where TOperation :
-                IWorkflowAction,
-                IWorkflowOperation<ITrackedPropertiesConfiguration>
+            where TOperation : IWorkflowAction<ITrackedPropertiesConfiguration>
         {
             AddTrackedProperty(action, action.Configuration, name, value);
             return action;
@@ -46,9 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public static TOperation WithIterationConcurrency<TOperation>(
             this TOperation action, int repetitions)
-            where TOperation :
-                IWorkflowAction,
-                IWorkflowOperation<IIterationConcurrencyConfiguration>
+            where TOperation : IWorkflowAction<IIterationConcurrencyConfiguration>
         {
             if (repetitions < 1 || repetitions > 50)
                 throw new ArgumentOutOfRangeException(nameof(repetitions), "Iteration concurrency must be between 1 and 50.");
@@ -58,9 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public static TOperation WithConcurrency<TOperation>(
             this TOperation trigger, int runs, int? maximumWaitingRuns = null)
-            where TOperation :
-                IWorkflowTrigger,
-                IWorkflowOperation<ITriggerConcurrencyConfiguration>
+            where TOperation : IWorkflowTrigger<ITriggerConcurrencyConfiguration>
         {
             SetConcurrency(trigger.Configuration, runs, maximumWaitingRuns);
             return trigger;
@@ -68,9 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public static TOperation WithClientTrackingId<TOperation>(
             this TOperation trigger, Expression<Func<string>> clientTrackingId)
-            where TOperation :
-                IWorkflowTrigger,
-                IWorkflowOperation<IClientTrackingIdConfiguration>
+            where TOperation : IWorkflowTrigger<IClientTrackingIdConfiguration>
         {
             SetClientTrackingId(trigger.Configuration, clientTrackingId);
             return trigger;
@@ -78,9 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public static TOperation WithSchemaValidation<TOperation>(
             this TOperation trigger)
-            where TOperation :
-                IWorkflowTrigger,
-                IWorkflowOperation<IRequestSchemaValidationConfiguration>
+            where TOperation : IWorkflowTrigger<IRequestSchemaValidationConfiguration>
         {
             trigger.Configuration.SchemaValidationEnabled = true;
             return trigger;

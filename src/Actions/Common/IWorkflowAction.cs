@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         Dictionary<string, FlowStatus[]> RunAfterConfig { get; }
     }
 
-    public interface IWorkflowAction<TConfiguration> :
+    public interface IWorkflowAction<out TConfiguration> :
         IWorkflowAction,
         IWorkflowOperation<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         T Body { get; }
     }
 
-    public interface IBodyWorkflowAction<T, TConfiguration> :
+    public interface IBodyWorkflowAction<T, out TConfiguration> :
         IBodyWorkflowAction<T>,
         IWorkflowAction<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         T Output { get; }
     }
 
-    public interface IOutputWorkflowAction<T, TConfiguration> :
+    public interface IOutputWorkflowAction<T, out TConfiguration> :
         IOutputWorkflowAction<T>,
         IWorkflowAction<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         string VariableName { get; }
     }
 
-    public interface IVariableWorkflowAction<TConfiguration> :
+    public interface IVariableWorkflowAction<out TConfiguration> :
         IVariableWorkflowAction,
         IWorkflowAction<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             where T : class;
     }
 
-    public interface IAgentWorkflowAction<TConfiguration> :
+    public interface IAgentWorkflowAction<out TConfiguration> :
         IAgentWorkflowAction,
         IWorkflowAction<TConfiguration>
         where TConfiguration : IWorkflowOperationConfiguration
