@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             this TOperation action, string name, Expression<Func<TValue>> value)
             where TOperation : IWorkflowAction<ITrackedPropertiesConfiguration>
         {
-            AddTrackedProperty(action, action.Configuration, name, value);
+            AddTrackedProperty(action.Configuration, name, value);
             return action;
         }
 
@@ -46,8 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             this TOperation action, int repetitions)
             where TOperation : IWorkflowAction<IIterationConcurrencyConfiguration>
         {
-            if (repetitions < 1 || repetitions > 50)
-                throw new ArgumentOutOfRangeException(nameof(repetitions), "Iteration concurrency must be between 1 and 50.");
             action.Configuration.MaximumParallelIterations = repetitions;
             return action;
         }
@@ -77,18 +75,14 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         private static void AddTrackedProperty<TValue>(
-            IWorkflowOperation operation,
             ITrackedPropertiesConfiguration configuration,
             string name,
             Expression<Func<TValue>> value)
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("A tracked property name is required.", nameof(name));
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+
             var descriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
-            if (configuration.TrackedProperties.ContainsKey(name))
-                throw new InvalidOperationException($"Tracked property '{name}' is already configured on operation '{operation.Name}'.");
-            if (configuration.TrackedProperties.Count == 16)
-                throw new InvalidOperationException("Logic Apps supports at most 16 tracked properties per action.");
             configuration.TrackedProperties.Add(
                 name,
                 () => ExpressionConverter.ConvertO(descriptor));
@@ -104,21 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             int runs,
             int? maximumWaitingRuns)
         {
-            if (runs < WorkflowOperationConfiguration.MinimumTriggerConcurrentRuns ||
-                runs > WorkflowOperationConfiguration.MaximumTriggerConcurrentRuns)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(runs),
-                    $"Trigger concurrency must be between {WorkflowOperationConfiguration.MinimumTriggerConcurrentRuns} and {WorkflowOperationConfiguration.MaximumTriggerConcurrentRuns}.");
-            }
-
-            if (maximumWaitingRuns is < WorkflowOperationConfiguration.MinimumTriggerWaitingRuns or > WorkflowOperationConfiguration.MaximumTriggerWaitingRuns)
-            {
-                throw new ArgumentOutOfRangeException(
-                    nameof(maximumWaitingRuns),
-                    $"Maximum waiting runs must be between {WorkflowOperationConfiguration.MinimumTriggerWaitingRuns} and {WorkflowOperationConfiguration.MaximumTriggerWaitingRuns}.");
-            }
-
             configuration.ConcurrentRuns = runs;
             configuration.MaximumWaitingRuns = maximumWaitingRuns;
         }
