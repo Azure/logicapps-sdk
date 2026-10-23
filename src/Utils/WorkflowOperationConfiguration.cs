@@ -11,10 +11,13 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     internal static class WorkflowOperationConfiguration
     {
-        internal const int MinimumTriggerConcurrentRuns = 1;
-        internal const int MaximumTriggerConcurrentRuns = 100;
-        internal const int MinimumTriggerWaitingRuns = 10;
-        internal const int MaximumTriggerWaitingRuns = 100;
+        private const int MaximumTrackedProperties = 16;
+        private const int MinimumParallelIterations = 1;
+        private const int MaximumParallelIterations = 50;
+        private const int MinimumTriggerConcurrentRuns = 1;
+        private const int MaximumTriggerConcurrentRuns = 100;
+        private const int MinimumTriggerWaitingRuns = 10;
+        private const int MaximumTriggerWaitingRuns = 100;
 
         internal static void ApplyActionConfiguration(
             IWorkflowOperationConfiguration configuration,
@@ -28,12 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk
                 AddRetryPolicy(definition, retry.RetryPolicy);
             }
 
-            if (configuration is ITrackedPropertiesConfiguration tracked &&
-                tracked.TrackedProperties.Count > 0)
+            if (configuration is ITrackedPropertiesConfiguration tracked)
             {
-                definition.TrackedProperties = new JObject(
-                    tracked.TrackedProperties.Select(
-                        pair => new JProperty(pair.Key, pair.Value())));
+                ValidateTrackedProperties(tracked);
+                if (tracked.TrackedProperties.Count > 0)
+                {
+                    definition.TrackedProperties = new JObject(
+                        tracked.TrackedProperties.Select(
+                            pair => new JProperty(pair.Key, pair.Value())));
+                }
             }
 
             var secureInputs = configuration is ISecureInputsConfiguration inputs && inputs.SecureInputs;
@@ -45,6 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             var secureProperties = SecureProperties(secureInputs, secureOutputs);
             var concurrency = configuration as IIterationConcurrencyConfiguration;
+            ValidateIterationConcurrency(concurrency);
             if (secureProperties.Length > 0 || concurrency?.MaximumParallelIterations.HasValue == true)
             {
                 definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
@@ -83,6 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var secureOutputs = configuration is ISecureOutputsConfiguration outputs && outputs.SecureOutputs;
             var secureProperties = SecureProperties(secureInputs, secureOutputs);
             var concurrency = configuration as ITriggerConcurrencyConfiguration;
+            ValidateTriggerConcurrency(concurrency);
             if (secureProperties.Length > 0 || concurrency?.ConcurrentRuns.HasValue == true)
             {
                 definition.RuntimeConfiguration ??= new FlowTemplateOperationRuntimeConfiguration();
@@ -157,6 +165,68 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (secureInputs) properties.Add("inputs");
             if (secureOutputs) properties.Add("outputs");
             return properties.ToArray();
+        }
+
+        private static void ValidateTrackedProperties(
+            ITrackedPropertiesConfiguration tracked)
+        {
+            if (tracked.TrackedProperties.Count > MaximumTrackedProperties)
+            {
+                throw new InvalidOperationException(
+                    $"Logic Apps supports at most {MaximumTrackedProperties} tracked properties per action.");
+            }
+
+            foreach (var trackedProperty in tracked.TrackedProperties)
+            {
+                if (string.IsNullOrWhiteSpace(trackedProperty.Key))
+                {
+                    throw new InvalidOperationException("A tracked property name is required.");
+                }
+
+                if (trackedProperty.Value == null)
+                {
+                    throw new InvalidOperationException(
+                        $"Tracked property '{trackedProperty.Key}' does not have a value.");
+                }
+            }
+        }
+
+        private static void ValidateIterationConcurrency(
+            IIterationConcurrencyConfiguration concurrency)
+        {
+            if (concurrency?.MaximumParallelIterations is < MinimumParallelIterations or > MaximumParallelIterations)
+            {
+                throw new InvalidOperationException(
+                    $"Iteration concurrency must be between {MinimumParallelIterations} and {MaximumParallelIterations}.");
+            }
+        }
+
+        private static void ValidateTriggerConcurrency(
+            ITriggerConcurrencyConfiguration concurrency)
+        {
+            if (concurrency == null)
+            {
+                return;
+            }
+
+            if (concurrency.MaximumWaitingRuns.HasValue &&
+                !concurrency.ConcurrentRuns.HasValue)
+            {
+                throw new InvalidOperationException(
+                    "Maximum waiting runs requires trigger concurrency control.");
+            }
+
+            if (concurrency.ConcurrentRuns is < MinimumTriggerConcurrentRuns or > MaximumTriggerConcurrentRuns)
+            {
+                throw new InvalidOperationException(
+                    $"Trigger concurrency must be between {MinimumTriggerConcurrentRuns} and {MaximumTriggerConcurrentRuns}.");
+            }
+
+            if (concurrency.MaximumWaitingRuns is < MinimumTriggerWaitingRuns or > MaximumTriggerWaitingRuns)
+            {
+                throw new InvalidOperationException(
+                    $"Maximum waiting runs must be between {MinimumTriggerWaitingRuns} and {MaximumTriggerWaitingRuns}.");
+            }
         }
 
         private static void ValidateRetryPolicy(RetryPolicy retryPolicy, FlowKind? flowKind)

@@ -113,6 +113,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void TrackedPropertyValidationOccursDuringWorkflowBuild()
+        {
+            var blankNameTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            blankNameTrigger.Then(
+                WorkflowActions.BuiltIn.Compose(() => "value")
+                    .WithTrackedProperty(" ", () => "value"));
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("BlankTrackedProperty", blankNameTrigger));
+
+            var propertyCountTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            var action = WorkflowActions.BuiltIn.Compose(() => "value");
+            for (var index = 0; index < 17; index++)
+            {
+                action.WithTrackedProperty($"Property{index}", () => "value");
+            }
+            propertyCountTrigger.Then(action);
+
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("TooManyTrackedProperties", propertyCountTrigger));
+        }
+
+        [Fact]
         public void LinkedSecureOutputsAreEnabledWithInputs()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
@@ -165,11 +187,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Throws<InvalidOperationException>(
                 () => WorkflowFactory.CreateStatelessWorkflow("StatelessLoop", loopTrigger));
 
-            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
-            Assert.Throws<ArgumentOutOfRangeException>(
-                () => trigger.WithConcurrency(1, maximumWaitingRuns: 9));
-            Assert.Throws<ArgumentOutOfRangeException>(
-                () => trigger.WithConcurrency(1, maximumWaitingRuns: 101));
+            var lowWaitingRuns = WorkflowTriggers.BuiltIn.CreateHttpTrigger()
+                .WithConcurrency(1, maximumWaitingRuns: 9);
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("LowWaitingRuns", lowWaitingRuns));
+
+            var highWaitingRuns = WorkflowTriggers.BuiltIn.CreateHttpTrigger()
+                .WithConcurrency(1, maximumWaitingRuns: 101);
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("HighWaitingRuns", highWaitingRuns));
+
+            var invalidLoopTrigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            invalidLoopTrigger.Then(WorkflowActions.BuiltIn.Control.ForEach(
+                    items: () => new[] { 1 },
+                    actions: item => WorkflowActions.BuiltIn.Compose(() => item))
+                .WithIterationConcurrency(0));
+            Assert.Throws<InvalidOperationException>(
+                () => WorkflowFactory.CreateStatefulWorkflow("InvalidLoopConcurrency", invalidLoopTrigger));
 
         }
 
