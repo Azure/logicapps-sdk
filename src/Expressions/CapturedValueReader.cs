@@ -30,12 +30,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 propertyMember.Member is PropertyInfo property &&
                 propertyMember.Expression != null &&
                 TryRead(propertyMember.Expression, out var instance) &&
-                instance != null &&
-                property.GetMethod?.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) == true)
+                instance != null)
             {
-                var backingField = property.DeclaringType.GetField(
-                    "<" + property.Name + ">k__BackingField",
-                    BindingFlags.Instance | BindingFlags.NonPublic);
+                var effectiveProperty = ResolveEffectiveProperty(property, instance.GetType());
+                if (effectiveProperty.GetMethod?.IsDefined(
+                    typeof(CompilerGeneratedAttribute),
+                    inherit: false) != true)
+                {
+                    return false;
+                }
+
+                var backingField = effectiveProperty.DeclaringType.GetField(
+                    "<" + effectiveProperty.Name + ">k__BackingField",
+                    BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
                 if (backingField?.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) == true)
                 {
                     value = backingField.GetValue(instance);
@@ -45,6 +52,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
             value = null;
             return false;
+        }
+
+        private static PropertyInfo ResolveEffectiveProperty(PropertyInfo property, Type runtimeType)
+        {
+            var getter = property.GetMethod;
+            if (getter == null || !getter.IsVirtual || getter.IsFinal)
+                return property;
+
+            var baseDefinition = getter.GetBaseDefinition();
+            for (var type = runtimeType; type != null; type = type.BaseType)
+            {
+                var effectiveProperty = type
+                    .GetProperties(
+                        BindingFlags.Instance |
+                        BindingFlags.Public |
+                        BindingFlags.NonPublic |
+                        BindingFlags.DeclaredOnly)
+                    .FirstOrDefault(candidate =>
+                        candidate.GetMethod?.GetBaseDefinition() == baseDefinition);
+                if (effectiveProperty != null)
+                    return effectiveProperty;
+            }
+
+            return property;
         }
     }
 }
