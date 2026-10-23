@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         ISecureInputsAndOutputsConfiguration
     {
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
     }
 
     /// <summary>

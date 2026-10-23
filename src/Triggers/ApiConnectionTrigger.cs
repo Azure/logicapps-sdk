@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         ITriggerConcurrencyConfiguration,
         IClientTrackingIdConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
-        public int? ConcurrentRuns { get; set; }
-        public int? MaximumWaitingRuns { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 

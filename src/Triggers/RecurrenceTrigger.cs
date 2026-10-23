@@ -10,8 +10,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         ITriggerConcurrencyConfiguration,
         IClientTrackingIdConfiguration
     {
-        public int? ConcurrentRuns { get; set; }
-        public int? MaximumWaitingRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 

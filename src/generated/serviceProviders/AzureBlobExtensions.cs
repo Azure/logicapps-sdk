@@ -636,194 +636,194 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
     public sealed class BlobExistsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ReadBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ReadBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class UploadBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class UploadBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ListBlobsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ListBlobsFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ListBlobDirectoriesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ListContainersActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetBlobSASUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetBlobSASUriFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetBlobMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetBlobMetadataFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetContainerMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class CopyBlobActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class CopyBlobFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetAccessPoliciesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class SetBlobTierActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class SetBlobTierFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ExtractArchiveFromBlobPathActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ExtractArchiveFromUriActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ExtractArchiveFromContentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public RetryPolicy RetryPolicy { get; set; }
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class AzureBlobTriggers([ConnectionName] string connectionId)
@@ -847,8 +847,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
     public sealed class WhenABlobIsAddedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
-        public bool SecureInputs { get; set; }
-        public bool SecureOutputs { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class WhenABlobIsAddedOrModifiedOutput
