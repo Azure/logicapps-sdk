@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     public interface ITrackedPropertiesConfiguration :
         IWorkflowOperationConfiguration
     {
-        IDictionary<string, JToken> TrackedProperties { get; }
+        internal IDictionary<string, Func<JToken>> TrackedProperties { get; }
     }
 
     public interface IIterationConcurrencyConfiguration :

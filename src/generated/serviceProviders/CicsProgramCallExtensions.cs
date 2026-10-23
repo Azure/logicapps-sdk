@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.CicsProgramCall
     public sealed class ExecuteMethodActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         public RetryPolicy RetryPolicy { get; set; }
-        public IDictionary<string, JToken> TrackedProperties { get; } = new Dictionary<string, JToken>(StringComparer.Ordinal);
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
         public bool SecureInputs { get; set; }
         public bool SecureOutputs { get; set; }
     }
